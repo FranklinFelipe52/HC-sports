@@ -1,0 +1,17 @@
+[
+    {
+        "permission_desc": "Crud de adms FE"
+    },
+    {
+        "permission_desc": "crud de adms avaliadores"
+    },
+    {
+        "permission_desc": "crud de modalidades"
+    },
+    {
+        "permission_desc": "Mudar status de inscrições"
+    },
+    {
+        "permission_desc": "Mudar status de pagamentos"
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "mode": "Padrão",
+        "code": "1"
+    },
+    {
+        "mode": "Multiplas categorias",
+        "code": "2"
+    },
+    {
+        "mode": "unica categoria",
+        "code": "3"
+    }
+]

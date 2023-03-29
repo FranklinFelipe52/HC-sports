@@ -1,0 +1,22 @@
+[
+    {
+        "status": "Aguardando pagamento",
+        "code": "1"
+    },
+    {
+        "status": "Em análise",
+        "code": "2"
+    },
+    {
+        "status": "Pago",
+        "code": "3"
+    },
+    {
+        "status": "Cancelada",
+        "code": "7"
+    },
+    {
+        "status": "Devolvida",
+        "code": "6"
+    }
+]
