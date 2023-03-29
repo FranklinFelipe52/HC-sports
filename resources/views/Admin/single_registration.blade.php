@@ -109,7 +109,7 @@
                        
                             <th scope="col">#</th>
                        
-                            <th scope="col">Nome</th>
+                            <th scope="col">Nome </th>
                             <th scope="col">CPF</th>
                             <th scope="col">Modalidade</th>
                             <th scope="col">UF</th>
