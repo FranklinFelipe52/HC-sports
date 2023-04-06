@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('mode_modalities', function (Blueprint $table) {
             $table->id();
             $table->string('mode');
-            $table->integer('code');
             $table->timestamps();
         });
     }

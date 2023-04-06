@@ -16,14 +16,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_completo', 100);
+            $table->string('nome_completo', 100)->nullable();
             $table->date('data_nasc');
             $table->string('cpf', 15);
             $table->string('email', 50);
-            $table->string('password', 100);
-            $table->boolean('is_pcd');
-            $table->string('n_oab', 40);
+            $table->string('password', 100)->nullable();
+            $table->boolean('is_pcd')->nullable();
             $table->string('sexo', 1);
+            $table->boolean('registered');
             $table->timestamps();
         });
     }

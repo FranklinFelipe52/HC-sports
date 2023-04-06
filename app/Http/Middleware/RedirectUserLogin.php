@@ -17,7 +17,7 @@ class RedirectUserLogin
     public function handle(Request $request, Closure $next)
     {
         if($request->session()->has('user')){
-            return redirect('user/dashboard');
+            return redirect('/dashboard');
         } 
         return $next($request);
     }

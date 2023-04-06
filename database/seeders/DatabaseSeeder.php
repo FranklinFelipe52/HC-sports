@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\RangeCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,15 +19,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FederativeUnitSeeder::class,
             ModalitiesTypeSeeder::class,
-            UserSeeder::class,
             RuleSeeder::class,
-            PermissionsSeeder::class,
-            RulesPermissionsSeeder::class,
             AdminSeeder::class,
             ModeModalitiesSeeder::class,
-            StatusPaymentSeeder::class,
-            GroupCategorySeeder::class,
-            StatusRegitrationSeeder::class
+            StatusRegitrationSeeder::class,
+            RangeSeeder::class,
+            TypePaymentSeeder::class,
+            ModalitiesSeeder::class,
+            ModalitiesCategorySeeder::class,
+            RangeModalitySeeder::class
         ]);
     }
 }

@@ -24,8 +24,7 @@ class ModeModalitiesSeeder extends Seeder
         
             foreach ($mode_modalities as $value) {
                 mode_modalities::create([
-                'mode' => $value->mode,
-                'code' => $value->code,
+                'mode' => $value->mode
               ]);
             }
         }

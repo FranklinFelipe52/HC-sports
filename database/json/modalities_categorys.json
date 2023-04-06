@@ -1,0 +1,330 @@
+[
+    {
+        "nome": "padrão",
+        "max_total": "12",
+        "max_f": "6",
+        "max_m": "6",
+        "min_year": null,
+        "modalities_id": "1"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "16",
+        "max_f": "8",
+        "max_m": "8",
+        "min_year": null,
+        "modalities_id": "2"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "16",
+        "max_f": "8",
+        "max_m": "8",
+        "min_year": null,
+        "modalities_id": "3"
+    },
+    {
+        "nome": "LIVRE",
+        "max_total": "30",
+        "max_f": "0",
+        "max_m": "30",
+        "min_year": null,
+        "modalities_id": "4"
+    },
+    {
+        "nome": "MASTER",
+        "max_total": "30",
+        "max_f": "0",
+        "max_m": "30",
+        "min_year": "35",
+        "modalities_id": "4"
+    },
+    {
+        "nome": "LIVRE",
+        "max_total": "20",
+        "max_f": "20",
+        "max_m": "0",
+        "min_year": null,
+        "modalities_id": "5"
+    },
+    {
+        "nome": "LIVRE",
+        "max_total": "20",
+        "max_f": "0",
+        "max_m": "20",
+        "min_year": null,
+        "modalities_id": "6"
+    },
+    {
+        "nome": "Master",
+        "max_total": "20",
+        "max_f": "0",
+        "max_m": "20",
+        "min_year": "35",
+        "modalities_id": "6"
+    },
+    {
+        "nome": "Super Master",
+        "max_total": "20",
+        "max_f": "0",
+        "max_m": "20",
+        "min_year": "45",
+        "modalities_id": "6"
+    },
+    {
+        "nome": "Sênior",
+        "max_total": "20",
+        "max_f": "0",
+        "max_m": "20",
+        "min_year": "53",
+        "modalities_id": "6"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "16",
+        "max_f": "8",
+        "max_m": "8",
+        "min_year": null,
+        "modalities_id": "7"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": "4",
+        "max_m": "4",
+        "min_year": null,
+        "modalities_id": "8"
+    },
+    {
+        "nome": "PENA - Até 64,999kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "9"
+    },
+    {
+        "nome": "LEVE - 65Kg a 74,999Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "9"
+    },
+    {
+        "nome": "MÉDIO - 75Kg a 84,999Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "9"
+    },
+    {
+        "nome": "PESADO - 85Kg a 94,999Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "9"
+    },
+    {
+        "nome": "SUPER PESADO - Mais de 95Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "9"
+    },
+    {
+        "nome": "LIGEIRO - Até 60Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "MEIO-LEVE - 60Kg a 66Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "LEVE - 66Kg à 73Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "MEIO-MÉDIO - 73Kg a 81Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "MÉDIO - 81Kg a 90Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "MEIO PESADO - 90Kg a 100Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "PESADO - Mais de 100Kg",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "10"
+    },
+    {
+        "nome": "50m borboleta",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "50m costas",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "50m livre",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "50m peito",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "100m costas",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "100m livre",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "100m peito",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "4x50m medley",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "4x50m revezamento livre",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "4x100m revezamento livre",
+        "max_total": null,
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "11"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "12"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": "4",
+        "max_m": "4",
+        "min_year": null,
+        "modalities_id": "13"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": "4",
+        "max_m": "4",
+        "min_year": null,
+        "modalities_id": "14"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": "4",
+        "max_m": "4",
+        "min_year": null,
+        "modalities_id": "15"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": "4",
+        "max_m": "4",
+        "min_year": null,
+        "modalities_id": "16"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "24",
+        "max_f": "12",
+        "max_m": "12",
+        "min_year": null,
+        "modalities_id": "17"
+    },
+    {
+        "nome": "padrão",
+        "max_total": "8",
+        "max_f": null,
+        "max_m": null,
+        "min_year": null,
+        "modalities_id": "18"
+    }
+]

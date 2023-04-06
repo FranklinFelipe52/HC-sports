@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\StoreAdminRequest;
 use App\Models\Admin;
 use App\Models\FederativeUnit;
 use App\Models\Rule;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -50,33 +52,32 @@ class AdminController extends Controller
         }
     }
 
-    public function store(Request $request){
+    public function store(StoreAdminRequest $request){
         try{
             
             $federative_unit = $request->session()->get('admin')->rule->id == 1 ?  $request->uf : $request->session()->get('admin')->federativeUnit->id;
                 Admin::create([
                     'nome_completo' => $request->nome,
-                    'cpf' => $request->cpf,
+                    'cpf' => preg_replace( '/[^0-9]/is', '', $request->cpf) ,
                     'email' => $request->email,
-                    'password' => $request->password,
+                    'password' => Hash::make($request->password),
                     'federative_unit_id' => $federative_unit,
-                    'rule_id' => $request->rule
+                    'rule_id' => 2
                 ]);
-                return redirect('/admin/dashboard/administradores');
+                return redirect('/admin/administradores');
         } catch (Exception $e){
             return $e;
         }
     }
     public function login(LoginRequest $request){
-        $admin = Admin::find(1)->where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)->first();
 
         if(!$admin){
             return back()->with('erro', 'E-mail ou senha inválida');
         }
 
-        if($admin->password === $request->password){
+        if(Hash::check($request->password, $admin->password)){
             $request->session()->put('admin', $admin);
-
             return redirect('/admin/dashboard');
         } else {
             return back()->with('erro', 'E-mail ou senha inválida');

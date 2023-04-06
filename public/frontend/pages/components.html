@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes - Sistema de inscrição - Olimpíadas OAB</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- modal -->
+  <div id="modal" class="hidden">
+    <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+      <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+        <!-- modal header -->
+        <div class="text-gray-1 text-lg md:text-xl font-semibold">
+          <p>
+            Cabeçalho do modal
+          </p>
+        </div>
+        <hr class="my-4">
+
+        <!-- modal body -->
+        <div class="text-gray-1 text-base">
+          <p>
+            Corpo do modal
+          </p>
+        </div>
+
+        <!-- modal footer - actions -->
+        <div class="flex justify-end gap-4 flex-wrap mt-10">
+          <button class="bg-white border border-v1 text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            Ação principal
+          </button>
+          <button data-modalId="modal" data-action="close" class="bg-black border border-black text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-black hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-full w-full">
+    <div class="order-2 sm:order-1 relative border-r border-gray-5">
+      <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
+        <div class="hidden sm:block">
+          <a href="">
+            <img src="/dist/images/logo.png" alt="">
+          </a>
+        </div>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <nav class="my-auto">
+          <ul class="flex justify-around sm:flex-col sm:gap-2">
+            <li class="group active">
+              <a href="" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/home-outline.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 font-medium group-[.active]:font-semibold font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[34px] h-[34px]">
+                  <img src="/dist/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/star-outline.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 font-medium group-[.active]:font-semibold font-poppins">
+                  Modalidades
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[34px] h-[34px]">
+                  <img src="/dist/images/svg/user.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/user.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 font-medium group-[.active]:font-semibold font-poppins">
+                  Atletas
+                </p>
+              </a>
+            </li>
+            <li class="group sm:hidden">
+              <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[34px] h-[34px]">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <a href="" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-1 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[34px] h-[34px]">
+            <img src="/dist/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-medium font-poppins">
+            Sair
+          </p>
+        </a>
+
+
+        <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
+          <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+            <div class="w-[32px] h-[32px] shrink-0">
+              <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+            </div>
+            <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
+              Admin GO
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class=" flex flex-col h-full">
+        <header class="grow pt-8 pb-6">
+          <div class="container">
+            <h1 class="text-lg text-gray-1 font-semibold font-poppins">
+              Componentes
+            </h1>
+          </div>
+        </header>
+
+        <div class="container sh-full overflow-auto pb-8">
+
+          <p>
+            Breadcrumb
+          </p>
+
+          <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
+            <div>
+              <a href="" class="text-xs text-gray-1 block hover:underline">
+                Página anterior
+              </a>
+            </div>
+            <img src="/dist/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+              Página atual
+            </div>
+          </nav>
+
+          <hr class="my-4">
+
+          <p>
+            Inscrições - Card
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+              <div class="flex justify-between">
+                <div>
+                  <div class="flex items-center gap-4">
+                    <p class="text-base font-semibold text-gray-1">
+                      Futebol
+                    </p>
+                    <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold">
+                        Confirmado
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-1 text-xs">
+                    10 atletas inscritos
+                  </p>
+                </div>
+                <div class="w-[38px] h-[38px] rounded-full">
+                  <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Detalhes
+                </button>
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Ver Comprovante
+                </button>
+              </div>
+            </div>
+            <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+              <div class="flex justify-between">
+                <div>
+                  <div class="flex items-center gap-4">
+                    <p class="text-base font-semibold text-gray-1">
+                      Vôlei de Quadra
+                    </p>
+                    <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold">
+                        A Pagar
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-1 text-xs">
+                    Equipe Rio Grande do Norte
+                  </p>
+                </div>
+                <div class="w-[38px] h-[38px] rounded-full">
+                  <img src="/dist/images/svg/modalidades/volei.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Detalhes
+                </button>
+                <button class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Efetuar pagamento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Modalidades - Card
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+              <div class="flex justify-between">
+                <div>
+                  <div class="flex items-center gap-4">
+                    <p class="text-base font-semibold text-gray-1">
+                      Futebol
+                    </p>
+                    <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold">
+                        Completo
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-1 text-xs">
+                    10 atletas inscritos
+                  </p>
+                </div>
+                <div class="w-[38px] h-[38px] rounded-full">
+                  <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Ver modalidade
+                </button>
+                <button disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Adicionar atleta
+                </button>
+              </div>
+            </div>
+            <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+              <div class="flex justify-between">
+                <div>
+                  <div class="flex items-center gap-4">
+                    <p class="text-base font-semibold text-gray-1">
+                      Futebol
+                    </p>
+                    <div class="bg-brand-a1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold">
+                        Incompleto
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-1 text-xs">
+                    10 atletas inscritos
+                  </p>
+                </div>
+                <div class="w-[38px] h-[38px] rounded-full">
+                  <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Ver modalidade
+                </button>
+                <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  Adicionar atleta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            botão de abrir modal
+          </p>
+          <button data-modalId="modal" data-action="open" class="bg-white border border-v1 text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded">
+            Modal
+          </button>
+
+          <hr class="my-4">
+
+          <p>
+            Badge status
+          </p>
+          <div class="bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-feedback-green-1 text-xs">
+              Confirmado
+            </p>
+          </div>
+          <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-brand-a1 text-xs block text-center">
+              Parcialmente confirmado
+            </p>
+          </div>
+          <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-feedback-purple text-xs">
+              Aguardando pagamento
+            </p>
+          </div>
+          <div class="bg-feedback-fill-orange py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-feedback-orange text-xs">
+              Aguardando aceite
+            </p>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Badge status 2
+          </p>
+          <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+            <p class="text-white text-[0.5rem] font-bold">
+              Confirmado
+            </p>
+          </div>
+          <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+            <p class="text-white text-[0.5rem] font-bold">
+              A Pagar
+            </p>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Badge status 3
+          </p>
+          <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+            <p class="text-white text-[0.5rem] font-bold block">
+              Completo
+            </p>
+          </div>
+          <div class="bg-brand-a1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+            <p class="text-white text-[0.5rem] font-bold">
+              Incompleto
+            </p>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Badge tipo
+          </p>
+          <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-brand-a1 text-sm">
+              Individual
+            </p>
+          </div>
+          <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+            <p class="text-feedback-purple text-sm">
+              Coletiva
+            </p>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Nav Items
+          </p>
+          <div class="space-y-2">
+            <div class="group active">
+              <a href="" class="flex items-center gap-2 px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden" alt="">
+                <img src="/dist/images/svg/home-outline.svg" class="hidden group-[.active]:block" alt="">
+                <p class="text-gray-1 group-[.active]:text-brand-a1 font-medium group-[.active]:font-semibold font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </div>
+            <div class="group">
+              <a href="" class="flex items-center gap-2 px-3 py-1 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <img src="/dist/images/svg/star-outline.svg" class="group-[.active]:hidden" alt="">
+                <img src="/dist/images/svg/star-outline.svg" class="hidden group-[.active]:block" alt="">
+                <p class="text-gray-1 group-[.active]:text-brand-a1 font-medium group-[.active]:font-semibold font-poppins">
+                  Modalidades
+                </p>
+              </a>
+            </div>
+            <div class="">
+              <a href="" class="flex items-center gap-2 px-3 py-1 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+                <img src="/dist/images/svg/logout.svg" alt="">
+                <p class="text-brand-v1 font-medium font-poppins">
+                  Sair
+                </p>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <a href="" class="flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+              <img src="/dist/images/svg/user-circle.svg" alt="">
+              <p class="text-gray-1 font-medium font-poppins text-base">
+                Admin GO
+              </p>
+            </a>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Botões
+          </p>
+          <div class="space-y-4">
+            <button class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+              Outline
+            </button>
+
+            <button class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+              Outline
+            </button>
+
+            <button class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+              <p class="text-white text-sm font-bold font-poppins">
+                Botão primário
+              </p>
+            </button>
+
+            <button class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+              <img src="/dist/images/svg/trash.svg" alt="">
+              <p class="text-brand-v1 text-sm font-bold font-poppins">
+                Botão de exclusão
+              </p>
+            </button>
+
+            <button class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded bg-white transition">
+              <p class="text-gray-1 underline text-sm font-normal font-poppins">
+                Botão Secundário
+              </p>
+            </button>
+
+            <div>
+              <button class="inline-flex items-center gap-3 bg-fill-base p-2 pr-8 rounded-lg hover:bg-gray-6 transition">
+                <div class="w-[30px] h-[30px]">
+                  <img src="/dist/images/svg/link.svg" class="h-full w-full object-cover" alt="">
+                </div>
+                <p class="text-sm text-gray-1">
+                  comprovante-inscrição.pdf
+                </p>
+              </button>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Ícones
+          </p>
+          <div class="flex gap-3">
+            <!-- sm -->
+            <div class="w-6 h-6 rounded-full">
+              <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+            </div>
+
+            <!-- md -->
+            <div class="w-[38px] h-[38px] rounded-full">
+              <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+            </div>
+
+            <!-- lg -->
+            <div class="w-[100px] h-[100px] rounded-full">
+              <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Input Password
+          </p>
+          <div>
+            <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="input_senha_exemplo">
+              Label
+            </label>
+            <div class="group relative">
+              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="input_senha_exemplo" name="input_senha_exemplo" placeholder="Digite a sua senha" />
+              <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                  <img src="/dist/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                  <img src="/dist/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Input
+          </p>
+          <div>
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
+              Label
+            </label>
+            <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="input_text_exemplo" placeholder="Placeholder" />
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Input disabled
+          </p>
+          <div>
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
+              Label
+            </label>
+            <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="input_text_exemplo" placeholder="Placeholder" />
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Input date
+          </p>
+          <div>
+            <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="input_date_exemplo">
+              Label
+            </label>
+            <div class="relative">
+              <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="input_date_exemplo" />
+              <div class="absolute top-4 right-4 bg-white pl-4">
+                <img src="/dist/images/svg/calendar.svg" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Select
+          </p>
+          <div>
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
+              Label
+            </label>
+            <div class="relative">
+              <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
+                <option value="" selected disabled>
+                  Selecione
+                </option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <img src="/dist/images/svg/chevron-down.svg" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Select disabled
+          </p>
+          <div>
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
+              Label
+            </label>
+            <div class="group disabled  relative">
+              <select disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
+                <option value="" disabled>
+                  Selecione
+                </option>
+                <option value="1" selected>Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <img src="/dist/images/svg/chevron-down.svg" class="group-[.disabled]:hidden" alt="" />
+                <img src="/dist/images/svg/chevron-down-gray.svg" class="hidden group-[.disabled]:block" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Paginação
+          </p>
+          <div class="flex gap-2" aria-label="Paginação da tabela">
+            <div class="group disabled">
+              <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/dist/images/svg/chevron-left.svg" alt="">
+              </button>
+            </div>
+            <p class="text-sm text-gray-1 pt-0.5">
+              1 de 2
+            </p>
+            <div class="group">
+              <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/dist/images/svg/chevron-right.svg" alt="">
+              </button>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Checkbox
+          </p>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="checkbox_exemplo" name="checkbox_exemplo" class="checkbox" required />
+            <label for="checkbox_exemplo" class="inline-block cursor-pointer text-sm text-gray-1 font-semibold">
+              Label
+            </label>
+          </div>
+
+          <hr class="my-4">
+
+          <p>
+            Radio group
+          </p>
+          <div class="">
+            <div class="flex items-center gap-2">
+              <input type="radio" id="radio_input_1" name="example_radio_group" value="radio_input_1" checked>
+              <label for="radio_input_1" class="text-gray-2">Opção 1</label>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input type="radio" id="radio_input_2" name="example_radio_group" value="radio_input_2">
+              <label for="radio_input_2" class="text-gray-2">Opção 2</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script type="module" src="/dist/js/index.js"></script>
+</body>
+
+</html>

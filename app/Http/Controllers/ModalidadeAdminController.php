@@ -9,40 +9,116 @@ use App\Models\Modalities_type;
 use App\Models\mode_modalities;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ModalidadeAdminController extends Controller
 {
+    public function single(Request $request, $id){
+        try{
+            $admin = $request->session()->get('admin');
+            $modalidade = Modalities::find($id);
+            if($modalidade){
+                if(!($admin->rule->id == 1)){
+                    $users = [];
+                    $registrations = [];
+
+                    foreach ($modalidade->registrations as $registration) {
+                        if($registration->user->addres->federativeUnit->id == $admin->federativeUnit->id){
+                            array_push($registrations, $registration);
+                        }
+                    }
+
+                    foreach ( $registrations as $registration) {
+                        if(!in_array($registration->user, $users)){
+                            array_push($users, $registration->user);
+                        }
+                    }
+                } else {
+                    $users = [];
+                    $registrations = $modalidade->registrations;
+                    foreach ( $registrations as $registration) {
+                        if(!in_array($registration->user, $users)){
+                            array_push($users, $registration->user);
+                        }
+                    }
+                }
+                
+                
+
+               
+                return view('Admin.modalidade', [
+                    'modalidade'  => $modalidade,
+                    'users' => $users,
+                    
+                 ]);
+            } 
+            return back();
+        } catch (Exception $e){
+            return $e;
+        }
+    }
+
     public function show(Request $request){
         try{
-            if(!($request->session()->get('admin')->rule->id == 1)){
-                return back();
+            $modalidades = [];
+            $admin = $request->session()->get('admin');
+            foreach (Modalities::all() as $modalidade) {
+                if(!($admin->rule->id == 1)){
+                    $users = [];
+                    $registrations = [];
+
+                    foreach ($modalidade->registrations as $registration) {
+                        if($registration->user->addres->federativeUnit->id == $admin->federativeUnit->id){
+                            array_push($registrations, $registration);
+                        }
+                    }
+
+                    foreach ( $registrations as $registration) {
+                        if(!in_array($registration->user, $users)){
+                            array_push($users, $registration->user);
+                        }
+                    }
+
+                    array_push($modalidades, [
+                        'modalidade' => $modalidade,
+                        'users' => $users
+                    ]);
+                } else {
+                    $users = [];
+                    $registrations = $modalidade->registrations;
+                    foreach ( $registrations as $registration) {
+                        if(!in_array($registration->user, $users)){
+                            array_push($users, $registration->user);
+                        }
+                    }
+                    array_push($modalidades, [
+                        'modalidade' => $modalidade,
+                        'users' => $users
+                    ]);
+                }
             }
-            $modalidades = Modalities::all();
-            $tipos_modalidades = Modalities_type::all();
-            $groups = group_category::all();
-            $mode = mode_modalities::all();
-           
 
             return view('Admin.modalidades', [
                'modalidades'  => $modalidades,
-               'modality_types' => $tipos_modalidades,
-               'groups' => $groups,
-               'mode' => $mode
             ]);
+
         } catch (Exception $e){
             return back();
         }
     }
 
-    public function create(){
+    public function create(Request $request){
         try{
+            error_log('g');
             $tipos_modalidades = Modalities_type::all();
-
+            $mode = mode_modalities::all();
+            error_log('e');
             return view('Admin.create_modalidade', [
-                'modality_types' => $tipos_modalidades
+                'modality_types' => $tipos_modalidades,
+               'mode' => $mode
             ]);
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
 

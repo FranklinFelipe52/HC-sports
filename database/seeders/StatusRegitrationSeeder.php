@@ -16,7 +16,7 @@ class StatusRegitrationSeeder extends Seeder
     public function run()
     {
         
-        $types = ['Pendente', 'Aprovado'];
+        $types = ['Confirmado', 'Aguardando aceite', 'Aguardando pagamento'];
 
         foreach ($types as $value) {
             status_regitration::create([

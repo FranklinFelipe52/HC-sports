@@ -1,14 +1,11 @@
 [
     {
-        "mode": "Padrão",
-        "code": "1"
+        "mode": "Padrão"
     },
     {
-        "mode": "Multiplas categorias",
-        "code": "2"
+        "mode": "Multiplas categorias"
     },
     {
-        "mode": "unica categoria",
-        "code": "3"
+        "mode": "Unica categoria"
     }
 ]

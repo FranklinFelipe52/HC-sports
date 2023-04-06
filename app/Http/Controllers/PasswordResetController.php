@@ -7,6 +7,7 @@ use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordResetController extends Controller
 {
@@ -26,7 +27,7 @@ class PasswordResetController extends Controller
             $decoded = JWT::decode($request->token_email, new Key(env('JWT_KEY'), 'HS256'));
             if($request->password == $request->confirm_password){
                $user = User::find(1)->where('email', $decoded->email)->first();
-               $user->password = $request->password;
+               $user->password = Hash::make($request->password);
                $user->save();
                return redirect()->route('GetLogin');
             } else {

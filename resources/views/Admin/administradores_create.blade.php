@@ -27,34 +27,7 @@
 </style>
 
 <body>
-    <header>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/registrations">Inscrições</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/administradores">Administradores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/modalidade">Modalidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </header>
+@include('components.admin.header_tempory');
     <section class="container">
         @if (Session::has('erro'))
         <div class="alert alert-danger my-2" role="alert">
@@ -68,23 +41,24 @@
         </div>
         <div class="row flex-column gap-3">
             <div class="col-6">
-                <form method="post" action="/admin/dashboard/administradores/store">
+                <form method="post" action="/admin/administradores/store">
                     @csrf
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Nome completo</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="nome" aria-describedby="emailHelp">
-                        
+                        <label  class="form-label">Nome completo</label>
+                        <input type="text" class="form-control" value="{{ old('nome') }}"  name="nome" aria-describedby="emailHelp">
+                        @error('nome')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">CPF</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="cpf" aria-describedby="emailHelp">
-                        
+                        <label  class="form-label">CPF</label>
+                        <input type="text" class="form-control" value="{{ old('cpf') }}"  name="cpf" aria-describedby="emailHelp">
+                        @error('cpf')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                        <label  class="form-label">E-mail</label>
+                        <input type="email" class="form-control" value="{{ old('email') }}"  name="email" aria-describedby="emailHelp">
+                        @error('email')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
-                    @if (Session('admin')->rule->id == 1)
+                   
                     <div class="mb-3">
                     <label class="mb-2" for="">filtrar por UF</label>
                     <select class="form-select" name="uf" aria-label="Default select example">
@@ -92,19 +66,13 @@
                         <option value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
                         @endforeach
                     </select>
+                    @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
-                    @endif
-                    <div class="mb-3">
-                    <label class="mb-2" for="">Papel</label>
-                    <select class="form-select" name="rule" aria-label="Default select example">
-                        @foreach ($rules as $rule )
-                        <option value="{{$rule->id}}">{{$rule->tipo}}</option>
-                        @endforeach
-                    </select>
-                    </div>
+                   
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Senha</label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                        @error('password')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>

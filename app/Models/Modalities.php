@@ -16,6 +16,9 @@ class Modalities extends Model
         'modalities_type_id'
     ];
 
+    public function ranges(){
+        return $this->belongsToMany(Range::class, 'range_modalities', 'modalities_id', 'range_id');
+    }
     public function modalities_type(){
         return $this->belongsTo(Modalities_type::class);
     }

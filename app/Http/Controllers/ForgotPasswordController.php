@@ -29,7 +29,7 @@ class ForgotPasswordController extends Controller
         $host = request()->getSchemeAndHttpHost();
         $link = "{$host}/password_reset/{$jwt}";
         
-        if($user){
+        if($user && $user->registered){
             Mail::to($request->email)->send(new PasswordForgot($link));
         } 
         return back()->with('menssage', 'Caso o E-mail esteja cadastrado no sistema, iremos enviar um E-mail com um link para redefinir a senha, verifique');

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modalidades - Sistema de inscrição - Olimpíadas OAB</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
+        <div class="hidden sm:block">
+          <a href="/src/pages/admin/dashboard.html">
+            <img src="/dist/images/logo.png" alt="">
+          </a>
+        </div>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <nav class="my-auto">
+          <ul class="flex justify-around sm:flex-col sm:gap-5">
+            <li class="group">
+              <a href="/src/pages/admin/dashboard.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="group active">
+              <a href="/src/pages/admin/modalidades.html" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Modalidades
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/atletas.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Atletas
+                </p>
+              </a>
+            </li>
+            <li class="group sm:hidden">
+              <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <a href="" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/dist/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
+            Sair
+          </p>
+        </a>
+
+
+        <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
+          <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+            <div class="w-[32px] h-[32px] shrink-0">
+              <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+            </div>
+            <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
+              Admin GO
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="px-6 h-full w-full flex flex-col overflow-hidden">
+
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6">
+          <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+            Modalidades
+          </h1>
+        </header>
+
+        <!-- Table container -->
+        <div class="h-fit flex flex-col overflow-hidden">
+
+          <!-- Table search bar -->
+          <div class="p-4 bg-gray-6 border border-gray-5 rounded-t-lg">
+            <form class="flex gap-2 flex-wrap">
+              <div class="relative w-full grow max-w-[400px] md:w-auto">
+                <input type="text" placeholder="Pesquise por uma modalidade" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <button class="absolute top-[14%] left-3 bg-white">
+                  <img src="/dist/images/svg/search.svg" alt="">
+                </button>
+              </div>
+              <div class="relative">
+                <select class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="filtro_modalidades_page" id="filtro_modalidades_page">
+                  <option value="" selected disabled>
+                    Filtrar por categoria
+                  </option>
+                  <option value="">Individual</option>
+                  <option value="">Coletiva</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/dist/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+              <div class="relative">
+                <select class="w-full min-w-[70px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="filtro_modalidades_page" id="filtro_modalidades_page">
+                  <option value="" selected disabled>
+                    UF
+                  </option>
+                  <option value="">RN</option>
+                  <option value="">GO</option>
+                  <option value="">RJ</option>
+                  <option value="">SP</option>
+                  <option value="">RO</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/dist/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Table -->
+          <div class="h-fit flex flex-col overflow-y-hidden overflow-x-auto" role="table">
+            <!-- Table header -->
+            <div class="border-x border-b border-gray-5 min-w-[600px]" role="heading">
+              <div role="row" class="grid grid-cols-12 pr-12 py-3">
+                <div role="columnheader" class="opacity-0 col-span-2 lg:col-span-1">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ícones
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-4 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Modalidade
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-2 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Categoria
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3 lg:col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Ocupação Geral
+                  </p>
+                </div>
+                <div role="columnheader" class="opacity-0 text-end col-span-1 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ações
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table body -->
+            <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/basquete.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Basquete 3x3
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/tenis-2.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Beach tennis
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/crossfit.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Crossfit
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/futebol.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Futebol 11
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/futebol.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Futebol 7
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/futebol.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Futebol Society
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/futebol.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Futebol de Mesa
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/volei.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Futevôlei
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/artes-marciais.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    jiu-jitsu
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/artes-marciais.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Judô
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/natacao.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Natação
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/sinuca.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Sinuca
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/tenis.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Tênis
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/tenis-2.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Tênis de Mesa
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/tiro.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Tiro Esportivo
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/volei.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Vôlei de quadra
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/volei.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Vôlei de Praia
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-purple py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-purple text-sm">
+                      Coletiva
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/dist/images/svg/modalidades/xadrez.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    Xadrez
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="bg-feedback-fill-blue py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-brand-a1 text-sm">
+                      Individual
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    10 participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/src/pages/admin/modalidade.html" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modalidades exibidas -->
+        <div class="flex justify-end pt-6 pb-4 sm:pb-16">
+          <div>
+            <p class="text-gray-3 text-sm font-normal">
+              19 Modalidades exibidas
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script type="module" src="/dist/js/index.js"></script>
+</body>
+
+</html>

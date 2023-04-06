@@ -15,20 +15,20 @@ class registration extends Model
         'payment_id'
     ];
 
-    public function modalities_categorys(){
-        return $this->belongsToMany(modalities_category::class, 'registration_categories', 'registration_id', 'modalities_category_id');
+
+    public function modalities_category(){
+        return $this->belongsTo(modalities_category::class);
     }
 
     public function status_regitration(){
         return $this->belongsTo(status_regitration::class);
     }
+    public function type_payment(){
+        return $this->belongsTo(type_payment::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function payment(){
-        return $this->belongsTo(payment::class);
     }
 
     public function modalities(){

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Sistema de inscrição - Olimpíadas OAB</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
+        <div class="hidden sm:block">
+          <a href="/src/pages/admin/dashboard.html">
+            <img src="/dist/images/logo.png" alt="">
+          </a>
+        </div>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <nav class="my-auto">
+          <ul class="flex justify-around sm:flex-col sm:gap-5">
+            <li class="group active">
+              <a href="/src/pages/admin/dashboard.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/modalidades.html" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Modalidades
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/atletas.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Atletas
+                </p>
+              </a>
+            </li>
+            <li class="group sm:hidden">
+              <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="hidden sm:block border-gray-6 my-8">
+
+        <a href="" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/dist/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
+            Sair
+          </p>
+        </a>
+
+
+        <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
+          <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+            <div class="w-[32px] h-[32px] shrink-0">
+              <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+            </div>
+            <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
+              Admin GO
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="px-6 h-full w-full grid lg:gap-8 grid-cols-1 lg:grid-cols-6 xl:grid-cols-5 grid-rows-2">
+        <div class="lg:row-span-2 lg:col-span-3 xl:col-span-2 flex flex-col overflow-hidden lg:border-r border-gray-5">
+          <header class="pt-8 pb-6 border-b-[2px] border-gray-4">
+            <h2 class="text-gray-1 text-lg font-semibold font-poppins">
+              Atualizações
+            </h2>
+          </header>
+
+          <div class="grow overflow-hidden relative flex flex-col scroll-fade">
+            <!-- lista de atualizações -->
+            <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+        <div class="row-span-1 lg:row-span-2 lg:col-span-3 flex flex-col overflow-hidden lg:border-r border-gray-5">
+          <header class="pt-8 pb-6 border-b-[2px] border-gray-4">
+            <h2 class="text-gray-1 text-lg font-semibold font-poppins">
+              Modalidades
+            </h2>
+          </header>
+
+          <div class="overflow-hidden flex flex-col relative scroll-fade">
+            <!-- grid de modalidades -->
+            <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-feedback-green-2 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Completo
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" disabled class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                        Futebol
+                      </p>
+                      <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/src/pages/admin/modalidade.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/src/pages/admin/adicionar-atleta.html', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script type="module" src="/dist/js/index.js"></script>
+</body>
+
+</html>

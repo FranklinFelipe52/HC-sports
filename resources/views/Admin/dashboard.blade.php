@@ -1,41 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<x-head titulo="Dashboard" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Sistema de inscrição - Olimpíadas OAB</title>
 
-<body>
-    <header>
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                    
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/modalidade">Modalidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/administradores">Administradores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/registrations">Inscrições</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
+  <!-- css -->
+  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      @include('components.admin.menu_lateral');
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="px-6 h-full w-full grid lg:gap-8 grid-cols-1 lg:grid-cols-6 xl:grid-cols-5 grid-rows-2">
+        <div class="lg:row-span-2 lg:col-span-3 xl:col-span-2 flex flex-col overflow-hidden lg:border-r border-gray-5">
+          <header class="pt-8 pb-6 border-b-[2px] border-gray-4">
+            <h2 class="text-gray-1 text-lg font-semibold font-poppins">
+              Atualizações
+            </h2>
+          </header>
+
+          <div class="grow overflow-hidden relative flex flex-col scroll-fade">
+            <!-- lista de atualizações -->
+            <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
+
+              <!-- atualização -->
+              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                  <img src="/frontend/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                 </div>
-            </div>
-        </nav>
+                <div class="grow space-y-1">
+                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                </div>
+                <div class="flex gap-2.5">
+                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <p class="text-feedback-green-1 text-xs">
+                      Confirmado
+                    </p>
+                  </div>
+                  <p class="text-xs text-gray-600 font-normal">1h</p>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    </header>
-    <section class="container">
-       
-    <x-footer />
+
+        </div>
+        <div class="row-span-1 lg:row-span-2 lg:col-span-3 flex flex-col overflow-hidden lg:border-r border-gray-5">
+          <header class="pt-8 pb-6 border-b-[2px] border-gray-4">
+            <h2 class="text-gray-1 text-lg font-semibold font-poppins">
+              Modalidades
+            </h2>
+          </header>
+
+          <div class="overflow-hidden flex flex-col relative scroll-fade">
+            <!-- grid de modalidades -->
+            <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            @foreach ($modalidades as $modalidade )
+              <!-- modalidade - item do grid -->
+              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                <div class="flex justify-between">
+                  <div>
+                    <div class="flex items-center gap-4">
+                      <p class="text-base font-semibold text-gray-1">
+                      {{$modalidade->nome}}
+                      </p>
+                      <!--<div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold">
+                          Incompleto
+                        </p>
+                      </div>-->
+                    </div>
+                    <!--<p class="text-gray-1 text-xs">
+                      10 atletas inscritos
+                    </p>-->
+                  </div>
+                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                    <img src="/frontend/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button onclick="window.open('/admin/modalidade/{{$modalidade->id}}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Ver modalidade
+                  </button>
+                  <button onclick="window.open('/admin/registration/create/{{$modalidade->id}}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    Adicionar atleta
+                  </button>
+                </div>
+              </div>
+
+              @endforeach
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script type="module" src="/frontend/dist/js/index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,110 @@
+[
+    {
+        "nome": "BASQUETE 3x3",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "BEACH TENNIS",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "CROSSFIT",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "FUTEBOL 11 – MASCULINO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "3"
+    },
+    {
+        "nome": "FUT 7 – FEMININO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "3"
+    },
+    {
+        "nome": "FUTEBOL SOCIETY – MASCULINO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "3"
+    },
+    {
+        "nome": "FUTMESA",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "FUTEVÔLEI",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "JIU-JITSU",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "3"
+    },
+    {
+        "nome": "JUDO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "3"
+    },
+    {
+        "nome": "NATAÇÃO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "2"
+    },
+    {
+        "nome": "SINUCA",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "TÊNIS",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "TÊNIS DE MESA",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "TIRO ESPORTIVO",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "VÔLEI DE PRAIA",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "VÔLEI DE QUADRA",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "2",
+        "mode_modalities_id": "1"
+    },
+    {
+        "nome": "XADREZ",
+        "limit_year_date": "2023-12-31",
+        "modalities_type_id": "1",
+        "mode_modalities_id": "1"
+    }
+]

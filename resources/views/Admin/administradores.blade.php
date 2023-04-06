@@ -27,34 +27,7 @@
 </style>
 
 <body>
-    <header>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/registrations">Inscrições</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/administradores">Administradores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/modalidade">Modalidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-    </header>
+@include('components.admin.header_tempory');
     <section class="container">
     @if (Session::has('erro'))
         <div class="alert alert-danger my-2" role="alert">
@@ -73,6 +46,7 @@
                     <div>
                     <label class="mb-2" for="">filtrar por UF</label>
                     <select class="form-select" name="uf" aria-label="Default select example">
+                    <option value disabled selected >UF</option>
                         @foreach ($federative_units as $federative_unit )
                         <option {{ ( Request::get('uf') && (Request::get('uf') == $federative_unit->id) ) ? 'selected' : '' }} value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
                         @endforeach
@@ -85,7 +59,7 @@
             @endif
             @if (!(Session('admin')->rule->id == 3))
             <div class="col-3 d-flex justify-content-end align-items-center">
-                    <a role="button" href="/admin/dashboard/administradores/create" class="btn btn-primary">Criar Administrador</a>
+                    <a role="button" href="/admin/administradores/create" class="btn btn-primary">Criar Administrador</a>
             </div>
             @endif
         </div>

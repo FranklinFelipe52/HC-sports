@@ -1,151 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<x-head titulo="Modalidades" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modalidades - Sistema de inscrição - Olimpíadas OAB</title>
 
-<style>
-    .item-modalidade {
-        transition-duration: 0.8s;
-    }
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    .item-modalidade:hover {
-        filter: grayscale(80%);
-        transform: scale(1.005);
-        transition-duration: 0.5s;
-    }
+  <!-- css -->
+  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+</head>
 
-    .hidden {
-        overflow: hidden;
-    }
-</style>
+<body class="h-screen">
 
-<body>
-    <header>
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      @include('components.admin.menu_lateral');
+      </div>
+
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="px-6 h-full w-full flex flex-col overflow-hidden">
+
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6">
+          <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+            Modalidades
+          </h1>
+        </header>
+
+        <!-- Table container -->
+        <div class="h-fit flex flex-col overflow-hidden">
+
+          <!-- Table search bar -->
+          <div class="p-4 bg-gray-6 border border-gray-5 rounded-t-lg">
+            <form class="flex gap-2 flex-wrap">
+              <div class="relative w-full grow max-w-[400px] md:w-auto">
+                <input type="text" placeholder="Pesquise por uma modalidade" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <button class="absolute top-[14%] left-3 bg-white">
+                  <img src="/frontend/dist/images/svg/search.svg" alt="">
                 </button>
-                <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/registrations">Inscrições</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/administradores">Administradores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/dashboard/modalidade">Modalidades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/logout">Logout</a>
-                        </li>
-                    </ul>
+              </div>
+              <div class="relative">
+                <select class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="filtro_modalidades_page" id="filtro_modalidades_page">
+                  <option value="" selected disabled>
+                    Filtrar por categoria
+                  </option>
+                  <option value="">Individual</option>
+                  <option value="">Coletiva</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
                 </div>
-            </div>
-        </nav>
-
-    </header>
-    <section class="container">
-        <div class="row justify-content-end py-5">
-            <div class="col-3 d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-modalities">
-                    Criar modalidade
-                </button>
-                @include('Modals.create-modalities');
-            </div>
-        </div>
-    </section>
-    <section class="container">
-        @if (count($modalidades) !== 0)
-        <div class="row flex-column gap-3">
-            @foreach ($modalidades as $modalidade )
-            <div class="col">
-                <div class="rounded  border hidden shadow-sm ">
-                    <a class="d-flex justify-content-between text-decoration-none item-modalidade text-black bg-light rounded-top py-3 px-5 " data-bs-toggle="collapse" href="#collapseExample-{{$modalidade->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <div>
-                            <h6 class="fs-6 mb-1 fw-bold">Nome</h6>
-                            <p class="m-0">{{$modalidade->nome}}</p>
-                        </div>
-                        <div>
-                            <h6 class="fs-6 mb-1 fw-bold">Modo</h6>
-                            <p class="m-0">{{$modalidade->mode_modalities->mode}}</p>
-                        </div>
-                        <div>
-                            <h6 class="fs-6 mb-1 fw-bold">Tipo</h6>
-                            <p class="m-0">{{$modalidade->modalities_type->type}}</p>
-                        </div>
-                        <div>
-                            <h6 class="fs-6 mb-1 fw-bold">Data de referência</h6>
-                            <p class="m-0">{{$modalidade->limit_year_date}}</p>
-                        </div>
-                    </a>
-                    <div class="collapse " id="collapseExample-{{$modalidade->id}}">
-                        <div class="card rounded-0 border-0 card-body">
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h4 class="my-3">Categorias</h4>
-                                </div>
-                                <div>
-                                    @if ($modalidade->mode_modalities->code == 1 && count($modalidade->modalities_categorys) == 1)
-                                    <td><button type="button" class="btn btn-primary" disabled data-bs-toggle="modal" data-bs-target="#create-category-{{$modalidade->id}}">
-                                            Criar catagoria
-                                        </button></td>
-                                    @else
-                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-category-{{$modalidade->id}}">
-                                            Criar catagoria
-                                        </button></td>
-                                    @endif
-                                </div>
-
-                            </div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Nome</th>
-                                        <th scope="col">Limite feminino</th>
-                                        <th scope="col">Limite masculino</th>
-                                        <th scope="col">Limite de idade</th>
-                                        <th scope="col">Grupo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($modalidade->modalities_categorys as $category)
-                                    <tr>
-                                        <td>{{$category->titulo}}</td>
-                                        <td>{{$category->min_f}}</td>
-                                        <td>{{$category->min_m}}</td>
-                                        <td>{{$category->min_year}}</td>
-                                        <td>{{$category->group_category->tipo}}</td>
-                                    </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+              </div>
+              <div class="relative">
+                <select class="w-full min-w-[70px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="filtro_modalidades_page" id="filtro_modalidades_page">
+                  <option value="" selected disabled>
+                    UF
+                  </option>
+                  <option value="">RN</option>
+                  <option value="">GO</option>
+                  <option value="">RJ</option>
+                  <option value="">SP</option>
+                  <option value="">RO</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
                 </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Table -->
+          <div class="h-fit flex flex-col overflow-y-hidden overflow-x-auto" role="table">
+            <!-- Table header -->
+            <div class="border-x border-b border-gray-5 min-w-[600px]" role="heading">
+              <div role="row" class="grid grid-cols-12 pr-12 py-3">
+                <div role="columnheader" class="opacity-0 col-span-2 lg:col-span-1">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ícones
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-4 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Modalidade
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-2 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Categoria
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3 lg:col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Ocupação Geral
+                  </p>
+                </div>
+                <div role="columnheader" class="opacity-0 text-end col-span-1 lg:col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ações
+                  </p>
+                </div>
+              </div>
             </div>
-            @include('Modals.create-category', ['modalidade' => $modalidade])
-            @endforeach
 
-
+            <!-- Table body -->
+            <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+              <!-- Table row -->
+              @foreach ($modalidades as $modalidade)
+              <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center">
+                  <img src="/frontend/dist/images/svg/modalidades/basquete.svg" alt="">
+                </div>
+                <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    {{$modalidade['modalidade']->nome}}
+                  </p>
+                </div>
+                <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
+                  <div class="@if ($modalidade['modalidade']->modalities_type->id == 1) bg-feedback-fill-blue  @else bg-feedback-fill-purple @endif py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    
+                    <p class=" @if ($modalidade['modalidade']->modalities_type->id == 1) text-brand-a1  @else text-feedback-purple @endif     text-sm">
+                      {{$modalidade['modalidade']->modalities_type->type}}
+                    </p>
+                  </div>
+                </div>
+                <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
+                  <p class="text-sm font-semibold text-gray-600">
+                    {{Count($modalidade['users'])}} participantes
+                  </p>
+                </div>
+                <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
+                  <a href="/admin/modalidade/{{$modalidade['modalidade']->id}}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/frontend/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
         </div>
 
-        @else
-
-        <div class="alert alert-danger">
-            <p>vazio</p>
+        <!-- modalidades exibidas -->
+        <div class="flex justify-end pt-6 pb-4 sm:pb-16">
+          <div>
+            <p class="text-gray-3 text-sm font-normal">
+              {{Count($modalidades)}} Modalidades exibidas
+            </p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        @endif
-
-    </section>
-
-    <x-footer />
+  <!-- js -->
+  <script type="module" src="/frontend/dist/js/index.js"></script>
 </body>
 
 </html>

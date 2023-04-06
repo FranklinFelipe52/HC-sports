@@ -15,18 +15,15 @@ use PHPUnit\Framework\Constraint\Count;
 
 class RegistrationsUserController extends Controller
 {
-    public function create(Request $request, $id){
+    public function show(Request $request, $id){
 
-        try{
-            $modalidade = Modalities::find($id);
-            if($modalidade){
-                return view('User.registration', [
-                    'modalidade' => $modalidade,
-                ]);
-            } 
+        try {
+            $registration = registration::find($id);
 
-            return back();
-        } catch (Exception $e){
+            return view('User.registration', [
+                'registration'  => $registration
+            ]);
+        } catch (Exception $e) {
             return back();
         }
     }

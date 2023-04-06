@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class AdminSeeder extends Seeder
             'nome_completo' => 'Franklin Felipe de Oliveira Barbosa',
             'cpf' => '00000000000',
             'email' => 'franklin.felipe158@gmail.com',
-            'password' => 'teste',
+            'password' => Hash::make('teste'),
             'rule_id' => 1,
             'federative_unit_id' => 11
         ]);

@@ -17,12 +17,12 @@ return new class extends Migration
     {
         Schema::create('modalities_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->integer('min_f');
-            $table->integer('min_m');
-            $table->integer('min_year');
+            $table->string('nome');
+            $table->integer('max_total')->nullable();
+            $table->integer('max_f')->nullable();
+            $table->integer('max_m')->nullable();
+            $table->integer('min_year')->nullable();
             $table->foreignIdFor(Modalities::class);
-            $table->foreignIdFor(group_category::class);
             $table->timestamps();
 
         });

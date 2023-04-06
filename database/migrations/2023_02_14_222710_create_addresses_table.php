@@ -17,7 +17,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('cidade', 80);
+            $table->string('cidade', 80)->nullable();
             $table->foreignIdFor(FederativeUnit::class);
             $table->foreignIdFor(User::class);
             $table->timestamps();
