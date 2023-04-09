@@ -4,7 +4,7 @@
 <x-head titulo="Dashboard" />
 
 <body>
-    @include('components.admin.header_tempory');
+    
     <section class="container">
         <div class="row">
             <div class="col">
