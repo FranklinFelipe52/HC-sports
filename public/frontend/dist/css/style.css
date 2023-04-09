@@ -1272,8 +1272,8 @@ video {
   --tw-bg-opacity: 0.6;
 }
 
-.bg-\[url\(\'\/dist\/images\/background\.png\'\)\] {
-  background-image: url('/dist/images/background.png');
+.bg-\[url\(\'\/frontend\/dist\/images\/background\.png\'\)\] {
+  background-image: url('/frontend/dist/images/background.png');
 }
 
 .bg-cover {
