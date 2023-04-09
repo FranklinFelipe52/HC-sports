@@ -1,107 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<x-head titulo="Modalidades" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atletas - Sistema de inscrição - Olimpíadas OAB</title>
 
-<style>
-    .item-modalidade {
-        transition-duration: 0.8s;
-        -webkit-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        -moz-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        box-shadow: -4px 3px 20px -4px rgba(184, 178, 184, 1);
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    }
+  <!-- css -->
+  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+</head>
 
-    .item-modalidade:hover {
-        filter: grayscale(80%);
-        transition-duration: 0.5s;
-        -webkit-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        -moz-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        box-shadow: -4px 3px 20px 0px rgba(184, 178, 184, 1);
+<body class="h-screen">
 
-    }
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
-    .hidden {
-        overflow: hidden;
-    }
-</style>
+    
+<!-- Menu lateral -->
+<div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      @include('components.admin.menu_lateral');
+    </div>
 
-<body>
-@include('components.admin.header_tempory');
-    <section class="container">
-    @if (Session::has('erro'))
-        <div class="alert alert-danger my-2" role="alert">
-            {{Session('erro')}}
-        </div>
-        @endif
-        <div class="row pt-5">
-            <div class="col">
-                <h2>Administradores</h2>
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="px-6 h-full w-full flex flex-col overflow-hidden">
+
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6 flex flex-wrap gap-6">
+          <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+            Administradores Cadastrados
+          </h1>
+          <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+            <p class="text-white text-sm font-bold font-poppins">
+              Cadastrar
+            </p>
+          </a>
+        </header>
+
+        <!-- Table container -->
+        <div class="h-fit flex flex-col overflow-hidden">
+
+          <!-- Table search bar -->
+          <div class="p-4 bg-gray-6 border border-gray-5 rounded-t-lg">
+            <div class="flex gap-2 flex-wrap">
+              <form class="relative grow">
+
+                <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <button type="submit" class="absolute top-[14%] left-3 bg-white">
+                  <img src="/frontend/dist/images/svg/search.svg" alt="">
+                </button>
+
+              </form>
+              @if (Session('admin')->rule->id == 1)
+              <form id="filter_uf" class="relative">
+
+                <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">
+                  <option value disabled selected>UF</option>
+                  @foreach ($federative_units as $federative_unit )
+                  <option {{ ( Request::get('uf') && (Request::get('uf') == $federative_unit->id) ) ? 'selected' : '' }} value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
+                  @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                </div>
+
+              </form>
+              @endif
+
             </div>
-        </div>
-        <div class="row justify-content-between py-3">
-        @if (Session('admin')->rule->id == 1)
-            <div class="col-2">
-                <form class="d-flex align-items-end gap-3">
-                    <div>
-                    <label class="mb-2" for="">filtrar por UF</label>
-                    <select class="form-select" name="uf" aria-label="Default select example">
-                    <option value disabled selected >UF</option>
-                        @foreach ($federative_units as $federative_unit )
-                        <option {{ ( Request::get('uf') && (Request::get('uf') == $federative_unit->id) ) ? 'selected' : '' }} value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </form>
+          </div>
+
+          <!-- Table -->
+          <div class="h-fit flex flex-col overflow-y-hidden overflow-x-auto" role="table">
+            <!-- Table header -->
+            <div class="border-x border-b border-gray-5 min-w-[600px]" role="heading">
+              <div role="row" class="grid grid-cols-12 px-4 py-3">
+                <div role="columnheader" class="text-start col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    CPF
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-4">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Nome
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    UF
+                  </p>
+                </div>
+                <div role="columnheader" class="opacity-0 col-span-2 text-end">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ações
+                  </p>
+                </div>
+              </div>
             </div>
 
-            @endif
-            @if (!(Session('admin')->rule->id == 3))
-            <div class="col-3 d-flex justify-content-end align-items-center">
-                    <a role="button" href="/admin/administradores/create" class="btn btn-primary">Criar Administrador</a>
+            <!-- Table body -->
+            <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+            @foreach ($administradores as $administrador )
+              <!-- Table row -->
+              <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="py-3 flex items-center col-span-3">
+                  <p class="text-sm font-semibold text-gray-2">
+                    <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $administrador->cpf); ?>
+                  </p>
+                </div>
+                <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                  <p class="text-sm font-semibold text-gray-2">
+                  {{$administrador->nome_completo}}
+                  </p>
+                </div>
+                <div role="cell" class="py-3 flex items-center col-span-3">
+                  <p class="text-sm font-semibold text-gray-2">
+                  {{$administrador->federative_unit_name}}
+                  </p>
+                </div>
+                <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                  <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/frontend/dist/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                  <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/frontend/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
+              @endforeach
+
             </div>
-            @endif
-        </div>
-        
-        @if (count($administradores) !== 0)
-        <div class="row flex-column gap-3">
-            <div class="col">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">UF</th>
-                            <th scope="col">Papel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($administradores as $administrador )
-                        <tr>
-                            <td>{{$administrador->nome_completo}}</td>
-                            <td>{{$administrador->email}}</td>
-                            <td>{{$administrador->federativeUnit->initials}}</td>
-                            <td>{{$administrador->rule->tipo}}</td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
+          </div>
         </div>
 
-        @else
-
-        <div class="alert alert-danger my-3">
-            <p>vazio</p>
+        <!-- Paginação da tabela -->
+        <div class="flex justify-between pt-6 pb-4 sm:pb-16">
+        {{$administradores->appends([
+                    's' => request()->get('s', ''),
+                    'uf' => request()->get('uf', '')
+                    ])->links()}}
+          <div>
+            <p class="text-gray-3 text-sm font-normal">
+              @if (Count($administradores) > 1)
+              {{Count($administradores)}} Administradores exibidos
+              @else
+              {{Count($administradores)}} Administrador exibido
+              @endif
+           
+            </p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        @endif
-
-    </section>
-
-    <x-footer />
+  <!-- js -->
+  <script type="module" src="/frontend/dist/js/index.js"></script>
 </body>
 
 </html>

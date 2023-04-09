@@ -6,7 +6,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
-  <title>Olimpadas da advocacia - Confirmao de cadastro</title><!--[if (mso 16)]>
+  <title>Olimpadas da advocacia - Confirmao de excluso da inscrio</title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
@@ -54,18 +54,10 @@ a[x-apple-data-detectors] {
 	background:#56d66b!important;
 }
 td .es-button-border:hover a.es-button-1 {
-	background:#0095d9!important;
-}
-td .es-button-border-2:hover {
-	background:#0095d9!important;
-	border-style:solid solid solid solid!important;
-	border-color:#0fb3ff #0fb3ff #0fb3ff #0fb3ff!important;
-}
-td .es-button-border:hover a.es-button-3 {
 	background:#ffffff!important;
 	color:#000000!important;
 }
-td .es-button-border-4:hover {
+td .es-button-border-2:hover {
 	background:#ffffff!important;
 	border-style:solid solid solid solid!important;
 	border-color:#42d159 #42d159 #42d159 #42d159!important;
@@ -96,7 +88,7 @@ td .es-button-border-4:hover {
                       <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/logo_2.png" alt="Logo das olimpíadas da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo das olimpíadas da advocacia"></td>
                      </tr>
                      <tr>
-                      <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center"><strong>Bem-vindo às Olimpíadas da Advocacia 2023!</strong></h1></td>
+                      <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center"><strong>Inscrição excluída!</strong></h1></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -118,21 +110,9 @@ td .es-button-border-4:hover {
                      <tr>
                       <td style="padding:0;Margin:0;padding-bottom:30px">
                        <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
-                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">Estamos felizes em informar que a sua solicitação de inscrição para a modalidade <strong>{{$registration->modalities->nome}} 
-                        @if (!($registration->modalities->mode_modalities->id == 1))
-                        (Categoria “{{$registration->modalities_category->nome}}”)
-                      @endif </strong> foi confirmada.</p>
-                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Para acompanhar as suas inscrições, acesse o <strong>painel do atleta</strong> através do botão abaixo:</p>
+                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">Informamos que a sua inscrição foi <strong>excluída com sucesso.</strong></p>
+                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Caso tenha interesse em participar das Olimpíadas da Advocacia 2023 novamente, será necessário a realização de uma nova inscrição.</p>
                        </div></td>
-                     </tr>
-                     <tr>
-                      <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
-                style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#0095d9">
-		<w:anchorlock></w:anchorlock>
-		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
-	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{$link}}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span><!--<![endif]--></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -179,7 +159,7 @@ td .es-button-border-4:hover {
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Política de Privacidade</center>
 	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Política de Privacidade</a></span><!--<![endif]--></td>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Política de Privacidade</a></span><!--<![endif]--></td>
                      </tr>
                      <tr>
                       <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
@@ -188,7 +168,7 @@ td .es-button-border-4:hover {
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Regulamento</center>
 	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Regulamento</a></span><!--<![endif]--></td>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Regulamento</a></span><!--<![endif]--></td>
                      </tr>
                      <tr>
                       <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>

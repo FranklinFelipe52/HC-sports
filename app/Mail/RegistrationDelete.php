@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RegistrationMail extends Mailable
+class RegistrationDelete extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,12 +18,9 @@ class RegistrationMail extends Mailable
      *
      * @return void
      */
-
-     public $link;
-     public $registration;
-    public function __construct($link, $registration)
+    public $registration;
+    public function __construct($registration)
     {
-        $this->link = $link;
         $this->registration = $registration;
     }
 
@@ -35,7 +32,7 @@ class RegistrationMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'HC-Sports - Confirmação de inscrição',
+            subject: 'HC-Sports - Exclusão de inscrição',
         );
     }
 
@@ -47,7 +44,7 @@ class RegistrationMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'Mails.RegistrationMail',
+            view: 'Mails.RegistrationDelete',
         );
     }
 

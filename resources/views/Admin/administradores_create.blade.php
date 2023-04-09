@@ -1,92 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<x-head titulo="Modalidades" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar administrador - Sistema de inscrição - Olimpíadas OAB</title>
 
-<style>
-    .item-modalidade {
-        transition-duration: 0.8s;
-        -webkit-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        -moz-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        box-shadow: -4px 3px 20px -4px rgba(184, 178, 184, 1);
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    }
+  <!-- css -->
+  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+</head>
 
-    .item-modalidade:hover {
-        filter: grayscale(80%);
-        transition-duration: 0.5s;
-        -webkit-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        -moz-box-shadow: -4px 3px 20px -4px rgba(156, 154, 156, 1);
-        box-shadow: -4px 3px 20px 0px rgba(184, 178, 184, 1);
+<body class="h-screen">
 
-    }
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
-    .hidden {
-        overflow: hidden;
-    }
-</style>
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      @include('components.admin.menu_lateral');
+    </div>
 
-<body>
-@include('components.admin.header_tempory');
-    <section class="container">
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="container h-full w-full flex flex-col overflow-auto pb-8">
+
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6 space-y-6">
+          <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
+            <div>
+              <a href="/src/pages/admin/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+                Administradores
+              </a>
+            </div>
+            <img src="/frontend/dist/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+              Adicionar Administrador
+            </div>
+          </nav>
+          <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+            Cadastramento de Administrador
+          </h1>
+        </header>
+
+        <form method="post" action="/admin/administradores/store" class="w-full max-w-[700px]">
+        @csrf
         @if (Session::has('erro'))
         <div class="alert alert-danger my-2" role="alert">
             {{Session('erro')}}
         </div>
         @endif
-        <div class="row pt-5">
-            <div class="col">
-                <h2>Criar administrador</h2>
+          <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
+            <div class="flex flex-wrap gap-6 mb-6">
+              <div class="grow sm:grow-0">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
+                  CPF
+                </label>
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+                @error('cpf')<p class="text-danger">{{ $message }}</p>@enderror
+              </div>
+
+              <div class="grow">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
+                  E-mail
+                </label>
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="jeffersonthawan@gmail.com" />
+                @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+              </div>
+
+              <div class="grow">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="nome_adicionar_atleta_form">
+                  Nome
+                </label>
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" placeholder="Ex.: jefferson thawan" />
+                @error('nome')<p class="text-danger">{{ $message }}</p>@enderror
+              </div>
             </div>
-        </div>
-        <div class="row flex-column gap-3">
-            <div class="col-6">
-                <form method="post" action="/admin/administradores/store">
-                    @csrf
-                    <div class="mb-3">
-                        <label  class="form-label">Nome completo</label>
-                        <input type="text" class="form-control" value="{{ old('nome') }}"  name="nome" aria-describedby="emailHelp">
-                        @error('nome')<p class="text-danger">{{ $message }}</p>@enderror
-                    </div>
-                    <div class="mb-3">
-                        <label  class="form-label">CPF</label>
-                        <input type="text" class="form-control" value="{{ old('cpf') }}"  name="cpf" aria-describedby="emailHelp">
-                        @error('cpf')<p class="text-danger">{{ $message }}</p>@enderror
-                    </div>
-                    <div class="mb-3">
-                        <label  class="form-label">E-mail</label>
-                        <input type="email" class="form-control" value="{{ old('email') }}"  name="email" aria-describedby="emailHelp">
-                        @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-                    </div>
-                   
-                    <div class="mb-3">
-                    <label class="mb-2" for="">filtrar por UF</label>
-                    <select class="form-select" name="uf" aria-label="Default select example">
-                        @foreach ($federative_units as $federative_unit )
+
+            <div class="mb-6">
+              <p class="text-sm font-semibold text-gray-1 mb-4">
+                Atribuição
+              </p>
+
+              <div class="pl-4 space-y-2.5">
+                <div class="flex items-center gap-2">
+                  <input required type="radio" id="caixa_federal" name="tipo_de_pagamento_adicionar_atleta" value="caixa_federal" checked>
+                  <label for="caixa_federal" class="text-gray-2">
+                    Admin. Caixa Federal
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
+                Selecione a UF
+              </label>
+              <div class="relative max-w-[300px]">
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                  <option value="" selected disabled>
+                    Selecione
+                  </option>
+                  @foreach ($federative_units as $federative_unit )
                         <option value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
                         @endforeach
-                    </select>
-                    @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
-                    </div>
-                   
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Senha</label>
-                        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-                        @error('password')<p class="text-danger">{{ $message }}</p>@enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Confirmar senha</label>
-                        <input type="password" class="form-control" name="confirm_password" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Criar</button>
-                </form>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+              @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
             </div>
-        </div>
+          </div>
+          <div class="flex flex-wrap justify-between gap-6">
+            <button class="order-2 sm:order-1 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded bg-white transition">
+              <p class="text-gray-1 underline text-sm font-normal font-poppins">
+                Cancelar
+              </p>
+            </button>
+            <button type="submit" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+              <p class="text-white text-sm font-bold font-poppins">
+                Cadastrar
+              </p>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-
-    </section>
-
-    <x-footer />
+  <!-- js -->
+  <script type="module" src="/frontend/dist/js/index.js"></script>
 </body>
 
 </html>

@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <x-head titulo="login" />
 
 <body>
-@include('components.header');
     <section class="container d-flex flex-column justify-content-center  login ">
-        
-        @if (session('EmailVerify'))
-        <div class="alert alert-info">
-            {{ session('EmailVerify') }}
-        </div>
-        @endif
-        @if (session('verifyMessage'))
-        <div class="alert alert-dark">
-            {{ session('verifyMessage') }}
-        </div>
-        @endif
-        @if (session('erro'))
-        <div class="alert alert-danger">
-            {{session('erro') }}
-        </div>
-        @endif
         <div class="row justify-content-center align-items-center py-3">
+            @if (session('erro'))
+            <div class="alert alert-danger">
+                {{session('erro') }}
+            </div>
+            @endif
             <div class="col-11 col-md-6 col-lg-4">
                 <form method="post">
                     @csrf
@@ -50,8 +38,6 @@
     </section>
 
     <x-footer />
-    
 </body>
-
 
 </html>

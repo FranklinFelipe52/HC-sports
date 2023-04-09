@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alterar senha solicitação - Link enviado</title>
+  <title>Alterar senha - Link enviado</title>
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,32 +46,18 @@
     </div>
     <div class="bg-white h-full lg:col-span-4 px-8 py-20  flex flex-col justify-center">
       <div class="mx-auto w-full max-w-[327px]">
-        <h1 class="text-gray-1 text-[18px]">
-          Esqueceu a sua senha?
+        <h1 class="text-gray-1 text-[28px]">
+          Link enviado!
         </h1>
         <hr class="my-3">
         <p class="text-gray-1 text-base mb-10">
-          Informe o seu e-mail cadastrado para continuar com a atualização.
+          Acesse o seu e-mail para encontrar o link de alteração de senha.
         </p>
-        <form method="post">
-        @csrf
-          <div class="mb-6">
-            <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">
-                E-mail
-              </label>
-              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_email_field" name="email" placeholder="Digite o seu e-mail" />
-              @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-            </div>
-          </div>
-
-          <button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Enviar
-            </p>
-          </button>
-        </form>
-
+        <a href="/login" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+          <p class="text-white text-sm font-bold font-poppins">
+          Voltar para o Login
+          </p>
+        </a>
       </div>
     </div>
   </div>

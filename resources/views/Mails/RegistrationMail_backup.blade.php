@@ -10,7 +10,7 @@
 </head>
 <body>
     <section>
-        <a href="{{$link}}">Verificar E-mail</a>
+        <a href="{{$link}}">Acessar sistema/Completar cadastro</a>
     </section>
 </body>
 </html>

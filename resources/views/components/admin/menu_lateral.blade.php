@@ -21,7 +21,7 @@
                 </p>
               </a>
             </li>
-            @if (Session('admin')->rule->id == 1)
+            
            <li class="group">
               <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
                 <div class="w-[24px] h-[24px]">
@@ -33,7 +33,7 @@
                 </p>
               </a>
             </li>
-            @endif
+           
             <li class="group">
               <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
                 <div class="w-[24px] h-[24px]">

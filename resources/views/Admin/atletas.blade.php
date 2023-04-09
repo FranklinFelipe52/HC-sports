@@ -165,7 +165,7 @@
 
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              {{Count($atletas)}} Modalidades exibidas
+              {{Count($atletas)}} Atletas exibidos
             </p>
           </div>
         </div>
