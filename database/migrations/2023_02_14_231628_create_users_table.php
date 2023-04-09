@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome_completo', 100)->nullable();
             $table->date('data_nasc');
-            $table->string('cpf', 15);
-            $table->string('email', 50);
+            $table->string('cpf', 15)->unique();
+            $table->string('email', 50)->unique();
             $table->string('password', 100)->nullable();
             $table->boolean('is_pcd')->nullable();
             $table->string('sexo', 1);

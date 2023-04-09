@@ -18,8 +18,8 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('nome_completo', 100);
-            $table->string('cpf', 15);
-            $table->string('email', 50);
+            $table->string('cpf', 15)->unique();
+            $table->string('email', 50)->unique();
             $table->string('password', 100);
             $table->foreignIdFor(FederativeUnit::class)->nullable();
             $table->foreignIdFor(Rule::class);

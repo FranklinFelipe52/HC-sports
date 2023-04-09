@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CpfUserExist;
 use App\Rules\CpfValidate;
+use App\Rules\EmailUserExist;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRegistrationRequest extends FormRequest
@@ -25,8 +27,8 @@ class StoreRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'cpf' => ['required', new CpfValidate],
+            'email' => ['required', 'email', new EmailUserExist],
+            'cpf' => ['required', new CpfValidate, new CpfUserExist],
             'date_nasc' => 'required|date'
         ];
     }
