@@ -60,7 +60,7 @@ class AdminController extends Controller
                 return back();
             }
             if($request->session()->get('admin')->rule->id == 1){
-                $rules = Rule::where('id', '!=', 3);    
+                $rules = Rule::where('id', '!=', 3)->get();    
             } else {
                 $rules = Rule::where('id', 3)->get();
             }

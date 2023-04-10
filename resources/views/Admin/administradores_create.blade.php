@@ -82,7 +82,7 @@
               </div>
             </div>
 
-            <div>
+            <div class="grow">
               <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
                 Atribuição
               </label>
@@ -93,7 +93,7 @@
                   </option>
                   @foreach ($rules as $rule )
                         <option value="{{$rule->id}}">{{$rule->tipo}}</option>
-                        @endforeach
+                  @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
@@ -102,7 +102,7 @@
               @error('rule')<p class="text-danger">{{ $message }}</p>@enderror
             </div>
 
-            <div>
+            <div class="grow">
               <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
                 Selecione a UF
               </label>
