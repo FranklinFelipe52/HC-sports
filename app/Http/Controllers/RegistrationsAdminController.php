@@ -199,9 +199,9 @@ class RegistrationsAdminController extends Controller
             }
             $registration->delete();
             Mail::to($registration->user->email)->send(new RegistrationDelete($registration));
-            return redirect('/admin/dashboard');
+            return redirect('/admin/users/{{$id}}');
         } catch(Exception $e){
-            return back();
+            return redirect('/admin/users/{{$id}}');
         }
     }
 
