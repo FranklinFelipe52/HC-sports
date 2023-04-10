@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
 {
-    public function show(){
+    public function show(Request $request){
         try{
             $modalidades = [];
             $admin = $request->session()->get('admin');
@@ -41,7 +41,7 @@ class AdminDashboardController extends Controller
             ]);
 
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
 }

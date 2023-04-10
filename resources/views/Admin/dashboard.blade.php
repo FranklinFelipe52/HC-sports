@@ -84,7 +84,7 @@
                         </p>
                         <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                         
-                          @if(($modalidade['modalidade']->registrations) < $total_modalidade)
+                          @if(Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
                           <p class="text-white text-[0.5rem] font-bold">
                           Incompleto
                           </p>
@@ -94,18 +94,18 @@
                       </div>
                       </div>
                       <p class="text-gray-1 text-xs">
-                      {{$total_modalidade}} inscrições
+                      {{Count($modalidade['modalidade']->registrations)}} inscrições
                     </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
+                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade['modalidade']->id }}.svg" class="w-full h-full object-cover" alt="">
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-3">
-                    <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    <button onclick="window.open('/admin/modalidade/{{ $modalidade['modalidade']->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Ver modalidade
                     </button>
-                    <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    <button onclick="window.open('/admin/registration/create/{{ $modalidade['modalidade']->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Adicionar atleta
                     </button>
                   </div>
