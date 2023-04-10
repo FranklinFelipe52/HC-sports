@@ -82,16 +82,23 @@
                         <p class="text-base font-semibold text-gray-1">
                           {{ $modalidade['modalidade']->nome }}
                         </p>
-                        <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        
                         
                           @if(Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
+                          <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                           <p class="text-white text-[0.5rem] font-bold">
                           Incompleto
                           </p>
+                          </div>
                           @else
+                          <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-[0.5rem] font-bold">
                           Completo
+                          </p>
+                          </div>
+                          
                           @endif
-                      </div>
+                      
                       </div>
                       <p class="text-gray-1 text-xs">
                       {{Count($modalidade['modalidade']->registrations)}} inscrições
