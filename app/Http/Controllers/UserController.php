@@ -43,7 +43,7 @@ class UserController extends Controller
             if(!$user){
                 return back();
             }
-
+            error_log($user->address->federativeUnit);
             return view('Admin.atleta', [
                 'atleta' => $user,
             ]);

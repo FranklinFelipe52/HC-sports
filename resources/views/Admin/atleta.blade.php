@@ -22,11 +22,11 @@
             </div>
             <div class="mb-3">
                 <h6>Estado</h6>
-                <p>{{$atleta->addres->federativeUnit->name}}</p>
+                <p>{{$atleta->address->federativeUnit->name}}</p>
             </div>
             <div class="mb-3">
                 <h6>Cidade</h6>
-                <p>{{$atleta->addres->cidade ? $atleta->addres->cidade : '-'}}</p>
+                <p>{{$atleta->address->cidade ? $atleta->address->cidade : '-'}}</p>
             </div>
             <div class="mb-3">
                 <h6>Data de nascimento</h6>
@@ -69,7 +69,7 @@
                                 <h5 class="m-0">{{$registration->modalities->nome}}</h5>
                                 <span class="badge rounded-pill  @if ($registration->status_regitration->id == 1) bg-success   @elseif ($registration->status_regitration->id == 3) bg-info   @endif text-light">{{$registration->status_regitration->status}}</span>
                             </div>
-                            <p>Equipe {{$registration->user->addres->federativeUnit->name}}</p>
+                            <p>Equipe {{$registration->user->address->federativeUnit->name}}</p>
                             <div class="d-flex gap-3 pt-3">
                                 <a class="btn  btn-outline-secondary" href="#" role="button">Detalhes</a>
                                 @if ($registration->status_regitration->id == 1)
