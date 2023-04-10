@@ -59,13 +59,17 @@ class AdminController extends Controller
             if(!($request->session()->get('admin')->rule->id == 1)){
                 return back();
             }
-            $rules = Rule::where('id', '>', 1)->get();
+            if($request->session()->get('admin')->rule->id == 1){
+                $rules = Rule::where('id', 2);    
+            } else {
+                $rules = Rule::where('id', '!=', 2)->get();
+            }
             return view('Admin.administradores_create', [
                 'rules' => $rules,
                 'federative_units' => FederativeUnit::all()
             ]);
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 
@@ -79,12 +83,12 @@ class AdminController extends Controller
             $admin->email = $request->email;
             $admin->password = Hash::make($password);
             $admin->federative_unit_id = $federative_unit;
-            $admin->rule_id = 2;
+            $admin->rule_id = $request->rule;
             $admin->save();   
                 Mail::to($request->email)->send(new ConfirmAdm($admin, $password));
                 return redirect('/admin/administradores');
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
     public function login(LoginRequest $request){

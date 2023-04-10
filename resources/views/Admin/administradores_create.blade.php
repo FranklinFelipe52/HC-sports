@@ -82,19 +82,24 @@
               </div>
             </div>
 
-            <div class="mb-6">
-              <p class="text-sm font-semibold text-gray-1 mb-4">
+            <div>
+              <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
                 Atribuição
-              </p>
-
-              <div class="pl-4 space-y-2.5">
-                <div class="flex items-center gap-2">
-                  <input required type="radio" id="caixa_federal" name="tipo_de_pagamento_adicionar_atleta" value="caixa_federal" checked>
-                  <label for="caixa_federal" class="text-gray-2">
-                    Admin. Caixa Federal
-                  </label>
+              </label>
+              <div class="relative max-w-[300px]">
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="rule" id="select_exemplo">
+                  <option value="" selected disabled>
+                    Selecione
+                  </option>
+                  @foreach ($rules as $rule )
+                        <option value="{{$rule->id}}">{{$rule->tipo}}</option>
+                        @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
+              @error('rule')<p class="text-danger">{{ $message }}</p>@enderror
             </div>
 
             <div>
