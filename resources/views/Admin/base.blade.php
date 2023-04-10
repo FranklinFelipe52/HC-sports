@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- css -->
-  @vite('resources/css/app.css')
+  <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body class="h-screen">
@@ -25,7 +25,7 @@
   @yield('content')
 
   <!-- js -->
-  @vite('resources/js/app.js')
+  <script type="module" src="/js/app.js"></script>
 </body>
 
 </html>

@@ -78,14 +78,14 @@
   </a>
 
 
-        <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
-          <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
-            <div class="w-[32px] h-[32px] shrink-0">
-              <img src="/frontend/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
-            </div>
-            <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
-              {{explode(" ", Session('admin')->nome_completo)[0]}} ({{Session('admin')->federativeUnit->initials}})
-            </p>
-          </a>
-        </div>
+  <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
+    <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+      <div class="w-[32px] h-[32px] shrink-0">
+        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
       </div>
+      <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
+        {{ explode(' ', Session('admin')->nome_completo)[0] }} ({{ Session('admin')->federativeUnit->initials }})
+      </p>
+    </a>
+  </div>
+</div>
