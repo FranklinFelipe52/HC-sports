@@ -51,10 +51,7 @@
       </div>
       <div class="hidden lg:block">
         <p class="text-gray-1 group-[.active]:text-brand-a1 font-bold font-poppins text-sm">
-          Jefferson Toledo
-        </p>
-        <p class="text-gray-2 group-[.active]:text-brand-a1 font-medium font-poppins text-xs">
-          Administrador RN
+          {{ explode(' ', Session('user')->nome_completo)[0] }}
         </p>
       </div>
     </a>

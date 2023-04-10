@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar administrador - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', 'Cadastrar administradores')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -34,7 +20,7 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/src/pages/admin/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+              <a href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
                 Administradores
               </a>
             </div>
@@ -88,7 +74,7 @@
               </div>
             </div>
 
-            <div class="grow">
+            <div class="grow mb-6">
               <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
                 Atribuição
               </label>
@@ -151,6 +137,6 @@
 
   <!-- js -->
   <script type="module" src="/frontend/dist/js/index.js"></script>
-</body>
+  </body>
 
-</html>
+  </html>

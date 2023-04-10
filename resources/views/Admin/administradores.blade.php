@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atletas - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', 'Administradores')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-
-<body class="h-screen">
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -38,7 +24,7 @@
           </h1>
           <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
             <p class="text-white text-sm font-bold font-poppins">
-              Cadastrar
+              Cadastrar Gerente
             </p>
           </a>
         </header>
@@ -164,8 +150,4 @@
     </div>
   </div>
 
-  <!-- js -->
-  <script type="module" src="/js/app.js"></script>
-</body>
-
-</html>
+@endsection

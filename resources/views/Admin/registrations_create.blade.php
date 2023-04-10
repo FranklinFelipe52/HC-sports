@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar atleta - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', $modalidade->nome . ' - Adicionar atleta na modalidade ')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -33,16 +19,16 @@
         <!-- Cabeçalho -->
         <header class="pt-8 pb-6 space-y-6">
           <!-- <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
-            <div>
-              <a href="/src/pages/admin/dashboard.html" class="text-xs text-gray-1 block hover:underline">
-                Dashboard
-              </a>
-            </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-              Adicionar Atleta
-            </div>
-          </nav> -->
+                  <div>
+                    <a href="/src/pages/admin/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+                      Dashboard
+                    </a>
+                  </div>
+                  <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+                  <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+                    Adicionar Atleta
+                  </div>
+                </nav> -->
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Cadastramento de Atleta
           </h1>
@@ -86,7 +72,7 @@
               <div class="pl-4 space-y-2.5">
                 @foreach ($type_payments as $value)
                   <div class="flex items-center gap-2">
-                    <input required type="radio" id="caixa_federal" name="payment" value="{{ $value->id }}" checked>
+                    <input class="shrink-0 block" required type="radio" id="caixa_federal" name="payment" value="{{ $value->id }}" checked>
                     <label for="caixa_federal" class="text-gray-2">{{ $value->type }}</label>
                   </div>
                 @endforeach
@@ -122,7 +108,7 @@
               </div>
             </div>
 
-            <div class="grow">
+            <div class="grow mb-6">
               <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
                 Selecione a UF
               </label>
@@ -131,15 +117,17 @@
                   <option value="" selected disabled>
                     Selecione
                   </option>
-                  @foreach ($federative_units as $federative_unit )
-                        <option value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
-                        @endforeach
+                  @foreach ($federative_units as $federative_unit)
+                    <option value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                  @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                  <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
-              @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
+              @error('uf')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="mb-6">
@@ -205,8 +193,4 @@
     </div>
   </div>
 
-  <!-- js -->
-  <script type="module" src="/frontend/frontend/dist/js/index.js"></script>
-</body>
-
-</html>
+@endsection
