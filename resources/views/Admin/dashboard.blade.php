@@ -1,7 +1,6 @@
 @extends('Admin.base')
 
 @section('title', 'Dashboard')
-@section('dashboardClass', 'active')
 
 @section('content')
   <!-- grid principal -->
@@ -27,23 +26,23 @@
             <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
 
               <!-- atualização
-                  <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
-                  <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                      <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
-                  </div>
-                  <div class="grow space-y-1">
-                      <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
-                      <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
-                  </div>
-                  <div class="flex gap-2.5">
-                      <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
-                      <p class="text-feedback-green-1 text-xs">
-                          Confirmado
-                      </p>
-                      </div>
-                      <p class="text-xs text-gray-600 font-normal">1h</p>
-                  </div>
-                  </li>-->
+                    <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                    <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                    </div>
+                    <div class="grow space-y-1">
+                        <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                        <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                    </div>
+                    <div class="flex gap-2.5">
+                        <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                        <p class="text-feedback-green-1 text-xs">
+                            Confirmado
+                        </p>
+                        </div>
+                        <p class="text-xs text-gray-600 font-normal">1h</p>
+                    </div>
+                    </li>-->
             </ul>
           </div>
         </div>

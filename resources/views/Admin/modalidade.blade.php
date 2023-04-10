@@ -1,7 +1,6 @@
 @extends('Admin.base')
 
 @section('title', $modalidade->nome . ' - Modalidades')
-@section('modalidadesClass', 'active')
 
 @section('content')
 

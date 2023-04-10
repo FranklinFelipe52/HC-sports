@@ -1,7 +1,6 @@
 @extends('Admin.base')
 
 @section('title', 'Atletas')
-@section('atletasClass', 'active')
 
 @section('content')
 

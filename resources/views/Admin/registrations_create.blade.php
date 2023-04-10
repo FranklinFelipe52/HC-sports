@@ -1,7 +1,6 @@
 @extends('Admin.base')
 
 @section('title', $modalidade->nome . ' - Adicionar atleta na modalidade ')
-@section('modalidadesClass', 'active')
 
 @section('content')
 
