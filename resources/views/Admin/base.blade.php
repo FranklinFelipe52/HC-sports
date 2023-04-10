@@ -25,7 +25,7 @@
   @yield('content')
 
   <!-- js -->
-  <script type="module" src="/js/app.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 
 </html>
