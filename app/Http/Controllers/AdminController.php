@@ -60,9 +60,9 @@ class AdminController extends Controller
                 return back();
             }
             if($request->session()->get('admin')->rule->id == 1){
-                $rules = Rule::where('id', 2);    
+                $rules = Rule::where('id', '!=', 3);    
             } else {
-                $rules = Rule::where('id', '!=', 2)->get();
+                $rules = Rule::where('id', 3)->get();
             }
             return view('Admin.administradores_create', [
                 'rules' => $rules,
