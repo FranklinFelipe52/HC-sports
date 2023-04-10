@@ -1857,6 +1857,90 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+* {
+  font-family: "Open Sans";
+  scrollbar-color: #0095d9 #f0f0f0;
+  scrollbar-width: 8px;
+}
+
+.checkbox {
+  all: unset;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 1px solid #0095d9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background-color: #0095d9;
+  background-image: url(/dist/images/svg/checked.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+input[type="radio"] {
+  all: unset;
+  display: block;
+  cursor: pointer;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #0095d9;
+  position: relative;
+  flex-shrink: 0;
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 149 217 / var(--tw-bg-opacity));
+  width: 12px;
+  height: 12px;
+  top: 2px;
+  left: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #ffffff;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0095d9;
+  border-radius: 21px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.scroll-fade::after {
+  content: "";
+  display: block;
+  width: 98%;
+  height: 90px;
+  background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 42.11%,
+        #fff 92.89%
+    );
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  pointer-events: none;
+}
+
 @media (min-width: 1280px) {
   .xl\:container {
     width: 100%;

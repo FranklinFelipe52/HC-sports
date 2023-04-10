@@ -12,6 +12,8 @@
 
       <li class="group @if($type == 1) active @endif">
         <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('dashboardClass')">
+        <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -36,6 +38,8 @@
 
       <li class="group @if($type == 3) active @endif">
         <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('modalidadesClass')">
+        <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -47,6 +51,8 @@
       </li>
       <li class="group @if($type == 4) active @endif">
         <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('atletasClass')">
+        <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -56,7 +62,18 @@
           </p>
         </a>
       </li>
-      <li class="group sm:hidden">
+      <li class="group @yield('administradoresClass')">
+        <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/administradores.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+            <img src="/images/svg/administradores-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+            Administradores
+          </p>
+        </a>
+      </li>
+      <li class="group sm:hidden @yield('perfilClass')">
         <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
@@ -89,7 +106,7 @@
       </p>
       <p>{{Session('admin')->rule->tipo}} {{ Session('admin')->federativeUnit->initials }}</p>
       </div>
-      
+
     </a>
   </div>
 </div>

@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', 'Dashboard')
+@section('dashboardClass', 'active')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
-
+@section('content')
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral',  ['type'=>1]);
+      @include('components.admin.menu_lateral', ['type' => 1]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -40,28 +26,26 @@
             <!-- lista de atualizações -->
             <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
 
-              <!-- atualização 
-              <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
-                <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                  <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
-                </div>
-                <div class="grow space-y-1">
-                  <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
-                  <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
-                </div>
-                <div class="flex gap-2.5">
-                  <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
-                    <p class="text-feedback-green-1 text-xs">
-                      Confirmado
-                    </p>
+              <!-- atualização
+                  <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                  <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                      <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                   </div>
-                  <p class="text-xs text-gray-600 font-normal">1h</p>
-                </div>
-              </li>-->
+                  <div class="grow space-y-1">
+                      <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
+                      <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                  </div>
+                  <div class="flex gap-2.5">
+                      <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                      <p class="text-feedback-green-1 text-xs">
+                          Confirmado
+                      </p>
+                      </div>
+                      <p class="text-xs text-gray-600 font-normal">1h</p>
+                  </div>
+                  </li>-->
             </ul>
           </div>
-
-
         </div>
         <div class="row-span-1 lg:row-span-2 lg:col-span-3 flex flex-col overflow-hidden lg:border-r border-gray-5">
           <header class="pt-8 pb-6 border-b-[2px] border-gray-4">
@@ -82,27 +66,26 @@
                         <p class="text-base font-semibold text-gray-1">
                           {{ $modalidade['modalidade']->nome }}
                         </p>
-                        
-                        
-                          @if(Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
+
+
+                        @if (Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
                           <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-[0.5rem] font-bold">
-                          Incompleto
-                          </p>
+                            <p class="text-white text-[0.5rem] font-bold">
+                              Incompleto
+                            </p>
                           </div>
-                          @else
+                        @else
                           <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-[0.5rem] font-bold">
-                          Completo
-                          </p>
+                            <p class="text-white text-[0.5rem] font-bold">
+                              Completo
+                            </p>
                           </div>
-                          
-                          @endif
-                      
+                        @endif
+
                       </div>
                       <p class="text-gray-1 text-xs">
-                      {{Count($modalidade['modalidade']->registrations)}} inscrições
-                    </p>
+                        {{ Count($modalidade['modalidade']->registrations) }} inscrições
+                      </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">
                       <img src="/images/svg/modalidades/modalidade-{{ $modalidade['modalidade']->id }}.svg" class="w-full h-full object-cover" alt="">
@@ -125,9 +108,4 @@
       </div>
     </div>
   </div>
-
-  <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
-</body>
-
-</html>
+@endsection
