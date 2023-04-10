@@ -37,13 +37,17 @@ class RegistrationsAdminController extends Controller
 
     public function store(StoreRegistrationRequest $request, $id){
         try{
-
             $modalidade = Modalities::find($id);
             $admin = $request->session()->get('admin');
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->first();
             
             if(!$modalidade){
                 return back();
+            }
+            if($admin->rule->id == 1){
+                if(!$request->uf){
+                    return back();
+                }
             }
             if($modalidade->mode_modalities->id == 1){
                 $category = $modalidade->modalities_categorys()->first();
@@ -151,7 +155,7 @@ class RegistrationsAdminController extends Controller
                 $user->registered = false;
                 $user->save();
                 $addres = new Address();
-                $addres->federative_unit_id = $admin->federativeUnit->id;
+                $addres->federative_unit_id = $admin->rule->id == 1 ? $request->uf : $admin->federativeUnit->id;
                 $addres->user_id = $user->id;
                 $addres->save();
             }
@@ -205,6 +209,7 @@ class RegistrationsAdminController extends Controller
         try{
             $modalidade = Modalities::find($id);
             $type_payments = type_payment::all();
+            
 
             if(!$modalidade){
                 return back();
@@ -212,7 +217,8 @@ class RegistrationsAdminController extends Controller
 
             return view('Admin.registrations_create', [
                 'modalidade' => $modalidade,
-                'type_payments' => $type_payments
+                'type_payments' => $type_payments,
+                'federative_units' => FederativeUnit::all()
             ]);
 
         }catch(Exception $e){

@@ -106,33 +106,37 @@
 
             <!-- Table body -->
             <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
-              @foreach ($administradores as $administrador)
-                <!-- Table row -->
-                <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
-                  <div role="cell" class="py-3 flex items-center col-span-3">
-                    <p class="text-sm font-semibold text-gray-2">
-                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $administrador->cpf); ?>
-                    </p>
-                  </div>
-                  <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
-                    <p class="text-sm font-semibold text-gray-2">
-                      {{ $administrador->nome_completo }}
-                    </p>
-                  </div>
-                  <div role="cell" class="py-3 flex items-center col-span-3">
-                    <p class="text-sm font-semibold text-gray-2">
-                      {{ $administrador->federative_unit_name }}
-                    </p>
-                  </div>
-                  <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
-                    <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
-                    </a>
-                    <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
-                    </a>
-                  </div>
+            @foreach ($administradores as $administrador )
+              <!-- Table row -->
+              <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                <div role="cell" class="py-3 flex items-center col-span-3">
+                  <p class="text-sm font-semibold text-gray-2">
+                    <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $administrador->cpf); ?>
+                  </p>
                 </div>
+                <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                  <p class="text-sm font-semibold text-gray-2">
+                  {{$administrador->nome_completo}}
+                  </p>
+                </div>
+                <div role="cell" class="py-3 flex items-center col-span-3">
+                  <p class="text-sm font-semibold text-gray-2">
+                    @if(Session('admin')->rule->id == 1)
+                      -
+                    @else
+                    {{$administrador->federative_unit_name}}
+                    @endif
+                  </p>
+                </div>
+                <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                  <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/frontend/dist/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                  <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <img src="/frontend/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                  </a>
+                </div>
+              </div>
               @endforeach
 
             </div>

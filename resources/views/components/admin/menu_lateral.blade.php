@@ -84,7 +84,7 @@
         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
       </div>
       <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
-        Admin GO
+        {{ explode(' ', Session('admin')->nome_completo)[0] }} ({{ Session('admin')->federativeUnit->initials }})
       </p>
     </a>
   </div>
