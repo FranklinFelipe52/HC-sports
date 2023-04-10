@@ -116,6 +116,26 @@
               </div>
             </div>
 
+            <div class="grow">
+              <label class="text-gray-1 font-semibold text-sm inline-block mb-2" for="select_exemplo">
+                Selecione a UF
+              </label>
+              <div class="relative max-w-[300px]">
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                  <option value="" selected disabled>
+                    Selecione
+                  </option>
+                  @foreach ($federative_units as $federative_unit )
+                        <option value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
+                        @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+              @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
+            </div>
+
             <div class="mb-6">
               <p class="text-sm font-semibold text-gray-1 mb-4">
                 Modalidade de Interesse

@@ -121,7 +121,11 @@
                 </div>
                 <div role="cell" class="py-3 flex items-center col-span-3">
                   <p class="text-sm font-semibold text-gray-2">
-                  {{$administrador->federative_unit_name}}
+                    @if(Session('admin')->rule->id == 1)
+                      -
+                    @else
+                    {{$administrador->federative_unit_name}}
+                    @endif
                   </p>
                 </div>
                 <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">

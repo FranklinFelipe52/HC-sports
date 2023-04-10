@@ -27,8 +27,8 @@ class StoreRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email', new EmailUserExist],
-            'cpf' => ['required', new CpfValidate, new CpfUserExist],
+            'email' => ['required', 'email'],
+            'cpf' => ['required', new CpfValidate],
             'date_nasc' => 'required|date'
         ];
     }

@@ -40,7 +40,7 @@
             <!-- lista de atualizações -->
             <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
 
-              <!-- atualização -->
+              <!-- atualização 
               <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
                 <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
                   <img src="/frontend/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
@@ -57,7 +57,7 @@
                   </div>
                   <p class="text-xs text-gray-600 font-normal">1h</p>
                 </div>
-              </li>
+              </li>-->
             </ul>
           </div>
 
