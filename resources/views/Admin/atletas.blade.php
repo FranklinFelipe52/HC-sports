@@ -47,7 +47,7 @@
 
                 <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[14%] left-3 bg-white">
-                  <img src="/frontend/dist/images/svg/search.svg" alt="">
+                  <img src="/images/svg/search.svg" alt="">
                 </button>
 
               </form>
@@ -55,12 +55,12 @@
 
                 <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">
                   <option value disabled selected>UF</option>
-                  @foreach ($federative_units as $federative_unit )
-                  <option {{ ( Request::get('uf') && (Request::get('uf') == $federative_unit->id) ) ? 'selected' : '' }} value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
+                  @foreach ($federative_units as $federative_unit)
+                    <option {{ Request::get('uf') && Request::get('uf') == $federative_unit->id ? 'selected' : '' }} value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                  <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
 
               </form>
@@ -85,7 +85,7 @@
                 </div>
                 <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1 ">
-                  UF
+                    UF
                   </p>
                 </div>
                 <div role="columnheader" class="opacity-0 col-span-2 text-end">
@@ -99,40 +99,40 @@
             <!-- Table body -->
             <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
               @if (count($atletas) !== 0)
-              @foreach ($atletas as $atleta )
-              <!-- Table row -->
-              <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
-                <div role="cell" class="py-3 flex items-center col-span-3">
-                  <p class="text-sm font-semibold text-gray-2">
-                    <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>
-                  </p>
-                </div>
-                <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
-                  <p class="text-sm font-semibold text-gray-2">
-                    @if ($atleta->nome_completo == null)
-                    -
-                    @else
-                    {{$atleta->nome_completo}}
-                    @endif
-                  </p>
-                </div>
-                <div role="cell" class="py-3 flex items-center col-span-3">
-                  <p class="text-sm font-semibold text-gray-2">
-                  {{$atleta->federative_unit_name}}
-                  </p>
-                </div>
-                <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
-                 
-                  <a href="/admin/users/{{$atleta->id}}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                    <img src="/frontend/dist/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
-                  </a>
-                </div>
-              </div>
-              @endforeach
+                @foreach ($atletas as $atleta)
+                  <!-- Table row -->
+                  <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                    <div role="cell" class="py-3 flex items-center col-span-3">
+                      <p class="text-sm font-semibold text-gray-2">
+                        <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>
+                      </p>
+                    </div>
+                    <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                      <p class="text-sm font-semibold text-gray-2">
+                        @if ($atleta->nome_completo == null)
+                          -
+                        @else
+                          {{ $atleta->nome_completo }}
+                        @endif
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex items-center col-span-3">
+                      <p class="text-sm font-semibold text-gray-2">
+                        {{ $atleta->federative_unit_name }}
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+
+                      <a href="/admin/users/{{ $atleta->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                        <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                      </a>
+                    </div>
+                  </div>
+                @endforeach
               @else
-              <div class="bg-feedback-fill-blue p-4" role="alert">
-                <p class="text-brand-a1">Nenhum atleta cadastrado.</p>
-              </div>
+                <div class="bg-feedback-fill-blue p-4" role="alert">
+                  <p class="text-brand-a1">Nenhum atleta cadastrado.</p>
+                </div>
               @endif
             </div>
           </div>
@@ -141,15 +141,15 @@
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
 
-        {{$atletas->appends([
-                    's' => request()->get('s', ''),
-                    'uf' => request()->get('uf', '')
-                    ])->links()}}
+          {{ $atletas->appends([
+                  's' => request()->get('s', ''),
+                  'uf' => request()->get('uf', ''),
+              ])->links() }}
 
           <!--<div class="flex gap-2" aria-label="Paginação da tabela">
             <div class="group disabled">
               <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                <img src="/frontend/dist/images/svg/chevron-left.svg" alt="">
+                <img src="/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5">
@@ -157,7 +157,7 @@
             </p>
             <div class="group">
               <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                <img src="/frontend/dist/images/svg/chevron-right.svg" alt="">
+                <img src="/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
           </div>-->
@@ -165,7 +165,7 @@
 
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              {{Count($atletas)}} Atletas exibidos
+              {{ Count($atletas) }} Atletas exibidos
             </p>
           </div>
         </div>

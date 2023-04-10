@@ -43,7 +43,7 @@
               <!-- atualização -->
               <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
                 <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                  <img src="/frontend/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                  <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                 </div>
                 <div class="grow space-y-1">
                   <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
@@ -73,39 +73,38 @@
           <div class="overflow-hidden flex flex-col relative scroll-fade">
             <!-- grid de modalidades -->
             <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-            @foreach ($modalidades as $modalidade )
-              <!-- modalidade - item do grid -->
-              <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
-                <div class="flex justify-between">
-                  <div>
-                    <div class="flex items-center gap-4">
-                      <p class="text-base font-semibold text-gray-1">
-                      {{$modalidade->nome}}
-                      </p>
-                      <!--<div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+              @foreach ($modalidades as $modalidade)
+                <!-- modalidade - item do grid -->
+                <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                  <div class="flex justify-between">
+                    <div>
+                      <div class="flex items-center gap-4">
+                        <p class="text-base font-semibold text-gray-1">
+                          {{ $modalidade->nome }}
+                        </p>
+                        <!--<div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                         <p class="text-white text-[0.5rem] font-bold">
                           Incompleto
                         </p>
                       </div>-->
-                    </div>
-                    <!--<p class="text-gray-1 text-xs">
+                      </div>
+                      <!--<p class="text-gray-1 text-xs">
                       10 atletas inscritos
                     </p>-->
+                    </div>
+                    <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
+                    </div>
                   </div>
-                  <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                    <img src="/frontend/dist/images/svg/modalidades/artes-marciais.svg" class="w-full h-full object-cover" alt="">
+                  <div class="flex flex-wrap gap-3">
+                    <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                      Ver modalidade
+                    </button>
+                    <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                      Adicionar atleta
+                    </button>
                   </div>
                 </div>
-                <div class="flex flex-wrap gap-3">
-                  <button onclick="window.open('/admin/modalidade/{{$modalidade->id}}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                    Ver modalidade
-                  </button>
-                  <button onclick="window.open('/admin/registration/create/{{$modalidade->id}}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                    Adicionar atleta
-                  </button>
-                </div>
-              </div>
-
               @endforeach
 
             </div>

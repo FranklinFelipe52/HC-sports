@@ -41,7 +41,7 @@
         <!-- modal footer - actions -->
         <div class="flex justify-end gap-4 flex-wrap mt-10">
           <a role="button" href="#" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-              Excluir Inscrição
+            Excluir Inscrição
           </a>
           <button data-modalId="modal" data-action="close" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-black hover:ring-2 hover:ring-black hover:ring-opacity-50 bg-black transition">
             <p class="text-white text-sm font-bold font-poppins">
@@ -73,18 +73,18 @@
                 Dashboard
               </a>
             </div>
-            <img src="/frontend/dist/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Comprovante de inscrição
             </div>
           </nav>
           <div class="flex gap-4 items-center flex-wrap">
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-              {{$registration->user->nome_completo}}
+              {{ $registration->user->nome_completo }}
             </h1>
-            <div class="@if ($registration->status_regitration->id == 1) bg-feedback-fill-green @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple   @endif     py-1 px-1.5 rounded-full inline-block w-fit h-fit">
-              <p class="@if ($registration->status_regitration->id == 1) text-feedback-green-1 @elseif ($registration->status_regitration->id == 3) text-feedback-purple   @endif text-xs">
-                {{$registration->status_regitration->status}}
+            <div class="@if ($registration->status_regitration->id == 1) bg-feedback-fill-green @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple @endif     py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+              <p class="@if ($registration->status_regitration->id == 1) text-feedback-green-1 @elseif ($registration->status_regitration->id == 3) text-feedback-purple @endif text-xs">
+                {{ $registration->status_regitration->status }}
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
-                  {{$registration->user->email}}
+                  {{ $registration->user->email }}
                 </p>
               </div>
             </div>
@@ -124,23 +124,23 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
-                  {{$registration->modalities->nome}}
+                  {{ $registration->modalities->nome }}
                 </p>
               </div>
             </div>
             @if (!($registration->modalities->mode_modalities->id == 1))
-            <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-sm text-gray-1 font-semibold">
-                  Categoria
-                </p>
+              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-1 font-semibold">
+                    Categoria
+                  </p>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-2 font-normal">
+                    {{ $registration->modalities_category->nome }}
+                  </p>
+                </div>
               </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-sm text-gray-2 font-normal">
-                  {{$registration->modalities_category->nome}}
-                </p>
-              </div>
-            </div>
             @endif
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
@@ -150,7 +150,7 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
-                  {{$registration->type_payment->type}}
+                  {{ $registration->type_payment->type }}
                 </p>
               </div>
             </div>
@@ -163,7 +163,7 @@
               <div class="col-span-2 sm:col-span-1">
                 <button class="inline-flex items-center gap-3 bg-fill-base p-2 pr-8 rounded-lg hover:bg-gray-6 transition">
                   <div class="w-[30px] h-[30px]">
-                    <img src="/frontend/dist/images/svg/link.svg" class="h-full w-full object-cover" alt="">
+                    <img src="/images/svg/link.svg" class="h-full w-full object-cover" alt="">
                   </div>
                   <p class="text-sm text-gray-1">
                     comprovante-inscrição.pdf
@@ -175,18 +175,18 @@
 
           </div>
           <div class="flex flex-wrap justify-end gap-6">
-          @if ($registration->status_regitration->id == 3)
-          <button disable class="h-fit flex items-center justify-center gap-4  px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-              <p class="text-white text-sm font-bold font-poppins">
-                Realizar pagamento
-              </p>
-            </button>
+            @if ($registration->status_regitration->id == 3)
+              <button disable class="h-fit flex items-center justify-center gap-4  px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <p class="text-white text-sm font-bold font-poppins">
+                  Realizar pagamento
+                </p>
+              </button>
             @endif
-            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- js -->

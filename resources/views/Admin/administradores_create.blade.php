@@ -38,7 +38,7 @@
                 Administradores
               </a>
             </div>
-            <img src="/frontend/dist/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Adicionar Administrador
             </div>
@@ -49,12 +49,12 @@
         </header>
 
         <form method="post" action="/admin/administradores/store" class="w-full max-w-[700px]">
-        @csrf
-        @if (Session::has('erro'))
-        <div class="alert alert-danger my-2" role="alert">
-            {{Session('erro')}}
-        </div>
-        @endif
+          @csrf
+          @if (Session::has('erro'))
+            <div class="alert alert-danger my-2" role="alert">
+              {{ Session('erro') }}
+            </div>
+          @endif
           <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
             <div class="flex flex-wrap gap-6 mb-6">
               <div class="grow sm:grow-0">
@@ -62,7 +62,9 @@
                   CPF
                 </label>
                 <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
-                @error('cpf')<p class="text-danger">{{ $message }}</p>@enderror
+                @error('cpf')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
 
               <div class="grow">
@@ -70,7 +72,9 @@
                   E-mail
                 </label>
                 <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="jeffersonthawan@gmail.com" />
-                @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+                @error('email')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
 
               <div class="grow">
@@ -78,7 +82,9 @@
                   Nome
                 </label>
                 <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" placeholder="Ex.: jefferson thawan" />
-                @error('nome')<p class="text-danger">{{ $message }}</p>@enderror
+                @error('nome')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
               </div>
             </div>
 
@@ -91,15 +97,17 @@
                   <option value="" selected disabled>
                     Selecione
                   </option>
-                  @foreach ($rules as $rule )
-                        <option value="{{$rule->id}}">{{$rule->tipo}}</option>
+                  @foreach ($rules as $rule)
+                    <option value="{{ $rule->id }}">{{ $rule->tipo }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                  <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
-              @error('rule')<p class="text-danger">{{ $message }}</p>@enderror
+              @error('rule')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="grow">
@@ -111,15 +119,17 @@
                   <option value="" selected disabled>
                     Selecione
                   </option>
-                  @foreach ($federative_units as $federative_unit )
-                        <option value="{{$federative_unit->id}}">{{$federative_unit->initials}}</option>
-                        @endforeach
+                  @foreach ($federative_units as $federative_unit)
+                    <option value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                  @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/frontend/dist/images/svg/chevron-down.svg" alt="" />
+                  <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
-              @error('uf')<p class="text-danger">{{ $message }}</p>@enderror
+              @error('uf')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
             </div>
           </div>
           <div class="flex flex-wrap justify-between gap-6">

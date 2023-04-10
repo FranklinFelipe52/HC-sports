@@ -31,7 +31,7 @@
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
-            <h1 class="text-3xl lg:text-4xl md:text-5xl font-semibold text-brand-v1 font-poppins">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-v1 font-poppins">
               Faça login
             </h1>
             <div class="bg-brand-a1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
@@ -55,10 +55,10 @@
           <div class="space-y-4 mb-6">
             <div class="group @error('email') error @enderror">
               <div class="relative">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="login_email_field">
                   E-mail
                 </label>
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_email_field" name="email" placeholder="Digite o seu e-mail" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="login_email_field" name="email" placeholder="Digite o seu e-mail" />
 
                 @error('email')
                   <div class="absolute bg-white top-[50%] right-3">
