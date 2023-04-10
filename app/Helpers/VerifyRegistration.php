@@ -49,7 +49,7 @@ class VerifyRegistration
         $n_registrations = 0;
         foreach ($category->registrations as $registration) {
             error_log($registration->user);
-            if($registration->user->addres->federativeUnit->id == $admin->federativeUnit->id){
+            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
                 $n_registrations++;
             }
         }

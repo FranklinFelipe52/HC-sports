@@ -92,17 +92,30 @@ class AdminController extends Controller
         }
     }
     public function login(LoginRequest $request){
+        
         $admin = Admin::where('email', $request->email)->first();
 
         if(!$admin){
             return back()->with('erro', 'E-mail ou senha inválida');
         }
+        error_log('passou');
 
         if(Hash::check($request->password, $admin->password)){
+            error_log('passou');
             $request->session()->put('admin', $admin);
             return redirect('/admin/dashboard');
         } else {
             return back()->with('erro', 'E-mail ou senha inválida');
+        }
+    }
+
+    public function login_create(){
+        
+        try{
+            return view('Admin.login');
+
+        } catch (Exception $e){
+            return back();
         }
     }
 

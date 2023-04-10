@@ -24,7 +24,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral');
+      @include('components.admin.menu_lateral',  ['type'=>2]);
     </div>
 
     <!-- Conteúdo da página -->

@@ -10,7 +10,7 @@
   <nav class="my-auto">
     <ul class="flex justify-around sm:flex-col sm:gap-5">
 
-      <li class="group active">
+      <li class="group @if(type == 1) active @endif">
         <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
@@ -22,7 +22,7 @@
         </a>
       </li>
 
-      <li class="group">
+      <li class="group @if(type == 2) active @endif">
         <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
@@ -34,7 +34,7 @@
         </a>
       </li>
 
-      <li class="group">
+      <li class="group @if(type == 3) active @endif">
         <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
@@ -45,7 +45,7 @@
           </p>
         </a>
       </li>
-      <li class="group">
+      <li class="group @if(type == 4) active @endif">
         <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
@@ -84,8 +84,9 @@
         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
       </div>
       <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
-        {{ explode(' ', Session('admin')->nome_completo)[0] }} ({{ Session('admin')->federativeUnit->initials }})
+        {{ explode(' ', Session('admin')->nome_completo)[0] explode(' ', Session('admin')->nome_completo)[1]}}
       </p>
+      <p>{{Session('admin')->rule->tipo}} {{ Session('admin')->federativeUnit->initials }}</p>
     </a>
   </div>
 </div>

@@ -23,7 +23,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral');
+      @include('components.admin.menu_lateral',  ['type'=>1]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -80,17 +80,22 @@
                     <div>
                       <div class="flex items-center gap-4">
                         <p class="text-base font-semibold text-gray-1">
-                          {{ $modalidade->nome }}
+                          {{ $modalidade['modalidade']->nome }}
                         </p>
-                        <!--<div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                        <p class="text-white text-[0.5rem] font-bold">
+                        <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        
+                          @if(($modalidade['modalidade']->registrations) < $total_modalidade)
+                          <p class="text-white text-[0.5rem] font-bold">
                           Incompleto
-                        </p>
-                      </div>-->
+                          </p>
+                          @else
+                          Completo
+                          @endif
                       </div>
-                      <!--<p class="text-gray-1 text-xs">
-                      10 atletas inscritos
-                    </p>-->
+                      </div>
+                      <p class="text-gray-1 text-xs">
+                      {{$total_modalidade}} inscrições
+                    </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">
                       <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
