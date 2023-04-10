@@ -12,21 +12,22 @@ class User extends Model
     protected $fillable = [
         'nome_completo',
         'data_nasc',
-        'cpf' ,
-        'is_pcd' ,
+        'cpf',
+        'is_pcd',
         'n_oab',
         'sexo',
         'email',
-        'password', 
+        'password',
     ];
 
-    
-    public function addres(){
+
+    public function address()
+    {
         return $this->hasOne(Address::class);
     }
 
-    public function registrations(){
+    public function registrations()
+    {
         return $this->hasMany(registration::class);
     }
-    
 }
