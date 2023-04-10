@@ -7,21 +7,28 @@
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
-  <title>Olimpadas da advocacia - Confirmao de cadastro do admin</title><!--[if (mso 16)]>
+  <title>Olimpadas da advocacia - Confirmao de cadastro do admin</title>
+  <!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
-    <![endif]--><!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
+    <![endif]-->
+  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]-->
+  <!--[if gte mso 9]>
 <xml>
     <o:OfficeDocumentSettings>
     <o:AllowPNG></o:AllowPNG>
     <o:PixelsPerInch>96</o:PixelsPerInch>
     </o:OfficeDocumentSettings>
 </xml>
-<![endif]--><!--[if !mso]><!-- -->
+<![endif]-->
+  <!--[if !mso]><!-- -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!--<![endif]--><!--[if !mso]><!-- -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet"><!--<![endif]-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!--<![endif]-->
+  <!--[if !mso]><!-- -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+  <!--<![endif]-->
   <style type="text/css">
     #outlook a {
       padding: 0;
@@ -470,11 +477,12 @@
 </head>
 
 <body style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
-  <div class="es-wrapper-color" style="background-color:#F6F6F6"><!--[if gte mso 9]>
-			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
-				<v:fill type="tile" color="#f6f6f6"></v:fill>
-			</v:background>
-		<![endif]-->
+  <div class="es-wrapper-color" style="background-color:#F6F6F6">
+    <!--[if gte mso 9]>
+   <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#f6f6f6"></v:fill>
+   </v:background>
+  <![endif]-->
     <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#F6F6F6">
       <tr>
         <td valign="top" style="padding:0;Margin:0">
@@ -487,13 +495,15 @@
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
-                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/background_1.png" role="presentation">
+                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png" role="presentation">
                               <tr>
-                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/logo_2.png" alt="Logo das olimpíadas da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo das olimpíadas da advocacia"></td>
+                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt="Logo das olimpíadas da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo das olimpíadas da advocacia"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
-                                  <h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center"><strong>Link para Alteração de Senha!</strong></h1>
+                                  <h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center">
+                                    <strong>Link para Alteração de Senha!</strong>
+                                  </h1>
                                 </td>
                               </tr>
                             </table>
@@ -519,19 +529,32 @@
                               <tr>
                                 <td style="padding:0;Margin:0;padding-bottom:30px">
                                   <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
-                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">Recebemos a sua solicitação de <strong>alteração de senha.</strong></p>
-                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Altere a sua senha através do botão abaixo:</p>
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
+                                      Recebemos a sua solicitação de <strong>alteração de senha.</strong>
+                                    </p>
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                      Altere a sua senha através do botão abaixo:
+                                    </p>
                                   </div>
                                 </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+                                <td align="center" style="padding:0;Margin:0">
+                                  <!--[if mso]><a href="" target="_blank" hidden>
+ <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#0095d9">
-		<w:anchorlock></w:anchorlock>
-		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
-	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{$link}}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Alterar senha</a></span><!--<![endif]--></td>
+  <w:anchorlock></w:anchorlock>
+  <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
+ </v:roundrect></a>
+<![endif]-->
+                                  <!--[if !mso]><!-- -->
+                                  <span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all">
+                                    <a href="{{ $link }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">
+                                      Alterar senha
+                                    </a>
+                                  </span>
+                                  <!--<![endif]-->
+                                </td>
                               </tr>
                             </table>
                           </td>
@@ -546,25 +569,25 @@
                           <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
-                                <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
-                style="height:24px; v-text-anchor:middle; width:140px" arcsize="50%" stroke="f"  fillcolor="#ffffff">
-		<w:anchorlock></w:anchorlock>
-		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Política de Privacidade</center>
-	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Política de Privacidade</a></span><!--<![endif]--></td>
-                              </tr>
-                              <tr>
-                                <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+                                <td align="center" style="padding:0;Margin:0">
+                                  <!--[if mso]><a href="" target="_blank" hidden>
+ <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:24px; v-text-anchor:middle; width:94px" arcsize="50%" stroke="f"  fillcolor="#ffffff">
-		<w:anchorlock></w:anchorlock>
-		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Regulamento</center>
-	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">Regulamento</a></span><!--<![endif]--></td>
+  <w:anchorlock></w:anchorlock>
+  <center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Regulamento</center>
+ </v:roundrect></a>
+<![endif]-->
+                                  <!--[if !mso]><!-- -->
+                                  <span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all">
+                                    <a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
+                                      Regulamento Geral da Competição
+                                    </a>
+                                  </span>
+                                  <!--<![endif]-->
+                                </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{$_SERVER['HTTP_HOST']}}/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
