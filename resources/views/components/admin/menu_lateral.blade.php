@@ -1,6 +1,6 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
-    <a href="/src/pages/admin/dashboard.html">
+    <a href="/admin/dashboard">
       <img src="/images/logo.png" alt="">
     </a>
   </div>
@@ -10,8 +10,8 @@
   <nav class="my-auto">
     <ul class="flex justify-around sm:flex-col sm:gap-5">
 
-      <li class="group active">
-        <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('dashboardClass')">
+        <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -21,21 +21,8 @@
           </p>
         </a>
       </li>
-
-      <li class="group">
-        <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
-          <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
-            <img src="/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
-          </div>
-          <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
-            Administradores
-          </p>
-        </a>
-      </li>
-
-      <li class="group">
-        <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('modalidadesClass')">
+        <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -45,8 +32,8 @@
           </p>
         </a>
       </li>
-      <li class="group">
-        <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group @yield('atletasClass')">
+        <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -56,7 +43,18 @@
           </p>
         </a>
       </li>
-      <li class="group sm:hidden">
+      <li class="group @yield('administradoresClass')">
+        <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/administradores.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+            <img src="/images/svg/administradores-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+            Administradores
+          </p>
+        </a>
+      </li>
+      <li class="group sm:hidden @yield('perfilClass')">
         <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
@@ -66,7 +64,7 @@
     </ul>
   </nav>
 
-  <hr class="hidden sm:block border-gray-6 my-8">
+  <hr class="hidden sm:block border-gray-6 my-4">
 
   <a href="/admin/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
@@ -77,15 +75,20 @@
     </p>
   </a>
 
-
-  <div class="hidden sm:flex items-end justify-center lg:justify-start grow">
-    <a href="" class="flex items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+  <div class="group hidden sm:flex items-end justify-center lg:justify-start grow">
+    <a href="/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition px-2">
       <div class="w-[32px] h-[32px] shrink-0">
-        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+        <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
       </div>
-      <p class="hidden lg:block text-gray-1 font-medium font-poppins text-base">
-        {{ explode(' ', Session('admin')->nome_completo)[0] }} ({{ Session('admin')->federativeUnit->initials }})
-      </p>
+      <div class="hidden lg:block">
+        <p class="text-gray-1 group-[.active]:text-brand-a1 font-bold font-poppins text-sm">
+          {{ explode(' ', Session('admin')->nome_completo)[0] }}
+        </p>
+        <p class="text-gray-2 group-[.active]:text-brand-a1 font-medium font-poppins text-xs">
+          Administrador {{ Session('admin')->federativeUnit->initials }}
+        </p>
+      </div>
     </a>
   </div>
 </div>

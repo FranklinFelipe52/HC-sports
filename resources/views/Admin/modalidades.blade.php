@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modalidades - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', 'Modalidades')
+@section('modalidadesClass', 'active')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -42,7 +29,7 @@
 
           <!-- Table search bar -->
           <div class="p-4 bg-gray-6 border border-gray-5 rounded-t-lg">
-            <form class="flex gap-2 flex-wrap">
+            {{-- <form class="flex gap-2 flex-wrap">
               <div class="relative w-full grow max-w-[400px] md:w-auto">
                 <input type="text" placeholder="Pesquise por uma modalidade" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button class="absolute top-[14%] left-3 bg-white">
@@ -61,22 +48,7 @@
                   <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
-              <div class="relative">
-                <select class="w-full min-w-[70px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="filtro_modalidades_page" id="filtro_modalidades_page">
-                  <option value="" selected disabled>
-                    UF
-                  </option>
-                  <option value="">RN</option>
-                  <option value="">GO</option>
-                  <option value="">RJ</option>
-                  <option value="">SP</option>
-                  <option value="">RO</option>
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
-                </div>
-              </div>
-            </form>
+            </form> --}}
           </div>
 
           <!-- Table -->
@@ -163,8 +135,4 @@
     </div>
   </div>
 
-  <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
-</body>
-
-</html>
+@endsection

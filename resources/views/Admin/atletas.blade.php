@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('Admin.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atletas - Sistema de inscrição - Olimpíadas OAB</title>
+@section('title', 'Atletas')
+@section('atletasClass', 'active')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-
-<body class="h-screen">
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -147,20 +134,20 @@
               ])->links() }}
 
           <!--<div class="flex gap-2" aria-label="Paginação da tabela">
-            <div class="group disabled">
-              <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
-              </button>
-            </div>
-            <p class="text-sm text-gray-1 pt-0.5">
-              1 de 2
-            </p>
-            <div class="group">
-              <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
-              </button>
-            </div>
-          </div>-->
+                      <div class="group disabled">
+                        <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                          <img src="/images/svg/chevron-left.svg" alt="">
+                        </button>
+                      </div>
+                      <p class="text-sm text-gray-1 pt-0.5">
+                        1 de 2
+                      </p>
+                      <div class="group">
+                        <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                          <img src="/images/svg/chevron-right.svg" alt="">
+                        </button>
+                      </div>
+                    </div>-->
 
 
           <div>
@@ -173,8 +160,4 @@
     </div>
   </div>
 
-  <!-- js -->
-  <script type="module" src="/js/app.js"></script>
-</body>
-
-</html>
+@endsection
