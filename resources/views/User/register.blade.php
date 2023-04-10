@@ -57,7 +57,7 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cpf_field">
                 CPF
               </label>
-              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
+              <input data-mask="cpf" placeholder="Ex: ###.###.###-##" disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_nome_completo_field">
