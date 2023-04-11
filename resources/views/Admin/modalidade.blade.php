@@ -10,7 +10,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral',  ['type'=>3]);
+      @include('components.admin.menu_lateral',  ['type'=> 3]);
     </div>
 
     <!-- corpo da página -->

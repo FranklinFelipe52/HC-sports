@@ -588,7 +588,7 @@
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong>{{ $registration->user->addres->federativeUnit->name }} ({{ $registration->user->addres->federativeUnit->initials }})</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong>{{ $registration->user->address->federativeUnit->name }} ({{ $registration->user->address->federativeUnit->initials }})</strong></p>
                                 </td>
                               </tr>
                               <tr>
