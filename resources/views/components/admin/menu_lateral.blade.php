@@ -77,7 +77,7 @@
   </a>
 
   <div class="group hidden sm:flex items-end justify-center lg:justify-start grow">
-    <a href="/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition px-2">
+    <a href="/admin/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition px-2">
       <div class="w-[32px] h-[32px] shrink-0">
         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
         <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
