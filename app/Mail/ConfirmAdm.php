@@ -35,7 +35,7 @@ class ConfirmAdm extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'HC-Sports - Confirmação de Cadastro Administrador',
+            subject: 'Confirmação de Cadastro Admin Geral (Confirmação de Administrador Geral | I Olímpiadas da Advocacia',
         );
     }
 

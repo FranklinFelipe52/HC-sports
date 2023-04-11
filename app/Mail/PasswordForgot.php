@@ -32,7 +32,7 @@ class PasswordForgot extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'HC-Sports - Redefinir senha',
+            subject: 'Link de Alteração de Senha',
         );
     }
 

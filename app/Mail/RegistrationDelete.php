@@ -32,7 +32,7 @@ class RegistrationDelete extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'HC-Sports - Exclusão de inscrição',
+            subject: 'Confirmação de Exclusão Confirmação de Exclusão de Inscrição | I Olímpiadas da Advocacia',
         );
     }
 
