@@ -49,12 +49,12 @@ class ModalidadeAdminController extends Controller
                 return view('Admin.modalidade', [
                     'modalidade'  => $modalidade,
                     'users' => $users,
-                    
                  ]);
+                 
             } 
             return back();
         } catch (Exception $e){
-            return dd($e);
+            return back();
         }
     }
 
