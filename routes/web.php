@@ -60,6 +60,7 @@ Route::post('/password_reset', [PasswordResetController::class, 'store']);
 
 
 Route::get('/dashboard', [HomeController::class, 'show'])->middleware('AuthUsers');
+Route::get('/profile', [UserController::class, 'profile'])->middleware('AuthUsers');
 Route::get('/registration/proof/{id}', [RegistrationsUserController::class, 'show'])->middleware('AuthUsers');
 
 

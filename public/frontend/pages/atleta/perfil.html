@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Perfil do atleta</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
+        <div class="hidden sm:block">
+          <a href="/src/pages/admin/dashboard.html">
+            <img src="/dist/images/logo.png" alt="">
+          </a>
+        </div>
+
+        <hr class="hidden sm:block border-gray-6 mt-3 mb-8">
+
+        <nav class="my-auto">
+          <ul class="flex justify-around sm:flex-col sm:gap-5">
+            <li class="group">
+              <a href="/src/pages/atleta/dashboard.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="group active sm:hidden">
+              <a href="/src/pages/atleta/perfil.html" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+                  <img src="/dist/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="hidden sm:block border-gray-6 my-4">
+
+        <a href="" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/dist/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
+            Sair
+          </p>
+        </a>
+
+        <div class="group active hidden sm:flex items-end justify-center lg:justify-start grow">
+          <a href="/src/pages/atleta/perfil.html" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+            <div class="w-[32px] h-[32px] shrink-0">
+              <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+              <img src="/dist/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-gray-1 group-[.active]:text-brand-a1 font-bold font-poppins text-sm">
+                Jefferson Thawan
+              </p>
+              <p class="text-gray-2 group-[.active]:text-brand-a1 font-medium font-poppins text-xs">
+                Atleta
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- corpo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="h-full w-full flex flex-col overflow-auto pb-8">
+
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6 space-y-6">
+          <div class="container">
+            <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+              Perfil
+            </h1>
+          </div>
+        </header>
+
+        <!-- conteúdo -->
+        <div class="container grid grid-cols-1 md:grid-cols-12 w-full">
+          <div class="md:col-span-4 lg:col-span-3">
+            <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
+              <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
+                <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
+                <p class="text-sm text-center text-gray-1 font-semibold mb-1">
+                  Jefferson Thawan Silva
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
+            <div class="w-full">
+              <div class="border border-gray-5 rounded-lg mb-6">
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      CPF
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      123.456.789-10
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      E-mail
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      joao.silva@oab.org.br
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Nascimento
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      11/09/2003
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Gênero
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      Masculino
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      UF
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      Rio Grande do Norte (RN)
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Cidade
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      Natal
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-4 flex-wrap">
+                <a href="/src/pages/atleta/editar-perfil.html" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                  <img src="/dist/images/svg/pencil.svg" alt="">
+                  <p class="text-white text-sm font-bold font-poppins">
+                    Editar perfil
+                  </p>
+                </a>
+                <a href="/src/pages/atleta/auth/alterar-senha.html" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                  <img src="/dist/images/svg/padlock.svg" alt="">
+                  <p class="text-brand-a1 text-sm font-bold font-poppins">
+                    Alterar senha
+                  </p>
+                </a>
+                <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+                  <img src="/dist/images/svg/trash.svg" alt="">
+                  <p class="text-brand-v1 text-sm font-bold font-poppins">
+                    Excluir Conta
+                  </p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script type="module" src="/dist/js/index.js"></script>
+</body>
+
+</html>

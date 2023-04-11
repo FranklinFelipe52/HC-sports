@@ -43,13 +43,21 @@ class UserController extends Controller
             if(!$user){
                 return back();
             }
-            error_log($user->address->federativeUnit);
             return view('Admin.atleta', [
                 'atleta' => $user,
             ]);
 
         } catch (Exception $e){
+            return back();
+        }
+    }
 
+    public function profile (Request $request){
+        try{
+            return view('User.atleta');
+
+        } catch (Exception $e){
+            return back();
         }
     }
 }

@@ -48,14 +48,6 @@
         "modalities_id": "5"
     },
     {
-        "nome": "LIVRE",
-        "max_total": "20",
-        "max_f": "0",
-        "max_m": "20",
-        "min_year": null,
-        "modalities_id": "6"
-    },
-    {
         "nome": "Master",
         "max_total": "20",
         "max_f": "0",
