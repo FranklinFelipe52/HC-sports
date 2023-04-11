@@ -9,7 +9,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral', ['type'=>2]);
+      @include('components.admin.menu_lateral', ['type' => 2]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -44,34 +44,51 @@
           <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
             <div class="flex flex-wrap gap-6 mb-6">
               <div class="grow sm:grow-0">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
-                  CPF
-                </label>
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+                <div class="group @error('cpf') error @enderror">
+                  <div class="relative">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
+                      CPF
+                    </label>
+                    <input data-mask='cpf' required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+
+                    @error('cpf')
+                      <div class="absolute bg-white top-[50%] right-3">
+                        <img src="/images/svg/input-error.svg" alt="">
+                      </div>
+                    @enderror
+                  </div>
+                </div>
                 @error('cpf')
-                  <p class="text-danger">{{ $message }}</p>
+                  <p class="text-input-error text-sm pt-2">{{ $message }}</p>
                 @enderror
               </div>
 
-              <div class="grow">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
-                  E-mail
-                </label>
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="jeffersonthawan@gmail.com" />
+              <div class="grow group @error('email') error @enderror">
+                <div class="relative">
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
+                    E-mail
+                  </label>
+                  <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:focus-input-error text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
+                  @error('email')
+                    <div class="absolute bg-white top-[50%] right-3">
+                      <img src="/images/svg/input-error.svg" alt="">
+                    </div>
+                  @enderror
+                </div>
                 @error('email')
-                  <p class="text-danger">{{ $message }}</p>
+                  <p class="text-input-error text-sm pt-2">{{ $message }}</p>
                 @enderror
               </div>
+            </div>
 
-              <div class="grow">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="nome_adicionar_atleta_form">
-                  Nome
-                </label>
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" placeholder="Ex.: jefferson thawan" />
-                @error('nome')
-                  <p class="text-danger">{{ $message }}</p>
-                @enderror
-              </div>
+            <div class="grow mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="nome_adicionar_atleta_form">
+                Nome
+              </label>
+              <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" placeholder="Ex.: João Toledo da Silva" />
+              @error('nome')
+                <p class="text-input-error text-sm pt-2">{{ $message }}</p>
+              @enderror
             </div>
 
             <div class="grow mb-6">
@@ -79,12 +96,12 @@
                 Atribuição
               </label>
               <div class="relative max-w-[300px]">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="rule" id="select_exemplo">
-                  <option value="" selected disabled>
+                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="rule" value="{{ old('rule') }}" id="select_exemplo">
+                  <option value="" @if (!old('rule')) selected @endif disabled>
                     Selecione
                   </option>
                   @foreach ($rules as $rule)
-                    <option value="{{ $rule->id }}">{{ $rule->tipo }}</option>
+                    <option value="{{ $rule->id }}" @if (old('rule') == $rule->id) selected @endif>{{ $rule->tipo }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -101,12 +118,12 @@
                 Selecione a UF
               </label>
               <div class="relative max-w-[300px]">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
-                  <option value="" selected disabled>
+                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" value="{{ old('uf') }}" id="select_exemplo">
+                  <option value="" @if (!old('uf')) selected @endif disabled>
                     Selecione
                   </option>
                   @foreach ($federative_units as $federative_unit)
-                    <option value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                    <option value="{{ $federative_unit->id }}" @if (old('uf') == $federative_unit->id) selected @endif>{{ $federative_unit->initials }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -119,7 +136,7 @@
             </div>
           </div>
           <div class="flex flex-wrap justify-between gap-6">
-            <button class="order-2 sm:order-1 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded bg-white transition">
+            <button type="button" onclick="window.open('/admin/administradores', '_self')" class="order-2 sm:order-1 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded bg-white transition">
               <p class="text-gray-1 underline text-sm font-normal font-poppins">
                 Cancelar
               </p>
