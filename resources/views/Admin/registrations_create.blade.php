@@ -9,7 +9,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral', ['type'=> 0] );
+      @include('components.admin.menu_lateral', ['type' => 1]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -18,46 +18,64 @@
 
         <!-- Cabeçalho -->
         <header class="pt-8 pb-6 space-y-6">
-          <!-- <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
-                  <div>
-                    <a href="/src/pages/admin/dashboard.html" class="text-xs text-gray-1 block hover:underline">
-                      Dashboard
-                    </a>
-                  </div>
-                  <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-                  <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-                    Adicionar Atleta
-                  </div>
-                </nav> -->
+          <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
+            <div>
+              <a href="/admin/dashboard" class="text-xs text-gray-1 block hover:underline">
+                Dashboard
+              </a>
+            </div>
+            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+              Adicionar Atleta
+            </div>
+          </nav>
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Cadastramento de Atleta
           </h1>
-          @if (Session::has('erro'))
-            <div class="alert alert-danger my-2" role="alert">
-              {{ Session('erro') }}
-            </div>
-          @endif
         </header>
+
+        @if (Session::has('erro'))
+          <div class="bg-alert-error-fill mb-2 w-fit rounded text-alert-error-base px-4 py-3">
+            {{ Session('erro') }}
+          </div>
+        @endif
+
 
         <form method="post" action="/admin/registration/create/{{ $modalidade->id }}" class="w-full max-w-[700px]">
           @csrf
           <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
             <div class="flex flex-wrap gap-6 mb-6">
               <div class="grow sm:grow-0">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
-                  CPF
-                </label>
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" placeholder="Ex.: 123.456.789-10" />
+                <div class="group @error('cpf') error @enderror">
+                  <div class="relative">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
+                      CPF
+                    </label>
+                    <input data-mask='cpf' required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+
+                    @error('cpf')
+                      <div class="absolute bg-white top-[50%] right-3">
+                        <img src="/images/svg/input-error.svg" alt="">
+                      </div>
+                    @enderror
+                  </div>
+                </div>
                 @error('cpf')
-                  <p class="text-danger">{{ $message }}</p>
+                  <p class="text-input-error text-sm pt-2">{{ $message }}</p>
                 @enderror
               </div>
-
-              <div class="grow">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
-                  E-mail
-                </label>
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" placeholder="jeffersonthawan@gmail.com" />
+              <div class="grow group @error('email') error @enderror">
+                <div>
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
+                    E-mail
+                  </label>
+                  <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
+                  @error('email')
+                    <div class="absolute bg-white top-[50%] right-3">
+                      <img src="/images/svg/input-error.svg" alt="">
+                    </div>
+                  @enderror
+                </div>
                 @error('email')
                   <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -72,8 +90,8 @@
               <div class="pl-4 space-y-2.5">
                 @foreach ($type_payments as $value)
                   <div class="flex items-center gap-2">
-                    <input class="shrink-0 block" required type="radio" id="caixa_federal" name="payment" value="{{ $value->id }}" checked>
-                    <label for="caixa_federal" class="text-gray-2">{{ $value->type }}</label>
+                    <input class="shrink-0 block" required type="radio" id="pagamento-{{ $value->type }}" name="payment" value="{{ $value->id }}" checked>
+                    <label for="pagamento-{{ $value->type }}" class="text-gray-2">{{ $value->type }}</label>
                   </div>
                 @endforeach
               </div>
@@ -83,7 +101,7 @@
                 Nascimento
               </label>
               <div class="relative">
-                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="date_nasc" />
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/svg/calendar.svg" alt="" />
                 </div>
@@ -97,10 +115,10 @@
                 Gênero
               </label>
               <div class="relative">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option value="M">Masculino</option>
-                  <option value="F">Feminino</option>
-
+                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                  <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
+                  <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
+                  <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/svg/chevron-down.svg" alt="" />
@@ -113,12 +131,12 @@
                 Selecione a UF
               </label>
               <div class="relative max-w-[300px]">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
-                  <option value="" selected disabled>
+                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                  <option value="" @if (!old('uf')) selected @endif disabled>
                     Selecione
                   </option>
                   @foreach ($federative_units as $federative_unit)
-                    <option value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                    <option value="{{ $federative_unit->id }}" @if (old('uf') == $federative_unit->id) selected @endif>{{ $federative_unit->initials }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">

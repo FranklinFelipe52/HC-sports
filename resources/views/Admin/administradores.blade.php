@@ -10,7 +10,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral',  ['type'=>2]);
+      @include('components.admin.menu_lateral', ['type' => 2]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -24,7 +24,7 @@
           </h1>
           <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
             <p class="text-white text-sm font-bold font-poppins">
-            Cadastrar Administrador
+              Cadastrar Administrador
             </p>
           </a>
         </header>
@@ -38,7 +38,7 @@
               <form class="relative grow">
 
                 <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
-                <button type="submit" class="absolute top-[14%] left-3 bg-white">
+                <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
 
@@ -116,20 +116,18 @@
                   </div>
                   <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
                     <!--
-                    <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
-                    </a>
-                    <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
-                    </a> -->
+                      <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                        <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
+                      </a>
+                      <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                        <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                      </a> -->
                   </div>
                 </div>
               @endforeach
-
             </div>
           </div>
         </div>
-
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
           {{ $administradores->appends([
@@ -143,7 +141,6 @@
               @else
                 {{ Count($administradores) }} Administrador exibido
               @endif
-
             </p>
           </div>
         </div>

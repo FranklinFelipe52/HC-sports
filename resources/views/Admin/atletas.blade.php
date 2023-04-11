@@ -9,7 +9,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral',  ['type'=>4]);
+      @include('components.admin.menu_lateral', ['type' => 4]);
     </div>
 
     <!-- Conteúdo da página -->
@@ -32,7 +32,7 @@
               <form class="relative grow">
 
                 <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
-                <button type="submit" class="absolute top-[14%] left-3 bg-white">
+                <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
 
@@ -132,21 +132,21 @@
                   'uf' => request()->get('uf', ''),
               ])->links() }}
 
-          <!--<div class="flex gap-2" aria-label="Paginação da tabela">
-                      <div class="group disabled">
-                        <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                          <img src="/images/svg/chevron-left.svg" alt="">
-                        </button>
-                      </div>
-                      <p class="text-sm text-gray-1 pt-0.5">
-                        1 de 2
-                      </p>
-                      <div class="group">
-                        <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
-                          <img src="/images/svg/chevron-right.svg" alt="">
-                        </button>
-                      </div>
-                    </div>-->
+          {{-- <div class="flex gap-2" aria-label="Paginação da tabela">
+            <div class="group disabled">
+              <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/images/svg/chevron-left.svg" alt="">
+              </button>
+            </div>
+            <p class="text-sm text-gray-1 pt-0.5">
+              1 de 2
+            </p>
+            <div class="group">
+              <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/images/svg/chevron-right.svg" alt="">
+              </button>
+            </div>
+          </div> --}}
 
 
           <div>
