@@ -501,8 +501,10 @@
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
-                                  <h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center">
-                                    <strong>Solicitação de Inscrição</strong>
+                                  <h1 style="text-transform: uppercase;Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center">
+                                    <strong>
+                                      SOLICITAÇÃO DE INSCRIÇÃO
+                                    </strong>
                                   </h1>
                                 </td>
                               </tr>
@@ -534,9 +536,9 @@
                                         @if (!($registration->modalities->mode_modalities->id == 1))
                                           (Categoria “{{ $registration->modalities_category->nome }}”)
                                         @endif
-                                      </strong> foi confirmada.</p>
+                                      </strong> foi <strong>confirmada</strong>.</p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                      Para acompanhar as suas inscrições, acesse o <strong>painel do atleta</strong> através do botão abaixo:
+                                      Para acompanhar sua inscrição, acesse o <strong>Painel do Atleta</strong> através do botão abaixo:
                                     </p>
                                   </div>
                                 </td>
@@ -573,12 +575,19 @@
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
                                 <td align="left" class="es-m-p25t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:10px;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Resumo da inscrição</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                    <strong>
+                                      Resumo da inscrição
+                                    </strong>
+                                  </p>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">CPF:<br><strong><?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $registration->user->cpf); ?></strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
+                                    CPF:<br>
+                                    <strong><?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $registration->user->cpf); ?></strong>
+                                  </p>
                                 </td>
                               </tr>
                               <tr>
@@ -588,16 +597,24 @@
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong>{{ $registration->user->address->federativeUnit->name }} ({{ $registration->user->address->federativeUnit->initials }})</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
+                                    UF:<br>
+                                    <strong>
+                                      {{ $registration->user->address->federativeUnit->name }} ({{ $registration->user->address->federativeUnit->initials }})
+                                    </strong>
+                                  </p>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20b es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">Modalidade:<br><strong>{{ $registration->modalities->nome }}
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
+                                    Modalidade:<br>
+                                    <strong>{{ $registration->modalities->nome }}
                                       @if (!($registration->modalities->mode_modalities->id == 1))
                                         (Categoria “{{ $registration->modalities_category->nome }}”)
                                       @endif
-                                    </strong></p>
+                                    </strong>
+                                  </p>
                                 </td>
                               </tr>
                             </table>
@@ -623,7 +640,7 @@
 <![endif]-->
                                   <!--[if !mso]><!-- -->
                                   <span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
+                                    <a href="https://olimpiadasdaadvocacia.oab.org.br/regulamento/" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
                                       Regulamento Geral da Competição
                                     </a>
                                   </span>
