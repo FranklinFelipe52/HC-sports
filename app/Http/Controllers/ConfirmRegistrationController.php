@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmRegisterAtleta;
+use App\Mail\RegistrationMail;
 use App\Models\User;
 use Exception;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ConfirmRegistrationController extends Controller
 {
@@ -46,6 +49,7 @@ class ConfirmRegistrationController extends Controller
             $user->password = Hash::make($request->password);
             $user->registered = true;
             $user->save();
+            Mail::to($user->email)->send(new ConfirmRegisterAtleta());
             $request->session()->put('user', $user);
             return redirect('/dashboard');
         } catch(Exception $e){

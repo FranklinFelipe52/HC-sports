@@ -85,6 +85,7 @@ Route::get('/admin/registration/delete/{id}', [RegistrationsAdminController::cla
 Route::post('/admin/registration/create/{id}', [RegistrationsAdminController::class, 'store'])->middleware('AuthAdmins');
 Route::get('/admin/administradores', [AdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');
+
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);
 Route::post('/admin/administradores/store', [AdminController::class, 'store'])->middleware('AuthAdmins');
