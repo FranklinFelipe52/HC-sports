@@ -13,14 +13,17 @@ class CheckoutController extends Controller
     public function show(Request $request, $id){
         try{
             $registration = registration::find($id);
-            if(!($registration && ($registration->user->id == $request->session()->get('user')->id))){
+            if(!$registration){
                 return back();
             }
-
-
-            return view('User.checkout');
+            if($registration->user->id != $request->session()->get('user')->id){
+                return back();
+            }
+            return view('User.checkout', [
+                'registration' => $registration
+            ]);
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
 
@@ -28,15 +31,40 @@ class CheckoutController extends Controller
         try{
             $user = User::find($request->session()->get('user')->id);
             $registration = registration::find($id);
-            if(!($registration && ($registration->user->id == $request->session()->get('user')->id))){
+            
+            $valor = 0;
+
+            $registrations_payment = 0;
+
+            if(!$registration){
                 return back();
             }
-            if($user->user){
-
+            if($registration->user->id != $request->session()->get('user')->id){
+                return back();
             }
 
+            foreach ($user->registrations as $registration) {
+                if($registration->Payment->status_payment->id == 4){
+                    $registrations_payment++;
+                }
+            }
 
-            return view('User.card');
+            switch ($registrations_payment) {
+                case 0:
+                    
+                    $valor = 150;
+                    break;
+                case 1:
+                    $valor = 100;
+                    break;
+                case 2:
+                    return back();
+                    break;
+            }
+            return view('User.card', [
+                'value_payment' => $valor,
+                'registration' => $registration
+            ]);
 
         } catch (Exception $e){
             return back();
@@ -45,25 +73,49 @@ class CheckoutController extends Controller
 
     public function card_store(Request $request, $id){
         try{
-            $register = registration::find($id);
-
-            if(!$register || $register->payment->status == 'APROVADO'){
+            $user = User::find($request->session()->get('user')->id);
+            $registration = registration::find($id);
+            if(!$registration){
                 return back();
-            } else {
+            }
+            if($registration->user->id != $request->session()->get('user')->id){
+                return back();
+            }
+
+            $valor = 0;
+            $registrations_payment = 0;
+
+            foreach ($user->registrations as $registration) {
+                if($registration->Payment->status_payment->id == 4){
+                    $registrations_payment++;
+                }
+            }
+            switch ($registrations_payment) {
+                case 0:
+                    $valor = 150;
+                    break;
+                case 1:
+                    $valor = 100;
+                    break;
+                case 2:
+                    return back();
+                    break;
+            }
                 $checkout = new Checkout(
                 request: $request, 
-                mount: 10000, 
-                registration: $register,
+                mount: $valor*10, 
+                registration: $registration,
                 method: 1,
                 url: env('PAGSEGURO_SANDBOX_URL_CHARGE'));
 
                 $pay = $checkout->pay();
                 if($pay && $pay->created()){
-                    return redirect('/my-registrations');
+                    error_log($pay);
+                    return redirect('/dashboard');
                 } else {
                     return back()->with('erro', 'Pagamento não efetuado');
                 }
-            }
+            
 
 
         } catch (Exception $e){
@@ -73,26 +125,54 @@ class CheckoutController extends Controller
 
     public function pix(Request $request, $id){
         try{
+            $user = User::find($request->session()->get('user')->id);
             $registration = registration::find($id);
-            if(!($registration && ($registration->user->id == $request->session()->get('user')->id))){
+            if(!$registration){
                 return back();
-            } else {
+            }
+            if($registration->user->id != $request->session()->get('user')->id){
+                return back();
+            }
+            $valor = 0;
+            $registrations_payment = 0;
+
+            foreach ($user->registrations as $registration) {
+                if($registration->Payment->status_payment->id == 4){
+                    $registrations_payment++;
+                }
+            }
+
+            switch ($registrations_payment) {
+                case 0:
+                    $valor = 150;
+                    break;
+                case 1:
+                    $valor = 100;
+                    break;
+                case 2:
+                    return back();
+                    break;
+            }
+
                 $checkout = new Checkout(
                 request: $request, 
-                mount: 10000, 
+                mount: 110, 
                 registration: $registration,
                 method: 2,
                 url: env('PAGSEGURO_SANDBOX_URL_CHARGE'));
 
                 $pay = $checkout->pay();
+                error_log($pay);
                 if($pay && $pay->created()){
-                    return view('User.pix', ['pix' => $pay]);
+                    return view('User.pix', [
+                        'pix' => $pay,
+                        'valor' => $valor
+                ]);
                 } else {
-                    return back()->with('erro', 'Pagamento não efetuado');
+                    return redirect("/checkout/$registration->id")->with('erro', 'Pagamento não efetuado');
                 }
-            }
         } catch (Exception $e){
-            return back()->with('erro', 'Pagamento não efetuado');
+            return $e;
         }
     }
 }

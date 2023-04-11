@@ -1,6 +1,10 @@
 [
     {
         "status": "Aguardando pagamento",
+        "code": "0"
+    },
+    {
+        "status": "pagamento em processamento",
         "code": "1"
     },
     {

@@ -65,7 +65,8 @@ Route::get('/registration/proof/{id}', [RegistrationsUserController::class, 'sho
 
 
 Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->middleware('AuthUsers');
-Route::post('/card/{id}', [CheckoutController::class, 'card'])->middleware('AuthUsers');
+Route::get('/card/{id}', [CheckoutController::class, 'card'])->middleware('AuthUsers');
+Route::post('/card/{id}', [CheckoutController::class, 'card_store'])->middleware('AuthUsers');
 Route::get('/pix/{id}', [CheckoutController::class, 'pix'])->middleware('AuthUsers');
 Route::get('/Qrcode/pix', [CheckoutController::class, 'pix_view'])->name('pix')->middleware('AuthUsers');
 

@@ -10,6 +10,6 @@ class status_payment extends Model
     use HasFactory;
 
     public function payments(){
-        return $this->hasMany(payment::class);
+        return $this->hasMany(Payment::class);
     }
 }

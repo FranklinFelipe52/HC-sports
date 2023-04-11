@@ -23,6 +23,10 @@ class registration extends Model
     public function status_regitration(){
         return $this->belongsTo(status_regitration::class);
     }
+
+    public function Payment(){
+        return $this->hasOne(Payment::class);
+    }
     public function type_payment(){
         return $this->belongsTo(type_payment::class);
     }

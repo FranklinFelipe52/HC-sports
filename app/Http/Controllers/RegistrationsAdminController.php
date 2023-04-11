@@ -11,6 +11,7 @@ use App\Models\Address;
 use App\Models\FederativeUnit;
 use App\Models\Modalities;
 use App\Models\modalities_category;
+use App\Models\Payment;
 use App\Models\registration;
 use App\Models\type_payment;
 use App\Models\User;
@@ -169,6 +170,10 @@ class RegistrationsAdminController extends Controller
                 $registration->range_id = $request->range;
             }
             $registration->save();
+            $payment = new Payment;
+            $payment
+
+            
 
         $payload = [
             "email" => $user->email,
@@ -198,10 +203,11 @@ class RegistrationsAdminController extends Controller
                 return back();
             }
             $registration->delete();
-            Mail::to($registration->user->email)->send(new RegistrationDelete($registration));
-            return redirect('/admin/users/{{$id}}');
+            $user = $registration->user;
+            Mail::to($user->email)->send(new RegistrationDelete($registration));
+            return redirect("/admin/users/$user->id");
         } catch(Exception $e){
-            return redirect('/admin/users/{{$id}}');
+            return redirect("/admin/users/$user->id");
         }
     }
 
