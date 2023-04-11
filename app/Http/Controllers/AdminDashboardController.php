@@ -16,6 +16,7 @@ class AdminDashboardController extends Controller
             $atualizacoes_aux = DB::table('users')
             ->join('addresses', 'addresses.user_id', 'users.id')
             ->join('federative_units', 'federative_units.id', 'addresses.federative_unit_id')
+            ->orderBy('updated_at', 'desc')
             ->where('registered', true);
             if($admin->rule->id == 1){
                 $atualizacoes = $atualizacoes_aux
