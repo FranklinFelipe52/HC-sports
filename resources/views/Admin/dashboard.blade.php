@@ -25,14 +25,15 @@
             <!-- lista de atualizações -->
             <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
 
-              <!-- atualização
+              <!-- atualização -->
+              @foreach($atualizacoes as $atualizacao)
                     <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
                     <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
                         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                     </div>
                     <div class="grow space-y-1">
-                        <p class="text-base text-gray-1 font-semibold">Jefferson Twawan Silva</p>
-                        <p class="text-xs text-gray-1 font-normal">Validou inscrição no atletismo</p>
+                        <p class="text-base text-gray-1 font-semibold">{{$atualizacao->nome_completo}}</p>
+                        <p class="text-xs text-gray-1 font-normal">Validou inscrição no sistema</p>
                     </div>
                     <div class="flex gap-2.5">
                         <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
@@ -40,9 +41,10 @@
                             Confirmado
                         </p>
                         </div>
-                        <p class="text-xs text-gray-600 font-normal">1h</p>
+                        <p class="text-xs text-gray-600 font-normal"><?php  echo date("d M", strtotime($atualizacao->updated_at))?></p>
                     </div>
-                    </li>-->
+                    </li>
+                    @endforeach
             </ul>
           </div>
         </div>
@@ -63,40 +65,23 @@
                     <div>
                       <div class="flex items-center gap-4">
                         <p class="text-base font-semibold text-gray-1">
-                          {{ $modalidade['modalidade']->nome }}
+                          {{ $modalidade->nome }}
                         </p>
-
-                        @if($modalidade['total_modalidade'])
-                        @if (Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
-                          <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold">
-                              Incompleto
-                            </p>
-                          </div>
-                        @else
-                          <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold">
-                              Completo
-                            </p>
-                          </div>
-                        @endif
-                        @endif
-                        
 
                       </div>
                       <p class="text-gray-1 text-xs">
-                        {{ Count($modalidade['modalidade']->registrations) }} inscrições
+                        {{ Count($modalidade->registrations) }} inscrições
                       </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade['modalidade']->id }}.svg" class="w-full h-full object-cover" alt="">
+                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-3">
-                    <button onclick="window.open('/admin/modalidade/{{ $modalidade['modalidade']->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Ver modalidade
                     </button>
-                    <button onclick="window.open('/admin/registration/create/{{ $modalidade['modalidade']->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Adicionar atleta
                     </button>
                   </div>

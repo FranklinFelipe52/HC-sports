@@ -5,42 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Modalities;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminDashboardController extends Controller
 {
     public function show(Request $request){
         try{
-            $modalidades = [];
+            $modalidades = Modalities::all();
             $admin = $request->session()->get('admin');
-            foreach (Modalities::all() as $modalidade) {
-                    $users = [];
-                    $total = 0;
+            $atualizacoes_aux = DB::table('users')
+            ->join('addresses', 'addresses.user_id', 'users.id')
+            ->join('federative_units', 'federative_units.id', 'addresses.federative_unit_id')
+            ->where('registered', true);
+            if($admin->rule->id == 1){
+                $atualizacoes = $atualizacoes_aux
+                ->select('users.id', 'users.nome_completo', 'users.email', 'users.registered', 'users.updated_at')->get();
 
-                    foreach ( $modalidade->registrations as $registration) {
-                        if(!in_array($registration->user, $users)){
-                            array_push($users, $registration->user);
-                        }
-                    }
-
-                    if($modalidade->mode_modalities->id == 1){
-                        $total = $modalidade->modalities_categorys->first()->max_total;
-                    } else {
-                        foreach ($modalidade->modalities_categorys as $categoria) {
-                            if($categoria->max_total){
-                                $total = $total + $categoria->max_total;
-                            }
-                            
-                        }
-                    }
-
-                    array_push($modalidades, [
-                        'modalidade' => $modalidade,
-                        'total_modalidade' => $total
-                    ]);
+                error_log($atualizacoes);
+            } else {
+                $atualizacoes = $atualizacoes_aux
+                ->where('federative_unit_id', $admin->federativeUnit->id)
+                ->select('users.id', 'users.nome_completo', 'users.email', 'users.registered', 'users.updated_at')->get();
             }
 
             return view('Admin.dashboard', [
                'modalidades'  => $modalidades,
+               'atualizacoes' => $atualizacoes
             ]);
 
         } catch (Exception $e){
