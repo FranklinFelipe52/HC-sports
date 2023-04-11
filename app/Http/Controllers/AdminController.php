@@ -30,7 +30,8 @@ class AdminController extends Controller
             
                 $administradores_aux = DB::table('admins')
             ->join('federative_units', 'federative_units.id', 'admins.federative_unit_id')
-            ->select('admins.id', 'admins.nome_completo', 'federative_units.name as federative_unit_name', 'admins.cpf');;
+            ->join('rules', 'admins.rule_id', 'rules.id')
+            ->select('admins.id', 'admins.nome_completo', 'rules.id as rule_id', 'federative_units.name as federative_unit_name', 'admins.cpf');;
               $administradores = $administradores_aux;
             if(isset($_GET["s"])){
                 $administradores = $administradores_aux

@@ -69,7 +69,7 @@ Route::get('/pix/{id}', [CheckoutController::class, 'pix'])->middleware('AuthUse
 Route::get('/Qrcode/pix', [CheckoutController::class, 'pix_view'])->name('pix')->middleware('AuthUsers');
 
 
-
+Route::redirect('/admin', '/admin/login');
 Route::view('/admin/login', 'Admin/login')->name('GetLoginAdmin')->middleware('redirect_admin_login');
 Route::post('/admin/login', [AdminController::class, 'login']);
 Route::get('/admin/logout', [AdminController::class, 'logout']);

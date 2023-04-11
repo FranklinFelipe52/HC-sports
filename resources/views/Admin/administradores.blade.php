@@ -24,7 +24,7 @@
           </h1>
           <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
             <p class="text-white text-sm font-bold font-poppins">
-              Cadastrar Gerente
+            Cadastrar Administrador
             </p>
           </a>
         </header>
@@ -107,7 +107,7 @@
                   </div>
                   <div role="cell" class="py-3 flex items-center col-span-3">
                     <p class="text-sm font-semibold text-gray-2">
-                      @if (Session('admin')->rule->id == 1)
+                      @if ($administrador->rule_id == 1)
                         -
                       @else
                         {{ $administrador->federative_unit_name }}
@@ -115,12 +115,13 @@
                     </p>
                   </div>
                   <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                    <!--
                     <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                       <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
                     </a>
                     <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                       <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
-                    </a>
+                    </a> -->
                   </div>
                 </div>
               @endforeach

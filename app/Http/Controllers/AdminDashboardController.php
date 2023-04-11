@@ -26,7 +26,10 @@ class AdminDashboardController extends Controller
                         $total = $modalidade->modalities_categorys->first()->max_total;
                     } else {
                         foreach ($modalidade->modalities_categorys as $categoria) {
-                            $total = $total + $categoria->max_total;
+                            if($categoria->max_total){
+                                $total = $total + $categoria->max_total;
+                            }
+                            
                         }
                     }
 

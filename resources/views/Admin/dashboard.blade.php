@@ -66,7 +66,7 @@
                           {{ $modalidade['modalidade']->nome }}
                         </p>
 
-
+                        @if($modalidade['total_modalidade'])
                         @if (Count($modalidade['modalidade']->registrations) < $modalidade['total_modalidade'])
                           <div class="bg-gray-3 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                             <p class="text-white text-[0.5rem] font-bold">
@@ -80,6 +80,8 @@
                             </p>
                           </div>
                         @endif
+                        @endif
+                        
 
                       </div>
                       <p class="text-gray-1 text-xs">
