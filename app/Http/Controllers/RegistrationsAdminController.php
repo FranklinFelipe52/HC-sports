@@ -170,8 +170,6 @@ class RegistrationsAdminController extends Controller
                 $registration->range_id = $request->range;
             }
             $registration->save();
-            $payment = new Payment;
-            $payment
 
             
 
