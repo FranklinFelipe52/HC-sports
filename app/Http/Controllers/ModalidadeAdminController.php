@@ -23,7 +23,7 @@ class ModalidadeAdminController extends Controller
                     $registrations = [];
 
                     foreach ($modalidade->registrations as $registration) {
-                        if($registration->user->addres->federativeUnit->id == $admin->federativeUnit->id){
+                        if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
                             array_push($registrations, $registration);
                         }
                     }
@@ -42,9 +42,6 @@ class ModalidadeAdminController extends Controller
                         }
                     }
                 }
-                
-                
-
                
                 return view('Admin.modalidade', [
                     'modalidade'  => $modalidade,
@@ -54,7 +51,7 @@ class ModalidadeAdminController extends Controller
             } 
             return back();
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
 
@@ -68,7 +65,7 @@ class ModalidadeAdminController extends Controller
                     $registrations = [];
 
                     foreach ($modalidade->registrations as $registration) {
-                        if($registration->user->addres->federativeUnit->id == $admin->federativeUnit->id){
+                        if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
                             array_push($registrations, $registration);
                         }
                     }
@@ -103,7 +100,7 @@ class ModalidadeAdminController extends Controller
             ]);
 
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
 

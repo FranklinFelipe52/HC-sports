@@ -218,7 +218,7 @@ class RegistrationsAdminController extends Controller
             return view('Admin.registrations_create', [
                 'modalidade' => $modalidade,
                 'type_payments' => $type_payments,
-                'federative_units' => FederativeUnit::all()
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
 
         }catch(Exception $e){

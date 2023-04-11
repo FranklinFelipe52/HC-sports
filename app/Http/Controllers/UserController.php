@@ -30,7 +30,7 @@ class UserController extends Controller
             $atletas = $admin->rule->id == 1 ? (isset($_GET["uf"]) ?   $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $atletas->paginate(8)) : $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(8);
             return view('Admin.atletas', [
                 'atletas' => $atletas,
-                'federative_units' => FederativeUnit::all()
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
             return back();

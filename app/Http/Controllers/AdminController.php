@@ -48,7 +48,7 @@ class AdminController extends Controller
            
             return view('Admin.administradores', [
                 'administradores' => $administradores,
-                'federative_units' => FederativeUnit::all()
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
             return $e;
@@ -67,7 +67,7 @@ class AdminController extends Controller
             }
             return view('Admin.administradores_create', [
                 'rules' => $rules,
-                'federative_units' => FederativeUnit::all()
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
             return back();
