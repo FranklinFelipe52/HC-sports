@@ -14,8 +14,6 @@ class UserController extends Controller
     public function show(Request $request){
         try{
             $admin = $request->session()->get('admin');
-
-            $s = isset($_GET["s"]) ? $_GET["s"] : '';
             
                 $atletas_aux = DB::table('users')
             ->join('addresses', 'addresses.user_id', 'users.id')
@@ -24,8 +22,8 @@ class UserController extends Controller
             $atletas = $atletas_aux;
             if(isset($_GET["s"])){
                 $atletas = $atletas_aux
-                ->where('nome_completo', 'LIKE', '%'.$s.'%')
-                ->orWhere('cpf', 'LIKE', '%'.$s.'%');
+                ->where('nome_completo', 'LIKE', '%'.$_GET["s"].'%')
+                ->orWhere('cpf', 'LIKE', '%'.$_GET["s"].'%');
             }
             $atletas = $admin->rule->id == 1 ? (isset($_GET["uf"]) ?   $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $atletas->paginate(8)) : $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(8);
             return view('Admin.atletas', [
