@@ -64,17 +64,22 @@
                     CPF
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-4">
+                <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1">
                     Nome
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-3">
+                <div role="columnheader" class="text-start col-span-2">
                   <p class="text-sm font-semibold text-gray-1 ">
                     UF
                   </p>
                 </div>
-                <div role="columnheader" class="opacity-0 col-span-2 text-end">
+                <div role="columnheader" class="text-start col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Inscrições
+                  </p>
+                </div>
+                <div role="columnheader" class="opacity-0 col-span-1 text-end">
                   <p class="text-sm font-semibold text-gray-1">
                     Ação
                   </p>
@@ -93,7 +98,7 @@
                         <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>
                       </p>
                     </div>
-                    <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                    <div role="cell" class="pr-2 py-3 flex items-center col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
                         @if ($atleta->nome_completo == null)
                           -
@@ -102,12 +107,17 @@
                         @endif
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex items-center col-span-3">
+                    <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
                         {{ $atleta->federative_unit_name }}
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                    <div role="cell" class="py-3 flex items-center col-span-2">
+                      <p class="text-sm font-semibold text-gray-2">
+                        {{ Count(App\Models\User::find($atleta->id)->registrations)  }}
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-1">
 
                       <a href="/admin/users/{{ $atleta->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                         <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
