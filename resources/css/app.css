@@ -76,3 +76,29 @@ input[type="radio"]:checked::after {
     left: 0;
     pointer-events: none;
 }
+
+/* paginação */
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination .page-item {
+    font-size: 14px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+}
+
+.pagination .page-item:first-child,
+.pagination .page-item:last-child {
+    padding: 0.2rem 0.4rem;
+    background-color: #0095d9;
+    border-radius: 6px;
+}
+
+.pagination .page-item:first-child.disabled,
+.pagination .page-item:last-child.disabled {
+    background-color: #e0e0e0;
+}
