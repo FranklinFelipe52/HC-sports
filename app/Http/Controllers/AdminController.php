@@ -40,7 +40,7 @@ class AdminController extends Controller
             }
            if($admin->rule->id == 1 ){
 
-            $administradores = isset($_GET["uf"]) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
+            $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
             
            } else {
             $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->paginate(10);
