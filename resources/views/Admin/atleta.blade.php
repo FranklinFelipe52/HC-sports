@@ -108,19 +108,19 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
-                
+
                 <?php echo $atleta->nome_completo ? explode(' ', $atleta->nome_completo)[0]." ".explode(' ', $atleta->nome_completo)[1] : "-";?>
                 </p>
               </div>
             </div>
-            <div>
+            {{-- <div>
               <a href="/profile/edit/{{$atleta->id}}" class="flex items-center justify-center  gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                 <img src="/images/svg/pencil.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Editar perfil
                 </p>
               </a>
-            </div>
+            </div> --}}
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
             <div class="w-full">
@@ -206,7 +206,7 @@
                       @else
                           -
                       @endif
-                      
+
                     </p>
                   </div>
                 </div>
@@ -255,7 +255,7 @@
           Nenhuma inscrição cadastrada
         </div>
       @endif
-  
+
               </div>
 
               <div class="flex gap-4 flex-wrap">
@@ -286,5 +286,5 @@
     </div>
   </div>
 @endsection
- 
+
 
