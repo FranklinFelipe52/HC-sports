@@ -53,7 +53,7 @@ class ConfirmRegistrationController extends Controller
             $request->session()->put('user', $user);
             return redirect('/dashboard');
         } catch(Exception $e){
-            return $e;
+            return back()->with('erro', 'Cadastro não efetuado');
         }
     }
 }
