@@ -3,9 +3,9 @@
 @section('title', $modalidade->nome . ' - Adicionar atleta na modalidade ')
 
 @section('content')
-<style>
-  
-</style>
+  <style>
+
+  </style>
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -93,7 +93,7 @@
                 <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="payment" id="cadastro_payment_field">
                   <option value="" selected  disabled>Selecione</option>
                   @foreach ($type_payments as $value)
-                  <option value="{{ $value->id }}" >{{ $value->type }}</option>
+                    <option value="{{ $value->id }}" >{{ $value->type }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -168,69 +168,71 @@
 
             @if (!($modalidade->mode_modalities->id == 1))
 
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
-                Selecione a categoria
-              </label>
-              <div class="relative">
-                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
-                  <option value="" selected  disabled>Selecione</option>
-                  @foreach ($modalidade->modalities_categorys as $category)
-                  <option value="{{ $category->id }}" >{{ $category->nome }}</option>
-                  @endforeach
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+              <div class="mb-6">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
+                  Selecione a categoria
+                </label>
+                <div class="relative">
+                  <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
+                    <option value="" selected  disabled>Selecione</option>
+                    @foreach ($modalidade->modalities_categorys as $category)
+                      <option value="{{ $category->id }}" >{{ $category->nome }}</option>
+                    @endforeach
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <img src="/images/svg/chevron-down.svg" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
             @endif
 
             @if (Count($modalidade->ranges) != 0)
-            
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_range_field">
-                Selecione a faixa
-              </label>
-              <div class="relative">
-                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="range" id="cadastro_range_field">
-                  <option value="" selected  disabled>Selecione</option>
-                  @foreach ($modalidade->ranges as $value)
-                  <option value="{{ $value->id }}" >{{ $value->range }}</option>
-                  @endforeach
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+
+              <div class="mb-6">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_range_field">
+                  Selecione a faixa
+                </label>
+                <div class="relative">
+                  <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="range" id="cadastro_range_field">
+                    <option value="" selected  disabled>Selecione</option>
+                    @foreach ($modalidade->ranges as $value)
+                      <option value="{{ $value->id }}" >{{ $value->range }}</option>
+                    @endforeach
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <img src="/images/svg/chevron-down.svg" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
             @endif
             @if($modalidade->is_pcd)
 
-            <div class="flex items-center gap-2 mb-3">
-              <input data-conditional="submit_button" type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
-              <label class="block pb-1 text-sm font-semibold text-brand-a1">
-                PCD
-              </label>
-            </div>
+              <div class="flex items-center gap-2 mb-3">
+                <input type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
+                <label class="block pb-1 text-sm font-semibold text-brand-a1">
+                  PCD
+                </label>
+              </div>
 
 
-            <div  id="sub_categorys_id" class="hidden mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_sub_category_field">
-                Sub categoria
-              </label>
-              <div class="relative">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sub_category" id="cadastro_sub_category_field">
-                  <option value="" selected  disabled>Selecione</option>
-                  @foreach ($sub_categorys as $value)
-                  <option value="{{ $value->id }}" >{{ $value->nome }}</option>
-                  @endforeach
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+              <div id="sub_categorys_id" class="hidden">
+                <div class="mb-6">
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_sub_category_field">
+                    Sub categoria
+                  </label>
+                  <div class="relative">
+                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sub_category" id="cadastro_sub_category_field">
+                      <option value="" selected disabled>Selecione</option>
+                      @foreach ($sub_categorys as $value)
+                        <option value="{{ $value->id }}">{{ $value->nome }}</option>
+                      @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <img src="/images/svg/chevron-down.svg" alt="" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
 
             @endif
@@ -249,13 +251,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    var sub_categorys = document.getElementById('sub_categorys_id');
-
-document.getElementById('pcd_modalities').addEventListener('click', (e)=>{
-    sub_categorys.classList.toggle('hidden');
-})
-  </script>
 
 @endsection
