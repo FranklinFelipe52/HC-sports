@@ -7,3 +7,15 @@ initHidePassword();
 initModal();
 initCpfMask();
 initCopyPasteButton()
+
+var sub_categorys = document.getElementById('sub_categorys_id');
+var select_sub_categorys = document.getElementById('select_sub_categorys_id')
+
+document.getElementById('pcd_modalities').addEventListener('click', (e)=>{
+    sub_categorys.classList.toggle('d-none');
+    if( sub_categorys.classList.contains("d-none")){
+        select_sub_categorys.setAttribute('required', false)
+    } else {
+        select_sub_categorys.setAttribute('required', true)
+    }
+})

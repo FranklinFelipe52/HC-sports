@@ -244,9 +244,7 @@
                       <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                         Detalhes
                       </button>
-                      <button onclick="window.open('/admin/registration/create/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                        Adicionar atleta
-                      </button>
+                      
                     </div>
                   </div>
                 @endforeach

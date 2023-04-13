@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\registration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('log_payments', function (Blueprint $table) {
-            $table->id();
-            $table->string('method');
-            $table->foreignIdFor(registration::class);
-            $table->timestamps();
+        Schema::table('log_payments', function (Blueprint $table) {
+            $table->dropColumn('method');
+            $table->string('status');
+            $table->string('id_transaction');
+            $table->string('id_payment');
+
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_payments');
+        //
     }
 };

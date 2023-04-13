@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\modalities_category;
 use App\Models\registration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,10 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('log_payments', function (Blueprint $table) {
+        Schema::create('natacao_categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('method');
             $table->foreignIdFor(registration::class);
+            $table->foreignIdFor(modalities_category::class);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_payments');
+        Schema::dropIfExists('natacao_categorias');
     }
 };

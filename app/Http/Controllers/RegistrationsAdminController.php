@@ -13,6 +13,7 @@ use App\Models\Modalities;
 use App\Models\modalities_category;
 use App\Models\Payment;
 use App\Models\registration;
+use App\Models\sub_categorys;
 use App\Models\type_payment;
 use App\Models\User;
 use Exception;
@@ -49,6 +50,10 @@ class RegistrationsAdminController extends Controller
                 if(!$request->uf){
                     return back();
                 }
+            }
+
+            if($request->pcd && !$request->sub_category){
+                return back();
             }
             if($modalidade->mode_modalities->id == 1){
                 $category = $modalidade->modalities_categorys()->first();
@@ -163,6 +168,8 @@ class RegistrationsAdminController extends Controller
             $registration = new registration;
             $payment = new Payment;
             $registration->user_id = $user->id;
+            $registration->is_pcd = $request->pcd ? 1 : 0;
+            $registration->sub_categorys_id = $request->sub_category ? $request->sub_category : null;
             $registration->modalities_id = $modalidade->id;
             $registration->modalities_category_id = $modalidade->mode_modalities->id == 1 ? $modalidade->modalities_categorys()->first()->id : $request->category;
             $registration->status_regitration_id = $request->payment == 1 ? 1 : 3;
@@ -215,6 +222,7 @@ class RegistrationsAdminController extends Controller
         try{
             $modalidade = Modalities::find($id);
             $type_payments = type_payment::all();
+            $sub_categorys = sub_categorys::all();
             
 
             if(!$modalidade){
@@ -224,7 +232,8 @@ class RegistrationsAdminController extends Controller
             return view('Admin.registrations_create', [
                 'modalidade' => $modalidade,
                 'type_payments' => $type_payments,
-                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get(),
+                'sub_categorys' => $sub_categorys
             ]);
 
         }catch(Exception $e){
