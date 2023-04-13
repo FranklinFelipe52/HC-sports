@@ -27,9 +27,9 @@ class UserController extends Controller
             }
 
             if($admin->rule->id == 1){
-                $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $atletas->paginate(8);
+                $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $atletas->paginate(10);
             } else {
-                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(8);
+                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(10);
             }
             
             return view('Admin.atletas', [
