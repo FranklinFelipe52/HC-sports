@@ -1,26 +1,14 @@
 [
     {
-        "status": "Aguardando pagamento",
-        "code": "0"
+        "status": "Aprovado"
+        
     },
     {
-        "status": "pagamento em processamento",
-        "code": "1"
+        "status": "Rejeitado"
+    
     },
     {
-        "status": "Em análise",
-        "code": "2"
-    },
-    {
-        "status": "Pago",
-        "code": "3"
-    },
-    {
-        "status": "Cancelada",
-        "code": "7"
-    },
-    {
-        "status": "Devolvida",
-        "code": "6"
+        "status": "Pendente"
+        
     }
 ]

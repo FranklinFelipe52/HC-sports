@@ -44,8 +44,8 @@ class ConfirmRegistrationController extends Controller
             $user = User::where('email', $decoded->email)->first();
             $user->nome_completo = $request->nome;
             $user->is_pcd = $request->pcd == null ? false : true;
-            $user->addres->cidade = $request->city;
-            $user->addres->save();
+            $user->address->cidade = $request->city;
+            $user->address->save();
             $user->password = Hash::make($request->password);
             $user->registered = true;
             $user->save();
@@ -53,7 +53,7 @@ class ConfirmRegistrationController extends Controller
             $request->session()->put('user', $user);
             return redirect('/dashboard');
         } catch(Exception $e){
-            return redirect('/login');
+            return $e;
         }
     }
 }

@@ -161,6 +161,7 @@ class RegistrationsAdminController extends Controller
                 $addres->save();
             }
             $registration = new registration;
+            $payment = new Payment;
             $registration->user_id = $user->id;
             $registration->modalities_id = $modalidade->id;
             $registration->modalities_category_id = $modalidade->mode_modalities->id == 1 ? $modalidade->modalities_categorys()->first()->id : $request->category;
@@ -170,8 +171,9 @@ class RegistrationsAdminController extends Controller
                 $registration->range_id = $request->range;
             }
             $registration->save();
-
-            
+            $payment->registration_id = $registration->id;
+            $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
+            $payment->save();
 
         $payload = [
             "email" => $user->email,

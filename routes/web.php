@@ -64,12 +64,8 @@ Route::get('/profile', [UserController::class, 'profile'])->middleware('AuthUser
 Route::get('/registration/proof/{id}', [RegistrationsUserController::class, 'show'])->middleware('AuthUsers');
 
 
-Route::get('/checkout/{id}', [CheckoutController::class, 'show'])->middleware('AuthUsers');
-Route::get('/card/{id}', [CheckoutController::class, 'card'])->middleware('AuthUsers');
-Route::post('/card/{id}', [CheckoutController::class, 'card_store'])->middleware('AuthUsers');
-Route::get('/pix/{id}', [CheckoutController::class, 'pix'])->middleware('AuthUsers');
-Route::get('/Qrcode/pix', [CheckoutController::class, 'pix_view'])->name('pix')->middleware('AuthUsers');
-
+Route::get('/registration/checkout/{id}', [CheckoutController::class, 'checkout'])->middleware('AuthUsers');
+Route::get('/notification_payment', [CheckoutController::class, 'notification'])->middleware('AuthUsers');
 
 Route::redirect('/admin', '/admin/login');
 Route::view('/admin/login', 'Admin/login')->name('GetLoginAdmin')->middleware('redirect_admin_login');

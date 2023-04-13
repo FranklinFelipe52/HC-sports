@@ -1,3 +1,33 @@
+@php
+
+            require base_path('vendor/autoload.php');
+            MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+
+            $preference = new MercadoPago\Preference();
+
+            // Cria um item na preferência
+            $item = new MercadoPago\Item();
+            $item->title = $registration->modalities->nome;
+            $item->quantity = 1;
+            $item->unit_price = 10;
+            $preference->items = array($item);
+            $preference->back_urls = array(
+                "success" => config('services.mercadopago.url_base')."/notification_payment",
+                "failure" => config('services.mercadopago.url_base')."/notification_payment",
+                "pending" => config('services.mercadopago.url_base')."/notification_payment"
+            );
+            
+            $preference->payment_methods = array(
+                "excluded_payment_types" => array(
+                  array("id" => "ticket")
+                ),
+                "installments" => 2
+              );
+            $preference->external_reference = $registration->id;
+            $preference->save();
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,7 +35,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atleta - Comprovante de inscrição</title>
+  <title>Atleta - Pagamento</title>
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,40 +48,7 @@
 
 <body class="h-screen">
 
-  <!-- modal -->
-  <div id="modal" class="hidden">
-    <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-      <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[532px]">
-        <!-- modal header -->
-        <div>
-          <p class="text-gray-1 text-lg md:text-xl font-semibold">
-            Tem certeza de que deseja excluir esta inscição?
-          </p>
-        </div>
-
-        <hr class="mt-4 mb-3.5">
-
-        <!-- modal body -->
-        <div>
-          <p class="text-gray-1 text-base">
-            Esta ação é destrutiva e apagará todos os dados desta inscrição.
-          </p>
-        </div>
-
-        <!-- modal footer - actions -->
-        <div class="flex justify-end gap-4 flex-wrap mt-10">
-          <a role="button" href="#" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-            Excluir Inscrição
-          </a>
-          <button data-modalId="modal" data-action="close" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-black hover:ring-2 hover:ring-black hover:ring-opacity-50 bg-black transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Cancelar
-            </p>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -75,13 +72,16 @@
             </div>
             <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-              Comprovante de inscrição
+              Pagamento
             </div>
           </nav>
           <div class="flex gap-4 items-center flex-wrap">
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
               {{ $registration->user->nome_completo }}
             </h1>
+            <h2 class="text-lg text-gray-1 font-poppins font-semibold">
+              {{ $valor }}
+            </h2>
             <div class="@if ($registration->status_regitration->id == 1) bg-feedback-fill-green @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple @endif     py-1 px-1.5 rounded-full inline-block w-fit h-fit">
               <p class="@if ($registration->status_regitration->id == 1) text-feedback-green-1 @elseif ($registration->status_regitration->id == 3) text-feedback-purple @endif text-xs">
                 {{ $registration->status_regitration->status }}
@@ -154,34 +154,9 @@
                 </p>
               </div>
             </div>
-            <!--<div class="grid grid-cols-2 gap-2 sm:gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-sm text-gray-1 font-semibold">
-                  Comprovante de pagamento
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <button class="inline-flex items-center gap-3 bg-fill-base p-2 pr-8 rounded-lg hover:bg-gray-6 transition">
-                  <div class="w-[30px] h-[30px]">
-                    <img src="/images/svg/link.svg" class="h-full w-full object-cover" alt="">
-                  </div>
-                  <p class="text-sm text-gray-1">
-                    comprovante-inscrição.pdf
-                  </p>
-                </button>
-              </div>
-            </div>-->
-
-
           </div>
-          <div class="flex flex-wrap justify-end gap-6">
-            @if ($registration->status_regitration->id == 3)
-              <button disable class="h-fit flex items-center justify-center gap-4  px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Realizar pagamento
-                </p>
-              </button>
-            @endif
+          <div class="flex flex-wrap justify-end">
+          <div id="wallet_container"></div>
           </div>
         </div>
       </div>
@@ -190,7 +165,25 @@
   </div>
 
   <!-- js -->
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <script>
+    const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
+
+      mp.bricks().create("wallet", "wallet_container", {
+    initialization: {
+        preferenceId: "{{$preference->id}}",
+        redirectMode: "modal"
+    },
+    customization: {
+      texts: {
+          action: 'pay',
+          valueProp: 'security_details',
+      },
+ },
+  });
+  </script>
   <script type="module" src="/frontend/dist/js/index.js"></script>
+  
 </body>
 
 </html>

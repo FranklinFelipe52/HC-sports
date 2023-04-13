@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\status_payment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class StatusPaymentSeeder extends Seeder
 {
@@ -14,13 +16,12 @@ class StatusPaymentSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get(database_path('json/Range_modality.json'));
-        $range_categorys = json_decode($json);
+        $json = File::get(database_path('json/status_payment.json'));
+        $status_payments = json_decode($json);
     
-        foreach ($range_categorys as $value) {
-          RangeModality::create([
-            "modalities_id" => $value->modalities_id,
-            "range_id" => $value->range_id
+        foreach ($status_payments as $value) {
+          status_payment::create([
+            "status" => $value->status
           ]);
         }
     }

@@ -30,6 +30,10 @@ class Checkout
         
     }
 
+    public function pay_cad(){
+        
+    }
+
     public function pay(){
         try{
             $user = $this->request->session()->get('user');

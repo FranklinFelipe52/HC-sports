@@ -16,7 +16,10 @@ return new class extends Migration
     {
         Schema::create('log_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('method');
+            $table->string('status');
+            $table->string('id_transaction');
+            $table->string('id_payment');
+
             $table->foreignIdFor(registration::class);
             $table->timestamps();
         });

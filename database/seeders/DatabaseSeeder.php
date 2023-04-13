@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             TypePaymentSeeder::class,
             ModalitiesSeeder::class,
             ModalitiesCategorySeeder::class,
-            RangeModalitySeeder::class
+            RangeModalitySeeder::class,
+            StatusPaymentSeeder::class
         ]);
     }
 }
