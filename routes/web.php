@@ -65,7 +65,8 @@ Route::get('/registration/proof/{id}', [RegistrationsUserController::class, 'sho
 
 
 Route::get('/registration/checkout/{id}', [CheckoutController::class, 'checkout'])->middleware('AuthUsers');
-Route::get('/notification_payment', [CheckoutController::class, 'notification'])->middleware('AuthUsers');
+Route::get('/notification_payment', [CheckoutController::class, 'notification']);
+Route::post('/notification_payment_webhook', [CheckoutController::class, 'notification_webhhook']);
 
 Route::redirect('/admin', '/admin/login');
 Route::view('/admin/login', 'Admin/login')->name('GetLoginAdmin')->middleware('redirect_admin_login');

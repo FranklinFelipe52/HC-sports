@@ -9,8 +9,9 @@
             $item = new MercadoPago\Item();
             $item->title = $registration->modalities->nome;
             $item->quantity = 1;
-            $item->unit_price = 10;
+            $item->unit_price = $valor;
             $preference->items = array($item);
+            $preference->notification_url = config('services.mercadopago.url_base').'/notification_payment_webhook';
             $preference->back_urls = array(
                 "success" => config('services.mercadopago.url_base')."/notification_payment",
                 "failure" => config('services.mercadopago.url_base')."/notification_payment",

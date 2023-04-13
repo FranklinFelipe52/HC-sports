@@ -121,9 +121,7 @@ class Checkout
             $log->save();
             
 
-            $response = Http::withHeaders([
-                'Authorization' => "Bearer ".env('PAGSEGURO_SANDBOX_TOKEN')
-            ])->post($this->url, $data);
+            
             error_log($response);
             return $response;
 
