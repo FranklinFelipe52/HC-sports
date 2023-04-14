@@ -16,7 +16,6 @@ class CheckoutController extends Controller
     public function checkout(Request $request, $id){
 
         try{
-
         
         $user = User::find($request->session()->get('user')->id);
         $registration = registration::find($id);
@@ -58,7 +57,7 @@ class CheckoutController extends Controller
         ]);
 
         } catch(Exception $e){
-            return $e;
+            return back();
         }
     }
 

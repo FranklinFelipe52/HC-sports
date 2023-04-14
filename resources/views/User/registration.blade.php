@@ -1,6 +1,6 @@
 @php
             
-            require base_path('../vendor/autoload.php');
+            require base_path('vendor/autoload.php');
             MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
 
             $preference = new MercadoPago\Preference();
