@@ -5,7 +5,12 @@
 @section('homeClass', 'active')
 
 @section('content')
+@php
 
+echo $_SERVER['DOCUMENT_ROOT'];
+echo getcwd();
+
+@endphp
   @foreach ($registrations as $registration)
     {{-- modal registration --}}
     <div id="modal{{ $registration->id }}" class="hidden">

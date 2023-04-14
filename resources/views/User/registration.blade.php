@@ -1,5 +1,5 @@
 @php
-            echo getcwd();
+            
             require base_path('vendor/autoload.php');
             MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
 
