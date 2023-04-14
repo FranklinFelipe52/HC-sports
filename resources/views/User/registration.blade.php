@@ -1,7 +1,7 @@
 @php
             
             require base_path('vendor/autoload.php');
-            MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+            MercadoPago\SDK::setAccessToken("APP_USR-4664470657339618-041316-ce5cb0343af1cd39c613d512386b32c9-114618113");
 
             $preference = new MercadoPago\Preference();
 
@@ -11,7 +11,6 @@
             $item->quantity = 1;
             $item->unit_price = 1;
             $preference->items = array($item);
-            $preference->notification_url = config('services.mercadopago.url_base').'/notification_payment_webhook';
             $preference->back_urls = array(
                 "success" => config('services.mercadopago.url_base')."/notification_payment",
                 "failure" => config('services.mercadopago.url_base')."/notification_payment",
@@ -168,7 +167,7 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
+    const mp = new MercadoPago("APP_USR-22e902a9-2983-4bcb-b368-9cd34b8df501");
 
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {
