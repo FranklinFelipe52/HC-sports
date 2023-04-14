@@ -11,7 +11,7 @@
     <ul class="flex justify-around sm:flex-col sm:gap-5">
 
       <li class="group @if ($type == 1) active @endif">
-        <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+        <a href="/admin/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -23,7 +23,7 @@
       </li>
 
       <li class="group @if ($type == 3) active @endif">
-        <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+        <a href="/admin/modalidades" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -34,7 +34,7 @@
         </a>
       </li>
       <li class="group @if ($type == 4) active @endif">
-        <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+        <a href="/admin/users" title="Atletas" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
             <img src="/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
@@ -55,10 +55,11 @@
           </p>
         </a>
       </li>
-      <li class="group sm:hidden @yield('perfilClass')">
-        <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+      <li class="group sm:hidden @if ($type == 5) active @endif">
+        <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+            <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+            <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
           </div>
         </a>
       </li>
@@ -76,8 +77,8 @@
     </p>
   </a>
 
-  <div class="group hidden sm:flex items-end justify-center lg:justify-start grow">
-    <a href="/admin/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition px-2">
+  <div class="group @if ($type == 5) active @endif hidden sm:flex items-end justify-center lg:justify-start grow">
+    <a href="/admin/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 hover:bg-gray-6 rounded-lg transition px-2">
       <div class="w-[32px] h-[32px] shrink-0">
         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
         <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
