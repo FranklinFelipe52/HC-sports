@@ -144,7 +144,7 @@
                 </div>
               </div>
             </div>
-
+            @if(Session('admin')->rule->id == 1)
             <div class="grow mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
                 Selecione a UF
@@ -166,6 +166,8 @@
                 <p class="text-danger">{{ $message }}</p>
               @enderror
             </div>
+
+            @endif
 
             <div class="mb-6">
               <p class="text-sm font-semibold text-gray-1 mb-4">
