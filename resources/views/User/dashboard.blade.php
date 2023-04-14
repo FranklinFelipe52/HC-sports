@@ -134,8 +134,8 @@
                           <p class="text-base font-semibold text-gray-1">
                             {{ $registration->modalities->nome }}
                           </p>
-                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold">
+                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                            <p class="text-white text-[0.5rem] font-bold text-center">
                               {{ $registration->status_regitration->status }}
                             </p>
                           </div>
