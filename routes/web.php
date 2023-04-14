@@ -71,6 +71,7 @@ Route::post('/notification_payment_webhook', [CheckoutController::class, 'notifi
 Route::redirect('/admin', '/admin/login');
 Route::view('/admin/login', 'Admin/login')->name('GetLoginAdmin')->middleware('redirect_admin_login');
 Route::post('/admin/login', [AdminController::class, 'login']);
+Route::get('/admin/profile', [AdminController::class, 'profile'])->middleware('AuthAdmins');
 Route::get('/admin/logout', [AdminController::class, 'logout']);
 Route::get('/admin/users', [UserController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/users/{id}', [UserController::class, 'single'])->middleware('AuthAdmins');

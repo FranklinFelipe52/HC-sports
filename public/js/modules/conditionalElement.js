@@ -11,11 +11,11 @@ export default function initConditionalElement() {
         if (currentTarget.checked) {
             sub_category_box.classList.remove("hidden");
             sub_categorys_select.required = true;
-            console.log(sub_categorys_select.required);
+
+            sub_categorys_select.scrollIntoView({ behavior: "smooth" });
         } else {
             sub_category_box.classList.add("hidden");
             sub_categorys_select.required = false;
-            console.log(sub_categorys_select.required);
         }
     }
 }

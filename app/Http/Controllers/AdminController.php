@@ -26,8 +26,8 @@ class AdminController extends Controller
                 $uf = isset($_GET["uf"]) ? $_GET["uf"] : '';
                 error_log($uf);
 
-                
-            
+
+
                 $administradores_aux = DB::table('admins')
             ->join('federative_units', 'federative_units.id', 'admins.federative_unit_id')
             ->join('rules', 'admins.rule_id', 'rules.id')
@@ -41,11 +41,11 @@ class AdminController extends Controller
            if($admin->rule->id == 1 ){
 
             $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
-            
+
            } else {
             $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->paginate(10);
            }
-           
+
             return view('Admin.administradores', [
                 'administradores' => $administradores,
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
@@ -61,7 +61,7 @@ class AdminController extends Controller
                 return back();
             }
             if($request->session()->get('admin')->rule->id == 1){
-                $rules = Rule::where('id', '!=', 3)->get();    
+                $rules = Rule::where('id', '!=', 3)->get();
             } else {
                 $rules = Rule::where('id', 3)->get();
             }
@@ -85,7 +85,7 @@ class AdminController extends Controller
             $admin->password = Hash::make($password);
             $admin->federative_unit_id = $federative_unit;
             $admin->rule_id = $request->rule;
-            $admin->save();   
+            $admin->save();
                 Mail::to($request->email)->send(new ConfirmAdm($admin, $password));
                 return redirect('/admin/administradores');
         } catch (Exception $e){
@@ -93,7 +93,7 @@ class AdminController extends Controller
         }
     }
     public function login(LoginRequest $request){
-        
+
         $admin = Admin::where('email', $request->email)->first();
 
         if(!$admin){
@@ -111,7 +111,7 @@ class AdminController extends Controller
     }
 
     public function login_create(){
-        
+
         try{
             return view('Admin.login');
 
@@ -126,5 +126,14 @@ class AdminController extends Controller
         }
 
         return redirect('/admin/login');
+    }
+
+    public function profile (Request $request){
+        try{
+            return view('Admin.profile');
+
+        } catch (Exception $e){
+            return back();
+        }
     }
 }
