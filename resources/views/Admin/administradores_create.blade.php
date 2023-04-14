@@ -49,7 +49,7 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
                       CPF
                     </label>
-                    <input data-mask='cpf' required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+                    <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_criar_administrador_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
 
                     @error('cpf')
                       <div class="absolute bg-white top-[50%] right-3">
@@ -154,6 +154,15 @@
 
   <!-- js -->
   <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    new Cleave('#cpf_criar_administrador_form', {
+      blocks: [3, 3, 3, 2],
+      delimiters: ['.', '.', '-'],
+      numericOnly: true,
+    });
+  </script>
   </body>
 
   </html>
