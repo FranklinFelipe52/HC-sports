@@ -228,6 +228,17 @@ class RegistrationsAdminController extends Controller
             if(!$modalidade){
                 return back();
             }
+            if($modalidade->id == 9 || $modalidade->id == 10 ){
+                if(!isset($_GET['gender'])){
+                    error_log('entrou aqui 1');
+                    return back();
+                } else {
+                    if(!($_GET['gender'] == "M" || $_GET['gender'] == "F")){
+                        error_log('entrou aqui 2');
+                        return back();
+                    }
+                }
+            }
 
             return view('Admin.registrations_create', [
                 'modalidade' => $modalidade,

@@ -100,7 +100,7 @@ class CheckoutController extends Controller
 
     public function notification_webhook(Request $request){
         
-        $payment_id = $request['eayment_id'];
+        $payment_id = $request['payment_id'];
         $merchant_order_id = $request->merchant_order_id;
         $external_reference = $request->external_reference;
 

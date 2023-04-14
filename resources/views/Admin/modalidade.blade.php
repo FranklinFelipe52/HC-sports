@@ -73,11 +73,32 @@
               </div>
 
             </div>
+            
+            @if ($modalidade->id == 9 || $modalidade->id == 10 )
+            <div class="flex flex-col gap-3">
+              <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <p class="text-white text-sm font-bold font-poppins">
+                  Adicionar atleta masculino
+                </p>
+              </button>
+              <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <p class="text-white text-sm font-bold font-poppins">
+                  Adicionar atleta Feminino
+                </p>
+              </button>
+            </div>
+            @else
             <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
               <p class="text-white text-sm font-bold font-poppins">
                 Adicionar atleta
               </p>
             </button>
+
+
+            @endif
+
+            
+            
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden">
             <div class="border border-b-0 border-gray-5 p-4 pb-6 rounded-t-lg flex">
