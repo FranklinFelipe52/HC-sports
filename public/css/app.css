@@ -1392,6 +1392,11 @@ video {
   background-color: rgb(33 150 83 / var(--tw-bg-opacity));
 }
 
+.bg-feedback-purple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 107 217 / var(--tw-bg-opacity));
+}
+
 .bg-fill-base {
   --tw-bg-opacity: 1;
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
