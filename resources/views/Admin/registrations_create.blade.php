@@ -54,7 +54,7 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
                       CPF
                     </label>
-                    <input data-mask='cpf' required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+                    <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
 
                     @error('cpf')
                       <div class="absolute bg-white top-[50%] right-3">
@@ -91,9 +91,9 @@
               </label>
               <div class="relative">
                 <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="payment" id="cadastro_payment_field">
-                  <option value="" selected  disabled>Selecione</option>
+                  <option value="" selected disabled>Selecione</option>
                   @foreach ($type_payments as $value)
-                    <option value="{{ $value->id }}" >{{ $value->type }}</option>
+                    <option value="{{ $value->id }}">{{ $value->type }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -121,24 +121,24 @@
                 Gênero
               </label>
               <div class="relative">
-                @if(request()->get('gender'))
-                @if(request()->get('gender') == "M")
-                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option value="M" selected>Masculino</option>
-                </select>
-                @elseif(request()->get('gender') == "F")
-                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option value="F" selected>Feminino</option>
-                </select>
-                @endif
+                @if (request()->get('gender'))
+                  @if (request()->get('gender') == 'M')
+                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                      <option value="M" selected>Masculino</option>
+                    </select>
+                  @elseif(request()->get('gender') == 'F')
+                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                      <option value="F" selected>Feminino</option>
+                    </select>
+                  @endif
                 @else
-                <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
-                  <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
-                  <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
-                </select>
+                  <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                    <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
+                    <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
+                    <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
+                  </select>
                 @endif
-                
+
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/svg/chevron-down.svg" alt="" />
                 </div>
@@ -183,42 +183,39 @@
             @if(request()->get('gender'))
 
 
-              <div class="mb-6">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
-                  Selecione a categoria
-                </label>
-                <div class="relative">
-                  <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
-                    <option value="" selected  disabled>Selecione</option>
-                    @foreach ($modalidade->modalities_categorys()->where('per_gender', request()->get('gender'))->get() as $category)
-                      <option value="{{ $category->id }}" >{{ $category->nome }}</option>
-                    @endforeach
-                  </select>
-                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                <div class="mb-6">
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
+                    Selecione a categoria
+                  </label>
+                  <div class="relative">
+                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
+                      <option value="" selected disabled>Selecione</option>
+                      @foreach ($modalidade->modalities_categorys()->where('per_gender', request()->get('gender'))->get() as $category)
+                        <option value="{{ $category->id }}">{{ $category->nome }}</option>
+                      @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <img src="/images/svg/chevron-down.svg" alt="" />
+                    </div>
                   </div>
                 </div>
-              </div>
-
-
-
               @else
-              <div class="mb-6">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
-                  Selecione a categoria
-                </label>
-                <div class="relative">
-                  <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
-                    <option value="" selected  disabled>Selecione</option>
-                    @foreach ($modalidade->modalities_categorys as $category)
-                      <option value="{{ $category->id }}" >{{ $category->nome }}</option>
-                    @endforeach
-                  </select>
-                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                <div class="mb-6">
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_category_field">
+                    Selecione a categoria
+                  </label>
+                  <div class="relative">
+                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="category" id="cadastro_category_field">
+                      <option value="" selected disabled>Selecione</option>
+                      @foreach ($modalidade->modalities_categorys as $category)
+                        <option value="{{ $category->id }}">{{ $category->nome }}</option>
+                      @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <img src="/images/svg/chevron-down.svg" alt="" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
               @endif
               @elseif($modalidade->mode_modalities->id == 2)
@@ -246,9 +243,9 @@
                 </label>
                 <div class="relative">
                   <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="range" id="cadastro_range_field">
-                    <option value="" selected  disabled>Selecione</option>
+                    <option value="" selected disabled>Selecione</option>
                     @foreach ($modalidade->ranges as $value)
-                      <option value="{{ $value->id }}" >{{ $value->range }}</option>
+                      <option value="{{ $value->id }}">{{ $value->range }}</option>
                     @endforeach
                   </select>
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -257,7 +254,7 @@
                 </div>
               </div>
             @endif
-            @if($modalidade->is_pcd)
+            @if ($modalidade->is_pcd)
 
               <div class="flex items-center gap-2 mb-3">
                 <input type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
@@ -303,5 +300,14 @@
       </div>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    new Cleave('#cpf_adicionar_atleta_form', {
+      blocks: [3, 3, 3, 2],
+      delimiters: ['.', '.', '-'],
+      numericOnly: true,
+    });
+  </script>
 
 @endsection

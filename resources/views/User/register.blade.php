@@ -45,16 +45,16 @@
       </div>
     </div>
     @if (session('erro'))
-          <div class="group error w-full">
-            <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
-              <div class="grow">
-                <p class="text-sm">
-                  {{ session('erro') }}
-                </p>
-              </div>
-            </div>
+      <div class="group error w-full">
+        <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
+          <div class="grow">
+            <p class="text-sm">
+              {{ session('erro') }}
+            </p>
           </div>
-        @endif
+        </div>
+      </div>
+    @endif
     <div class="bg-white h-full lg:col-span-4 px-8 py-20">
       <div class="mx-auto w-full max-w-[327px]">
         <form method="post" id="cadastro_formulario">
@@ -68,7 +68,7 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cpf_field">
                 CPF
               </label>
-              <input data-mask="cpf" placeholder="Ex: ###.###.###-##" disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
+              <input placeholder="Ex: ###.###.###-##" disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_nome_completo_field">
@@ -197,6 +197,14 @@
   </div>
 
   <!-- js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    new Cleave('#cadastro_cpf_field', {
+      blocks: [3, 3, 3, 2],
+      delimiters: ['.', '.', '-'],
+      numericOnly: true,
+    });
+  </script>
   <script type="module" src="/frontend/dist/js/index.js"></script>
 </body>
 
