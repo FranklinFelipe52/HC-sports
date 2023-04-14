@@ -1,7 +1,7 @@
 @php
             
             require base_path('vendor/autoload.php');
-            MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+            MercadoPago\SDK::setAccessToken("APP_USR-3741638005043516-041408-12465f3a822c9a9d187aeebbad625600-1352300769");
 
             $preference = new MercadoPago\Preference();
 
@@ -167,7 +167,7 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
+    const mp = new MercadoPago("APP_USR-5fc9d7da-cfb0-4053-972c-9fdcc1ba6935");
 
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {
