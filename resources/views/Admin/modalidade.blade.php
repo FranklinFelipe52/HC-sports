@@ -67,7 +67,13 @@
                   </p>
 
                   <p class="text-sm text-gray-2 font-normal mb-1">
-                    {{ Count($users) }} atletas
+                    @if(Count($registrations) > 1)
+                    {{ Count($registrations) }} inscrições
+
+                    @else
+                    {{ Count($registrations) }} inscrição
+                    @enderror
+                    
                   </p>
                 </div>
               </div>
@@ -127,25 +133,34 @@
             <div class="overflow-auto pb-8">
               <div class="border border-t-0 border-gray-5 rounded-b-lg px-4 pb-6 space-y-6">
                 <!-- inscrição -->
-                @if (Count($users) != 0)
-                  @foreach ($users as $user)
+                @if (Count($registrations) != 0)
+                  @foreach ($registrations as $registration)
                     <div class="flex gap-2 items-start pb-6 border-b border-gray-200 w-full last:border-b-0 last:pb-0">
                       <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
                         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                       </div>
                       <div class="grow space-y-1">
                         <p class="text-base text-gray-1 font-semibold">
-                          @if ($user->nome_completo)
-                            {{ $user->nome_completo }}
+                          @if ($registration->user->nome_completo)
+                            {{ $registration->user->nome_completo }}
                           @else
-                            {{ $user->email }}
+                            {{ $registration->user->email }}
                           @endif
                         </p>
                         @if (!($modalidade->mode_modalities->id == 1))
                           <p class="text-xs text-gray-1 font-normal">
                             Categorias:
-                            @foreach ($user->registrations()->where('modalities_id', $modalidade->id)->get() as $registration_category)
-                              {{ $registration_category->modalities_category->nome }};
+                            @foreach ($registrations as $registration)
+                              @if ($modalidade->mode_modalities->id == 2)
+
+                              @foreach ($registration->modalities_categorys as $category)
+                              {{ $category->nome }};
+                              @endforeach
+
+                              @else
+                              {{ $registration->modalities_category->nome }};
+                              @endif
+                              
                             @endforeach
                           </p>
                         @endif

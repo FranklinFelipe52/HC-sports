@@ -70,7 +70,22 @@
 
                       </div>
                       <p class="text-gray-1 text-xs">
+                        @if (Session('admin')->rule->id == 1)
                         {{ Count($modalidade->registrations) }} inscrições
+                        @else
+                        <?php 
+                        $users_registrations = 0;
+
+                        foreach ($modalidade->registrations as $registration) {
+                                if ($registration->user->adress->federative_unit_id == Session('admin')->federative_unit_id ) {
+                                  $users_registrations++;
+                                }  
+                        }
+                        
+                        ?>
+                        {{ $users_registrations }} inscrições
+                        @endif
+                        
                       </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">

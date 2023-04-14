@@ -11,7 +11,7 @@ class AdminDashboardController extends Controller
 {
     public function show(Request $request){
         try{
-            $modalidades = Modalities::all();
+            $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
             $atualizacoes_aux = DB::table('users')
             ->join('addresses', 'addresses.user_id', 'users.id')

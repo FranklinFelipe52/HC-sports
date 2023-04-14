@@ -19,33 +19,20 @@ class ModalidadeAdminController extends Controller
             $modalidade = Modalities::find($id);
             if($modalidade){
                 if(!($admin->rule->id == 1)){
-                    $users = [];
                     $registrations = [];
 
-                    foreach ($modalidade->registrations as $registration) {
-                        if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
-                            array_push($registrations, $registration);
-                        }
-                    }
-
-                    foreach ( $registrations as $registration) {
-                        if(!in_array($registration->user, $users)){
-                            array_push($users, $registration->user);
-                        }
-                    }
+                        foreach ($modalidade->registrations as $registration) {
+                                if ($registration->user->adress->federative_unit_id == Session('admin')->federative_unit_id ) {
+                                  array_push($registrations, $registration);
+                                } 
+                            } 
                 } else {
-                    $users = [];
-                    $registrations = $modalidade->registrations;
-                    foreach ( $registrations as $registration) {
-                        if(!in_array($registration->user, $users)){
-                            array_push($users, $registration->user);
-                        }
-                    }
+                   $registrations = $modalidade->registrations;
                 }
                
                 return view('Admin.modalidade', [
                     'modalidade'  => $modalidade,
-                    'users' => $users,
+                    'registrations' => $registrations
                  ]);
                  
             } 
@@ -57,50 +44,16 @@ class ModalidadeAdminController extends Controller
 
     public function show(Request $request){
         try{
-            $modalidades = [];
+            $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
-            foreach (Modalities::all() as $modalidade) {
-                if(!($admin->rule->id == 1)){
-                    $users = [];
-                    $registrations = [];
-
-                    foreach ($modalidade->registrations as $registration) {
-                        if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
-                            array_push($registrations, $registration);
-                        }
-                    }
-
-                    foreach ( $registrations as $registration) {
-                        if(!in_array($registration->user, $users)){
-                            array_push($users, $registration->user);
-                        }
-                    }
-
-                    array_push($modalidades, [
-                        'modalidade' => $modalidade,
-                        'users' => $users
-                    ]);
-                } else {
-                    $users = [];
-                    $registrations = $modalidade->registrations;
-                    foreach ( $registrations as $registration) {
-                        if(!in_array($registration->user, $users)){
-                            array_push($users, $registration->user);
-                        }
-                    }
-                    array_push($modalidades, [
-                        'modalidade' => $modalidade,
-                        'users' => $users
-                    ]);
-                }
-            }
+            
 
             return view('Admin.modalidades', [
                'modalidades'  => $modalidades,
             ]);
 
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 

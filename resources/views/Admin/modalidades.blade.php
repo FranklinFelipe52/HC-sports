@@ -90,29 +90,43 @@
                 <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
                   <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center ">
                     <div class="h-[24px] w-[24px]">
-                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade['modalidade']->id }}.svg" alt="" class="h-full w-full object-cover">
+                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" alt="" class="h-full w-full object-cover">
                     </div>
                   </div>
                   <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
                     <p class="text-sm font-semibold text-gray-600">
-                      {{ $modalidade['modalidade']->nome }}
+                      {{ $modalidade->nome }}
                     </p>
                   </div>
                   <div role="cell" class="col-span-2 lg:col-span-3 py-3 flex items-center">
-                    <div class="@if ($modalidade['modalidade']->modalities_type->id == 1) bg-feedback-fill-blue  @else bg-feedback-fill-purple @endif py-1 px-1.5 rounded-full inline-block w-fit h-fit">
+                    <div class="@if ($modalidade->modalities_type->id == 1) bg-feedback-fill-blue  @else bg-feedback-fill-purple @endif py-1 px-1.5 rounded-full inline-block w-fit h-fit">
 
-                      <p class=" @if ($modalidade['modalidade']->modalities_type->id == 1) text-brand-a1  @else text-feedback-purple @endif     text-sm">
-                        {{ $modalidade['modalidade']->modalities_type->type }}
+                      <p class=" @if ($modalidade->modalities_type->id == 1) text-brand-a1  @else text-feedback-purple @endif     text-sm">
+                        {{ $modalidade->modalities_type->type }}
                       </p>
                     </div>
                   </div>
                   <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
                     <p class="text-sm font-semibold text-gray-600">
-                      {{ Count($modalidade['users']) }} participantes
+                      @if (Session('admin')->rule->id == 1)
+                      {{ Count($modalidade->registrations) }} inscrições
+                      @else
+                      <?php 
+                      $users_registrations = 0;
+
+                      foreach ($modalidade->registrations as $registration) {
+                              if ($registration->user->adress->federative_unit_id == Session('admin')->federative_unit_id ) {
+                                $users_registrations++;
+                              }  
+                      }
+                      
+                      ?>
+                      {{ $users_registrations }} inscrições
+                      @endif
                     </p>
                   </div>
                   <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
-                    <a href="/admin/modalidade/{{ $modalidade['modalidade']->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                    <a href="/admin/modalidade/{{ $modalidade->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                       <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
                     </a>
                   </div>
