@@ -19,6 +19,9 @@ class registration extends Model
     public function modalities_category(){
         return $this->belongsTo(modalities_category::class);
     }
+    public function modalities_categorys(){
+        return $this->belongsToMany(modalities_category::class, 'natacao_categorias', 'registration_id', 'modalities_category_id');
+    }
 
     public function status_regitration(){
         return $this->belongsTo(status_regitration::class);

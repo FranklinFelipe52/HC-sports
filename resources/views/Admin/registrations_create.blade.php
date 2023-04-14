@@ -179,7 +179,7 @@
               </ul>
             </div>
 
-            @if (!($modalidade->mode_modalities->id == 1))
+            @if ($modalidade->mode_modalities->id == 3)
             @if(request()->get('gender'))
 
 
@@ -221,6 +221,21 @@
               </div>
 
               @endif
+              @elseif($modalidade->mode_modalities->id == 2)
+              <div>
+                @foreach ($modalidade->modalities_categorys as $category)
+                <div class="flex items-center gap-2 mb-3">
+                  <input class="checkbox" type="checkbox" value="{{ $category->id }}" name="category[]" id="check-{{ $category->id }}">
+                  <label class="block pb-1 text-sm font-semibold text-brand-a1" for="check-{{ $category->id }}">{{ $category->nome }}</label>
+                </div>
+                @endforeach
+              </div>
+
+
+
+
+
+
             @endif
 
             @if (Count($modalidade->ranges) != 0)

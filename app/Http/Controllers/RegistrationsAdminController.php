@@ -42,6 +42,7 @@ class RegistrationsAdminController extends Controller
             $modalidade = Modalities::find($id);
             $admin = $request->session()->get('admin');
             $user = User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->first();
+            $category_id = null;
             
             if(!$modalidade){
                 return back();
@@ -51,12 +52,10 @@ class RegistrationsAdminController extends Controller
                     return back();
                 }
             }
-
-            if($request->pcd && !$request->sub_category){
-                return back();
-            }
             if($modalidade->mode_modalities->id == 1){
+                
                 $category = $modalidade->modalities_categorys()->first();
+                $category_id = $category->id;
                 
                 if($user){
                     if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
@@ -84,38 +83,45 @@ class RegistrationsAdminController extends Controller
                 }
                  
             }elseif($modalidade->mode_modalities->id == 2){
-                $category = modalities_category::find($request->category);
-                
-                if(!$category){
-                    return back();
-                }
                 if($user){
-                    if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
-                        return back()->with('erro','Usuário já está inscrito nessa categoria');
+                    foreach ($user->registrations as $registration) {
+                        if($registration->modalities->id == $modalidade->id){
+                            return back()->with('erro', 'Usuário já tem inscrição nessa modalidade');
+                        }
                     }
+
                     if( VerifyRegistration::verifyUserLimitRegistrations($user)){
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                 }
+
+                foreach ($request->category  as $category) {
+                $category = modalities_category::find($category);
+                
+                if(!$category){
+                    return back();
+                }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
-                    return back()->with('erro', 'Não existe mais vagas para essa modalidade');
+                    return back()->with('erro', "Não existe mais vagas para categoria $category->nome");
                 }
                 if($request->sexo == 'M'){
                     if(VerifyRegistration::verifyModalitiesLimitMan($category)){
-                        return  back()->with('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
+                        return  back()->with('erro', "Não existe mais vagas para usuários do sexo masculino para categoria $category->nome");
                     }
                 }
                 if($request->sexo == 'F'){
                     if(VerifyRegistration::verifyModalitiesLimitWomen($category)){
-                        return  back()->with('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
+                        return  back()->with('erro', "Não existe mais vagas para usuários do sexo feminino para categoria $category->nome");
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
                     return back()->with('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                 }
+                }
+                
             } else {
                 $category = modalities_category::find($request->category);
-                
+                $category_id = $category->id;
                 if(!$category){
                     return back();
                 }
@@ -165,22 +171,33 @@ class RegistrationsAdminController extends Controller
                 $addres->user_id = $user->id;
                 $addres->save();
             }
+
+
             $registration = new registration;
             $payment = new Payment;
             $registration->user_id = $user->id;
             $registration->is_pcd = $request->pcd ? 1 : 0;
             $registration->sub_categorys_id = $request->sub_category ? $request->sub_category : null;
             $registration->modalities_id = $modalidade->id;
-            $registration->modalities_category_id = $modalidade->mode_modalities->id == 1 ? $modalidade->modalities_categorys()->first()->id : $request->category;
+            $registration->modalities_category_id = $category_id;
             $registration->status_regitration_id = $request->payment == 1 ? 1 : 3;
             $registration->type_payment_id = $request->payment;
             if(Count($modalidade->ranges) != 0){
                 $registration->range_id = $request->range;
             }
             $registration->save();
+            if($modalidade->mode_modalities->id == 2){
+                foreach ($request->category  as $category) {
+                    $category = modalities_category::find($category);
+                    $registration->modalities_categorys()->save($category);
+                } 
+            }
+            
             $payment->registration_id = $registration->id;
             $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
             $payment->save();
+
+
 
         $payload = [
             "email" => $user->email,

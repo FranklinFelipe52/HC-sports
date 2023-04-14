@@ -533,9 +533,10 @@
                                   <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
                                       Estamos felizes em informar que a sua solicitação de inscrição para a modalidade <strong>{{ $registration->modalities->nome }}
-                                        @if (!($registration->modalities->mode_modalities->id == 1))
+                                        @if ($registration->modalities->mode_modalities->id == 3)
                                           (Categoria “{{ $registration->modalities_category->nome }}”)
                                         @endif
+                                        
                                       </strong> foi <strong>confirmada</strong>.</p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                       Para acompanhar sua inscrição, acesse o <strong>Painel do Atleta</strong> através do botão abaixo:
@@ -610,7 +611,7 @@
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
                                     Modalidade:<br>
                                     <strong>{{ $registration->modalities->nome }}
-                                      @if (!($registration->modalities->mode_modalities->id == 1))
+                                      @if ($registration->modalities->mode_modalities->id == 3)
                                         (Categoria “{{ $registration->modalities_category->nome }}”)
                                       @endif
                                     </strong>
