@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamentos</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="/dist/css/style.css">
+</head>
+
+<body class="h-screen">
+
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
+        <div class="hidden sm:block">
+          <a href="/src/pages/admin/dashboard.html">
+            <img src="/dist/images/logo.png" alt="">
+          </a>
+        </div>
+
+        <hr class="hidden sm:block border-gray-6 mt-3 mb-8">
+
+        <nav class="my-auto">
+          <ul class="flex justify-around sm:flex-col sm:gap-5">
+            <li class="group">
+              <a href="/src/pages/admin/dashboard.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/home-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/home-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/modalidades.html" title="Modalidades" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/star-outline.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/star-outline-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Modalidades
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/atletas.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/users.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/users-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Atletas
+                </p>
+              </a>
+            </li>
+            <li class="group active">
+              <a href="/src/pages/admin/administradores.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/pagamentos.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/pagamentos-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Pagamentos
+                </p>
+              </a>
+            </li>
+            <li class="group">
+              <a href="/src/pages/admin/administradores.html" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/key.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+                  <img src="/dist/images/svg/key-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+                </div>
+                <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+                  Administradores
+                </p>
+              </a>
+            </li>
+            <li class="group sm:hidden">
+              <a href="/src/pages/admin/perfil.html" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+                <div class="w-[24px] h-[24px]">
+                  <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+                  <img src="/dist/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr class="hidden sm:block border-gray-6 my-4">
+
+        <a href="/src/pages/auth/login.html" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/dist/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
+            Sair
+          </p>
+        </a>
+
+        <div class="group hidden sm:flex items-end justify-center lg:justify-start grow">
+          <a href="/src/pages/admin/perfil.html" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+            <div class="w-[32px] h-[32px] shrink-0">
+              <img src="/dist/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
+              <img src="/dist/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
+            </div>
+            <div class="hidden lg:block">
+              <p class="text-gray-1 group-[.active]:text-brand-a1 font-bold font-poppins text-sm">
+                Jefferson Toledo
+              </p>
+              <p class="text-gray-2 group-[.active]:text-brand-a1 font-medium font-poppins text-xs">
+                Administrador Geral
+                <!-- Caso o admin personifique o administrador regional de algum estado, ele é informado aqui -->
+                <!-- <strong>
+                  (RN)
+                </strong> -->
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteúdo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <!-- administrador personificado -->
+      <div class="hidden bg-brand-a1 py-2 px-4 lg:px-6">
+        <div class="flex">
+          <button class="text-xs font-poppins text-white border border-white py-0.5 px-2 ml-auto hover:ring-1 hover:ring-white hover:ring-opacity-50 transition">
+            Mudar para administrador
+          </button>
+        </div>
+      </div>
+
+      <div class="px-6 h-full w-full flex flex-col overflow-hidden">
+        <!-- Cabeçalho -->
+        <header class="pt-8 pb-6 flex flex-wrap">
+          <div class="grow">
+            <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+              Pagamentos Pendentes
+            </h1>
+          </div>
+        </header>
+
+        <!-- Table container -->
+        <div class="h-fit flex flex-col overflow-hidden">
+
+          <!-- Table search bar -->
+          <div class="p-4 border border-gray-5 rounded-t-lg">
+            <form class="flex gap-2 flex-wrap sm:flex-nowrap">
+              <div class="relative w-full max-w-[478px] grow md:w-auto">
+                <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <button class="absolute top-[9%] left-3">
+                  <img src="/dist/images/svg/search.svg" alt="">
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Table -->
+          <div class="h-fit flex flex-col overflow-y-hidden overflow-x-auto" role="table">
+            <!-- Table header -->
+            <div class="border-x border-b bg-gray-6 border-gray-5 min-w-[700px]" role="heading">
+              <div role="row" class="px-6 grid grid-cols-12 py-3">
+                <div role="columnheader" class="col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Atleta
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Tipo de pagamento
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Modalidade
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Data
+                  </p>
+                </div>
+                <div role="columnheader" class="col-span-1 flex justify-end">
+                  <p class="text-sm font-semibold text-gray-1">
+                    Ações
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table body -->
+            <div class="min-w-[700px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      Zadoque Teófilo da Silva Maciel
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      FUTEBOL SOCIETY – MASCULINO
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      jefferson Thawan Silva
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      VÔLEI DE QUADRA
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      jefferson Thawan Silva
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      FUT 7 – FEMININO
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      Zadoque Teófilo da Silva Maciel
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      FUTEBOL SOCIETY – MASCULINO
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      jefferson Thawan Silva
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      VÔLEI DE QUADRA
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      jefferson Thawan Silva
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      FUT 7 – FEMININO
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      Zadoque Teófilo da Silva Maciel
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      FUTEBOL SOCIETY – MASCULINO
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table row -->
+              <div role="row" class="border-b border-gray-5 last:border-b-0">
+                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                      jefferson Thawan Silva
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm font-semibold text-gray-1">
+                      Cartão de crédito
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3 pr-2">
+                    <p class="text-gray-1 text-sm font-semibold">
+                      VÔLEI DE QUADRA
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-2">
+                    <p class="text-sm font-normal text-gray-2">
+                      14/04/2023 10:50:43
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-1 flex justify-end">
+                    <a href="#" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="/dist/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                  <div role="cell" class="col-span-3 pr-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id transaction
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #8710480652
+                    </p>
+                  </div>
+                  <div role="cell" class="col-span-3">
+                    <p class="text-sm text-gray-2 italic">
+                      id payment
+                    </p>
+                    <p class="text-sm text-gray-2 italic">
+                      #56863243003
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paginação da tabela -->
+        <div class="flex justify-between pt-6 pb-4 sm:pb-16">
+          <div class="flex gap-2" aria-label="Paginação da tabela">
+            <div class="group disabled">
+              <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/dist/images/svg/chevron-left.svg" alt="">
+              </button>
+            </div>
+            <p class="text-sm text-gray-1 pt-0.5">
+              1 de 2
+            </p>
+            <div class="group">
+              <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+                <img src="/dist/images/svg/chevron-right.svg" alt="">
+              </button>
+            </div>
+          </div>
+          <div>
+            <p class="text-gray-3 text-sm font-normal">
+              8 pagamentos exibidos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+
+  <script>
+    // With the above scripts loaded, you can call `tippy()` with a CSS
+    // selector and a `content` prop:
+    tippy('[data-tooltip-payment]', {
+      content: 'Confirmar o pagamento',
+      placement: 'top'
+    });
+  </script>
+
+  <script type="module" src="/dist/js/index.js"></script>
+</body>
+
+</html>

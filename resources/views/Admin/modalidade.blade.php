@@ -4,7 +4,78 @@
 
 @section('content')
 
+@foreach ($registrations as $registration)
+    {{-- modal registration --}}
+    <div id="modal{{ $registration->id }}" class="hidden">
+      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+        <div class="bg-white mx-3 overflow-hidden rounded-lg w-full max-w-[500px]">
+          {{-- modal registration - header --}}
+          <div class="bg-gray-6 p-3 md:pr-6 md:pl-5 md:py-4 flex">
+            <div class="grow">
+              <p class="text-gray-1 text-lg md:text-xl font-semibold">
+                Detalhes da Inscrição
+              </p>
+            </div>
+            <button data-modalId="modal{{ $registration->id }}" data-action="close" class="w-[24px] h-[24px] shrink-0">
+              <img src="/images/svg/close.svg" class="w-full h-full object-cover" alt="">
+            </button>
+          </div>
 
+          {{-- modal registration - body --}}
+          <div class="text-gray-1 text-base">
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  CPF
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->user->cpf }}
+                </p>
+              </div>
+            </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  E-mail
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->user->email }}
+                </p>
+              </div>
+            </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  Modalidade
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->modalities->nome }}
+                </p>
+              </div>
+            </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  Pagamento
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->type_payment->type }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
@@ -136,7 +207,7 @@
                 @if (Count($registrations) != 0)
                   @foreach ($registrations as $registration)
                     <div class="flex gap-2 items-start pb-6 border-b border-gray-200 w-full last:border-b-0 last:pb-0">
-                      <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                      <div class=" w-[37px] h-[37px]  min-[360px]:block">
                         <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                       </div>
                       <div class="grow space-y-1">
@@ -165,6 +236,22 @@
                           </p>
                         @endif
 
+                      </div>
+                      <div class="flex flex-col gap-2">
+                        <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-full h-fit">
+                          <p class="text-white  font-bold text-center">
+                            {{ $registration->status_regitration->status }}
+                          </p>
+                        </div>
+                        <div>
+                          <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                            Detalhes
+                          </button>
+                          <button onclick="window.open('/admin/registration/delete/{{ $registration->id }}', '_self')"   class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                            excluir
+                          </button>
+                        </div>
+                        
                       </div>
                     </div>
                   @endforeach

@@ -109,12 +109,24 @@
               Suas inscrições
             </h2>
           </header>
-          @if (session('m'))
+          @if (session('erro'))
           <div class="group error w-full">
             <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
               <div class="grow">
                 <p class="text-sm">
-                  {{ session('m') }}
+                  {{ session('erro') }}
+                </p>
+              </div>
+            </div>
+          </div>
+        @endif
+
+        @if (session('success'))
+          <div class="group  w-full">
+            <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
+              <div class="grow">
+                <p class="text-sm">
+                  {{ session('success') }}
                 </p>
               </div>
             </div>
@@ -154,10 +166,15 @@
                         Detalhes
                       </button>
                       @if ($registration->status_regitration->id == 1)
-                        <button onclick="window.open('/registration/proof/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                        <button disabled onclick="window.open('/registration/proof/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                           Ver Comprovante
                         </button>
                       @elseif ($registration->status_regitration->id == 3)
+                        <button onclick="window.open('/registration/checkout/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Efetuar pagamento
+                        </button>
+
+                        @elseif ($registration->status_regitration->id == 2)
                         <button disabled onclick="window.open('/registration/checkout/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
                           Efetuar pagamento
                         </button>

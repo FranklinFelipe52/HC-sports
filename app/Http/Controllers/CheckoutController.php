@@ -8,6 +8,7 @@ use App\Models\registration;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
@@ -19,6 +20,7 @@ class CheckoutController extends Controller
         
         $user = User::find($request->session()->get('user')->id);
         $registration = registration::find($id);
+        error_log($registration);
 
         if(!$registration){
             return back();
@@ -31,8 +33,8 @@ class CheckoutController extends Controller
         $valor = 0;
         $registrations_payment = 0;
 
-        foreach ($user->registrations as $registration) {
-            if($registration->Payment->status_payment->id == 1){
+        foreach ($user->registrations as $registrationn) {
+            if($registrationn->Payment->status_payment->id == 1){
                 $registrations_payment++;
             }
         }
@@ -51,6 +53,9 @@ class CheckoutController extends Controller
                 return back();
                 break;
         }
+
+
+        error_log($registration);
         return view('User.registration', [
             'registration' => $registration,
             'valor' => $valor
@@ -67,6 +72,10 @@ class CheckoutController extends Controller
             $status = $_GET["status"];
             $merchant_order_id= $_GET["merchant_order_id"];
             $external_reference = $_GET["external_reference"];
+
+            if(!$status){
+                redirect('/dashboard');
+            }
 
             $registration = registration::find($external_reference);
             $user = User::find($request->session()->get('user')->id);
@@ -92,9 +101,18 @@ class CheckoutController extends Controller
             $registration->save();
         }
 
-        return redirect('/dashboard')->with('m', 'Pagamento efetuado com sucesso');
+        if($status == 'pending'){
+            $registration->status_regitration_id = 2;
+            $registration->payment->id_transaction = $merchant_order_id;
+            $registration->payment->id_payment  = $payment_id;
+            $registration->payment->status_payment_id  = 3;
+            $registration->payment->save();
+            $registration->save();
+        }
+
+        return redirect('/dashboard')->with('success', 'Pagamento efetuado com sucesso');
         }catch(Exception $e){
-            return redirect('/dashboard')->with('m', 'Pagamento não efetuado por erro');
+            return redirect('/dashboard')->with('erro', 'Pagamento não efetuado por erro');
         }
     }
 
@@ -122,6 +140,15 @@ class CheckoutController extends Controller
             $registration->payment->id_transaction = $merchant_order_id;
             $registration->payment->id_payment  = $payment_id;
             $registration->payment->status_payment_id  = 1;
+            $registration->payment->save();
+            $registration->save();
+        }
+
+        if($response['status'] == 'pending'){
+            $registration->status_regitration_id = 2;
+            $registration->payment->id_transaction = $merchant_order_id;
+            $registration->payment->id_payment  = $payment_id;
+            $registration->payment->status_payment_id  = 3;
             $registration->payment->save();
             $registration->save();
         }

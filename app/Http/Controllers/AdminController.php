@@ -23,11 +23,6 @@ class AdminController extends Controller
         try{
             $admin = $request->session()->get('admin');
 
-                $uf = isset($_GET["uf"]) ? $_GET["uf"] : '';
-                error_log($uf);
-
-
-
                 $administradores_aux = DB::table('admins')
             ->join('federative_units', 'federative_units.id', 'admins.federative_unit_id')
             ->join('rules', 'admins.rule_id', 'rules.id')
@@ -99,10 +94,8 @@ class AdminController extends Controller
         if(!$admin){
             return back()->with('erro', 'E-mail ou senha inválida');
         }
-        error_log('passou');
 
         if(Hash::check($request->password, $admin->password)){
-            error_log('passou');
             $request->session()->put('admin', $admin);
             return redirect('/admin/dashboard');
         } else {

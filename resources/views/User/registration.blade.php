@@ -9,19 +9,19 @@
             $item = new MercadoPago\Item();
             $item->title = $registration->modalities->nome;
             $item->quantity = 1;
-            $item->unit_price = 1;
+            $item->unit_price = $valor;
             $preference->items = array($item);
             $preference->back_urls = array(
                 "success" => config('services.mercadopago.url_base')."/notification_payment",
                 "failure" => config('services.mercadopago.url_base')."/notification_payment",
                 "pending" => config('services.mercadopago.url_base')."/notification_payment"
             );
-            
+            $preference->auto_return = "approved";
             $preference->payment_methods = array(
                 "excluded_payment_types" => array(
                   array("id" => "ticket")
                 ),
-                "installments" => 2
+                "installments" => 4
               );
             $preference->external_reference = $registration->id;
             $preference->save();
@@ -77,21 +77,25 @@
           </nav>
           <div class="flex gap-4 items-center flex-wrap">
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-              {{ $registration->user->nome_completo }}
+              Você está realizando o pagamento da inscrição com o Mercado Pago
             </h1>
-            <h2 class="text-lg text-gray-1 font-poppins font-semibold">
-              {{ $valor }}
-            </h2>
-            <div class="@if ($registration->status_regitration->id == 1) bg-feedback-fill-green @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple @endif     py-1 px-1.5 rounded-full inline-block w-fit h-fit">
-              <p class="@if ($registration->status_regitration->id == 1) text-feedback-green-1 @elseif ($registration->status_regitration->id == 3) text-feedback-purple @endif text-xs">
-                {{ $registration->status_regitration->status }}
-              </p>
-            </div>
           </div>
         </header>
 
         <div class="w-full max-w-[700px]">
           <div class="border border-gray-5 rounded-lg mb-6">
+            <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-sm text-gray-1 font-semibold">
+                  Nome
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-sm text-gray-2 font-normal">
+                  {{ $registration->user->nome_completo }}
+                </p>
+              </div>
+            </div>
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-1 font-semibold">
@@ -128,7 +132,7 @@
                 </p>
               </div>
             </div>
-            @if (!($registration->modalities->mode_modalities->id == 1))
+            @if ($registration->modalities->mode_modalities->id == 3)
               <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                 <div class="col-span-2 sm:col-span-1">
                   <p class="text-sm text-gray-1 font-semibold">
@@ -141,6 +145,25 @@
                   </p>
                 </div>
               </div>
+              @elseif($registration->modalities->mode_modalities->id == 2)
+              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-1 font-semibold">
+                    Categorias
+                  </p>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                  @foreach ($registration->modalities_categorys as $category)
+                  <p class="text-sm text-gray-2 font-normal mb-2">
+                    {{$category->nome}}
+                  </p>
+                  @endforeach
+                  
+                </div>
+              </div>
+
+
+
             @endif
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
@@ -151,6 +174,18 @@
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
                   {{ $registration->type_payment->type }}
+                </p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-sm text-gray-1 font-semibold">
+                  Valor
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-sm text-gray-2 font-normal">
+                  R${{ number_format($valor,2,",","."); }}
                 </p>
               </div>
             </div>
@@ -172,7 +207,7 @@
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {
         preferenceId: "{{$preference->id}}",
-        redirectMode: "modal"
+        
     },
     customization: {
       texts: {

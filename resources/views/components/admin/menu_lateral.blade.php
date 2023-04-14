@@ -44,6 +44,19 @@
           </p>
         </a>
       </li>
+      @if(Session('admin')->rule->id == 1)
+      <li class="group @if ($type == 6) active @endif">
+        <a href="/admin/pagamentos" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/pagamentos.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+            <img src="/images/svg/pagamentos-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+            Pagamentos
+          </p>
+        </a>
+      </li>
+      @endif
       <li class="group @if ($type == 2) active @endif">
         <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
