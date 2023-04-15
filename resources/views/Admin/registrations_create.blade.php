@@ -274,7 +274,7 @@
                       Sub categoria
                     </label>
                     <div class="relative">
-                      <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sub_category" id="cadastro_sub_category_field">
+                      <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sub_category" id="cadastro_sub_category_field">
                         <option value="" selected disabled>Selecione</option>
                         @foreach ($sub_categorys as $value)
                           <option value="{{ $value->id }}">{{ $value->nome }}</option>
