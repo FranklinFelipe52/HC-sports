@@ -49,7 +49,7 @@ class ConfirmRegistrationController extends Controller
             $user->password = Hash::make($request->password);
             $user->registered = true;
             $user->save();
-            Mail::to($user->email)->send(new ConfirmRegisterAtleta());
+            Mail::to($user->email)->send(new ConfirmRegisterAtleta($user));
             $request->session()->put('user', $user);
             return redirect('/dashboard');
         } catch(Exception $e){

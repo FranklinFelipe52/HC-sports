@@ -547,29 +547,25 @@
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
                                 <td align="left" class="es-m-p25t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:10px;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Resumo da inscrição</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Resumo do cadastro</strong></p>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">CPF:<br><strong></strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">CPF:<br><strong><?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $user->cpf); ?></strong></p>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">E-mail:<br><strong></strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">E-mail:<br><strong>{{$user->email}}</strong></p>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong></strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong>{{ $user->address->federativeUnit->name }} ({{ $user->address->federativeUnit->initials }})</strong></p>
                                 </td>
                               </tr>
-                              <tr>
-                                <td align="left" class="es-m-p10t es-m-p20b es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">Modalidade:<br><strong></strong></p>
-                                </td>
-                              </tr>
+                              
                             </table>
                           </td>
                         </tr>
