@@ -56,7 +56,7 @@ class PaymentsController extends Controller
         $registration->payment->save();
         $registration->save();
 
-        return back()->with('sucess', 'Pagamento confirmado com sucesso');
+        return back()->with('success', 'Pagamento confirmado com sucesso');
     } catch(Exception $e){
         return back()->with('erro', 'Pagamento não confirmado, tente novamente');
     }   
