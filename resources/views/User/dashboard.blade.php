@@ -170,7 +170,7 @@
                           Ver Comprovante
                         </button>
                       @elseif ($registration->status_regitration->id == 3)
-                        <button disable onclick="window.open('/registration/checkout/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                        <button disabled onclick="window.open('/registration/checkout/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
                           Efetuar pagamento
                         </button>
 
