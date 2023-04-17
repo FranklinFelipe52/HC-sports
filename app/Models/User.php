@@ -30,4 +30,8 @@ class User extends Model
     {
         return $this->hasMany(registration::class);
     }
+
+    public function actions_notifications(){
+        return $this->hasMany(ActionsNotificatios::class);
+    }
 }

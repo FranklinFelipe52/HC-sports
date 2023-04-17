@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class VerifyRegistration
 {
+
+    public static function verifyConfirmRegistration($user){
+
+        foreach ($user->registrations as $registration) {
+            if($registration->status_regitration->id != 1){
+                return true;
+            }
+           
+        }
+        return false;
+    }
     public static function verifyModalitiesMinYear($category, $data_nasc, $modalidade){
         if($category->min_year && $category->min_year > AgeBetweenDates::calc_idade($data_nasc, $modalidade->limit_year_date)){
             return true;
@@ -59,8 +70,22 @@ class VerifyRegistration
         }
     return false;
 }
-    public static function verifyUserLimitRegistrations($user){
-            if(!(Count($user->registrations) < 2) ){
+    public static function verifyUserLimitRegistrations($user, $modalidade){
+            $n_registrations = 0;
+            $limit_registrations = 2;
+
+            if($modalidade->id == 19){
+                $limit_registrations = 3;
+            }
+
+            foreach ($user->registrations as $registration) {
+                if($registration->modalities->id == 19){
+                    $limit_registrations = 3;
+                }
+                $n_registrations++;
+            }
+
+            if(!($n_registrations <  $limit_registrations) ){
                 return true;
               
             }

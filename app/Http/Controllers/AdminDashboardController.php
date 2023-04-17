@@ -15,20 +15,20 @@ class AdminDashboardController extends Controller
             
             $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
-            $atualizacoes_aux = DB::table('users')
+            $atualizacoes_aux = DB::table('actions_notificatios')
+            ->join('users', 'actions_notificatios.user_id', 'users.id')
             ->join('addresses', 'addresses.user_id', 'users.id')
-            ->join('federative_units', 'federative_units.id', 'addresses.federative_unit_id')
-            ->orderBy('updated_at', 'desc')
-            ->where('registered', true);
+            ->join('status_notificatios', 'status_notificatios.id', 'actions_notificatios.status_notificatios_id')
+            ->select('users.nome_completo', 'status_notificatios.status', 'addresses.federative_unit_id', 'actions_notificatios.created_at')
+            ->orderBy('created_at', 'desc');
             if($admin->rule->id == 1){
-                $atualizacoes = $atualizacoes_aux
-                ->select('users.id', 'users.nome_completo', 'users.email', 'users.registered', 'users.updated_at')->get();
+                $atualizacoes = $atualizacoes_aux->get();
 
                 error_log($atualizacoes);
             } else {
                 $atualizacoes = $atualizacoes_aux
                 ->where('federative_unit_id', $admin->federativeUnit->id)
-                ->select('users.id', 'users.nome_completo', 'users.email', 'users.registered', 'users.updated_at')->get();
+                ->get();
             }
 
             return view('Admin.dashboard', [

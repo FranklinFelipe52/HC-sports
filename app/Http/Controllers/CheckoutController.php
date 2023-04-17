@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Checkout;
+use App\Models\ActionsNotificatios;
 use App\Models\log_payment;
 use App\Models\registration;
 use App\Models\User;
@@ -102,7 +103,10 @@ class CheckoutController extends Controller
             $registration->payment->save();
             $registration->save();
         }
-
+        $notifications = new ActionsNotificatios;
+        $notifications->user_id = $user->id;
+        $notifications->status_notificatios_id = 2;
+        $notifications->save();
         return redirect('/dashboard');
         }catch(Exception $e){
             return redirect('/dashboard');

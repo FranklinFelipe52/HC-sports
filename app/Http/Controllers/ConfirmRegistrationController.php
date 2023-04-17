@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Mail\ConfirmRegisterAtleta;
 use App\Mail\RegistrationMail;
+use App\Models\ActionsNotificatios;
+use App\Models\StatusNotificatios;
 use App\Models\User;
 use Exception;
 use Firebase\JWT\JWT;
@@ -51,6 +53,10 @@ class ConfirmRegistrationController extends Controller
             $user->save();
             Mail::to($user->email)->send(new ConfirmRegisterAtleta($user));
             $request->session()->put('user', $user);
+            $notifications = new ActionsNotificatios;
+            $notifications->user_id = $user->id;
+            $notifications->status_notificatios_id = 1;
+            $notifications->save();
             return redirect('/dashboard');
         } catch(Exception $e){
             return back()->with('erro', 'Cadastro não efetuado');

@@ -58,10 +58,13 @@ class RegistrationsAdminController extends Controller
                 $category_id = $category->id;
                 
                 if($user){
+                    if(VerifyRegistration::verifyConfirmRegistration($user)){
+                        return back()->with('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
+                    }
                     if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
                         return back()->with('erro','Usuário já está inscrito nessa modalidade');
                     }
-                    if( VerifyRegistration::verifyUserLimitRegistrations($user)){
+                    if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                 }
@@ -84,13 +87,16 @@ class RegistrationsAdminController extends Controller
                  
             }elseif($modalidade->mode_modalities->id == 2){
                 if($user){
+                    if(VerifyRegistration::verifyConfirmRegistration($user)){
+                        return back()->with('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
+                    }
                     foreach ($user->registrations as $registration) {
                         if($registration->modalities->id == $modalidade->id){
                             return back()->with('erro', 'Usuário já tem inscrição nessa modalidade');
                         }
                     }
 
-                    if( VerifyRegistration::verifyUserLimitRegistrations($user)){
+                    if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                 }
@@ -127,10 +133,13 @@ class RegistrationsAdminController extends Controller
                 }
                 
                 if($user){
+                    if(VerifyRegistration::verifyConfirmRegistration($user)){
+                        return back()->with('erro', 'Este atleta está com pagamento pendente. Antes de realizar uma nova inscrição é preciso realizar o pagamento da inscrição anterior.');
+                    }
                     if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
                         return back()->with('erro','Usuário já está inscrito nessa categoria');
                     }
-                    if( VerifyRegistration::verifyUserLimitRegistrations($user)){
+                    if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                     foreach ($user->registrations as $registration) {

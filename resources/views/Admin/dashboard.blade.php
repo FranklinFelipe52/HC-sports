@@ -33,15 +33,11 @@
                     </div>
                     <div class="grow space-y-1">
                         <p class="text-base text-gray-1 font-semibold">{{$atualizacao->nome_completo}}</p>
-                        <p class="text-xs text-gray-1 font-normal">Validou inscrição no sistema</p>
+                        <p class="text-xs text-gray-1 font-normal">{{$atualizacao->status}}</p>
                     </div>
                     <div class="flex gap-2.5">
-                        <div class="ml-auto bg-feedback-fill-green py-1 px-1.5 rounded-full inline-block w-fit h-fit">
-                        <p class="text-feedback-green-1 text-xs">
-                            Confirmado
-                        </p>
-                        </div>
-                        <p class="text-xs text-gray-600 font-normal"><?php  echo date("d M", strtotime($atualizacao->updated_at))?></p>
+                        
+                        <p class="text-xs text-gray-600 font-normal"><?php  echo date("d M", strtotime($atualizacao->created_at))?></p>
                     </div>
                     </li>
                     @endforeach
