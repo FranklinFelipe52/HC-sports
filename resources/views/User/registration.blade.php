@@ -1,7 +1,7 @@
 @php
             
             require base_path('vendor/autoload.php');
-            MercadoPago\SDK::setAccessToken("APP_USR-3741638005043516-041408-12465f3a822c9a9d187aeebbad625600-1352300769");
+            MercadoPago\SDK::setAccessToken("TEST-6607371367221296-041214-ea6401037ca3aab4fe22cb4d7086d497-1012467989");
 
             $preference = new MercadoPago\Preference();
 
@@ -206,7 +206,7 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago("APP_USR-5fc9d7da-cfb0-4053-972c-9fdcc1ba6935");
+    const mp = new MercadoPago("TEST-7025cdd7-7291-46ff-9d81-c1b0cd8b6085");
 
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {

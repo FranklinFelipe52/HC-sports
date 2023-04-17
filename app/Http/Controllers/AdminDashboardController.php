@@ -6,11 +6,13 @@ use App\Models\Modalities;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AdminDashboardController extends Controller
 {
     public function show(Request $request){
         try{
+            
             $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
             $atualizacoes_aux = DB::table('users')
