@@ -115,8 +115,8 @@ class CheckoutController extends Controller
 
     public function notification_webhook(Request $request){
         try{
-            Log::alert(['request' => $request['data']]);
-            $payment_id = $request->data->id;
+            Log::alert(['request' => $request->data->id]);
+            $payment_id = $request['data']['id'];
             Log::alert(['payment_id' => $payment_id]);
             $response = Http::withHeaders([
                  'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
