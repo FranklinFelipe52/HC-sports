@@ -70,7 +70,6 @@ class CheckoutController extends Controller
         try{
             $payment_id = $_GET["payment_id"];
             $status = $_GET["status"];
-            $merchant_order_id= $_GET["merchant_order_id"];
             $external_reference = $_GET["external_reference"];
 
             if(!$status){
@@ -86,24 +85,16 @@ class CheckoutController extends Controller
         if($registration->user->id != $user->id){
             return redirect('/dashboard');
         }
-        $log_payment = new log_payment;
-        $log_payment->status = $status;
-        $log_payment->id_transaction = $merchant_order_id;
-        $log_payment->id_payment =  $payment_id;
-        $log_payment->registration_id = $external_reference;
-        $log_payment->save();
         if($status == 'approved'){
             $registration->status_regitration_id = 1;
-            $registration->payment->id_transaction = $merchant_order_id;
             $registration->payment->id_payment  = $payment_id;
             $registration->payment->status_payment_id  = 1;
             $registration->payment->save();
             $registration->save();
         }
 
-        if($status == 'pending'){
-            $registration->status_regitration_id = 2;
-            $registration->payment->id_transaction = $merchant_order_id;
+        if($status == 'pending' || $status == 'rejected'){
+            $registration->status_regitration_id = 3;
             $registration->payment->id_payment  = $payment_id;
             $registration->payment->status_payment_id  = 3;
             $registration->payment->save();
@@ -117,42 +108,56 @@ class CheckoutController extends Controller
     }
 
     public function notification_webhook(Request $request){
-        
-        $payment_id = $request['payment_id'];
-        $merchant_order_id = $request->merchant_order_id;
-        $external_reference = $request->external_reference;
+        try{
+            $payment_id = $request->data->id;
 
-           $response = Http::withHeaders([
-                'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
-            ])->get("https://api.mercadopago.com/v1/payments/{{$payment_id}");
+            $response = Http::withHeaders([
+                 'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
+             ])->get("https://api.mercadopago.com/v1/payments/{{$payment_id}");
 
-            $registration = registration::find($external_reference);
 
-            $log_payment = new log_payment;
-            $log_payment->status = $response['status'];
-            $log_payment->id_transaction = $merchant_order_id;
-            $log_payment->id_payment =  $payment_id;
-            $log_payment->registration_id = $external_reference;
-            $log_payment->save();
+            if($response->status() == 403 || $response->status() == 400 || $response->status() == 404){
+                    return response('erro', $response->status());
+            }
+             $registration = registration::find($response['external_reference']);
+ 
+             $log_payment = new log_payment;
+             $log_payment->status = $response['status'];
+             $log_payment->id_payment =  $response['id'];
+             $log_payment->registration_id = $response['external_reference'];
+             $log_payment->mount = $response['transaction_amount'];
+             $log_payment->save();
+ 
+             if($response['status'] == 'approved'){
+             $registration->status_regitration_id = 1;
+             $registration->payment->id_payment  =  $response['id'];
+             $registration->payment->status_payment_id  = 1;
+             $registration->payment->save();
+             $registration->save();
+         }
+ 
+         if($response['status'] == 'pending' || $response['status'] == 'rejected'){
+             $registration->status_regitration_id = 3;
+             $registration->payment->id_payment  =  $response['id'];
+             $registration->payment->status_payment_id  = 3;
+             $registration->payment->save();
+             $registration->save();
+         }
 
-            if($response['status'] == 'approved'){
-            $registration->status_regitration_id = 1;
-            $registration->payment->id_transaction = $merchant_order_id;
-            $registration->payment->id_payment  = $payment_id;
-            $registration->payment->status_payment_id  = 1;
-            $registration->payment->save();
-            $registration->save();
-        }
-
-        if($response['status'] == 'pending'){
+        if($response['status'] == 'in_process'){
             $registration->status_regitration_id = 2;
-            $registration->payment->id_transaction = $merchant_order_id;
-            $registration->payment->id_payment  = $payment_id;
+            $registration->payment->id_payment  =  $response['id'];
             $registration->payment->status_payment_id  = 3;
             $registration->payment->save();
             $registration->save();
         }
 
+         return response('ok', 200);
+
+        } catch(Exception $e){
+            return response(['erro'=> $e],400);
+        }
+        
     }
 
 

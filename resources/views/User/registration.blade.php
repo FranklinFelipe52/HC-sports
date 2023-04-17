@@ -177,6 +177,7 @@
                 </p>
               </div>
             </div>
+            @if ($registration->status_regitration_id != 2)
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-1 font-semibold">
@@ -189,9 +190,12 @@
                 </p>
               </div>
             </div>
+            @endif
           </div>
           <div class="flex flex-wrap justify-end">
-          <div id="wallet_container"></div>
+            @if ($registration->status_regitration_id != 2)
+            <div id="wallet_container"></div>
+            @endif
           </div>
         </div>
       </div>
