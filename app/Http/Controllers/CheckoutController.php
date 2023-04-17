@@ -67,6 +67,7 @@ class CheckoutController extends Controller
     }
 
     public function notification(Request $request){
+
         try{
             $payment_id = $_GET["payment_id"];
             $status = $_GET["status"];
@@ -101,9 +102,9 @@ class CheckoutController extends Controller
             $registration->save();
         }
 
-        return redirect('/dashboard')->with('success', 'Pagamento efetuado com sucesso');
+        return redirect('/dashboard');
         }catch(Exception $e){
-            return redirect('/dashboard')->with('erro', 'Pagamento não efetuado por erro');
+            return redirect('/dashboard');
         }
     }
 
@@ -128,10 +129,11 @@ class CheckoutController extends Controller
              $log_payment->mount = $response['transaction_amount'];
              $log_payment->save();
  
-             if($response['status'] == 'approved'){
+        if($response['status'] == 'approved'){
              $registration->status_regitration_id = 1;
              $registration->payment->id_payment  =  $response['id'];
              $registration->payment->status_payment_id  = 1;
+             $registration->payment->mount  = $response['transaction_amount'];
              $registration->payment->save();
              $registration->save();
          }
