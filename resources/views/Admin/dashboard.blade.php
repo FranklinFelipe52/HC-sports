@@ -73,15 +73,14 @@
                         $users_registrations = 0;
 
                         foreach ($modalidade->registrations as $registration) {
-                          echo $registration->user->adress->federative_unit_id ? $registration->user->adress->federative_unit_id : "-";
-                          echo Session('admin')->federative_unit_id ? Session('admin')->federative_unit_id : "-";
-                               
+                                if ($registration->user->adress->federativeUnit->id == Session('admin')->federativeUnit->id ) {
+                                  $users_registrations++;
+                                }  
                         }
                         
                         ?>
                         {{ $users_registrations }} inscrições
                         @endif
-                        
                         
                       </p>
                     </div>
