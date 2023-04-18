@@ -73,7 +73,7 @@
                         $users_registrations = 0;
 
                         foreach ($modalidade->registrations as $registration) {
-                                if ($registration->user->adress->federativeUnit->id == Session('admin')->federativeUnit->id ) {
+                                if ($registration->user->address->federativeUnit->id == Session('admin')->federativeUnit->id ) {
                                   $users_registrations++;
                                 }  
                         }
