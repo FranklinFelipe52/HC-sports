@@ -73,8 +73,8 @@
                         $users_registrations = 0;
 
                         foreach ($modalidade->registrations as $registration) {
-                          {{$registration->user->adress->federative_unit_id}}
-                          {{Session('admin')->federative_unit_id}}
+                          {{$registration->user->adress->federative_unit_id ? $registration->user->adress->federative_unit_id : -}}
+                          {{Session('admin')->federative_unit_id ? Session('admin')->federative_unit_id : -}}
                                
                         }
                         
