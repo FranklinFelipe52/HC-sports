@@ -19,7 +19,7 @@ class AdminDashboardController extends Controller
             ->join('users', 'actions_notificatios.user_id', 'users.id')
             ->join('addresses', 'addresses.user_id', 'users.id')
             ->join('status_notificatios', 'status_notificatios.id', 'actions_notificatios.status_notificatios_id')
-            ->select('users.nome_completo', 'status_notificatios.status', 'addresses.federative_unit_id', 'actions_notificatios.created_at')
+            ->select('users.nome_completo', 'users.id', 'status_notificatios.status', 'addresses.federative_unit_id', 'actions_notificatios.created_at')
             ->orderBy('created_at', 'desc');
             if($admin->rule->id == 1){
                 $atualizacoes = $atualizacoes_aux->get();

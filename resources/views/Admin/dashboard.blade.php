@@ -26,21 +26,20 @@
             <ul class="grow overflow-auto pt-4 pb-8 space-y-6 w-full pr-4">
 
               <!-- atualização -->
-              @foreach($atualizacoes as $atualizacao)
-                    <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
-                    <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
-                    </div>
-                    <div class="grow space-y-1">
-                        <p class="text-base text-gray-1 font-semibold">{{$atualizacao->nome_completo}}</p>
-                        <p class="text-xs text-gray-1 font-normal">{{$atualizacao->status}}</p>
-                    </div>
-                    <div class="flex gap-2.5">
-                        
-                        <p class="text-xs text-gray-600 font-normal"><?php  echo date("d M", strtotime($atualizacao->created_at))?></p>
-                    </div>
-                    </li>
-                    @endforeach
+              @foreach ($atualizacoes as $atualizacao)
+                <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
+                  <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
+                    <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                  </div>
+                  <div class="grow space-y-1">
+                    <a href="/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
+                    <p class="text-xs text-gray-1 font-normal">{{ $atualizacao->status }}</p>
+                  </div>
+                  <div class="flex gap-2.5">
+                    <p class="text-xs text-gray-600 font-normal"><?php echo date('d M', strtotime($atualizacao->created_at)); ?></p>
+                  </div>
+                </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -67,57 +66,54 @@
                       </div>
                       <p class="text-gray-1 text-xs">
                         @if (Session('admin')->rule->id == 1)
-                        {{ Count($modalidade->registrations) }} inscrições
+                          {{ Count($modalidade->registrations) }} inscrições
                         @else
-                        <?php 
-                        $users_registrations = 0;
-
-                        foreach ($modalidade->registrations as $registration) {
-                                if ($registration->user->address->federativeUnit->id == Session('admin')->federativeUnit->id ) {
+                          <?php
+                          $users_registrations = 0;
+                          
+                          foreach ($modalidade->registrations as $registration) {
+                              if ($registration->user->address->federativeUnit->id == Session('admin')->federativeUnit->id) {
                                   $users_registrations++;
-                                }  
-                        }
-                        
-                        ?>
-                        {{ $users_registrations }} inscrições
+                              }
+                          }
+                          ?>
+                          {{ $users_registrations }} inscrições
                         @endif
-                        
+
                       </p>
                     </div>
                     <div class="w-[38px] h-[38px] rounded-full shrink-0">
                       <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
                     </div>
                   </div>
-                  @if ($modalidade->id == 9 || $modalidade->id == 10 )
-                  <div class="flex flex-wrap gap-3">
-                    <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                      Ver modalidade
-                    </button>
-                    <div class="flex flex-wrap gap-3 w-full">
-                      <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                        Adicionar atleta masculino
+                  @if ($modalidade->id == 9 || $modalidade->id == 10)
+                    <div class="flex flex-wrap gap-3">
+                      <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                        Ver modalidade
                       </button>
-                      
-                      <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                        Adicionar atleta feminina
-                      </button>
+                      <div class="flex flex-wrap gap-3 w-full">
+                        <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Adicionar atleta masculino
+                        </button>
+
+                        <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Adicionar atleta feminina
+                        </button>
+                      </div>
+
                     </div>
-                    
-                  </div>
                   @else
+                    <div class="flex flex-wrap gap-3">
+                      <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                        Ver modalidade
+                      </button>
 
-                  <div class="flex flex-wrap gap-3">
-                    <button onclick="window.open('/admin/modalidade/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                      Ver modalidade
-                    </button>
-                    
-                    <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                      Adicionar atleta
-                    </button>
-                    
-                    
-                  </div>
+                      <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                        Adicionar atleta
+                      </button>
 
+
+                    </div>
                   @endif
 
                 </div>
