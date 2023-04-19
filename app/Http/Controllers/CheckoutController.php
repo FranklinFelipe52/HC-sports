@@ -148,7 +148,7 @@ class CheckoutController extends Controller
  
          if($response['status'] == 'pending' || $response['status'] == 'rejected'){
              $registration->status_regitration_id = 3;
-             $registration->payment->id_payment  =  $response['id'];
+             $registration->payment->id_payment  =  $payment_id;
              $registration->payment->status_payment_id  = 3;
              $registration->payment->save();
              $registration->save();
