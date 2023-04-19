@@ -22,20 +22,20 @@ class ModalidadeAdminController extends Controller
                     $registrations = [];
 
                         foreach ($modalidade->registrations as $registration) {
-                                if ($registration->user->adress->federative_unit_id == Session('admin')->federative_unit_id ) {
+                                if ($registration->user->address->federative_unit_id == Session('admin')->federative_unit_id ) {
                                   array_push($registrations, $registration);
-                                } 
-                            } 
+                                }
+                            }
                 } else {
                    $registrations = $modalidade->registrations;
                 }
-               
+
                 return view('Admin.modalidade', [
                     'modalidade'  => $modalidade,
                     'registrations' => $registrations
                  ]);
-                 
-            } 
+
+            }
             return back();
         } catch (Exception $e){
             return $e;
@@ -46,7 +46,7 @@ class ModalidadeAdminController extends Controller
         try{
             $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
-            
+
 
             return view('Admin.modalidades', [
                'modalidades'  => $modalidades,
@@ -78,12 +78,12 @@ class ModalidadeAdminController extends Controller
                 'nome' => $request->nome,
                 'limit_year_date' => $request->limit_year_date,
                 'mode_modalities_id' => $request->mode,
-                'modalities_type_id' => $request->type  
+                'modalities_type_id' => $request->type
             ]);
 
             return back();
         }catch (Exception $e){
             return $e;
         }
-    } 
+    }
 }
