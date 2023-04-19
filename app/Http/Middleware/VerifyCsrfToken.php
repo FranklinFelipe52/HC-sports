@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'https://hc-eventos.app.br/notification_payment_webhook'
+        '/notification_payment_webhook'
     ];
 }
