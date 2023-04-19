@@ -225,7 +225,7 @@
                 @if (Count($registrations) != 0)
                   @foreach ($registrations as $registration)
                     <!-- inscrição -->
-                    <div class="flex items-end flex-wrap md:flex-nowrap justify-end gap-2 border-b border-gray-200 w-full last:border-b-0 px-4 py-1.5 bg-white hover:bg-fill-base transition cursor-default last:rounded-b-md">
+                    <div class="flex items-end flex-wrap md:flex-nowrap justify-end gap-2 border-b border-gray-200 w-full last:border-b-0 px-4 py-3 bg-white hover:bg-fill-base transition cursor-default last:rounded-b-md">
                       <div class="flex gap-2 grow">
                         <div class="flex-shrink-0 w-[37px] h-[37px] overflow-hidden min-[360px]:block">
                           <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
