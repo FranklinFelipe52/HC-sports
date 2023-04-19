@@ -1,4 +1,3 @@
-
 @extends('Admin.base')
 
 @section('title', 'Perfil')
@@ -6,7 +5,7 @@
 @section('content')
 
 
-  
+
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
     <!-- Menu lateral -->
@@ -82,7 +81,7 @@
                     Atleta
                   </p>
                 </div>
-                
+
                 <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1 ">
                     Modalidade
@@ -108,58 +107,64 @@
 
             <!-- Table body -->
             <div class="min-w-[700px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
-              @foreach ($logs as $log)
-                  
-              
-              <!-- Table row -->
-              <div role="row" class="border-b border-gray-5 last:border-b-0">
-                <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
-                  <div role="cell" class="col-span-3 pr-3">
-                    <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
-                      {{$log->registration->user->nome_completo}}
-                    </p>
+              @if (count($logs) !== 0)
+                @foreach ($logs as $log)
+                  <!-- Table row -->
+                  <div role="row" class="border-b border-gray-5 last:border-b-0">
+                    <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
+                      <div role="cell" class="col-span-3 pr-3">
+                        <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
+                          {{ $log->registration->user->nome_completo }}
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-3">
+                        <p class="text-sm font-semibold text-gray-1">
+                          {{ $log->registration->modalities->nome }}
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-2 pr-2">
+                        <p class="text-gray-1 text-sm font-semibold">
+                          <?php echo date('d/m/y', strtotime($log->created_at)); ?>
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-2">
+                        <p class="text-sm font-normal text-gray-2">
+                          <?php echo date('H:i', strtotime($log->created_at)); ?>
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-2 flex justify-end">
+                        <a href="/admin/pagamentos/confirm/{{ $log->id }}" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                          <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
+                      <div role="cell" class="col-span-3 pr-3">
+                        <p class="text-sm text-gray-2 italic">
+                          id transaction
+                        </p>
+                        <p class="text-sm text-gray-2 italic">
+                          #{{ $log->id_transaction }}
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-3">
+                        <p class="text-sm text-gray-2 italic">
+                          id payment
+                        </p>
+                        <p class="text-sm text-gray-2 italic">
+                          #{{ $log->id_payment }}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div role="cell" class="col-span-3">
-                    <p class="text-sm font-semibold text-gray-1">
-                      {{$log->registration->modalities->nome}}
-                    </p>
-                  </div>
-                  <div role="cell" class="col-span-2 pr-2">
-                    <p class="text-gray-1 text-sm font-semibold">
-                      <?php  echo date("d/m/y", strtotime($log->created_at))?>
-                    </p>
-                  </div>
-                  <div role="cell" class="col-span-2">
-                    <p class="text-sm font-normal text-gray-2">
-                      <?php  echo date("H:i", strtotime($log->created_at))?>
-                    </p>
-                  </div>
-                  <div role="cell" class="col-span-2 flex justify-end">
-                    <a href="/admin/pagamentos/confirm/{{$log->id}}" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
-                    </a>
-                  </div>
+                @endforeach
+              @else
+                <div class="py-4">
+                  <p class="text-sm text-center text-gray-1">
+                    Nenhum pagamento pendente.
+                  </p>
                 </div>
-                <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
-                  <div role="cell" class="col-span-3 pr-3">
-                    <p class="text-sm text-gray-2 italic">
-                      id transaction
-                    </p>
-                    <p class="text-sm text-gray-2 italic">
-                      #{{$log->id_transaction}}
-                    </p>
-                  </div>
-                  <div role="cell" class="col-span-3">
-                    <p class="text-sm text-gray-2 italic">
-                      id payment
-                    </p>
-                    <p class="text-sm text-gray-2 italic">
-                      #{{$log->id_payment}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              @endforeach
+              @endif
             </div>
           </div>
         </div>
@@ -167,11 +172,11 @@
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
           {{ $logs->appends([
-            's' => request()->get('s', '')
-        ])->links() }}
+                  's' => request()->get('s', ''),
+              ])->links() }}
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              {{ Count($logs) }} Atletas exibidos
+              {{ Count($logs) }} Pagamentos pendentes
             </p>
           </div>
         </div>
@@ -192,4 +197,3 @@
     });
   </script>
 @endsection
- 
