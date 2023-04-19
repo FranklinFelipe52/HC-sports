@@ -206,7 +206,7 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago(config('services.mercadopago.key'));
+    const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
 
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {
