@@ -71,6 +71,18 @@
                 </p>
               </div>
             </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  Status
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->status_regitration->status }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -226,8 +238,16 @@
                               {{ $registration->user->email }}
                             @endif
                           </a>
-                          @if (!($modalidade->mode_modalities->id == 1))
-                            <p class="text-xs text-gray-1 font-normal">
+                          <p class="text-xs text-gray-1 font-normal">
+                            @if (Session('admin')->rule->id == 1)
+                              <strong>
+                                {{ $registration->user->address->federativeUnit->initials }}
+                              </strong>
+                            @endif
+                            @if (!($modalidade->mode_modalities->id == 1))
+                              @if (Session('admin')->rule->id == 1)
+                                |
+                              @endif
                               Categorias:
                               @foreach ($registrations as $registration)
                                 @if ($modalidade->mode_modalities->id == 2)
@@ -238,8 +258,8 @@
                                   {{ $registration->modalities_category->nome }};
                                 @endif
                               @endforeach
-                            </p>
-                          @endif
+                            @endif
+                          </p>
                         </div>
                       </div>
                       <div class="flex sm:flex-col sm:items-end justify-between gap-1.5 grow sm:grow-0 mt-1 sm:mt-0">
