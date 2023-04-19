@@ -5,11 +5,11 @@
 
 @section('content')
 
-@foreach ($atleta->registrations as $registration)
+  @foreach ($atleta->registrations as $registration)
     {{-- modal registration --}}
     <div id="modal{{ $registration->id }}" class="hidden">
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 overflow-hidden rounded-lg w-full max-w-[500px]">
+        <div class="bg-white mx-3 overflow-hidden rounded-lg w-full max-w-[550px]">
           {{-- modal registration - header --}}
           <div class="bg-gray-6 p-3 md:pr-6 md:pl-5 md:py-4 flex">
             <div class="grow">
@@ -43,7 +43,7 @@
                 </p>
               </div>
               <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
+                <p class="text-gray-2 text-sm font-normal break-all">
                   {{ $registration->user->email }}
                 </p>
               </div>
@@ -93,6 +93,21 @@
         <!-- Cabeçalho -->
         <header class="pt-8 pb-6 space-y-6">
           <div class="container">
+            <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
+              <div>
+                <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
+                  Atletas
+                </a>
+              </div>
+              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+                @if ($atleta->nome_completo)
+                  {{ $atleta->nome_completo }}
+                @else
+                  {{ $atleta->email }}
+                @endif
+              </div>
+            </nav>
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
               Visualização de atleta
             </h1>
@@ -108,8 +123,7 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
-
-                <?php echo $atleta->nome_completo ? explode(' ', $atleta->nome_completo)[0]." ".explode(' ', $atleta->nome_completo)[1] : "-";?>
+                  <?php echo $atleta->nome_completo ? explode(' ', $atleta->nome_completo)[0] . ' ' . explode(' ', $atleta->nome_completo)[1] : '-'; ?>
                 </p>
               </div>
             </div>
@@ -147,8 +161,8 @@
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      {{$atleta->email}}
+                    <p class="text-sm text-gray-2 font-normal break-all">
+                      {{ $atleta->email }}
                     </p>
                   </div>
                 </div>
@@ -161,7 +175,7 @@
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
 
-                      <?php  echo date("d/m/Y", strtotime($atleta->data_nasc))?>
+                      <?php echo date('d/m/Y', strtotime($atleta->data_nasc)); ?>
                     </p>
                   </div>
                 </div>
@@ -173,10 +187,10 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      @if($atleta->sexo == 'M')
-                      Masculino
+                      @if ($atleta->sexo == 'M')
+                        Masculino
                       @else
-                      Feminino
+                        Feminino
                       @endif
                     </p>
                   </div>
@@ -202,9 +216,9 @@
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
                       @if ($atleta->address->cidade)
-                      {{$atleta->address->cidade}}
+                        {{ $atleta->address->cidade }}
                       @else
-                          -
+                        -
                       @endif
 
                     </p>
@@ -218,16 +232,16 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      
-                      Criado em: <strong><?php  echo date("d/m/Y h:i:s", strtotime($atleta->created_at))?></strong>
-      
+
+                      Criado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->created_at)); ?></strong>
+
 
                     </p>
                     <p class="text-sm text-gray-2 font-normal">
                       @if ($atleta->registered)
-                      Cadastro validado em: <strong><?php  echo date("d/m/Y h:i:s", strtotime($atleta->updated_at))?></strong>
+                        Cadastro validado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->updated_at)); ?></strong>
                       @else
-                          -
+                        -
                       @endif
 
                     </p>
@@ -240,66 +254,67 @@
               </h1>
               <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 @if (count($atleta->registrations) !== 0)
-                @foreach ($atleta->registrations as $registration)
-                  <!-- inscrição - item do grid -->
-                  <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
-                    <div class="flex justify-between">
-                      <div>
-                        <div class="flex items-center gap-4">
-                          <p class="text-base font-semibold text-gray-1">
-                            {{ $registration->modalities->nome }}
-                          </p>
-                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-fill-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold">
-                              {{ $registration->status_regitration->status }}
+                  @foreach ($atleta->registrations as $registration)
+                    <!-- inscrição - item do grid -->
+                    <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
+                      <div class="flex justify-between">
+                        <div>
+                          <div class="flex items-center gap-4">
+                            <p class="text-base font-semibold text-gray-1">
+                              {{ $registration->modalities->nome }}
                             </p>
+                            <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                              <p class="text-white text-[0.5rem] font-bold text-center">
+                                {{ $registration->status_regitration->status }}
+                              </p>
+                            </div>
                           </div>
+                          <p class="text-gray-1 text-xs mt-[2px]">
+                            Seccional {{ $registration->user->address->federativeUnit->name }}
+                          </p>
                         </div>
-                        <p class="text-gray-1 text-xs mt-[2px]">
-                          Seccional {{ $registration->user->address->federativeUnit->name }}
-                        </p>
+                        <div class="w-[38px] h-[38px] rounded-full shrink-0">
+                          <img src="/images/svg/modalidades/modalidade-{{ $registration->modalities->id }}.svg" class="w-full h-full object-cover" alt="">
+                        </div>
                       </div>
-                      <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                        <img src="/images/svg/modalidades/modalidade-{{ $registration->modalities->id }}.svg" class="w-full h-full object-cover" alt="">
+                      <div class="flex flex-wrap gap-3">
+                        <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Ver detalhes
+                        </button>
                       </div>
                     </div>
-                    <div class="flex flex-wrap gap-3">
-                      <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                        Detalhes
-                      </button>
-                      
-                    </div>
-                  </div>
-                @endforeach
+                  @endforeach
                 @else
-        <div class="alert alert-info" role="alert">
-          Nenhuma inscrição cadastrada
-        </div>
-      @endif
+                  <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
+                    <p class="text-brand-a1">
+                      Nenhuma inscrição cadastrada.
+                    </p>
+                  </div>
+                @endif
 
               </div>
 
-              <div class="flex gap-4 flex-wrap">
-                <!--
-                <a href="/profile/edit/{{$atleta->id}}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+              {{-- <div class="flex gap-4 flex-wrap">
+
+                <a href="/profile/edit/{{ $atleta->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   <img src="/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
-                <a href="/profile/password_reset/{{$atleta->id}}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <a href="/profile/password_reset/{{ $atleta->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                   <img src="/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha
                   </p>
-                </a>-->
-               <!-- <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+                </a>
+                <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
                   <img src="/images/svg/trash.svg" alt="">
                   <p class="text-brand-v1 text-sm font-bold font-poppins">
                     Excluir Conta
                   </p>
-                </button>-->
-              </div>
+                </button>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -307,5 +322,3 @@
     </div>
   </div>
 @endsection
-
-
