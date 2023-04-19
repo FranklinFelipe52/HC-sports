@@ -131,7 +131,7 @@ class CheckoutController extends Controller
              Log::alert(['registration' =>  $registration]);
              $log_payment = new log_payment;
              $log_payment->status = $response['status'];
-             $log_payment->id_payment =  $response['id'];
+             $log_payment->id_payment =  $payment_id;
              $log_payment->registration_id = $response['external_reference'];
              $log_payment->mount = $response['transaction_amount'];
              $log_payment->save();
@@ -139,7 +139,7 @@ class CheckoutController extends Controller
  
         if($response['status'] == 'approved'){
              $registration->status_regitration_id = 1;
-             $registration->payment->id_payment  =  $response['id'];
+             $registration->payment->id_payment  =  $payment_id;
              $registration->payment->status_payment_id  = 1;
              $registration->payment->mount  = $response['transaction_amount'];
              $registration->payment->save();
@@ -156,7 +156,7 @@ class CheckoutController extends Controller
 
         if($response['status'] == 'in_process'){
             $registration->status_regitration_id = 2;
-            $registration->payment->id_payment  =  $response['id'];
+            $registration->payment->id_payment  =  $payment_id;
             $registration->payment->status_payment_id  = 3;
             $registration->payment->save();
             $registration->save();
