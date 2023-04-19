@@ -1,7 +1,7 @@
 @php
             
             require base_path('vendor/autoload.php');
-            MercadoPago\SDK::setAccessToken("TEST-6607371367221296-041214-ea6401037ca3aab4fe22cb4d7086d497-1012467989");
+            MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
 
             $preference = new MercadoPago\Preference();
 
@@ -9,7 +9,7 @@
             $item = new MercadoPago\Item();
             $item->title = $registration->modalities->nome;
             $item->quantity = 1;
-            $item->unit_price = 1;
+            $item->unit_price = $valor;
             $preference->items = array($item);
             $preference->back_urls = array(
                 "success" => config('services.mercadopago.url_base')."/notification_payment",
@@ -206,7 +206,7 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago("TEST-7025cdd7-7291-46ff-9d81-c1b0cd8b6085");
+    const mp = new MercadoPago(config('services.mercadopago.key'));
 
       mp.bricks().create("wallet", "wallet_container", {
     initialization: {
