@@ -120,7 +120,7 @@ class CheckoutController extends Controller
             Log::alert(['payment_id' => $payment_id]);
             $response = Http::withHeaders([
                  'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
-             ])->get("https://api.mercadopago.com/v1/payments/{{$payment_id}");
+             ])->get("https://api.mercadopago.com/v1/payments/$payment_id");
 
              Log::alert(['response_payment' =>  $response]);
             if($response->status() == 403 || $response->status() == 400 || $response->status() == 404){
