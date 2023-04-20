@@ -98,7 +98,7 @@ class RegistrationsUserController extends Controller
 
             return back();
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 }

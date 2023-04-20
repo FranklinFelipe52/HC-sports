@@ -46,7 +46,7 @@ class AdminController extends Controller
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 

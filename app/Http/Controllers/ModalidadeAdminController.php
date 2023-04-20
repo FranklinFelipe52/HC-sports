@@ -38,7 +38,7 @@ class ModalidadeAdminController extends Controller
             }
             return back();
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 
@@ -68,7 +68,7 @@ class ModalidadeAdminController extends Controller
                'mode' => $mode
             ]);
         } catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 
@@ -83,7 +83,7 @@ class ModalidadeAdminController extends Controller
 
             return back();
         }catch (Exception $e){
-            return $e;
+            return back();
         }
     }
 }

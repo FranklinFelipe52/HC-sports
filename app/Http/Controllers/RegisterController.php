@@ -28,8 +28,8 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-
-        $payload = [
+        try{
+            $payload = [
                 "nome" => $request->nome,
                 "data_nascimento" => $request->data_nascimento,
                 "email" => $request->email,
@@ -50,5 +50,10 @@ class RegisterController extends Controller
 
         Mail::to($request->email)->send(new EmailVerify($link));
         return redirect()->route('GetLogin')->with('EmailVerify', 'Mandamos um link de confirmação para seu E-mail. Confirme o E-mail para ter acesso ao sistema');
+        } catch(Exception $e){
+            return back();
+        }
+
+        
     }
 }

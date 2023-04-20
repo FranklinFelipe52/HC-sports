@@ -224,7 +224,7 @@ class RegistrationsAdminController extends Controller
             return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
-            return $e;
+            return back();
         }
     }
 
@@ -274,7 +274,7 @@ class RegistrationsAdminController extends Controller
             ]);
 
         }catch(Exception $e){
-            return $e;
+            return back();
         }
     }
 }

@@ -14,7 +14,7 @@ class loginController extends Controller
         try{
             return view('User/login');
         } catch (Exception $e){
-            return dd($e);
+            return back();
         }
         
     }

@@ -30,7 +30,7 @@ class PaymentsController extends Controller
             ]);
 
         } catch(Exception $e){
-            return $e;
+            return back();
         }
     }
 

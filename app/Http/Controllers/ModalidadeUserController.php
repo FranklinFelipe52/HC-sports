@@ -48,7 +48,7 @@ class ModalidadeUserController extends Controller
                 'modalities_type_id' => $request->type  
             ]);
         }catch (Exception $e){
-            return $e;
+            return back();
         }
     } 
 }

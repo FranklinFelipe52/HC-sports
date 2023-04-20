@@ -37,7 +37,8 @@ class AdminDashboardController extends Controller
             ]);
 
         } catch (Exception $e){
-            return $e;
+            $request->session()->forget('admin');
+            return redirect('/admin/login');
         }
     }
 }
