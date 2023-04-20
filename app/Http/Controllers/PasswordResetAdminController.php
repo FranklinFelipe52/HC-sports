@@ -32,7 +32,7 @@ class PasswordResetAdminController extends Controller
                return redirect('/admin/login');
             
         } catch(Exception $e) {
-            return $e;
+            return redirect('/admin/login')->with('erro', 'Esse link de redefinição está invalido.');
         }
     }
 }
