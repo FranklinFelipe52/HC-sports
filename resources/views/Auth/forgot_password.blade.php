@@ -18,7 +18,7 @@
 
 <body class="h-screen">
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/frontend/dist/images/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/src/index.html">
