@@ -21,7 +21,7 @@
 </head>
 
 <body class="h-screen">
-
+  
   @yield('content')
 
   <!-- js -->

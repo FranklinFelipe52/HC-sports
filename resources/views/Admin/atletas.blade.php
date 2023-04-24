@@ -14,6 +14,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+    @if(Session('admin')->personification)
+    @include('components.admin.personification_nav')
+    @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
 
         <!-- Cabeçalho -->
@@ -37,8 +40,9 @@
                 </button>
 
               </form>
+              @if(Session('admin')->rule->id == 1 && !Session('admin')->personification)
+             
               <form id="filter_uf" class="relative">
-
                 <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">
                   <option value disabled selected>UF</option>
                   @foreach ($federative_units as $federative_unit)
@@ -50,6 +54,7 @@
                 </div>
 
               </form>
+              @endif
 
             </div>
           </div>
@@ -91,6 +96,7 @@
             <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
               @if (count($atletas) !== 0)
                 @foreach ($atletas as $atleta)
+                
                   <!-- Table row -->
                   <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
                     <div role="cell" class="py-3 flex items-center col-span-3">

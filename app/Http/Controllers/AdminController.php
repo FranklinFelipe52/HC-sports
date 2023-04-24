@@ -34,11 +34,13 @@ class AdminController extends Controller
                 ->orWhere('cpf', 'LIKE', '%'.$_GET["s"].'%');
             }
            if($admin->rule->id == 1 ){
-
-            $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
-
+            if($admin->personification){
+                $administradores = $administradores->where('federative_unit_id', $admin->personification)->where('rule_id', '<>', 1)->paginate(10);
+            } else {
+                $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
+            }
            } else {
-            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->paginate(10);
+            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->where('rule_id', '<>', 1)->paginate(10);
            }
 
             return view('Admin.administradores', [
@@ -123,7 +125,9 @@ class AdminController extends Controller
 
     public function profile (Request $request){
         try{
-            return view('Admin.profile');
+            return view('Admin.profile', [
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
+            ]);
 
         } catch (Exception $e){
             return back();

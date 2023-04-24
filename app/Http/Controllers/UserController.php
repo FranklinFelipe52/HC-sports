@@ -27,11 +27,15 @@ class UserController extends Controller
             }
 
             if($admin->rule->id == 1){
-                $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(30) : $atletas->paginate(30);
+                if($admin->personification){
+                    $atletas = $atletas->where('federative_unit_id', '=', $admin->personification)->paginate(30);
+                } else {
+                    $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(30) : $atletas->paginate(30);
+                }
+                
             } else {
                 $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(30);
             }
-            
             return view('Admin.atletas', [
                 'atletas' => $atletas,
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()

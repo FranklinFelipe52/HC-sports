@@ -22,9 +22,13 @@ class AdminDashboardController extends Controller
             ->select('users.nome_completo', 'users.id', 'status_notificatios.status', 'addresses.federative_unit_id', 'actions_notificatios.created_at')
             ->orderBy('created_at', 'desc');
             if($admin->rule->id == 1){
-                $atualizacoes = $atualizacoes_aux->get();
-
-                error_log($atualizacoes);
+                if($admin->personification){
+                    $atualizacoes = $atualizacoes_aux
+                ->where('federative_unit_id', $admin->personification)
+                ->get();
+                } else {
+                    $atualizacoes = $atualizacoes_aux->get();
+                }
             } else {
                 $atualizacoes = $atualizacoes_aux
                 ->where('federative_unit_id', $admin->federativeUnit->id)

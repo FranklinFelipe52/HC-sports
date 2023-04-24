@@ -14,6 +14,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+    @if(Session('admin')->personification)
+    @include('components.admin.personification_nav')
+    @endif
       <div class="container h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->

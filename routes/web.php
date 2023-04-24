@@ -18,6 +18,7 @@ use App\Http\Controllers\NotificationsCheckoutController;
 use App\Http\Controllers\PasswordResetAdminController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\PersonificationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RegistrationsAdminController;
 use App\Http\Controllers\RegistrationsUserController;
@@ -87,6 +88,8 @@ Route::get('/admin/administradores', [AdminController::class, 'show'])->middlewa
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos', [PaymentsController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos/confirm/{id}', [PaymentsController::class, 'store'])->middleware('AuthAdmins');
+Route::post('/admin/personification/update', [PersonificationController::class, 'Personification']);
+Route::get('/admin/personification/off', [PersonificationController::class, 'Personification_off']);
 
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);

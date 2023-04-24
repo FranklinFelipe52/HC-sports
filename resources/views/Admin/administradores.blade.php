@@ -15,6 +15,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+    @if(Session('admin')->personification)
+    @include('components.admin.personification_nav')
+    @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
 
         <!-- Cabeçalho -->
@@ -43,7 +46,7 @@
                 </button>
 
               </form>
-              @if (Session('admin')->rule->id == 1)
+              @if(Session('admin')->rule->id == 1 && !Session('admin')->personification)
                 <form id="filter_uf" class="relative">
 
                   <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">

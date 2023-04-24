@@ -15,6 +15,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+    @if(Session('admin')->personification)
+    @include('components.admin.personification_nav')
+    @endif
       <!-- administrador personificado -->
       <div class="hidden bg-brand-a1 py-2 px-4 lg:px-6">
         <div class="flex">

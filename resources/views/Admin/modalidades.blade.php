@@ -14,6 +14,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+    @if(Session('admin')->personification)
+    @include('components.admin.personification_nav')
+    @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
 
         <!-- Cabeçalho -->
@@ -109,7 +112,23 @@
                   <div role="cell" class="col-span-3 lg:col-span-2 py-3 flex items-center">
                     <p class="text-sm font-semibold text-gray-600">
                       @if (Session('admin')->rule->id == 1)
+
+                      @if(Session('admin')->personification)
+                      <?php 
+                      $users_registrations = 0;
+
+                      foreach ($modalidade->registrations as $registration) {
+                              if ($registration->user->address->federative_unit_id == Session('admin')->personification ) {
+                                $users_registrations++;
+                              }  
+                      }
+                      ?>
+                      {{ $users_registrations }} inscrições
+
+                      @else
                       {{ Count($modalidade->registrations) }} inscrições
+                      @endif
+                      
                       @else
                       <?php 
                       $users_registrations = 0;
