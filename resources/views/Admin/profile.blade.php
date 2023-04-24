@@ -91,6 +91,7 @@
                 </p>
               </div>
             </div>
+            @if (Session('admin')->rule->id == 1)
             <div class="flex gap-4 flex-wrap">
               <button data-modalId="modal" data-action="open" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <img src="/images/svg/key-active.svg" alt="">
@@ -99,6 +100,7 @@
                 </p>
               </button>
             </div>
+            @endif
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
             <div class="w-full">
