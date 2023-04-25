@@ -148,7 +148,7 @@
                 <div role="cell" class="col-span-2 pr-2">
                   <p class="text-gray-1 text-sm font-semibold">
                     @if($payment->mount)
-                   <?php echo "R$ ".number_format($payment->mount, 2, ".", ",");?>
+                   <?php echo "R$ ".number_format($payment->mount, 2, ",", "");?>
                     @else
                     -
                     @endif
