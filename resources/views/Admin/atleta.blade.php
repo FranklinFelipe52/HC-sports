@@ -282,6 +282,11 @@
                         <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                           Ver detalhes
                         </button>
+                        @if(!($registration->status_regitration->id == 1) && Session('admin')->rule->id == 1)
+                        <button onclick="window.open('/admin/pagamentos/confirm/{{ $registration->payment->id }}', '_self')"  class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Confirmar pagamento
+                        </button>
+                        @endif
                       </div>
                     </div>
                   @endforeach
