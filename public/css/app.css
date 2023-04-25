@@ -838,10 +838,6 @@ video {
   margin-top: 2px;
 }
 
-.mb-0 {
-  margin-bottom: 0px;
-}
-
 .block {
   display: block;
 }
@@ -1231,14 +1227,6 @@ video {
   gap: 2rem;
 }
 
-.gap-0 {
-  gap: 0px;
-}
-
-.gap-0\.5 {
-  gap: 0.125rem;
-}
-
 .gap-y-6 {
   row-gap: 1.5rem;
 }
@@ -1265,12 +1253,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
-}
-
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .overflow-auto {
@@ -1506,16 +1488,12 @@ video {
   --tw-bg-opacity: 0.6;
 }
 
-.bg-\[url\(\'\/images\/background\.png\'\)\] {
-  background-image: url('/images/background.png');
-}
-
-.bg-\[url\(\'frontend\/images\/background\.png\'\)\] {
-  background-image: url('frontend/images/background.png');
-}
-
 .bg-\[url\(\'\/frontend\/dist\/images\/background\.png\'\)\] {
   background-image: url('/frontend/dist/images/background.png');
+}
+
+.bg-\[url\(\'\/images\/background\.png\'\)\] {
+  background-image: url('/images/background.png');
 }
 
 .bg-cover {
@@ -2642,12 +2620,12 @@ input[type="radio"]:checked::after {
     width: auto;
   }
 
-  .md\:grid-cols-12 {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-
   .md\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   .md\:flex-col {

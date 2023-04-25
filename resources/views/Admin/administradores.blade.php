@@ -15,9 +15,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-    @if(Session('admin')->personification)
-    @include('components.admin.personification_nav')
-    @endif
+      @if(Session('admin')->personification)
+        @include('components.admin.personification_nav')
+      @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
 
         <!-- Cabeçalho -->
@@ -26,11 +26,11 @@
             Administradores Cadastrados
           </h1>
           @if(Session('admin')->rule->id == 1)
-          <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Cadastrar Administrador
-            </p>
-          </a>
+            <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+              <p class="text-white text-sm font-bold font-poppins">
+                Cadastrar Administrador
+              </p>
+            </a>
           @endif
         </header>
 
@@ -97,39 +97,48 @@
 
             <!-- Table body -->
             <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
-              @foreach ($administradores as $administrador)
-                <!-- Table row -->
-                <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
-                  <div role="cell" class="py-3 flex items-center col-span-3">
-                    <p class="text-sm font-semibold text-gray-2">
-                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $administrador->cpf); ?>
-                    </p>
-                  </div>
-                  <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
-                    <p class="text-sm font-semibold text-gray-2">
-                      {{ $administrador->nome_completo }}
-                    </p>
-                  </div>
-                  <div role="cell" class="py-3 flex items-center col-span-3">
-                    <p class="text-sm font-semibold text-gray-2">
-                      @if ($administrador->rule_id == 1)
-                        -
-                      @else
-                        {{ $administrador->federative_unit_name }}
-                      @endif
-                    </p>
-                  </div>
-                  <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
-                    <!--
-                      <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                        <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
-                      </a>
-                      <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+              @if (Count($administradores) > 0)
+                @foreach ($administradores as $administrador)
+                  <!-- Table row -->
+                  <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                    <div role="cell" class="py-3 flex items-center col-span-3">
+                      <p class="text-sm font-semibold text-gray-2">
+                        <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $administrador->cpf); ?>
+                      </p>
+                    </div>
+                    <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                      <p class="text-sm font-semibold text-gray-2">
+                        {{ $administrador->nome_completo }}
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex items-center col-span-3">
+                      <p class="text-sm font-semibold text-gray-2">
+                        @if ($administrador->rule_id == 1)
+                          -
+                        @else
+                          {{ $administrador->federative_unit_name }}
+                        @endif
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                      {{--
+                        <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                          <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
+                        </a>
+                    --}}
+                      <a href="/admin/administradores/{{ $administrador->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                         <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
-                      </a> -->
+                      </a>
+                    </div>
                   </div>
+                @endforeach
+              @else
+                <div class="p-6">
+                  <p class="text-gray-1 text-sm text-center">
+                    Ainda não há administradores cadastrados.
+                  </p>
                 </div>
-              @endforeach
+              @endif
             </div>
           </div>
         </div>
@@ -141,7 +150,7 @@
               ])->links() }}
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              @if (Count($administradores) > 1)
+              @if (Count($administradores) > 1 || Count($administradores) == 0)
                 {{ Count($administradores) }} Administradores exibidos
               @else
                 {{ Count($administradores) }} Administrador exibido
