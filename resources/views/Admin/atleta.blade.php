@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Perfil')
+@section('title', 'Atletas - ' . $atleta->nome_completo)
 
 
 @section('content')
@@ -88,9 +88,9 @@
 
     <!-- corpo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-    @if(Session('admin')->personification)
-    @include('components.admin.personification_nav')
-    @endif
+      @if(Session('admin')->personification)
+        @include('components.admin.personification_nav')
+      @endif
       <div class="h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->
@@ -255,22 +255,20 @@
               <h1 class="text-lg text-gray-1 font-poppins font-semibold mb-4">
                 Inscrição do atleta
               </h1>
-              <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
                 @if (count($atleta->registrations) !== 0)
                   @foreach ($atleta->registrations as $registration)
                     <!-- inscrição - item do grid -->
                     <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
                       <div class="flex justify-between">
-                        <div>
-                          <div class="flex items-center gap-4">
-                            <p class="text-base font-semibold text-gray-1">
-                              {{ $registration->modalities->nome }}
+                        <div class="flex flex-col gap-1">
+                          <p class="text-base font-semibold text-gray-1">
+                            {{ $registration->modalities->nome }}
+                          </p>
+                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                            <p class="text-white text-[0.5rem] font-bold text-center">
+                              {{ $registration->status_regitration->status }}
                             </p>
-                            <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                              <p class="text-white text-[0.5rem] font-bold text-center">
-                                {{ $registration->status_regitration->status }}
-                              </p>
-                            </div>
                           </div>
                           <p class="text-gray-1 text-xs mt-[2px]">
                             Seccional {{ $registration->user->address->federativeUnit->name }}

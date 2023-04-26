@@ -86,6 +86,7 @@ Route::get('/admin/registration/delete/{id}', [RegistrationsAdminController::cla
 Route::post('/admin/registration/create/{id}', [RegistrationsAdminController::class, 'store'])->middleware('AuthAdmins');
 Route::get('/admin/administradores', [AdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');
+Route::get('/admin/administradores/{id}', [AdminController::class, 'single'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos', [PaymentsController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos/confirm/{id}', [PaymentsController::class, 'store'])->middleware('AuthAdmins');
 Route::post('/admin/personification/update', [PersonificationController::class, 'Personification']);

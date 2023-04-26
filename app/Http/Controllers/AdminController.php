@@ -52,6 +52,21 @@ class AdminController extends Controller
         }
     }
 
+    public function single (Request $request, $id){
+        try{
+            $administrador = Admin::find($id);
+            if(!$administrador){
+                return back();
+            }
+            return view('Admin.administrador', [
+                'administrador' => $administrador,
+            ]);
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
     public function create(Request $request){
         try{
             if(!($request->session()->get('admin')->rule->id == 1)){
