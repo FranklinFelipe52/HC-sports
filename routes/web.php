@@ -63,12 +63,23 @@ Route::post('/password_reset', [PasswordResetController::class, 'store']);
 
 Route::get('/dashboard', [HomeController::class, 'show'])->middleware('AuthUsers');
 Route::get('/profile', [UserController::class, 'profile'])->middleware('AuthUsers');
+Route::get('/profile/update', [UserController::class, 'create'])->middleware('AuthUsers');
+Route::post('/profile/update', [UserController::class, 'update'])->middleware('AuthUsers');
+Route::get('/profile/password_reset', [UserController::class, 'password_reset_get'])->middleware('AuthUsers');
+Route::post('/profile/password_reset', [UserController::class, 'password_reset_post'])->middleware('AuthUsers');
 Route::get('/registration/proof/{id}', [RegistrationsUserController::class, 'show'])->middleware('AuthUsers');
 
 
 Route::get('/registration/checkout/{id}', [CheckoutController::class, 'checkout'])->middleware('AuthUsers');
 Route::get('/notification_payment', [CheckoutController::class, 'notification']);
 Route::post('/notification_payment_webhook', [CheckoutController::class, 'notification_webhook']);
+
+
+Route::get('/admin/profile/update', [AdminController::class, 'create_update'])->middleware('AuthAdmins');
+Route::post('/admin/profile/update', [AdminController::class, 'update'])->middleware('AuthAdmins');
+Route::get('/admin/profile/password_reset', [AdminController::class, 'password_reset_get'])->middleware('AuthAdmins');
+Route::post('/admin/profile/password_reset', [AdminController::class, 'password_reset_post'])->middleware('AuthAdmins');
+
 
 Route::redirect('/admin', '/admin/login');
 Route::view('/admin/login', 'Admin/login')->name('GetLoginAdmin')->middleware('redirect_admin_login');

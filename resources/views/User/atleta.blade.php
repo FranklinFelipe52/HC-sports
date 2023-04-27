@@ -124,25 +124,18 @@
                 </div>
               </div>
               <div class="flex gap-4 flex-wrap">
-                <!--
-                <a href="/profile/edit/{{Session('user')->id}}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
-                  <img src="/images/svg/pencil.svg" alt="">
+                <a href="/profile/update" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                  <img src="/dist/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
-                <a href="/profile/password_reset/{{Session('user')->id}}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/images/svg/padlock.svg" alt="">
+                <a href="/profile/password_reset" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                  <img src="/dist/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha
                   </p>
-                </a>-->
-               <!-- <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/images/svg/trash.svg" alt="">
-                  <p class="text-brand-v1 text-sm font-bold font-poppins">
-                    Excluir Conta
-                  </p>
-                </button>-->
+                </a>
               </div>
             </div>
           </div>

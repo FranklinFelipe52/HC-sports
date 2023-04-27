@@ -7,6 +7,8 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Stmt\Return_;
 
 class UserController extends Controller
 
@@ -63,6 +65,56 @@ class UserController extends Controller
     public function profile (Request $request){
         try{
             return view('User.atleta');
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
+    public function create (Request $request){
+        try{
+            return view('User.atleta_edit');
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function update (Request $request){
+        try{
+            $user = User::find($request->session()->get('user')->id);
+            $user->nome_completo = $request->nome;
+            $user->address->cidade = $request->city;
+            $user->address->save();
+            $user->save();
+            $request->session()->put('user', $user);
+            return redirect('/profile');
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function password_reset_post (Request $request){
+        try{
+            if($request->new_password != $request->confirm_password){
+                return back()->with('erro', 'Reinsira a sua senha corretamente.');
+            }
+
+            $user = User::find($request->session()->get('user')->id);
+            if(Hash::check($request->password, $user->password)){
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                $request->session()->put('user', $user);
+                return redirect('/profile');
+
+            }
+            return back()->with('erro', 'Senha atual invalida.');
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
+    public function password_reset_get (Request $request){
+        try{
+            return view('User.atleta_reset_password');
 
         } catch (Exception $e){
             return back();

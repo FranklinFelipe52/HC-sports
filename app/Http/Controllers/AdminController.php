@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\GeneratePasswordHelper;
+use App\Http\Requests\AdminUpdateRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\StoreAdminRequest;
 use App\Mail\ConfirmAdm;
 use App\Models\Admin;
 use App\Models\FederativeUnit;
 use App\Models\Rule;
+use App\Models\User;
 use Exception;
 use Illuminate\Console\View\Components\Confirm;
 use Illuminate\Http\Request;
@@ -143,6 +145,59 @@ class AdminController extends Controller
             return view('Admin.profile', [
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function create_update (Request $request){
+        try{
+            return view('Admin.admin_edit');
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function update (AdminUpdateRequest $request){
+        try{
+            $admin = Admin::find($request->session()->get('admin')->id);
+            if(!$admin){
+                error_log($admin);
+                return back();
+            }
+            $admin->nome_completo = $request->nome;
+            $admin->cpf = $request->cpf;
+            $admin->email = $request->email;
+            $admin->save();
+            $request->session()->put('admin', $admin);
+            return redirect('/admin/profile');
+        } catch (Exception $e){
+            return $e;
+        }
+    }
+    public function password_reset_post (Request $request){
+        try{
+            if($request->new_password != $request->confirm_password){
+                return back()->with('erro', 'Reinsira a sua senha corretamente.');
+            }
+
+            $admin = Admin::find($request->session()->get('admin')->id);
+            if(Hash::check($request->password, $admin->password)){
+                $admin->password = Hash::make($request->new_password);
+                $admin->save();
+                $request->session()->put('admin', $admin);
+                return redirect('/admin/profile');
+
+            }
+            return back()->with('erro', 'Senha atual invalida.');
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
+    public function password_reset_get (Request $request){
+        try{
+            return view('Admin.admin_reset_password');
 
         } catch (Exception $e){
             return back();

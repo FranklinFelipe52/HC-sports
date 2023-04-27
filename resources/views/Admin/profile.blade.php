@@ -91,16 +91,32 @@
                 </p>
               </div>
             </div>
-            @if (Session('admin')->rule->id == 1)
+           
             <div class="flex gap-4 flex-wrap">
+            <a href="/admin/profile/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="text-brand-a1 text-sm font-bold font-poppins">
+                  Editar perfil
+                </p>
+              </a>
+              <a href="/admin/profile/password_reset" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <img src="/images/svg/padlock.svg" alt="">
+                <p class="text-brand-a1 text-sm font-bold font-poppins">
+                  Alterar senha
+                </p>
+              </a>
+               @if (Session('admin')->rule->id == 1)
               <button data-modalId="modal" data-action="open" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <img src="/images/svg/key-active.svg" alt="">
                 <p class="text-brand-a1 text-sm font-bold font-poppins">
                   Personificar
                 </p>
               </button>
+              @endif
             </div>
-            @endif
+            
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
             <div class="w-full">
