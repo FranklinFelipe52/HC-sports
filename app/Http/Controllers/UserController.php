@@ -92,6 +92,33 @@ class UserController extends Controller
             return back();
         }
     }
+    public function admin_user_create (Request $request, $id){
+        try{
+            $user = User::find($id);
+            if(!$user){
+                return back();
+            }
+            return view('Admin.atleta_edit', [
+                'atleta' => $user
+            ]);
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function admin_user_update (Request $request, $id){
+        try{
+            $user = User::find($id);
+            $user->nome_completo = $request->nome;
+            $user->address->cidade = $request->city;
+            $user->address->save();
+            $user->save();
+            $request->session()->put('user', $user);
+            return redirect("/admin/users/$id");
+        } catch (Exception $e){
+            return back();
+        }
+    }
     public function password_reset_post (Request $request){
         try{
             if($request->new_password != $request->confirm_password){

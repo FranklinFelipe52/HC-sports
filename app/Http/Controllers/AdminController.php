@@ -172,7 +172,37 @@ class AdminController extends Controller
             $request->session()->put('admin', $admin);
             return redirect('/admin/profile');
         } catch (Exception $e){
-            return $e;
+            return back();
+        }
+    }
+    public function admin_create (Request $request, $id){
+        try{
+            $admin = Admin::find($id);
+            if(!$admin){
+                return back();
+            }
+            return view('Admin.admin_edit', [
+                'admin' => $admin
+            ]);
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+    public function admin_update (AdminUpdateRequest $request, $id){
+        try{
+            $admin = Admin::find($id);
+            if(!$admin){
+                return back();
+            }
+            $admin->nome_completo = $request->nome;
+            $admin->cpf = $request->cpf;
+            $admin->email = $request->email;
+            $admin->save();
+            $request->session()->put('admin', $admin);
+            return redirect("/admin/administradores/$id");
+        } catch (Exception $e){
+            return back();
         }
     }
     public function password_reset_post (Request $request){

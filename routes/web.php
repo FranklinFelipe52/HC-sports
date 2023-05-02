@@ -22,6 +22,7 @@ use App\Http\Controllers\PersonificationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RegistrationsAdminController;
 use App\Http\Controllers\RegistrationsUserController;
+use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\UserController;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
@@ -88,6 +89,9 @@ Route::get('/admin/profile', [AdminController::class, 'profile'])->middleware('A
 Route::get('/admin/logout', [AdminController::class, 'logout']);
 Route::get('/admin/users', [UserController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/users/{id}', [UserController::class, 'single'])->middleware('AuthAdmins');
+Route::get('/admin/users/password_reset/{id}', [ResetPassword::class, 'atleta'])->middleware('AuthAdmins');
+Route::get('/admin/users/update/{id}', [UserController::class, 'admin_user_create'])->middleware('AuthAdmins');
+Route::post('/admin/users/update/{id}', [UserController::class, 'admin_user_update'])->middleware('AuthAdmins');
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/modalidade/{id}', [ModalidadeAdminController::class, 'single'])->middleware('AuthAdmins');
 Route::get('/admin/modalidades', [ModalidadeAdminController::class, 'show'])->middleware('AuthAdmins');
@@ -97,6 +101,9 @@ Route::get('/admin/registration/delete/{id}', [RegistrationsAdminController::cla
 Route::post('/admin/registration/create/{id}', [RegistrationsAdminController::class, 'store'])->middleware('AuthAdmins');
 Route::get('/admin/administradores', [AdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');
+Route::get('/admin/administradores/password_reset/{id}', [ResetPassword::class, 'adm'])->middleware('AuthAdmins');
+Route::get('/admin/administradores/update/{id}', [AdminController::class, 'admin_create'])->middleware('AuthAdmins');
+Route::post('/admin/administradores/update/{id}', [AdminController::class, 'admin_update'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/{id}', [AdminController::class, 'single'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos', [PaymentsController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/pagamentos/confirm/{id}', [PaymentsController::class, 'store'])->middleware('AuthAdmins');

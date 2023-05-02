@@ -1,7 +1,9 @@
-@extends('Admin.base')
+
+@extends('User.base')
 
 @section('title', 'Perfil')
 
+@section('profileClass', 'active')
 
 @section('content')
 
@@ -10,7 +12,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('components.admin.menu_lateral', ['type' => 5]);
+    @include('components.admin.menu_lateral', ['type' => 4]);
     </div>
 
     <!-- corpo da página -->
@@ -22,17 +24,21 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
-                  Administradores
+                <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
+                  Atletas
                 </a>
               </div>
               <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-                Alterar Perfil
+                @if ($atleta->nome_completo)
+                  {{ $atleta->nome_completo }}
+                @else
+                  {{ $atleta->email }}
+                @endif
               </div>
             </nav>
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-              Alterar perfil
+            Atualização de dados
             </h1>
           </div>
         </header>
@@ -44,6 +50,7 @@
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
                 <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
+              
             </div>
           </div>
           <div class="md:col-span-9 lg:col-span-10 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -56,19 +63,13 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cpf_field">
                       CPF
                     </label>
-                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" name="cpf" placeholder="Digite o seu CPF"/>
-                    @error('cpf')
-                    <p class="text-input-error text-sm pt-2  group-[.error]:block">{{ $message }}</p>
-                    @enderror
+                    <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" value="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>" />
                   </div>
                   <div class="grow">
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">
                       E-mail
                     </label>
-                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="cadastro_email_field"  name="email" placeholder="Digite o seu E-mail" />
-                    @error('email')
-                    <p class="text-input-error text-sm pt-2  group-[.error]:block">{{ $message }}</p>
-                    @enderror
+                    <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_email_field"  value="{{$atleta->email}}" />
                   </div>
                 </div>
                 <div>
@@ -76,6 +77,30 @@
                     Nome completo
                   </label>
                   <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" placeholder="Digite o seu nome completo" />
+                </div>
+                <div>
+                  <label class="text-dark-900 font-semibold text-base block mb-2" for="cadastro_nascimento_field">
+                    Nascimento
+                  </label>
+                  <div class="relative w-full max-w-[200px]">
+                    <input disabled class="w-full max-w-[200px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field"  value="{{$atleta->data_nasc}}" />
+                    <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
+                      <img src="/images/svg/calendar.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="text-gray-1 font-semibold text-base block mb-2" for="input_text_exemplo">
+                    UF
+                  </label>
+                  <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[270px] break-all px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" value="{{$atleta->address->federativeUnit->name}}" type="text" id="input_text_exemplo" />
+                </div>
+                <div>
+                  <label class="text-gray-1 font-semibold text-base block mb-2" for="input_text_exemplo">
+                    Cidade
+                  </label>
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[250px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="city" placeholder="Digite o nome da sua cidade" />
                 </div>
               </div>
               <div class="flex gap-4 flex-wrap">
