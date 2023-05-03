@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             ModalitiesSeeder::class,
             ModalitiesCategorySeeder::class,
             RangeModalitySeeder::class,
-            StatusPaymentSeeder::class
+            StatusPaymentSeeder::class,
+            TypeActionsAdminSeeder::class
         ]);
     }
 }

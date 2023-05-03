@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionsAdmin;
 use App\Models\log_payment;
 use App\Models\Payment;
 use App\Models\registration;
@@ -46,7 +47,11 @@ class PaymentsController extends Controller
     public function store(Request $request, $id)
     {
         try {
+            $admin = $request->session()->get('admin');
             $payment = Payment::find($id);
+            if (!$admin) {
+                return back();
+            }
             if (!$payment) {
                 return back();
             }
@@ -62,7 +67,11 @@ class PaymentsController extends Controller
             $registration->payment->status_payment_id = 1;
             $registration->payment->save();
             $registration->save();
-
+            $action_admin = new ActionsAdmin;
+            $action_admin->type_actions_admin_id = 1;
+            $action_admin->admin_id = $admin->id;
+            $action_admin->description = 'Confirmação de pagamento para a inscrição na modalidade '.$registration->modalities->nome.' do atleta '.$registration->user->nome_completo;
+            $action_admin->save();
             return back()->with('success', 'Pagamento confirmado com sucesso');
         } catch (Exception $e) {
             return back()->with('erro', 'Ocorreu um erro na confirmação do pagamento');

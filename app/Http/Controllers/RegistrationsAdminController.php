@@ -7,7 +7,9 @@ use App\Helpers\VerifyRegistration;
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Mail\RegistrationDelete;
 use App\Mail\RegistrationMail;
+use App\Models\ActionsAdmin;
 use App\Models\Address;
+use App\Models\Admin;
 use App\Models\FederativeUnit;
 use App\Models\Modalities;
 use App\Models\modalities_category;
@@ -179,6 +181,11 @@ class RegistrationsAdminController extends Controller
                 $addres->federative_unit_id = $admin->rule->id == 1 ? $request->uf : $admin->federativeUnit->id;
                 $addres->user_id = $user->id;
                 $addres->save();
+                $action_admin = new ActionsAdmin;
+                $action_admin->type_actions_admin_id = 6;
+                $action_admin->admin_id = $admin->id;
+                $action_admin->description = 'Cadastrou um novo atleta';
+                $action_admin->save();
             }
 
 
@@ -232,11 +239,20 @@ class RegistrationsAdminController extends Controller
     public function delete(Request $request, $id){
         try{
            $registration = registration::find($id);
+           $admin = Admin::find($id);
+           if(!$admin){
+               return back();
+           }
             if(!$registration){
                 return back();
             }
             $registration->delete();
             $user = $registration->user;
+            $action_admin = new ActionsAdmin;
+            $action_admin->type_actions_admin_id = 5;
+            $action_admin->admin_id = $admin->id;
+            $action_admin->description = 'Deletou a inscrição do atleta '.$registration->user->nome_completo.' na modalidade '.$registration->modalities->nome;
+            $action_admin->save();
             Mail::to($user->email)->send(new RegistrationDelete($registration));
             return redirect("/admin/users/$user->id");
         } catch(Exception $e){

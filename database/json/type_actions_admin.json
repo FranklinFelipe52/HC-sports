@@ -1,0 +1,20 @@
+[
+    {
+        "type" : "Confirmação de pagamento"
+    },
+    {
+        "type" : "Exclusão de usuário"
+    },
+    {
+        "type" : "Edição de usuário"
+    },
+    {
+        "type" : "Resetar senha de usuários"
+    },
+    {
+        "type" : "Excluir inscrição"
+    },
+    {
+        "type" : "Cadastrar atleta"
+    }
+]

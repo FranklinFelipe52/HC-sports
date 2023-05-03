@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionsAdmin;
 use App\Models\FederativeUnit;
 use App\Models\User;
 use Exception;
@@ -108,12 +109,25 @@ class UserController extends Controller
     }
     public function admin_user_update (Request $request, $id){
         try{
+            $admin = $request->session()->get('admin');
             $user = User::find($id);
+            if (!$admin) {
+                return back();
+            }
+            if (!$user) {
+                return back();
+            }
+            
             $user->nome_completo = $request->nome;
             $user->address->cidade = $request->city;
             $user->address->save();
             $user->save();
             $request->session()->put('user', $user);
+            $action_admin = new ActionsAdmin;
+            $action_admin->type_actions_admin_id = 3;
+            $action_admin->admin_id = $admin->id;
+            $action_admin->description = "Edição de dados do atleta ".$user->nome_completo;
+            $action_admin->save();
             return redirect("/admin/users/$id");
         } catch (Exception $e){
             return back();
