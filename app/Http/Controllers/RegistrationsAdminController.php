@@ -130,6 +130,7 @@ class RegistrationsAdminController extends Controller
             } else {
                 $category = modalities_category::find($request->category);
                 $category_id = $category->id;
+                error_log($category);
                 if(!$category){
                     return back();
                 }
@@ -231,7 +232,7 @@ class RegistrationsAdminController extends Controller
             return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
-            return back();
+            return $e;
         }
     }
 

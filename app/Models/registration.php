@@ -41,6 +41,13 @@ class registration extends Model
     public function modalities(){
         return $this->belongsTo(Modalities::class);
     }
+    public function range(){
+        return $this->belongsTo(Range::class);
+    }
+
+    public function sub_category(){
+        return $this->belongsTo(sub_categorys::class);
+    }
 
     public function log_payments(){
         return $this->hasMany(log_payment::class);

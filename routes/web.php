@@ -22,6 +22,7 @@ use App\Http\Controllers\PersonificationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RegistrationsAdminController;
 use App\Http\Controllers\RegistrationsUserController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\UserController;
 use App\Http\Requests\LoginRequest;
@@ -109,6 +110,7 @@ Route::get('/admin/pagamentos', [PaymentsController::class, 'show'])->middleware
 Route::get('/admin/pagamentos/confirm/{id}', [PaymentsController::class, 'store'])->middleware('AuthAdmins');
 Route::post('/admin/personification/update', [PersonificationController::class, 'Personification']);
 Route::get('/admin/personification/off', [PersonificationController::class, 'Personification_off']);
+Route::get('/admin/report_registrations', [ReportsController::class, 'RegistrationsReport'])->middleware('AuthAdmins');
 
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);
