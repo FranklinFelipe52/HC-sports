@@ -45,17 +45,17 @@
         </a>
       </li>
       @if (Session('admin')->rule->id == 1)
-      <li class="group @if ($type == 6) active @endif">
-        <a href="/admin/pagamentos" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
-          <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/pagamentos.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
-            <img src="/images/svg/pagamentos-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
-          </div>
-          <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
-            Pagamentos
-          </p>
-        </a>
-      </li>
+        <li class="group @if ($type == 6) active @endif">
+          <a href="/admin/pagamentos" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+            <div class="w-[24px] h-[24px]">
+              <img src="/images/svg/pagamentos.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+              <img src="/images/svg/pagamentos-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+            </div>
+            <p class="hidden lg:block text-gray-1 group-[.active]:text-brand-a1 text-sm font-poppins">
+              Pagamentos
+            </p>
+          </a>
+        </li>
       @endif
       <li class="group @if ($type == 2) active @endif">
         <a href="/admin/administradores" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
@@ -81,11 +81,14 @@
 
   <hr class="hidden sm:block border-gray-6 my-4">
   @if (Session('admin')->rule->id == 1)
-  <a target="_blank" href="/admin/report_registrations" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
-    <p class="hidden lg:block text-gray-1 font-normal text-sm font-poppins">
-    Exportar Inscrições
-    </p>
-  </a>
+    <a target="_blank" href="/admin/report_registrations" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
+      <div class="w-[24px] h-[24px]">
+        <img src="/images/svg/excel.svg" class="w-full h-full object-cover" alt="">
+      </div>
+      <p class="hidden lg:block text-gray-1 font-normal text-sm font-poppins">
+        Gerar Excel
+      </p>
+    </a>
   @endif
   <a href="/admin/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
@@ -108,9 +111,9 @@
         </p>
         <p class="text-gray-2 group-[.active]:text-brand-a1 font-medium font-poppins text-xs">
           @if (Session('admin')->rule->id == 1)
-          Administrador Geral
+            Administrador Geral
           @else
-          Administrador {{ Session('admin')->federativeUnit->initials }}
+            Administrador {{ Session('admin')->federativeUnit->initials }}
           @endif
         </p>
       </div>
