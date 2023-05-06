@@ -17,9 +17,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-    @if(Session('admin')->personification)
-    @include('components.admin.personification_nav')
-    @endif
+      @if (Session('admin')->personification)
+        @include('components.admin.personification_nav')
+      @endif
       <div class="h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->
@@ -59,7 +59,7 @@
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cpf_adicionar_atleta_form">
                         CPF
                       </label>
-                      <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
+                      <input data-cpf required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cpf_adicionar_atleta_form" name="cpf" value="{{ old('cpf') }}" placeholder="Ex.: 123.456.789-10" />
 
                       @error('cpf')
                         <div class="absolute bg-white top-[50%] right-3">
@@ -77,7 +77,7 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
                       E-mail
                     </label>
-                    <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
+                    <input data-preload="email" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
                     @error('email')
                       <div class="absolute bg-white top-[50%] right-3">
                         <img src="/images/svg/input-error.svg" alt="">
@@ -112,7 +112,7 @@
                   Nascimento
                 </label>
                 <div class="relative">
-                  <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
+                  <input data-preload="data_nasc" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
                   <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                     <img src="/images/svg/calendar.svg" alt="" />
                   </div>
@@ -137,7 +137,7 @@
                       </select>
                     @endif
                   @else
-                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                    <select data-preload="sexo" required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
                       <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
                       <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
                       <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
@@ -155,7 +155,7 @@
                     Selecione a UF
                   </label>
                   <div class="relative max-w-[300px]">
-                    <select required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                    <select data-preload="uf" required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
                       <option value="" @if (!old('uf')) selected @endif disabled>
                         Selecione
                       </option>
@@ -234,16 +234,8 @@
                     </div>
                   @endforeach
                 </div>
-
-
-
-
-
-
               @endif
-
               @if (Count($modalidade->ranges) != 0)
-
                 <div class="mb-6">
                   <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_range_field">
                     Selecione a faixa
@@ -262,15 +254,12 @@
                 </div>
               @endif
               @if ($modalidade->is_pcd)
-
                 <div class="flex items-center gap-2 mb-3">
-                  <input type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
-                  <label class="block pb-1 text-sm font-semibold text-brand-a1">
+                  <input data-preload="pcd" type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
+                  <label class="block pb-1 text-sm font-semibold text-brand-a1" for="pcd_modalities" id="pcd_modalities">
                     PCD
                   </label>
                 </div>
-
-
                 <div id="sub_categorys_id" class="hidden">
                   <div class="mb-6">
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_sub_category_field">
@@ -289,14 +278,9 @@
                     </div>
                   </div>
                 </div>
-
-
               @endif
-
-
             </div>
             <div class="flex flex-wrap justify-end gap-6">
-
               <button type="submit" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                 <p class="text-white text-sm font-bold font-poppins">
                   Confirmar
@@ -309,6 +293,7 @@
     </div>
   </div>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     new Cleave('#cpf_adicionar_atleta_form', {
@@ -316,6 +301,88 @@
       delimiters: ['.', '.', '-'],
       numericOnly: true,
     });
+
+    const inputCpf = document.querySelector('[data-cpf]');
+    const inputEmail = document.querySelector('[data-preload="email"]');
+    const inputDataNasc = document.querySelector('[data-preload="data_nasc"]');
+    const inputSexo = document.querySelector('[data-preload="sexo"]');
+    const inputUf = document.querySelector('[data-preload="uf"]');
+    const inputPcd = document.querySelector('[data-preload="pcd"]');
+
+    inputCpf.addEventListener('input', () => {
+      const cpf = inputCpf.value.replace(/[^\d]/g, ''); // Remova caracteres não numéricos
+
+      if (cpf.length === 11) {
+        fetch(`/api/user/${cpf}`)
+          .then(response => response.json())
+          .then(data => {
+            inputEmail.value = data[0]['email'];
+            inputDataNasc.value = data[0]['data_nasc'];
+            inputSexo.value = data[0]['sexo'];
+            inputUf.value = data[0]['federative_unit_id'];
+            inputPcd.checked = data[0]['is_pcd'] ? true : false;
+
+            if (inputPcd.checked) {
+              isPcd();
+            }
+
+            showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
+
+            console.log(data[0])
+          })
+          .catch(error => {
+            console.error('Erro ao carregar dados:', error);
+          });
+      }
+    });
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+    const pcd_checkbox = document.getElementById("pcd_modalities");
+    const sub_category_box = document.getElementById("sub_categorys_id");
+    const sub_categorys_select = document.getElementById(
+      "cadastro_sub_category_field"
+    );
+
+    pcd_checkbox.addEventListener("click", handleToggleCheckbox);
+
+    function isPcd() {
+      sub_category_box.classList.remove("hidden");
+      sub_categorys_select.required = true;
+
+      sub_categorys_select.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function isNotPcd() {
+      sub_category_box.classList.add("hidden");
+      sub_categorys_select.required = false;
+    }
+
+    function handleToggleCheckbox({
+      currentTarget
+    }) {
+      if (currentTarget.checked) {
+        isPcd();
+      } else {
+        isNotPcd();
+      }
+    }
   </script>
 
 @endsection

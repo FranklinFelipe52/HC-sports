@@ -1981,11 +1981,6 @@ video {
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
 }
 
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .grayscale {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2260,6 +2255,11 @@ input[type="radio"]:checked::after {
   --tw-ring-color: rgb(79 79 79 / var(--tw-ring-opacity));
 }
 
+.hover\:ring-gray-4:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(189 189 189 / var(--tw-ring-opacity));
+}
+
 .hover\:ring-gray-5:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(224 224 224 / var(--tw-ring-opacity));
@@ -2268,11 +2268,6 @@ input[type="radio"]:checked::after {
 .hover\:ring-white:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
-}
-
-.hover\:ring-gray-4:hover {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(189 189 189 / var(--tw-ring-opacity));
 }
 
 .hover\:ring-opacity-50:hover {
@@ -2364,11 +2359,6 @@ input[type="radio"]:checked::after {
   opacity: 0.5;
 }
 
-.disabled\:grayscale:disabled {
-  --tw-grayscale: grayscale(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .disabled\:hover\:ring-0:hover:disabled {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -2451,21 +2441,6 @@ input[type="radio"]:checked::after {
 .group.success .group-\[\.success\]\:text-alert-success-base {
   --tw-text-opacity: 1;
   color: rgb(43 138 62 / var(--tw-text-opacity));
-}
-
-.group.disabled .group-\[\.disabled\]\:text-gray-6 {
-  --tw-text-opacity: 1;
-  color: rgb(242 242 242 / var(--tw-text-opacity));
-}
-
-.group.disabled .group-\[\.disabled\]\:text-gray-4 {
-  --tw-text-opacity: 1;
-  color: rgb(189 189 189 / var(--tw-text-opacity));
-}
-
-.group.disabled .group-\[\.disabled\]\:text-gray-1 {
-  --tw-text-opacity: 1;
-  color: rgb(51 51 51 / var(--tw-text-opacity));
 }
 
 .group.error .group-\[\.error\]\:outline-input-error {
