@@ -240,11 +240,13 @@ class RegistrationsAdminController extends Controller
     public function delete(Request $request, $id){
         try{
            $registration = registration::find($id);
-           $admin = Admin::find($id);
+           $admin = $request->session()->get('admin');
            if(!$admin){
+            
                return back();
            }
             if(!$registration){
+                
                 return back();
             }
             $registration->delete();
