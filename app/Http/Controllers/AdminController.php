@@ -227,7 +227,7 @@ class AdminController extends Controller
             $admin->cpf = $request->cpf;
             $admin->email = $request->email;
             $admin->save();
-            $request->session()->put('admin', $admin);
+            
             return redirect("/admin/administradores/$id");
         } catch (Exception $e){
             return back();
