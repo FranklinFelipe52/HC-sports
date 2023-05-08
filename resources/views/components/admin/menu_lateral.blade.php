@@ -81,7 +81,8 @@
 
   <hr class="hidden sm:block border-gray-6 my-4">
   @if (Session('admin')->rule->id == 1)
-    <a hidden target="_blank" href="/admin/report_registrations" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
+  <!--  
+    <a target="_blank" href="/admin/report_registrations" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
       <div class="w-[24px] h-[24px]">
         <img src="/images/svg/excel.svg" class="w-full h-full object-cover" alt="">
       </div>
@@ -89,6 +90,7 @@
         Gerar Excel
       </p>
     </a>
+    -->
   @endif
   <a href="/admin/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
