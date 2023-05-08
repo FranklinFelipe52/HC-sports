@@ -73,7 +73,7 @@ class ReportsController extends Controller
             back();
 
         }catch(Exception $e){
-            return back();
+            return $e;
         }
     }
 }
