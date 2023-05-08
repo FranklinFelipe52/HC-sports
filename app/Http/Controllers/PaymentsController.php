@@ -27,13 +27,14 @@ class PaymentsController extends Controller
                 ->join('users', 'registrations.user_id', 'users.id')
                 ->join('modalities', 'registrations.modalities_id', 'modalities.id')
                 ->join('status_payments', 'payments.status_payment_id', 'status_payments.id')
-                ->select('users.nome_completo', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id');
+                ->select('users.nome_completo', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id')
+                ->orderBy('users.created_at', 'desc');
             if (isset($_GET["s"])) {
                 $payment_aux = $payment_aux
                     ->where('nome_completo', 'LIKE', '%' . $_GET["s"] . '%');
             }
             $payments = isset($_GET['status']) ? $payment_aux->where('status_payment_id', $request->status)->paginate(8) : $payment_aux->paginate(8) ;
-            
+
 
             return view('Admin.payments', [
                 'payments' => $payments,
