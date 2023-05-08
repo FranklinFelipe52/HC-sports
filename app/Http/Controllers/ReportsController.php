@@ -15,7 +15,7 @@ class ReportsController extends Controller
             $array_registrations = [];
             $registrations = registration::where('modalities_id', '<>', 11)->get();
             foreach ($registrations as $registration) {
-                Log::error($registration->Payment);
+                
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding($registration->user->nome_completo, 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding($registration->user->email, 'ISO-8859-1', "UTF-8"),
@@ -31,9 +31,11 @@ class ReportsController extends Controller
                     'status_pagamento' => mb_convert_encoding($registration->Payment->status_payment->status, 'ISO-8859-1', "UTF-8")
                 ]);
             }
-            $registrations = registration::where('modalities_id', 11)->join('natacao_categorias', 'natacao_categorias.registration_id', 'registrations.id')->get();
+            $registrations = registration::where('modalities_id', 11)->join('natacao_categorias', 'natacao_categorias.registration_id', 'registrations.id')
+            ->select('registrations.id', 'registrations.user_id', 'natacao_categorias.modalities_category_id', 'registrations.modalities_id', 'registrations.range_id', 'registrations.status_regitration_id', 'registrations.type_payment_id', 'registrations.created_at', 'registrations.is_pcd', 'registrations.sub_categorys_id')
+            ->get();
             foreach ($registrations as $registration) {
-                Log::error($registration->Payment);
+                
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding($registration->user->nome_completo, 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding($registration->user->email, 'ISO-8859-1', "UTF-8"),
