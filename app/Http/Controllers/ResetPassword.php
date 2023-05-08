@@ -46,6 +46,9 @@ class ResetPassword extends Controller
             if(!$user){
                 return back();
             }
+            if(!$user->registered){
+                return back();
+            }
             $password = GeneratePasswordHelper::generatePassword();
             $user->password = Hash::make($password);
             $user->save();
