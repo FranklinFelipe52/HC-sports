@@ -21,7 +21,8 @@ class UserController extends Controller
                 $atletas_aux = DB::table('users')
             ->join('addresses', 'addresses.user_id', 'users.id')
             ->join('federative_units', 'federative_units.id', 'addresses.federative_unit_id')
-            ->select('users.id', 'users.nome_completo', 'federative_units.name as federative_unit_name', 'users.cpf');
+            ->select('users.id', 'users.nome_completo', 'federative_units.name as federative_unit_name', 'users.cpf')
+            ->orderBy('users.created_at', 'desc');
             $atletas = $atletas_aux;
             if(isset($_GET["s"])){
                 $atletas = $atletas_aux
