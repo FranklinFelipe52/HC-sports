@@ -108,7 +108,7 @@ class UserController extends Controller
             return back();
         }
     }
-    public function admin_user_update (Request $reqest, $id){
+    public function admin_user_update (Request $request, $id){
         try{
             $admin = $request->session()->get('admin');
             $user = User::find($id);

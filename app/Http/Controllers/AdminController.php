@@ -152,18 +152,34 @@ class AdminController extends Controller
     }
     public function create_update (Request $request){
         try{
-            return view('Admin.admin_edit');
+            $admin = Admin::find($request->session()->get('admin')->id);
+            if(!$admin){
+                return back();
+            }
+            return view('Admin.admin_edit', [
+                'admin' => $admin
+            ]);
 
         } catch (Exception $e){
             return back();
         }
     }
-    public function update (AdminUpdateRequest $request){
+    public function update (Request $request){
         try{
             $admin = Admin::find($request->session()->get('admin')->id);
             if(!$admin){
-                error_log($admin);
                 return back();
+            }
+            if(!($admin->cpf == $request->cpf)){
+                if(Admin::where('cpf', $request->cpf)->get()){
+                    return back()->with('erro', 'Esse CPF já está em uso');
+                }
+            }
+
+            if(!($admin->email == $request->email)){
+                if(Admin::where('email', $request->email)->get()){
+                    return back()->with('erro', 'Esse E-mail já está em uso');
+                }
             }
             $admin->nome_completo = $request->nome;
             $admin->cpf = $request->cpf;
@@ -189,12 +205,24 @@ class AdminController extends Controller
             return back();
         }
     }
-    public function admin_update (AdminUpdateRequest $request, $id){
+    public function admin_update (Request $request, $id){
         try{
             $admin = Admin::find($id);
             if(!$admin){
                 return back();
             }
+            if(!($admin->cpf == $request->cpf)){
+                if(Admin::where('cpf', $request->cpf)->get()){
+                    return back()->with('erro', 'Esse CPF já está em uso');
+                }
+            }
+
+            if(!($admin->email == $request->email)){
+                if(Admin::where('email', $request->email)->get()){
+                    return back()->with('erro', 'Esse E-mail já está em uso');
+                }
+            }
+            
             $admin->nome_completo = $request->nome;
             $admin->cpf = $request->cpf;
             $admin->email = $request->email;
