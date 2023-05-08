@@ -15,7 +15,7 @@ class ReportsController extends Controller
             $array_registrations = [];
             $registrations = registration::where('modalities_id', '<>', 11)->get();
             foreach ($registrations as $registration) {
-                Log::error($registration);
+                Log::error($registration->Payment);
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding($registration->user->nome_completo, 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding($registration->user->email, 'ISO-8859-1', "UTF-8"),
@@ -33,7 +33,7 @@ class ReportsController extends Controller
             }
             $registrations = registration::where('modalities_id', 11)->join('natacao_categorias', 'natacao_categorias.registration_id', 'registrations.id')->get();
             foreach ($registrations as $registration) {
-                Log::error($registration);
+                Log::error($registration->Payment);
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding($registration->user->nome_completo, 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding($registration->user->email, 'ISO-8859-1', "UTF-8"),
