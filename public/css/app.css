@@ -2037,6 +2037,10 @@ video {
   background-size: cover;
 }
 
+.checkbox:disabled {
+  filter: grayscale(1);
+}
+
 input[type="radio"] {
   all: unset;
   display: block;

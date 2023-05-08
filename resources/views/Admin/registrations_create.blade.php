@@ -77,7 +77,8 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="email_adicionar_atleta_form">
                       E-mail
                     </label>
-                    <input data-preload="email" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
+                    <input data-preload="email-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="exemplo@oab.org.br" />
+                    <input data-preload="email" class="hidden" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" />
                     @error('email')
                       <div class="absolute bg-white top-[50%] right-3">
                         <img src="/images/svg/input-error.svg" alt="">
@@ -112,8 +113,9 @@
                   Nascimento
                 </label>
                 <div class="relative">
-                  <input data-preload="data_nasc" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
-                  <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
+                  <input data-preload="data_nasc-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
+                  <input data-preload="data_nasc" class="hidden" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
+                  <div class="pointer-events-none absolute top-4 right-4 bg-white">
                     <img src="/images/svg/calendar.svg" alt="" />
                   </div>
                 </div>
@@ -137,7 +139,12 @@
                       </select>
                     @endif
                   @else
-                    <select data-preload="sexo" required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                    <select data-preload="sexo-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                      <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
+                      <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
+                      <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
+                    </select>
+                    <select data-preload="sexo" class="hidden" name="sexo" id="cadastro_genero_field">
                       <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
                       <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
                       <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
@@ -155,7 +162,15 @@
                     Selecione a UF
                   </label>
                   <div class="relative max-w-[300px]">
-                    <select data-preload="uf" required class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                    <select data-preload="uf-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 appearance-none transition" name="uf" id="select_exemplo">
+                      <option value="" @if (!old('uf')) selected @endif disabled>
+                        Selecione
+                      </option>
+                      @foreach ($federative_units as $federative_unit)
+                        <option value="{{ $federative_unit->id }}" @if (old('uf') == $federative_unit->id) selected @endif>{{ $federative_unit->initials }}</option>
+                      @endforeach
+                    </select>
+                    <select data-preload="uf" required class="hidden" name="uf" id="select_exemplo">
                       <option value="" @if (!old('uf')) selected @endif disabled>
                         Selecione
                       </option>
@@ -255,8 +270,9 @@
               @endif
               @if ($modalidade->is_pcd)
                 <div class="flex items-center gap-2 mb-3">
-                  <input data-preload="pcd" type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
-                  <label class="block pb-1 text-sm font-semibold text-brand-a1" for="pcd_modalities" id="pcd_modalities">
+                  <input data-preload="pcd-visible" type="checkbox" id="pcd_modalities" name="pcd" class="checkbox" />
+                  <input data-preload="pcd" type="checkbox" id="pcd_modalities" name="pcd" class="hidden" />
+                  <label class="block pb-1 text-sm font-semibold text-brand-a1" for="pcd_modalities" id="label-pcd">
                     PCD
                   </label>
                 </div>
@@ -268,6 +284,7 @@
                     <div class="relative">
                       <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="sub_category" id="cadastro_sub_category_field">
                         <option value="" selected disabled>Selecione</option>
+                        <option value="1">sub categoria 1</option>
                         @foreach ($sub_categorys as $value)
                           <option value="{{ $value->id }}">{{ $value->nome }}</option>
                         @endforeach
@@ -303,11 +320,80 @@
     });
 
     const inputCpf = document.querySelector('[data-cpf]');
+
+    const inputEmailVisible = document.querySelector('[data-preload="email-visible"]');
     const inputEmail = document.querySelector('[data-preload="email"]');
+
+    const inputDataNascVisible = document.querySelector('[data-preload="data_nasc-visible"]');
     const inputDataNasc = document.querySelector('[data-preload="data_nasc"]');
+
+    const inputSexoVisible = document.querySelector('[data-preload="sexo-visible"]');
     const inputSexo = document.querySelector('[data-preload="sexo"]');
+
+    const inputUfVisible = document.querySelector('[data-preload="uf-visible"]');
     const inputUf = document.querySelector('[data-preload="uf"]');
+
+    const inputPcdVisible = document.querySelector('[data-preload="pcd-visible"]');
     const inputPcd = document.querySelector('[data-preload="pcd"]');
+    const labelPcd = document.querySelector('#label-pcd');
+
+    inputCpf.focus();
+
+    function clearInputs() {
+      inputEmailVisible.value = '';
+      inputEmail.value = '';
+
+      inputDataNascVisible.value = '';
+      inputDataNasc.value = '';
+
+      inputSexoVisible.value = '';
+      inputSexo.value = '';
+
+      inputUfVisible.value = '';
+      inputUf.value = '';
+
+      inputPcdVisible.checked = false;
+      inputPcd.checked = false;
+    }
+
+    function disableInputs() {
+      inputEmailVisible.disabled = true;
+      inputEmail.disabled = false;
+
+      inputDataNascVisible.disabled = true;
+      inputDataNasc.disabled = false;
+
+      inputSexoVisible.disabled = true;
+      inputSexo.disabled = false;
+
+      inputUfVisible.disabled = true;
+      inputUf.disabled = false;
+
+      inputPcdVisible.disabled = true;
+      inputPcd.disabled = false;
+      labelPcd.style.filter = 'grayscale(1)';
+    }
+
+    function enableInputs() {
+      inputEmailVisible.disabled = false;
+      inputEmail.disabled = true;
+
+      inputDataNascVisible.disabled = false;
+      inputDataNasc.disabled = true;
+
+      inputSexoVisible.disabled = false;
+      inputSexo.disabled = true;
+
+      inputUfVisible.disabled = false;
+      inputUf.disabled = true;
+
+      inputPcdVisible.disabled = false;
+      inputPcd.disabled = true;
+      labelPcd.style.filter = 'none';
+    }
+
+    disableInputs();
+    clearInputs();
 
     inputCpf.addEventListener('input', () => {
       const cpf = inputCpf.value.replace(/[^\d]/g, ''); // Remova caracteres não numéricos
@@ -316,23 +402,46 @@
         fetch(`/api/user/${cpf}`)
           .then(response => response.json())
           .then(data => {
-            inputEmail.value = data[0]['email'];
-            inputDataNasc.value = data[0]['data_nasc'];
-            inputSexo.value = data[0]['sexo'];
-            inputUf.value = data[0]['federative_unit_id'];
-            inputPcd.checked = data[0]['is_pcd'] ? true : false;
+            disableInputs();
 
-            if (inputPcd.checked) {
-              isPcd();
+            inputEmailVisible.value = data[0]['email'];
+            inputEmail.value = data[0]['email'];
+
+            inputDataNascVisible.value = data[0]['data_nasc'];
+            inputDataNasc.value = data[0]['data_nasc'];
+
+            inputSexo.value = data[0]['sexo'];
+
+            if (inputSexo && inputSexoVisible) {
+              inputSexoVisible.value = data[0]['sexo'];
+              inputSexo.value = data[0]['sexo'];
             }
+
+            inputUfVisible.value = data[0]['federative_unit_id'];
+            inputUf.value = data[0]['federative_unit_id'];
+
+            if (inputPcd) {
+              inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
+              inputPcd.checked = data[0]['is_pcd'] ? true : false
+
+              if (inputPcd.checked) {
+                isPcd();
+              }
+            };
+
 
             showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
 
-            console.log(data[0])
+            console.log(data[0]);
           })
           .catch(error => {
-            console.error('Erro ao carregar dados:', error);
+            clearInputs();
+            enableInputs();
+            console.log(error)
           });
+      } else {
+        clearInputs();
+        disableInputs();
       }
     });
 
@@ -358,7 +467,11 @@
       "cadastro_sub_category_field"
     );
 
-    pcd_checkbox.addEventListener("click", handleToggleCheckbox);
+    try {
+      pcd_checkbox.addEventListener("click", handleToggleCheckbox);
+    } catch (e) {
+
+    }
 
     function isPcd() {
       sub_category_box.classList.remove("hidden");

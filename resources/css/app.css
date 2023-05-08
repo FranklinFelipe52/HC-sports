@@ -27,6 +27,10 @@
     background-size: cover;
 }
 
+.checkbox:disabled {
+    filter: grayscale(1);
+}
+
 input[type="radio"] {
     all: unset;
     @apply block rounded-full bg-white cursor-pointer;
