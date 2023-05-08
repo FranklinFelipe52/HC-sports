@@ -2037,6 +2037,10 @@ video {
   background-size: cover;
 }
 
+.checkbox:disabled {
+  filter: grayscale(1);
+}
+
 input[type="radio"] {
   all: unset;
   display: block;
@@ -2253,6 +2257,11 @@ input[type="radio"]:checked::after {
 .hover\:ring-gray-2:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(79 79 79 / var(--tw-ring-opacity));
+}
+
+.hover\:ring-gray-4:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(189 189 189 / var(--tw-ring-opacity));
 }
 
 .hover\:ring-gray-5:hover {

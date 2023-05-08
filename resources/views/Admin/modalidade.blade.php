@@ -87,6 +87,41 @@
     </div>
   </div>
 </div>
+
+ {{-- confirmação de exclusão --}}
+    <div id="modal-excluir-inscricao-{{ $registration->id }}" class="hidden">
+      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+          <!-- modal header -->
+          <div class="text-gray-1 text-lg md:text-xl font-semibold">
+            <p>
+              Tem certeza de que deseja excluir esta inscição?
+            </p>
+          </div>
+          <hr class="my-4">
+
+          <!-- modal body -->
+          <div class="text-gray-1 text-base">
+            <p>
+              Esta ação é destrutiva e apagará todos os dados desta inscrição.
+            </p>
+          </div>
+
+          <!-- modal footer - actions -->
+          <div class="flex justify-end gap-4 flex-wrap mt-10">
+            <a href="/admin/registration/delete/{{ $registration->id }}" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+              <img src="/images/svg/trash.svg" alt="">
+              <p class="text-brand-v1 text-sm font-bold font-poppins">
+                Excluir inscrição
+              </p>
+            </a>
+            <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="close" class="bg-black border border-black text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-black hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 @endforeach
 <!-- grid principal -->
 <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -308,9 +343,9 @@
                     <button data-modalId="modal{{ $registration->id }}" data-action="open" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Detalhes
                     </button>
-                    <a href="/admin/registration/delete/{{ $registration->id }}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                    <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="open" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                       Excluir
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
