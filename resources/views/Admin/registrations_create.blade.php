@@ -337,6 +337,9 @@
     const inputPcd = document.querySelector('[data-preload="pcd"]');
     const labelPcd = document.querySelector('#label-pcd');
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const gender = urlParams.get('gender');
+
     inputCpf.focus();
 
     function clearInputs() {
@@ -346,8 +349,10 @@
       inputDataNascVisible.value = '';
       inputDataNasc.value = '';
 
-      inputSexoVisible.value = '';
-      inputSexo.value = '';
+      if (inputSexo && inputSexoVisible) {
+        inputSexoVisible.value = '';
+        inputSexo.value = '';
+      }
 
       inputUfVisible.value = '';
       inputUf.value = '';
@@ -365,8 +370,10 @@
       inputDataNascVisible.disabled = true;
       inputDataNasc.disabled = false;
 
-      inputSexoVisible.disabled = true;
-      inputSexo.disabled = false;
+      if (inputSexo && inputSexoVisible) {
+        inputSexoVisible.disabled = true;
+        inputSexo.disabled = false;
+      }
 
       inputUfVisible.disabled = true;
       inputUf.disabled = false;
@@ -385,8 +392,10 @@
       inputDataNascVisible.disabled = false;
       inputDataNasc.disabled = true;
 
-      inputSexoVisible.disabled = false;
-      inputSexo.disabled = true;
+      if (inputSexo && inputSexoVisible) {
+        inputSexoVisible.disabled = false;
+        inputSexo.disabled = true;
+      }
 
       inputUfVisible.disabled = false;
       inputUf.disabled = true;
@@ -410,37 +419,67 @@
           .then(data => {
             disableInputs();
 
-            inputEmailVisible.value = data[0]['email'];
-            inputEmail.value = data[0]['email'];
+            if (gender && data[0]['sexo'] === gender) {
+              inputEmailVisible.value = data[0]['email'];
+              inputEmail.value = data[0]['email'];
 
-            inputDataNascVisible.value = data[0]['data_nasc'];
-            inputDataNasc.value = data[0]['data_nasc'];
+              inputDataNascVisible.value = data[0]['data_nasc'];
+              inputDataNasc.value = data[0]['data_nasc'];
 
-            inputSexo.value = data[0]['sexo'];
+              if (inputSexo && inputSexoVisible) {
+                inputSexoVisible.value = data[0]['sexo'];
+                inputSexo.value = data[0]['sexo'];
+              }
 
-            if (inputSexo && inputSexoVisible) {
-              inputSexoVisible.value = data[0]['sexo'];
-              inputSexo.value = data[0]['sexo'];
+              inputUfVisible.value = data[0]['federative_unit_id'];
+              inputUf.value = data[0]['federative_unit_id'];
+
+              if (inputPcd && inputPcdVisible) {
+                inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
+                inputPcd.checked = data[0]['is_pcd'] ? true : false
+
+                if (inputPcd.checked) {
+                  isPcd();
+                }
+              };
+
+              showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
+            } else if (!gender) {
+              inputEmailVisible.value = data[0]['email'];
+              inputEmail.value = data[0]['email'];
+
+              inputDataNascVisible.value = data[0]['data_nasc'];
+              inputDataNasc.value = data[0]['data_nasc'];
+
+              if (inputSexo && inputSexoVisible) {
+                inputSexoVisible.value = data[0]['sexo'];
+                inputSexo.value = data[0]['sexo'];
+              }
+
+              inputUfVisible.value = data[0]['federative_unit_id'];
+              inputUf.value = data[0]['federative_unit_id'];
+
+              if (inputPcd && inputPcdVisible) {
+                inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
+                inputPcd.checked = data[0]['is_pcd'] ? true : false
+
+                if (inputPcd.checked) {
+                  isPcd();
+                }
+              };
+
+              showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
+            } else {
+              clearInputs();
+              showErrorToastfy("Este cpf pertence a um usuário incompatível com essa modalidade");
             }
 
-            inputUfVisible.value = data[0]['federative_unit_id'];
-            inputUf.value = data[0]['federative_unit_id'];
-
-            if (inputPcd && inputPcdVisible) {
-              inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
-              inputPcd.checked = data[0]['is_pcd'] ? true : false
-
-              if (inputPcd.checked) {
-                isPcd();
-              }
-            };
-
-
-            showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
+            console.log(data);
           })
           .catch(error => {
             clearInputs();
             enableInputs();
+            console.error(error);
           });
       } else {
         clearInputs();
@@ -458,6 +497,22 @@
         style: {
           background: "#EBFBEE",
           color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
           boxShadow: "none",
         },
         onClick: function() {} // Callback after click
