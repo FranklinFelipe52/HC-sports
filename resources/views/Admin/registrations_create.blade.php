@@ -352,8 +352,10 @@
       inputUfVisible.value = '';
       inputUf.value = '';
 
-      inputPcdVisible.checked = false;
-      inputPcd.checked = false;
+      if (inputPcdVisible && inputPcd) {
+        inputPcdVisible.checked = false;
+        inputPcd.checked = false;
+      }
     }
 
     function disableInputs() {
@@ -369,9 +371,11 @@
       inputUfVisible.disabled = true;
       inputUf.disabled = false;
 
-      inputPcdVisible.disabled = true;
-      inputPcd.disabled = false;
-      labelPcd.style.filter = 'grayscale(1)';
+      if (inputPcdVisible && inputPcd) {
+        inputPcdVisible.disabled = true;
+        inputPcd.disabled = false;
+        labelPcd.style.filter = 'grayscale(1)';
+      }
     }
 
     function enableInputs() {
@@ -387,9 +391,11 @@
       inputUfVisible.disabled = false;
       inputUf.disabled = true;
 
-      inputPcdVisible.disabled = false;
-      inputPcd.disabled = true;
-      labelPcd.style.filter = 'none';
+      if (inputPcdVisible && inputPcd) {
+        inputPcdVisible.disabled = false;
+        inputPcd.disabled = true;
+        labelPcd.style.filter = 'none';
+      }
     }
 
     disableInputs();
@@ -420,7 +426,7 @@
             inputUfVisible.value = data[0]['federative_unit_id'];
             inputUf.value = data[0]['federative_unit_id'];
 
-            if (inputPcd) {
+            if (inputPcd && inputPcdVisible) {
               inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
               inputPcd.checked = data[0]['is_pcd'] ? true : false
 
@@ -431,13 +437,10 @@
 
 
             showSuccessToastfy("Ótimo! Esse atleta já possui cadastro. Iremos carregar os dados automaticamente");
-
-            console.log(data[0]);
           })
           .catch(error => {
             clearInputs();
             enableInputs();
-            console.log(error)
           });
       } else {
         clearInputs();
