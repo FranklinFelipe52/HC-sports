@@ -17,7 +17,7 @@ class UserController extends Controller
     public function show(Request $request){
         try{
             $admin = $request->session()->get('admin');
-            
+
                 $atletas_aux = DB::table('users')
             ->join('addresses', 'addresses.user_id', 'users.id')
             ->join('federative_units', 'federative_units.id', 'addresses.federative_unit_id')
@@ -35,7 +35,7 @@ class UserController extends Controller
                 } else {
                     $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(30) : $atletas->paginate(30);
                 }
-                
+
             } else {
                 $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(30);
             }
@@ -107,7 +107,7 @@ class UserController extends Controller
             return back();
         }
     }
-    public function admin_user_update (Request $request, $id){
+    public function admin_user_update (Request $reqest, $id){
         try{
             $admin = $request->session()->get('admin');
             $user = User::find($id);
@@ -117,7 +117,7 @@ class UserController extends Controller
             if (!$user) {
                 return back();
             }
-            
+
             $user->nome_completo = $request->nome;
             $user->address->cidade = $request->city;
             $user->address->save();
@@ -128,6 +128,7 @@ class UserController extends Controller
             $action_admin->admin_id = $admin->id;
             $action_admin->description = "Edição de dados do atleta ".$user->nome_completo;
             $action_admin->save();
+            session()->flash('success', true);
             return redirect("/admin/users/$id");
         } catch (Exception $e){
             return back();

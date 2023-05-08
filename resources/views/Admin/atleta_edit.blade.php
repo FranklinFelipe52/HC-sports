@@ -2,8 +2,6 @@
 
 @section('title', 'Perfil')
 
-@section('profileClass', 'active')
-
 @section('content')
 
   <!-- grid principal -->

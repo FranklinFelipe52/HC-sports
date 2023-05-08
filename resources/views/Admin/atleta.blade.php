@@ -369,4 +369,42 @@
       </div>
     </div>
   </div>
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+
+   function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const success = "{{ session('success') }}";
+      const resetPasswordSuccess = "{{ session('reset-password-success') }}";
+      if (success) {
+        const event = new CustomEvent('dados-atualizados', {
+          bubbles: true
+        });
+        document.dispatchEvent(event);
+      }
+    });
+
+    document.addEventListener('dados-atualizados', function() {
+      showSuccessToastfy('Dados atualizados com sucesso!');
+    });
+  </script>
 @endsection
