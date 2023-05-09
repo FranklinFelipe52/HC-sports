@@ -363,7 +363,7 @@
       }
     }
 
-    function disableInputs() {
+    /* function disableInputs() {
       inputEmailVisible.disabled = true;
       inputEmail.disabled = false;
 
@@ -405,9 +405,9 @@
         inputPcd.disabled = true;
         labelPcd.style.filter = 'none';
       }
-    }
+    } */
 
-    disableInputs();
+    // disableInputs();
     clearInputs();
 
     inputCpf.addEventListener('input', () => {
@@ -417,7 +417,7 @@
         fetch(`/api/user/${cpf}`)
           .then(response => response.json())
           .then(data => {
-            disableInputs();
+            // disableInputs();
 
             if (gender && data[0]['sexo'] === gender) {
               inputEmailVisible.value = data[0]['email'];
@@ -478,12 +478,12 @@
           })
           .catch(error => {
             clearInputs();
-            enableInputs();
+            // enableInputs();
             console.error(error);
           });
       } else {
         clearInputs();
-        disableInputs();
+        // disableInputs();
       }
     });
 
