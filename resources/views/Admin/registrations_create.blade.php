@@ -78,7 +78,7 @@
                       E-mail
                     </label>
                     <input data-preload="email-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="exemplo@oab.org.br" />
-                    <input data-preload="email" class="hidden" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" />
+                    {{-- <input data-preload="email" class="hidden" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" /> --}}
                     @error('email')
                       <div class="absolute bg-white top-[50%] right-3">
                         <img src="/images/svg/input-error.svg" alt="">
@@ -114,7 +114,7 @@
                 </label>
                 <div class="relative">
                   <input data-preload="data_nasc-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
-                  <input data-preload="data_nasc" class="hidden" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
+                  {{-- <input data-preload="data_nasc" class="hidden" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" /> --}}
                   <div class="pointer-events-none absolute top-4 right-4 bg-white">
                     <img src="/images/svg/calendar.svg" alt="" />
                   </div>
@@ -144,11 +144,11 @@
                       <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
                       <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
                     </select>
-                    <select data-preload="sexo" class="hidden" name="sexo" id="cadastro_genero_field">
+                    {{-- <select data-preload="sexo" class="hidden" name="sexo" id="cadastro_genero_field">
                       <option value="" @if (!old('sexo')) selected @endif disabled>Selecione</option>
                       <option value="M" @if (old('sexo') == 'M') selected @endif>Masculino</option>
                       <option value="F" @if (old('sexo') == 'F') selected @endif>Feminino</option>
-                    </select>
+                    </select> --}}
                   @endif
 
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -170,14 +170,14 @@
                         <option value="{{ $federative_unit->id }}" @if (old('uf') == $federative_unit->id) selected @endif>{{ $federative_unit->initials }}</option>
                       @endforeach
                     </select>
-                    <select data-preload="uf" required class="hidden" name="uf" id="select_exemplo">
+                    {{-- <select data-preload="uf" required class="hidden" name="uf" id="select_exemplo">
                       <option value="" @if (!old('uf')) selected @endif disabled>
                         Selecione
                       </option>
                       @foreach ($federative_units as $federative_unit)
                         <option value="{{ $federative_unit->id }}" @if (old('uf') == $federative_unit->id) selected @endif>{{ $federative_unit->initials }}</option>
                       @endforeach
-                    </select>
+                    </select> --}}
                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                       <img src="/images/svg/chevron-down.svg" alt="" />
                     </div>
