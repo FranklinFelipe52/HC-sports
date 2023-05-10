@@ -32,13 +32,13 @@ class UserController extends Controller
 
             if($admin->rule->id == 1){
                 if($admin->personification){
-                    $atletas = $atletas->where('federative_unit_id', '=', $admin->personification)->paginate(30);
+                    $atletas = $atletas->where('federative_unit_id', '=', $admin->personification)->paginate(8);
                 } else {
-                    $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(30) : $atletas->paginate(30);
+                    $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $atletas->paginate(8);
                 }
 
             } else {
-                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(30);
+                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(8);
             }
             return view('Admin.atletas', [
                 'atletas' => $atletas,
