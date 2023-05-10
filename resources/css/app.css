@@ -110,3 +110,7 @@ input[type="radio"]:checked::after {
 .pagination .page-item:last-child.disabled {
     background-color: #e0e0e0;
 }
+
+body .toastify button.toast-close {
+    color: black !important;
+}
