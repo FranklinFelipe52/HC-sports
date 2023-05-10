@@ -307,21 +307,7 @@
                         {{ $registration->user->address->federativeUnit->initials }}
                       </strong>
                       @endif
-                      @if (!($modalidade->mode_modalities->id == 1))
-                      @if (Session('admin')->rule->id == 1)
-                      |
-                      @endif
-                      Categorias:
-                      @foreach ($registrations as $registration)
-                      @if ($modalidade->mode_modalities->id == 2)
-                      @foreach ($registration->modalities_categorys as $category)
-                      {{ $category->nome }};
-                      @endforeach
-                      @else
-                      {{ $registration->modalities_category->nome }};
-                      @endif
-                      @endforeach
-                      @endif
+                     
                     </p>
                   </div>
                 </div>
