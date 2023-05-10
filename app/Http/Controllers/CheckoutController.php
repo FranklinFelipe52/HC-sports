@@ -71,13 +71,7 @@ class CheckoutController extends Controller
     public function notification(Request $request){
 
         try{
-            $payment_id = $_GET["payment_id"];
-            $status = $_GET["status"];
             $external_reference = $_GET["external_reference"];
-
-            if(!$status){
-                redirect('/dashboard');
-            }
 
             $registration = registration::find($external_reference);
             $user = User::find($request->session()->get('user')->id);
@@ -88,21 +82,7 @@ class CheckoutController extends Controller
         if($registration->user->id != $user->id){
             return redirect('/dashboard');
         }
-        if($status == 'approved'){
-            $registration->status_regitration_id = 1;
-            $registration->payment->id_payment  = $payment_id;
-            $registration->payment->status_payment_id  = 1;
-            $registration->payment->save();
-            $registration->save();
-        }
-
-        if($status == 'pending' || $status == 'rejected'){
-            $registration->status_regitration_id = 3;
-            $registration->payment->id_payment  = $payment_id;
-            $registration->payment->status_payment_id  = 3;
-            $registration->payment->save();
-            $registration->save();
-        }
+        
         $notifications = new ActionsNotificatios;
         $notifications->user_id = $user->id;
         $notifications->status_notificatios_id = 2;
