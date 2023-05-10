@@ -232,6 +232,7 @@
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
           {{ $payments->appends([
                   's' => request()->get('s', ''),
+                  'status' => request()->get('status', ''),
               ])->links() }}
           <div>
             <p class="text-gray-3 text-sm font-normal">
