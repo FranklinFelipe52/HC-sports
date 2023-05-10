@@ -1432,11 +1432,6 @@ video {
   border-bottom-color: rgb(224 224 224 / var(--tw-border-opacity));
 }
 
-.bg-alert-error-fill {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 219 219 / var(--tw-bg-opacity));
-}
-
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -1861,11 +1856,6 @@ video {
   letter-spacing: 0.05em;
 }
 
-.text-alert-error-base {
-  --tw-text-opacity: 1;
-  color: rgb(142 16 20 / var(--tw-text-opacity));
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -2128,6 +2118,10 @@ input[type="radio"]:checked::after {
 .pagination .page-item:first-child.disabled,
 .pagination .page-item:last-child.disabled {
   background-color: #e0e0e0;
+}
+
+body .toastify button.toast-close {
+  color: black !important;
 }
 
 @media (min-width: 1280px) {
