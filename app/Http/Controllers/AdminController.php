@@ -28,7 +28,8 @@ class AdminController extends Controller
                 $administradores_aux = DB::table('admins')
             ->join('federative_units', 'federative_units.id', 'admins.federative_unit_id')
             ->join('rules', 'admins.rule_id', 'rules.id')
-            ->select('admins.id', 'admins.nome_completo', 'rules.id as rule_id', 'federative_units.name as federative_unit_name', 'admins.cpf');;
+            ->select('admins.id', 'admins.nome_completo', 'rules.id as rule_id', 'federative_units.name as federative_unit_name', 'admins.cpf')
+            ->orderBy('admins.created_at', 'desc');;
               $administradores = $administradores_aux;
             if(isset($_GET["s"])){
                 $administradores = $administradores_aux
@@ -222,12 +223,12 @@ class AdminController extends Controller
                     return back()->with('erro', 'Esse E-mail já está em uso');
                 }
             }
-            
+
             $admin->nome_completo = $request->nome;
             $admin->cpf = $request->cpf;
             $admin->email = $request->email;
             $admin->save();
-            
+
             return redirect("/admin/administradores/$id");
         } catch (Exception $e){
             return back();
