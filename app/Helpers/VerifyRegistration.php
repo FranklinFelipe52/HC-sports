@@ -35,7 +35,7 @@ class VerifyRegistration
         }
         error_log($women);
         error_log($category->max_f);
-        if(!is_null($category->max_f) && !($women < $category->max_f)){
+        if(!is_null($category->max_f) && !($women <= $category->max_f)){
             error_log('entrou');
             return true;
             
@@ -49,7 +49,7 @@ class VerifyRegistration
                 $man++;
             }
         }
-        if(!is_null($category->max_m) && !($man < $category->max_m)){
+        if(!is_null($category->max_m) && !($man <= $category->max_m)){
             
                 return true;
             
