@@ -15,7 +15,7 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-      @if(Session('admin')->personification)
+      @if (Session('admin')->personification)
         @include('components.admin.personification_nav')
       @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
@@ -25,7 +25,7 @@
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Administradores Cadastrados
           </h1>
-          @if(Session('admin')->rule->id == 1)
+          @if (Session('admin')->rule->id == 1)
             <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
               <p class="text-white text-sm font-bold font-poppins">
                 Cadastrar Administrador
@@ -42,7 +42,7 @@
             <div class="flex gap-2 flex-wrap">
               <form class="relative grow">
 
-                <input type="text" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
@@ -144,10 +144,16 @@
         </div>
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
-          {{ $administradores->appends([
-                  's' => request()->get('s', ''),
-                  'uf' => request()->get('uf', ''),
-              ])->links() }}
+          @if (request()->has('s'))
+            {{ $administradores->appends(['s' => request()->get('s', '')])->links() }}
+          @elseif (request()->has('uf'))
+            {{ $administradores->appends(['uf' => request()->get('uf', '')])->links() }}
+          @elseif (request()->has('s') && request()->has('uf'))
+            {{ $administradores->appends(['s' => request()->get('s', ''), 'uf' => request()->get('uf', '')])->links() }}
+          @else
+            {{ $administradores->links() }}
+          @endif
+
           <div>
             <p class="text-gray-3 text-sm font-normal">
               @if (Count($administradores) > 1 || Count($administradores) == 0)

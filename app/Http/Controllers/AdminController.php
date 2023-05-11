@@ -38,12 +38,12 @@ class AdminController extends Controller
             }
            if($admin->rule->id == 1 ){
             if($admin->personification){
-                $administradores = $administradores->where('federative_unit_id', $admin->personification)->where('rule_id', '<>', 1)->paginate(10);
+                $administradores = $administradores->where('federative_unit_id', $admin->personification)->where('rule_id', '<>', 1)->paginate(8);
             } else {
-                $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(10) : $administradores->paginate(10);
+                $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $administradores->paginate(8);
             }
            } else {
-            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->where('rule_id', '<>', 1)->paginate(10);
+            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->where('rule_id', '<>', 1)->paginate(8);
            }
 
             return view('Admin.administradores', [
