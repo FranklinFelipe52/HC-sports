@@ -104,7 +104,7 @@
 
               <form class="relative grow">
 
-                <input type="text" placeholder="Pesquise por um pagamento usando o nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um pagamento usando o nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
@@ -230,10 +230,16 @@
 
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
-          {{ $payments->appends([
-                  's' => request()->get('s', ''),
-                  'status' => request()->get('status', ''),
-              ])->links() }}
+
+          @if (request()->has('s'))
+            {{ $payments->appends(['s' => request()->get('s', '')])->links() }}
+          @elseif (request()->has('status'))
+            {{ $payments->appends(['status' => request()->get('status', '')])->links() }}
+          @elseif (request()->has('s') && request()->has('status'))
+            {{ $payments->appends(['s' => request()->get('s', ''), 'status' => request()->get('status', '')])->links() }}
+          @else
+            {{ $payments->links() }}
+          @endif
           <div>
             <p class="text-gray-3 text-sm font-normal">
               {{ Count($payments) }} Pagamentos
