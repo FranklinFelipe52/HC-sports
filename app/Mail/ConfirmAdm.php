@@ -61,7 +61,3 @@ class ConfirmAdm extends Mailable
         return [];
     }
 }
-
-if ($registration->user->adress->federative_unit_id == Session('admin')->federative_unit_id ) {
-    $users_registrations++;
-  }  
