@@ -31,6 +31,7 @@ class ResetPassword extends Controller
             $action_admin->description = "Resetou a senha do administrador ".$admin->nome_completo;
             $action_admin->save();
             Mail::to( $admin->email)->send(new PasswordResetConfirm($user, $type , $password));
+            session()->flash('reset_password_success', 'Uma nova senha foi gerada para o admin');
             return back();
         } catch (Exception $e){
             return back();
@@ -59,6 +60,7 @@ class ResetPassword extends Controller
             $action_admin->description = "Resetou a senha do atleta ".$user->nome_completo;
             $action_admin->save();
             Mail::to($user->email)->send(new PasswordResetConfirm($user, $type , $password));
+            session()->flash('reset_password_success', 'Uma nova senha foi gerada para o atleta');
             return back();
         } catch (Exception $e){
             return $e;

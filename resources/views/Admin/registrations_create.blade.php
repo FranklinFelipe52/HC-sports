@@ -319,20 +319,20 @@
     const inputCpf = document.querySelector('[data-cpf]');
 
     const inputEmailVisible = document.querySelector('[data-preload="email-visible"]');
-    const inputEmail = document.querySelector('[data-preload="email"]');
+    // const inputEmail = document.querySelector('[data-preload="email"]');
 
     const inputDataNascVisible = document.querySelector('[data-preload="data_nasc-visible"]');
-    const inputDataNasc = document.querySelector('[data-preload="data_nasc"]');
+    // const inputDataNasc = document.querySelector('[data-preload="data_nasc"]');
 
     const inputSexoVisible = document.querySelector('[data-preload="sexo-visible"]');
-    const inputSexo = document.querySelector('[data-preload="sexo"]');
+    // const inputSexo = document.querySelector('[data-preload="sexo"]');
 
     const inputUfVisible = document.querySelector('[data-preload="uf-visible"]');
-    const inputUf = document.querySelector('[data-preload="uf"]');
+    // const inputUf = document.querySelector('[data-preload="uf"]');
 
     const inputPcdVisible = document.querySelector('[data-preload="pcd-visible"]');
-    const inputPcd = document.querySelector('[data-preload="pcd"]');
-    const labelPcd = document.querySelector('#label-pcd');
+    // const inputPcd = document.querySelector('[data-preload="pcd"]');
+    // const labelPcd = document.querySelector('#label-pcd');
 
     const urlParams = new URLSearchParams(window.location.search);
     const gender = urlParams.get('gender');

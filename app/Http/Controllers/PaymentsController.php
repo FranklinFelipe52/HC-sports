@@ -33,7 +33,7 @@ class PaymentsController extends Controller
                 $payment_aux = $payment_aux
                     ->where('nome_completo', 'LIKE', '%' . $_GET["s"] . '%');
             }
-            $payments = isset($_GET['status']) ? $payment_aux->where('status_payment_id', $request->status)->paginate(8) : $payment_aux->paginate(8) ;
+            $payments = isset($_GET['status']) ? $payment_aux->where('status_payment_id', $request->status)->get() : $payment_aux->get();
 
 
             return view('Admin.payments', [
