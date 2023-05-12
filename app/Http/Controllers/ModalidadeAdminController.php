@@ -18,8 +18,8 @@ class ModalidadeAdminController extends Controller
             $admin = $request->session()->get('admin');
             $modalidade = Modalities::find($id);
             if($modalidade){
+                $registrations = [];
                 if(!($admin->rule->id == 1)){
-                    $registrations = [];
 
                         foreach ($modalidade->registrations as $registration) {
                                 if ($registration->user->address->federative_unit_id == Session('admin')->federative_unit_id ) {
@@ -27,7 +27,16 @@ class ModalidadeAdminController extends Controller
                                 }
                             }
                 } else {
-                   $registrations = $modalidade->registrations;
+                    if($admin->personification){
+                        foreach ($modalidade->registrations as $registration) {
+                                if ($registration->user->address->federative_unit_id == $admin->personification ) {
+                                  array_push($registrations, $registration);
+                                }
+                            }
+                    } else {
+                        $registrations = $modalidade->registrations;
+                    }
+                   
                 }
 
                 return view('Admin.modalidade', [
