@@ -27,7 +27,7 @@ class PaymentsController extends Controller
                 ->join('users', 'registrations.user_id', 'users.id')
                 ->join('modalities', 'registrations.modalities_id', 'modalities.id')
                 ->join('status_payments', 'payments.status_payment_id', 'status_payments.id')
-                ->select('users.nome_completo', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id')
+                ->select('users.nome_completo', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id', 'payments.created_at')
                 ->orderBy('users.created_at', 'desc');
             if (isset($_GET["s"])) {
                 $payment_aux = $payment_aux
@@ -71,7 +71,7 @@ class PaymentsController extends Controller
             $action_admin = new ActionsAdmin;
             $action_admin->type_actions_admin_id = 1;
             $action_admin->admin_id = $admin->id;
-            $action_admin->description = 'Confirmação de pagamento para a inscrição na modalidade '.$registration->modalities->nome.' do atleta '.$registration->user->nome_completo;
+            $action_admin->description = 'Confirmação de pagamento para a inscrição na modalidade ' . $registration->modalities->nome . ' do atleta ' . $registration->user->nome_completo;
             $action_admin->save();
             return back()->with('success', 'Pagamento confirmado com sucesso');
         } catch (Exception $e) {

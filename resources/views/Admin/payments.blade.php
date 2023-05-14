@@ -214,7 +214,21 @@
                           @endif
                         </p>
                       </div>
+                       <div role="cell" class="col-span-3">
+                        <p class="text-sm text-gray-2 italic">
+                          date
+                        </p>
+                        <p class="text-sm text-gray-2 italic">
+
+                          @if ($payment->created_at)
+                            {{ date('d/m/Y H:i:s', strtotime($payment->created_at)) }}
+                          @else
+                            -
+                          @endif
+                        </p>
+                      </div>
                     </div>
+
                   </div>
                 @endforeach
               @else
