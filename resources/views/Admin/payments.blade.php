@@ -214,7 +214,7 @@
                           @endif
                         </p>
                       </div>
-                       <div role="cell" class="col-span-3">
+                      <div role="cell" class="col-span-3">
                         <p class="text-sm text-gray-2 italic">
                           date
                         </p>
@@ -245,7 +245,7 @@
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
 
-          <div class="flex gap-2" aria-label="Paginação da tabela">
+          <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
                 <img src="/images/svg/chevron-left.svg" alt="">
@@ -286,6 +286,7 @@
     const prevPageButton = document.querySelector('[data-button="prev-page-button"]');
     const nextPageButton = document.querySelector('[data-button="next-page-button"]');
     const paginationLabel = document.querySelector('[data-pagination-label]');
+    const paginationButtons = document.querySelector('[data-pagination-buttons]');
 
     let currentPage = 1;
     let itemsPerPage = 8;
@@ -341,6 +342,10 @@
         nextPageButton.disabled = true;
       } else {
         nextPageButton.disabled = false;
+      }
+
+      if (totalItems === 0) {
+        paginationButtons.classList.add('hidden');
       }
 
     }
