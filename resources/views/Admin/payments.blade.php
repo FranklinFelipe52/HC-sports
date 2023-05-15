@@ -220,8 +220,8 @@
                         </p>
                         <p class="text-sm text-gray-2 italic">
 
-                          @if ($payment->created_at)
-                            {{ date('d/m/Y H:i:s', strtotime($payment->created_at)) }}
+                          @if ($payment->updated_at)
+                            {{ date('d/m/Y H:i:s', strtotime($payment->updated_at)) }}
                           @else
                             -
                           @endif
