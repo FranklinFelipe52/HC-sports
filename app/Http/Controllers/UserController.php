@@ -32,13 +32,13 @@ class UserController extends Controller
 
             if($admin->rule->id == 1){
                 if($admin->personification){
-                    $atletas = $atletas->where('federative_unit_id', '=', $admin->personification)->paginate(8);
+                    $atletas = $atletas->where('federative_unit_id', '=', $admin->personification)->get();
                 } else {
-                    $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $atletas->paginate(8);
+                    $atletas = (isset($_GET["uf"]) && ($_GET["uf"] != 0))  ? $atletas->where('federative_unit_id', '=', $_GET["uf"])->get() : $atletas->get();
                 }
 
             } else {
-                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->paginate(8);
+                $atletas = $atletas->where('federative_unit_id', '=', $admin->federativeUnit->id)->get();
             }
             return view('Admin.atletas', [
                 'atletas' => $atletas,
@@ -129,7 +129,7 @@ class UserController extends Controller
             $action_admin->admin_id = $admin->id;
             $action_admin->description = "Edição de dados do atleta ".$user->nome_completo;
             $action_admin->save();
-            session()->flash('success', true);
+            session()->flash('edit_success', 'Dados atualizados com sucesso!');
             return redirect("/admin/users/$id");
         } catch (Exception $e){
             return back();

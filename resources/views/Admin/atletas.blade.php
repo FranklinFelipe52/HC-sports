@@ -14,7 +14,7 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-      @if(Session('admin')->personification)
+      @if (Session('admin')->personification)
         @include('components.admin.personification_nav')
       @endif
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
@@ -40,20 +40,20 @@
                 </button>
 
               </form>
-              @if(Session('admin')->rule->id == 1 && !Session('admin')->personification)
+              @if (Session('admin')->rule->id == 1 && !Session('admin')->personification)
 
-              <form id="filter_uf" class="relative">
-                <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">
-                  <option value disabled selected>UF</option>
-                  @foreach ($federative_units as $federative_unit)
-                    <option {{ Request::get('uf') && Request::get('uf') == $federative_unit->id ? 'selected' : '' }} value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
-                  @endforeach
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
-                </div>
+                <form id="filter_uf" class="relative">
+                  <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">
+                    <option value disabled selected>UF</option>
+                    @foreach ($federative_units as $federative_unit)
+                      <option {{ Request::get('uf') && Request::get('uf') == $federative_unit->id ? 'selected' : '' }} value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                    @endforeach
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <img src="/images/svg/chevron-down.svg" alt="" />
+                  </div>
 
-              </form>
+                </form>
               @endif
 
             </div>
@@ -93,12 +93,11 @@
             </div>
 
             <!-- Table body -->
-            <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+            <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg" data-pagination>
               @if (count($atletas) !== 0)
                 @foreach ($atletas as $atleta)
-
                   <!-- Table row -->
-                  <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
+                  <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0" data-pagination-item>
                     <div role="cell" class="py-3 flex items-center col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
                         <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>
@@ -120,7 +119,7 @@
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
-                        {{ Count(App\Models\User::find($atleta->id)->registrations)  }}
+                        {{ Count(App\Models\User::find($atleta->id)->registrations) }}
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-1">
@@ -143,31 +142,19 @@
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
 
-          @if (request()->has('s'))
-            {{ $atletas->appends(['s' => request()->get('s', '')])->links() }}
-          @elseif (request()->has('uf'))
-            {{ $atletas->appends(['uf' => request()->get('uf', '')])->links() }}
-          @elseif (request()->has('s') && request()->has('uf'))
-            {{ $atletas->appends(['s' => request()->get('s', ''), 'uf' => request()->get('uf', '')])->links() }}
-          @else
-            {{ $atletas->links() }}
-          @endif
-
-          {{-- <div class="flex gap-2" aria-label="Paginação da tabela">
-            <div class="group disabled">
-              <button class="group-[.disabled]:bg-gray-300 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+          <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
+            <div class="group">
+              <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
                 <img src="/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
-            <p class="text-sm text-gray-1 pt-0.5">
-              1 de 2
-            </p>
+            <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
-              <button class="group-[.disabled]:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 group-[.disabled]:ring-0 transition">
+              <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:ring-0 transition">
                 <img src="/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
-          </div> --}}
+          </div>
 
 
           <div>
@@ -179,5 +166,78 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const paginationList = document.querySelector('[data-pagination]');
+    const paginationListItem = Array.from(document.querySelectorAll('[data-pagination-item]'));
+    const prevPageButton = document.querySelector('[data-button="prev-page-button"]');
+    const nextPageButton = document.querySelector('[data-button="next-page-button"]');
+    const paginationLabel = document.querySelector('[data-pagination-label]');
+    const paginationButtons = document.querySelector('[data-pagination-buttons]');
+
+    let currentPage = 1;
+    let itemsPerPage = 8;
+    let totalItems = paginationListItem.length;
+    let totalPages = Math.ceil(paginationListItem.length / itemsPerPage);
+
+    paginationListItem.forEach(item => {
+      item.classList.add('hidden');
+    })
+
+    prevPageButton.addEventListener('click', prevPage);
+    nextPageButton.addEventListener('click', nextPage);
+
+    function prevPage() {
+
+      if (currentPage == 1) return;
+
+      currentPage--;
+      displayCurrentPage(currentPage, itemsPerPage, totalItems);
+    }
+
+    function nextPage() {
+
+      if (currentPage == totalPages) return;
+
+      currentPage++;
+      displayCurrentPage(currentPage, itemsPerPage, totalItems);
+    }
+
+    function displayCurrentPage(currentPage, itemsPerPage, totalItems) {
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+      // Exibe apenas os itens correspondentes à página atual
+      for (let i = 0; i < totalItems; i++) {
+        if (i >= startIndex && i < endIndex) {
+          paginationListItem[i].classList.remove('hidden');
+        } else {
+          paginationListItem[i].classList.add('hidden');
+        }
+      }
+
+      paginationLabel.innerHTML = `${currentPage} de ${totalPages}`;
+
+      if (currentPage == 1) {
+        prevPageButton.disabled = true;
+      } else {
+        prevPageButton.disabled = false;
+      }
+
+      if (currentPage == totalPages) {
+        nextPageButton.disabled = true;
+      } else {
+        nextPageButton.disabled = false;
+      }
+
+      if (totalItems === 0) {
+        paginationButtons.classList.add('hidden');
+      }
+
+    }
+
+    displayCurrentPage(currentPage, itemsPerPage, totalItems);
+  </script>
 
 @endsection

@@ -160,11 +160,11 @@
             </div>
 
             <!-- Table body -->
-            <div class="min-w-[700px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg">
+            <div class="min-w-[700px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg" data-pagination>
               @if (count($payments) !== 0)
                 @foreach ($payments as $payment)
                   <!-- Table row -->
-                  <div role="row" class="border-b border-gray-5 last:border-b-0">
+                  <div role="row" class="border-b border-gray-5 last:border-b-0" data-pagination-item>
                     <div class="grid grid-cols-12 px-6 pt-4 pb-2.5">
                       <div role="cell" class="col-span-3 pr-3">
                         <p class="text-gray-1 text-sm font-semibold text-ellipsis w-full overflow-hidden whitespace-nowrap">
@@ -214,7 +214,21 @@
                           @endif
                         </p>
                       </div>
+                      <div role="cell" class="col-span-3">
+                        <p class="text-sm text-gray-2 italic">
+                          date
+                        </p>
+                        <p class="text-sm text-gray-2 italic">
+
+                          @if ($payment->updated_at)
+                            {{ date('d/m/Y H:i:s', strtotime($payment->updated_at)) }}
+                          @else
+                            -
+                          @endif
+                        </p>
+                      </div>
                     </div>
+
                   </div>
                 @endforeach
               @else
@@ -231,18 +245,23 @@
         <!-- Paginação da tabela -->
         <div class="flex justify-between pt-6 pb-4 sm:pb-16">
 
-          @if (request()->has('s'))
-            {{ $payments->appends(['s' => request()->get('s', '')])->links() }}
-          @elseif (request()->has('status'))
-            {{ $payments->appends(['status' => request()->get('status', '')])->links() }}
-          @elseif (request()->has('s') && request()->has('status'))
-            {{ $payments->appends(['s' => request()->get('s', ''), 'status' => request()->get('status', '')])->links() }}
-          @else
-            {{ $payments->links() }}
-          @endif
+          <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
+            <div class="group">
+              <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
+                <img src="/images/svg/chevron-left.svg" alt="">
+              </button>
+            </div>
+            <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
+            <div class="group">
+              <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:ring-0 transition">
+                <img src="/images/svg/chevron-right.svg" alt="">
+              </button>
+            </div>
+          </div>
+
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              {{ Count($payments) }} Pagamentos
+              {{ Count($payments) }} pagamentos
             </p>
           </div>
         </div>
@@ -261,5 +280,76 @@
       content: 'Confirmar o pagamento',
       placement: 'top'
     });
+
+    const paginationList = document.querySelector('[data-pagination]');
+    const paginationListItem = Array.from(document.querySelectorAll('[data-pagination-item]'));
+    const prevPageButton = document.querySelector('[data-button="prev-page-button"]');
+    const nextPageButton = document.querySelector('[data-button="next-page-button"]');
+    const paginationLabel = document.querySelector('[data-pagination-label]');
+    const paginationButtons = document.querySelector('[data-pagination-buttons]');
+
+    let currentPage = 1;
+    let itemsPerPage = 8;
+    let totalItems = paginationListItem.length;
+    let totalPages = Math.ceil(paginationListItem.length / itemsPerPage);
+
+    paginationListItem.forEach(item => {
+      item.classList.add('hidden');
+    })
+
+    prevPageButton.addEventListener('click', prevPage);
+    nextPageButton.addEventListener('click', nextPage);
+
+    function prevPage() {
+
+      if (currentPage == 1) return;
+
+      currentPage--;
+      displayCurrentPage(currentPage, itemsPerPage, totalItems);
+    }
+
+    function nextPage() {
+
+      if (currentPage == totalPages) return;
+
+      currentPage++;
+      displayCurrentPage(currentPage, itemsPerPage, totalItems);
+    }
+
+    function displayCurrentPage(currentPage, itemsPerPage, totalItems) {
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+      // Exibe apenas os itens correspondentes à página atual
+      for (let i = 0; i < totalItems; i++) {
+        if (i >= startIndex && i < endIndex) {
+          paginationListItem[i].classList.remove('hidden');
+        } else {
+          paginationListItem[i].classList.add('hidden');
+        }
+      }
+
+      paginationLabel.innerHTML = `${currentPage} de ${totalPages}`;
+
+      if (currentPage == 1) {
+        prevPageButton.disabled = true;
+      } else {
+        prevPageButton.disabled = false;
+      }
+
+      if (currentPage == totalPages) {
+        nextPageButton.disabled = true;
+      } else {
+        nextPageButton.disabled = false;
+      }
+
+      if (totalItems === 0) {
+        paginationButtons.classList.add('hidden');
+      }
+
+    }
+
+    displayCurrentPage(currentPage, itemsPerPage, totalItems);
   </script>
 @endsection

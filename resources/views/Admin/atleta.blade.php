@@ -373,8 +373,15 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
+    if ('{{ session('reset_password_success') }}') {
+      showSuccessToastfy('{{ session('reset_password_success') }}');
+    }
 
-   function showSuccessToastfy(text) {
+    if ('{{ session('edit_success') }}') {
+      showSuccessToastfy('{{ session('edit_success') }}');
+    }
+
+    function showSuccessToastfy(text) {
       Toastify({
         text: text,
         duration: 3000,
@@ -390,21 +397,20 @@
       }).showToast();
     }
 
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const success = "{{ session('success') }}";
-      const resetPasswordSuccess = "{{ session('reset-password-success') }}";
-      if (success) {
-        const event = new CustomEvent('dados-atualizados', {
-          bubbles: true
-        });
-        document.dispatchEvent(event);
-      }
-    });
-
-    document.addEventListener('dados-atualizados', function() {
-      showSuccessToastfy('Dados atualizados com sucesso!');
-    });
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
   </script>
 @endsection

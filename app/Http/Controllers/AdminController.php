@@ -38,12 +38,12 @@ class AdminController extends Controller
             }
            if($admin->rule->id == 1 ){
             if($admin->personification){
-                $administradores = $administradores->where('federative_unit_id', $admin->personification)->where('rule_id', '<>', 1)->paginate(8);
+                $administradores = $administradores->where('federative_unit_id', $admin->personification)->where('rule_id', '<>', 1)->get();
             } else {
-                $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->paginate(8) : $administradores->paginate(8);
+                $administradores =  (isset($_GET["uf"]) && ($_GET["uf"] != 0)) ? $administradores->where('federative_unit_id', '=', $_GET["uf"])->get() : $administradores->get();
             }
            } else {
-            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->where('rule_id', '<>', 1)->paginate(8);
+            $administradores = $administradores->where('federative_unit_id', $admin->federativeUnit->id)->where('rule_id', '<>', 1)->get();
            }
 
             return view('Admin.administradores', [
@@ -102,6 +102,7 @@ class AdminController extends Controller
             $admin->rule_id = $request->rule;
             $admin->save();
                 Mail::to($request->email)->send(new ConfirmAdm($admin, $password));
+                session()->flash('success_feedback', 'Admin criado com sucesso!');
                 return redirect('/admin/administradores');
         } catch (Exception $e){
             return back();
@@ -229,6 +230,7 @@ class AdminController extends Controller
             $admin->email = $request->email;
             $admin->save();
 
+            session()->flash('edit_success', 'Dados atualizados com sucesso!');
             return redirect("/admin/administradores/$id");
         } catch (Exception $e){
             return back();
