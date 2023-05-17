@@ -45,7 +45,7 @@ class RegistrationsAdminController extends Controller
             $admin = $request->session()->get('admin');
             $user = User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->first();
             $category_id = null;
-            
+
             if(!$modalidade){
                 return back();
             }
@@ -55,10 +55,10 @@ class RegistrationsAdminController extends Controller
                 }
             }
             if($modalidade->mode_modalities->id == 1){
-                
+
                 $category = $modalidade->modalities_categorys()->first();
                 $category_id = $category->id;
-                
+
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
                         return back()->with('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
@@ -86,7 +86,7 @@ class RegistrationsAdminController extends Controller
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
                     return back()->with('erro', "Desculpe, mas o minimo de idade para a modalidade ".$modalidade->nome." é $category->min_year anos");
                 }
-                 
+
             }elseif($modalidade->mode_modalities->id == 2){
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
@@ -105,7 +105,7 @@ class RegistrationsAdminController extends Controller
 
                 foreach ($request->category  as $category) {
                 $category = modalities_category::find($category);
-                
+
                 if(!$category){
                     return back();
                 }
@@ -126,7 +126,7 @@ class RegistrationsAdminController extends Controller
                     return back()->with('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                 }
                 }
-                
+
             } else {
                 $category = modalities_category::find($request->category);
                 $category_id = $category->id;
@@ -134,7 +134,7 @@ class RegistrationsAdminController extends Controller
                 if(!$category){
                     return back();
                 }
-                
+
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
                         return back()->with('erro', 'Este atleta está com pagamento pendente. Antes de realizar uma nova inscrição é preciso realizar o pagamento da inscrição anterior.');
@@ -167,9 +167,9 @@ class RegistrationsAdminController extends Controller
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
                     return back()->with('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                 }
-                
+
             }
-           
+
             if(!$user){
                 $user = new User;
                 $user->email = $request->email;
@@ -207,9 +207,9 @@ class RegistrationsAdminController extends Controller
                 foreach ($request->category  as $category) {
                     $category = modalities_category::find($category);
                     $registration->modalities_categorys()->save($category);
-                } 
+                }
             }
-            
+
             $payment->registration_id = $registration->id;
             $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
             $payment->save();
@@ -242,14 +242,23 @@ class RegistrationsAdminController extends Controller
            $registration = registration::find($id);
            $admin = $request->session()->get('admin');
            if(!$admin){
-            
+
                return back();
-           }
-            if(!$registration){
-                
+            }
+            if (!$registration){
+
                 return back();
             }
+
+            $payment = $registration->payment;
+
+            if (!$payment) {
+                return back();
+            }
+
+            $payment->delete();
             $registration->delete();
+
             $user = $registration->user;
             $action_admin = new ActionsAdmin;
             $action_admin->type_actions_admin_id = 5;
@@ -268,7 +277,7 @@ class RegistrationsAdminController extends Controller
             $modalidade = Modalities::find($id);
             $type_payments = type_payment::all();
             $sub_categorys = sub_categorys::all();
-            
+
 
             if(!$modalidade){
                 return back();
