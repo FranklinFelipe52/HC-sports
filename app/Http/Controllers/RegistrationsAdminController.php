@@ -250,6 +250,7 @@ class RegistrationsAdminController extends Controller
                 return back();
             }
             $registration->delete();
+            $registration->Payment->delete();
             $user = $registration->user;
             $action_admin = new ActionsAdmin;
             $action_admin->type_actions_admin_id = 5;
