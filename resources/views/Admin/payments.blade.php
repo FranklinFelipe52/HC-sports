@@ -195,9 +195,12 @@
                         </p>
                       </div>
                       <div role="cell" class="col-span-2 flex justify-end">
-                        <button data-modalId="modal-confirmar-pagamento-{{ $payment->id }}" data-action="open" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      @if ( Session('admin')->rule->id == 1 && !Session('admin')->personification)
+                          <button data-modalId="modal-confirmar-pagamento-{{ $payment->id }}" data-action="open" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                           <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
                         </button>
+                      @endif
+                        
                       </div>
                     </div>
                     <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">

@@ -18,22 +18,30 @@ class PaymentsController extends Controller
     {
         try {
 
-
-            if (!($request->session()->get('admin')->rule->id == 1)) {
-                return back();
-            }
+            $admin = $request->session()->get('admin');
             $payment_aux = DB::table('payments')
                 ->join('registrations', 'payments.registration_id', 'registrations.id')
                 ->join('users', 'registrations.user_id', 'users.id')
+                ->join('addresses', 'addresses.user_id', 'users.id')
                 ->join('modalities', 'registrations.modalities_id', 'modalities.id')
                 ->join('status_payments', 'payments.status_payment_id', 'status_payments.id')
-                ->select('users.nome_completo', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id', 'payments.updated_at')
+                ->select('users.nome_completo', 'addresses.federative_unit_id', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id', 'payments.updated_at')
                 ->orderBy('users.created_at', 'desc');
             if (isset($_GET["s"])) {
                 $payment_aux = $payment_aux
                     ->where('nome_completo', 'LIKE', '%' . $_GET["s"] . '%');
             }
-            $payments = isset($_GET['status']) ? $payment_aux->where('status_payment_id', $request->status)->get() : $payment_aux->get();
+            if($admin->rule->id == 1){
+                if($admin->personification){
+                    $payments = isset($_GET['status']) ? $payment_aux->where('federative_unit_id', $admin->personification)->where('status_payment_id', $request->status)->get() : $payment_aux->where('federative_unit_id', $admin->personification)->get();
+                } else {
+                    $payments = isset($_GET['status']) ? $payment_aux->where('status_payment_id', $request->status)->get() : $payment_aux->get();
+                }
+
+            } else {
+                $payments = isset($_GET['status']) ? $payment_aux->where('federative_unit_id', $admin->federativeUnit)->where('status_payment_id', $request->status)->get() : $payment_aux->where('federative_unit_id', $admin->federativeUnit)->get();
+            }
+            
 
 
             return view('Admin.payments', [
@@ -51,6 +59,9 @@ class PaymentsController extends Controller
             $admin = $request->session()->get('admin');
             $payment = Payment::find($id);
             if (!$admin) {
+                return back();
+            }
+            if (!$admin->rule->id == 1) {
                 return back();
             }
             if (!$payment) {

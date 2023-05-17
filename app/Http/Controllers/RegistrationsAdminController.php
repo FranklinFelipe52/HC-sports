@@ -185,7 +185,7 @@ class RegistrationsAdminController extends Controller
                 $action_admin = new ActionsAdmin;
                 $action_admin->type_actions_admin_id = 6;
                 $action_admin->admin_id = $admin->id;
-                $action_admin->description = 'Cadastrou um novo atleta';
+                $action_admin->description = 'ADM '.$admin->nome_completo.' cadastrou um novo atleta com CPF: '.preg_replace( '/[^0-9]/is', '', $user->cpf);
                 $action_admin->save();
             }
 
