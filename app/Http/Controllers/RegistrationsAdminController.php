@@ -185,7 +185,7 @@ class RegistrationsAdminController extends Controller
                 $action_admin = new ActionsAdmin;
                 $action_admin->type_actions_admin_id = 6;
                 $action_admin->admin_id = $admin->id;
-                $action_admin->description = 'Cadastrou um novo atleta';
+                $action_admin->description = 'ADM '.$admin->nome_completo.' cadastrou um novo atleta com CPF: '.preg_replace( '/[^0-9]/is', '', $user->cpf);
                 $action_admin->save();
             }
 
@@ -250,16 +250,27 @@ class RegistrationsAdminController extends Controller
                 return back();
             }
 
+            if($registration->status_regitration->id == 1){
+                $registration_recent = $registration->user->registrations()->latest()->first();
+                if( $registration_recent == $registration){
+                    if($registration_recent->type_payment->id == 2){
+                        return back();
+                    }
+                } else {
+                    return back();
+                }
+            }
+
             $payment = $registration->payment;
 
             if (!$payment) {
                 return back();
             }
 
+            $user = $registration->user;
             $payment->delete();
             $registration->delete();
-
-            $user = $registration->user;
+            
             $action_admin = new ActionsAdmin;
             $action_admin->type_actions_admin_id = 5;
             $action_admin->admin_id = $admin->id;
