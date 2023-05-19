@@ -46,6 +46,7 @@ class ConfirmRegistrationController extends Controller
             $user = User::where('email', $decoded->email)->first();
             $user->nome_completo = $request->nome;
             $user->is_pcd = $request->pcd == null ? false : true;
+            
             $user->address->cidade = $request->city;
             $user->address->save();
             $user->password = Hash::make($request->password);

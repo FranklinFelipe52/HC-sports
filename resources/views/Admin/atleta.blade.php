@@ -280,16 +280,8 @@
 
                       Criado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->created_at)); ?></strong>
 
-
                     </p>
-                    <p class="text-sm text-gray-2 font-normal">
-                      @if ($atleta->registered)
-                        Cadastro validado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->updated_at)); ?></strong>
-                      @else
-                        -
-                      @endif
-
-                    </p>
+                    
                   </div>
                 </div>
               </div>
@@ -379,6 +371,9 @@
 
     if ('{{ session('edit_success') }}') {
       showSuccessToastfy('{{ session('edit_success') }}');
+    }
+    if ('{{ session('edit_error') }}') {
+      showErrorToastfy('{{ session('edit_error') }}');
     }
 
     function showSuccessToastfy(text) {
