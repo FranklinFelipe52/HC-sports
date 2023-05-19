@@ -2475,10 +2475,6 @@ body .toastify button.toast-close {
     margin-top: 0px;
   }
 
-  .sm\:mb-4 {
-    margin-bottom: 1rem;
-  }
-
   .sm\:block {
     display: block;
   }
