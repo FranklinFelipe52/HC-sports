@@ -131,6 +131,7 @@
                                             PCD
                                         </label>
                                     </div>
+                                    @if(!$atleta->registered)
                                     <div>
                                         <label class="text-dark-900 font-semibold text-base inline-block mb-2"
                                             for="cadastro_senha_field">
@@ -175,6 +176,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                                 <div class="flex gap-4 flex-wrap">
                                     <button type="submit"

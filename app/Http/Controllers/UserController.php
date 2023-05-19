@@ -126,7 +126,13 @@ class UserController extends Controller
             $user->nome_completo = $request->nome;
             $user->address->cidade = $request->city;
             $user->is_pcd = $request->pcd == null ? false : true;
-            $user->password = Hash::make($request->password);
+            if(!$user->registered){
+                if($request->password != $request->password_confirm){
+                    session()->flash('edit_error', 'A confirmação de senha está diferente, digite novamente');
+                    return back()->with('edit_error', 'A confirmação de senha está diferente, digite novamente.');
+                }
+                $user->password = Hash::make($request->password);
+            }
             $user->registered = true;
             $user->address->save();
             $user->save();
