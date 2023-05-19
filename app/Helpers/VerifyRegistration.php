@@ -26,54 +26,100 @@ class VerifyRegistration
         }
         return false;
     }
-    public static function verifyModalitiesLimitWomen($category, $admin){
+    public static function verifyModalitiesLimitWomen($category, $federativeUnit){
         $women = 0;
         foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
+            if($registration->user->address->federativeUnit->id == $federativeUnit){
                 if( $registration->user->sexo == 'F'){
                     $women++;
                 }
             }
            
         }
-        error_log($women);
-        error_log($category->max_f);
-        if(!is_null($category->max_f) && !($women <= $category->max_f)){
-            error_log('entrou');
+        if(!is_null($category->max_f) && !($women < $category->max_f)){
             return true;
             
         }
         return false;
     }
-    public static function verifyModalitiesLimitMan($category, $admin){
+    public static function verifyModalitiesLimitMan($category, $federativeUnit){
         $man = 0;
         foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
+            if($registration->user->address->federativeUnit->id == $federativeUnit){
                 if( $registration->user->sexo == 'M'){
                     $man++;
                 }
             }
            
         }
-        if(!is_null($category->max_m) && !($man <= $category->max_m)){
+        if(!is_null($category->max_m) && !($man < $category->max_m)){
             
                 return true;
             
         }
         return false;
     }
-    public static function verifyModalitiesLimitRegistrations($category, $admin){
+    public static function verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit){
         $n_registrations = 0;
         foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
+            if($registration->user->address->federativeUnit->id == $federativeUnit){
                 $n_registrations++;
             }
         }
-        if($category->max_total && ($category->max_total <= $n_registrations)){
+        if($category->max_secc && !($n_registrations < $category->max_secc)){
             return true;
-           
         }
     return false;
+}
+
+public static function verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $range_id, $federativeUnit){
+    $man = 0;
+    foreach ($category->registrations as $registration) {
+        if($registration->user->address->federativeUnit->id == $federativeUnit){
+            error_log('passou federative');
+            if($registration->range->id == $range_id){
+                error_log('passou range');
+                if( $registration->user->sexo == 'M'){
+                    error_log('passou gender');
+                    $man++;
+                }
+            }
+            
+        }
+    }
+    error_log($man);
+    if(!($man < 4)){ 
+        return true;
+    }
+return false;
+}
+public static function verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $range_id, $federativeUnit){
+    $women = 0;
+    foreach ($category->registrations as $registration) {
+        if($registration->user->address->federativeUnit->id == $federativeUnit){
+            if($registration->range->id == $range_id){
+                if( $registration->user->sexo == 'F'){
+                    $women++;
+                }
+            }
+            
+        }
+    }
+    if(!($women < 4)){ 
+        return true;
+    }
+return false;
+}
+
+public static function verifyModalitiesLimitRegistrations($category){
+    $n_registrations = 0;
+    foreach ($category->registrations as $registration) {
+            $n_registrations++;
+    }
+    if($category->max_total && !($n_registrations < $category->max_total)){
+        return true;
+    }
+return false;
 }
     public static function verifyUserLimitRegistrations($user, $modalidade){
             $n_registrations = 0;
@@ -109,4 +155,3 @@ class VerifyRegistration
             return false;
     }
 }
-?>

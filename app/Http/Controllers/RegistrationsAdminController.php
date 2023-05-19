@@ -45,6 +45,7 @@ class RegistrationsAdminController extends Controller
             $admin = $request->session()->get('admin');
             $user = User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->first();
             $category_id = null;
+            $federativeUnit = $admin->federativeUnit->id;
 
             if(!$modalidade){
                 return back();
@@ -53,7 +54,9 @@ class RegistrationsAdminController extends Controller
                 if(!$request->uf){
                     return back();
                 }
+                $federativeUnit = $request->uf;
             }
+
             if($modalidade->mode_modalities->id == 1){
 
                 $category = $modalidade->modalities_categorys()->first();
@@ -70,16 +73,29 @@ class RegistrationsAdminController extends Controller
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                 }
-                //if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
-                //    return back()->with('erro', 'Não existe mais vagas para essa modalidade');
-                //}
+                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
+                    return back()->with('erro', 'Não existe mais vagas para essa modalidade');
+                }
+                if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
+                    return back()->with('erro', 'Não existe mais vagas para essa modalidade na sua seccional');
+                }
+                if($request->range){
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                }
+                
+                
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                     }
                 }
@@ -109,16 +125,27 @@ class RegistrationsAdminController extends Controller
                 if(!$category){
                     return back();
                 }
-                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
+                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
                     return back()->with('erro', "Não existe mais vagas para categoria $category->nome");
                 }
+                if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
+                    return back()->with('erro', "Não existe mais vagas para categoria $category->nome na sua seccional");
+                }
+                if($request->range){
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                }
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
                         return  back()->with('erro', "Não existe mais vagas para usuários do sexo masculino para categoria $category->nome");
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
                         return  back()->with('erro', "Não existe mais vagas para usuários do sexo feminino para categoria $category->nome");
                     }
                 }
@@ -151,16 +178,27 @@ class RegistrationsAdminController extends Controller
                         }
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
+                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
                     return back()->with('erro', 'Não existe mais vagas para essa modalidade');
                 }
+                if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
+                    return back()->with('erro', 'Não existe mais vagas para essa modalidade na sua seccional');
+                }
+                if($request->range){
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                    if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
+                        return back()->with('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                    }
+                }
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                     }
                 }
@@ -252,7 +290,8 @@ class RegistrationsAdminController extends Controller
 
             if($registration->status_regitration->id == 1){
                 $registration_recent = $registration->user->registrations()->latest()->first();
-                if( $registration_recent == $registration){
+               
+                if( $registration_recent->id == $registration->id){
                     if($registration_recent->type_payment->id == 2){
                         return back();
                     }
