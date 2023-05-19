@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
 {
     public function show(Request $request){
         try{
-            
+
             $modalidades = Modalities::orderBy('nome', 'asc')->get();
             $admin = $request->session()->get('admin');
             $atualizacoes_aux = DB::table('actions_notificatios')
@@ -20,7 +20,8 @@ class AdminDashboardController extends Controller
             ->join('addresses', 'addresses.user_id', 'users.id')
             ->join('status_notificatios', 'status_notificatios.id', 'actions_notificatios.status_notificatios_id')
             ->select('users.nome_completo', 'users.id', 'status_notificatios.status', 'addresses.federative_unit_id', 'actions_notificatios.created_at')
-            ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'desc')
+            ->take(10);
             if($admin->rule->id == 1){
                 if($admin->personification){
                     $atualizacoes = $atualizacoes_aux
