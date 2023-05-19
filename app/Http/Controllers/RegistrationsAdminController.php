@@ -70,16 +70,16 @@ class RegistrationsAdminController extends Controller
                         return back()->with('erro', 'O usuario já tem 2 inscrições ativas');
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
-                    return back()->with('erro', 'Não existe mais vagas para essa modalidade');
-                }
+                //if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $admin)){
+                //    return back()->with('erro', 'Não existe mais vagas para essa modalidade');
+                //}
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                     }
                 }
@@ -113,12 +113,12 @@ class RegistrationsAdminController extends Controller
                     return back()->with('erro', "Não existe mais vagas para categoria $category->nome");
                 }
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
                         return  back()->with('erro', "Não existe mais vagas para usuários do sexo masculino para categoria $category->nome");
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
                         return  back()->with('erro', "Não existe mais vagas para usuários do sexo feminino para categoria $category->nome");
                     }
                 }
@@ -155,12 +155,12 @@ class RegistrationsAdminController extends Controller
                     return back()->with('erro', 'Não existe mais vagas para essa modalidade');
                 }
                 if($request->sexo == 'M'){
-                    if(VerifyRegistration::verifyModalitiesLimitMan($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitMan($category, $admin)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                     }
                 }
                 if($request->sexo == 'F'){
-                    if(VerifyRegistration::verifyModalitiesLimitWomen($category)){
+                    if(VerifyRegistration::verifyModalitiesLimitWomen($category, $admin)){
                         return  back()->with('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                     }
                 }

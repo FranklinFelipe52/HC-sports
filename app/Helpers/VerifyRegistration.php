@@ -26,12 +26,15 @@ class VerifyRegistration
         }
         return false;
     }
-    public static function verifyModalitiesLimitWomen($category){
+    public static function verifyModalitiesLimitWomen($category, $admin){
         $women = 0;
         foreach ($category->registrations as $registration) {
-            if( $registration->user->sexo == 'F'){
-                $women++;
+            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
+                if( $registration->user->sexo == 'F'){
+                    $women++;
+                }
             }
+           
         }
         error_log($women);
         error_log($category->max_f);
@@ -42,12 +45,15 @@ class VerifyRegistration
         }
         return false;
     }
-    public static function verifyModalitiesLimitMan($category){
+    public static function verifyModalitiesLimitMan($category, $admin){
         $man = 0;
         foreach ($category->registrations as $registration) {
-            if( $registration->user->sexo == 'M'){
-                $man++;
+            if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
+                if( $registration->user->sexo == 'M'){
+                    $man++;
+                }
             }
+           
         }
         if(!is_null($category->max_m) && !($man <= $category->max_m)){
             
@@ -59,7 +65,6 @@ class VerifyRegistration
     public static function verifyModalitiesLimitRegistrations($category, $admin){
         $n_registrations = 0;
         foreach ($category->registrations as $registration) {
-            error_log($registration->user);
             if($registration->user->address->federativeUnit->id == $admin->federativeUnit->id){
                 $n_registrations++;
             }
