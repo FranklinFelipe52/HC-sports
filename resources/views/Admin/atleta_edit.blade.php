@@ -131,20 +131,28 @@
                                             PCD
                                         </label>
                                     </div>
+                                    <div class="flex justify-end gap-4">
+                                        <button type="button" id="gerar-senha-botao" class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                            Gerar uma senha segura
+                                        </button>
+                                        <button type="button" id="copiar-senha-botao" class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                            Copiar senha
+                                        </button>
+                                    </div>
                                     @if(!$atleta->registered)
                                     <div>
                                         <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                            for="cadastro_senha_field">
+                                            for="atleta_senha">
                                             Senha
                                         </label>
                                         <div class="group relative">
                                             <input
                                                 class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                type="password" id="cadastro_senha_field" name="password"
+                                                type="password" id="atleta_senha" name="password"
                                                 placeholder="Digite a sua senha" />
                                             <div
                                                 class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                <button type="button" data-inputId="cadastro_senha_field"
+                                                <button type="button" data-inputId="atleta_senha"
                                                     class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                                                     <img src="/images/svg/eye.svg" alt=""
                                                         class="hidden group-[.show]:block" />
@@ -156,17 +164,17 @@
                                     </div>
                                     <div>
                                         <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                            for="cadastro_senha_confirm_field">
+                                            for="atleta_confirmar_senha">
                                             Confirmação de senha
                                         </label>
                                         <div class="group relative">
                                             <input
                                                 class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                type="password" id="cadastro_senha_confirm_field"
+                                                type="password" id="atleta_confirmar_senha"
                                                 name="password_confirm" placeholder="Digite a sua senha" />
                                             <div
                                                 class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                <button type="button" data-inputId="cadastro_senha_confirm_field"
+                                                <button type="button" data-inputId="atleta_confirmar_senha"
                                                     class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                                                     <img src="/images/svg/eye.svg" alt=""
                                                         class="hidden group-[.show]:block" />
@@ -195,40 +203,90 @@
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
-    if ('{{ session('edit_error') }}') {
-      showErrorToastfy('{{ session('edit_error') }}');
-    }
 
-    function showSuccessToastfy(text) {
-      Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#EBFBEE",
-          color: "#279424",
-          boxShadow: "none",
-        },
-        onClick: function() {} // Callback after click
-      }).showToast();
-    }
+        const senhaInput = document.querySelector('#atleta_senha');
+        const confirmarSenhaInput = document.querySelector('#atleta_confirmar_senha');
+        const botaoGerarSenha = document.querySelector('#gerar-senha-botao');
+        const botaoCopiarSenha = document.querySelector('#copiar-senha-botao');
 
-    function showErrorToastfy(text) {
-      Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#FBDBDB",
-          color: "#8E1014",
-          boxShadow: "none",
-        },
-        onClick: function() {} // Callback after click
-      }).showToast();
-    }
-  </script>
+        if ('{{ session('edit_error') }}') {
+            showErrorToastfy('{{ session('edit_error') }}');
+        }
+
+        function showSuccessToastfy(text) {
+            Toastify({
+                text: text,
+                duration: 3000,
+                gravity: "top",
+                close: true,
+                position: "right",
+                style: {
+                background: "#EBFBEE",
+                color: "#279424",
+                boxShadow: "none",
+                },
+                onClick: function() {} // Callback after click
+            }).showToast();
+        }
+
+        function showErrorToastfy(text) {
+            Toastify({
+                text: text,
+                duration: 3000,
+                gravity: "top",
+                close: true,
+                position: "right",
+                style: {
+                background: "#FBDBDB",
+                color: "#8E1014",
+                boxShadow: "none",
+                },
+                onClick: function() {} // Callback after click
+            }).showToast();
+        }
+
+        function gerarSenhaForte() {
+            var letrasMinusculas = "abcdefghijklmnopqrstuvwxyz";
+            var letrasMaiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var numeros = "0123456789";
+            var caracteresEspeciais = "!@#$%^&*()_";
+            var caracteres = letrasMinusculas + letrasMaiusculas + numeros + caracteresEspeciais;
+            var tamanhoSenha = 12;
+
+            var senha = "";
+            senha += letrasMinusculas.charAt(Math.floor(Math.random() * letrasMinusculas.length));
+            senha += letrasMaiusculas.charAt(Math.floor(Math.random() * letrasMaiusculas.length));
+            senha += numeros.charAt(Math.floor(Math.random() * numeros.length));
+            senha += caracteresEspeciais.charAt(Math.floor(Math.random() * caracteresEspeciais.length));
+
+            for (var i = 4; i < tamanhoSenha; i++) {
+                var randomIndex = Math.floor(Math.random() * caracteres.length);
+                senha += caracteres.charAt(randomIndex);
+            }
+
+            senhaInput.value = senha;
+            confirmarSenhaInput.value = senha;
+
+            // showInfoToastfy('Lembre-se de copiar a senha antes de salvar as alterações');
+            showSuccessToastfy('Senha gerada! Lembre-se de copiá-la antes de salvar as alterações');
+        }
+
+        function copiarSenha() {
+            if (!senhaInput.value) return;
+
+            var tempInput = document.createElement("input");
+            tempInput.type = "text";
+            tempInput.value = senhaInput.value;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showSuccessToastfy('Senha copiada!')
+        }
+
+        botaoGerarSenha.addEventListener('click', gerarSenhaForte);
+        botaoCopiarSenha.addEventListener('click', copiarSenha);
+
+    </script>
 @endsection
