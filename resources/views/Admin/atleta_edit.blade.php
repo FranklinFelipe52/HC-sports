@@ -131,6 +131,7 @@
                                             PCD
                                         </label>
                                     </div>
+                                    @if(!$atleta->registered)
                                     <div class="flex justify-end gap-4">
                                         <button type="button" id="gerar-senha-botao" class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                                             Gerar uma senha segura
@@ -139,7 +140,6 @@
                                             Copiar senha
                                         </button>
                                     </div>
-                                    @if(!$atleta->registered)
                                     <div>
                                         <label class="text-dark-900 font-semibold text-base inline-block mb-2"
                                             for="atleta_senha">
