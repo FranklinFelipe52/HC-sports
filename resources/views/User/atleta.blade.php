@@ -37,8 +37,11 @@
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
-                
+                @if(Count(explode(' ', Session('user')->nome_completo)) > 1)
                 <?php echo explode(' ', Session('user')->nome_completo)[0]." ".explode(' ', Session('user')->nome_completo)[1];?>
+                @else
+                {{Session('user')->nome_completo}}
+                @endif
                 </p>
               </div>
             </div>
