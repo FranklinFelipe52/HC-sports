@@ -45,7 +45,7 @@
         </a>
       </li>
       @if (Session('admin')->rule->id == 1)
-        <li class="group @if ($type == 6) active @endif">
+        <li class="group @if ($type == 6) active @endif hidden sm:block">
           <a href="/admin/pagamentos" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
             <div class="w-[24px] h-[24px]">
               <img src="/images/svg/pagamentos.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
@@ -68,34 +68,16 @@
           </p>
         </a>
       </li>
-      <li class="group @if ($type == 5) active @endif sm:hidden">
-        <a target="_blank" href="/admin/report_registrations" title="Gerar excel" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-hover:bg-gray-6 rounded-lg transition px-2">
-         <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/excel.svg" class="w-full h-full object-cover" alt="">
-        </div>
-        </a>
-      </li>
-      <li class="group sm:hidden @if ($type == 5) active @endif">
-        <a href="" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-hover:bg-gray-6 rounded-lg transition px-2">
-          <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
-            <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
-          </div>
-        </a>
-      </li>
-      <li class="group @if ($type == 5) active @endif sm:hidden">
-        <a href="/admin/logout" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-hover:bg-gray-6 rounded-lg transition px-2">
-            <div class="w-[24px] h-[24px]">
-                <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
-            </div>
-        </a>
+      <li class="group sm:hidden @if ($type == 5 || $type == 6) active @endif">
+        <button data-button="toggle-menu" data-menuId="menu-mobile" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+          <img src="/images/svg/menu.svg" alt="Ícone do menu">
+        </button>
       </li>
     </ul>
   </nav>
 
   <hr class="hidden sm:block border-gray-6 my-4">
   @if (Session('admin')->rule->id == 1)
-
     <a target="_blank" href="/admin/report_registrations" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
       <div class="w-[24px] h-[24px]">
         <img src="/images/svg/excel.svg" class="w-full h-full object-cover" alt="">
@@ -104,7 +86,6 @@
         Gerar Excel
       </p>
     </a>
-
   @endif
   <a href="/admin/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
