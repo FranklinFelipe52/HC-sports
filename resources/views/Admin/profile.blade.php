@@ -3,6 +3,8 @@
 @section('title', 'Perfil')
 
 @section('content')
+
+
   <!-- modal -->
   <div id="modal"  class="hidden">
     <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
@@ -53,6 +55,8 @@
     </div>
   </div>
 
+  @include('components.admin.menu_mobile', ['type' => 5])
+
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
@@ -79,7 +83,7 @@
 
         <!-- conteúdo -->
         <div class="container grid grid-cols-1 md:grid-cols-12 w-full">
-          <div class="md:col-span-4 lg:col-span-3">
+          <div class="md:col-span-4 lg:col-span-3 mb-6">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
                 <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
@@ -91,7 +95,7 @@
                 </p>
               </div>
             </div>
-           
+
             <div class="flex gap-4 flex-wrap">
             <a href="/admin/profile/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +120,7 @@
               </button>
               @endif
             </div>
-            
+
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
             <div class="w-full">
