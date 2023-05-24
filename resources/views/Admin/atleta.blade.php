@@ -110,6 +110,8 @@
     </div>
   @endforeach
 
+  @include('components.admin.menu_mobile', ['type' => 4])
+
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
@@ -151,7 +153,7 @@
 
         <!-- conteúdo -->
         <div class="container grid grid-cols-1 md:grid-cols-12 w-full">
-          <div class="md:col-span-4 lg:col-span-3">
+          <div class="md:col-span-4 lg:col-span-3 mb-6">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
                 <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
@@ -317,7 +319,7 @@
                       Criado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->created_at)); ?></strong>
 
                     </p>
-                    
+
                   </div>
                 </div>
               </div>

@@ -4,6 +4,8 @@
 
 @section('content')
 
+  @include('components.admin.menu_mobile', ['type' => 3])
+
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
@@ -114,13 +116,13 @@
                       @if (Session('admin')->rule->id == 1)
 
                       @if(Session('admin')->personification)
-                      <?php 
+                      <?php
                       $users_registrations = 0;
 
                       foreach ($modalidade->registrations as $registration) {
                               if ($registration->user->address->federative_unit_id == Session('admin')->personification ) {
                                 $users_registrations++;
-                              }  
+                              }
                       }
                       ?>
                       {{ $users_registrations }} inscrições
@@ -128,17 +130,17 @@
                       @else
                       {{ Count($modalidade->registrations) }} inscrições
                       @endif
-                      
+
                       @else
-                      <?php 
+                      <?php
                       $users_registrations = 0;
 
                       foreach ($modalidade->registrations as $registration) {
                               if ($registration->user->address->federative_unit_id == Session('admin')->federative_unit_id ) {
                                 $users_registrations++;
-                              }  
+                              }
                       }
-                      
+
                       ?>
                       {{ $users_registrations }} inscrições
                       @endif

@@ -3,6 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+  @include('components.admin.menu_mobile', ['type' => 1])
+
 <!-- grid principal -->
 <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 

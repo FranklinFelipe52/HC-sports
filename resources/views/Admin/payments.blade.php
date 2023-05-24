@@ -40,6 +40,7 @@
     @endforeach
   @endif
 
+  @include('components.admin.menu_mobile', ['type' => 6])
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -200,7 +201,7 @@
                           <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
                         </button>
                       @endif
-                        
+
                       </div>
                     </div>
                     <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
