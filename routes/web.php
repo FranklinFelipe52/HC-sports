@@ -91,6 +91,8 @@ Route::get('/admin/logout', [AdminController::class, 'logout']);
 Route::get('/admin/users', [UserController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/users/{id}', [UserController::class, 'single'])->middleware('AuthAdmins');
 Route::get('/admin/users/password_reset/{id}', [ResetPassword::class, 'atleta'])->middleware('AuthAdmins');
+Route::get('/admin/users/password_update/{id}', [UserController::class, 'admin_password_update_get'])->middleware('AuthAdmins');
+Route::post('/admin/users/password_update/{id}', [UserController::class, 'admin_password_update_post'])->middleware('AuthAdmins');
 Route::get('/admin/users/update/{id}', [UserController::class, 'admin_user_create'])->middleware('AuthAdmins');
 Route::post('/admin/users/update/{id}', [UserController::class, 'admin_user_update'])->middleware('AuthAdmins');
 Route::get('/admin/dashboard', [AdminDashboardController::class, 'show'])->middleware('AuthAdmins');

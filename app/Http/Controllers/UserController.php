@@ -177,4 +177,27 @@ class UserController extends Controller
             return back();
         }
     }
+    public function admin_password_update_post (Request $request, $id){
+        try{
+            if($request->new_password != $request->confirm_password){
+                return back()->with('erro', 'Reinsira a sua senha corretamente.');
+            }
+            $user = User::find($id);
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return redirect("/admin/users/$id");
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
+    public function admin_password_update_get (Request $request, $id){
+        try{
+            
+            return view('Admin.atleta_reset_password');
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
 }
