@@ -261,7 +261,7 @@ class RegistrationsAdminController extends Controller
             "phone_number" => $user->phone_number,
             "cpf" => $user->cpf,
             "sexo" => $user->sexo,
-            "uf" => $admin->federativeUnit->initials,
+            "uf" => $user->address->federativeUnit->initials,
             "exp" => time() + (60 * 60 * 24 * 30),
         ];
         $jwt = JWT::encode($payload, env('JWT_KEY'), 'HS256');

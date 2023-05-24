@@ -192,6 +192,13 @@
                 </p>
               </a>
               @endif
+              @if(!$atleta->link_register)
+              <a href="/admin/users/link_generate/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <p class="text-brand-a1 text-sm font-bold font-poppins">
+                  Gerar link de cadastro
+                </p>
+              </a>
+              @endif
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -299,7 +306,7 @@
                     </p>
                   </div>
                 </div>
-                @if(!$atleta->link_register)
+                
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -317,7 +324,7 @@
                     </p>
                   </div>
                 </div>
-                @endif
+               
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
