@@ -4,7 +4,7 @@
 
 @section('content')
 
-  @include('components.admin.menu_mobile', ['type' => 4])
+    @include('components.admin.menu_mobile', ['type' => 4])
 
     <!-- grid principal -->
     <div
@@ -83,8 +83,7 @@
                                             for="cadastro_nome_completo_field">
                                             Nome completo
                                         </label>
-                                        <input required
-                                        onkeyup="this.value = this.value.toUpperCase();"
+                                        <input required onkeyup="this.value = this.value.toUpperCase();"
                                             class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
                                             type="text" id="cadastro_nome_completo_field" name="nome"
                                             placeholder="Digite o seu nome completo" value="{{ $atleta->nome_completo }}" />
@@ -104,6 +103,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div>
+                                        <label class="text-gray-1 font-semibold text-base inline-block mb-2"
+                                            for="cadastro_phone_field">
+                                            Celular
+                                        </label>
+                                        <input required
+                                            onkeyup="this.value = this.value.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');"
+                                            maxlength="13" minlength="13" placeholder="Ex: (00) 0 0000-0000"
+                                            class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
+                                            name="phone_number" type="text" id="cadastro_phone_field" />
+                                    </div>
 
                                     <div>
                                         <label class="text-gray-1 font-semibold text-base block mb-2"
@@ -120,72 +130,75 @@
                                             for="input_text_exemplo">
                                             Cidade
                                         </label>
-                                        <input  value="{{ $atleta->address->cidade }}" required
-                                        onkeyup="this.value = this.value.toUpperCase();"
+                                        <input value="{{ $atleta->address->cidade }}" required
+                                            onkeyup="this.value = this.value.toUpperCase();"
                                             class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[250px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
                                             type="text" id="input_text_exemplo" name="city"
                                             placeholder="Digite o nome da sua cidade" />
                                     </div>
                                     <div class="flex items-center gap-2">
                                         <input data-conditional="submit_button" type="checkbox"
-                                            id="cadastro_termos_checkbox" name="pcd" class="checkbox"{{$atleta->is_pcd ? 'checked' : ''}} />
+                                            id="cadastro_termos_checkbox" name="pcd"
+                                            class="checkbox"{{ $atleta->is_pcd ? 'checked' : '' }} />
                                         <label class="block pb-1 text-sm font-semibold text-brand-a1 underline">
                                             PCD
                                         </label>
                                     </div>
-                                    @if(!$atleta->registered)
-                                    <div class="flex justify-end gap-4">
-                                        <button type="button" id="gerar-senha-botao" class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                            Gerar uma senha segura
-                                        </button>
-                                        <button type="button" id="copiar-senha-botao" class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                            Copiar senha
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                            for="atleta_senha">
-                                            Senha
-                                        </label>
-                                        <div class="group relative">
-                                            <input
-                                                class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                type="password" id="atleta_senha" name="password"
-                                                placeholder="Digite a sua senha" />
-                                            <div
-                                                class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                <button type="button" data-inputId="atleta_senha"
-                                                    class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                                                    <img src="/images/svg/eye.svg" alt=""
-                                                        class="hidden group-[.show]:block" />
-                                                    <img src="/images/svg/eye-off.svg" alt=""
-                                                        class="block group-[.show]:hidden" />
-                                                </button>
+                                    @if (!$atleta->registered)
+                                        <div class="flex justify-end gap-4">
+                                            <button type="button" id="gerar-senha-botao"
+                                                class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                                Gerar uma senha segura
+                                            </button>
+                                            <button type="button" id="copiar-senha-botao"
+                                                class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                                Copiar senha
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <label class="text-dark-900 font-semibold text-base inline-block mb-2"
+                                                for="atleta_senha">
+                                                Senha
+                                            </label>
+                                            <div class="group relative">
+                                                <input
+                                                    class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
+                                                    type="password" id="atleta_senha" name="password"
+                                                    placeholder="Digite a sua senha" />
+                                                <div
+                                                    class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                                                    <button type="button" data-inputId="atleta_senha"
+                                                        class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                                                        <img src="/images/svg/eye.svg" alt=""
+                                                            class="hidden group-[.show]:block" />
+                                                        <img src="/images/svg/eye-off.svg" alt=""
+                                                            class="block group-[.show]:hidden" />
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                            for="atleta_confirmar_senha">
-                                            Confirmação de senha
-                                        </label>
-                                        <div class="group relative">
-                                            <input
-                                                class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                type="password" id="atleta_confirmar_senha"
-                                                name="password_confirm" placeholder="Digite a sua senha" />
-                                            <div
-                                                class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                <button type="button" data-inputId="atleta_confirmar_senha"
-                                                    class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                                                    <img src="/images/svg/eye.svg" alt=""
-                                                        class="hidden group-[.show]:block" />
-                                                    <img src="/images/svg/eye-off.svg" alt=""
-                                                        class="block group-[.show]:hidden" />
-                                                </button>
+                                        <div>
+                                            <label class="text-dark-900 font-semibold text-base inline-block mb-2"
+                                                for="atleta_confirmar_senha">
+                                                Confirmação de senha
+                                            </label>
+                                            <div class="group relative">
+                                                <input
+                                                    class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
+                                                    type="password" id="atleta_confirmar_senha" name="password_confirm"
+                                                    placeholder="Digite a sua senha" />
+                                                <div
+                                                    class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                                                    <button type="button" data-inputId="atleta_confirmar_senha"
+                                                        class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                                                        <img src="/images/svg/eye.svg" alt=""
+                                                            class="hidden group-[.show]:block" />
+                                                        <img src="/images/svg/eye-off.svg" alt=""
+                                                            class="block group-[.show]:hidden" />
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endif
                                 </div>
                                 <div class="flex gap-4 flex-wrap">
@@ -205,7 +218,6 @@
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
-
         const senhaInput = document.querySelector('#atleta_senha');
         const confirmarSenhaInput = document.querySelector('#atleta_confirmar_senha');
         const botaoGerarSenha = document.querySelector('#gerar-senha-botao');
@@ -223,9 +235,9 @@
                 close: true,
                 position: "right",
                 style: {
-                background: "#EBFBEE",
-                color: "#279424",
-                boxShadow: "none",
+                    background: "#EBFBEE",
+                    color: "#279424",
+                    boxShadow: "none",
                 },
                 onClick: function() {} // Callback after click
             }).showToast();
@@ -239,9 +251,9 @@
                 close: true,
                 position: "right",
                 style: {
-                background: "#FBDBDB",
-                color: "#8E1014",
-                boxShadow: "none",
+                    background: "#FBDBDB",
+                    color: "#8E1014",
+                    boxShadow: "none",
                 },
                 onClick: function() {} // Callback after click
             }).showToast();
@@ -289,6 +301,5 @@
 
         botaoGerarSenha.addEventListener('click', gerarSenhaForte);
         botaoCopiarSenha.addEventListener('click', copiarSenha);
-
     </script>
 @endsection

@@ -124,6 +124,7 @@ class UserController extends Controller
             }
 
             $user->nome_completo = $request->nome;
+            $user->phone_number = $request->phone_number;
             $user->address->cidade = $request->city;
             $user->is_pcd = $request->pcd == null ? false : true;
             if(!$user->registered){
