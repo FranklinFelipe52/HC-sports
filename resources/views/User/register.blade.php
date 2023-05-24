@@ -68,17 +68,25 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cpf_field">
                 CPF
               </label>
-              <input placeholder="Ex: ###.###.###-##" disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
+              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $token->cpf); ?>" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_nome_completo_field">
                 Nome completo
               </label>
-              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" placeholder="Digite o seu nome completo" />
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" placeholder="Digite o seu nome completo" />
               @error('nome')
                 <p class="text-danger">{{ $message }}</p>
               @enderror
             </div>
+            @if($token->phone_number)
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
+                Celular
+              </label>
+              <input  disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_phone_field" placeholder="<?php echo preg_replace('/^([[:digit:]]{2})([[:digit:]]{1})([[:digit:]]{4})([[:digit:]]{4})$/', '($1) $2 $3-$4', $token->phone_number); ?>" />
+            </div>
+            @endif
             <div>
               <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
                 Nascimento
@@ -118,7 +126,7 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Cidade
               </label>
-              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="city" placeholder="Digite o nome da sua cidade" />
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="city" placeholder="Digite o nome da sua cidade" />
               @error('city')
                 <p class="text-danger">{{ $message }}</p>
               @enderror
@@ -140,7 +148,7 @@
                 Senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                     <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
@@ -154,7 +162,7 @@
                 Confirmação de senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_confirm_field" name="cadastro_senha_confirm_field" placeholder="Digite a sua senha" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_confirm_field" name="confirm_password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                     <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />

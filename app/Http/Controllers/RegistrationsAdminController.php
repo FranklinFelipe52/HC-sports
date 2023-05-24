@@ -213,6 +213,7 @@ class RegistrationsAdminController extends Controller
                 $user->email = $request->email;
                 $user->cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
                 $user->data_nasc = $request->date_nasc;
+                $user->phone_number = $request->phone_number;
                 $user->sexo = $request->sexo;
                 $user->registered = false;
                 $user->save();
@@ -257,6 +258,7 @@ class RegistrationsAdminController extends Controller
         $payload = [
             "email" => $user->email,
             "date_nasc" => $user->data_nasc,
+            "phone_number" => $user->phone_number,
             "cpf" => $user->cpf,
             "sexo" => $user->sexo,
             "uf" => $admin->federativeUnit->initials,
@@ -265,9 +267,12 @@ class RegistrationsAdminController extends Controller
         $jwt = JWT::encode($payload, env('JWT_KEY'), 'HS256');
         $host = request()->getSchemeAndHttpHost();
         $link = "{$host}/confirm_registration/{$jwt}";
+        $user->link_register = $link;
+        $user->save();
         Mail::to($request->email)->send(new RegistrationMail($link, $registration));
-
-            return redirect("/admin/modalidade/{$modalidade->id}");
+        
+        
+        return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
             return back();

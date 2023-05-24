@@ -100,6 +100,13 @@
                 </div>
               </div>
 
+              <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
+                Celular
+              </label>
+              <input required onkeyup="this.value = this.value.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');" maxlength="13" minlength="13" placeholder="Ex: (00) 0 0000-0000" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" name="phone_number" type="text" id="cadastro_phone_field" />
+            </div>
+
               <div class="mb-6">
                 <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
                   Nascimento
@@ -311,6 +318,7 @@
       delimiters: ['.', '.', '-'],
       numericOnly: true,
     });
+    
 
     if('{{ session('erro') }}') {
         showErrorToastfy('{{ session('erro') }}');

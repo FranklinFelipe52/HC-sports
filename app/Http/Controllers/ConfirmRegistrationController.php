@@ -43,6 +43,9 @@ class ConfirmRegistrationController extends Controller
             if(!$decoded){
                 return back()->with('erro', 'Link expirado');
             }
+            if($request->password != $request->confirm_password){
+                return back()->with('erro', 'Senhas diferentes');
+            }
             $user = User::where('email', $decoded->email)->first();
             $user->nome_completo = $request->nome;
             $user->is_pcd = $request->pcd == null ? false : true;

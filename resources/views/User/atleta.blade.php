@@ -125,7 +125,25 @@
                     </p>
                   </div>
                 </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Celular
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      @if (Session('user')->phone_number)
+                        {{ Session('user')->phone_number }}
+                      @else
+                        -
+                      @endif
+
+                    </p>
+                  </div>
+                </div>
               </div>
+              
               <div class="flex gap-4 flex-wrap">
                 <a href="/profile/update" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   <img src="/dist/images/svg/pencil.svg" alt="">

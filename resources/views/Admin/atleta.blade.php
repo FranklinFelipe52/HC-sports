@@ -272,6 +272,42 @@
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
+                      Celular
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      @if ($atleta->phone_number)
+                        {{ $atleta->phone_number }}
+                      @else
+                        -
+                      @endif
+
+                    </p>
+                  </div>
+                </div>
+                @if(!$atleta->link_register)
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Link de cadastro
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p style="word-break: break-all;" class="text-sm text-gray-2 font-normal">
+                      @if ($atleta->link_register)
+                        {{ $atleta->link_register }}
+                      @else
+                        -
+                      @endif
+
+                    </p>
+                  </div>
+                </div>
+                @endif
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
                       Dados de criação
                     </p>
                   </div>
