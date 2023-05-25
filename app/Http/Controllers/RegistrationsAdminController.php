@@ -261,7 +261,10 @@ class RegistrationsAdminController extends Controller
                 $registrations_payment = 0;
                 foreach ($user->registrations as $registrationn) {
                     if(($registrationn->Payment->status_payment->id == 1) && ($registrationn->modalities->id != 19)){
-                        $registrations_payment++;
+                        if($registrationn->id != $registration->id){
+                            $registrations_payment++;
+                        }
+                       
                     }
                 }
                 switch ($registrations_payment) {
