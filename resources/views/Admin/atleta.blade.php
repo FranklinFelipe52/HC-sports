@@ -92,7 +92,7 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-gray-2 text-sm font-normal">
-                @if( $registration->Payment->mount)
+                @if(!is_null($registration->Payment->mount))
                    <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
                 @else
                   -
