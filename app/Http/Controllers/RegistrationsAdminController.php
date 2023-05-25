@@ -296,13 +296,14 @@ class RegistrationsAdminController extends Controller
         $link = "{$host}/confirm_registration/{$jwt}";
         $user->link_register = $link;
         $user->save();
+        session()->flash('success', 'Inscrição efetuada com sucesso!');
         Mail::to($request->email)->send(new RegistrationMail($link, $registration));
         
         
         return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
-            return $e;
+            return back();
         }
     }
 

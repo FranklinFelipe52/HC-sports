@@ -322,6 +322,9 @@
     if('{{ session('erro') }}') {
         showErrorToastfy('{{ session('erro') }}');
     }
+    if('{{ session('success') }}') {
+        showSuccessToastfy('{{ session('success') }}');
+    }
 
     const inputCpf = document.querySelector('[data-cpf]');
 
