@@ -251,6 +251,9 @@ class RegistrationsAdminController extends Controller
                     $registration->modalities_categorys()->save($category);
                 }
             }
+            $payment->registration_id = $registration->id;
+            $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
+            $payment->save();
             $valor = 0;
             if($modalidade->id == 19){
                 $valor = 80;
@@ -273,10 +276,6 @@ class RegistrationsAdminController extends Controller
                         break;
                 }
             }
-            
-
-            $payment->registration_id = $registration->id;
-            $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
             $payment->mount = $valor;
             $payment->save();
 
