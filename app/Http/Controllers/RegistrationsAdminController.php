@@ -302,7 +302,7 @@ class RegistrationsAdminController extends Controller
         return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
-            return back();
+            return $e;
         }
     }
 
