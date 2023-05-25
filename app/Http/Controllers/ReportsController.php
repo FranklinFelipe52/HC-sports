@@ -24,13 +24,13 @@ class ReportsController extends Controller
                     'Celular' =>   mb_convert_encoding($registration->user->phone_number ? mb_strtoupper($registration->user->phone_number, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Cidade' => mb_convert_encoding(mb_strtoupper($registration->user->address->cidade, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Estado' => mb_convert_encoding(mb_strtoupper($registration->user->address->federativeUnit->initials, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'Modalidade' => str_replace('-', '',  mb_convert_encoding(mb_strtoupper($registration->modalities->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8")),
+                    'Modalidade' => str_replace('?', '',  mb_convert_encoding(mb_strtoupper($registration->modalities->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8")),
                     'Faixa' => mb_convert_encoding($registration->range ? mb_strtoupper($registration->range->range, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Categoria' => mb_convert_encoding(mb_strtoupper($registration->modalities_category->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Subcategoria' => mb_convert_encoding($registration->sub_category ? mb_strtoupper($registration->sub_category->nome, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Data_criacao' => mb_convert_encoding(date('d/m/Y h:i:s', strtotime($registration->created_at)), 'ISO-8859-1', "UTF-8"),
                     'tipo_pagamento' => mb_convert_encoding(mb_strtoupper($registration->type_payment->type, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'valor_pago' => mb_convert_encoding($registration->Payment->mount ? mb_strtoupper($registration->Payment->mount, 'UTF-8') : '', 'ISO-8859-1', "UTF-8"),
+                    'valor_pago' => mb_convert_encoding($registration->Payment->mount ? "R$ " . number_format($registration->Payment->mount, 2, ',', ''): '', 'ISO-8859-1', "UTF-8"),
                     'status_pagamento' => mb_convert_encoding(mb_strtoupper($registration->Payment->status_payment->status, 'UTF-8'), 'ISO-8859-1', "UTF-8")
                 ]);
             }
@@ -47,13 +47,13 @@ class ReportsController extends Controller
                     'Celular' =>   mb_convert_encoding($registration->user->phone_number ? mb_strtoupper($registration->user->phone_number, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Cidade' => mb_convert_encoding(mb_strtoupper($registration->user->address->cidade, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Estado' => mb_convert_encoding(mb_strtoupper($registration->user->address->federativeUnit->initials, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'Modalidade' => str_replace('-', '',  mb_convert_encoding(mb_strtoupper($registration->modalities->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8")),
+                    'Modalidade' => str_replace('?', '',  mb_convert_encoding(mb_strtoupper($registration->modalities->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8")),
                     'Faixa' => mb_convert_encoding($registration->range ? mb_strtoupper($registration->range->range, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Categoria' => mb_convert_encoding(mb_strtoupper($registration->modalities_category->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Subcategoria' => mb_convert_encoding($registration->sub_category ? mb_strtoupper($registration->sub_category->nome, 'UTF-8') : '' , 'ISO-8859-1', "UTF-8"),
                     'Data_criacao' => mb_convert_encoding(date('d/m/Y h:i:s', strtotime($registration->created_at)), 'ISO-8859-1', "UTF-8"),
                     'tipo_pagamento' => mb_convert_encoding(mb_strtoupper($registration->type_payment->type, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'valor_pago' => '',
+                    'valor_pago' =>  mb_convert_encoding($registration->Payment->mount ? mb_strtoupper($registration->Payment->mount, 'UTF-8') : '', 'ISO-8859-1', "UTF-8"),
                     'status_pagamento' => mb_convert_encoding(mb_strtoupper($registration->Payment->status_payment->status, 'UTF-8'), 'ISO-8859-1', "UTF-8")
                 ]);
             }

@@ -64,19 +64,21 @@
                                                 for="cadastro_cpf_field">
                                                 CPF
                                             </label>
-                                            <input disabled
+                                            <input name="cpf" required
                                                 class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
-                                                type="text" id="cadastro_cpf_field" value="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>" />
+                                                type="text" id="cpf_adicionar_atleta_form" value="<?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>" />
                                         </div>
+                                       
                                         <div class="grow">
                                             <label class="text-gray-1 font-semibold text-base inline-block mb-2"
                                                 for="cadastro_email_field">
                                                 E-mail
                                             </label>
-                                            <input disabled
+                                            <input required name="email"
                                                 class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
-                                                type="text" id="cadastro_email_field" value="{{ $atleta->email }}" />
+                                                type="email" id="cadastro_email_field" value="{{ $atleta->email }}" />
                                         </div>
+                                        
                                     </div>
                                     <div>
                                         <label class="text-gray-1 font-semibold text-base block mb-2"
@@ -94,7 +96,7 @@
                                             Nascimento
                                         </label>
                                         <div class="relative w-full max-w-[200px]">
-                                            <input disabled
+                                            <input required name="date_nasc"
                                                 class="w-full max-w-[200px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
                                                 type="date" id="cadastro_nascimento_field"
                                                 value="{{ $atleta->data_nasc }}" />
@@ -110,9 +112,10 @@
                                         </label>
                                         <input required
                                             onkeyup="this.value = this.value.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');"
-                                            maxlength="13" minlength="13" placeholder="Ex: (00) 0 0000-0000"
+                                            maxlength="13" min="13" placeholder="Ex: (00) 0 0000-0000"
                                             class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
-                                            name="phone_number" type="text" id="cadastro_phone_field" />
+                                            name="phone_number" type="phone" id="cadastro_phone_field"
+                                            value="{{ $atleta->phone_number }}" />
                                     </div>
 
                                     <div>
@@ -120,10 +123,24 @@
                                             for="input_text_exemplo">
                                             UF
                                         </label>
-                                        <input disabled
-                                            class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[270px] break-all px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
-                                            value="{{ $atleta->address->federativeUnit->name }}" type="text"
-                                            id="input_text_exemplo" />
+                                        <select data-preload="uf-visible" required
+                                            class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 appearance-none transition"
+                                            name="uf" id="select_exemplo">
+                                            <option value="" @if (!old('uf')) selected @endif
+                                                disabled>
+                                                Selecione
+                                            </option>
+                                            @foreach ($federative_units as $federative_unit)
+                                                @if ($atleta->address->federativeUnit->id == $federative_unit->id)
+                                                    <option value="{{ $federative_unit->id }}" selected>
+                                                        {{ $federative_unit->initials }}</option>
+                                                @else
+                                                    <option value="{{ $federative_unit->id }}"
+                                                        @if (old('uf') == $federative_unit->id) selected @endif>
+                                                        {{ $federative_unit->initials }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div>
                                         <label class="text-gray-1 font-semibold text-base block mb-2"
@@ -217,11 +234,21 @@
         </div>
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"
+        integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const senhaInput = document.querySelector('#atleta_senha');
         const confirmarSenhaInput = document.querySelector('#atleta_confirmar_senha');
         const botaoGerarSenha = document.querySelector('#gerar-senha-botao');
         const botaoCopiarSenha = document.querySelector('#copiar-senha-botao');
+
+
+        new Cleave('#cpf_adicionar_atleta_form', {
+            blocks: [3, 3, 3, 2],
+            delimiters: ['.', '.', '-'],
+            numericOnly: true,
+        });
 
         if ('{{ session('edit_error') }}') {
             showErrorToastfy('{{ session('edit_error') }}');

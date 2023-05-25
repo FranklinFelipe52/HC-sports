@@ -72,6 +72,34 @@
                 </p>
               </div>
             </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+          <div class="col-span-2 sm:col-span-1">
+            <p class="text-gray-1 text-sm font-semibold">
+              Status
+            </p>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <p class="text-gray-2 text-sm font-normal">
+              {{ $registration->status_regitration->status }}
+            </p>
+          </div>
+        </div>
+            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  Valor
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                @if( $registration->Payment->mount)
+                   <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
+                @else
+                  -
+                @endif
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

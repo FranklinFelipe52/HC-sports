@@ -31,31 +31,7 @@ class CheckoutController extends Controller
             return back();
         }
 
-        $modalidade = $registration->modalities;
-        $valor = 0;
-        $registrations_payment = 0;
-
-        foreach ($user->registrations as $registrationn) {
-            if($registrationn->Payment->status_payment->id == 1){
-                $registrations_payment++;
-            }
-        }
-
-        switch ($registrations_payment) {
-            case 0:
-                $valor = 200.00;
-                break;
-            case 1:
-                $valor = 100.00;
-                break;
-            case 2:
-                $valor = 100.00;
-                break;
-            case 3:
-                return back();
-                break;
-        }
-
+        $valor = $registration->Payment->mount;
 
         error_log($registration);
         return view('User.registration', [

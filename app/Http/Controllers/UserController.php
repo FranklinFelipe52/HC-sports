@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegistrationRequest;
 use App\Models\ActionsAdmin;
+use App\Models\Admin;
 use App\Models\FederativeUnit;
 use App\Models\User;
 use Exception;
@@ -10,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Stmt\Return_;
+use PHPUnit\Framework\Constraint\Count;
 
 class UserController extends Controller
 
@@ -101,29 +104,54 @@ class UserController extends Controller
                 return back();
             }
             return view('Admin.atleta_edit', [
-                'atleta' => $user
+                'atleta' => $user,
+                'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
 
         } catch (Exception $e){
             return back();
         }
     }
-    public function admin_user_update (Request $request, $id){
+    public function admin_user_update (StoreRegistrationRequest $request, $id){
         try{
             $admin = $request->session()->get('admin');
             $user = User::find($id);
             if (!$admin) {
+                error_log('entrou 1');
                 return back();
             }
             if (!$user) {
+                error_log('entrou 2');
                 return back();
             }
-            if($request->password != $request->password_confirm){
-                session()->flash('edit_error', 'A confirmação de senha está diferente, digite novamente');
-                return back()->with('edit_error', 'A confirmação de senha está diferente, digite novamente.');
+            if(!( preg_replace( '/[^0-9]/is', '', $user->cpf) == preg_replace( '/[^0-9]/is', '', $request->cpf))){
+                
+                if(User::where('cpf', $request->cpf)->get()){
+                    session()->flash('edit_error', 'Esse CPF já está em uso.');
+                    return back()->with('edit_error', 'Esse CPF já está em uso.');
+                    
+                }
             }
 
+            if(!($user->email == $request->email)){
+               
+                if(User::where('email', $request->email)->get()){
+                    session()->flash('edit_error', 'Esse E-mail já está em uso.');
+                    return back()->with('edit_error', 'Esse E-mail já está em uso.');
+                }
+            }
+
+            if(strlen($request->phone_number) < 13 ){
+                session()->flash('edit_error', 'Número inválido, digite novamente');
+                    return back()->with('edit_error', 'Número inválido, digite novamente.');
+            }
+            
+
             $user->nome_completo = $request->nome;
+            $user->cpf = $request->cpf;
+            $user->email = $request->email;
+            $user->data_nasc = $request->date_nasc;
+            $user->address->federative_unit_id = $request->uf;
             $user->phone_number = $request->phone_number;
             $user->address->cidade = $request->city;
             $user->is_pcd = $request->pcd == null ? false : true;
@@ -134,6 +162,7 @@ class UserController extends Controller
                 }
                 $user->password = Hash::make($request->password);
             }
+            error_log('passou');
             $user->registered = true;
             $user->address->save();
             $user->save();
@@ -146,7 +175,7 @@ class UserController extends Controller
             session()->flash('edit_success', 'Dados atualizados com sucesso!');
             return redirect("/admin/users/$id");
         } catch (Exception $e){
-            return back();
+            return $e;
         }
     }
     public function password_reset_post (Request $request){

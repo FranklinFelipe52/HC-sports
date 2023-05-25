@@ -56,7 +56,10 @@ class RegistrationsAdminController extends Controller
                 }
                 $federativeUnit = $request->uf;
             }
-
+            if(strlen($request->phone_number) < 13 ){
+                session()->flash('edit_error', 'Número inválido, digite novamente');
+                    return back()->with('edit_error', 'Número inválido, digite novamente.');
+            }
             if($modalidade->mode_modalities->id == 1){
 
                 $category = $modalidade->modalities_categorys()->first();
@@ -248,9 +251,33 @@ class RegistrationsAdminController extends Controller
                     $registration->modalities_categorys()->save($category);
                 }
             }
+            $valor = 0;
+            if($modalidade->id == 19){
+                $valor = 80;
+            } else {
+                $registrations_payment = 0;
+                foreach ($user->registrations as $registrationn) {
+                    if(($registrationn->Payment->status_payment->id == 1) && ($registrationn->modalities->id != 19)){
+                        $registrations_payment++;
+                    }
+                }
+                switch ($registrations_payment) {
+                    case 0:
+                        $valor = 200.00;
+                        break;
+                    case 1:
+                        $valor = 100.00;
+                        break;
+                    case 3:
+                        return back();
+                        break;
+                }
+            }
+            
 
             $payment->registration_id = $registration->id;
             $payment->status_payment_id = $registration->status_regitration_id == 1 ? 1 : 3;
+            $payment->mount = $valor;
             $payment->save();
 
 
