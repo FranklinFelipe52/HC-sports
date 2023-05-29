@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FederativeUnit;
 use App\Models\group_category;
 use App\Models\Modalities;
 use App\Models\modalities_category;
@@ -19,6 +20,7 @@ class ModalidadeAdminController extends Controller
             $modalidade = Modalities::find($id);
             if($modalidade){
                 $registrations = [];
+                $federative_units = [];
                 if(!($admin->rule->id == 1)){
 
                         foreach ($modalidade->registrations as $registration) {
@@ -35,13 +37,27 @@ class ModalidadeAdminController extends Controller
                             }
                     } else {
                         $registrations = $modalidade->registrations;
+                        foreach ($registrations as $registration) {
+                            foreach(FederativeUnit::all() as $federative_unit) {
+                                if ($registration->user->address->federative_unit_id == $federative_unit->id) {
+                                    if (!in_array($federative_unit, $federative_units)) {
+                                        array_push($federative_units, $federative_unit);
+                                    }
+                                }
+                            }
+                        }
                     }
-                   
+
                 }
+
+                usort($federative_units, function ($a, $b) {
+                    return strcmp($a->name, $b->name);
+                });
 
                 return view('Admin.modalidade', [
                     'modalidade'  => $modalidade,
-                    'registrations' => $registrations
+                    'registrations' => $registrations,
+                    'federative_units' => $federative_units,
                  ]);
 
             }
