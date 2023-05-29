@@ -79,7 +79,7 @@
                 <p class="text-danger">{{ $message }}</p>
               @enderror
             </div>
-            @if($token->phone_number)
+            @if(!is_null($token->phone_number))
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
                 Celular

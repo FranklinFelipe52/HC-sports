@@ -24,6 +24,7 @@
 <body class="h-screen">
 
   @yield('content')
+  
 
   <!-- js -->
   <script type="module" src="/js/app.js"></script>
