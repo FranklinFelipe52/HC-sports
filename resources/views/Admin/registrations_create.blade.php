@@ -99,12 +99,12 @@
                 </div>
               </div>
 
-              <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
-                Celular
-              </label>
-              <input required onkeyup="this.value = this.value.replace(/\D+/g, '').replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');" maxlength="13" minlength="13" placeholder="Ex: (00) 0 0000-0000" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" name="phone_number" type="text" id="cadastro_phone_field" />
-            </div>
+              <div class="mb-6">
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
+                  Celular
+                </label>
+                <input data-preload="celular-visible" required placeholder="Ex: (00) 0 0000-0000" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" name="phone_number" type="text" id="celular_adicionar_atleta_form" />
+              </div>
 
               <div class="mb-6">
                 <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
@@ -317,13 +317,22 @@
       delimiters: ['.', '.', '-'],
       numericOnly: true,
     });
-    
+
+    new Cleave('#celular_adicionar_atleta_form', {
+      blocks: [2, 1, 4, 4],
+      delimiters: [' ', ' ', '-'],
+      numericOnly: true,
+    });
+
 
     if('{{ session('erro') }}') {
         showErrorToastfy('{{ session('erro') }}');
     }
     if('{{ session('success') }}') {
         showSuccessToastfy('{{ session('success') }}');
+    }
+    if('{{ session('edit_error') }}') {
+        showErrorToastfy('{{ session('edit_error') }}');
     }
 
     const inputCpf = document.querySelector('[data-cpf]');
@@ -339,6 +348,9 @@
 
     const inputUfVisible = document.querySelector('[data-preload="uf-visible"]');
     // const inputUf = document.querySelector('[data-preload="uf"]');
+
+    const inputCelularVisible = document.querySelector('[data-preload="celular-visible"]');
+    // const inputCelular = document.querySelector('[data-preload="celular"]');
 
     const inputPcdVisible = document.querySelector('[data-preload="pcd-visible"]');
     // const inputPcd = document.querySelector('[data-preload="pcd"]');
@@ -360,6 +372,8 @@
         inputSexoVisible.value = '';
         // inputSexo.value = '';
       }
+
+      inputCelularVisible.value = '';
 
       inputUfVisible.value = '';
       // inputUf.value = '';
@@ -415,7 +429,7 @@
     } */
 
     // disableInputs();
-    clearInputs();
+    // clearInputs();
 
     inputCpf.addEventListener('input', () => {
       const cpf = inputCpf.value.replace(/[^\d]/g, ''); // Remova caracteres não numéricos
@@ -425,6 +439,8 @@
           .then(response => response.json())
           .then(data => {
             // disableInputs();
+
+            console.log(data);
 
             if (gender && data[0]['sexo'] === gender) {
               inputEmailVisible.value = data[0]['email'];
@@ -440,6 +456,8 @@
 
               inputUfVisible.value = data[0]['federative_unit_id'];
               // inputUf.value = data[0]['federative_unit_id'];
+
+              inputCelularVisible.value = data[0]['phone_number'];
 
               if (inputPcdVisible) {
                 inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
@@ -466,6 +484,8 @@
               inputUfVisible.value = data[0]['federative_unit_id'];
               // inputUf.value = data[0]['federative_unit_id'];
 
+              inputCelularVisible.value = data[0]['phone_number'];
+
               if (inputPcdVisible) {
                 inputPcdVisible.checked = data[0]['is_pcd'] ? true : false
                 // inputPcd.checked = data[0]['is_pcd'] ? true : false
@@ -482,12 +502,12 @@
             }
           })
           .catch(error => {
-            clearInputs();
+            // clearInputs();
             // enableInputs();
             console.error(error);
           });
       } else {
-        clearInputs();
+        // clearInputs();
         // disableInputs();
       }
     });
