@@ -300,7 +300,7 @@
 
             <!-- lista de inscrições -->
             <div class="overflow-auto pb-8">
-              @if (Session('admin')->rule->id == 1)
+              @if ((Session('admin')->rule->id == 1) && !(Session('admin')->personification) )
                 <div class="border border-t-0 rounded-b-lg space-y-3 pt-3">
 
                   @if (Count($registrations) != 0)

@@ -107,6 +107,8 @@ Route::post('/admin/registration/create/{id}', [RegistrationsAdminController::cl
 Route::get('/admin/administradores', [AdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/password_reset/{id}', [ResetPassword::class, 'adm'])->middleware('AuthAdmins');
+Route::get('/admin/administradores/password_update/{id}', [AdminController::class, 'admin_password_update_get'])->middleware('AuthAdmins');
+Route::post('/admin/administradores/password_update/{id}', [AdminController::class, 'admin_password_update_post'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/update/{id}', [AdminController::class, 'admin_create'])->middleware('AuthAdmins');
 Route::post('/admin/administradores/update/{id}', [AdminController::class, 'admin_update'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/{id}', [AdminController::class, 'single'])->middleware('AuthAdmins');

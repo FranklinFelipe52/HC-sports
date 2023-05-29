@@ -264,4 +264,34 @@ class AdminController extends Controller
             return back();
         }
     }
+
+    public function admin_password_update_get (Request $request){
+        try{
+            return view('Admin.admin_update_password');
+
+        } catch (Exception $e){
+            return back();
+        }
+    }
+
+    public function admin_password_update_post (Request $request, $id){
+        try{
+            $admin = Admin::find($id);
+            if(!$admin){
+                return back();
+            }
+            if($request->new_password != $request->confirm_password){
+                return back()->with('erro', 'Reinsira a sua senha corretamente.');
+            }
+           
+                $admin->password = Hash::make($request->new_password);
+                $admin->save();
+                return redirect("/admin/administradores/$id");
+
+            
+            return back()->with('erro', 'Senha atual invalida.');
+        } catch (Exception $e){
+            return back();
+        }
+    }
 }
