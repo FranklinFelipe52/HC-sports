@@ -221,7 +221,7 @@
                       @if (Session('admin')->personification)
                         <?php
                         $users_registrations = 0;
-                        
+
                         foreach ($modalidade->registrations as $registration) {
                             if ($registration->user->address->federative_unit_id == Session('admin')->personification) {
                                 $users_registrations++;
@@ -235,13 +235,13 @@
                     @else
                       <?php
                       $users_registrations = 0;
-                      
+
                       foreach ($modalidade->registrations as $registration) {
                           if ($registration->user->address->federative_unit_id == Session('admin')->federative_unit_id) {
                               $users_registrations++;
                           }
                       }
-                      
+
                       ?>
                       {{ $users_registrations }} inscrições
                     @endif
@@ -439,5 +439,49 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="/js/app.js"></script>
+  <script type="module">
+
+    if('{{ session('error') }}') {
+        showErrorToastfy('{{ session('erro') }}');
+    }
+    if('{{ session('success') }}') {
+        showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {}
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {}
+      }).showToast();
+    }
+  </script>
 
 @endsection

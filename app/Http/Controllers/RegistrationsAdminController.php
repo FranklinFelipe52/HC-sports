@@ -57,7 +57,7 @@ class RegistrationsAdminController extends Controller
                 $federativeUnit = $request->uf;
             }
             if(strlen($request->phone_number) < 13 ){
-                session()->flash('edit_error', 'Número inválido, digite novamente');
+                session()->flash('error', 'Número inválido, digite novamente');
                     return back()->withInput();
             }
             if($modalidade->mode_modalities->id == 1){
@@ -67,34 +67,34 @@ class RegistrationsAdminController extends Controller
 
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
-                        session()->flash('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
+                        session()->flash('error', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
                         return back()->withInput();
                     }
                     if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
-                        session()->flash('erro', 'Usuário já está inscrito nessa modalidade');
+                        session()->flash('error', 'Usuário já está inscrito nessa modalidade');
                         return back()->withInput();
                     }
                     if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
-                        session()->flash('erro', 'O usuario já tem 2 inscrições ativas');
+                        session()->flash('error', 'O usuario já tem 2 inscrições ativas');
                         return back()->withInput();
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
-                    session()->flash('erro', 'Não existe mais vagas para essa modalidade');
+                    session()->flash('error', 'Não existe mais vagas para essa modalidade');
                     return back()->withInput();
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
-                    session()->flash('erro', 'Não existe mais vagas para essa modalidade na sua seccional');
+                    session()->flash('error', 'Não existe mais vagas para essa modalidade na sua seccional');
                     return back()->withInput();
                 }
                 if($request->range){
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
 
                     }
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
                     }
                 }
@@ -102,36 +102,36 @@ class RegistrationsAdminController extends Controller
 
                 if($request->sexo == 'M'){
                     if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
-                        session()->flash('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
+                        session()->flash('error', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                         return back()->withInput();
                     }
                 }
                 if($request->sexo == 'F'){
                     if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
-                        session()->flash('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
+                        session()->flash('error', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                         return back()->withInput();
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
-                    session()->flash('erro', "Desculpe, mas o minimo de idade para a modalidade ".$modalidade->nome." é $category->min_year anos");
+                    session()->flash('error', "Desculpe, mas o minimo de idade para a modalidade ".$modalidade->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
 
             }elseif($modalidade->mode_modalities->id == 2){
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
-                        session()->flash('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
+                        session()->flash('error', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
                         return back()->withInput();
                     }
                     foreach ($user->registrations as $registration) {
                         if($registration->modalities->id == $modalidade->id){
-                            session()->flash('erro', 'Usuário já tem inscrição nessa modalidade');
+                            session()->flash('error', 'Usuário já tem inscrição nessa modalidade');
                             return back()->withInput();
                         }
                     }
 
                     if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
-                        session()->flash('erro', 'O usuario já tem 2 inscrições ativas');
+                        session()->flash('error', 'O usuario já tem 2 inscrições ativas');
                         return back()->withInput();
                     }
                 }
@@ -143,37 +143,37 @@ class RegistrationsAdminController extends Controller
                     return back();
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
-                    session()->flash('erro', "Não existe mais vagas para categoria $category->nome");
+                    session()->flash('error', "Não existe mais vagas para categoria $category->nome");
                     return back()->withInput();
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
-                    session()->flash('erro', "Não existe mais vagas para categoria $category->nome na sua seccional");
+                    session()->flash('error', "Não existe mais vagas para categoria $category->nome na sua seccional");
                     return back()->withInput();
                 }
                 if($request->range){
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
                     }
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
                     }
                 }
                 if($request->sexo == 'M'){
                     if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas para usuários do sexo masculino para categoria $category->nome");
+                        session()->flash('error', "Não existe mais vagas para usuários do sexo masculino para categoria $category->nome");
                         return back()->withInput();
                     }
                 }
                 if($request->sexo == 'F'){
                     if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas para usuários do sexo feminino para categoria $category->nome");
+                        session()->flash('error', "Não existe mais vagas para usuários do sexo feminino para categoria $category->nome");
                         return back()->withInput();
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
-                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
+                    session()->flash('error', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
                 }
@@ -188,56 +188,56 @@ class RegistrationsAdminController extends Controller
 
                 if($user){
                     if(VerifyRegistration::verifyConfirmRegistration($user)){
-                        session()->flash('erro', 'Este atleta está com pagamento pendente. Antes de realizar uma nova inscrição é preciso realizar o pagamento da inscrição anterior.');
+                        session()->flash('error', 'Este atleta está com pagamento pendente. Antes de realizar uma nova inscrição é preciso realizar o pagamento da inscrição anterior.');
                         return back()->withInput();
                     }
                     if(VerifyRegistration::verifyUserIntoModalities($user, $category)){
-                        session()->flash('erro', 'Usuário já está inscrito nessa categoria');
+                        session()->flash('error', 'Usuário já está inscrito nessa categoria');
                         return back()->withInput();
                     }
                     if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
-                        session()->flash('erro', 'O usuario já tem 2 inscrições ativas');
+                        session()->flash('error', 'O usuario já tem 2 inscrições ativas');
                         return back()->withInput();
                     }
                     foreach ($user->registrations as $registration) {
                         if($registration->modalities->id == $modalidade->id){
-                            session()->flash('erro', 'Usuário já tem inscrição nessa modalidade');
+                            session()->flash('error', 'Usuário já tem inscrição nessa modalidade');
                             return back()->withInput();
                         }
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrations($category, $federativeUnit)){
-                    session()->flash('erro', 'Não existe mais vagas para essa modalidade');
+                    session()->flash('error', 'Não existe mais vagas para essa modalidade');
                     return back()->withInput();
                 }
                 if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit)){
-                    session()->flash('erro', 'Não existe mais vagas para essa modalidade na sua seccional');
+                    session()->flash('error', 'Não existe mais vagas para essa modalidade na sua seccional');
                     return back()->withInput();
                 }
                 if($request->range){
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
                     }
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
-                        session()->flash('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
+                        session()->flash('error', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
                     }
                 }
                 if($request->sexo == 'M'){
                     if(VerifyRegistration::verifyModalitiesLimitMan($category, $federativeUnit)){
-                        session()->flash('erro', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
+                        session()->flash('error', 'Não existe mais vagas para usuários do sexo masculino nessa modalidade');
                         return back()->withInput();
                     }
                 }
                 if($request->sexo == 'F'){
                     if(VerifyRegistration::verifyModalitiesLimitWomen($category, $federativeUnit)){
-                        session()->flash('erro', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
+                        session()->flash('error', 'Não existe mais vagas para usuários do sexo feminino nessa modalidade');
                         return back()->withInput();
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
-                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
+                    session()->flash('error', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
 

@@ -325,14 +325,11 @@
     });
 
 
-    if('{{ session('erro') }}') {
+    if('{{ session('error') }}') {
         showErrorToastfy('{{ session('erro') }}');
     }
     if('{{ session('success') }}') {
         showSuccessToastfy('{{ session('success') }}');
-    }
-    if('{{ session('edit_error') }}') {
-        showErrorToastfy('{{ session('edit_error') }}');
     }
 
     const inputCpf = document.querySelector('[data-cpf]');
