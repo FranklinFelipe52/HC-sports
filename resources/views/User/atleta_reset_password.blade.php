@@ -91,7 +91,7 @@
                     Nova senha:
                   </label>
                   <div class="group relative">
-                    <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha" name="new_password" placeholder="Digite sua nova senha" />
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha" name="new_password" placeholder="Digite sua nova senha" />
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
@@ -116,7 +116,7 @@
                     Repita a nova senha:
                   </label>
                   <div class="group relative">
-                    <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha_confirm" name="confirm_password" placeholder="Reinsira sua nova senha" />
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha_confirm" name="confirm_password" placeholder="Reinsira sua nova senha" />
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha_confirm" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
