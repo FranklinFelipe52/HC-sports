@@ -15,7 +15,8 @@ class PersonificationController extends Controller
             $admin->save();
             $request->session()->put('admin', $admin);
             return back();
-        } catch (Exception $e){ 
+        } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -27,7 +28,8 @@ class PersonificationController extends Controller
             $admin->save();
             $request->session()->put('admin', $admin);
             return back();
-        } catch (Exception $e){ 
+        } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

@@ -77,7 +77,7 @@
                   <label class="text-gray-1 font-semibold text-base block mb-2" for="cadastro_nome_completo_field">
                     Nome completo
                   </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{$admin->nome_completo}}" placeholder="Digite o seu nome completo" />
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{$admin->nome_completo}}" onkeyup="this.value = this.value.toUpperCase();" placeholder="Digite o seu nome completo" />
                 </div>
               </div>
               <div class="flex gap-4 flex-wrap">
@@ -96,41 +96,46 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script>
+<script>
+
     if ('{{ session('erro') }}') {
-      showErrorToastfy('{{ session('erro') }}');
+        showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+        showSuccessToastfy('{{ session('success') }}');
     }
 
     function showSuccessToastfy(text) {
-      Toastify({
+        Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-          background: "#EBFBEE",
-          color: "#279424",
-          boxShadow: "none",
+            background: "#EBFBEE",
+            color: "#279424",
+            boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-      }).showToast();
+        }).showToast();
     }
 
     function showErrorToastfy(text) {
-      Toastify({
+        Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-          background: "#FBDBDB",
-          color: "#8E1014",
-          boxShadow: "none",
+            background: "#FBDBDB",
+            color: "#8E1014",
+            boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-      }).showToast();
+        }).showToast();
     }
-  </script>
+</script>
 @endsection

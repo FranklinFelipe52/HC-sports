@@ -63,6 +63,7 @@ class ModalidadeAdminController extends Controller
             }
             return back();
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -78,6 +79,7 @@ class ModalidadeAdminController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -93,6 +95,7 @@ class ModalidadeAdminController extends Controller
                'mode' => $mode
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -108,6 +111,7 @@ class ModalidadeAdminController extends Controller
 
             return back();
         }catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

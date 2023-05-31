@@ -143,16 +143,16 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="flex gap-4 flex-wrap">
                 <a href="/profile/update" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
-                  <img src="/dist/images/svg/pencil.svg" alt="">
+                  <img src="/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
                 <a href="/profile/password_reset" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/dist/images/svg/padlock.svg" alt="">
+                  <img src="/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha
                   </p>
@@ -164,6 +164,49 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+  </script>
 @endsection
- 
+
 

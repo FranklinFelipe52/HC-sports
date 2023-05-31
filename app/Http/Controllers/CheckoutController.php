@@ -19,7 +19,7 @@ class CheckoutController extends Controller
     public function checkout(Request $request, $id){
 
         try{
-        
+
         $user = User::find($request->session()->get('user')->id);
         $registration = registration::find($id);
         error_log($registration);
@@ -40,6 +40,7 @@ class CheckoutController extends Controller
         ]);
 
         } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -58,7 +59,7 @@ class CheckoutController extends Controller
         if($registration->user->id != $user->id){
             return redirect('/dashboard');
         }
-        
+
         $notifications = new ActionsNotificatios;
         $notifications->user_id = $user->id;
         $notifications->status_notificatios_id = 2;
@@ -92,7 +93,7 @@ class CheckoutController extends Controller
              $log_payment->mount = $response['transaction_amount'];
              $log_payment->save();
              Log::alert(['log_payment' => $log_payment]);
- 
+
         if($response['status'] == 'approved'){
              $registration->status_regitration_id = 1;
              $registration->payment->id_payment  =  $payment_id;
@@ -101,7 +102,7 @@ class CheckoutController extends Controller
              $registration->payment->save();
              $registration->save();
          }
- 
+
          if($response['status'] == 'pending' || $response['status'] == 'rejected'){
              $registration->status_regitration_id = 3;
              $registration->payment->id_payment  =  $payment_id;
@@ -124,11 +125,11 @@ class CheckoutController extends Controller
             Log::alert(['erro' => $e->getMessage()]);
             return response(['erro'=> $e],400);
         }
-        
+
     }
 
 
 
 
-    
+
 }

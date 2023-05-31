@@ -33,6 +33,7 @@ class ConfirmRegistrationController extends Controller
             ]);
 
         }catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -49,7 +50,7 @@ class ConfirmRegistrationController extends Controller
             $user = User::where('email', $decoded->email)->first();
             $user->nome_completo = $request->nome;
             $user->is_pcd = $request->pcd == null ? false : true;
-            
+
             $user->address->cidade = $request->city;
             $user->address->save();
             $user->password = Hash::make($request->password);

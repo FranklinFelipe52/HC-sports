@@ -37,21 +37,10 @@
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Alterar Senha
           </h1>
-          @if (session('erro'))
-          <div class="group error w-full">
-            <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
-              <div class="grow">
-                <p class="text-sm">
-                  {{ session('erro') }}
-                </p>
-              </div>
-            </div>
-          </div>
-        @endif
         </div>
       </header>
 
-      
+
 
       <!-- conteúdo -->
       <div class="container grid grid-cols-1 md:grid-cols-12 w-full">
@@ -63,13 +52,13 @@
                 <p class="text-gray-1 text-sm">
                   Use o formulário a seguir para alterar a senha.
                 </p>
-                
+
                 <div class="group w-full max-w-[320px]">
                   <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha_field">
                     Nova senha:
                   </label>
                   <div class="group relative">
-                    <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha" name="new_password" placeholder="Digite sua nova senha" />
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha" name="new_password" placeholder="Digite sua nova senha" />
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
@@ -94,7 +83,7 @@
                     Repita a nova senha:
                   </label>
                   <div class="group relative">
-                    <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha_confirm" name="confirm_password" placeholder="Reinsira sua nova senha" />
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="input_nova_senha_confirm" name="confirm_password" placeholder="Reinsira sua nova senha" />
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha_confirm" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
@@ -126,4 +115,48 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+
+    if ('{{ session('erro') }}') {
+        showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+        showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+        Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+            background: "#EBFBEE",
+            color: "#279424",
+            boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+        }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+        Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+            background: "#FBDBDB",
+            color: "#8E1014",
+            boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+        }).showToast();
+    }
+</script>
 @endsection

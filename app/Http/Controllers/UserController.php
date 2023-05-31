@@ -48,6 +48,7 @@ class UserController extends Controller
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -63,6 +64,7 @@ class UserController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -72,6 +74,7 @@ class UserController extends Controller
             return view('User.atleta');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -81,6 +84,7 @@ class UserController extends Controller
             return view('User.atleta_edit');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -92,8 +96,10 @@ class UserController extends Controller
             $user->address->save();
             $user->save();
             $request->session()->put('user', $user);
+            session()->flash('success', 'Dados atualizados com sucesso!');
             return redirect('/profile');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -109,6 +115,7 @@ class UserController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -125,16 +132,16 @@ class UserController extends Controller
                 return back();
             }
             if(!( preg_replace( '/[^0-9]/is', '', $user->cpf) == preg_replace( '/[^0-9]/is', '', $request->cpf))){
-                
+
                 if(User::where('cpf', $request->cpf)->get()){
                     session()->flash('edit_error', 'Esse CPF já está em uso.');
                     return back()->with('edit_error', 'Esse CPF já está em uso.');
-                    
+
                 }
             }
 
             if(!($user->email == $request->email)){
-               
+
                 if(User::where('email', $request->email)->get()){
                     session()->flash('edit_error', 'Esse E-mail já está em uso.');
                     return back()->with('edit_error', 'Esse E-mail já está em uso.');
@@ -145,7 +152,7 @@ class UserController extends Controller
                 session()->flash('edit_error', 'Número inválido, digite novamente');
                     return back()->with('edit_error', 'Número inválido, digite novamente.');
             }
-            
+
 
             $user->nome_completo = $request->nome;
             $user->cpf = $request->cpf;
@@ -189,11 +196,13 @@ class UserController extends Controller
                 $user->password = Hash::make($request->new_password);
                 $user->save();
                 $request->session()->put('user', $user);
+                session()->flash('success', 'Senha atualizada com sucesso!');
                 return redirect('/profile');
 
             }
             return back()->with('erro', 'Senha atual invalida.');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -203,6 +212,7 @@ class UserController extends Controller
             return view('User.atleta_reset_password');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -214,18 +224,21 @@ class UserController extends Controller
             $user = User::find($id);
             $user->password = Hash::make($request->new_password);
             $user->save();
+            session()->flash('success', 'Senha atualizada com sucesso!');
             return redirect("/admin/users/$id");
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
 
     public function admin_password_update_get (Request $request, $id){
         try{
-            
+
             return view('Admin.atleta_reset_password');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

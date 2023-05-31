@@ -334,7 +334,7 @@
                     </p>
                   </div>
                 </div>
-                
+
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -352,7 +352,7 @@
                     </p>
                   </div>
                 </div>
-               
+
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -449,15 +449,20 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
-    if ('{{ session('reset_password_success') }}') {
-      showSuccessToastfy('{{ session('reset_password_success') }}');
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
     }
 
     if ('{{ session('edit_success') }}') {
       showSuccessToastfy('{{ session('edit_success') }}');
     }
+
     if ('{{ session('edit_error') }}') {
       showErrorToastfy('{{ session('edit_error') }}');
+    }
+
+    if ('{{ session('erro') }}') {
+        showErrorToastfy('{{ session('erro') }}');
     }
 
     function showSuccessToastfy(text) {

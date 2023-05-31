@@ -206,7 +206,48 @@
 
   <!-- js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+    
     new Cleave('#cadastro_cpf_field', {
       blocks: [3, 3, 3, 2],
       delimiters: ['.', '.', '-'],

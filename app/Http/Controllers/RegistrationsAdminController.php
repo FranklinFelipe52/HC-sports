@@ -35,6 +35,7 @@ class RegistrationsAdminController extends Controller
                 'registration'  => $registration
             ]);
         } catch (Exception $e) {
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -57,7 +58,7 @@ class RegistrationsAdminController extends Controller
                 $federativeUnit = $request->uf;
             }
             if(strlen($request->phone_number) < 13 ){
-                session()->flash('edit_error', 'Número inválido, digite novamente');
+                session()->flash('erro', 'Número inválido, digite novamente');
                     return back()->withInput();
             }
             if($modalidade->mode_modalities->id == 1){
@@ -91,7 +92,6 @@ class RegistrationsAdminController extends Controller
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeMan($category, $request->range, $federativeUnit)){
                         session()->flash('erro', "Não existe mais vagas masculinas para categoria $category->nome e faixa selecionada na sua seccional");
                         return back()->withInput();
-
                     }
                     if(VerifyRegistration::verifyModalitiesLimitRegistrationsSeccionalByRangeWomen($category, $request->range, $federativeUnit)){
                         session()->flash('erro', "Não existe mais vagas femininas para categoria $category->nome e faixa selecionada na sua seccional");
@@ -173,7 +173,7 @@ class RegistrationsAdminController extends Controller
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
-                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
+                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria " . $category->nome . " é $category->min_year anos");
                     return back()->withInput();
                 }
                 }
@@ -237,7 +237,7 @@ class RegistrationsAdminController extends Controller
                     }
                 }
                 if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
-                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
+                    session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria " . $category->nome . " é $category->min_year anos");
                     return back()->withInput();
                 }
 
@@ -339,6 +339,7 @@ class RegistrationsAdminController extends Controller
         return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -421,6 +422,7 @@ class RegistrationsAdminController extends Controller
             ]);
 
         }catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -433,13 +435,13 @@ class RegistrationsAdminController extends Controller
             }
             $type_payments = type_payment::all();
             $sub_categorys = sub_categorys::all();
-           
+
             return view('Admin.registrations_update', [
                 'registration' => $registration,
                 'type_payments' => $type_payments,
                 'sub_categorys' => $sub_categorys
             ]);
-            
+
         } catch (Exception $e) {
             return back();
         }
@@ -458,13 +460,13 @@ class RegistrationsAdminController extends Controller
             if(($registration->type_payment_id == 2) && ($registration->status_regitration_id == 1)){
                 return back();
             }
-            
 
 
 
 
 
-           
+
+
             if($registration->modalities->mode_modalities->id == 2){
 
                 foreach ($request->category  as $category) {
@@ -580,7 +582,7 @@ class RegistrationsAdminController extends Controller
             }
 
             return redirect("/admin/modalidade/$registration->modalities_id");
-            
+
         } catch (Exception $e) {
             return $e;
         }

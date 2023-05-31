@@ -331,9 +331,6 @@
     if('{{ session('success') }}') {
         showSuccessToastfy('{{ session('success') }}');
     }
-    if('{{ session('edit_error') }}') {
-        showErrorToastfy('{{ session('edit_error') }}');
-    }
 
     const inputCpf = document.querySelector('[data-cpf]');
 
@@ -504,7 +501,6 @@
           .catch(error => {
             // clearInputs();
             // enableInputs();
-            console.error(error);
           });
       } else {
         // clearInputs();

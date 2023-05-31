@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    
+
     public function show(Request $request){
         try{
             error_log('entrou');
@@ -19,8 +19,9 @@ class HomeController extends Controller
                 return view('User.dashboard', [
                     'registrations' => $user->registrations,
                 ]);
-            } 
+            }
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
