@@ -325,7 +325,7 @@
     });
 
 
-    if('{{ session('error') }}') {
+    if('{{ session('erro') }}') {
         showErrorToastfy('{{ session('erro') }}');
     }
     if('{{ session('success') }}') {
@@ -501,7 +501,6 @@
           .catch(error => {
             // clearInputs();
             // enableInputs();
-            console.error(error);
           });
       } else {
         // clearInputs();

@@ -21,9 +21,10 @@ class RegisterController extends Controller
                 'federative_units' => $federative_units
             ]);
         } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
-        
+
     }
 
     public function store(RegisterRequest $request)
@@ -51,9 +52,10 @@ class RegisterController extends Controller
         Mail::to($request->email)->send(new EmailVerify($link));
         return redirect()->route('GetLogin')->with('EmailVerify', 'Mandamos um link de confirmação para seu E-mail. Confirme o E-mail para ter acesso ao sistema');
         } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
 
-        
+
     }
 }

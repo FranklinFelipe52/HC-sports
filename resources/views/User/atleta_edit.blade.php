@@ -46,7 +46,7 @@
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
                 <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
-              
+
             </div>
           </div>
           <div class="md:col-span-9 lg:col-span-10 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -72,7 +72,7 @@
                   <label class="text-gray-1 font-semibold text-base block mb-2" for="cadastro_nome_completo_field">
                     Nome completo
                   </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" placeholder="Digite o seu nome completo" />
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{ Session('user')->nome_completo }}" onkeyup="this.value = this.value.toUpperCase();" placeholder="Digite o seu nome completo" />
                 </div>
                 <div>
                   <label class="text-dark-900 font-semibold text-base block mb-2" for="cadastro_nascimento_field">
@@ -85,7 +85,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <label class="text-gray-1 font-semibold text-base block mb-2" for="input_text_exemplo">
                     UF
@@ -96,7 +96,7 @@
                   <label class="text-gray-1 font-semibold text-base block mb-2" for="input_text_exemplo">
                     Cidade
                   </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[250px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="city" placeholder="Digite o nome da sua cidade" />
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[250px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="city" placeholder="Digite o nome da sua cidade" value="{{ Session('user')->address->cidade }}" />
                 </div>
               </div>
               <div class="flex gap-4 flex-wrap">
@@ -113,4 +113,47 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+      }).showToast();
+    }
+  </script>
   @endsection

@@ -277,9 +277,49 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
 
-  <script>
-    // With the above scripts loaded, you can call `tippy()` with a CSS
-    // selector and a `content` prop:
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+
+    if ('{{ session('erro') }}') {
+        showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+        showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+        Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+            background: "#EBFBEE",
+            color: "#279424",
+            boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+        }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+        Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+            background: "#FBDBDB",
+            color: "#8E1014",
+            boxShadow: "none",
+        },
+        onClick: function() {} // Callback after click
+        }).showToast();
+    }
+
     tippy('[data-tooltip-payment]', {
       content: 'Confirmar o pagamento',
       placement: 'top'

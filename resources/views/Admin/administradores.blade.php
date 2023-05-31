@@ -175,8 +175,12 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
-    if ('{{ session('success_feedback') }}') {
-      showSuccessToastfy('{{ session('success_feedback') }}');
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
+    }
+
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
     }
 
     function showSuccessToastfy(text) {

@@ -41,7 +41,7 @@ class PaymentsController extends Controller
             } else {
                 $payments = isset($_GET['status']) ? $payment_aux->where('federative_unit_id', $admin->federativeUnit)->where('status_payment_id', $request->status)->get() : $payment_aux->where('federative_unit_id', $admin->federativeUnit)->get();
             }
-            
+
 
 
             return view('Admin.payments', [
@@ -49,6 +49,7 @@ class PaymentsController extends Controller
                 'status_payments' => status_payment::all()
             ]);
         } catch (Exception $e) {
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

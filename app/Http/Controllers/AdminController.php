@@ -51,6 +51,7 @@ class AdminController extends Controller
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -66,6 +67,7 @@ class AdminController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -85,6 +87,7 @@ class AdminController extends Controller
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get()
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -102,9 +105,10 @@ class AdminController extends Controller
             $admin->rule_id = $request->rule;
             $admin->save();
                 Mail::to($request->email)->send(new ConfirmAdm($admin, $password));
-                session()->flash('success_feedback', 'Admin criado com sucesso!');
+                session()->flash('success', 'Admin criado com sucesso!');
                 return redirect('/admin/administradores');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -113,14 +117,16 @@ class AdminController extends Controller
         $admin = Admin::where('email', $request->email)->first();
 
         if(!$admin){
-            return back()->with('erro', 'E-mail ou senha inválida');
+            session()->flash('erro', 'E-mail ou senha inválida');
+            return back();
         }
 
         if(Hash::check($request->password, $admin->password)){
             $request->session()->put('admin', $admin);
             return redirect('/admin/dashboard');
         } else {
-            return back()->with('erro', 'E-mail ou senha inválida');
+            session()->flash('erro', 'E-mail ou senha inválida');
+            return back();
         }
     }
 
@@ -130,6 +136,7 @@ class AdminController extends Controller
             return view('Admin.login');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -149,6 +156,7 @@ class AdminController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -163,6 +171,7 @@ class AdminController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -174,13 +183,15 @@ class AdminController extends Controller
             }
             if(!($admin->cpf == $request->cpf)){
                 if(Admin::where('cpf', $request->cpf)->get()){
-                    return back()->with('erro', 'Esse CPF já está em uso');
+                    session()->flash('erro', 'Esse CPF já está em uso');
+                    return back();
                 }
             }
 
             if(!($admin->email == $request->email)){
                 if(Admin::where('email', $request->email)->get()){
-                    return back()->with('erro', 'Esse E-mail já está em uso');
+                    session()->flash('erro', 'Esse E-mail já está em uso');
+                    return back();
                 }
             }
             $admin->nome_completo = $request->nome;
@@ -188,8 +199,10 @@ class AdminController extends Controller
             $admin->email = $request->email;
             $admin->save();
             $request->session()->put('admin', $admin);
+            session()->flash('edit_success', 'Dados atualizados com sucesso!');
             return redirect('/admin/profile');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -204,6 +217,7 @@ class AdminController extends Controller
             ]);
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -233,13 +247,15 @@ class AdminController extends Controller
             session()->flash('edit_success', 'Dados atualizados com sucesso!');
             return redirect("/admin/administradores/$id");
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
     public function password_reset_post (Request $request){
         try{
             if($request->new_password != $request->confirm_password){
-                return back()->with('erro', 'Reinsira a sua senha corretamente.');
+                session()->flash('erro', 'Reinsira a sua senha corretamente.');
+                return back();
             }
 
             $admin = Admin::find($request->session()->get('admin')->id);
@@ -247,11 +263,14 @@ class AdminController extends Controller
                 $admin->password = Hash::make($request->new_password);
                 $admin->save();
                 $request->session()->put('admin', $admin);
+                session()->flash('success', 'Senha atualizada com sucesso!');
                 return redirect('/admin/profile');
 
             }
-            return back()->with('erro', 'Senha atual invalida.');
+            session()->flash('erro', 'Senha atual invalida.');
+            return back();
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -261,6 +280,7 @@ class AdminController extends Controller
             return view('Admin.admin_reset_password');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -270,6 +290,7 @@ class AdminController extends Controller
             return view('Admin.admin_update_password');
 
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -283,14 +304,16 @@ class AdminController extends Controller
             if($request->new_password != $request->confirm_password){
                 return back()->with('erro', 'Reinsira a sua senha corretamente.');
             }
-           
+
                 $admin->password = Hash::make($request->new_password);
                 $admin->save();
+                session()->flash('success', 'Senha atualizada com sucesso!');
                 return redirect("/admin/administradores/$id");
 
-            
+
             return back()->with('erro', 'Senha atual invalida.');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

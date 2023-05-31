@@ -444,7 +444,7 @@
   <script type="module" src="/js/app.js"></script>
   <script type="module">
 
-    if('{{ session('error') }}') {
+    if('{{ session('erro') }}') {
         showErrorToastfy('{{ session('erro') }}');
     }
     if('{{ session('success') }}') {

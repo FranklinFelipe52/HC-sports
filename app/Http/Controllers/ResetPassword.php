@@ -34,6 +34,7 @@ class ResetPassword extends Controller
             session()->flash('reset_password_success', 'Uma nova senha foi gerada para o admin');
             return back();
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -63,6 +64,7 @@ class ResetPassword extends Controller
             session()->flash('reset_password_success', 'Uma nova senha foi gerada para o atleta');
             return back();
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return $e;
         }
     }

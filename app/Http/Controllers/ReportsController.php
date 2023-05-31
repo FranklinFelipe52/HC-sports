@@ -15,7 +15,7 @@ class ReportsController extends Controller
             $array_registrations = [];
             $registrations = registration::where('modalities_id', '<>', 11)->get();
             foreach ($registrations as $registration) {
-                
+
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
@@ -38,7 +38,7 @@ class ReportsController extends Controller
             ->select('registrations.id', 'registrations.user_id', 'natacao_categorias.modalities_category_id', 'registrations.modalities_id', 'registrations.range_id', 'registrations.status_regitration_id', 'registrations.type_payment_id', 'registrations.created_at', 'registrations.is_pcd', 'registrations.sub_categorys_id')
             ->get();
             foreach ($registrations as $registration) {
-                
+
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
@@ -78,8 +78,8 @@ class ReportsController extends Controller
             mb_convert_encoding(mb_strtoupper('Tipo de pagamento', 'UTF-8'), 'ISO-8859-1', "UTF-8") ,
             mb_convert_encoding(mb_strtoupper('valor pago', 'UTF-8'), 'ISO-8859-1', "UTF-8") ,
             mb_convert_encoding(mb_strtoupper('Status de pagamento', 'UTF-8'), 'ISO-8859-1', "UTF-8")];
-            
-           
+
+
             fputcsv($arquivo, $cabecalho, ';');
             $key_values = array_column($array_registrations,'Nome_completo');
             array_multisort($key_values, SORT_ASC, $array_registrations);
@@ -90,6 +90,7 @@ class ReportsController extends Controller
             back();
 
         }catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

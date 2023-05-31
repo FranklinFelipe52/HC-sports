@@ -24,6 +24,7 @@ class RegistrationsUserController extends Controller
                 'registration'  => $registration
             ]);
         } catch (Exception $e) {
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -36,7 +37,7 @@ class RegistrationsUserController extends Controller
             if(Count($request->session()->get('cart')) === 0){
                 return back();
             }
-            
+
 
             $user = User::find($request->session()->get('user')->id);
 
@@ -44,11 +45,11 @@ class RegistrationsUserController extends Controller
                 return back()->with('erro', "Desculpe, mas o limite de inscrições já foi atingido");
             }
 
-            
-            
+
+
 
             foreach ($request->session()->get('cart') as $value) {
-                
+
                 if(Modalities::find($value['modalidade']->id)){
                     foreach ($value['categorys'] as $category) {
                         if($category->min_year <= AgeBetweenDates::calc_idade($user->data_nasc, $value['modalidade']->limit_year_date)){
@@ -57,7 +58,7 @@ class RegistrationsUserController extends Controller
                             }
                             return back()->with('erro', "Desculpe, mas o limite de idade para a categoria $category->titulo na modalidade ".$value['modalidade']->nome." é $category->min_year anos");
                         }
-                        
+
                     }
                     $payment = new payment;
                     $payment->status_payment_id = 1;
@@ -76,7 +77,7 @@ class RegistrationsUserController extends Controller
                 } else {
                     return back()->with('erro', 'Houve um erro na inscrição, tente novamente.');
                 }
-                
+
             }
             $request->session()->put('cart', []);
 
@@ -94,10 +95,11 @@ class RegistrationsUserController extends Controller
                 return view('User.myRegistrations', [
                     'registrations' => $user->registrations,
                 ]);
-            } 
+            }
 
             return back();
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }

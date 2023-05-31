@@ -14,9 +14,10 @@ class loginController extends Controller
         try{
             return view('User/login');
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
-        
+
     }
 
     public function store(LoginRequest $request){

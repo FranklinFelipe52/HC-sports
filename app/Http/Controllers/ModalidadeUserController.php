@@ -20,6 +20,7 @@ class ModalidadeUserController extends Controller
                'modalidades'  => $modalidades
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -32,6 +33,7 @@ class ModalidadeUserController extends Controller
                 'modality_types' => $tipos_modalidades
             ]);
         } catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -45,10 +47,11 @@ class ModalidadeUserController extends Controller
                 'limit_year_date' => $request->limit_year_date,
                 'multi_category' => $request->multi_category ? '1' : '0',
                 'is_default' => '1',
-                'modalities_type_id' => $request->type  
+                'modalities_type_id' => $request->type
             ]);
         }catch (Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
-    } 
+    }
 }

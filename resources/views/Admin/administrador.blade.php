@@ -157,12 +157,20 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
-    if ('{{ session('reset_password_success') }}') {
-      showSuccessToastfy('{{ session('reset_password_success') }}');
+    if ('{{ session('edit_password_success') }}') {
+      showSuccessToastfy('{{ session('edit_password_success') }}');
     }
 
     if ('{{ session('edit_success') }}') {
       showSuccessToastfy('{{ session('edit_success') }}');
+    }
+
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
     }
 
     function showSuccessToastfy(text) {
