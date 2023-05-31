@@ -25,7 +25,7 @@ class PaymentsController extends Controller
                 ->join('addresses', 'addresses.user_id', 'users.id')
                 ->join('modalities', 'registrations.modalities_id', 'modalities.id')
                 ->join('status_payments', 'payments.status_payment_id', 'status_payments.id')
-                ->select('users.nome_completo', 'addresses.federative_unit_id', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id', 'payments.updated_at')
+                ->select('users.nome_completo', 'registrations.type_payment_id', 'addresses.federative_unit_id', 'modalities.nome as modalidade_nome', 'payments.mount', 'status_payments.status', 'payments.id_payment', 'payments.id', 'payments.updated_at')
                 ->orderBy('users.created_at', 'desc');
             if (isset($_GET["s"])) {
                 $payment_aux = $payment_aux

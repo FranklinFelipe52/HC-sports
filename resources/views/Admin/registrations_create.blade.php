@@ -437,8 +437,6 @@
           .then(data => {
             // disableInputs();
 
-            console.log(data);
-
             if (gender && data[0]['sexo'] === gender) {
               inputEmailVisible.value = data[0]['email'];
               // inputEmail.value = data[0]['email'];
