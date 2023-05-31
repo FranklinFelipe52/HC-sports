@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\modalities_category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VerifyRegistration
 {
@@ -20,22 +21,34 @@ class VerifyRegistration
         return false;
     }
     public static function verifyModalitiesMinYear($category, $data_nasc, $modalidade){
+        error_log($data_nasc);
         if($category->min_year && $category->min_year > AgeBetweenDates::calc_idade($data_nasc, $modalidade->limit_year_date)){
             return true;
-         
         }
         return false;
     }
     public static function verifyModalitiesLimitWomen($category, $federativeUnit){
         $women = 0;
-        foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $federativeUnit){
-                if( $registration->user->sexo == 'F'){
-                    $women++;
+        if($category->modalities->mode_modalities->id == 2){
+            foreach ($category->registrationss as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    if( $registration->user->sexo == 'F'){
+                        $women++;
+                    }
                 }
+               
             }
-           
+        } else {
+            foreach ($category->registrations as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    if( $registration->user->sexo == 'F'){
+                        $women++;
+                    }
+                }
+               
+            }
         }
+        
         if(!is_null($category->max_f) && !($women < $category->max_f)){
             return true;
             
@@ -44,14 +57,26 @@ class VerifyRegistration
     }
     public static function verifyModalitiesLimitMan($category, $federativeUnit){
         $man = 0;
-        foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $federativeUnit){
-                if( $registration->user->sexo == 'M'){
-                    $man++;
+        if($category->modalities->mode_modalities->id == 2){
+            foreach ($category->registrationss as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    if( $registration->user->sexo == 'M'){
+                        $man++;
+                    }
                 }
+               
             }
-           
+        } else {
+            foreach ($category->registrations as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    if( $registration->user->sexo == 'M'){
+                        $man++;
+                    }
+                }
+               
+            }
         }
+
         if(!is_null($category->max_m) && !($man < $category->max_m)){
             
                 return true;
@@ -60,13 +85,24 @@ class VerifyRegistration
         return false;
     }
     public static function verifyModalitiesLimitRegistrationsSeccional($category, $federativeUnit){
+        
         $n_registrations = 0;
-        foreach ($category->registrations as $registration) {
-            if($registration->user->address->federativeUnit->id == $federativeUnit){
-                $n_registrations++;
+        if($category->modalities->mode_modalities->id == 2){
+            foreach ($category->registrationss as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    $n_registrations++;
+                }
             }
-        }
+        }else {
+            foreach ($category->registrations as $registration) {
+                if($registration->user->address->federativeUnit->id == $federativeUnit){
+                    $n_registrations++;
+                }
+            }
+        } 
+        
         if($category->max_secc && !($n_registrations < $category->max_secc)){
+            error_log('entrou 2');
             return true;
         }
     return false;
@@ -87,7 +123,7 @@ public static function verifyModalitiesLimitRegistrationsSeccionalByRangeMan($ca
             
         }
     }
-    error_log($man);
+    
     if(!($man < 4)){ 
         return true;
     }
@@ -113,9 +149,16 @@ return false;
 
 public static function verifyModalitiesLimitRegistrations($category){
     $n_registrations = 0;
-    foreach ($category->registrations as $registration) {
+    if($category->modalities->mode_modalities->id == 2){
+        foreach ($category->registrationss as $registration) {
             $n_registrations++;
     }
+    } else {
+        foreach ($category->registrations as $registration) {
+            $n_registrations++;
+    }
+    }
+   
     if($category->max_total && !($n_registrations < $category->max_total)){
         return true;
     }

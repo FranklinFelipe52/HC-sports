@@ -103,6 +103,8 @@ Route::get('/admin/modalidades', [ModalidadeAdminController::class, 'show'])->mi
 Route::get('/admin/registration/proof/{id}', [RegistrationsAdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/registration/create/{id}', [RegistrationsAdminController::class, 'create'])->middleware('AuthAdmins');
 Route::get('/admin/registration/delete/{id}', [RegistrationsAdminController::class, 'delete'])->middleware('AuthAdmins');
+Route::get('/admin/registration/update/{id}', [RegistrationsAdminController::class, 'edit_get'])->middleware('AuthAdmins');
+Route::post('/admin/registration/update/{id}', [RegistrationsAdminController::class, 'edit_post'])->middleware('AuthAdmins');
 Route::post('/admin/registration/create/{id}', [RegistrationsAdminController::class, 'store'])->middleware('AuthAdmins');
 Route::get('/admin/administradores', [AdminController::class, 'show'])->middleware('AuthAdmins');
 Route::get('/admin/administradores/create', [AdminController::class, 'create'])->middleware('AuthAdmins');

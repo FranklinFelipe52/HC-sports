@@ -349,6 +349,18 @@
                                     <button data-modalId="modal{{ $registration->id }}" data-action="open" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                                       Detalhes
                                     </button>
+                                    @if(!(($registration->type_payment_id == 2) && ($registration->status_regitration_id == 1)))
+                                    @if ($modalidade->id == 9 || $modalidade->id == 10)
+                                    <a href="/admin/registration/update/{{$registration->id}}?gender={{$registration->user->sexo}}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                      Editar
+                                    </a>
+
+                                    @else 
+                                    <a href="/admin/registration/update/{{$registration->id}}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                      Editar
+                                    </a>
+                                    @endif
+                                    @endif
                                   </div>
                                 </div>
                               </div>
