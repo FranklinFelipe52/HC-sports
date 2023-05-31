@@ -139,6 +139,11 @@
 
                 <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1 ">
+                    Tipo de pagamento
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
                     Modalidade
                   </p>
                 </div>
@@ -147,7 +152,7 @@
                     Valor
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-3">
+                <div role="columnheader" class="text-start col-span-1">
                   <p class="text-sm font-semibold text-gray-1">
                     Status
                   </p>
@@ -178,6 +183,17 @@
                       </div>
                       <div role="cell" class="col-span-3">
                         <p class="text-sm font-semibold text-gray-1">
+                          @if ($payment->type_payment_id == 1)
+                            Caixa Federal
+                          @endif
+
+                          @if ($payment->type_payment_id == 2)
+                            Atleta
+                          @endif
+                        </p>
+                      </div>
+                      <div role="cell" class="col-span-2">
+                        <p class="text-sm font-semibold text-gray-1">
                           {{ $payment->modalidade_nome }}
                         </p>
                       </div>
@@ -190,12 +206,12 @@
                           @endif
                         </p>
                       </div>
-                      <div role="cell" class="col-span-2">
+                      <div role="cell" class="col-span-1">
                         <p class="text-sm font-normal text-gray-2">
                           {{ $payment->status }}
                         </p>
                       </div>
-                      <div role="cell" class="col-span-2 flex justify-end">
+                      <div role="cell" class="col-span-1 flex justify-end">
                       @if ( Session('admin')->rule->id == 1 && !Session('admin')->personification)
                           <button data-modalId="modal-confirmar-pagamento-{{ $payment->id }}" data-action="open" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                           <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
