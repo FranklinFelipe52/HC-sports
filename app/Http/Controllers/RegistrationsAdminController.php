@@ -350,23 +350,24 @@ class RegistrationsAdminController extends Controller
            $registration = registration::find($id);
            $admin = $request->session()->get('admin');
            if(!$admin){
-
                return back();
             }
             if (!$registration){
-
                 return back();
             }
-
-            if($registration->status_regitration->id == 1){
-                $registration_recent = $registration->user->registrations()->latest()->first();
-
-                if( $registration_recent->id == $registration->id){
-                    if($registration_recent->type_payment->id == 2){
+            if($admin->rule->id == 2){
+                if($registration->status_regitration->id == 1){
+                    $registration_recent = $registration->user->registrations()->latest()->first();
+    
+                    if( $registration_recent->id == $registration->id){
+                        if($registration_recent->type_payment->id == 2){
+                            session()->flash('erro', 'Exclusão de inscrição não permitida.');
+                            return back();
+                        }
+                    } else {
+                        session()->flash('erro', 'Exclusão de inscrição não permitida.');
                         return back();
                     }
-                } else {
-                    return back();
                 }
             }
 
@@ -383,12 +384,13 @@ class RegistrationsAdminController extends Controller
             $action_admin = new ActionsAdmin;
             $action_admin->type_actions_admin_id = 5;
             $action_admin->admin_id = $admin->id;
-            $action_admin->description = 'Deletou a inscrição do atleta '.$registration->user->nome_completo.' na modalidade '.$registration->modalities->nome;
+            $action_admin->description = 'Deletou a inscrição do atleta '.$registration->user->nome_completo.' com CPF '.$registration->user->cpf.' na modalidade '.$registration->modalities->nome;
             $action_admin->save();
             Mail::to($user->email)->send(new RegistrationDelete($registration));
             return redirect("/admin/users/$user->id");
         } catch(Exception $e){
-            return $e;
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
         }
     }
 
@@ -443,6 +445,7 @@ class RegistrationsAdminController extends Controller
             ]);
 
         } catch (Exception $e) {
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -460,10 +463,6 @@ class RegistrationsAdminController extends Controller
             if(($registration->type_payment_id == 2) && ($registration->status_regitration_id == 1)){
                 return back();
             }
-
-
-
-
 
 
 
@@ -584,7 +583,8 @@ class RegistrationsAdminController extends Controller
             return redirect("/admin/modalidade/$registration->modalities_id");
 
         } catch (Exception $e) {
-            return $e;
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
         }
     }
 }

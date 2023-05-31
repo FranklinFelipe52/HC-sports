@@ -36,8 +36,9 @@
       </div>
     </div>
 
+
  {{-- modal excluir inscrição --}}
-  <div id="modal" class="hidden">
+  <div id="modal-excluir-inscricao-{{ $registration->id }}" class="hidden">
     <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
       <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[532px]">
         <!-- modal header -->
@@ -61,7 +62,7 @@
           <a role="button" href="/admin/registration/delete/{{ $registration->id }}" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
             Excluir Inscrição
           </a>
-          <button data-modalId="modal" data-action="close" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-black hover:ring-2 hover:ring-black hover:ring-opacity-50 bg-black transition">
+          <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="close" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-black hover:ring-2 hover:ring-black hover:ring-opacity-50 bg-black transition">
             <p class="text-white text-sm font-bold font-poppins">
               Cancelar
             </p>
@@ -174,7 +175,13 @@
                 </div>
                 <div class="col-span-2 sm:col-span-1">
                   <p class="text-sm text-gray-2 font-normal">
+                    @if($registration->modalities->mode_modalities->id == 2)
+                    @foreach ($registration->modalities_categorys as $category )
+                    - {{ $category->nome }} <br/>
+                    @endforeach
+                    @else
                     {{ $registration->modalities_category->nome }}
+                    @endif
                   </p>
                 </div>
               </div>
@@ -253,12 +260,16 @@
                   <a href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
+                  
                 @else
                   <a href="/admin/registration/update/{{ $registration->id }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
                 @endif
               @endif
+              <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="open" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+                Excluir
+              </button>
               @if (!($registration->status_regitration->id == 1) && Session('admin')->rule->id == 1)
                 <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="text-center text-xs font-semibold text-white p-2 rounded bg-brand-a1 border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   Validar inscrição
