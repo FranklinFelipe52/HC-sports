@@ -261,7 +261,6 @@ class VerifyRegistration
 
     public static function verifyUserIntoModalities($user, $category)
     {
-        if(!($category->modalities->id == 16)){
             foreach ($user->registrations as $registration) {
                 if ($category->modalities->mode_modalities->id == 2) {
                     foreach ($registration->modalities_categorys as $value) {
@@ -275,7 +274,6 @@ class VerifyRegistration
                     }
                 }
             }
-        }
         
         return false;
     }
