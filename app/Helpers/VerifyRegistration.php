@@ -261,13 +261,22 @@ class VerifyRegistration
 
     public static function verifyUserIntoModalities($user, $category)
     {
-        foreach ($user->registrations as $registration) {
-            if ($registration->modalities_category) {
-                if ($registration->modalities_category->id == $category->id) {
-                    return true;
+        if(!($category->modalities->id == 16)){
+            foreach ($user->registrations as $registration) {
+                if ($category->modalities->mode_modalities->id == 2) {
+                    foreach ($registration->modalities_categorys as $value) {
+                        if ($value->id == $category->id) {
+                            return true;
+                        }
+                    }
+                } else {
+                    if ($registration->modalities_category->id == $category->id) {
+                        return true;
+                    }
                 }
             }
         }
+        
         return false;
     }
 }
