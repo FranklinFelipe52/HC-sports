@@ -69,7 +69,7 @@
                 Confirmação de senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_confirm_field" placeholder="Digite a sua senha novamente" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" name="confirm_password" type="password" id="cadastro_senha_confirm_field" placeholder="Digite a sua senha novamente" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                     <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
