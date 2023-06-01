@@ -112,7 +112,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
+                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade, $federativeUnit)){
                     session()->flash('erro', "Desculpe, mas o minimo de idade para a modalidade ".$modalidade->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
@@ -172,7 +172,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
+                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade, $federativeUnit)){
                     session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria " . $category->nome . " é $category->min_year anos");
                     return back()->withInput();
                 }
@@ -236,7 +236,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade)){
+                if(VerifyRegistration::verifyModalitiesMinYear($category, $request->date_nasc, $modalidade, $federativeUnit)){
                     session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria " . $category->nome . " é $category->min_year anos");
                     return back()->withInput();
                 }
@@ -504,7 +504,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesMinYear($category, $registration->user->data_nasc, $registration->modalities)){
+                if(VerifyRegistration::verifyModalitiesMinYear($category, $registration->user->data_nasc, $registration->modalities,  $registration->user->address->federativeUnit->id)){
                     session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
@@ -546,7 +546,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                 }
-                if(VerifyRegistration::verifyModalitiesMinYear($category, $registration->user->data_nasc, $registration->modalities)){
+                if(VerifyRegistration::verifyModalitiesMinYear($category, $registration->user->data_nasc, $registration->modalities,  $registration->user->address->federativeUnit->id)){
                     session()->flash('erro', "Desculpe, mas o minimo de idade para a categoria ".$category->nome." é $category->min_year anos");
                     return back()->withInput();
                 }
