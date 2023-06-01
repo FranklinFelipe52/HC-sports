@@ -30,6 +30,7 @@ class ForgotPasswordController extends Controller
         $link = "{$host}/password_reset/{$jwt}";
         
         if($user && $user->registered){
+            
             Mail::to($request->email)->send(new PasswordForgot($link));
             return redirect('/forgot_password_send');
         } 

@@ -29,8 +29,10 @@ class PasswordResetController extends Controller
                $user = User::find(1)->where('email', $decoded->email)->first();
                $user->password = Hash::make($request->password);
                $user->save();
+               session()->flash('success', 'Senha redefinida com sucesso.');
                return redirect()->route('GetLogin');
             } else {
+                session()->flash('erro', 'Reinsira a senha corretamente.');
                 return back();
             }
         } catch(Exception $e) {
