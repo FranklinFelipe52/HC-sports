@@ -114,3 +114,13 @@ input[type="radio"]:checked::after {
 body .toastify button.toast-close {
     color: black !important;
 }
+
+[data-accordion="body"] {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+}
+
+[data-accordion="body"].expanded {
+    transition: max-height 0.3s ease-in-out;
+}

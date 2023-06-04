@@ -221,7 +221,7 @@
                       @if (Session('admin')->personification)
                         <?php
                         $users_registrations = 0;
-
+                        
                         foreach ($modalidade->registrations as $registration) {
                             if ($registration->user->address->federative_unit_id == Session('admin')->personification) {
                                 $users_registrations++;
@@ -235,13 +235,13 @@
                     @else
                       <?php
                       $users_registrations = 0;
-
+                      
                       foreach ($modalidade->registrations as $registration) {
                           if ($registration->user->address->federative_unit_id == Session('admin')->federative_unit_id) {
                               $users_registrations++;
                           }
                       }
-
+                      
                       ?>
                       {{ $users_registrations }} inscrições
                     @endif
@@ -300,7 +300,7 @@
 
             <!-- lista de inscrições -->
             <div class="overflow-auto pb-8">
-              @if ((Session('admin')->rule->id == 1) && !(Session('admin')->personification) )
+              @if (Session('admin')->rule->id == 1 && !Session('admin')->personification)
                 <div class="border border-t-0 rounded-b-lg space-y-3 pt-3">
 
                   @if (Count($registrations) != 0)
@@ -316,7 +316,7 @@
                             <img src="/images/svg/accordion-arrow-active.svg" class="hidden group-hover:block" alt="">
                           </div>
                         </button>
-                        <div class="px-2 hidden" data-accordion="body">
+                        <div class="px-2 transition-all" data-accordion="body">
                           @foreach ($registrations as $registration)
                             @if ($registration->user->address->federative_unit_id == $federative_unit->id)
                               <div class="flex items-end flex-wrap md:flex-nowrap justify-end gap-2 border-b border-gray-200 w-full px-4 py-3 bg-white hover:bg-fill-base transition cursor-default">
@@ -349,17 +349,16 @@
                                     <button data-modalId="modal{{ $registration->id }}" data-action="open" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                                       Detalhes
                                     </button>
-                                    @if(!(($registration->type_payment_id == 2) && ($registration->status_regitration_id == 1)))
-                                    @if ($modalidade->id == 9 || $modalidade->id == 10)
-                                    <a href="/admin/registration/update/{{$registration->id}}?gender={{$registration->user->sexo}}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                      Editar
-                                    </a>
-
-                                    @else 
-                                    <a href="/admin/registration/update/{{$registration->id}}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                      Editar
-                                    </a>
-                                    @endif
+                                    @if (!($registration->type_payment_id == 2 && $registration->status_regitration_id == 1))
+                                      @if ($modalidade->id == 9 || $modalidade->id == 10)
+                                        <a href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                          Editar
+                                        </a>
+                                      @else
+                                        <a href="/admin/registration/update/{{ $registration->id }}" class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                                          Editar
+                                        </a>
+                                      @endif
                                     @endif
                                   </div>
                                 </div>
@@ -368,7 +367,7 @@
                           @endforeach
                         </div>
                         <div class="px-2 flex justify-end w-full hidden" data-accordion="footer">
-                          <button class="py-2 rotate-180" data-accordion="button" data-accordion-id="uf-{{ $federative_unit->code }}-registrations-accordion">
+                          <button class="py-2 rotate-180 transition-all" data-accordion="button" data-accordion-id="uf-{{ $federative_unit->code }}-registrations-accordion">
                             <img src="/images/svg/accordion-arrow-active.svg" class="" alt="">
                           </button>
                         </div>
