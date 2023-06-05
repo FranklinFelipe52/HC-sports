@@ -123,13 +123,7 @@ class RegistrationsAdminController extends Controller
                         session()->flash('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
                         return back()->withInput();
                     }
-                    foreach ($user->registrations as $registration) {
-                        if(!(($modalidade->id == 16) || ($modalidade->id == 13) ) && $registration->modalities->id == $modalidade->id){
-                            session()->flash('erro', 'Usuário já tem inscrição nessa modalidade');
-                            return back()->withInput();
-                        }
-                    }
-
+                
                     if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
                         session()->flash('erro', 'O usuario já tem 2 inscrições ativas');
                         return back()->withInput();
@@ -200,8 +194,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                     foreach ($user->registrations as $registration) {
-                        
-                        if(!($modalidade->id == 16) && $registration->modalities->id == $modalidade->id){
+                        if(!(($modalidade->id == 16) || ($modalidade->id == 13) || ($modalidade->id == 6)) && $registration->modalities->id == $modalidade->id){
                             session()->flash('erro', 'Usuário já tem inscrição nessa modalidade');
                             return back()->withInput();
                         }
