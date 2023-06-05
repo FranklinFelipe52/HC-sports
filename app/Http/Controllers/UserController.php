@@ -155,7 +155,7 @@ class UserController extends Controller
 
 
             $user->nome_completo = $request->nome;
-            $user->cpf = $request->cpf;
+            $user->cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
             $user->email = $request->email;
             $user->data_nasc = $request->date_nasc;
             $user->address->federative_unit_id = $request->uf;
