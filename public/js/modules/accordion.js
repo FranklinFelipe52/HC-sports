@@ -20,9 +20,15 @@ export default function initAccordion() {
                 '[data-accordion="footer"]'
             );
 
-            accordionBody.classList.toggle("hidden");
+            accordionBody.classList.toggle("expanded");
             accordionFooter.classList.toggle("hidden");
             accordion.classList.toggle("active");
+
+            if (accordionBody.classList.contains("expanded")) {
+                accordionBody.style.maxHeight = accordionBody.scrollHeight + "px";
+            } else {
+                accordionBody.style.maxHeight = "0";
+            }
         }
     } catch (e) {}
 }

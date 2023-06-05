@@ -243,16 +243,14 @@
                   </button>
                 </div>
               </div>-->
-
-
           </div>
           <div class="flex flex-wrap justify-between gap-6">
-            {{-- <button data-modalId="modal" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-              <img src="/images/svg/trash.svg" alt="">
-              <p class="text-brand-v1 text-sm font-bold font-poppins">
-                Excluir Inscrição
-              </p>
-            </button> --}}
+            <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="open" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+                <img src="/images/svg/trash.svg" alt="">
+                <p class="text-brand-v1 text-sm font-bold font-poppins">
+                    Excluir Inscrição
+                </p>
+            </button>
             <div></div>
             <div class="flex gap-4">
               @if (!($registration->type_payment_id == 2 && $registration->status_regitration_id == 1))
@@ -260,16 +258,13 @@
                   <a href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
-                  
+
                 @else
                   <a href="/admin/registration/update/{{ $registration->id }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
                 @endif
               @endif
-              <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="open" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                Excluir
-              </button>
               @if (!($registration->status_regitration->id == 1) && Session('admin')->rule->id == 1)
                 <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="text-center text-xs font-semibold text-white p-2 rounded bg-brand-a1 border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   Validar inscrição
