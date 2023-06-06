@@ -85,7 +85,7 @@
                                             for="cadastro_nome_completo_field">
                                             Nome completo
                                         </label>
-                                        <input required onkeyup="this.value = this.value.toUpperCase();"
+                                        <input onkeyup="this.value = this.value.toUpperCase();"
                                             class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[321px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
                                             type="text" id="cadastro_nome_completo_field" name="nome"
                                             placeholder="Digite o seu nome completo" value="{{ $atleta->nome_completo }}" />
@@ -105,6 +105,20 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="mb-6">
+                                        <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_genero_field">
+                                          Gênero
+                                        </label>
+                                        <div class="relative">
+                                            <select required data-preload="sexo-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 appearance-none transition" name="sexo" id="cadastro_genero_field">
+                                              <option value="M" @if ($atleta->sexo == 'M') selected @endif>Masculino</option>
+                                              <option value="F" @if ($atleta->sexo == 'F') selected @endif>Feminino</option>
+                                            </select>
+                                          <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                            <img src="/images/svg/chevron-down.svg" alt="" />
+                                          </div>
+                                        </div>
+                                      </div>
                                     <div>
                                         <label class="text-gray-1 font-semibold text-base inline-block mb-2"
                                             for="cadastro_phone_field">
@@ -147,7 +161,7 @@
                                             for="input_text_exemplo">
                                             Cidade
                                         </label>
-                                        <input value="{{ $atleta->address->cidade }}" required
+                                        <input value="{{ $atleta->address->cidade }}"
                                             onkeyup="this.value = this.value.toUpperCase();"
                                             class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full max-w-[250px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"
                                             type="text" id="input_text_exemplo" name="city"
@@ -161,62 +175,7 @@
                                             PCD
                                         </label>
                                     </div>
-                                    @if (!$atleta->registered)
-                                        <div class="flex justify-end gap-4">
-                                            <button type="button" id="gerar-senha-botao"
-                                                class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                                Gerar uma senha segura
-                                            </button>
-                                            <button type="button" id="copiar-senha-botao"
-                                                class="text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                                                Copiar senha
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                                for="atleta_senha">
-                                                Senha
-                                            </label>
-                                            <div class="group relative">
-                                                <input
-                                                    class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                    type="password" id="atleta_senha" name="password"
-                                                    placeholder="Digite a sua senha" />
-                                                <div
-                                                    class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                    <button type="button" data-inputId="atleta_senha"
-                                                        class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                                                        <img src="/images/svg/eye.svg" alt=""
-                                                            class="hidden group-[.show]:block" />
-                                                        <img src="/images/svg/eye-off.svg" alt=""
-                                                            class="block group-[.show]:hidden" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label class="text-dark-900 font-semibold text-base inline-block mb-2"
-                                                for="atleta_confirmar_senha">
-                                                Confirmação de senha
-                                            </label>
-                                            <div class="group relative">
-                                                <input
-                                                    class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3"
-                                                    type="password" id="atleta_confirmar_senha" name="password_confirm"
-                                                    placeholder="Digite a sua senha" />
-                                                <div
-                                                    class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                                                    <button type="button" data-inputId="atleta_confirmar_senha"
-                                                        class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                                                        <img src="/images/svg/eye.svg" alt=""
-                                                            class="hidden group-[.show]:block" />
-                                                        <img src="/images/svg/eye-off.svg" alt=""
-                                                            class="block group-[.show]:hidden" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
+                                    
                                 </div>
                                 <div class="flex gap-4 flex-wrap">
                                     <button type="submit"
