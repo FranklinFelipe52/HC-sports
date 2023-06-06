@@ -22,6 +22,7 @@ use Exception;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class RegistrationsAdminController extends Controller
@@ -333,6 +334,7 @@ class RegistrationsAdminController extends Controller
         return redirect("/admin/modalidade/{$modalidade->id}");
 
         } catch(Exception $e){
+            Log::alert($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }

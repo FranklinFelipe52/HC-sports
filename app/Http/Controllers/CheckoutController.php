@@ -72,27 +72,27 @@ class CheckoutController extends Controller
 
     public function notification_webhook(Request $request){
         try{
-            Log::alert(['request' => $request->all()]);
+            
             $payment_id = $request->all()['data']['id'];
-            Log::alert(['payment_id' => $payment_id]);
+            
             $response = Http::withHeaders([
                  'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
              ])->get("https://api.mercadopago.com/v1/payments/$payment_id");
 
-             Log::alert(['response_payment' =>  $response]);
+            
             if($response->status() == 403 || $response->status() == 400 || $response->status() == 404){
                     return response('erro', $response->status());
             }
-            Log::alert(['response_status' =>  $response->status()]);
+           
              $registration = registration::find($response['external_reference']);
-             Log::alert(['registration' =>  $registration]);
+             
              $log_payment = new log_payment;
              $log_payment->status = $response['status'];
              $log_payment->id_payment =  $payment_id;
              $log_payment->registration_id = $response['external_reference'];
              $log_payment->mount = $response['transaction_amount'];
              $log_payment->save();
-             Log::alert(['log_payment' => $log_payment]);
+             
 
         if($response['status'] == 'approved'){
              $registration->status_regitration_id = 1;
@@ -118,7 +118,7 @@ class CheckoutController extends Controller
             $registration->payment->save();
             $registration->save();
         }
-        Log::alert(['registration_final' => $registration]);
+        
          return response('ok', 200);
 
         } catch(Exception $e){
