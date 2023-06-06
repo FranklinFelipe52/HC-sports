@@ -15,9 +15,11 @@ class ReportsController extends Controller
             $array_registrations = [];
             $registrations = registration::where('modalities_id', '<>', 11)->get();
             foreach ($registrations as $registration) {
-
+                error_log($registration);
+                error_log($registration->modalities_category);
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'CPF' =>  mb_convert_encoding(mb_strtoupper(preg_replace( '/[^0-9]/is', '', $registration->user->cpf), 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
                     'Genero' =>  mb_convert_encoding(mb_strtoupper($registration->user->sexo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding(mb_strtoupper($registration->user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -41,6 +43,7 @@ class ReportsController extends Controller
 
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'CPF' =>  mb_convert_encoding(mb_strtoupper(preg_replace( '/[^0-9]/is', '', $registration->user->cpf), 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
                     'Genero' =>  mb_convert_encoding(mb_strtoupper($registration->user->sexo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding(mb_strtoupper($registration->user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -64,6 +67,7 @@ class ReportsController extends Controller
             $arquivo = fopen("php://output", "w");
             $cabecalho = [
             mb_convert_encoding(mb_strtoupper('Nome completo', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+            mb_convert_encoding(mb_strtoupper('CPF', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
             mb_convert_encoding(mb_strtoupper('Data de nascimento', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
             mb_convert_encoding(mb_strtoupper('Gênero', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
             mb_convert_encoding(mb_strtoupper('E-mail', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -90,6 +94,7 @@ class ReportsController extends Controller
             back();
 
         }catch(Exception $e){
+            error_log($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
