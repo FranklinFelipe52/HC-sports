@@ -19,7 +19,7 @@ class ReportsController extends Controller
                 error_log($registration->modalities_category);
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'CPF' =>  preg_replace( '/[^0-9]/is', '', $registration->user->cpf),
+                    'CPF' =>   $registration->user->cpf,
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
                     'Genero' =>  mb_convert_encoding(mb_strtoupper($registration->user->sexo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding(mb_strtoupper($registration->user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -43,7 +43,7 @@ class ReportsController extends Controller
 
                 array_push($array_registrations, [
                     'Nome_completo' =>  mb_convert_encoding(mb_strtoupper($registration->user->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'CPF' =>  preg_replace( '/[^0-9]/is', '', $registration->user->cpf),
+                    'CPF' =>  $registration->user->cpf,
                     'Data_nascimento' => mb_convert_encoding(date('d/m/Y', strtotime($registration->user->data_nasc)), 'ISO-8859-1', "UTF-8"),
                     'Genero' =>  mb_convert_encoding(mb_strtoupper($registration->user->sexo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'E-mail' =>  mb_convert_encoding(mb_strtoupper($registration->user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
