@@ -94,7 +94,7 @@ class ReportsController extends Controller
             back();
 
         }catch(Exception $e){
-            error_log($e);
+            Log::alert($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }

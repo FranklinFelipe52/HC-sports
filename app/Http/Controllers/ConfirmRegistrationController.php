@@ -48,6 +48,14 @@ class ConfirmRegistrationController extends Controller
                 return back()->with('erro', 'Senhas diferentes');
             }
             $user = User::where('email', $decoded->email)->first();
+
+            if(!$user){
+                return redirect('/login');
+            }
+
+            if($user->registered == true){
+                return redirect('/login');
+            }
             $user->nome_completo = $request->nome;
             $user->is_pcd = $request->pcd == null ? false : true;
 
