@@ -73,17 +73,17 @@
               </div>
             </div>
             <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-          <div class="col-span-2 sm:col-span-1">
-            <p class="text-gray-1 text-sm font-semibold">
-              Status
-            </p>
-          </div>
-          <div class="col-span-2 sm:col-span-1">
-            <p class="text-gray-2 text-sm font-normal">
-              {{ $registration->status_regitration->status }}
-            </p>
-          </div>
-        </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-1 text-sm font-semibold">
+                  Status
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-gray-2 text-sm font-normal">
+                  {{ $registration->status_regitration->status }}
+                </p>
+              </div>
+            </div>
             <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-gray-1 text-sm font-semibold">
@@ -92,11 +92,11 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-gray-2 text-sm font-normal">
-                @if(!is_null($registration->Payment->mount))
-                   <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
-                @else
-                  -
-                @endif
+                  @if (!is_null($registration->Payment->mount))
+                    <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
+                  @else
+                    -
+                  @endif
                 </p>
               </div>
             </div>
@@ -194,7 +194,7 @@
             </div>
             <div class="flex flex-col gap-4">
 
-              <a  href="/admin/users/update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+              <a href="/admin/users/update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -203,29 +203,29 @@
                 </p>
               </a>
               <!--<a href="/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p class="text-brand-a1 text-sm font-bold font-poppins">
-                  Resetar senha
-                </p>
-              </a>-->
-              @if($atleta->registered)
-              <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p class="text-brand-a1 text-sm font-bold font-poppins">
-                  Alterar senha
-                </p>
-              </a>
+                                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                      </svg>
+                                      <p class="text-brand-a1 text-sm font-bold font-poppins">
+                                        Resetar senha
+                                      </p>
+                                    </a>-->
+              @if ($atleta->registered)
+                <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <p class="text-brand-a1 text-sm font-bold font-poppins">
+                    Alterar senha
+                  </p>
+                </a>
               @endif
-              @if(!$atleta->link_register)
-              <a href="/admin/users/link_generate/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                <p class="text-brand-a1 text-sm font-bold font-poppins">
-                  Gerar link de cadastro
-                </p>
-              </a>
+              @if (!$atleta->link_register)
+                <a href="/admin/users/link_generate/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                  <p class="text-brand-a1 text-sm font-bold font-poppins">
+                    Gerar link de cadastro
+                  </p>
+                </a>
               @endif
             </div>
           </div>
@@ -380,9 +380,24 @@
                     <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
                       <div class="flex justify-between">
                         <div class="flex flex-col gap-1">
-                          <p class="text-base font-semibold text-gray-1">
+                          <p class="text-base font-semibold text-gray-1 mb-0">
                             {{ $registration->modalities->nome }}
                           </p>
+                          @if ($registration->modalities->mode_modalities->id == 3)
+                            <p class="text-xs font-light uppercase text-gray-1">
+                              Categoria: {{ $registration->modalities_category->nome }}
+                            </p>
+                          @elseif($registration->modalities->mode_modalities->id == 2)
+                            <p class="text-xs font-light uppercase text-gray-1">
+                              Categorias:
+                              @foreach ($registration->modalities_categorys as $key => $category)
+                                {{ $category->nome }}
+                                @if ($key < count($registration->modalities_categorys) - 1)
+                                  ,
+                                @endif
+                              @endforeach
+                            </p>
+                          @endif
                           <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                             <p class="text-white text-[0.5rem] font-bold text-center">
                               {{ $registration->status_regitration->status }}
@@ -465,7 +480,7 @@
     }
 
     if ('{{ session('erro') }}') {
-        showErrorToastfy('{{ session('erro') }}');
+      showErrorToastfy('{{ session('erro') }}');
     }
 
     function showSuccessToastfy(text) {

@@ -87,6 +87,17 @@
       </p>
     </a>
   @endif
+  {{-- <div class="group @if ($type == 7) active @endif">
+    <a href="/admin/reports" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
+      <div class="w-[24px] h-[24px]">
+        <img src="/images/svg/excel.svg" class="group-[.active]:hidden w-full h-full object-cover" alt="">
+        <img src="/images/svg/excel-active.svg" class="hidden group-[.active]:block w-full h-full object-cover" alt="">
+      </div>
+      <p class="hidden lg:block text-gray-1 font-normal text-sm font-poppins group-[.active]:text-brand-a1">
+        Relatórios
+      </p>
+    </a>
+  </div> --}}
   <a href="/admin/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
       <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
