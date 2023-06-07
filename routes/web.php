@@ -119,6 +119,8 @@ Route::get('/admin/pagamentos/confirm/{id}', [PaymentsController::class, 'store'
 Route::post('/admin/personification/update', [PersonificationController::class, 'Personification']);
 Route::get('/admin/personification/off', [PersonificationController::class, 'Personification_off']);
 Route::get('/admin/report_registrations', [ReportsController::class, 'RegistrationsReport'])->middleware('AuthAdmins');
+Route::get('/admin/administradores/{id}/logs', [AdminController::class, 'admin_logs'])->middleware('AuthAdmins');
+Route::get('/admin/reports', [AdminController::class, 'admin_reports'])->middleware('AuthAdmins');
 
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);

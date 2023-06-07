@@ -86,7 +86,7 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="nome_adicionar_atleta_form">
                 Nome
               </label>
-              <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" placeholder="Ex.: João Toledo da Silva" />
+              <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome_adicionar_atleta_form" name="nome" value="{{ old('nome') }}" onkeyup="this.value = this.value.toUpperCase();" placeholder="Ex.: João Toledo da Silva" />
               @error('nome')
                 <p class="text-input-error text-sm pt-2">{{ $message }}</p>
               @enderror
