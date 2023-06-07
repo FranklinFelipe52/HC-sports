@@ -266,7 +266,7 @@
                 @endif
               @endif
               @if (!($registration->status_regitration->id == 1) && Session('admin')->rule->id == 1)
-                <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="text-center text-xs font-semibold text-white p-2 rounded bg-brand-a1 border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="text-center text-sm font-semibold text-white p-2 rounded bg-brand-a1 border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   Validar inscrição
                 </button>
               @endif
