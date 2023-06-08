@@ -947,6 +947,10 @@ video {
   max-height: 200px;
 }
 
+.max-h-\[300px\] {
+  max-height: 300px;
+}
+
 .min-h-\[300px\] {
   min-height: 300px;
 }
@@ -1022,6 +1026,10 @@ video {
 
 .min-w-\[195px\] {
   min-width: 195px;
+}
+
+.min-w-\[250px\] {
+  min-width: 250px;
 }
 
 .min-w-\[600px\] {
@@ -1881,6 +1889,11 @@ video {
 
 .tracking-wider {
   letter-spacing: 0.05em;
+}
+
+.text-\[\#E0E0E0\] {
+  --tw-text-opacity: 1;
+  color: rgb(224 224 224 / var(--tw-text-opacity));
 }
 
 .text-black {

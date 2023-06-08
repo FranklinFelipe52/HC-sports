@@ -67,15 +67,14 @@
                   Editar perfil
                 </p>
               </a>
-              <!--
-              <a href="/admin/administradores/password_reset/{{$administrador->id}}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+              {{-- <a href="/admin/administradores/password_reset/{{$administrador->id}}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <p class="text-brand-a1 text-sm font-bold font-poppins">
                   Resetar senha
                 </p>
-              </a>-->
+              </a> --}}
               <a href="/admin/administradores/password_update/{{$administrador->id}}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -87,6 +86,9 @@
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
+            <h2 class="text-base font-semibold text-gray-1 mb-4">
+              Dados pessoais
+            </h2>
             <div class="w-full">
               <div class="border border-gray-5 rounded-lg mb-6">
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
@@ -149,6 +151,101 @@
                 </div>
               </div>
             </div>
+            @if (Session('admin')->rule->id == 1)
+              <h2 class="text-base font-semibold text-gray-1 mb-4">
+                Logs de ações
+              </h2>
+              <!-- Table container -->
+              <div class="h-fit flex flex-col overflow-hidden">
+                <!-- Table -->
+                <div class="h-fit flex flex-col overflow-y-hidden overflow-x-auto" role="table">
+                  <!-- Table header -->
+                  <div class="border border-gray-5 min-w-[600px] rounded-t-lg" role="heading">
+                    <div role="row" class="grid grid-cols-12 px-4 py-3">
+                      <div role="columnheader" class="text-start col-span-4">
+                        <p class="text-sm font-semibold text-gray-1">
+                          Data e horário
+                        </p>
+                      </div>
+                      <div role="columnheader" class="text-start col-span-4">
+                        <p class="text-sm font-semibold text-gray-1">
+                          Tipo de ação
+                        </p>
+                      </div>
+                      <div role="columnheader" class="text-start col-span-4">
+                        <p class="text-sm font-semibold text-gray-1 ">
+                          Descrição
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Table body -->
+                  <div class="min-w-[600px] max-h-[300px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg" data-pagination>
+                    @if (Count($admin_logs) > 0)
+                      @foreach ($admin_logs as $admin_log)
+                        <!-- Table row -->
+                        <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0" data-pagination-item>
+                          <div role="cell" class="py-3 flex items-center col-span-4">
+                            <p class="text-sm font-normal text-gray-2">
+                              {{ $admin_log->created_at }}
+                            </p>
+                          </div>
+                          <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                            <p class="text-sm font-semibold text-gray-2">
+                              @if ($admin_log->type_actions_admin_id == 1)
+                                Confirmação de pagamento
+                              @elseif ($admin_log->type_actions_admin_id == 2)
+                                Exclusão de usuário
+                              @elseif ($admin_log->type_actions_admin_id == 3)
+                                Edição de usuário
+                              @elseif ($admin_log->type_actions_admin_id == 4)
+                                Resetar senha de usuários
+                              @elseif ($admin_log->type_actions_admin_id == 5)
+                                Excluir inscrição
+                              @elseif ($admin_log->type_actions_admin_id == 6)
+                                Cadastrar atleta
+                              @endif
+                            </p>
+                          </div>
+                          <div role="cell" class="py-3 flex items-center col-span-4">
+                            <p class="text-sm font-normal text-gray-2">
+                              {{ $admin_log->description }}
+                            </p>
+                          </div>
+                        </div>
+                      @endforeach
+                    @else
+                      <div class="p-6">
+                        <p class="text-gray-1 text-sm text-center">
+                          Ainda não há logs para este administrador
+                        </p>
+                      </div>
+                    @endif
+                  </div>
+                </div>
+              </div>
+              <!-- dados da tabela -->
+              <div class="flex justify-end items-center pt-6 pb-4 sm:pb-16 gap-1">
+                <div>
+                  <p class="text-gray-3 text-sm font-normal">
+                    @if (Count($admin_logs) > 1 || Count($admin_logs) == 0)
+                      {{ Count($admin_logs) }} logs exibidos
+                    @else
+                      {{ Count($admin_logs) }} logs exibidos
+                    @endif
+                  </p>
+                </div>
+                <div class="text-[#E0E0E0]">
+                  &#8226;
+                </div>
+                <div>
+                  <a href="/admin/administradores/{{ $administrador->id }}/logs" class="font-bold font-poppins text-sm text-brand-a1">
+                    Visualizar tudo
+                  </a>
+                </div>
+              </div>
+            @endif
           </div>
         </div>
       </div>
