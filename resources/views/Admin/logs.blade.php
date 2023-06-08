@@ -63,21 +63,19 @@
                 </button>
 
               </form>
-              @if (Session('admin')->rule->id == 1 && !Session('admin')->personification)
 
-                <form id="filter_log_type" class="relative">
-                  <select onchange="document.getElementById('filter_log_type').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="logs" id="filtro_logs_page">
-                    <option value disabled selected>Filtrar por tipo</option>
-                    @foreach ($log_types as $log_type)
-                      <option value="{{ $log_type['id'] }}">{{ $log_type['name'] }}</option>
-                    @endforeach
-                  </select>
-                  <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
-                  </div>
+              <form id="filter_log_type" class="relative">
+                <select onchange="document.getElementById('filter_log_type').submit()" class="w-full min-w-[250px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="type" id="filtro_logs_page">
+                  <option value="0" selected>Filtrar por tipo</option>
+                  @foreach ($log_types as $log_type)
+                    <option {{ Request::get('type') && Request::get('type') == $log_type->id ? 'selected' : '' }} value="{{ $log_type->id }}">{{ $log_type->type }}</option>
+                  @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/images/svg/chevron-down.svg" alt="" />
+                </div>
 
-                </form>
-              @endif
+              </form>
 
             </div>
           </div>
@@ -118,29 +116,41 @@
                   <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0" data-pagination-item>
                     <div role="cell" class="py-3 flex items-center col-span-4 xl:col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
-                        {{ $log['dataHora'] }}
+                        {{ $log->created_at }}
                       </p>
                     </div>
                     <div role="cell" class="pr-2 py-3 flex items-center col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
-                        {{ $log['tipo'] }}
+                        @if ($log->type_actions_admin_id == 1)
+                          Confirmação de pagamento
+                        @elseif ($log->type_actions_admin_id == 2)
+                          Exclusão de usuário
+                        @elseif ($log->type_actions_admin_id == 3)
+                          Edição de usuário
+                        @elseif ($log->type_actions_admin_id == 4)
+                          Resetar senha de usuários
+                        @elseif ($log->type_actions_admin_id == 5)
+                          Excluir inscrição
+                        @elseif ($log->type_actions_admin_id == 6)
+                          Cadastrar atleta
+                        @endif
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2 xl:col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
-                        {{ $log['autor'] }}
+                        {{ $administrador->nome_completo }}
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-3 xl:col-span-4">
                       <p class="text-sm font-semibold text-gray-2">
-                        {{ $log['descricao'] }}
+                        {{ $log->description }}
                       </p>
                     </div>
                   </div>
                 @endforeach
               @else
                 <div class="bg-feedback-fill-blue p-4" role="alert">
-                  <p class="text-brand-a1">Nenhum atleta cadastrado.</p>
+                  <p class="text-brand-a1">Nenhum log encontrado.</p>
                 </div>
               @endif
             </div>
@@ -225,7 +235,7 @@
     const paginationButtons = document.querySelector('[data-pagination-buttons]');
 
     let currentPage = 1;
-    let itemsPerPage = 8;
+    let itemsPerPage = 20;
     let totalItems = paginationListItem.length;
     let totalPages = Math.ceil(paginationListItem.length / itemsPerPage);
 
