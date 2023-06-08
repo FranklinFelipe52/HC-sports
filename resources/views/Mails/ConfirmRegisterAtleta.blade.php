@@ -525,13 +525,25 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:30px"><!--[if mso]><a href="" target="_blank" hidden>
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#0095d9">
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
 	</v:roundrect></a>
 <![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{ $_SERVER['HTTP_HOST'] }}/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span><!--<![endif]--></td>
+                              </tr>
+                              <tr>
+                                <td style="padding:0;Margin:0;padding-bottom:30px">
+                                  <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
+                                      Caso o link não funcione, copie e cole este link no seu navegador:
+                                    </p>
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
+                                      {{ $_SERVER['HTTP_HOST'] }}/dashboard
+                                    </p>
+                                  </div>
+                                </td>
                               </tr>
                             </table>
                           </td>
@@ -565,7 +577,7 @@
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">UF:<br><strong>{{ $user->address->federativeUnit->name }} ({{ $user->address->federativeUnit->initials }})</strong></p>
                                 </td>
                               </tr>
-                              
+
                             </table>
                           </td>
                         </tr>
@@ -580,7 +592,7 @@
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
                                 <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:24px; v-text-anchor:middle; width:140px" arcsize="50%" stroke="f"  fillcolor="#ffffff">
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Política de Privacidade</center>
@@ -589,7 +601,7 @@
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="" 
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:24px; v-text-anchor:middle; width:94px" arcsize="50%" stroke="f"  fillcolor="#ffffff">
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#333333; font-family:"open sans", "helvetica neue", helvetica, arial, sans-serif; font-size:8px; font-weight:700; line-height:8px;  mso-text-raise:1px'>Regulamento</center>

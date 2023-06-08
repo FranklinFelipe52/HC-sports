@@ -541,7 +541,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0">
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:30px">
                                   <!--[if mso]><a href="" target="_blank" hidden>
  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#0095d9">
@@ -551,6 +551,18 @@
 <![endif]-->
                                   <!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{ $_SERVER['HTTP_HOST'] }}/admin/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span>
                                   <!--<![endif]-->
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="padding:0;Margin:0;padding-bottom:30px">
+                                  <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
+                                      Caso o link não funcione, copie e cole este link no seu navegador:
+                                    </p>
+                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
+                                      {{ $_SERVER['HTTP_HOST'] }}/admin/dashboard
+                                    </p>
+                                  </div>
                                 </td>
                               </tr>
                             </table>
