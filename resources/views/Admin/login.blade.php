@@ -85,17 +85,6 @@
             </p>
           </button>
         </form>
-        @if (session('erro'))
-          <div class="group error w-full">
-            <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
-              <div class="grow">
-                <p class="text-sm">
-                  {{ session('erro') }}
-                </p>
-              </div>
-            </div>
-          </div>
-        @endif
       </div>
     </div>
   </div>

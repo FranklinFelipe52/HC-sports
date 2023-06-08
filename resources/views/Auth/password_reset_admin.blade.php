@@ -18,7 +18,7 @@
 
 <body class="h-screen">
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/frontend/dist/images/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/src/index.html">
@@ -55,9 +55,9 @@
                 Senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="alterar_senha" name="password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                  <button type="button" data-inputId="alterar_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                     <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
                     <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
@@ -69,9 +69,9 @@
                 Confirmação de senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_confirm_field" placeholder="Digite a sua senha novamente" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="confirmar_alterar_senha" placeholder="Digite a sua senha novamente" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                  <button type="button" data-inputId="confirmar_alterar_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
                     <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
                     <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
