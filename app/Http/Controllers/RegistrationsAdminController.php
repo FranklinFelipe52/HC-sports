@@ -124,7 +124,7 @@ class RegistrationsAdminController extends Controller
                         session()->flash('erro', 'Realize o pagamento das inscrições pendentes para criar uma nova inscrição');
                         return back()->withInput();
                     }
-                
+
                     if( VerifyRegistration::verifyUserLimitRegistrations($user, $modalidade)){
                         session()->flash('erro', 'O usuario já tem 2 inscrições ativas');
                         return back()->withInput();
@@ -383,6 +383,7 @@ class RegistrationsAdminController extends Controller
             $action_admin->description = 'Deletou a inscrição do atleta '.$registration->user->nome_completo.' com CPF '.$registration->user->cpf.' na modalidade '.$registration->modalities->nome;
             $action_admin->save();
             Mail::to($user->email)->send(new RegistrationDelete($registration));
+            session()->flash('success', 'A inscrição foi excluída com sucesso');
             return redirect("/admin/users/$user->id");
         } catch(Exception $e){
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
@@ -460,9 +461,14 @@ class RegistrationsAdminController extends Controller
                 return back();
             }
 
+            if($registration->modalities->mode_modalities->id == 1){
+                $category = $registration->modalities->modalities_categorys()->first();
 
+                if(!$category){
+                    return back();
+                }
 
-            if($registration->modalities->mode_modalities->id == 2){
+            } elseif($registration->modalities->mode_modalities->id == 2){
 
                 foreach ($request->category  as $category) {
                 $category = modalities_category::find($category);
