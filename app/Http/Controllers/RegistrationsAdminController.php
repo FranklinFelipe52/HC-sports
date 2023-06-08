@@ -460,9 +460,14 @@ class RegistrationsAdminController extends Controller
                 return back();
             }
 
+            if($registration->modalities->mode_modalities->id == 1){
+                $category = $registration->modalities->modalities_categorys()->first();
 
+                if(!$category){
+                    return back();
+                }
 
-            if($registration->modalities->mode_modalities->id == 2){
+            } elseif($registration->modalities->mode_modalities->id == 2){
 
                 foreach ($request->category  as $category) {
                 $category = modalities_category::find($category);
