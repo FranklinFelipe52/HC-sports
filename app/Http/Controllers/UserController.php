@@ -140,7 +140,7 @@ class UserController extends Controller
             }
             if(!($user->email == $request->email)){
                 if(User::where('email', $request->email)->get()){
-                    Log::alert(User::where('email', $request->email)->get()->id);
+                    Log::alert(User::where('email', $request->email)->get());
                     session()->flash('edit_error', 'Esse E-mail já está em uso.');
                     return back()->with('edit_error', 'Esse E-mail já está em uso.');
                 }
