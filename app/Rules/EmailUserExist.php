@@ -27,6 +27,7 @@ class EmailUserExist implements Rule
     public function passes($attribute, $value)
     {
         if(User::where('email', $value)->first()){
+            session()->flash('erro', 'Já existe um atleta com esse email');
             return false;
         }
         return true;

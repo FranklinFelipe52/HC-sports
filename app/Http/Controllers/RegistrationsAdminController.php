@@ -64,10 +64,7 @@ class RegistrationsAdminController extends Controller
             }
 
             // checar se o email já está sendo usado
-            if(Count(User::where('email', $request->email)->get()) != 0){
-                session()->flash('erro', 'Já existe um atleta com esse email');
-                    return back()->withInput();
-            }
+            
 
             if($modalidade->mode_modalities->id == 1){
 
