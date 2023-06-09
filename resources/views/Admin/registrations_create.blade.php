@@ -103,7 +103,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_phone_field">
                   Celular
                 </label>
-                <input data-preload="celular-visible" required placeholder="Ex: (00) 0 0000-0000" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" name="phone_number" type="text" id="celular_adicionar_atleta_form" />
+                <input data-preload="celular-visible" required placeholder="Ex: (00) 0 0000-0000" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" name="phone_number" value="{{ old('phone_number') }}" type="text" id="celular_adicionar_atleta_form" />
               </div>
 
               <div class="mb-6">
