@@ -63,8 +63,6 @@ class RegistrationsAdminController extends Controller
                     return back()->withInput();
             }
 
-            // checar se o email já está sendo usado
-            
 
             if($modalidade->mode_modalities->id == 1){
 

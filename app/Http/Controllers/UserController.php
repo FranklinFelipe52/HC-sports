@@ -32,7 +32,8 @@ class UserController extends Controller
             if(isset($_GET["s"])){
                 $atletas = $atletas_aux
                 ->where('nome_completo', 'LIKE', '%'.$_GET["s"].'%')
-                ->orWhere('cpf', 'LIKE', '%'.$_GET["s"].'%');
+                ->orWhere('cpf', 'LIKE', '%'.$_GET["s"].'%')
+                ->orWhere('email', 'LIKE', '%'.$_GET["s"].'%');
             }
 
             if($admin->rule->id == 1){
