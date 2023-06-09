@@ -181,18 +181,18 @@
                   </div>
 
                   <!-- Table body -->
-                  <div class="min-w-[600px] max-h-[300px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg" data-pagination>
+                  <div class="min-w-[600px] h-fit overflow-auto border border-t-0 border-gray-5 rounded-b-lg" data-pagination>
                     @if (Count($admin_logs) > 0)
                       @foreach ($admin_logs as $admin_log)
                         <!-- Table row -->
                         <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0" data-pagination-item>
-                          <div role="cell" class="py-3 flex items-center col-span-4">
-                            <p class="text-sm font-normal text-gray-2">
+                          <div role="cell" class="py-2.5 flex items-center col-span-4">
+                            <p class="text-xs font-normal text-gray-2">
                               {{ $admin_log->created_at }}
                             </p>
                           </div>
-                          <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
-                            <p class="text-sm font-semibold text-gray-2">
+                          <div role="cell" class="py-2.5 flex items-center col-span-4">
+                            <p class="text-xs font-semibold text-gray-2">
                               @if ($admin_log->type_actions_admin_id == 1)
                                 Confirmação de pagamento
                               @elseif ($admin_log->type_actions_admin_id == 2)
@@ -208,8 +208,8 @@
                               @endif
                             </p>
                           </div>
-                          <div role="cell" class="py-3 flex items-center col-span-4">
-                            <p class="text-sm font-normal text-gray-2">
+                          <div role="cell" class="py-2.5 flex items-center col-span-4">
+                            <p class="text-xs font-normal text-gray-2">
                               {{ $admin_log->description }}
                             </p>
                           </div>
@@ -217,7 +217,7 @@
                       @endforeach
                     @else
                       <div class="p-6">
-                        <p class="text-gray-1 text-sm text-center">
+                        <p class="text-gray-1 text-xs text-center">
                           Ainda não há logs para este administrador
                         </p>
                       </div>
