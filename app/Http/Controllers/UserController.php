@@ -8,9 +8,11 @@ use App\Models\Admin;
 use App\Models\FederativeUnit;
 use App\Models\User;
 use Exception;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\Return_;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -139,6 +141,7 @@ class UserController extends Controller
             if(!($user->email == $request->email)){
 
                 if(User::where('email', $request->email)->get()){
+                    Log::alert($request->email);
                     session()->flash('edit_error', 'Esse E-mail já está em uso.');
                     return back()->with('edit_error', 'Esse E-mail já está em uso.');
                 }
