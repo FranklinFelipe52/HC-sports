@@ -133,13 +133,13 @@ class UserController extends Controller
             }
             if(!( preg_replace( '/[^0-9]/is', '', $user->cpf) == preg_replace( '/[^0-9]/is', '', $request->cpf))){
 
-                if(User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->get()){
+                if(Count(User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->get()) > 0){
                     session()->flash('edit_error', 'Esse CPF já está em uso.');
                     return back()->with('edit_error', 'Esse CPF já está em uso.');
                 }
             }
             if(!($user->email == $request->email)){
-                if(User::where('email', $request->email)->get()){
+                if(Count(User::where('email', $request->email)->get()) > 0){
                     Log::alert(User::where('email', $request->email)->get());
                     session()->flash('edit_error', 'Esse E-mail já está em uso.');
                     return back()->with('edit_error', 'Esse E-mail já está em uso.');
