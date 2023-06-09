@@ -30,6 +30,12 @@
               </a>
             </div>
             <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+              <a class="text-xs text-gray-1 block hover:underline">
+                LOGs
+              </a>
+            </div>
+            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div>
               <a href="/admin/administradores/{{ $administrador->id }}" class="text-xs text-gray-1 block hover:underline">
                 @if ($administrador->nome_completo)
@@ -38,10 +44,6 @@
                   {{ $administrador->email }}
                 @endif
               </a>
-            </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-              LOGs do administrador
             </div>
           </nav>
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
@@ -66,7 +68,7 @@
 
               <form id="filter_log_type" class="relative">
                 <select onchange="document.getElementById('filter_log_type').submit()" class="w-full min-w-[250px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="type" id="filtro_logs_page">
-                  <option value="0" selected>Filtrar por tipo</option>
+                  <option value="0" selected>Filtrar por todos os tipo</option>
                   @foreach ($log_types as $log_type)
                     <option {{ Request::get('type') && Request::get('type') == $log_type->id ? 'selected' : '' }} value="{{ $log_type->id }}">{{ $log_type->type }}</option>
                   @endforeach
