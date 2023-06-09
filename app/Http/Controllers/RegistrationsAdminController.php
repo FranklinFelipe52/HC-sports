@@ -195,7 +195,7 @@ class RegistrationsAdminController extends Controller
                         return back()->withInput();
                     }
                     foreach ($user->registrations as $registration) {
-                        if(!(($modalidade->id == 16) || ($modalidade->id == 13) || ($modalidade->id == 6)) && $registration->modalities->id == $modalidade->id){
+                        if(!(($modalidade->id == 16) || ($modalidade->id == 13) || ($modalidade->id == 6) || ($modalidade->id == 4)) && $registration->modalities->id == $modalidade->id){
                             session()->flash('erro', 'Usuário já tem inscrição nessa modalidade');
                             return back()->withInput();
                         }
