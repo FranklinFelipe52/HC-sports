@@ -68,7 +68,7 @@
 
               <form id="filter_log_type" class="relative">
                 <select onchange="document.getElementById('filter_log_type').submit()" class="w-full min-w-[250px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="type" id="filtro_logs_page">
-                  <option value="0" selected>Filtrar por todos os tipo</option>
+                  <option value="0" selected>Filtrar por todos os tipos</option>
                   @foreach ($log_types as $log_type)
                     <option {{ Request::get('type') && Request::get('type') == $log_type->id ? 'selected' : '' }} value="{{ $log_type->id }}">{{ $log_type->type }}</option>
                   @endforeach
