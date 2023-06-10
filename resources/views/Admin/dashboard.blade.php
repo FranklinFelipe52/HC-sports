@@ -115,12 +115,12 @@
                 </a>
 
                 <div class="flex flex-wrap gap-3 w-full">
-                  <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-gray-6 transition">
+                  <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="h-fit flex items-center justify-center gap-4  px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                     <p class="text-white text-sm font-bold font-poppins">
                       Adicionar atleta masculino
                     </p>
                   </button>
-                  <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-gray-6 transition">
+                  <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="h-fit flex items-center justify-center gap-4  px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                     <p class="text-white text-sm font-bold font-poppins">
                       Adicionar atleta Feminino
                     </p>
@@ -133,8 +133,7 @@
                 <a href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                   Ver modalidade
                 </a>
-
-                <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-gray-6 transition">
+                <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="h-fit flex items-center justify-center gap-4 px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                   <p class="text-white text-sm font-bold font-poppins">
                     Adicionar atleta
                   </p>
