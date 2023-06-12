@@ -333,7 +333,7 @@ class AdminController extends Controller
         }
     }
 
-    public function admin_logs(Request $request, $id)
+    public function admin_logs_single(Request $request, $id)
     {
         try {
             if (!($request->session()->get('admin')->rule->id == 1)) {
@@ -374,6 +374,46 @@ class AdminController extends Controller
             return view('Admin.logs', [
                 'logs' => $admin_logs,
                 'administrador' => $administrador,
+                'log_types' => $log_types,
+            ]);
+        } catch (Exception $e) {
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
+        }
+    }
+
+    public function admin_logs(Request $request)
+    {
+        try {
+            
+            if (!($request->session()->get('admin')->rule->id == 1)) {
+                session()->flash('erro', 'Adm não é geral.');
+                return back();
+            }
+
+            $log_types = TypeActionsAdmin::get();
+            $admin_logs_aux = ActionsAdmin::orderBy('created_at', 'desc')
+                ->get();
+
+            $admin_logs = $admin_logs_aux;
+            if (isset($_GET["s"]) && !(isset($_GET["type"]) && ($_GET["type"] != 0))) {
+                $admin_logs = ActionsAdmin::where('description', 'LIKE', '%' . $_GET["s"] . '%')
+                    ->get();
+            } else if (isset($_GET["s"]) && isset($_GET["type"]) && $_GET["s"] != 0) {
+                if (isset($_GET["type"]) && ($_GET["type"] != 0)) {
+                    $admin_logs = ActionsAdmin::where('description', 'LIKE', '%' . $_GET["s"] . '%')
+                        ->where('type_actions_admin_id', $_GET["type"])
+                        ->get();
+                }
+            } else if (!isset($_GET["s"]) && (isset($_GET["type"]) && ($_GET["type"] != 0))) {
+                if (isset($_GET["type"]) && ($_GET["type"] != 0)) {
+                    $admin_logs = ActionsAdmin::where('type_actions_admin_id', $_GET["type"])
+                        ->get();
+                }
+            }
+
+            return view('Admin.logs', [
+                'logs' => $admin_logs,
                 'log_types' => $log_types,
             ]);
         } catch (Exception $e) {

@@ -35,6 +35,7 @@
                 LOGs
               </a>
             </div>
+            @isset($administrador)
             <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div>
               <a href="/admin/administradores/{{ $administrador->id }}" class="text-xs text-gray-1 block hover:underline">
@@ -45,6 +46,7 @@
                 @endif
               </a>
             </div>
+            @endisset
           </nav>
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             LOGs do administrador
@@ -139,9 +141,11 @@
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2 xl:col-span-3">
-                      <p class="text-sm font-semibold text-gray-2">
-                        {{ $administrador->nome_completo }}
-                      </p>
+                      <a class="hover:underline" href="/admin/logs/{{ $log->admin->id}}">
+                        <p class="text-sm font-semibold text-gray-2">
+                          {{ $log->admin->nome_completo }}
+                        </p>
+                      </a>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-3 xl:col-span-4">
                       <p class="text-sm font-semibold text-gray-2">

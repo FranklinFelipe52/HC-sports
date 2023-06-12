@@ -22,16 +22,20 @@
       <div class="px-6 h-full w-full flex flex-col overflow-hidden">
 
         <!-- Cabeçalho -->
-        <header class="pt-8 pb-6 flex flex-wrap gap-6">
+        <header class="pt-8 pb-6 justify-between flex flex-wrap gap-6">
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Administradores Cadastrados
           </h1>
           @if (Session('admin')->rule->id == 1)
-            <a role="button" href="/admin/administradores/create" class="ml-auto flex items-center justify-center sm:justify-start gap-4 w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+          <div class="flex items-center justify-center sm:justify-start gap-4 ">
+            <a  class="text-brand-a1 hover:underline" href="/admin/logs">LOGs</a>
+            <a role="button" href="/admin/administradores/create" class="ml-auto  px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
               <p class="text-white text-sm font-bold font-poppins">
                 Cadastrar Administrador
               </p>
             </a>
+          </div>
+          
           @endif
         </header>
 

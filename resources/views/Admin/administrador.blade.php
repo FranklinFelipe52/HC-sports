@@ -240,7 +240,7 @@
                   &#8226;
                 </div>
                 <div>
-                  <a href="/admin/administradores/logs/{{ $administrador->id }}" class="font-bold font-poppins text-sm text-brand-a1">
+                  <a href="/admin/logs/{{ $administrador->id }}" class="font-bold font-poppins text-sm text-brand-a1">
                     Visualizar tudo
                   </a>
                 </div>
