@@ -265,19 +265,19 @@
             </div>
             @if ($modalidade->id == 9 || $modalidade->id == 10)
               <div class="flex flex-col gap-3">
-                <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+                <button  onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=M', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                   <p class="text-white text-sm font-bold font-poppins">
                     Adicionar atleta masculino
                   </p>
                 </button>
-                <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+                <button  onclick="window.open('/admin/registration/create/{{ $modalidade->id }}?gender=F', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1  transition">
                   <p class="text-white text-sm font-bold font-poppins">
                     Adicionar atleta Feminino
                   </p>
                 </button>
               </div>
             @else
-              <button disabled onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+              <button onclick="window.open('/admin/registration/create/{{ $modalidade->id }}', '_self')" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1  transition">
                 <p class="text-white text-sm font-bold font-poppins">
                   Adicionar atleta
                 </p>
