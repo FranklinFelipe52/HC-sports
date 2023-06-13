@@ -27,15 +27,16 @@
             Administradores Cadastrados
           </h1>
           @if (Session('admin')->rule->id == 1)
-          <div class="flex items-center justify-center sm:justify-start gap-4 ">
-            <a  class="text-brand-a1 hover:underline" href="/admin/logs">LOGs</a>
-            <a role="button" href="/admin/administradores/create" class="ml-auto  px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-              <p class="text-white text-sm font-bold font-poppins">
-                Cadastrar Administrador
-              </p>
-            </a>
-          </div>
-          
+            <div class="flex items-center justify-center sm:justify-start gap-4 ">
+              <a role="button" href="/admin/logs" class="ml-auto px-4 py-2 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <img src="/images/svg/logs.svg" alt="">
+              </a>
+              <a role="button" href="/admin/administradores/create" class="ml-auto px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <p class="text-white text-sm font-bold font-poppins">
+                  Cadastrar Administrador
+                </p>
+              </a>
+            </div>
           @endif
         </header>
 
@@ -53,7 +54,7 @@
                 </button>
 
               </form>
-              @if(Session('admin')->rule->id == 1 && !Session('admin')->personification)
+              @if (Session('admin')->rule->id == 1 && !Session('admin')->personification)
                 <form id="filter_uf" class="relative">
 
                   <select onchange="document.getElementById('filter_uf').submit()" class="w-full min-w-[195px] px-4 py-2 rounded-lg bg-white border border-gray-5 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 text-sm placeholder:text-gray-3 appearance-none" name="uf" id="filtro_atletas_page">

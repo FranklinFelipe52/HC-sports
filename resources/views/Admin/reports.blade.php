@@ -24,14 +24,93 @@
 
         <!-- Cabeçalho -->
         <header class="pt-8 pb-6 space-y-6">
+          <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
+            <div>
+              <a href="/admin/reports" class="text-xs text-gray-1 block hover:underline">
+                Relatórios
+              </a>
+            </div>
+            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+              Gerar Excel
+            </div>
+          </nav>
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Relatórios
           </h1>
         </header>
 
-        <form method="post" action="/admin/administradores/store" class="w-full max-w-[700px]">
+        <form method="post" action="/admin/reports" class="w-full max-w-[700px]">
           @csrf
+          <div class="mb-4">
+            <p class="text-gray-1 text-sm">
+              Selecione um intervalo
+            </p>
+          </div>
+          <div class="flex gap-4 mb-4">
+            <div class="grow">
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="input_date_exemplo">
+                Data início
+              </label>
+              <div class="relative">
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="input_date_exemplo" />
+                <div class="absolute top-4 right-4 bg-white pl-4">
+                  <img src="/images/svg/calendar.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="grow">
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="input_date_exemplo">
+                Data fim
+              </label>
+              <div class="relative">
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="input_date_exemplo" />
+                <div class="absolute top-4 right-4 bg-white pl-4">
+                  <img src="/images/svg/calendar.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="grow">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
+                Todas UFs
+              </label>
+              <div class="relative">
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
+                  <option value="" selected disabled>
+                    Selecione
+                  </option>
+                  <option value="1">Opção 1</option>
+                  <option value="2">Opção 2</option>
+                  <option value="3">Opção 3</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="grow">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
+                Situação
+              </label>
+              <div class="relative">
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
+                  <option value="" selected disabled>
+                    Selecione
+                  </option>
+                  <option value="1">Opção 1</option>
+                  <option value="2">Opção 2</option>
+                  <option value="3">Opção 3</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/images/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
+            <p class="text-gray-1 text-sm font-semibold mb-3">
+              Selecione os itens que você deseja exportar no relatório
+            </p>
             <div class="flex flex-col gap-3">
               <div class="grow">
                 <div class="flex items-center gap-2">
