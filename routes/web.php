@@ -121,7 +121,8 @@ Route::get('/admin/personification/off', [PersonificationController::class, 'Per
 Route::get('/admin/report_registrations', [ReportsController::class, 'RegistrationsReport'])->middleware('AuthAdmins');
 Route::get('/admin/logs/{id}', [AdminController::class, 'admin_logs_single'])->middleware('AuthAdmins');
 Route::get('/admin/logs', [AdminController::class, 'admin_logs'])->middleware('AuthAdmins');
-Route::get('/admin/reports', [AdminController::class, 'admin_reports'])->middleware('AuthAdmins');
+Route::get('/admin/reports', [ReportsController::class, 'create'])->middleware('AuthAdmins');
+Route::post('/admin/reports', [ReportsController::class, 'store'])->middleware('AuthAdmins');
 
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);

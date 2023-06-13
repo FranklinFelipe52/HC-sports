@@ -422,13 +422,5 @@ class AdminController extends Controller
         }
     }
 
-    public function admin_reports(Request $request)
-    {
-        try {
-            return view('Admin.reports');
-        } catch (Exception $e) {
-            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
-            return back();
-        }
-    }
+    
 }

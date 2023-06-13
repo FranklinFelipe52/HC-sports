@@ -53,7 +53,7 @@
                 Data início
               </label>
               <div class="relative">
-                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="input_date_exemplo" />
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" min='{{$date_start_min}}' max={{$date_start_max}} type="date" id="cadastro_nascimento_field" name="date_start" />
                 <div class="absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/svg/calendar.svg" alt="" />
                 </div>
@@ -64,7 +64,7 @@
                 Data fim
               </label>
               <div class="relative">
-                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" name="input_date_exemplo" />
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"  min='{{$date_end_min}}' max={{$date_end_max}} type="date" id="cadastro_nascimento_field" name="date_end" />
                 <div class="absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/svg/calendar.svg" alt="" />
                 </div>
@@ -72,16 +72,15 @@
             </div>
             <div class="grow">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="select_exemplo">
-                Todas UFs
+                UF
               </label>
               <div class="relative">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
-                  <option value="" selected disabled>
-                    Selecione
-                  </option>
-                  <option value="1">Opção 1</option>
-                  <option value="2">Opção 2</option>
-                  <option value="3">Opção 3</option>
+
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="uf" id="select_exemplo">
+                  <option value selected>Todas UFs</option>
+                  @foreach ($federative_units as $federative_unit)
+                    <option value="{{ $federative_unit->id }}">{{ $federative_unit->initials }}</option>
+                  @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/svg/chevron-down.svg" alt="" />
@@ -93,13 +92,11 @@
                 Situação
               </label>
               <div class="relative">
-                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="select_exemplo" id="select_exemplo">
-                  <option value="" selected disabled>
-                    Selecione
-                  </option>
-                  <option value="1">Opção 1</option>
-                  <option value="2">Opção 2</option>
-                  <option value="3">Opção 3</option>
+                <select class="w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-500 appearance-none transition" name="status" id="select_exemplo">
+                  <option value selected>Todos</option>
+                  @foreach ($status as $value)
+                    <option value="{{ $value->id }}">{{ $value->status }}</option>
+                  @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/svg/chevron-down.svg" alt="" />
@@ -112,107 +109,108 @@
               Selecione os itens que você deseja exportar no relatório
             </p>
             <div class="flex flex-col gap-3">
+              
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="001" name="" id="check-001">
-                  <label class="block text-sm" for="check-001">Nome Completo</label>
+                  <input class="checkbox" checked type="checkbox" value="002" name="colunas[]" id="check-002">
+                  <label class="block text-sm" for="check-001">CPF</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="002" name="" id="check-002">
+                  <input class="checkbox" checked type="checkbox" value="003" name="colunas[]" id="check-003">
                   <label class="block text-sm" for="check-002">Data de nascimento</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="003" name="" id="check-003">
+                  <input class="checkbox" checked type="checkbox" value="004" name="colunas[]" id="check-004">
                   <label class="block text-sm" for="check-003">Gênero</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="004" name="" id="check-004">
+                  <input class="checkbox" checked type="checkbox" value="005" name="colunas[]" id="check-005">
                   <label class="block text-sm" for="check-004">E-mail</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="005" name="" id="check-005">
+                  <input class="checkbox" checked type="checkbox" value="006" name="colunas[]" id="check-006">
                   <label class="block text-sm" for="check-005">Celular</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="006" name="" id="check-006">
+                  <input class="checkbox" checked type="checkbox" value="007" name="colunas[]" id="check-007">
                   <label class="block text-sm" for="check-006">Cidade</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="007" name="" id="check-007">
+                  <input class="checkbox" checked type="checkbox" value="008" name="colunas[]" id="check-008">
                   <label class="block text-sm" for="check-007">Estado</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="008" name="" id="check-008">
+                  <input class="checkbox" checked type="checkbox" value="009" name="colunas[]" id="check-009">
                   <label class="block text-sm" for="check-008">Modalidade</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="009" name="" id="check-009">
+                  <input class="checkbox" checked type="checkbox" value="010" name="colunas[]" id="check-010">
                   <label class="block text-sm" for="check-009">Faixa</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="010" name="" id="check-010">
+                  <input class="checkbox" checked type="checkbox" value="011" name="colunas[]" id="check-011">
                   <label class="block text-sm" for="check-010">Categoria</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="011" name="" id="check-011">
+                  <input class="checkbox" checked type="checkbox" value="012" name="colunas[]" id="check-012">
                   <label class="block text-sm" for="check-011">Subcategoria</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="012" name="" id="check-012">
+                  <input class="checkbox" checked type="checkbox" value="013" name="colunas[]" id="check-013">
                   <label class="block text-sm" for="check-012">Data de criação</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="013" name="" id="check-013">
+                  <input class="checkbox" checked type="checkbox" value="014" name="colunas[]" id="check-014">
                   <label class="block text-sm" for="check-013">Tipo de pagamento</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="014" name="" id="check-014">
+                  <input class="checkbox" checked type="checkbox" value="015" name="colunas[]" id="check-015">
                   <label class="block text-sm" for="check-014">Valor pago</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
-                  <input class="checkbox" type="checkbox" value="015" name="" id="check-015">
+                  <input class="checkbox" checked type="checkbox" value="016" name="colunas[]" id="check-016">
                   <label class="block text-sm" for="check-015">Status de pagamento</label>
                 </div>
               </div>

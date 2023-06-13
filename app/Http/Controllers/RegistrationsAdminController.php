@@ -49,6 +49,11 @@ class RegistrationsAdminController extends Controller
             $category_id = null;
             $federativeUnit = $admin->federativeUnit->id;
 
+            if(!$user && User::where('email', $request->email)->first()){
+                session()->flash('erro', 'Já existe um atleta com esse email');
+                return back()->withInput();
+            }
+
             if(!$modalidade){
                 return back();
             }
