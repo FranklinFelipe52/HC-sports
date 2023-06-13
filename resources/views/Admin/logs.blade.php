@@ -30,26 +30,37 @@
               </a>
             </div>
             <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
-              <a class="text-xs text-gray-1 block hover:underline">
+            @if (Request::path() === 'admin/logs')
+              <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 LOGs
-              </a>
-            </div>
+              </div>
+            @else
+              <div>
+                <a href="/admin/logs" class="text-xs text-gray-1 block hover:underline">
+                  LOGs
+                </a>
+              </div>
+            @endif
+
             @isset($administrador)
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-            <div>
-              <a href="/admin/administradores/{{ $administrador->id }}" class="text-xs text-gray-1 block hover:underline">
-                @if ($administrador->nome_completo)
-                  {{ $administrador->nome_completo }}
-                @else
-                  {{ $administrador->email }}
-                @endif
-              </a>
-            </div>
+              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <div>
+                <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+                  @if ($administrador->nome_completo)
+                    {{ $administrador->nome_completo }}
+                  @else
+                    {{ $administrador->email }}
+                  @endif
+                </div>
+              </div>
             @endisset
           </nav>
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-            LOGs do administrador
+            @if (Request::path() === 'admin/logs')
+              LOGs dos administradores
+            @else
+              LOGs do administrador
+            @endif
           </h1>
         </header>
 
@@ -141,7 +152,7 @@
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2 xl:col-span-3">
-                      <a class="hover:underline" href="/admin/logs/{{ $log->admin->id}}">
+                      <a class="hover:underline" href="/admin/logs/{{ $log->admin->id }}">
                         <p class="text-sm font-semibold text-gray-2">
                           {{ $log->admin->nome_completo }}
                         </p>
