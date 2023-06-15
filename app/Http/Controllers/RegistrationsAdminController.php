@@ -43,6 +43,9 @@ class RegistrationsAdminController extends Controller
 
     public function store(StoreRegistrationRequest $request, $id){
         try{
+            session()->flash('erro', 'Inscrições encerradas.');
+            return back();
+            /*
             $modalidade = Modalities::find($id);
             $admin = $request->session()->get('admin');
             $user = User::where('cpf', preg_replace( '/[^0-9]/is', '', $request->cpf))->first();
@@ -339,7 +342,7 @@ class RegistrationsAdminController extends Controller
 
 
         return redirect("/admin/modalidade/{$modalidade->id}");
-       
+       */
         } catch(Exception $e){
             Log::alert($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
@@ -400,7 +403,9 @@ class RegistrationsAdminController extends Controller
 
     public function create(Request $request, $id){
         try{
-            
+            session()->flash('erro', 'Inscrições encerradas.');
+            return back();
+            /*
             $modalidade = Modalities::find($id);
             $type_payments = type_payment::all();
             $sub_categorys = sub_categorys::all();
@@ -427,7 +432,7 @@ class RegistrationsAdminController extends Controller
                 'federative_units' => DB::table('federative_units')->orderBy('initials', 'asc')->get(),
                 'sub_categorys' => $sub_categorys
             ]);
-
+            */
         }catch(Exception $e){
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
