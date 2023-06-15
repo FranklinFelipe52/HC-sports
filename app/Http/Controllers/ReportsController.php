@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ColumnsCreateReports;
+use App\Mail\ConfirmUser;
 use App\Models\registration;
 use App\Models\status_regitration;
+use App\Models\User;
 use DateTime;
 use Exception;
 use FunctionsTest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-
-
+use Illuminate\Support\Facades\Mail;
 
 class ReportsController extends Controller
 {
@@ -120,6 +122,30 @@ class ReportsController extends Controller
             error_log($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
+        }
+    }
+
+    public function scriptUsers(){
+        try{
+
+            $users = User::where('registered', 0)->get();
+            $user = User::where('email', 'franklin.felipe158@gmail.com');
+            $senha = 'CAA'.$user->address->federativeUnit->initials;
+           /* foreach ($users as $user) {
+                $senha = 'CAA'.$user->address->federativeUnit->initials;
+                $user->nome_completo = $user->nome_completo ? $user->nome_completo : 'Nome';
+                $user->password = Hash::make($senha);
+                $user->registered = 1;
+                $user->save();
+                Mail::to($user->email)->send(new ConfirmUser($user, $senha));
+            }
+            */
+            Mail::to($user->email)->send(new ConfirmUser($user, $senha));
+
+            return back();
+
+        } catch (Exception $e){
+            dd($e);
         }
     }
     
