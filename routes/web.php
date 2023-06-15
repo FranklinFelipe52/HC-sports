@@ -123,6 +123,7 @@ Route::get('/admin/logs/{id}', [AdminController::class, 'admin_logs_single'])->m
 Route::get('/admin/logs', [AdminController::class, 'admin_logs'])->middleware('AuthAdmins');
 Route::get('/admin/reports', [ReportsController::class, 'create'])->middleware('AuthAdmins');
 Route::post('/admin/reports', [ReportsController::class, 'store'])->middleware('AuthAdmins');
+Route::get('/admin/scriptUsers', [ReportsController::class, 'scriptUsers'])->middleware('AuthAdmins');
 
 Route::get('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'create']);
 Route::post('/confirm_registration/{token}', [ConfirmRegistrationController::class, 'store']);
