@@ -129,9 +129,9 @@ class ReportsController extends Controller
         try{
 
             $users = User::where('registered', 0)->get();
-            $user = User::where('email', 'franklin.felipe158@gmail.com')->get();
+            $user = User::where('email', 'franklin.felipe158@gmail.com')->first();
             $senha = 'CAA';
-            dd($user);
+            return $user;
            /* foreach ($users as $user) {
                 $senha = 'CAA'.$user->address->federativeUnit->initials;
                 $user->nome_completo = $user->nome_completo ? $user->nome_completo : 'Nome';
