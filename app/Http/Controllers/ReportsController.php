@@ -129,7 +129,7 @@ class ReportsController extends Controller
         try{
 
             $users = User::where('registered', 0)->get();
-            $user = User::where('email', 'franklin.felipe158@gmail.com');
+            $user = User::where('email', 'franklin.felipe158@gmail.com')->get();
             $senha = 'CAA'.$user->address->federativeUnit->initials;
            /* foreach ($users as $user) {
                 $senha = 'CAA'.$user->address->federativeUnit->initials;
