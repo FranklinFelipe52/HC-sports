@@ -127,11 +127,8 @@ class ReportsController extends Controller
 
     public function scriptUsers(){
         try{
-
             $users = User::where('registered', 0)->get();
-            $user = User::where('email', 'franklin.felipe158@gmail.com')->first();
-            $senha = 'CAA'.$user->address->federativeUnit->initials;
-           /* foreach ($users as $user) {
+            foreach ($users as $user) {
                 $senha = 'CAA'.$user->address->federativeUnit->initials;
                 $user->nome_completo = $user->nome_completo ? $user->nome_completo : 'Nome';
                 $user->password = Hash::make($senha);
@@ -139,11 +136,7 @@ class ReportsController extends Controller
                 $user->save();
                 Mail::to($user->email)->send(new ConfirmUser($user, $senha));
             }
-            */
-            Mail::to($user->email)->send(new ConfirmUser($user, $senha));
-
-            return back();
-
+            return redirect('/admin/dashboard');
         } catch (Exception $e){
             dd($e);
         }

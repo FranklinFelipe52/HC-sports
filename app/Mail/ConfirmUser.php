@@ -34,7 +34,7 @@ class ConfirmUser extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Confirm User',
+            subject: 'E-mail de acesso ao sistema de inscrição | I Olímpiadas da Advocacia',
         );
     }
 
