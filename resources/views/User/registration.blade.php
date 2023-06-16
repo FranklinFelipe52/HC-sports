@@ -196,8 +196,11 @@
             @endif
           </div>
           <div class="flex flex-wrap justify-end">
-            @if ($registration->status_regitration_id != 2)
+            
+            @if (($registration->status_regitration_id != 2) && ($registration->status_regitration_id != 1))
+            @if (!((Session('user')->nome_completo == null) || (Session('user')->nome_completo == 'Nome')))
             <div id="wallet_container"></div>
+            @endif
             @endif
           </div>
         </div>
