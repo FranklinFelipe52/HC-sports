@@ -104,19 +104,24 @@ class CheckoutController extends Controller
          }
 
          if($response['status'] == 'pending' || $response['status'] == 'rejected'){
-             $registration->status_regitration_id = 3;
-             $registration->payment->id_payment  =  $payment_id;
-             $registration->payment->status_payment_id  = 3;
-             $registration->payment->save();
-             $registration->save();
+            if($registration->status_regitration_id != 1){
+                $registration->status_regitration_id = 3;
+                $registration->payment->id_payment  =  $payment_id;
+                $registration->payment->status_payment_id  = 3;
+                $registration->payment->save();
+                $registration->save();
+            }
+             
          }
 
         if($response['status'] == 'in_process'){
+            if($registration->status_regitration_id != 1){
             $registration->status_regitration_id = 2;
             $registration->payment->id_payment  =  $payment_id;
             $registration->payment->status_payment_id  = 3;
             $registration->payment->save();
             $registration->save();
+            }
         }
         
          return response('ok', 200);
