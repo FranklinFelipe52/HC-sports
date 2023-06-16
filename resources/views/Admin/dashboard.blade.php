@@ -115,7 +115,8 @@
                 </a>
 
                 <div class="flex flex-wrap gap-3 w-full">
-                  <!--
+                  @if (Session('admin')->rule->id == 1)
+                  
                    <a  href="/admin/registration/create/{{ $modalidade->id }}?gender=M"  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                         <p class="text-white text-xs text-center font-bold font-poppins">
                             Adicionar atleta masculino
@@ -126,7 +127,8 @@
                             Adicionar atleta feminina
                         </p>
                     </a>
-                  -->
+                  
+                  @else
                   <a  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                     <p class="text-white text-xs text-center font-bold font-poppins">
                         Adicionar atleta masculino
@@ -137,6 +139,7 @@
                         Adicionar atleta feminina
                     </p>
                 </a>
+                @endif
                 </div>
 
               </div>
@@ -145,19 +148,21 @@
                 <a href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                   Ver modalidade
                 </a>
-                <!--
+                @if (Session('admin')->rule->id == 1)
+                
                 <a href="/admin/registration/create/{{ $modalidade->id }}" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                     <p class="text-white text-xs text-center font-bold font-poppins">
                         Adicionar atleta
                     </p>
                 </a>
-                -->
+                
+                @else
                 <a class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                   <p class="text-white text-xs text-center font-bold font-poppins">
                       Adicionar atleta
                   </p>
               </a>
-                
+                @endif
                 
               </div>
               @endif
