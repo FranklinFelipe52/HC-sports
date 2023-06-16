@@ -60,6 +60,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+      @if (Session('user')->nome_completo == null || Session('user')->nome_completo == 'Nome')
+        @include('components.edit_notification')
+      @endif
       <div class="container h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->

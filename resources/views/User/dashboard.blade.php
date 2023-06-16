@@ -89,6 +89,9 @@
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
+      @if (Session('user')->nome_completo == null || Session('user')->nome_completo == 'Nome')
+        @include('components.edit_notification')
+      @endif
       <div class="px-6 h-full w-full grid lg:gap-8 grid-cols-1 lg:grid-cols-6 xl:grid-cols-5 sm:grid-rows-2">
         <div class="lg:row-span-2 lg:col-span-3 xl:col-span-2 flex flex-col overflow-hidden lg:border-r border-gray-5 order-2 lg:order-1">
           <header class="pt-8 pb-6">
