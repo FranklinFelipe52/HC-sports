@@ -30,6 +30,9 @@ class CheckoutController extends Controller
         if($registration->user->id != $user->id){
             return back();
         }
+        if($registration->status_regitration_id == 1){
+            return back();
+        }
 
         $valor = $registration->Payment->mount;
 
