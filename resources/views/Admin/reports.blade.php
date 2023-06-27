@@ -113,107 +113,115 @@
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="002" name="colunas[]" id="check-002">
-                  <label class="block text-sm" for="check-001">CPF</label>
+                  <label class="block text-sm" for="check-002">CPF</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="003" name="colunas[]" id="check-003">
-                  <label class="block text-sm" for="check-002">Data de nascimento</label>
+                  <label class="block text-sm" for="check-003">Data de nascimento</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="004" name="colunas[]" id="check-004">
-                  <label class="block text-sm" for="check-003">Gênero</label>
+                  <label class="block text-sm" for="check-004">Gênero</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="005" name="colunas[]" id="check-005">
-                  <label class="block text-sm" for="check-004">E-mail</label>
+                  <label class="block text-sm" for="check-005">E-mail</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="006" name="colunas[]" id="check-006">
-                  <label class="block text-sm" for="check-005">Celular</label>
+                  <label class="block text-sm" for="check-006">Celular</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="007" name="colunas[]" id="check-007">
-                  <label class="block text-sm" for="check-006">Cidade</label>
+                  <label class="block text-sm" for="check-007">Cidade</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="008" name="colunas[]" id="check-008">
-                  <label class="block text-sm" for="check-007">Estado</label>
+                  <label class="block text-sm" for="check-008">Estado</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="009" name="colunas[]" id="check-009">
-                  <label class="block text-sm" for="check-008">Modalidade</label>
+                  <label class="block text-sm" for="check-009">Modalidade</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="010" name="colunas[]" id="check-010">
-                  <label class="block text-sm" for="check-009">Faixa</label>
+                  <label class="block text-sm" for="check-010">Faixa</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="011" name="colunas[]" id="check-011">
-                  <label class="block text-sm" for="check-010">Categoria</label>
+                  <label class="block text-sm" for="check-011">Categoria</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="012" name="colunas[]" id="check-012">
-                  <label class="block text-sm" for="check-011">Subcategoria</label>
+                  <label class="block text-sm" for="check-012">Subcategoria</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="013" name="colunas[]" id="check-013">
-                  <label class="block text-sm" for="check-012">Data de criação</label>
+                  <label class="block text-sm" for="check-011">Data de criação</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="014" name="colunas[]" id="check-014">
-                  <label class="block text-sm" for="check-013">Tipo de pagamento</label>
+                  <label class="block text-sm" for="check-014">Tipo de pagamento</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="015" name="colunas[]" id="check-015">
-                  <label class="block text-sm" for="check-014">Valor pago</label>
+                  <label class="block text-sm" for="check-015">Valor pago</label>
                 </div>
               </div>
 
               <div class="grow">
                 <div class="flex items-center gap-2">
                   <input class="checkbox" checked type="checkbox" value="016" name="colunas[]" id="check-016">
-                  <label class="block text-sm" for="check-015">Status de pagamento</label>
+                  <label class="block text-sm" for="check-016">Status de pagamento</label>
                 </div>
               </div>
+
+              <div class="grow">
+                <div class="flex items-center gap-2">
+                  <input class="checkbox" checked type="checkbox" value="017" name="colunas[]" id="check-017">
+                  <label class="block text-sm" for="check-017">PCD</label>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="flex flex-wrap justify-between gap-6">

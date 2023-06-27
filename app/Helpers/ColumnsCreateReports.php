@@ -54,6 +54,9 @@ class ColumnsCreateReports
                 case '016':
                     $colunas['status_pagamento'] = mb_convert_encoding(mb_strtoupper($registration->Payment->status_payment->status, 'UTF-8'), 'ISO-8859-1', "UTF-8");
                     break;
+                case '017':
+                    $colunas['pcd'] = mb_convert_encoding(mb_strtoupper($registration->user->pcd ? $registration->user->pcd : '', 'UTF-8'), 'ISO-8859-1', "UTF-8");
+                    break;
                 default:
                     break;
             }
@@ -111,6 +114,9 @@ class ColumnsCreateReports
                     break;
                 case '016':
                     array_push($headers, mb_convert_encoding(mb_strtoupper('Status de pagamento', 'UTF-8'), 'ISO-8859-1', "UTF-8"));
+                    break;
+                case '017':
+                    array_push($headers, mb_convert_encoding(mb_strtoupper('PCD', 'UTF-8'), 'ISO-8859-1', "UTF-8"));
                     break;
                 default:
                     break;
