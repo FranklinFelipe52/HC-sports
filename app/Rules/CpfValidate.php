@@ -31,11 +31,13 @@ class CpfValidate implements Rule
      
     // Verifica se foi informado todos os digitos corretamente
     if (strlen($cpf) != 11) {
+        session()->flash('erro', 'CPF invalido');
         return false;
     }
 
     // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
     if (preg_match('/(\d)\1{10}/', $cpf)) {
+        session()->flash('erro', 'CPF invalido');
         return false;
     }
 
@@ -46,6 +48,7 @@ class CpfValidate implements Rule
         }
         $d = ((10 * $d) % 11) % 10;
         if ($cpf[$c] != $d) {
+            session()->flash('erro', 'CPF invalido');
             return false;
         }
     }

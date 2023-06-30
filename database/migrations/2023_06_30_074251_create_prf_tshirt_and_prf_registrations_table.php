@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\PrfRegistration;
+use App\Models\PrfTshirt;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('log_payments', function (Blueprint $table) {
-            $table->dropColumn('method');
-            $table->string('status');
-            $table->string('id_transaction');
-            $table->string('id_payment');
+        Schema::create('prf_tshirt_and_prf_registrations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(PrfTshirt::class);
+            $table->foreignIdFor(PrfRegistration::class);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('prf_tshirt_and_prf_registrations');
     }
 };

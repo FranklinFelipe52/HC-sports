@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\PrfUser;
+use App\Models\StatusNotificatios;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('log_payments', function (Blueprint $table) {
-            $table->dropColumn('method');
-            $table->string('status');
-            $table->string('id_transaction');
-            $table->string('id_payment');
+        Schema::create('prf_actions_notifications', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(PrfUser::class);
+            $table->foreignIdFor(StatusNotificatios::class);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('prf_actions_notifications');
     }
 };

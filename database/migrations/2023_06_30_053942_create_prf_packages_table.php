@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('log_payments', function (Blueprint $table) {
-            $table->dropColumn('method');
-            $table->string('status');
-            $table->string('id_transaction');
-            $table->string('id_payment');
+        Schema::create('prf_packages', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome');
+            $table->string('descricao');
+            $table->integer('price');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('prf_packages');
     }
 };

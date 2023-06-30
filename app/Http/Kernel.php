@@ -58,6 +58,8 @@ class Kernel extends HttpKernel
         'redirect_admin_login' => \App\Http\Middleware\RedirectAdminLogin::class,
         'AuthUsers' => \App\Http\Middleware\AuthUsers::class,
         'AuthAdmins' => \App\Http\Middleware\AuthAdmins::class,
+        'AuthPrfUser' => \App\Http\Middleware\AuthPrfUser::class,
+        'PrfRedirectUserLogin' => \App\Http\Middleware\PrfRedirectUserLogin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\Checkout;
 use App\Models\ActionsNotificatios;
 use App\Models\log_payment;
+use App\Models\PrfLogPayments;
 use App\Models\registration;
 use App\Models\User;
 use Exception;
@@ -86,10 +87,53 @@ class CheckoutController extends Controller
             if($response->status() == 403 || $response->status() == 400 || $response->status() == 404){
                     return response('erro', $response->status());
             }
-           
-             $registration = registration::find($response['external_reference']);
+            if(explode('_', $response['external_reference'])[0] == 'PRF'){
+                $registration = registration::find(explode('_', $response['external_reference'])[1]);
+             $log_payment = new PrfLogPayments;
+
+
+             $log_payment->status = $response['status'];
+             $log_payment->id_payment = $payment_id;
+             $log_payment->prf_registration_id = $response['external_reference'];
+             $log_payment->amount = $response['transaction_amount'];
+             $log_payment->save();
              
+
+        if($response['status'] == 'approved'){
+             $registration->status_regitration_id = 1;
+             $registration->prf_payments->id_payment  =  $payment_id;
+             $registration->prf_payments->status_payment_id  = 1;
+             $registration->prf_payments->amount  = $response['transaction_amount'];
+             $registration->prf_payments->save();
+             $registration->save();
+         }
+
+         if($response['status'] == 'pending' || $response['status'] == 'rejected'){
+            if($registration->status_regitration_id != 1){
+                $registration->status_regitration_id = 3;
+                $registration->prf_payments->id_payment  =  $payment_id;
+                $registration->prf_payments->status_payment_id  = 3;
+                $registration->prf_payments->save();
+                $registration->save();
+            }
+             
+         }
+
+        if($response['status'] == 'in_process'){
+            if($registration->status_regitration_id != 1){
+            $registration->status_regitration_id = 2;
+            $registration->prf_payments->id_payment  =  $payment_id;
+            $registration->prf_payments->status_payment_id  = 3;
+            $registration->prf_payments->save();
+            $registration->save();
+            }
+        }
+
+            } else {
+            $registration = registration::find($response['external_reference']);
              $log_payment = new log_payment;
+
+
              $log_payment->status = $response['status'];
              $log_payment->id_payment =  $payment_id;
              $log_payment->registration_id = $response['external_reference'];
@@ -126,7 +170,8 @@ class CheckoutController extends Controller
             $registration->save();
             }
         }
-        
+            }
+             
          return response('ok', 200);
 
         } catch(Exception $e){

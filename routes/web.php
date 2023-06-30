@@ -20,6 +20,12 @@ use App\Http\Controllers\PasswordResetAdminController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PersonificationController;
+use App\Http\Controllers\PrfCartController;
+use App\Http\Controllers\PrfCheckoutController;
+use App\Http\Controllers\PrfDashboardController;
+use App\Http\Controllers\PrfHomeController;
+use App\Http\Controllers\PrfLoginController;
+use App\Http\Controllers\PrfRegistrationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RegistrationsAdminController;
 use App\Http\Controllers\RegistrationsUserController;
@@ -53,7 +59,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::redirect('/', '/login');
+Route::view('/', 'home');
 Route::get('/login', [loginController::class, 'create'])->name('GetLogin')->middleware('redirect_user_login');
 Route::post('/login', [loginController::class, 'store'])->name('PostLogin');
 Route::get('/logout', [loginController::class, 'logout']);
@@ -136,3 +142,24 @@ Route::view( '/admin/forgot_password_send','Auth.forgot_password_send_admin')->m
 Route::get('/admin/password_reset/{token}', [PasswordResetAdminController::class, 'create'])->middleware('redirect_admin_login');
 Route::post('/admin/password_reset', [PasswordResetAdminController::class, 'store']);
 
+
+
+
+
+
+
+/* PRF Routes* */
+
+
+Route::get('/PRF', [PrfHomeController::class, 'show']);
+Route::get('/PRF/cart/{category_id}/{package_id}', [PrfCartController::class, 'putCart']);
+Route::post('/PRF/cart/store', [PrfCartController::class, 'store']);
+Route::get('/PRF/inscricao', [PrfRegistrationController::class, 'create']);
+Route::post('/PRF/inscricao', [PrfRegistrationController::class, 'store']);
+Route::get('/PRF/dashboard', [PrfDashboardController::class, 'show'])->middleware('AuthPrfUser');
+Route::get('/PRF/checkout/{id}', [PrfCheckoutController::class, 'checkout'])->middleware('AuthPrfUser');
+Route::get('/PRF/notification_payment', [PrfCheckoutController::class, 'notification']);
+
+Route::get('/PRF/login', [PrfLoginController::class, 'create'])->middleware('PrfRedirectUserLogin');
+Route::post('/PRF/login', [PrfLoginController::class, 'store']);
+Route::get('/PRF/logout', [PrfLoginController::class, 'logout']);
