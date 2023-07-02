@@ -26,6 +26,7 @@ class PrfLoginController extends Controller
         if(!$user){
             return back()->with('erro', 'E-mail ou senha inválida');
         }
+        
 
         if(Hash::check($request->password, $user->password)){
             $request->session()->put('prf_user', $user);
