@@ -1,36 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+@extends('PRF.base')
 
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            @foreach ($categorys as $category)
-            @foreach ($packages as $package )
-            <div class="col-4">
-                <div class="card m-4" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$category->nome}} {{$package->nome}} </h5>
-                      <h6 class="card-subtitle mb-2 text-body-secondary">itens inclusos</h6>
+@section('title', 'Home')
+
+@section('content')
+
+  <div class="min-h-[100vh] flex flex-col justify-between">
+    <header class="border-b border-gray-5 py-2">
+      <div class="container mx-auto">
+        <div class="flex justify-between">
+          <a href="/">
+            <img src="/images/logo-hc.png" alt="">
+          </a>
+          {{-- <div class="relative w-full max-w-[200px]">
+            <button class="btn btn-secondary dropdown-toggle ms-auto flex gap-4 items-center hover:bg-gray-6 transition-all rounded-full p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/images/svg/user-circle.svg" alt="" class="rounded-full w-8 h-8 object-cover">
+              <p class="font-bold text-gray-1 text-sm font-poppins hidden sm:block">
+                Usuário da Silva
+              </p>
+            </button>
+            <ul class="dropdown-menu absolute right-0 shadow-sm w-full mt-2 bg-white rounded-lg border py-2">
+              <li>
+                <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
+                  <span class="text-gray-1 font-medium ">
+                    Veja nosso site
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
+                  <span class="text-brand-v1 font-medium ">
+                    Sair
+                  </span>
+                  <img src="/images/svg/logout.svg" alt="">
+                </a>
+              </li>
+            </ul>
+          </div> --}}
+        </div>
+      </div>
+    </header>
+
+    <main class="container grow pt-6 pb-32">
+      <img src="/images/PRF/colabore-mobile.png" class="md:hidden w-full" alt="">
+      <img src="/images/PRF/colabore.png" class="hidden md:block w-full" alt="">
+      <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
+        <div class="order-2 lg:order-1">
+          <div class="mb-12">
+            <h2 class="text-xl font-bold text-gray-1 mb-6">
+              A Corrida
+            </h2>
+
+            <div class="space-y-4 text-gray-1 text-sm">
+              <p>
+                Com provas de 21Km, 10Km e 5Km, a MEIA MARATONA PRF 191 é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
+              </p>
+
+              <p>
+                É a única prova no Rio Grande do Norte que possibilita o atleta a usar a BR para correr com total segurança, o que valoriza ainda mais a participação dos atletas, que buscam sempre provas com diferenciais importantes na realização.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold text-gray-1 mb-6">
+              Fotos
+            </h3>
+
+            <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
+                <img src="/images/PRF/foto-1.png" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
+                <img src="/images/PRF/foto-2.png" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="md:row-span-2 md:col-span-2 rounded-md overflow-hidden">
+                <img src="/images/PRF/foto-4.png" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="row-span-1 md:col-span-2 rounded-md overflow-hidden">
+                <img src="/images/PRF/foto-3.png" class="w-full h-full object-cover" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h1 class="text-xl font-bold text-gray-1 mb-6">
+            Opções de inscrição
+          </h1>
+          @foreach ($categorys as $category)
+            @foreach ($packages as $package)
+              <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
+                <div class="flex flex-wrap justify-between">
+                  <div class="mb-3.5">
+                    <p class="font-semibold text-gray-1 text-base">
+                      {{ $category->nome }} {{ $package->nome }}
+                    </p>
+                  </div>
+                  <div class="">
+                    <p class="text-brand-v1 text-1.5xl w-full text-end">
+                      <span class="text-sm">
+                        R$
+                      </span>
+                      {{ number_format($category->price + $package->price, 2, ',', '.') }}
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap justify-between items-end gap-4">
+                  <div class="">
+                    <p class="font-normal text-xs text-gray-1 mb-3.5">
+                      Itens inclusos
+                    </p>
+                    <div class="text-gray-1 text-xs font-bold list__options">
                       {!! html_entity_decode($package->descricao) !!}
-                      <p>R$ {{ number_format($category->price + $package->price,2,",","."); }}</p>
-                      <a href="/PRF/cart/{{$category->id}}/{{$package->id}}" class="card-link">Realizar Inscrição</a>
                     </div>
                   </div>
-            </div>
+                  <div>
+                    <a href="/PRF/cart/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                      Realizar Inscrição
+                    </a>
+                  </div>
+                </div>
+              </div>
             @endforeach
-           
-        @endforeach
+          @endforeach
         </div>
-       
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
-</html>
+      </div>
+    </main>
+
+    @include('PRF.Components.footer')
+  </div>
+@endsection

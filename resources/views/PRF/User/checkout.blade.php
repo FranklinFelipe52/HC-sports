@@ -1,66 +1,46 @@
 @php
+  require base_path('vendor/autoload.php');
+  MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
 
-            require base_path('vendor/autoload.php');
-            MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+  $preference = new MercadoPago\Preference();
 
-            $preference = new MercadoPago\Preference();
-
-            // Cria um item na preferência
-            $item = new MercadoPago\Item();
-            $item->title = $registration['title'];
-            $item->quantity = 1;
-            $item->unit_price = $registration['pricePackage'] + $registration['priceTshirts'];
-            $preference->items = array($item);
-            $preference->back_urls = array(
-                "success" => config('services.mercadopago.url_base')."/PRF/notification_payment",
-                "failure" => config('services.mercadopago.url_base')."/PRF/notification_payment",
-                "pending" => config('services.mercadopago.url_base')."/PRF/notification_payment"
-            );
-            $preference->auto_return = "approved";
-            $preference->payment_methods = array(
-                "excluded_payment_types" => array(
-                  array("id" => "ticket")
-                ),
-                "installments" => 4
-              );
-            $preference->external_reference = 'PRF_'.$registration['id'];
-            $preference->save();
+  // Cria um item na preferência
+  $item = new MercadoPago\Item();
+  $item->title = $registration['title'];
+  $item->quantity = 1;
+  $item->unit_price = $registration['pricePackage'] + $registration['priceTshirts'];
+  $preference->items = [$item];
+  $preference->back_urls = [
+      'success' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
+      'failure' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
+      'pending' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
+  ];
+  $preference->auto_return = 'approved';
+  $preference->payment_methods = [
+      'excluded_payment_types' => [['id' => 'ticket']],
+      'installments' => 4,
+  ];
+  $preference->external_reference = 'PRF_' . $registration['id'];
+  $preference->save();
 @endphp
 
+@extends('PRF.base')
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+@section('title', 'Home')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atleta - Pagamento</title>
-
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
-
-
+@section('content')
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('PRF.components.header');
+      @include('PRF.Components.menu_lateral');
     </div>
 
     <!-- Conteúdo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-     
+
       <div class="container h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->
@@ -72,12 +52,12 @@
               </a>
             </div>
             <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
-            <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
+            <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
               Pagamento
             </div>
           </nav>
           <div class="flex gap-4 items-center flex-wrap">
-            <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+            <h1 class="text-lg text-gray-1 font-poppins font-semibold italic">
               Você está realizando o pagamento da inscrição com o Mercado Pago
             </h1>
           </div>
@@ -129,43 +109,44 @@
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
-                  {!! html_entity_decode($registration['descricao']) !!}
+                  {!! html_entity_decode($registration['title']) !!}
                 </p>
               </div>
             </div>
-           
-              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                <div class="col-span-2 sm:col-span-1">
-                  <p class="text-sm text-gray-1 font-semibold">
-                    Categoria
-                  </p>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                  <p class="text-sm text-gray-2 font-normal">
-                    {{ $registration['category'] }}
-                  </p>
-                </div>
-              </div>
-             
-            @if ($registration['status_registration']->id != 2)
+
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-1 font-semibold">
-                  Valor
+                  Categoria
                 </p>
               </div>
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-2 font-normal">
-                  R${{ number_format($registration['pricePackage'] + $registration['priceTshirts'],2,",","."); }}
+                  {{ $registration['category'] }}
                 </p>
               </div>
             </div>
+
+            @if ($registration['status_registration']->id != 2)
+              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-1 font-semibold">
+                    Valor
+                  </p>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                  <div class="bg-gray-6 w-fit py-2 px-4 rounded-md">
+                    <p class="text-sm text-gray-1 font-bold">
+                      R${{ number_format($registration['pricePackage'] + $registration['priceTshirts'], 2, ',', '.') }}
+                    </p>
+                  </div>
+                </div>
+              </div>
             @endif
           </div>
           <div class="flex flex-wrap justify-end">
-            
-            @if (($registration['status_registration']->id != 2) && ($registration['status_registration']->id != 1))
-            <div id="wallet_container"></div>
+            @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
+              <div id="wallet_container"></div>
             @endif
           </div>
         </div>
@@ -177,20 +158,20 @@
   <!-- js -->
   <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    const mp = new MercadoPago("{{config('services.mercadopago.key')}}");
+    const mp = new MercadoPago("{{ config('services.mercadopago.key') }}");
 
-      mp.bricks().create("wallet", "wallet_container", {
-    initialization: {
-        preferenceId: "{{$preference->id}}",
+    mp.bricks().create("wallet", "wallet_container", {
+      initialization: {
+        preferenceId: "{{ $preference->id }}",
 
-    },
-    customization: {
-      texts: {
+      },
+      customization: {
+        texts: {
           action: 'pay',
           valueProp: 'security_details',
+        },
       },
- },
-  });
+    });
   </script>
   <script type="module" src="/frontend/dist/js/index.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -215,7 +196,7 @@
           color: "#279424",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
 
@@ -231,10 +212,19 @@
           color: "#8E1014",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
-  </script>
-</body>
 
-</html>
+    /* const walletContainer = document.querySelector('#wallet_container');
+    const mpButton = walletContainer.querySelector('div');
+    walletContainer.addEventListener('click', (e) => {
+      showSuccessToastfy('Aguarde, estamos salvando seus dados');
+      setTimeout(() => {
+        mpButton.click();
+        console.log(mpButton)
+      }, 1500)
+    }); */
+  </script>
+
+@endsection

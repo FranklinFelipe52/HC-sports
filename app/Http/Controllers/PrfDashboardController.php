@@ -33,10 +33,10 @@ class PrfDashboardController extends Controller
                     'pace' => $registration->prf_pace->nome
                 ]);
             }
-            
+
 
             
-            return view('PRF.user.dashboard', [
+            return view('PRF.User.dashboard', [
                 'registrations' => $registrations,
             ]);
         } catch (Exception $e){

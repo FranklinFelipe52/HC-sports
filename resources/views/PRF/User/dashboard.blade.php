@@ -1,4 +1,4 @@
-@extends('PRF.user.base')
+@extends('PRF.base')
 
 @section('title', 'Dashboard')
 
@@ -6,72 +6,117 @@
 
 @section('content')
 
-<style>
-  li{
-    font-size: 14px;
-  }
-</style>
-<!-- grid principal -->
-<div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+  <style>
+    li {
+      font-size: 14px;
+    }
+  </style>
+  <!-- grid principal -->
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
 
-  <!-- Menu lateral -->
-  <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-    @include('PRF.components.header');
-  </div>
+    <!-- Menu lateral -->
+    <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
+      @include('PRF.Components.menu_lateral');
+    </div>
 
-  <!-- corpo da página -->
-  <div class="order-1 sm:order-2 overflow-hidden">
-    <div class="h-full w-full flex flex-col overflow-auto pb-8">
+    <!-- corpo da página -->
+    <div class="order-1 sm:order-2 overflow-hidden">
+      <div class="h-full w-full flex flex-col overflow-auto pb-8">
 
-      <!-- Cabeçalho -->
-      <header class="pt-8 pb-6 space-y-6">
+        <!-- Cabeçalho -->
+        <header class="sm:pt-8 pb-6">
+          <div class="bg-brand-prfA1 sm:hidden">
+            <a href="/PRF/dashboard">
+              <img src="/images/PRF/logo-prf.png" alt="">
+            </a>
+          </div>
+          <div class="container mt-6 sm:mt-0">
+            <h1 class="text-lg text-gray-1 font-poppins font-semibold">
+              Inscrições realizadas
+            </h1>
+          </div>
+        </header>
+
+
         <div class="container">
-          
-          <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-            Inscrições realizadas
-          </h1>
-        </div>
-      </header>
-
-
-      <div class="container">
-        <div class="row">
-          @foreach ($registrations as $registration)
-          <div class="col-4">
-            <div class="card m-4 border border-1 p-3" style="width: 18rem;">
-              <div class="card-body">
-                <div class="flex flex-row justify-between mb-4">
-                  <h5 class="card-title">{{$registration['title']}} </h5>
-                  <div class="@if ($registration['status_registration']->id == 1) bg-feedback-green-1 @elseif ($registration['status_registration']->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                    <p class="text-white text-[0.5rem] font-bold text-center">
-                      {{ $registration['status_registration']->status }}
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            @foreach ($registrations as $registration)
+              <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
+                <div class="flex flex-wrap justify-between border-b border-gray-5 mb-4">
+                  <div class="mb-3.5 flex items-center flex-wrap gap-2">
+                    <p class="font-semibold text-gray-1 text-base">
+                      {{ $registration['title'] }}
+                    </p>
+                    <div class="@if ($registration['status_registration']->id == 1) bg-feedback-green-1 @elseif ($registration['status_registration']->id == 3) bg-brand-prfA1 @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold text-center">
+                        {{ $registration['status_registration']->status }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p class="text-brand-v1 font-bold text-1.5xl w-full text-end">
+                      <span class="text-sm">
+                        R$
+                      </span>
+                      <?= number_format($registration['pricePackage'] + $registration['priceTshirts'], 2, ',', '.') ?>
                     </p>
                   </div>
                 </div>
-                <p>R$ {{ number_format($registration['pricePackage'],2,",","."); }} {{$registration['priceTshirts'] != 0 ? ' + '.$registration['priceTshirts'] : '' }}</p>
-                <h6 class="card-subtitle mb-2 text-body-secondary">itens inclusos</h6>
-                {!! html_entity_decode($registration['descricao']) !!}
-                <h6 class="card-subtitle mb-2 text-body-secondary">Camiseta: {{ $registration['size_tshirt']}}</h6>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Equipe: {{ $registration['equipe']}}</h6>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Pelotão: {{ $registration['pace']}}</h6>
-                <button  onclick="window.open('/PRF/checkout/{{$registration['id']}}', '_self')" class="text-xs font-semibold text-white bg-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                  Realizar Pagamento
-                </button>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                  <div>
+                    <p class="text-xs text-gray-1">
+                      Equipe:
+                    </p>
+                    <p>
+                      {{ $registration['equipe'] }}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-1">
+                      Camiseta:
+                    </p>
+                    <p>
+                      {{ $registration['size_tshirt'] }}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-1">
+                      Pelotão:
+                    </p>
+                    <p>
+                      {{ $registration['pace'] }}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-1 mb-2">
+                      Itens inclusos:
+                    </p>
+                    <div class="list__options font-bold text-xs text-gray-1">
+                      {!! html_entity_decode($registration['descricao']) !!}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-between flex-wrap gap-4">
+                  {{-- <a href="/PRF/checkout/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
+                    Detalhes
+                    <img src="/images/PRF/svg/chevron-left.svg" alt="">
+                  </a> --}}
+                  <span></span>
+                  <a href="/PRF/checkout/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                    Realizar Pagamento
+                    <img src="/images/PRF/svg/credit-card.svg" alt="">
+                  </a>
+                  </button>
+                </div>
               </div>
-            </div>
+            @endforeach
           </div>
-         
-      @endforeach
+        </div>
       </div>
-      </div>
-      <!-- conteúdo -->
-      
-    
     </div>
   </div>
-</div>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');
@@ -114,5 +159,3 @@
     }
   </script>
 @endsection
-
-

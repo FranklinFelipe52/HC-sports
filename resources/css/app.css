@@ -4,7 +4,7 @@
 
 * {
     font-family: "Open Sans";
-    scrollbar-color: #0095d9 #f0f0f0;
+    scrollbar-color: #000E4B #f0f0f0;
     scrollbar-width: 8px;
 }
 
@@ -14,13 +14,13 @@
     width: 16px;
     height: 16px;
     background: #fff;
-    border: 1px solid #0095d9;
+    border: 1px solid #000E4B;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .checkbox:checked {
-    background-color: #0095d9;
+    background-color: #000E4B;
     background-image: url(/images/svg/checked.svg);
     background-repeat: no-repeat;
     background-position: center center;
@@ -36,7 +36,7 @@ input[type="radio"] {
     @apply block rounded-full bg-white cursor-pointer;
     width: 16px;
     height: 16px;
-    border: 1.5px solid #0095d9;
+    border: 1.5px solid #000E4B;
     position: relative;
     flex-shrink: 0;
 }
@@ -57,7 +57,7 @@ input[type="radio"]:checked::after {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #0095d9;
+    background-color: #000E4B;
     border-radius: 21px;
 }
 
@@ -102,7 +102,7 @@ input[type="radio"]:checked::after {
 .pagination .page-item:first-child,
 .pagination .page-item:last-child {
     padding: 0.2rem 0.4rem;
-    background-color: #0095d9;
+    background-color: #000E4B;
     border-radius: 6px;
 }
 
@@ -123,4 +123,27 @@ body .toastify button.toast-close {
 
 [data-accordion="body"].expanded {
     transition: max-height 0.3s ease-in-out;
+}
+
+.list__options ul {
+    list-style: disc;
+    padding-left: 16px;
+}
+
+.list__options ul li {
+    margin-bottom: 4px;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+@media (max-width: 300px) {
+    #wallet_container {
+        transform: scale(0.7);
+    }
 }

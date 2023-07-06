@@ -1,43 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('PRF.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+@section('title', 'Entrar no sistema - Meia Maratona PRF')
 
-  {{-- favicon --}}
-  <link rel="icon" href="/favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+@section('content')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- css -->
-  <link rel="stylesheet" href="/css/app.css">
-</head>
-
-<body class="h-screen">
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/PRF/">
-            <img src="/images/Olimpiadas-Concad.png" alt="" />
+            <img src="/images/PRF/logo-prf.png" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-v1 font-poppins">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-prfA1 font-poppins">
               Faça login
             </h1>
-            <div class="bg-brand-a1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
+            <div class="bg-brand-prfA1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
           </div>
           <p class="text-sm font-normal text-gray-1">
-            Para acessar o seu painel do atleta.
+            Para acessar o painel do usuário
           </p>
         </div>
         <div class="hidden lg:block p-8"></div>
@@ -58,7 +41,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="login_email_field">
                   E-mail
                 </label>
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="login_email_field" name="email" placeholder="Digite o seu e-mail" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="login_email_field" name="email" placeholder="Digite o seu e-mail" />
 
                 @error('email')
                   <div class="absolute bg-white top-[50%] right-3">
@@ -75,7 +58,7 @@
                 Senha
               </label>
               <div class="relative group @error('password') error @enderror">
-                <input id="input_password_login" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
+                <input id="input_password_login" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
                 @error('password')
                   <p class="text-input-error text-sm pt-2">{{ $message }}</p>
                 @enderror
@@ -86,34 +69,25 @@
                       <img src="/images/svg/eye-off-error.svg" alt="" class="block group-[.show]:hidden" />
                     </button>
                     <button type="button" data-inputId="input_password_login" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6 transition w-8 h-8 flex group-[.error]:hidden justify-center items-center rounded-full group">
-                      <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                      <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                      <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                      <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-            <a href="/forgot_password" class="block pb-1 text-sm font-normal text-brand-a1 underline">
-              Esqueci minha senha
-            </a>
+            <div>
+              <a href="/forgot_password" class="block pb-1 text-sm font-normal text-brand-prfA1 underline">
+                Esqueci minha senha
+              </a>
+            </div>
           </div>
-          <button id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+          <button id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
             <p class="text-white text-sm font-bold font-poppins">
               Entrar
             </p>
           </button>
         </form>
-        @if (session('erro'))
-          <div class="group error w-full">
-            <div class="flex items-center gap-8 px-4 py-3 rounded group-[.success]:bg-alert-success-fill group-[.error]:bg-alert-error-fill group-[.error]:text-alert-error-base group-[.success]:text-alert-success-base">
-              <div class="grow">
-                <p class="text-sm">
-                  {{ session('erro') }}
-                </p>
-              </div>
-            </div>
-          </div>
-        @endif
       </div>
     </div>
   </div>
@@ -162,6 +136,4 @@
       }).showToast();
     }
   </script>
-</body>
-
-</html>
+@endsection
