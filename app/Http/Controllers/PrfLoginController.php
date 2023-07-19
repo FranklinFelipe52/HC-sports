@@ -30,7 +30,7 @@ class PrfLoginController extends Controller
 
         if(Hash::check($request->password, $user->password)){
             $request->session()->put('prf_user', $user);
-            return redirect('/PRF/dashboard');
+            return redirect('/dashboard');
         } else {
             return back()->with('erro', 'E-mail ou senha inválida');
         }
@@ -41,6 +41,6 @@ class PrfLoginController extends Controller
             $request->session()->forget('prf_user');
         }
 
-        return redirect('/PRF/login');
+        return redirect('/login');
     }
 }

@@ -20,7 +20,7 @@
       'excluded_payment_types' => [['id' => 'ticket']],
       'installments' => 4,
   ];
-  $preference->external_reference = 'PRF_' . $registration['id'];
+  $preference->external_reference = $registration['id'];
   $preference->save();
 @endphp
 
@@ -47,7 +47,7 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/PRF/dashboard" class="text-xs text-gray-1 block hover:underline">
+              <a href="/dashboard" class="text-xs text-gray-1 block hover:underline">
                 Dashboard
               </a>
             </div>
@@ -144,7 +144,10 @@
               </div>
             @endif
           </div>
-          <div class="flex flex-wrap justify-end">
+          <div style="align-items: center" class="flex flex-wrap justify-between">
+            <a href="/registration/update/{{$registration['id']}}"  class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-4 px-3.5 w-full max-w-[220px]">
+              Editar
+            </a>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
               <div id="wallet_container"></div>
             @endif

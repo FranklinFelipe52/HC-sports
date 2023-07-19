@@ -26,7 +26,7 @@
         <!-- Cabeçalho -->
         <header class="sm:pt-8 pb-6">
           <div class="bg-brand-prfA1 sm:hidden">
-            <a href="/PRF/dashboard">
+            <a href="/dashboard">
               <img src="/images/PRF/logo-prf.png" alt="">
             </a>
           </div>
@@ -102,7 +102,7 @@
                     <img src="/images/PRF/svg/chevron-left.svg" alt="">
                   </a> --}}
                   <span></span>
-                  <a href="/PRF/checkout/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                  <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                     Realizar Pagamento
                     <img src="/images/PRF/svg/credit-card.svg" alt="">
                   </a>

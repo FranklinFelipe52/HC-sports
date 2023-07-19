@@ -1,6 +1,6 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
-    <a href="/PRF/dashboard" class="block overflow-hidden rounded-lg">
+    <a href="/dashboard" class="block overflow-hidden rounded-lg">
       <img src="/images/PRF/logo-prf-2.png" alt="">
     </a>
   </div>
@@ -10,7 +10,7 @@
   <nav class="my-auto">
     <ul class="flex justify-around sm:flex-col sm:gap-5">
       <li class="group @yield('homeClass')">
-        <a href="/PRF/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+        <a href="/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/home-outline.svg" class="w-full h-full object-cover" alt="">
           </div>
@@ -31,7 +31,7 @@
 
   <hr class="hidden sm:block border-gray-6 my-4">
 
-  <a href="/PRF/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+  <a href="/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
       <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
     </div>

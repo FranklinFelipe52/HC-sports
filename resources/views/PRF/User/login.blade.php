@@ -8,7 +8,7 @@
     <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/PRF/">
+          <a href="/">
             <img src="/images/PRF/logo-prf.png" alt="" />
           </a>
         </header>

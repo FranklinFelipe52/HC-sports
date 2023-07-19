@@ -19,7 +19,7 @@ class PrfHomeController extends Controller
           ]);
 
         } catch(Exception $e){
-
+            dd($e);
         }
     }
 }
