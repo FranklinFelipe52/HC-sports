@@ -31,6 +31,24 @@
     filter: grayscale(1);
 }
 
+.prf-checkbox {
+    all: unset;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 2px solid #000e4b;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.prf-checkbox:checked {
+    background-color: transparent;
+    background-image: url(/images/PRF/svg/checked.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 input[type="radio"] {
     all: unset;
     @apply block rounded-full bg-white cursor-pointer;

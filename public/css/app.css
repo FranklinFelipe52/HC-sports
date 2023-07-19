@@ -653,6 +653,10 @@ video {
   grid-column: span 1 / span 1;
 }
 
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -1289,6 +1293,10 @@ video {
   gap: 1rem;
 }
 
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .gap-6 {
   gap: 1.5rem;
 }
@@ -1893,6 +1901,10 @@ video {
   text-align: end;
 }
 
+.font-open-sans {
+  font-family: 'Open Sans', 'sans-serif';
+}
+
 .font-poppins {
   font-family: Poppins;
 }
@@ -2077,6 +2089,11 @@ video {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.text-gray-8 {
+  --tw-text-opacity: 1;
+  color: rgb(117 117 117 / var(--tw-text-opacity));
+}
+
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -2085,6 +2102,11 @@ video {
 .text-input-error {
   --tw-text-opacity: 1;
   color: rgb(205 25 30 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -2180,6 +2202,24 @@ video {
 
 .checkbox:disabled {
   filter: grayscale(1);
+}
+
+.prf-checkbox {
+  all: unset;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid #000e4b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.prf-checkbox:checked {
+  background-color: transparent;
+  background-image: url(/images/PRF/svg/checked.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 input[type="radio"] {
@@ -2696,6 +2736,14 @@ body .toastify button.toast-close {
     grid-column: span 1 / span 1;
   }
 
+  .sm\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .sm\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -2840,6 +2888,18 @@ body .toastify button.toast-close {
 }
 
 @media (min-width: 768px) {
+  .md\:order-1 {
+    order: 1;
+  }
+
+  .md\:order-2 {
+    order: 2;
+  }
+
+  .md\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -3012,6 +3072,10 @@ body .toastify button.toast-close {
 
   .lg\:col-span-6 {
     grid-column: span 6 / span 6;
+  }
+
+  .lg\:col-span-9 {
+    grid-column: span 9 / span 9;
   }
 
   .lg\:row-span-2 {
