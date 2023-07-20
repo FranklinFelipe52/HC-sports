@@ -13,6 +13,8 @@ module.exports = {
                     a1: "#0095D9",
                     a2: "#2F80ED",
                     v1: "#FF161F",
+                    v2: "#F04124",
+                    prfA1: "#000E4B",
                 },
                 fill: {
                     base: "#F7F7F7",
@@ -24,6 +26,8 @@ module.exports = {
                     4: "#BDBDBD",
                     5: "#E0E0E0",
                     6: "#F2F2F2",
+                    7: "#D6E4EE",
+                    8: "#757575",
                 },
                 feedback: {
                     green: {

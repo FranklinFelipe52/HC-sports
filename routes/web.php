@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::redirect('/', '/login');
+Route::view('/', 'home');
 Route::get('/login', [loginController::class, 'create'])->name('GetLogin')->middleware('redirect_user_login');
 Route::post('/login', [loginController::class, 'store'])->name('PostLogin');
 Route::get('/logout', [loginController::class, 'logout']);
