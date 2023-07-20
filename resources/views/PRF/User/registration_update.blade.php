@@ -82,13 +82,13 @@
                     </div>
                   </div>
                   <div class="mb-6">
-                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pace_field">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_category_field">
                       Distancia
                     </label>
                     <div class="relative">
-                      <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="category" id="inscricao_category_field">
+                      <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="category" id="inscricao_category_field">
                         @foreach ($categorys as $category)
-                          <option @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }}>{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
+                          <option @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -97,13 +97,13 @@
                     </div>
                   </div>
                   <div class="mb-6">
-                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pace_field">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_package_field">
                       Pacote
                     </label>
                     <div class="relative">
-                      <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="package" id="inscricao_package_field">
+                      <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="package" id="inscricao_package_field">
                         @foreach ($packages as $package)
-                          <option @if ($package->id == $registration->prf_package_id) @selected(true) @endif value={{ $package->id }}>{{ $package->nome }} (R$ {{ number_format($package->price, 2, ',', '.') }})</option>
+                          <option @if ($package->id == $registration->prf_package_id) @selected(true) @endif value={{ $package->id }} data-item-value="{{ $package->price }}">{{ $package->nome }} (R$ {{ number_format($package->price, 2, ',', '.') }})</option>
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -121,12 +121,12 @@
                           <div class="py-4 flex gap-4">
                             <div class="flex items-center">
                               <input @foreach ($registration->tshirts as $tshirt_registration)
-                            @if ($tshirt_registration->id == $tshirt->id) @checked(true) @endif @endforeach class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault">
+                            @if ($tshirt_registration->id == $tshirt->id) @checked(true) @endif @endforeach class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" data-item="checkbox" data-item-value="{{ $tshirt->price }}" id="flexCheckDefault">
                             </div>
                             <div class="flex flex-col gap-4 md:flex-row">
-                              <div>
+                              {{-- <div>
                                 <img src="/images/PRF/inscricao.png" alt="">
-                              </div>
+                              </div> --}}
                               <div class="">
                                 <p class="text-gray-1 text-sm">
                                   {{ $tshirt->nome }}
@@ -154,16 +154,25 @@
                           </div>
                         </div> --}}
                       @endforeach
+                    </div>
                   </div>
-              </div>
-              </div>
-              <div class="flex gap-4 flex-wrap">
-                <button type="submit" class="flex items-center justify-center gap-4 px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-                  <p class="text-white text-sm font-bold font-poppins">
-                    Salvar alterações
-                  </p>
-                </button>
-              </div>
+                </div>
+                <div class="flex justify-between gap-4 flex-wrap">
+                  <div>
+                    <p class="text-gray-1">
+                      Valor total:
+                      <span class="font-bold text-sm text-brand-v2">
+                        R$
+                        <span id="valorTotal" class="text-xl"></span>
+                      </span>
+                    </p>
+                  </div>
+                  <button type="submit" class="flex items-center justify-center gap-4 px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Salvar alterações
+                    </p>
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -194,7 +203,7 @@
           color: "#279424",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
 
@@ -210,8 +219,51 @@
           color: "#8E1014",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
+
+    const valorTotalEl = document.querySelector('#valorTotal');
+    let valorTotal = 0;
+    const valoresArray = Array.from(document.querySelectorAll('[data-item]'));
+
+    valoresArray.forEach(i => {
+      i.addEventListener('change', handleValorChange);
+      if (i.dataset.item == 'select') {
+        const indiceSelecionado = i.selectedIndex;
+        const opcaoSelecionada = i.options[indiceSelecionado];
+        valorTotal += Number(opcaoSelecionada.dataset.itemValue);
+      } else if (i.dataset.item == 'checkbox') {
+        if (i.checked) {
+          valorTotal += Number(i.dataset.itemValue);
+        }
+      }
+    });
+
+    function handleValorChange(event) {
+      valorTotal = 0;
+      valoresArray.forEach(i => {
+        i.addEventListener('change', handleValorChange);
+        if (i.dataset.item == 'select') {
+          const indiceSelecionado = i.selectedIndex;
+          const opcaoSelecionada = i.options[indiceSelecionado];
+          valorTotal += Number(opcaoSelecionada.dataset.itemValue);
+        } else if (i.dataset.item == 'checkbox') {
+          if (i.checked) {
+            valorTotal += Number(i.dataset.itemValue);
+          }
+        }
+      });
+      updateTotalValue();
+    }
+
+    function updateTotalValue() {
+      valorTotalEl.innerText = valorTotal.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    updateTotalValue();
   </script>
 @endsection
