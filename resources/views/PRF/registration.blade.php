@@ -43,31 +43,28 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cpf_field">
                 CPF
               </label>
-              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{old('cpf')}}" />
-              @error('cpf')
-              <p class="text-danger">{{ $message }}</p>
-            @enderror
+              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{ old('cpf') }}" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_nome_completo_field">
                 Nome completo
               </label>
-              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome"  value="{{old('nome')}}" placeholder="Digite o seu nome completo" />
-              
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
+
             </div>
             <div>
               <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
                 Nascimento
               </label>
               <div class="relative">
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_date_field" name="data_nasc"  value="{{old('data_nasc')}}" placeholder="yyyy-mm-dd" />
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>
               </div>
               @error('data_nasc')
-              <p class="text-danger">{{ $message }}</p>
-            @enderror
+                <p class="text-red-600">{{ $message }}</p>
+              @enderror
             </div>
             <div class="mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_genero_field">
@@ -75,8 +72,8 @@
               </label>
               <div class="relative">
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option @if(old('sexo') == 'M') @selected(true) @endif value="M">Masculino</option>
-                  <option @if(old('sexo') == 'F') @selected(true) @endif value="F">Feminino</option>
+                  <option @if (old('sexo') == 'M') @selected(true) @endif value="M">Masculino</option>
+                  <option @if (old('sexo') == 'F') @selected(true) @endif value="F">Feminino</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/PRF/svg/chevron-down.svg" alt="" />
@@ -93,21 +90,21 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Distância
               </label>
-              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{$category->nome}}" />
+              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{ $category->nome }}" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Pacote
               </label>
-              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{$package->nome}}" />
+              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{ $package->nome }}" />
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Equipe
               </label>
-              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="equipe"  value="{{old('equipe')}}" placeholder="Digite o nome da sua equipe" />
+              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="equipe" value="{{ old('equipe') }}" placeholder="Digite o nome da sua equipe" />
               @error('equipe')
-                <p class="text-danger">{{ $message }}</p>
+                <p class="text-red-600">{{ $message }}</p>
               @enderror
             </div>
             <div class="mb-6">
@@ -117,9 +114,9 @@
               <div class="relative">
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="size_tshirt" id="inscricao_size_tshirt_field">
                   <option selected value>Selecione</option>
-                  <option @if(old('size_tshirt') == 'M') @selected(true) @endif  value="M">M</option>
-                  <option @if(old('size_tshirt') == 'G') @selected(true) @endif value="G">G</option>
-                  <option @if(old('size_tshirt') == 'GG') @selected(true) @endif value="GG">GG</option>
+                  <option @if (old('size_tshirt') == 'M') @selected(true) @endif value="M">M</option>
+                  <option @if (old('size_tshirt') == 'G') @selected(true) @endif value="G">G</option>
+                  <option @if (old('size_tshirt') == 'GG') @selected(true) @endif value="GG">GG</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/PRF/svg/chevron-down.svg" alt="" />
@@ -134,7 +131,7 @@
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="pace" id="inscricao_pace_field">
                   <option selected value>Selecione</option>
                   @foreach ($paces as $pace)
-                    <option @if(old('pace') == $pace->id) @selected(true) @endif value={{ $pace->id }}>{{ $pace->nome }}</option>
+                    <option @if (old('pace') == $pace->id) @selected(true) @endif value={{ $pace->id }}>{{ $pace->nome }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -148,22 +145,41 @@
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
-            <div class="col-12 border border-1">
-              <div class="d-flex flex-column gap-2">
-                  @foreach ($tshirts as  $tshirt)
-                  <div class="card m-4 flex-row p-3 " style="width: 25rem;">
-                      <div class="form-check d-flex justify-content-center align-items-center">
-                          <input class="form-check-input" type="checkbox" name="tshirts[]" value="{{$tshirt->id}}" id="flexCheckDefault">
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">{{$tshirt->nome}}</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">itens incluídos: {{$tshirt->descricao}}</h6>
-                        <p>R$ {{ number_format($tshirt->price,2,",","."); }}</p>
-                      </div>
+            <div class="space-y-4">
+              @foreach ($tshirts as $tshirt)
+                <div class="border rounded border-gray-5 p-2">
+                  <div class="py-4 flex gap-4">
+                    <div class="flex items-center">
+                      <input data-tshirt-value="{{ number_format($tshirt->price, 2) }}" class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault">
                     </div>
-                  @endforeach
-              </div>
-          </div>
+                    {{-- <div>
+                      <img src="/images/PRF/inscricao.png" alt="">
+                    </div> --}}
+                    <div class="">
+                      <p class="text-gray-1 text-sm">
+                        {{ $tshirt->nome }}
+                      </p>
+                      <p class="text-dark-1 text-sm font-bold mb-2">
+                        R$ {{ number_format($tshirt->price, 2, ',', '.') }}
+                      </p>
+                      <p class="text-gray-1 text-xs">
+                        <span class="text-gray-8">Itens inclusos:</span> {{ $tshirt->descricao }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {{-- <div class="card m-4 flex-row p-3 " style="width: 25rem;">
+                  <div class="form-check d-flex justify-content-center align-items-center">
+                    <input class="form-check-input" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ $tshirt->nome }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">itens incluídos: {{ $tshirt->descricao }}</h6>
+                    <p>R$ {{ number_format($tshirt->price, 2, ',', '.') }}</p>
+                  </div>
+                </div> --}}
+              @endforeach
+            </div>
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de login
@@ -174,10 +190,10 @@
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">
                 E-mail
               </label>
-              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="cadastro_email_field" placeholder="Digite o seu E-mail" name="email"  value="{{old('email')}}" />
+              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="cadastro_email_field" placeholder="Digite o seu E-mail" name="email" value="{{ old('email') }}" />
               @error('email')
-              <p class="text-danger">{{ $message }}</p>
-            @enderror
+                <p class="text-red-600">{{ $message }}</p>
+              @enderror
             </div>
             <div>
               <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha">
@@ -192,9 +208,9 @@
                   </button>
                 </div>
                 @error('password')
-                <p class="text-danger">{{ $message }}</p>
-              @enderror
-                <div>
+                  <p class="text-red-600">{{ $message }}</p>
+                @enderror
+                <div class="text-gray-1 text-sm mt-2">
                   <p>
                     a senha deve ter:
                   </p>
@@ -306,8 +322,8 @@
 
     new Cleave('#cadastro_date_field', {
       date: true,
-    delimiter: '-',
-    datePattern: ['Y', 'm', 'd']
-});
+      delimiter: '-',
+      datePattern: ['Y', 'm', 'd']
+    });
   </script>
 @endsection

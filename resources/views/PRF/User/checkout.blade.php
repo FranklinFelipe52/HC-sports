@@ -144,10 +144,12 @@
               </div>
             @endif
           </div>
-          <div style="align-items: center" class="flex flex-wrap justify-between">
-            <a href="/registration/update/{{$registration['id']}}"  class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-4 px-3.5 w-full max-w-[220px]">
-              Editar
-            </a>
+          <div style="align-items: top" class="flex flex-wrap justify-between">
+            <div class="mb-4">
+              <a href="/registration/update/{{ $registration['id'] }}" class="text-brand-prfA1 font-bold border-b-2 border-b-brand-prfA1 max-w-[220px]">
+                Editar inscrição
+              </a>
+            </div>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
               <div id="wallet_container"></div>
             @endif

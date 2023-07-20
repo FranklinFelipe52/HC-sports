@@ -11,31 +11,38 @@
           <a href="/">
             <img src="/images/logo-hc.png" alt="">
           </a>
-          {{-- <div class="relative w-full max-w-[200px]">
+          <div class="relative w-full max-w-[200px]">
             <button class="btn btn-secondary dropdown-toggle ms-auto flex gap-4 items-center hover:bg-gray-6 transition-all rounded-full p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="/images/svg/user-circle.svg" alt="" class="rounded-full w-8 h-8 object-cover">
-              <p class="font-bold text-gray-1 text-sm font-poppins hidden sm:block">
+              {{-- <p class="font-bold text-gray-1 text-sm font-poppins hidden sm:block">
                 Usuário da Silva
-              </p>
+              </p> --}}
             </button>
             <ul class="dropdown-menu absolute right-0 shadow-sm w-full mt-2 bg-white rounded-lg border py-2">
               <li>
-                <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
+                <a href="/login" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
+                  <span class="text-gray-1 font-medium ">
+                    Faça Login
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.meiamaratonaprf191.com.br/" target="_blank" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
                   <span class="text-gray-1 font-medium ">
                     Veja nosso site
                   </span>
                 </a>
               </li>
-              <li>
+              {{-- <li>
                 <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
                   <span class="text-brand-v1 font-medium ">
                     Sair
                   </span>
                   <img src="/images/svg/logout.svg" alt="">
                 </a>
-              </li>
+              </li> --}}
             </ul>
-          </div> --}}
+          </div>
         </div>
       </div>
     </header>
@@ -86,42 +93,44 @@
           <h1 class="text-xl font-bold text-gray-1 mb-6">
             Opções de inscrição
           </h1>
-          @foreach ($categorys as $category)
-            @foreach ($packages as $package)
-              <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
-                <div class="flex flex-wrap justify-between">
-                  <div class="mb-3.5">
-                    <p class="font-semibold text-gray-1 text-base">
-                      {{ $category->nome }} {{ $package->nome }}
-                    </p>
-                  </div>
-                  <div class="">
-                    <p class="text-brand-v1 text-1.5xl w-full text-end">
-                      <span class="text-sm">
-                        R$
-                      </span>
-                      {{ number_format($category->price + $package->price, 2, ',', '.') }}
-                    </p>
-                  </div>
-                </div>
-                <div class="flex flex-wrap justify-between items-end gap-4">
-                  <div class="">
-                    <p class="font-normal text-xs text-gray-1 mb-3.5">
-                      Itens inclusos
-                    </p>
-                    <div class="text-gray-1 text-xs font-bold list__options">
-                      {!! html_entity_decode($package->descricao) !!}
+          <div class="space-y-4">
+            @foreach ($categorys as $category)
+              @foreach ($packages as $package)
+                <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
+                  <div class="flex flex-wrap justify-between">
+                    <div class="mb-3.5">
+                      <p class="font-semibold text-gray-1 text-base">
+                        {{ $category->nome }} {{ $package->nome }}
+                      </p>
+                    </div>
+                    <div class="">
+                      <p class="text-brand-v1 text-1.5xl w-full text-end">
+                        <span class="text-sm">
+                          R$
+                        </span>
+                        {{ number_format($category->price + $package->price, 2, ',', '.') }}
+                      </p>
                     </div>
                   </div>
-                  <div>
-                    <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                      Realizar Inscrição
-                    </a>
+                  <div class="flex flex-wrap justify-between items-end gap-4">
+                    <div class="">
+                      <p class="font-normal text-xs text-gray-1 mb-3.5">
+                        Itens inclusos
+                      </p>
+                      <div class="text-gray-1 text-xs font-bold list__options">
+                        {!! html_entity_decode($package->descricao) !!}
+                      </div>
+                    </div>
+                    <div>
+                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                        Realizar Inscrição
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              @endforeach
             @endforeach
-          @endforeach
+          </div>
         </div>
       </div>
     </main>

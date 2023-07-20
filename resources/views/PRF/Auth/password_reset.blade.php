@@ -1,39 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+@extends('PRF.base')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alterar senha</title>
+@section('title', 'Alterar senha - Meia Maratona PRF')
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+@section('content')
 
-  <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
-</head>
-
-<body class="h-screen">
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/src/index.html">
-            <img src="/images/Olimpiadas-Concad.png" alt="" />
+          <a href="/login">
+            <img src="/images/PRF/logo-prf.png" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
-            <h1 class="text-4xl md:text-5xl font-semibold text-brand-v1 font-poppins">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-prfA1 font-poppins">
               Alterar Senha
             </h1>
-            <div class="bg-brand-a1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
+            <div class="bg-brand-prfA1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
           </div>
           <p class="text-sm font-normal text-gray-1">
-            Alteração de senha através do e-mail.
+            Informe sua nova senha
           </p>
         </div>
         <div class="hidden lg:block p-8"></div>
@@ -51,35 +38,49 @@
           <input type="hidden" name="token_email" value="{{ $token_email }}">
           <div class="space-y-4 mb-8">
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha_field">
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="resetar_senha_field">
                 Senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha_field" name="password" placeholder="Digite a sua senha" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="resetar_senha_field" name="password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                  <button type="button" data-inputId="resetar_senha_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
+                </div>
+                @error('password')
+                  <p class="text-red-600">{{ $message }}</p>
+                @enderror
+                <div class="text-gray-1 text-sm mt-2">
+                  <p>
+                    a senha deve ter:
+                  </p>
+                  <ul>
+                    <li>- Minimo de 8 caracteres</li>
+                    <li>- Minimo de uma letra maiuscula</li>
+                    <li>- Minimo de uma letra minuscula</li>
+                    <li>- Minimo de um número</li>
+                  </ul>
                 </div>
               </div>
             </div>
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha_confirm_field">
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirmar_resetar_senha_field">
                 Confirmação de senha
               </label>
               <div class="group relative">
-                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3" name="confirm_password" type="password" id="cadastro_senha_confirm_field" placeholder="Digite a sua senha novamente" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" name="confirm_password" type="password" id="confirmar_resetar_senha_field" placeholder="Digite a sua senha novamente" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="input_senha_exemplo" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                  <button type="button" data-inputId="confirmar_resetar_senha_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <button id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+          <button id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
             <p class="text-white text-sm font-bold font-poppins">
               Enviar
             </p>
@@ -90,50 +91,47 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
 
     if ('{{ session('erro') }}') {
-        showErrorToastfy('{{ session('erro') }}');
+      showErrorToastfy('{{ session('erro') }}');
     }
 
     if ('{{ session('success') }}') {
-        showSuccessToastfy('{{ session('success') }}');
+      showSuccessToastfy('{{ session('success') }}');
     }
 
     function showSuccessToastfy(text) {
-        Toastify({
+      Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-            background: "#EBFBEE",
-            color: "#279424",
-            boxShadow: "none",
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-        }).showToast();
+      }).showToast();
     }
 
     function showErrorToastfy(text) {
-        Toastify({
+      Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-            background: "#FBDBDB",
-            color: "#8E1014",
-            boxShadow: "none",
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-        }).showToast();
+      }).showToast();
     }
-</script>
-</body>
-
-</html>
+  </script>
+@endsection

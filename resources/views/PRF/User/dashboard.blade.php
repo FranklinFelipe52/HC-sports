@@ -54,7 +54,7 @@
                     </div>
                   </div>
                   <div class="">
-                    <p class="text-brand-v1 font-bold text-1.5xl w-full text-end">
+                    <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
                       <span class="text-sm">
                         R$
                       </span>
@@ -97,15 +97,17 @@
                   </div>
                 </div>
                 <div class="flex justify-between flex-wrap gap-4">
-                  {{-- <a href="/PRF/checkout/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
+                  {{-- <a href="/registration/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
                     Detalhes
                     <img src="/images/PRF/svg/chevron-left.svg" alt="">
                   </a> --}}
                   <span></span>
-                  <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
-                    Realizar Pagamento
-                    <img src="/images/PRF/svg/credit-card.svg" alt="">
-                  </a>
+                  @if ($registration['status_registration']->id != 1)
+                    <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                      Realizar Pagamento
+                      <img src="/images/PRF/svg/credit-card.svg" alt="">
+                    </a>
+                  @endif
                   </button>
                 </div>
               </div>

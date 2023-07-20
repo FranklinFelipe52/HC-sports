@@ -31,6 +31,7 @@ module.exports = {
                     5: "#E0E0E0",
                     6: "#F2F2F2",
                     7: "#D6E4EE",
+                    8: "#757575",
                 },
                 feedback: {
                     green: {
