@@ -17,8 +17,8 @@ class PrfRedirectUserLogin
     public function handle(Request $request, Closure $next)
     {
         if($request->session()->has('prf_user')){
-            return redirect('/PRF/dashboard');
-        } 
+            return redirect('/dashboard');
+        }
         return $next($request);
     }
 }

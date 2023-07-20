@@ -11,31 +11,38 @@
           <a href="/">
             <img src="/images/logo-hc.png" alt="">
           </a>
-          {{-- <div class="relative w-full max-w-[200px]">
+          <div class="relative w-full max-w-[200px]">
             <button class="btn btn-secondary dropdown-toggle ms-auto flex gap-4 items-center hover:bg-gray-6 transition-all rounded-full p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="/images/svg/user-circle.svg" alt="" class="rounded-full w-8 h-8 object-cover">
-              <p class="font-bold text-gray-1 text-sm font-poppins hidden sm:block">
+              {{-- <p class="font-bold text-gray-1 text-sm font-poppins hidden sm:block">
                 Usuário da Silva
-              </p>
+              </p> --}}
             </button>
             <ul class="dropdown-menu absolute right-0 shadow-sm w-full mt-2 bg-white rounded-lg border py-2">
               <li>
-                <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
+                <a href="/login" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
+                  <span class="text-gray-1 font-medium ">
+                    Faça Login
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.meiamaratonaprf191.com.br/" target="_blank" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
                   <span class="text-gray-1 font-medium ">
                     Veja nosso site
                   </span>
                 </a>
               </li>
-              <li>
+              {{-- <li>
                 <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
                   <span class="text-brand-v1 font-medium ">
                     Sair
                   </span>
                   <img src="/images/svg/logout.svg" alt="">
                 </a>
-              </li>
+              </li> --}}
             </ul>
-          </div> --}}
+          </div>
         </div>
       </div>
     </header>

@@ -20,10 +20,20 @@
         </a>
       </li>
       <li class="group sm:hidden">
-        <a href="/profile" title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+        <div title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
           </div>
+        </div>
+      </li>
+      <li class="group sm:hidden">
+        <a href="/logout" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
+            Sair
+          </p>
         </a>
       </li>
     </ul>

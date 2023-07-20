@@ -94,6 +94,4 @@
         }).showToast();
     }
 </script>
-</body>
-
-</html>
+@endsection

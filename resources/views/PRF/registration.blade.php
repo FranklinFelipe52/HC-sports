@@ -44,9 +44,6 @@
                 CPF
               </label>
               <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{ old('cpf') }}" />
-              @error('cpf')
-                <p class="text-red-600">{{ $message }}</p>
-              @enderror
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_nome_completo_field">
@@ -60,7 +57,7 @@
                 Nascimento
               </label>
               <div class="relative">
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="yyyy-mm-dd" />
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>
