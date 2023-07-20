@@ -52,7 +52,7 @@
             </p>
           </div>
           <div class="px-3.5 pt-3 pb-4 flex justify-center">
-            <a href="/PRF" class="bg-brand-prfA1 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+            <a href="/prf" class="bg-brand-prfA1 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
               Inscreva-se
             </a>
           </div>
@@ -75,7 +75,7 @@
             </p>
           </div>
           <div class="px-3.5 pt-3 pb-4 flex justify-center">
-            <a href="/OAB/login" class="bg-brand-v2 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-v2 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+            <a href="/login" class="bg-brand-v2 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-v2 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
               Acesse o Painel
             </a>
           </div>
