@@ -11,9 +11,9 @@
   $item->unit_price = $registration['pricePackage'] + $registration['priceTshirts'];
   $preference->items = [$item];
   $preference->back_urls = [
-      'success' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
-      'failure' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
-      'pending' => config('services.mercadopago.url_base') . '/PRF/notification_payment',
+      'success' => config('services.mercadopago.url_base') . '/notification_payment',
+      'failure' => config('services.mercadopago.url_base') . '/notification_payment',
+      'pending' => config('services.mercadopago.url_base') . '/notification_payment',
   ];
   $preference->auto_return = 'approved';
   $preference->payment_methods = [

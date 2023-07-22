@@ -45,5 +45,5 @@ Route::get('/logout', [PrfLoginController::class, 'logout']);
 Route::get('/forgot_password', [PrfForgotPasswordController::class, 'create'])->middleware('PrfRedirectUserLogin');
 Route::post('/forgot_password', [PrfForgotPasswordController::class, 'store']);
 Route::view( '/forgot_password_send','PRF.Auth.forgot_password_send')->middleware('PrfRedirectUserLogin');
-Route::get('/PRF/password_reset/{token}', [PrfPasswordResetController::class, 'create'])->middleware('PrfRedirectUserLogin');
+Route::get('/password_reset/{token}', [PrfPasswordResetController::class, 'create'])->middleware('PrfRedirectUserLogin');
 Route::post('/password_reset', [PrfPasswordResetController::class, 'store']);

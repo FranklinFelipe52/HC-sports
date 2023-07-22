@@ -19,7 +19,7 @@ class AuthPrfUser
         if ($request->session()->has('prf_user')) {
             return $next($request);
         } else{
-            return redirect('/PRF/login');
+            return redirect('/login');
         }
     }
 }
