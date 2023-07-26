@@ -57,24 +57,9 @@
                     <div class="relative">
                       <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="size_tshirt" id="inscricao_size_tshirt_field">
                         @foreach ($shirts_sizes as $shirts_size)
-                          <option @if ($shirts_size == $registration->size_tshirt) @selected(true) @endif value="{{ $shirts_size }}">{{ $shirts_size }}</option>
+                          <option @if ($shirts_size->id == $registration->prf_size_tshirts->id) @selected(true) @endif value="{{ $shirts_size->id }}">{{ $shirts_size->nome }}</option>
                         @endforeach
 
-                      </select>
-                      <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-6">
-                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pace_field">
-                      Pelotão
-                    </label>
-                    <div class="relative">
-                      <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="pace" id="inscricao_pace_field">
-                        @foreach ($paces as $pace)
-                          <option @if ($pace->id == $registration->prf_pace_id) @selected(true) @endif value={{ $pace->id }}>{{ $pace->nome }}</option>
-                        @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                         <img src="/images/PRF/svg/chevron-down.svg" alt="" />
@@ -89,21 +74,6 @@
                       <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="category" id="inscricao_category_field">
                         @foreach ($categorys as $category)
                           <option @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
-                        @endforeach
-                      </select>
-                      <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-6">
-                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_package_field">
-                      Pacote
-                    </label>
-                    <div class="relative">
-                      <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="package" id="inscricao_package_field">
-                        @foreach ($packages as $package)
-                          <option @if ($package->id == $registration->prf_package_id) @selected(true) @endif value={{ $package->id }} data-item-value="{{ $package->price }}">{{ $package->nome }} (R$ {{ number_format($package->price, 2, ',', '.') }})</option>
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
@@ -258,7 +228,9 @@
     }
 
     function updateTotalValue() {
-      valorTotalEl.innerText = valorTotal.toLocaleString('pt-BR', {
+      valorTotalDescontado = valorTotal*{{\App\Helpers\ValorTotal::DescontosTotais($user)}};
+      
+      valorTotalEl.innerText = valorTotalDescontado.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });

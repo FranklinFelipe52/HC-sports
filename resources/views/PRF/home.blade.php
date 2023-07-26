@@ -108,7 +108,7 @@
                         <span class="text-sm">
                           R$
                         </span>
-                        {{ number_format($category->price + $package->price, 2, ',', '.') }}
+                        {{ number_format($category->price, 2, ',', '.') }}
                       </p>
                     </div>
                   </div>

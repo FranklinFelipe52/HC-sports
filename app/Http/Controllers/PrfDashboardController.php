@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ValorTotal;
 use App\Models\PrfUser;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,20 +18,14 @@ class PrfDashboardController extends Controller
 
             $registrations = [];
             foreach ($user->registrations as $registration) {
-                $priceTshirts = 0;
-                foreach ( $registration->tshirts as $tshirt) {
-                    $priceTshirts = $priceTshirts + $tshirt->price;
-                }
                 array_push($registrations, [
                     'id' => $registration->id,
-                    'title' => $registration->prf_categorys->nome.' '.$registration->prf_package->nome,
+                    'title' => $registration->prf_categorys->nome,
                     'descricao' => $registration->prf_package->descricao,
-                    'pricePackage' => $registration->prf_categorys->price + $registration->prf_package->price,
-                    'priceTshirts' => $priceTshirts,
+                    'price' => ValorTotal::ValorComDescontos($user, $registration),
                     'status_registration' => $registration->status_regitration,
-                    'size_tshirt' => $registration->size_tshirt,
+                    'size_tshirt' => $registration->prf_size_tshirts->nome,
                     'equipe' => $registration->equipe,
-                    'pace' => $registration->prf_pace->nome
                 ]);
             }
 

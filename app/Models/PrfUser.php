@@ -17,4 +17,8 @@ class PrfUser extends Model
     public function actions_notifications(){
         return $this->hasMany(PrfActionsNotification::class);
     }
+
+    public function prf_deficiency(){
+        return $this->belongsTo(PrfDeficiency::class);
+    }
 }

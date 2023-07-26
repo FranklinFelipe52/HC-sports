@@ -31,7 +31,7 @@ class PrfStoreRegistrationRequest extends FormRequest
             'email' => ['required', 'email', new PrfEmailUserExist],
             'cpf' => ['required', new CpfValidate, new PrfCpfUserExist],
             'data_nasc' => ['date'],
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()],
+            'password' => ['required', Password::min(8)],
         ];
     }
 

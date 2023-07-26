@@ -25,7 +25,7 @@ class PrfPasswordResetRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()],
+            'password' => ['required', Password::min(8)],
         ];
     }
 

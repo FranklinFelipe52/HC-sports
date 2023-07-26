@@ -58,11 +58,11 @@
                       <span class="text-sm">
                         R$
                       </span>
-                      <?= number_format($registration['pricePackage'] + $registration['priceTshirts'], 2, ',', '.') ?>
+                      <?= number_format($registration['price'], 2, ',', '.') ?>
                     </p>
                   </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
                     <p class="text-xs text-gray-1">
                       Equipe:
@@ -77,14 +77,6 @@
                     </p>
                     <p>
                       {{ $registration['size_tshirt'] }}
-                    </p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-1">
-                      Pelotão:
-                    </p>
-                    <p>
-                      {{ $registration['pace'] }}
                     </p>
                   </div>
                   <div>

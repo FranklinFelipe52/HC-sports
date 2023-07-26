@@ -58,9 +58,7 @@
                   </p>
                   <ul>
                     <li>- Minimo de 8 caracteres</li>
-                    <li>- Minimo de uma letra maiuscula</li>
-                    <li>- Minimo de uma letra minuscula</li>
-                    <li>- Minimo de um número</li>
+                    
                   </ul>
                 </div>
               </div>

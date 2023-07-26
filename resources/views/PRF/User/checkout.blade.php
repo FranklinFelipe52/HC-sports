@@ -8,7 +8,7 @@
   $item = new MercadoPago\Item();
   $item->title = $registration['title'];
   $item->quantity = 1;
-  $item->unit_price = $registration['pricePackage'] + $registration['priceTshirts'];
+  $item->unit_price = $registration['price'];
   $preference->items = [$item];
   $preference->back_urls = [
       'success' => config('services.mercadopago.url_base') . '/notification_payment',
@@ -101,23 +101,11 @@
                 </p>
               </div>
             </div>
-            <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-sm text-gray-1 font-semibold">
-                  Pacote
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-sm text-gray-2 font-normal">
-                  {!! html_entity_decode($registration['title']) !!}
-                </p>
-              </div>
-            </div>
 
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-1 font-semibold">
-                  Categoria
+                  Distância
                 </p>
               </div>
               <div class="col-span-2 sm:col-span-1">
@@ -137,7 +125,7 @@
                 <div class="col-span-2 sm:col-span-1">
                   <div class="bg-gray-6 w-fit py-2 px-4 rounded-md">
                     <p class="text-sm text-gray-1 font-bold">
-                      R${{ number_format($registration['pricePackage'] + $registration['priceTshirts'], 2, ',', '.') }}
+                      R${{ number_format($registration['price'], 2, ',', '.') }}
                     </p>
                   </div>
                 </div>
