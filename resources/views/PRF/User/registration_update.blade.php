@@ -230,7 +230,7 @@
     }
 
     function updateTotalValue() {
-      valorTotalDescontado = valorTotal * {{ \App\Helpers\ValorTotal::DescontosTotais($user) }};
+      valorTotalDescontado = valorTotal - (valorTotal * {{ \App\Helpers\ValorTotal::DescontosTotais($user) }});
 
       valorTotalEl.innerText = valorTotalDescontado.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,

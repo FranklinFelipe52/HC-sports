@@ -31,7 +31,7 @@ class ValorTotal
             $descontos = 0.5;
         }
     
-return $descontos == 0 ? 1 : $descontos;
+return $descontos;
 }
 }
 ?>
