@@ -17,13 +17,9 @@ class ValorTotal
                 }
                 $priceRegistration = $registration->prf_categorys->price;
                 $valor_bruto = $priceTshirts + $priceRegistration;
-                if(AgeBetweenDates::calc_idade($user->data_nasc, "28-12-".date("Y")) >= 60){
+                if(AgeBetweenDates::calc_idade($user->data_nasc, "28-12-".date("Y")) >= 60 || $user->prf_deficiency_id){
                     $valor_bruto = $valor_bruto*0.5;
                 }
-                
-                if($user->prf_deficiency_id){
-                    $valor_bruto = $valor_bruto*0.5;
-                } 
             
         return $valor_bruto;
     }
@@ -31,15 +27,11 @@ class ValorTotal
     public static function DescontosTotais( PrfUser $user){
             
         $descontos = 0;
-        if(AgeBetweenDates::calc_idade($user->data_nasc, "28-12-".date("Y")) >= 60){
+        if(AgeBetweenDates::calc_idade($user->data_nasc, "28-12-".date("Y")) >= 60 || $user->prf_deficiency_id){
             $descontos = 0.5;
         }
-        
-        if($user->prf_deficiency_id){
-            $descontos = $descontos == 0 ? 0.5 : $descontos*0.5;
-        } 
     
-return $descontos;
+return $descontos == 0 ? 1 : $descontos;
 }
 }
 ?>
