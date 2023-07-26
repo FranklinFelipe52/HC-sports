@@ -150,6 +150,12 @@
                     <div class="flex items-center">
                       <input class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault" />
                     </div>
+                    <div class="flex flex-col gap-4 md:flex-row">
+                      <div>
+                        <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                          <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
+                        </a>
+                      </div>
                     <div class="">
                       <p class="text-gray-1 text-sm">
                         {{ $tshirt->nome }}
@@ -161,6 +167,7 @@
                         <span class="text-gray-8">Itens inclusos:</span> {{ $tshirt->descricao }}
                       </p>
                     </div>
+                  </div>
                   </div>
                 </div>
               @endforeach
