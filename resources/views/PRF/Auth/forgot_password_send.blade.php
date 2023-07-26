@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/login">
-            <img src="/images/PRF/logo-prf.png" alt="" />
+            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">

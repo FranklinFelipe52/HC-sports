@@ -75,16 +75,16 @@
 
             <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
               <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-1.png" class="w-full h-full object-cover" alt="">
+                <img src="/images/PRF/foto-1.jpg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
                 <img src="/images/PRF/foto-2.png" class="w-full h-full object-cover" alt="">
               </div>
               <div class="md:row-span-2 md:col-span-2 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-4.png" class="w-full h-full object-cover" alt="">
+                <img src="/images/PRF/foto-4.jpg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="row-span-1 md:col-span-2 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-3.png" class="w-full h-full object-cover" alt="">
+                <img src="/images/PRF/foto-3.jpg" class="w-full h-full object-cover" alt="">
               </div>
             </div>
           </div>
@@ -134,6 +134,54 @@
         </div>
       </div>
     </main>
+
+
+    <!-- Seção de Patrocinadores, Realizadores e organizadores -->
+    <section class="py-24 bg-fill-1">
+      <div class="container px-24 px-sm-0 flex justify-center flex-wrap gap-8">
+        <div class="">
+          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
+            Ação social
+          </h2>
+
+          <div class="flex gap-8 flex-wrap justify-center">
+            <div class="marca">
+              <img src="/images/PRF/marcas/acao-social.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
+            Organização
+          </h2>
+
+          <div class="flex gap-8 flex-wrap justify-center">
+            <a href="https://www.hcsports.com.br/" class="marca" target="_blank">
+              <img src="/images/PRF/marcas/hc.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="">
+          <h2 class="text-dark-1 mb-4 text-lg fw-medium font-poppins text-center">
+            Realização
+          </h2>
+
+          <div class="flex gap-4 flex-wrap justify-center">
+            <a href="https://fenaprf.org.br/novo/" class="marca" target="_blank">
+              <img src="/images/PRF/marcas/FenaPRF.png" alt="">
+            </a>
+
+            <a href="https://www.gov.br/prf/pt-br" class="marca" target="_blank">
+              <img src="/images/PRF/marcas/prf.png" alt="">
+            </a>
+
+            <a href="https://sinprfrn.org.br/" class="marca" target="_blank">
+              <img src="/images/PRF/marcas/SindPRF-RN.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     @include('PRF.Components.footer')
   </div>

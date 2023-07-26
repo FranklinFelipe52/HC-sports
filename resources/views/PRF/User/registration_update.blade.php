@@ -94,9 +94,11 @@
                             @if ($tshirt_registration->id == $tshirt->id) @checked(true) @endif @endforeach class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" data-item="checkbox" data-item-value="{{ $tshirt->price }}" id="flexCheckDefault">
                             </div>
                             <div class="flex flex-col gap-4 md:flex-row">
-                              {{-- <div>
-                                <img src="/images/PRF/inscricao.png" alt="">
-                              </div> --}}
+                              <div>
+                                <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                                  <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
+                                </a>
+                              </div>
                               <div class="">
                                 <p class="text-gray-1 text-sm">
                                   {{ $tshirt->nome }}
@@ -228,8 +230,8 @@
     }
 
     function updateTotalValue() {
-      valorTotalDescontado = valorTotal*{{\App\Helpers\ValorTotal::DescontosTotais($user)}};
-      
+      valorTotalDescontado = valorTotal * {{ \App\Helpers\ValorTotal::DescontosTotais($user) }};
+
       valorTotalEl.innerText = valorTotalDescontado.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2

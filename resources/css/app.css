@@ -4,7 +4,7 @@
 
 * {
     font-family: "Open Sans";
-    scrollbar-color: #000E4B #f0f0f0;
+    scrollbar-color: #000e4b #f0f0f0;
     scrollbar-width: 8px;
 }
 
@@ -14,13 +14,13 @@
     width: 16px;
     height: 16px;
     background: #fff;
-    border: 1px solid #000E4B;
+    border: 1px solid #000e4b;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .checkbox:checked {
-    background-color: #000E4B;
+    background-color: #000e4b;
     background-image: url(/images/svg/checked.svg);
     background-repeat: no-repeat;
     background-position: center center;
@@ -54,7 +54,7 @@ input[type="radio"] {
     @apply block rounded-full bg-white cursor-pointer;
     width: 16px;
     height: 16px;
-    border: 1.5px solid #000E4B;
+    border: 1.5px solid #000e4b;
     position: relative;
     flex-shrink: 0;
 }
@@ -75,7 +75,7 @@ input[type="radio"]:checked::after {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #000E4B;
+    background-color: #000e4b;
     border-radius: 21px;
 }
 
@@ -120,7 +120,7 @@ input[type="radio"]:checked::after {
 .pagination .page-item:first-child,
 .pagination .page-item:last-child {
     padding: 0.2rem 0.4rem;
-    background-color: #000E4B;
+    background-color: #000e4b;
     border-radius: 6px;
 }
 
@@ -164,4 +164,16 @@ body .toastify button.toast-close {
     #wallet_container {
         transform: scale(0.7);
     }
+}
+
+.marca {
+    width: 120px !important;
+    height: 50px !important;
+}
+
+.marca img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 }

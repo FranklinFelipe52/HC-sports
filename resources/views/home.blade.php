@@ -17,7 +17,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="border border-gray-7 rounded-xl overflow-hidden">
           <div class="bg-brand-prfA1 border-b border-gray-7 flex justify-center items-center p-4 h-[153px]">
-            <img src="/images/PRF/logo-prf.png" alt="">
+            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="">
           </div>
           <div class="p-3.5 border-b border-gray-5">
             <p class="font-bold text-sm font-poppins mb-1 text-dark-1">

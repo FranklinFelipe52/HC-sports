@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/login">
-            <img src="/images/PRF/logo-prf.png" alt="" />
+            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -58,7 +58,7 @@
                   </p>
                   <ul>
                     <li>- Minimo de 8 caracteres</li>
-                    
+
                   </ul>
                 </div>
               </div>
@@ -90,8 +90,7 @@
 
   <!-- js -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script>
-
+  <script>
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');
     }

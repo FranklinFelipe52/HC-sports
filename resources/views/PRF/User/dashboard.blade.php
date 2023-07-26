@@ -27,7 +27,7 @@
         <header class="sm:pt-8 pb-6">
           <div class="bg-brand-prfA1 sm:hidden">
             <a href="/dashboard">
-              <img src="/images/PRF/logo-prf.png" alt="">
+              <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="">
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
