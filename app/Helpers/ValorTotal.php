@@ -16,10 +16,11 @@ class ValorTotal
                     $priceTshirts = $priceTshirts + $tshirt->price;
                 }
                 $priceRegistration = $registration->prf_categorys->price;
-                $valor_bruto = $priceTshirts + $priceRegistration;
+                $valor_bruto = $priceRegistration;
                 if(AgeBetweenDates::calc_idade($user->data_nasc, "28-12-".date("Y")) >= 60 || $user->prf_deficiency_id){
-                    $valor_bruto = $valor_bruto*0.5;
+                    $valor_bruto = $valor_bruto - ($valor_bruto*0.5);
                 }
+                $valor_bruto = $valor_bruto + $priceTshirts;
             
         return $valor_bruto;
     }
