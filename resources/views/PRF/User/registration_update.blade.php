@@ -129,7 +129,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex justify-between gap-4 flex-wrap">
+                <div class="flex justify-end gap-4 flex-wrap">
+                 {{--
                   <div>
                     <p class="text-gray-1">
                       Valor total:
@@ -139,6 +140,7 @@
                       </span>
                     </p>
                   </div>
+                  --}} 
                   <button type="submit" class="flex items-center justify-center gap-4 px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
                     <p class="text-white text-sm font-bold font-poppins">
                       Salvar alterações
