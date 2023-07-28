@@ -25,9 +25,9 @@
 
         <!-- Cabeçalho -->
         <header class="sm:pt-8 pb-6">
-          <div class="bg-brand-prfA1 sm:hidden">
+          <div class="bg-white border-b border-gray-5 sm:hidden">
             <a href="/dashboard">
-              <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="">
+              <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[50px]" alt="">
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
@@ -88,6 +88,30 @@
                     </div>
                   </div>
                 </div>
+                @if (Count($registration['tshirts']) > 0)
+                  <div class="mb-4">
+                    <p class="text-xs text-gray-1 mb-2">
+                      Campanha beneficiente:
+                    </p>
+                    @foreach ($registration['tshirts'] as $tshirt)
+                      <div class="flex flex-wrap border rounded-md p-4 border-gray-5">
+                        <div class="mb-2">
+                          <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                            <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                          </a>
+                        </div>
+                        <div class="text-sm">
+                          <p class="font-semibold">
+                            {{ $tshirt->nome }}
+                          </p>
+                          <p class="max-w-[250px]">
+                            {{ $tshirt->descricao }}
+                          </p>
+                        </div>
+                      </div>
+                    @endforeach
+                  </div>
+                @endif
                 <div class="flex justify-between flex-wrap gap-4">
                   {{-- <a href="/registration/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
                     Detalhes

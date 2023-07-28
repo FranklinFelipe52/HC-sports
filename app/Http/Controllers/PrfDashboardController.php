@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ValorTotal;
+use App\Models\PrfTshirt;
+use App\Models\PrfTshirtAndPrfRegistration;
 use App\Models\PrfUser;
 use Exception;
 use Illuminate\Http\Request;
@@ -18,6 +20,17 @@ class PrfDashboardController extends Controller
 
             $registrations = [];
             foreach ($user->registrations as $registration) {
+
+                $prfTshirtsRegistration = PrfTshirtAndPrfRegistration::where('prf_registration_id', $registration->id)->get();
+                $tshirts = [];
+
+                foreach ($prfTshirtsRegistration as $prfTshirtRegistration) {
+
+                    $tshirt = PrfTshirt::find($prfTshirtRegistration->prf_tshirt_id);
+
+                    array_push($tshirts, $tshirt);
+                }
+
                 array_push($registrations, [
                     'id' => $registration->id,
                     'title' => $registration->prf_categorys->nome,
@@ -26,11 +39,12 @@ class PrfDashboardController extends Controller
                     'status_registration' => $registration->status_regitration,
                     'size_tshirt' => $registration->prf_size_tshirts->nome,
                     'equipe' => $registration->equipe,
+                    'tshirts' => $tshirts,
                 ]);
             }
 
 
-            
+
             return view('PRF.User.dashboard', [
                 'registrations' => $registrations,
             ]);
