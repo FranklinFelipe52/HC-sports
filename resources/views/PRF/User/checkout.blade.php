@@ -8,7 +8,7 @@
   $item = new MercadoPago\Item();
   $item->title = $registration['title'];
   $item->quantity = 1;
-  $item->unit_price = $registration['price'];
+  $item->unit_price = $registration->id == 1 ? 1 : $registration['price'];
   $preference->items = [$item];
   $preference->back_urls = [
       'success' => config('services.mercadopago.url_base') . '/notification_payment',
@@ -139,7 +139,9 @@
               </a>
             </div>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
-              <!--<div id="wallet_container"></div>-->
+            @if($registration->id == 1)
+              <div id="wallet_container"></div>
+            @endif
             @endif
           </div>
         </div>
