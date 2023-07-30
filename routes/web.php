@@ -6,7 +6,8 @@ use App\Http\Controllers\PrfHomeController;
 use App\Http\Controllers\PrfLoginController;
 use App\Http\Controllers\PrfPasswordResetController;
 use App\Http\Controllers\PrfRegistrationController;
-
+use App\Http\Controllers\PrfVauchersController;
+use App\Models\PrfVauchers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::get('/dashboard', [PrfDashboardController::class, 'show'])->middleware('A
 Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');
 Route::post('/registration/update/{id}', [PrfRegistrationController::class, 'update_post'])->middleware('AuthPrfUser');
 Route::get('/registration/{id}', [PrfCheckoutController::class, 'checkout'])->middleware('AuthPrfUser');
+Route::post('/registration/{id_registration}/vauchers/store', [PrfVauchersController::class, 'store'])->middleware('AuthPrfUser');
 Route::get('/notification_payment', [PrfCheckoutController::class, 'notification']);
 Route::post('/notification_payment_webhook', [PrfCheckoutController::class, 'notification_webhook']);
 

@@ -35,6 +35,9 @@ class PrfRegistration extends Model
     public function prf_size_tshirts(){
         return $this->belongsTo(PrfSizeTshirts::class);
     }
+    public function prf_vauchers(){
+        return $this->belongsTo(PrfVauchers::class);
+    }
     public function tshirts(){
         return $this->belongsToMany(PrfTshirt::class, 'prf_tshirt_and_prf_registrations', 'prf_registration_id', 'prf_tshirt_id');
     }

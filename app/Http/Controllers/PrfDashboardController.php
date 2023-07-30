@@ -26,6 +26,7 @@ class PrfDashboardController extends Controller
                     'status_registration' => $registration->status_regitration,
                     'size_tshirt' => $registration->prf_size_tshirts->nome,
                     'equipe' => $registration->equipe,
+                    'vaucher' => $registration->prf_vauchers
                 ]);
             }
 
@@ -35,7 +36,7 @@ class PrfDashboardController extends Controller
                 'registrations' => $registrations,
             ]);
         } catch (Exception $e){
-            return back();
+            return dd($e);
         }
     }
 }

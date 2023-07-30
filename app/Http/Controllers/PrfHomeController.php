@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CodeVaucherGenerate;
 use App\Models\PrfCategorys;
 use App\Models\PrfPackage;
 use Exception;
