@@ -108,6 +108,82 @@
                                 </div>
                                 <div class="flex justify-between flex-wrap gap-4">
                                     {{-- <a href="/registration/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
+        <div class="container">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            @foreach ($registrations as $registration)
+              <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
+                <div class="flex flex-wrap justify-between border-b border-gray-5 mb-4">
+                  <div class="mb-3.5 flex items-center flex-wrap gap-2">
+                    <p class="font-semibold text-gray-1 text-base">
+                      {{ $registration['title'] }}
+                    </p>
+                    <div class="@if ($registration['status_registration']->id == 1) bg-feedback-green-1 @elseif ($registration['status_registration']->id == 3) bg-brand-prfA1 @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-[0.5rem] font-bold text-center">
+                        {{ $registration['status_registration']->status }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="">
+                    <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
+                      <span class="text-sm">
+                        R$
+                      </span>
+                      <?= number_format($registration['price'], 2, ',', '.') ?>
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <p class="text-xs text-gray-1">
+                      Equipe:
+                    </p>
+                    <p>
+                      {{ $registration['equipe'] }}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-1">
+                      Camiseta:
+                    </p>
+                    <p>
+                      {{ $registration['size_tshirt'] }}
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-1 mb-2">
+                      Itens inclusos:
+                    </p>
+                    <div class="list__options font-bold text-xs text-gray-1">
+                      {!! html_entity_decode($registration['descricao']) !!}
+                    </div>
+                  </div>
+                </div>
+                @if (Count($registration['tshirts']) > 0)
+                  <div class="mb-4">
+                    <p class="text-xs text-gray-1 mb-2">
+                      Campanha beneficiente:
+                    </p>
+                    @foreach ($registration['tshirts'] as $tshirt)
+                      <div class="flex flex-wrap border rounded-md p-4 border-gray-5">
+                        <div class="mb-2">
+                          <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                            <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                          </a>
+                        </div>
+                        <div class="text-sm">
+                          <p class="font-semibold">
+                            {{ $tshirt->nome }}
+                          </p>
+                          <p class="max-w-[250px]">
+                            {{ $tshirt->descricao }}
+                          </p>
+                        </div>
+                      </div>
+                    @endforeach
+                  </div>
+                @endif
+                <div class="flex justify-between flex-wrap gap-4">
+                  {{-- <a href="/registration/{{ $registration['id'] }}" class="bg-white border border-gray-5 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-gray-5 text-sm font-poppins font-medium text-dark-1 flex items-center justify-center gap-2 py-2.5 px-3.5 w-fit">
                     Detalhes
                     <img src="/images/PRF/svg/chevron-left.svg" alt="">
                   </a> --}}

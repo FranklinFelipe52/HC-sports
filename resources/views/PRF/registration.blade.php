@@ -146,28 +146,28 @@
             <div class="space-y-4">
               @foreach ($tshirts as $tshirt)
                 <div class="border rounded border-gray-5 p-2">
+                  <div>
+                    <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                      <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                    </a>
+                  </div>
                   <div class="py-4 flex gap-4">
                     <div class="flex items-center">
                       <input class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault" />
                     </div>
-                    <div class="flex flex-col gap-4 md:flex-row">
-                      <div>
-                        <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                          <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
-                        </a>
+                    <div class="flex flex-col gap-4">
+                      <div class="">
+                        <p class="text-gray-1 text-sm">
+                          {{ $tshirt->nome }}
+                        </p>
+                        <p class="text-dark-1 text-sm font-bold mb-2">
+                          R$ {{ number_format($tshirt->price, 2, ',', '.') }}
+                        </p>
+                        <p class="text-gray-1 text-xs">
+                          <span class="text-gray-8">Itens inclusos:</span> {{ $tshirt->descricao }}
+                        </p>
                       </div>
-                    <div class="">
-                      <p class="text-gray-1 text-sm">
-                        {{ $tshirt->nome }}
-                      </p>
-                      <p class="text-dark-1 text-sm font-bold mb-2">
-                        R$ {{ number_format($tshirt->price, 2, ',', '.') }}
-                      </p>
-                      <p class="text-gray-1 text-xs">
-                        <span class="text-gray-8">Itens inclusos:</span> {{ $tshirt->descricao }}
-                      </p>
                     </div>
-                  </div>
                   </div>
                 </div>
               @endforeach
