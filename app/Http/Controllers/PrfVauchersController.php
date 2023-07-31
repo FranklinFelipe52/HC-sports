@@ -10,9 +10,18 @@ use Illuminate\Http\Request;
 
 class PrfVauchersController extends Controller
 {
-    public function create_vauchers(Request $request){
+    public function create_vaucher(Request $request) {
+        try {
+            return view('PRF.Admin.criar_voucher');
+        } catch(Exception $e) {
+            session()->flash('erro', 'Algo deu errado');
+            return back();
+        }
+    }
+
+    public function store_vauchers(Request $request){
         try{
-            for($i = 0; $i < $request->quant; $i++){
+            for($i = 0; $i < intval($request->quant); $i++){
                 $code = '';
                 do {
                     $verify = false;
@@ -24,18 +33,28 @@ class PrfVauchersController extends Controller
               $vaucher = new PrfVauchers;
               $vaucher->code = $code;
               $vaucher->descricao = $request->descricao;
-              $vaucher->desconto = $request->desconto;
+              $vaucher->desconto = floatval($request->desconto);
               $vaucher->validade =  $request->validade;
               $vaucher->save();
             }
 
+            return redirect('/admin/voucher_criado');
         }
         catch(Exception $e){
             return back();
         }
     }
 
-    public function create_cupom(Request $request){
+    public function create_cupom(Request $request) {
+        try {
+            return view('PRF.Admin.criar_cupom');
+        } catch(Exception $e) {
+            session()->flash('erro', 'Algo deu errado');
+            return back();
+        }
+    }
+
+    public function store_cupom(Request $request){
         try{
             for($i = 0; $i < $request->quant; $i++){
                 $code = '';
@@ -54,8 +73,12 @@ class PrfVauchersController extends Controller
               $vaucher->validade =  $request->validade;
               $vaucher->save();
             }
-        }
-        catch(Exception $e){
+
+            return view('PRF.Admin.cupom_criado', [
+                'cupom' => $request->cupom,
+            ]);
+
+        } catch(Exception $e){
             return back();
         }
     }
@@ -90,7 +113,7 @@ class PrfVauchersController extends Controller
                     session()->flash('success', 'Cupom adicionado com sucesso');
                     return back();
                 }
-                
+
             } else {
                 if($vaucher->prf_registrations()->count() == 1){
                     session()->flash('erro', 'Código de vaucher já em uso');
@@ -99,7 +122,7 @@ class PrfVauchersController extends Controller
                 if($vaucher->validade){
                     if(date("Y-m-d") <= $vaucher->validade){
                         $registration->prf_vauchers_id = $vaucher->id;
-                        $registration->save(); 
+                        $registration->save();
                         session()->flash('success', 'Vaucher adicionado com sucesso');
                         return back();
                     } else {
@@ -108,7 +131,7 @@ class PrfVauchersController extends Controller
                     }
                 } else {
                     $registration->prf_vauchers_id = $vaucher->id;
-                    $registration->save(); 
+                    $registration->save();
                     session()->flash('success', 'Vaucher adicionado com sucesso');
                     return back();
                 }

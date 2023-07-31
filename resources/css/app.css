@@ -177,3 +177,7 @@ body .toastify button.toast-close {
     height: 100%;
     border-radius: 8px;
 }
+
+input[name="vaucher"] {
+    @apply grow px-2 py-1 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1;
+}

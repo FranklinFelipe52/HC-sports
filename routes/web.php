@@ -49,3 +49,10 @@ Route::post('/forgot_password', [PrfForgotPasswordController::class, 'store']);
 Route::view( '/forgot_password_send','PRF.Auth.forgot_password_send')->middleware('PrfRedirectUserLogin');
 Route::get('/password_reset/{token}', [PrfPasswordResetController::class, 'create'])->middleware('PrfRedirectUserLogin');
 Route::post('/password_reset', [PrfPasswordResetController::class, 'store']);
+
+Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom']);
+Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom']);
+Route::view('/admin/cupom_criado', 'PRF.Admin.cupom_criado');
+Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_vaucher']);
+Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vauchers']);
+Route::view('/admin/voucher_criado', 'PRF.Admin.voucher_criado');

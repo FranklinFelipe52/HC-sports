@@ -653,10 +653,6 @@ video {
   grid-column: span 1 / span 1;
 }
 
-.col-span-12 {
-  grid-column: span 12 / span 12;
-}
-
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -968,10 +964,6 @@ video {
   height: 100vh;
 }
 
-.h-\[50px\] {
-  height: 50px;
-}
-
 .max-h-\[1200px\] {
   max-height: 1200px;
 }
@@ -1006,6 +998,10 @@ video {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-\[100px\] {
+  width: 100px;
 }
 
 .w-\[24px\] {
@@ -1051,10 +1047,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[100px\] {
-  width: 100px;
 }
 
 .min-w-\[148px\] {
@@ -1155,10 +1147,6 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
-}
-
-.max-w-\[\] {
-  max-width: ;
 }
 
 .flex-1 {
@@ -1307,10 +1295,6 @@ video {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .gap-6 {
@@ -1936,10 +1920,6 @@ video {
   text-align: end;
 }
 
-.font-open-sans {
-  font-family: 'Open Sans', 'sans-serif';
-}
-
 .font-poppins {
   font-family: Poppins;
 }
@@ -2401,6 +2381,26 @@ body .toastify button.toast-close {
   border-radius: 8px;
 }
 
+input[name="vaucher"] {
+  flex-grow: 1;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(189 189 189 / var(--tw-border-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(51 51 51 / var(--tw-text-opacity));
+}
+
+input[name="vaucher"]:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 14 75 / var(--tw-border-opacity));
+  outline-color: #000E4B;
+}
+
 @media (min-width: 1280px) {
   .xl\:container {
     width: 100%;
@@ -2789,14 +2789,6 @@ body .toastify button.toast-close {
     grid-column: span 1 / span 1;
   }
 
-  .sm\:col-span-3 {
-    grid-column: span 3 / span 3;
-  }
-
-  .sm\:col-span-9 {
-    grid-column: span 9 / span 9;
-  }
-
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -2941,18 +2933,6 @@ body .toastify button.toast-close {
 }
 
 @media (min-width: 768px) {
-  .md\:order-1 {
-    order: 1;
-  }
-
-  .md\:order-2 {
-    order: 2;
-  }
-
-  .md\:col-span-10 {
-    grid-column: span 10 / span 10;
-  }
-
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -3125,10 +3105,6 @@ body .toastify button.toast-close {
 
   .lg\:col-span-6 {
     grid-column: span 6 / span 6;
-  }
-
-  .lg\:col-span-9 {
-    grid-column: span 9 / span 9;
   }
 
   .lg\:row-span-2 {
