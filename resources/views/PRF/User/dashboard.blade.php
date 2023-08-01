@@ -122,6 +122,7 @@
                       @endif
                     </div>
                   @else
+                  @if($registration['status_registration']->id != 1)
                     <form action="/registration/{{ $registration['id'] }}/vauchers/store" method="post" class="flex w-full gap-2">
                       @csrf
                       <input required class="border" type="text" name="vaucher" placeholder="Adicione um cupom ou vaucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
@@ -129,6 +130,7 @@
                         Adicionar
                       </button>
                     </form>
+                    @endif
                   @endif
                 </div>
                 <div class="flex justify-end flex-wrap gap-4">
