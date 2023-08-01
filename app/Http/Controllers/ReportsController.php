@@ -56,8 +56,6 @@ class ReportsController extends Controller
             }
 
 
-
-
             $array_registrations = [];
             $registrations = registration::where('modalities_id', '<>', 11)->join('addresses', 'addresses.user_id', 'registrations.user_id')
                 ->select('registrations.id', 'registrations.user_id', 'registrations.modalities_category_id', 'registrations.modalities_id', 'registrations.range_id', 'registrations.status_regitration_id', 'registrations.type_payment_id', 'registrations.created_at', 'registrations.is_pcd', 'registrations.sub_categorys_id', 'addresses.federative_unit_id');

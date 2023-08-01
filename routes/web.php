@@ -54,5 +54,9 @@ Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom'])
 Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom']);
 Route::view('/admin/cupom_criado', 'PRF.Admin.cupom_criado');
 Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_vaucher']);
+Route::get('/admin/vauchers_relatorio', [PrfVauchersController::class, 'show_vaucher_relatorios']);
+
+Route::get('/admin/all_vauchers_get', [PrfVauchersController::class, 'all_vauchers_get']);
+Route::get('/admin/vauchers_with_user', [PrfVauchersController::class, 'vauchers_with_user']);
 Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vauchers']);
 Route::view('/admin/voucher_criado', 'PRF.Admin.voucher_criado');

@@ -40,7 +40,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cupom_field">
                   Cupom
                 </label>
-                <input disabled value="ZADOQUE20" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cupom_field" name="cupom" placeholder="Código do cupom" />
+                <input disabled value="{{$cupom}}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="cupom_field" name="cupom" placeholder="Código do cupom" />
               </div>
             </div>
           </div>

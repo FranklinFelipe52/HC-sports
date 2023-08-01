@@ -24,23 +24,102 @@ class PrfVauchersController extends Controller
             for($i = 0; $i < intval($request->quant); $i++){
                 $code = '';
                 do {
-                    $verify = false;
+                    $verify = true;
                     $code = CodeVaucherGenerate::generate();
-                    if(!PrfVauchers::where('code', $code )->first()){
-                        $verify = true;
+                    error_log($code);
+                    if(PrfVauchers::where('code', $code)->get()->count() == 0){
+                        $verify = false;
                     }
                 } while($verify);
               $vaucher = new PrfVauchers;
               $vaucher->code = $code;
+              $vaucher->isCupom = false;
               $vaucher->descricao = $request->descricao;
-              $vaucher->desconto = floatval($request->desconto);
+              $vaucher->desconto = floatval($request->desconto) / 100;
               $vaucher->validade =  $request->validade;
               $vaucher->save();
             }
 
-            return redirect('/admin/voucher_criado');
+            return redirect('/');
         }
         catch(Exception $e){
+            return back();
+        }
+    }
+
+    public function show_vaucher_relatorios() {
+        try{
+            return view('PRF.Admin.vauchers_relatorio');
+        } catch(Exception $e){
+            session()->flash('erro', 'Algo deu errado');
+            return back();
+        }
+    }
+    public function all_vauchers_get(){
+        try{
+            $vauchers = PrfVauchers::all();
+            
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
+            
+            $arquivo = fopen("php://output", "w");
+            
+            $cabecalho = [
+                mb_convert_encoding(mb_strtoupper('Código', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Descrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Desconto', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Validade', 'UTF-8'), 'ISO-8859-1', "UTF-8")
+            ];
+            fputcsv($arquivo, $cabecalho, ';');
+            error_log($vauchers);
+            foreach ($vauchers as $value) {
+                $vaucher = [
+                    'codigo' => mb_convert_encoding(mb_strtoupper($value->code, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'descricao' => mb_convert_encoding(mb_strtoupper($value->descricao, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'desconto' =>  mb_convert_encoding(mb_strtoupper(($value->desconto*100).'%', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'validade' => mb_convert_encoding($value->validade ? date('d/m/Y', strtotime($value->validade)): '', 'ISO-8859-1', "UTF-8")
+                ];
+                fputcsv($arquivo, $vaucher, ';');
+            }
+            fclose($arquivo);
+            back();
+        } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
+        }
+    }
+
+    public function vauchers_with_user(){
+        try{
+            $vauchers = PrfVauchers::all();
+            
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
+            
+            $arquivo = fopen("php://output", "w");
+            
+            $cabecalho = [
+                mb_convert_encoding(mb_strtoupper('Código', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Atleta', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Desconto', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Validade', 'UTF-8'), 'ISO-8859-1', "UTF-8")
+            ];
+            fputcsv($arquivo, $cabecalho, ';');
+            foreach ($vauchers as $value) {
+                foreach ($value->prf_registrations as $registration) {
+                    $vaucher = [
+                        'codigo' => mb_convert_encoding(mb_strtoupper($value->code, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                        'atleta' => mb_convert_encoding(mb_strtoupper($registration->prf_user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                        'desconto' =>  mb_convert_encoding(mb_strtoupper(($value->desconto*100).'%', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                        'validade' => mb_convert_encoding($value->validade ? date('d/m/Y', strtotime($value->validade)): '', 'ISO-8859-1', "UTF-8")
+                    ];
+                    fputcsv($arquivo, $vaucher, ';');
+                }
+            }
+            fclose($arquivo);
+            back();
+        } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
     }
@@ -56,29 +135,28 @@ class PrfVauchersController extends Controller
 
     public function store_cupom(Request $request){
         try{
-            for($i = 0; $i < $request->quant; $i++){
-                $code = '';
-                do {
-                    $verify = false;
-                    $code = $request->cupom;
-                    if(!PrfVauchers::where('code', $code)->first()){
-                        $verify = true;
+                
+                    $code = $request->code;
+                    if(PrfVauchers::where('code', $code)->first()){
+                        session()->flash('erro', 'Código já cadastrado');
+                        return back();
                     }
-                } while($verify);
+                   
+               
               $vaucher = new PrfVauchers;
               $vaucher->code = $code;
               $vaucher->descricao = $request->descricao;
-              $vaucher->desconto = $request->desconto;
+              $vaucher->desconto = floatval($request->desconto) / 100;
               $vaucher->isCupom = true;
               $vaucher->validade =  $request->validade;
               $vaucher->save();
-            }
-
+            
             return view('PRF.Admin.cupom_criado', [
-                'cupom' => $request->cupom,
+                'cupom' => $vaucher->code,
             ]);
 
         } catch(Exception $e){
+            session()->flash('erro', 'Erro no sistema, estamos resolvendo');
             return back();
         }
     }

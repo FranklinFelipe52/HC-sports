@@ -49,7 +49,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="descricao_voucher_field">
                   Descrição
                 </label>
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_voucher_field" name="descricao" placeholder="Descrição do voucher" />
+                <input  class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_voucher_field" name="descricao" placeholder="Descrição do voucher" />
               </div>
             </div>
             <div class="group @error('desconto') error @enderror">
@@ -57,7 +57,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="desconto_voucher_field">
                   Desconto
                 </label>
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="number" id="desconto_voucher_field" name="desconto" placeholder="Desconto do voucher" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="number" max="100" min="1" id="desconto_voucher_field" name="desconto" placeholder="Desconto do voucher" />
               </div>
             </div>
             <div>
@@ -65,7 +65,7 @@
                 Validade
               </label>
               <div class="relative">
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_voucher_field" name="validade" placeholder="DD/MM/AAAA" />
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_voucher_field" name="validade" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>

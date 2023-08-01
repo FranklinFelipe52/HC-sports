@@ -117,7 +117,9 @@
                     <div>
                       <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
                       <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
+                      @if($registration['vaucher']->descricao)
                       <p>Descricao: {{ $registration['vaucher']->descricao }}</p>
+                      @endif
                     </div>
                   @else
                     <form action="/registration/{{ $registration['id'] }}/vauchers/store" method="post" class="flex w-full gap-2">

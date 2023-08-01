@@ -36,12 +36,12 @@
         <form id="gerar_cupom_form" method="post" class="mb-4">
           @csrf
           <div class="space-y-4 mb-6">
-            <div class="group @error('quant') error @enderror">
+            <div class="group @error('name') error @enderror">
               <div class="relative">
-                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="quantidade_cupons_field">
-                  Quantidade
+                <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="name_cupons_field">
+                  Código
                 </label>
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="number" id="quantidade_cupons_field" name="quant" placeholder="Quantidade de cupons a ser gerada" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="name_cupons_field" name="code" placeholder="Código do cupom" />
               </div>
             </div>
             <div class="group @error('descricao') error @enderror">
@@ -49,7 +49,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="descricao_cupom_field">
                   Descrição
                 </label>
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_cupom_field" name="descricao" placeholder="Descrição do cupom" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_cupom_field" name="descricao" placeholder="Descrição do cupom" />
               </div>
             </div>
             <div class="group @error('desconto') error @enderror">
@@ -57,7 +57,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="desconto_cupom_field">
                   Desconto
                 </label>
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="number" id="desconto_cupom_field" name="desconto" placeholder="Desconto do cupom" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="number" max="100" min="0" id="desconto_cupom_field" name="desconto" placeholder="Desconto do cupom" />
               </div>
             </div>
             <div>
@@ -65,7 +65,7 @@
                 Validade
               </label>
               <div class="relative">
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_cupom_field" name="validade" placeholder="DD/MM/AAAA" />
+                <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_cupom_field" name="validade" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>
