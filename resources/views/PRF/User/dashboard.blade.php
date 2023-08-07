@@ -125,7 +125,7 @@
                   @if($registration['status_registration']->id != 1)
                     <form action="/registration/{{ $registration['id'] }}/vauchers/store" method="post" class="flex w-full gap-2">
                       @csrf
-                      <input required class="border" type="text" name="vaucher" placeholder="Adicione um cupom ou vaucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
+                      <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou vaucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
                       <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
                         Adicionar
                       </button>
@@ -148,9 +148,17 @@
       </div>
     </div>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
+    const code = document.getElementById("name_cupom_field");
+    new Cleave('#name_cupom_field', {
+      uppercase: true,
+      blocks:['20'],
+      onValueChanged: function (e) {
+        code.value = e.target.value.replace(/\s/g, '');
+    }
+    });
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');
     }

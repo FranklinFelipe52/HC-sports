@@ -37,7 +37,7 @@ Route::get('/dashboard', [PrfDashboardController::class, 'show'])->middleware('A
 Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');
 Route::post('/registration/update/{id}', [PrfRegistrationController::class, 'update_post'])->middleware('AuthPrfUser');
 Route::get('/registration/{id}', [PrfCheckoutController::class, 'checkout'])->middleware('AuthPrfUser');
-Route::post('/registration/{id_registration}/vauchers/store', [PrfVauchersController::class, 'store'])->middleware('AuthPrfUser');
+Route::post('/registration/{id_registration}/vouchers/store', [PrfVauchersController::class, 'store'])->middleware('AuthPrfUser');
 Route::get('/notification_payment', [PrfCheckoutController::class, 'notification']);
 Route::post('/notification_payment_webhook', [PrfCheckoutController::class, 'notification_webhook']);
 
@@ -53,10 +53,10 @@ Route::post('/password_reset', [PrfPasswordResetController::class, 'store']);
 Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom']);
 Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom']);
 Route::view('/admin/cupom_criado', 'PRF.Admin.cupom_criado');
-Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_vaucher']);
-Route::get('/admin/vauchers_relatorio', [PrfVauchersController::class, 'show_vaucher_relatorios']);
+Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher']);
+Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios']);
 
-Route::get('/admin/all_vauchers_get', [PrfVauchersController::class, 'all_vauchers_get']);
-Route::get('/admin/vauchers_with_user', [PrfVauchersController::class, 'vauchers_with_user']);
-Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vauchers']);
+Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get']);
+Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user']);
+Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers']);
 Route::view('/admin/voucher_criado', 'PRF.Admin.voucher_criado');

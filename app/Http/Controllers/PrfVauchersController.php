@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PrfVauchersController extends Controller
 {
-    public function create_vaucher(Request $request) {
+    public function create_voucher(Request $request) {
         try {
             return view('PRF.Admin.criar_voucher');
         } catch(Exception $e) {
@@ -19,7 +19,7 @@ class PrfVauchersController extends Controller
         }
     }
 
-    public function store_vauchers(Request $request){
+    public function store_vouchers(Request $request){
         try{
             for($i = 0; $i < intval($request->quant); $i++){
                 $code = '';
@@ -47,7 +47,7 @@ class PrfVauchersController extends Controller
         }
     }
 
-    public function show_vaucher_relatorios() {
+    public function show_voucher_relatorios() {
         try{
             return view('PRF.Admin.vauchers_relatorio');
         } catch(Exception $e){
@@ -55,7 +55,7 @@ class PrfVauchersController extends Controller
             return back();
         }
     }
-    public function all_vauchers_get(){
+    public function all_vouchers_get(){
         try{
             $vauchers = PrfVauchers::all();
             
@@ -89,7 +89,7 @@ class PrfVauchersController extends Controller
         }
     }
 
-    public function vauchers_with_user(){
+    public function vouchers_with_user(){
         try{
             $vauchers = PrfVauchers::all();
             
@@ -163,6 +163,7 @@ class PrfVauchersController extends Controller
 
     public function store(Request $request, $id_registration){
         try{
+            error_log(CodeVaucherGenerate::delimitador($request->vaucher));
             $vaucher = PrfVauchers::where('code', $request->vaucher)->first();
             $registration = PrfRegistration::find($id_registration);
             if(!$registration){
@@ -170,8 +171,12 @@ class PrfVauchersController extends Controller
                     return back();
             }
             if(!$vaucher){
-                session()->flash('erro', 'Código de vaucher não encontrado');
-                return back();
+                $vaucher = PrfVauchers::where('code', CodeVaucherGenerate::delimitador($request->vaucher))->first();
+                if(!$vaucher){
+                    session()->flash('erro', 'Código de vaucher não encontrado');
+                    return back();
+                }
+                
             }
             if($vaucher->isCupom){
                 if($vaucher->validade){

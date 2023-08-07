@@ -16,5 +16,24 @@ class CodeVaucherGenerate
      }
         return $randomString;
     }
+
+    public static function delimitador( $code ){
+        $code_aux = str_replace(' ', '', $code);
+        $code_array=[];
+        $code_array = str_split($code_aux, 1);
+        if(Count($code_array) < 9){
+            return $code; 
+        }
+        $code_end= '';
+        for ($j = 0; $j < 9; $j++) {
+            if( $j == 2 || $j == 5){
+                $code_end .= $code_array[$j].'-';
+            } else {
+                $code_end .= $code_array[$j];
+            }
+     }
+     
+        return $code_end;
+    }
 }
 ?>
