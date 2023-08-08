@@ -1,4 +1,9 @@
 <?php
+use App\Http\Controllers\PRF\admin\AdminReportsController;
+use App\Http\Controllers\PRF\admin\AdminController;
+use App\Http\Controllers\PRF\admin\AdminDashboardController;
+use App\Http\Controllers\PRF\admin\AdminUsersController;
+
 use App\Http\Controllers\PrfCheckoutController;
 use App\Http\Controllers\PrfDashboardController;
 use App\Http\Controllers\PrfForgotPasswordController;
@@ -46,17 +51,36 @@ Route::post('/login', [PrfLoginController::class, 'store']);
 Route::get('/logout', [PrfLoginController::class, 'logout']);
 Route::get('/forgot_password', [PrfForgotPasswordController::class, 'create'])->middleware('PrfRedirectUserLogin');
 Route::post('/forgot_password', [PrfForgotPasswordController::class, 'store']);
-Route::view( '/forgot_password_send','PRF.Auth.forgot_password_send')->middleware('PrfRedirectUserLogin');
+Route::view('/forgot_password_send', 'PRF.Auth.forgot_password_send')->middleware('PrfRedirectUserLogin');
 Route::get('/password_reset/{token}', [PrfPasswordResetController::class, 'create'])->middleware('PrfRedirectUserLogin');
 Route::post('/password_reset', [PrfPasswordResetController::class, 'store']);
 
-Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom']);
-Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom']);
-Route::view('/admin/cupom_criado', 'PRF.Admin.cupom_criado');
-Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher']);
-Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios']);
+Route::namespace('Admin')->group(function () {
+    Route::redirect('/admin', '/admin/login');
+    Route::get('/admin/gen_password/{password}', [AdminController::class, 'gen_password']);
 
-Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get']);
-Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user']);
-Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers']);
-Route::view('/admin/voucher_criado', 'PRF.Admin.voucher_criado');
+    Route::view('/admin/login', 'PRF.Admin.Auth.login');
+    Route::post('/admin/login', [AdminController::class, 'login']);
+    Route::get('/admin/logout', [AdminController::class, 'logout']);
+
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
+
+
+    Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins');
+});
+

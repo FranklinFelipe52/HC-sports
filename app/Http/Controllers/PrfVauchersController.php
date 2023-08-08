@@ -40,7 +40,9 @@ class PrfVauchersController extends Controller
               $vaucher->save();
             }
 
-            return redirect('/');
+            return view('PRF.Admin.voucher_criado', [
+                'voucher' => $vaucher->code,
+            ]);
         }
         catch(Exception $e){
             return back();
@@ -58,12 +60,12 @@ class PrfVauchersController extends Controller
     public function all_vouchers_get(){
         try{
             $vauchers = PrfVauchers::all();
-            
+
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
-            
+
             $arquivo = fopen("php://output", "w");
-            
+
             $cabecalho = [
                 mb_convert_encoding(mb_strtoupper('Código', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Descrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -92,12 +94,12 @@ class PrfVauchersController extends Controller
     public function vouchers_with_user(){
         try{
             $vauchers = PrfVauchers::all();
-            
+
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
-            
+
             $arquivo = fopen("php://output", "w");
-            
+
             $cabecalho = [
                 mb_convert_encoding(mb_strtoupper('Código', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Atleta', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -135,14 +137,14 @@ class PrfVauchersController extends Controller
 
     public function store_cupom(Request $request){
         try{
-                
+
                     $code = $request->code;
                     if(PrfVauchers::where('code', $code)->first()){
                         session()->flash('erro', 'Código já cadastrado');
                         return back();
                     }
-                   
-               
+
+
               $vaucher = new PrfVauchers;
               $vaucher->code = $code;
               $vaucher->descricao = $request->descricao;
@@ -150,7 +152,7 @@ class PrfVauchersController extends Controller
               $vaucher->isCupom = true;
               $vaucher->validade =  $request->validade;
               $vaucher->save();
-            
+
             return view('PRF.Admin.cupom_criado', [
                 'cupom' => $vaucher->code,
             ]);
@@ -176,7 +178,7 @@ class PrfVauchersController extends Controller
                     session()->flash('erro', 'Código de vaucher não encontrado');
                     return back();
                 }
-                
+
             }
             if($vaucher->isCupom){
                 if($vaucher->validade){
