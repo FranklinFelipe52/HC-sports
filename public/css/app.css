@@ -653,6 +653,10 @@ video {
   grid-column: span 1 / span 1;
 }
 
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -1297,6 +1301,10 @@ video {
   gap: 1rem;
 }
 
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .gap-6 {
   gap: 1.5rem;
 }
@@ -1918,6 +1926,10 @@ video {
 
 .text-end {
   text-align: end;
+}
+
+.font-open-sans {
+  font-family: 'Open Sans', 'sans-serif';
 }
 
 .font-poppins {
@@ -2789,6 +2801,14 @@ input[name="vaucher"]:focus {
     grid-column: span 1 / span 1;
   }
 
+  .sm\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .sm\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -2933,6 +2953,18 @@ input[name="vaucher"]:focus {
 }
 
 @media (min-width: 768px) {
+  .md\:order-1 {
+    order: 1;
+  }
+
+  .md\:order-2 {
+    order: 2;
+  }
+
+  .md\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -3105,6 +3137,10 @@ input[name="vaucher"]:focus {
 
   .lg\:col-span-6 {
     grid-column: span 6 / span 6;
+  }
+
+  .lg\:col-span-9 {
+    grid-column: span 9 / span 9;
   }
 
   .lg\:row-span-2 {

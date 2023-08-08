@@ -8,7 +8,7 @@
     <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/">
+          <a href="/admin/dashboard">
             <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
           </a>
         </header>
@@ -40,7 +40,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="voucher_field">
                   Voucher
                 </label>
-                <input disabled value="{{$cupom}}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="voucher_field" name="voucher" placeholder="Código do voucher" />
+                <input disabled value="{{$voucher}}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="voucher_field" name="voucher" placeholder="Código do voucher" />
               </div>
             </div>
           </div>
