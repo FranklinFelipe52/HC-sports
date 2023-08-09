@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas - ' . $atleta->nome_completo)
+@section('title', 'Atletas - ' . $atleta->nome_completo . '- Meia Maratona PRF')
 
 
 @section('content')

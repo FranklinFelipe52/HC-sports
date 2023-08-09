@@ -118,7 +118,7 @@
                       <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
                       <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
                       @if($registration['vaucher']->descricao)
-                      <p>Descricao: {{ $registration['vaucher']->descricao }}</p>
+                      {{-- <p>Descricao: {{ $registration['vaucher']->descricao }}</p> --}}
                       @endif
                     </div>
                   @else

@@ -56,7 +56,7 @@ Route::get('/password_reset/{token}', [PrfPasswordResetController::class, 'creat
 Route::post('/password_reset', [PrfPasswordResetController::class, 'store']);
 
 Route::namespace('Admin')->group(function () {
-    Route::redirect('/admin', '/admin/login');
+    Route::redirect('/admin', '/admin/dashboard');
     Route::get('/admin/gen_password/{password}', [AdminController::class, 'gen_password']);
 
     Route::view('/admin/login', 'PRF.Admin.Auth.login');
@@ -70,6 +70,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
 
+    Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');
 
     Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins');
 

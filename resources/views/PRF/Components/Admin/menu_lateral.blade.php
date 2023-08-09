@@ -1,7 +1,7 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
-    <a href="/dashboard" class="block overflow-hidden rounded-lg">
-      <img src="/images/PRF/Logo-Meia-PRF.png" class="lg-h-[100px]" alt="">
+    <a href="/admin/dashboard" class="block overflow-hidden rounded-lg">
+      <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[70px]" alt="">
     </a>
   </div>
 
@@ -31,8 +31,19 @@
         </a>
       </li>
 
-      <li class="group @if ($menuItemActive == 3) active @endif">
-        <a href="/admin/reports" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
+      <li class="group @if ($menuItemActive == 4) active @endif">
+        <a href="/admin/discounts" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/qr-code.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="hidden lg:block text-gray-1 font-normal text-sm font-poppins">
+            Descontos
+          </p>
+        </a>
+      </li>
+
+      <li class="group @if ($menuItemActive == 5) active @endif">
+        <a href="/admin/reports" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
             <img src="/images/svg/excel.svg" class="w-full h-full object-cover" alt="">
           </div>
@@ -42,13 +53,6 @@
         </a>
       </li>
 
-      <li class="group sm:hidden">
-        <div title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
-          <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
-          </div>
-        </div>
-      </li>
       <li class="group sm:hidden">
         <a href="/admin/logout" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
