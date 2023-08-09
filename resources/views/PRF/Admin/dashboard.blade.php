@@ -26,17 +26,9 @@
         </header>
 
         <div class="flex gap-4">
-          <a href="/admin/criar_cupom" target="_blank" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Criar cupom
-            </p>
-          </a>
-
-          <a href="/admin/criar_voucher" target="_blank" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Criar voucher
-            </p>
-          </a>
+          <p class="text-gray-3 italic">
+            Em breve...
+          </p>
         </div>
       </div>
     </div>

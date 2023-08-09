@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas')
+@section('title', 'Atletas - Meia Maratona PRF')
 
 @section('content')
 

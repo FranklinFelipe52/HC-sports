@@ -12,7 +12,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('PRF.Components.Admin.menu_lateral', ['menuItemActive' => 3])
+      @include('PRF.Components.Admin.menu_lateral', ['menuItemActive' => 5])
     </div>
 
     <!-- Conteúdo da página -->
