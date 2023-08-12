@@ -8,7 +8,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -50,7 +50,6 @@
                 Nome completo
               </label>
               <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
-
             </div>
             <div>
               <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
@@ -84,7 +83,7 @@
             </div>
 
             <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_package_field">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pcd_field">
                 Possui deficiência física comprovada?
               </label>
 
@@ -99,6 +98,29 @@
                   <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="is_servidor">
+                É servidor da PRF?
+              </label>
+
+              <div class="relative">
+                <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="is_servidor">
+                  <option value="0" selected>Não</option>
+                  <option value="1">Sim</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div id="matricula-inputbox" class="hidden">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_matricula_field">
+                Matrícula
+              </label>
+              <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_matricula_field" name="servidor_matricula" value="{{ old('servidor_matricula') }}" placeholder="Digite a sua matrícula" />
             </div>
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
@@ -153,7 +175,7 @@
                   </div>
                   <div class="py-4 flex gap-4">
                     <div class="flex items-center">
-                      <input class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="flexCheckDefault" />
+                      <input class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="campanhaCheckbox{{ $tshirt->id }}" />
                     </div>
                     <div class="flex flex-col gap-4">
                       <div class="">
@@ -280,7 +302,7 @@
           color: "#279424",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
 
@@ -296,7 +318,7 @@
           color: "#8E1014",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
 
@@ -306,10 +328,20 @@
       numericOnly: true,
     });
 
-    new Cleave('#cadastro_date_field', {
-      date: true,
-      delimiter: '-',
-      datePattern: ['Y', 'm', 'd']
-    });
+    const isPrfSelect = document.querySelector('#is_servidor');
+    const matriculaInputBox = document.querySelector('#matricula-inputbox');
+    const matriculaInput = matriculaInputBox.querySelector('input');
+
+    isPrfSelect.addEventListener('change', handlePrfSelect);
+
+    function handlePrfSelect(e) {
+      if (e.target.value == '1') {
+        matriculaInputBox.classList.remove('hidden');
+        matriculaInput.setAttribute('required', 'required');
+      } else {
+        matriculaInputBox.classList.add('hidden');
+        matriculaInput.removeAttribute('required');
+      }
+    }
   </script>
 @endsection

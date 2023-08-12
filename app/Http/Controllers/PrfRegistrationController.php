@@ -20,10 +20,8 @@ use Illuminate\Support\Facades\Hash;
 class PrfRegistrationController extends Controller
 {
 
-    
     public function create(Request $request, $category_id, $package_id){
         try{
-            
             $category = PrfCategorys::find($category_id);
             $package = PrfPackage::find($package_id);
 
@@ -44,7 +42,6 @@ class PrfRegistrationController extends Controller
 
     public function store(PrfStoreRegistrationRequest $request, $category_id, $package_id){
         try{
-            
             $category = PrfCategorys::find($category_id);
             $package = PrfPackage::find($package_id);
 
@@ -63,6 +60,8 @@ class PrfRegistrationController extends Controller
             $user->password =  Hash::make($request->password);
             $user->sexo = $request->sexo;
             $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
+            $user->is_servidor = $request->is_servidor;
+            $user->servidor_matricula = $request->servidor_matricula;
             $user->save();
 
             $registration = new PrfRegistration;
@@ -85,7 +84,7 @@ class PrfRegistrationController extends Controller
             $payment->prf_registration_id = $registration->id;
             $payment->status_payment_id = 3;
             $payment->save();
-            
+
             $request->session()->put('prf_user', $user);
             return redirect('/dashboard');
 
@@ -115,7 +114,7 @@ class PrfRegistrationController extends Controller
             'user' => $user,
             'registration' => $registration,
             'shirts_sizes' => PrfSizeTshirts::all(),
-            'tshirts' =>  PrfTshirt::all() 
+            'tshirts' =>  PrfTshirt::all()
         ]);
 
         } catch(Exception $e){
@@ -157,7 +156,7 @@ class PrfRegistrationController extends Controller
                     }
                     }
             }
-            
+
             return redirect('/dashboard');
         } catch(Exception $e){
             return dd($e);

@@ -69,6 +69,7 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/users/validar_servidor/{id}', [AdminUsersController::class, 'validar_servidor'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');

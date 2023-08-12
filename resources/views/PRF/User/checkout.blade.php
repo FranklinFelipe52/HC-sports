@@ -1,9 +1,9 @@
 @php
   require base_path('vendor/autoload.php');
   MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-
+  
   $preference = new MercadoPago\Preference();
-
+  
   // Cria um item na preferência
   $item = new MercadoPago\Item();
   $item->title = $registration['title'];
@@ -56,11 +56,13 @@
               Pagamento
             </div>
           </nav>
-          <div class="flex gap-4 items-center flex-wrap">
-            <h1 class="text-lg text-gray-1 font-poppins font-semibold italic">
-              Você está realizando o pagamento da inscrição com o Mercado Pago
-            </h1>
-          </div>
+          @if ($registration['user']->is_servidor_validated == 1)
+            <div class="flex gap-4 items-center flex-wrap">
+              <h1 class="text-lg text-gray-1 font-poppins font-semibold italic">
+                Você está realizando o pagamento da inscrição com o Mercado Pago
+              </h1>
+            </div>
+          @endif
         </header>
 
         <div class="w-full max-w-[700px]">
@@ -139,9 +141,17 @@
               </a>
             </div>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
-           
-              <div id="wallet_container"></div>
-            
+
+              @if ($registration['user']->is_servidor_validated == 1)
+                <div id="wallet_container"></div>
+              @else
+                <button href="" disabled title="Estamos analisando sua inscrição como servidor da PRF" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                  <p class="text-white text-sm font-bold font-poppins">
+                    Inscrição em análise
+                  </p>
+                </button>
+              @endif
+
             @endif
           </div>
         </div>
