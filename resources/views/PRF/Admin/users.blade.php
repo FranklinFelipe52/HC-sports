@@ -107,21 +107,18 @@
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
-                        @if ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 1)
+                        @if ($atleta->is_servidor == 1)
                           <span class="font-bold text-prfA1">Servidor PRF</span>
-                        @elseif ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 0)
-                          <span class="font-normal text-prfA1">Servidor PRF</span>
-                          <span class="font-bold text-prfA1">(Em análise)</span>
-                        @elseif ($atleta->is_servidor == 0 && $atleta->is_servidor_validated == 0)
+                        @elseif ($atleta->is_servidor == 0)
                           <span class="font-normal text-prfA1">Comum</span>
                         @endif
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
-                        @if ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 1)
+                        @if ($atleta->is_servidor == 1)
                           {{ $atleta->servidor_matricula }}
-                        @else
+                        @elseif ($atleta->is_servidor == 0)
                           -
                         @endif
                       </p>

@@ -234,7 +234,7 @@
     }
 
     function updateTotalValue() {
-      valorTotalDescontado = (valorCategoria * {{ \App\Helpers\ValorTotal::DescontosTotais($user, $registration) }}) + valorItensAdicionais;
+      valorTotalDescontado = valorCategoria - (valorCategoria * {{ \App\Helpers\ValorTotal::DescontosTotais($user, $registration) }}) + valorItensAdicionais;
 
       valorTotalEl.innerText = valorTotalDescontado.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,

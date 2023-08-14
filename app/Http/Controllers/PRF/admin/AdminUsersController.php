@@ -19,7 +19,7 @@ class AdminUsersController extends Controller
         try {
             $admin = $request->session()->get('admin');
             $users_query = DB::table('prf_users')
-                ->select('prf_users.id', 'prf_users.nome_completo', 'prf_users.cpf', 'prf_users.servidor_matricula', 'prf_users.is_servidor', 'prf_users.is_servidor_validated')
+                ->select('prf_users.id', 'prf_users.nome_completo', 'prf_users.cpf', 'prf_users.servidor_matricula', 'prf_users.is_servidor')
                 ->orderBy('prf_users.created_at', 'desc');
             ;
 
@@ -52,41 +52,6 @@ class AdminUsersController extends Controller
             return view('PRF.Admin.user', [
                 'atleta' => $user,
             ]);
-
-        } catch (Exception $e){
-            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
-            return back();
-        }
-    }
-
-    public function validar_servidor (Request $request, $id) {
-        try{
-            $user = PrfUser::find($id);
-            $admin = PrfAdmin::find(Session('admin')->id);
-            $action = TypeActionsAdmin::find(7);
-
-            if(!$user){
-                session()->flash('erro', 'Usuário não encontrado.');
-                return back();
-            }
-
-            if (!$user->is_servidor) {
-                session()->flash('erro', 'O usuário informou ser da PRF, portanto não precisa de validação.');
-                return back();
-            }
-
-            $user->is_servidor_validated = 1;
-            $user->save();
-
-            $admin_log = new  PrfAdminLog;
-            $admin_log->prf_admin_id = $admin->id;
-            $admin_log->type_actions_admin_id = $action->id;
-            $admin_log->description = 'confirmou que o usuário de cpf ' . $user->cpf . 'e ID ' . $user->id . ' é um servidor da PRF';
-
-            $admin_log->save();
-
-            session()->flash('success', 'O usuário foi confirmado como servidor da PRF.');
-            return back();
 
         } catch (Exception $e){
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');

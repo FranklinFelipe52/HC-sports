@@ -134,38 +134,6 @@
       </div>
     </div>
   @endforeach --}}
-  @if ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 0)
-    <div id="modal-validar-servidor" class="hidden">
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
-          <!-- modal header -->
-          <div class="text-gray-1 text-lg md:text-xl font-semibold">
-            <p>
-              Validar inscrição de servidor da PRF
-            </p>
-          </div>
-          <hr class="my-4">
-
-          <!-- modal body -->
-          <div class="text-gray-1 text-base">
-            <p>
-              Ao validar, você confirma que essa inscrição é de um servidor da PRF e libera o usuário para prosseguir com o pagamento.
-            </p>
-          </div>
-
-          <!-- modal footer - actions -->
-          <div class="flex justify-end gap-4 flex-wrap mt-10">
-            <button data-modalId="modal-validar-servidor" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Cancelar
-            </button>
-            <a href="/admin/users/validar_servidor/{{ $atleta->id }}" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Validar
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  @endif
 
   {{-- @include('components.admin.menu_mobile', ['type' => 4]) --}}
 
@@ -215,19 +183,13 @@
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
                   {{ $atleta->nome_completo }} <br>
-                  @if ($atleta->is_servidor_validated)
+                  @if ($atleta->is_servidor)
                     <span class="font-bold">(Servidor)</span>
                   @endif
                 </p>
               </div>
             </div>
             <div class="flex flex-col gap-4">
-
-              @if ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 0)
-                <button data-modalId="modal-validar-servidor" data-action="open" class="text-center text-sm font-bold font-poppins text-white grow p-2 rounded bg-brand-prfA1 border border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 transition">
-                  Validar inscrição
-                </button>
-              @endif
 
               {{-- <a href="/admin/users/update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -383,13 +345,7 @@
                             Maratona 191 PRF - 2023
                           </p>
                         </div>
-                        @if ($atleta->is_servidor == 1 && $atleta->is_servidor_validated == 0)
-                          <div class="bg-feedback-orange py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold text-center">
-                              aguardando validação
-                            </p>
-                          </div>
-                        @elseif ($registration->status_regitration->id == 1)
+                        @if ($registration->status_regitration->id == 1)
                           <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                             <p class="text-white text-[0.5rem] font-bold text-center">
                               {{ $registration->status_regitration->status }}
