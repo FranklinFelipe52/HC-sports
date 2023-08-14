@@ -32,7 +32,7 @@
             <div class="flex gap-2 flex-wrap">
               <form class="relative grow">
 
-                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
+                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando nome, cpf ou matrícula" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
@@ -47,22 +47,32 @@
             <!-- Table header -->
             <div class="border-x border-b border-gray-5 min-w-[600px]" role="heading">
               <div role="row" class="grid grid-cols-12 px-4 py-3">
-                <div role="columnheader" class="text-start col-span-3">
+                <div role="columnheader" class="text-start col-span-2">
                   <p class="text-sm font-semibold text-gray-1">
                     CPF
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-4">
+                <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1">
                     Nome
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-3">
+                <div role="columnheader" class="text-center col-span-2">
                   <p class="text-sm font-semibold text-gray-1 ">
                     Inscrições
                   </p>
                 </div>
-                <div role="columnheader" class="col-span-2 text-end">
+                <div role="columnheader" class="text-start col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Tipo de usuário
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-2">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Matrícula PRF
+                  </p>
+                </div>
+                <div role="columnheader" class="col-span-1 text-end">
                   <p class="text-sm font-semibold text-gray-1">
                     Ações
                   </p>
@@ -76,12 +86,12 @@
                 @foreach ($atletas as $atleta)
                   <!-- Table row -->
                   <div role="row" class="px-4 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0" data-pagination-item>
-                    <div role="cell" class="py-3 flex items-center col-span-3">
+                    <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
                         <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $atleta->cpf); ?>
                       </p>
                     </div>
-                    <div role="cell" class="pr-2 py-3 flex items-center col-span-4">
+                    <div role="cell" class="pr-2 py-3 flex items-center col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
                         @if ($atleta->nome_completo == null)
                           -
@@ -90,12 +100,30 @@
                         @endif
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex items-center col-span-3">
-                      <p class="text-sm font-semibold text-gray-2">
+                    <div role="cell" class="py-3 flex items-center justify-center col-span-2">
+                      <p class="text-sm font-semibold text-gray-2 text-center">
                         {{ Count(App\Models\PrfUser::find($atleta->id)->registrations) }}
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
+                    <div role="cell" class="py-3 flex items-center col-span-2">
+                      <p class="text-sm font-semibold text-gray-2">
+                        @if ($atleta->is_servidor == 1)
+                          <span class="font-bold text-prfA1">Servidor PRF</span>
+                        @elseif ($atleta->is_servidor == 0)
+                          <span class="font-normal text-prfA1">Comum</span>
+                        @endif
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex items-center col-span-2">
+                      <p class="text-sm font-semibold text-gray-2">
+                        @if ($atleta->is_servidor == 1)
+                          {{ $atleta->servidor_matricula }}
+                        @elseif ($atleta->is_servidor == 0)
+                          -
+                        @endif
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-1">
 
                       <a href="/admin/users/{{ $atleta->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
                         <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">

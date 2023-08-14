@@ -130,7 +130,7 @@
                   </div>
                 </div>
                 <div class="flex justify-end gap-4 flex-wrap">
-                 {{--
+
                   <div>
                     <p class="text-gray-1">
                       Valor total:
@@ -140,7 +140,7 @@
                       </span>
                     </p>
                   </div>
-                  --}} 
+
                   <button type="submit" class="flex items-center justify-center gap-4 px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
                     <p class="text-white text-sm font-bold font-poppins">
                       Salvar alterações
@@ -198,7 +198,8 @@
     }
 
     const valorTotalEl = document.querySelector('#valorTotal');
-    let valorTotal = 0;
+    let valorCategoria = 0;
+    let valorItensAdicionais = 0;
     const valoresArray = Array.from(document.querySelectorAll('[data-item]'));
 
     valoresArray.forEach(i => {
@@ -206,25 +207,26 @@
       if (i.dataset.item == 'select') {
         const indiceSelecionado = i.selectedIndex;
         const opcaoSelecionada = i.options[indiceSelecionado];
-        valorTotal += Number(opcaoSelecionada.dataset.itemValue);
+        valorCategoria += Number(opcaoSelecionada.dataset.itemValue);
       } else if (i.dataset.item == 'checkbox') {
         if (i.checked) {
-          valorTotal += Number(i.dataset.itemValue);
+          valorItensAdicionais += Number(i.dataset.itemValue);
         }
       }
     });
 
     function handleValorChange(event) {
-      valorTotal = 0;
+      valorCategoria = 0;
+      valorItensAdicionais = 0;
       valoresArray.forEach(i => {
         i.addEventListener('change', handleValorChange);
         if (i.dataset.item == 'select') {
           const indiceSelecionado = i.selectedIndex;
           const opcaoSelecionada = i.options[indiceSelecionado];
-          valorTotal += Number(opcaoSelecionada.dataset.itemValue);
+          valorCategoria += Number(opcaoSelecionada.dataset.itemValue);
         } else if (i.dataset.item == 'checkbox') {
           if (i.checked) {
-            valorTotal += Number(i.dataset.itemValue);
+            valorItensAdicionais += Number(i.dataset.itemValue);
           }
         }
       });
@@ -232,7 +234,7 @@
     }
 
     function updateTotalValue() {
-      valorTotalDescontado = valorTotal - (valorTotal * {{ \App\Helpers\ValorTotal::DescontosTotais($user) }});
+      valorTotalDescontado = valorCategoria - (valorCategoria * {{ \App\Helpers\ValorTotal::DescontosTotais($user, $registration) }}) + valorItensAdicionais;
 
       valorTotalEl.innerText = valorTotalDescontado.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,

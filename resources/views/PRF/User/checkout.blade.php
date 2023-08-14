@@ -1,9 +1,9 @@
 @php
   require base_path('vendor/autoload.php');
   MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-
+  
   $preference = new MercadoPago\Preference();
-
+  
   // Cria um item na preferência
   $item = new MercadoPago\Item();
   $item->title = $registration['title'];
@@ -89,6 +89,20 @@
                 </p>
               </div>
             </div>
+            @if ($registration['user']->is_servidor == 1)
+              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-1 font-semibold">
+                    Matrícula PRF
+                  </p>
+                </div>
+                <div class="col-span-2 sm:col-span-1">
+                  <p class="text-sm text-gray-2 font-normal">
+                    {{ $registration['user']->servidor_matricula }}
+                  </p>
+                </div>
+              </div>
+            @endif
             <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
               <div class="col-span-2 sm:col-span-1">
                 <p class="text-sm text-gray-1 font-semibold">
@@ -139,9 +153,7 @@
               </a>
             </div>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
-           
               <div id="wallet_container"></div>
-            
             @endif
           </div>
         </div>
@@ -210,16 +222,6 @@
         onClick: function() {}
       }).showToast();
     }
-
-    /* const walletContainer = document.querySelector('#wallet_container');
-    const mpButton = walletContainer.querySelector('div');
-    walletContainer.addEventListener('click', (e) => {
-      showSuccessToastfy('Aguarde, estamos salvando seus dados');
-      setTimeout(() => {
-        mpButton.click();
-        console.log(mpButton)
-      }, 1500)
-    }); */
   </script>
 
 @endsection

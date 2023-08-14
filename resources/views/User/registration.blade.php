@@ -196,7 +196,7 @@
             @endif
           </div>
           <div class="flex flex-wrap justify-end">
-            
+
             @if (($registration->status_regitration_id != 2) && ($registration->status_regitration_id != 1))
             @if (!((Session('user')->nome_completo == null) || (Session('user')->nome_completo == 'Nome')))
             <div id="wallet_container"></div>
@@ -250,7 +250,7 @@
           color: "#279424",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
 
@@ -266,7 +266,7 @@
           color: "#8E1014",
           boxShadow: "none",
         },
-        onClick: function() {} // Callback after click
+        onClick: function() {}
       }).showToast();
     }
   </script>
