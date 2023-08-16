@@ -78,14 +78,13 @@
   </a>
 
 
-  <div class="group hidden sm:flex items-end justify-center lg:justify-start grow">
-    <a class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+  <div class="group hidden sm:flex items-end justify-center lg:justify-start grow @if ($menuItemActive == 7) active @endif">
+    <a href="/admin/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
       <div class="w-[32px] h-[32px] shrink-0">
-        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover group-[.active]:hidden" alt="">
-        <img src="/images/svg/user-circle-active.svg" class="w-full h-full object-cover hidden group-[.active]:block" alt="">
+        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
       </div>
       <div class="hidden lg:block">
-        <p class="text-gray-1 group-[.active]:text-brand-prfA1 font-bold font-poppins text-sm">
+        <p class="text-gray-1 font-bold font-poppins text-sm">
           <?php echo explode(' ', Session('admin')->nome_completo)[0]; ?>
         </p>
       </div>

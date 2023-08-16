@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Perfil do administrador - Meia Maratona PRF')
+@section('title', 'Perfil do usuário - Meia Maratona PRF')
 
 @section('content')
 
@@ -11,14 +11,11 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('PRF.Components.Admin.menu_lateral', ['menuItemActive' => 7]);
+      @include('PRF.Components.menu_lateral', ['menuItemActive' => 2]);
     </div>
 
     <!-- corpo da página -->
     <div class="order-1 sm:order-2 overflow-hidden">
-      @if (Session('admin'))
-        {{-- @include('components.admin.personification_nav') --}}
-      @endif
       <div class="h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->
@@ -40,7 +37,7 @@
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
 
-                  <?php echo explode(' ', Session('admin')->nome_completo)[0] . ' ' . explode(' ', Session('admin')->nome_completo)[1]; ?>
+                  <?php echo explode(' ', Session('prf_user')->nome_completo)[0] . ' ' . explode(' ', Session('prf_user')->nome_completo)[1]; ?>
                 </p>
               </div>
             </div>
@@ -69,12 +66,24 @@
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
+                      Nome Completo
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      {{ Session('prf_user')->nome_completo }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
                       CPF
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', Session('admin')->cpf); ?>
+                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', Session('prf_user')->cpf); ?>
                     </p>
                   </div>
                 </div>
@@ -86,31 +95,94 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      {{ Session('admin')->email }}
+                      {{ Session('prf_user')->email }}
                     </p>
                   </div>
                 </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Data de nascimento
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      {{ date('d/m/Y', strtotime(Session('prf_user')->data_nasc)) }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Gênero
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      @if (Session('prf_user')->sexo == 'M')
+                        Masculino
+                      @elseif (Session('prf_user')->sexo == 'F')
+                        Feminino
+                      @endif
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      É servidor da PRF?
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      @if (Session('prf_user')->is_servidor == 0)
+                        Não
+                      @elseif (Session('prf_user')->is_servidor == 1)
+                        Sim
+                      @endif
+                    </p>
+                  </div>
+                </div>
+                @if (Session('prf_user')->is_servidor == 1)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Matrícula PRF
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ Session('prf_user')->servidor_matricula }}
+                      </p>
+                    </div>
+                  </div>
+                @endif
               </div>
-              <div class="flex gap-4 flex-wrap">
-                {{-- <a href="/profile/edit/{{ Session('admin')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+              <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
+                <p class="text-brand-prfA1">
+                  Por enquanto a edição de dados não está disponível, entre em contato com um administrador caso alguma informação esteja errada.
+                </p>
+              </div>
+              {{-- <div class="flex gap-4 flex-wrap">
+                <a href="/profile/edit/{{ Session('prf_user')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   <img src="/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
-                <a href="/profile/password_reset/{{ Session('admin')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <a href="/profile/password_reset/{{ Session('prf_user')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                   <img src="/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha
                   </p>
-                </a> --}}
-                {{-- <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+                </a>
+                <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
                   <img src="/images/svg/trash.svg" alt="">
                   <p class="text-brand-v1 text-sm font-bold font-poppins">
                     Excluir Conta
                   </p>
-                </button> --}}
-              </div>
+                </button>
+              </div> --}}
             </div>
           </div>
         </div>
