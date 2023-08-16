@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\PRF\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PrfUserUpdateRequest;
 use App\Models\PrfAdminLog;
+use App\Models\PrfRegistration;
 use App\Models\PrfUser;
 use App\Models\PrfAdmin;
 use App\Models\TypeActionsAdmin;
@@ -43,18 +45,59 @@ class AdminUsersController extends Controller
         }
     }
 
-    public function single (Request $request, $id){
-        try{
+    public function single(Request $request, $id)
+    {
+        try {
             $user = PrfUser::find($id);
-            if(!$user){
+            if (!$user) {
                 return back();
             }
             return view('PRF.Admin.user', [
                 'atleta' => $user,
             ]);
 
-        } catch (Exception $e){
+        } catch (Exception $e) {
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
+        }
+    }
+
+    public function update_form(Request $request, $id)
+    {
+        try {
+            $user = PrfUser::find($id);
+
+            return view('PRF.Admin.user_update', ['atleta' => $user]);
+        } catch (Exception $e) {
+            return back();
+        }
+    }
+
+    public function update(PrfUserUpdateRequest $request, $id)
+    {
+        try {
+            $user = PrfUser::find($id);
+            $admin = PrfUser::find($request->session()->get('admin')->id);
+
+            $user->cpf = $request->cpf;
+            $user->nome_completo = $request->nome;
+            $user->sexo = $request->sexo;
+            $user->data_nasc = $request->data_nasc;
+            // $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
+            $user->is_servidor = $request->is_servidor;
+            $user->servidor_matricula = $request->servidor_matricula;
+            $user->save();
+
+            $admin_log = new PrfAdminLog;
+            $admin_log->prf_admin_id = $admin->id;
+            $admin_log->type_actions_admin_id = 3;
+            $admin_log->description = 'Editou informações do usuário de cpf ' . $user->cpf . ', e id #' . $user->id;
+            $admin_log->save();
+
+            return back();
+
+        } catch (Exception $e) {
+            dd($e);
             return back();
         }
     }

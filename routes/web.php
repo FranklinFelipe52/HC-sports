@@ -4,6 +4,7 @@ use App\Http\Controllers\PRF\admin\AdminController;
 use App\Http\Controllers\PRF\admin\AdminDashboardController;
 use App\Http\Controllers\PRF\admin\AdminUsersController;
 
+use App\Http\Controllers\PRF\PrfUserController;
 use App\Http\Controllers\PrfCheckoutController;
 use App\Http\Controllers\PrfDashboardController;
 use App\Http\Controllers\PrfForgotPasswordController;
@@ -39,6 +40,7 @@ Route::get('/', [PrfHomeController::class, 'show']);
 Route::get('/inscricao/{category_id}/{package_id}', [PrfRegistrationController::class, 'create']);
 Route::post('/inscricao/{category_id}/{package_id}', [PrfRegistrationController::class, 'store']);
 Route::get('/dashboard', [PrfDashboardController::class, 'show'])->middleware('AuthPrfUser');
+Route::get('/profile', [PrfUserController::class, 'profile'])->middleware('AuthPrfUser');
 Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');
 Route::post('/registration/update/{id}', [PrfRegistrationController::class, 'update_post'])->middleware('AuthPrfUser');
 Route::get('/registration/{id}', [PrfCheckoutController::class, 'checkout'])->middleware('AuthPrfUser');
@@ -69,7 +71,8 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/users/validar_servidor/{id}', [AdminUsersController::class, 'validar_servidor'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');
