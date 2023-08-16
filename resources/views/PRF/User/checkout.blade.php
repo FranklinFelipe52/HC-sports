@@ -1,9 +1,9 @@
 @php
   require base_path('vendor/autoload.php');
   MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-  
+
   $preference = new MercadoPago\Preference();
-  
+
   // Cria um item na preferência
   $item = new MercadoPago\Item();
   $item->title = $registration['title'];
@@ -35,7 +35,7 @@
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
-      @include('PRF.Components.menu_lateral');
+      @include('PRF.Components.menu_lateral', ['menuItemActive' => 1]);
     </div>
 
     <!-- Conteúdo da página -->
