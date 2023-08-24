@@ -20,17 +20,18 @@ class AdminUsersController extends Controller
     {
         try {
             $admin = $request->session()->get('admin');
-            $users_query = DB::table('prf_users')
-                ->select('prf_users.id', 'prf_users.nome_completo', 'prf_users.cpf', 'prf_users.servidor_matricula', 'prf_users.is_servidor')
-                ->orderBy('prf_users.created_at', 'desc');
-            ;
+            $users_query = PrfUser::orderBy('nome_completo', 'asc');
 
-            if (isset($_GET["s"])) {
-                $users_query = $users_query
-                    ->where('nome_completo', 'LIKE', '%' . $_GET["s"] . '%')
-                    ->orWhere('cpf', 'LIKE', '%' . preg_replace("/[^0-9]/", "", $_GET["s"]) . '%')
-                    ->orWhere('servidor_matricula', 'LIKE', '%' . $_GET["s"] . '%')
-                    ->orWhere('email', 'LIKE', '%' . $_GET["s"] . '%');
+            if (isset($_GET["s"]) && $_GET["s"] !== '') {
+                $searchTerm = $_GET["s"];
+                $users_query->where(function ($query) use ($searchTerm) {
+                    $query->where('nome_completo', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('servidor_matricula', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('cpf', preg_replace("/[^0-9]/", "", $searchTerm));
+
+                    // dd(preg_replace("/[^0-9]/", "", $searchTerm));
+                });
             }
 
             $users = $users_query->get();
@@ -79,7 +80,7 @@ class AdminUsersController extends Controller
             $user = PrfUser::find($id);
             $admin = PrfUser::find($request->session()->get('admin')->id);
 
-            $user->cpf = $request->cpf;
+            $user->cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
             $user->nome_completo = $request->nome;
             $user->sexo = $request->sexo;
             $user->data_nasc = $request->data_nasc;
