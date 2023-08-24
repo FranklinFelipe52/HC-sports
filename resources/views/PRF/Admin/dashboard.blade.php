@@ -75,7 +75,7 @@
                   <p class="text-xs">
                     {{ Count($vouchers) }}
 
-                    @if (Count($vouchers) > 0)
+                    @if (Count($vouchers) > 1)
                       Vouchers
                     @else
                       Voucher
@@ -85,7 +85,7 @@
                   <p class="text-xs">
                     {{ Count($cupoms) }}
 
-                    @if (Count($cupoms) > 0)
+                    @if (Count($cupoms) > 1)
                       Cupoms
                     @else
                       Cupom
