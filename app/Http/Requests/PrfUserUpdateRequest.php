@@ -29,16 +29,17 @@ class PrfUserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'email' => ['required', 'email', new PrfEmailUserExist],
             'cpf' => ['required', new CpfValidate],
-            'data_nasc' => ['date'],
         ];
     }
 
     public function messages()
     {
         return [
+            // 'email.required' => 'E-mail é obrigatório',
+            // 'email.email' => 'Digite um E-mail válido',
             'cpf.required' => 'CPF é obrigatório',
-            'data_nasc.date' => 'Data invalida',
         ];
     }
 }

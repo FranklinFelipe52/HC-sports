@@ -26,9 +26,9 @@ class AdminUsersController extends Controller
                 $searchTerm = $_GET["s"];
                 $users_query->where(function ($query) use ($searchTerm) {
                     $query->where('nome_completo', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('email', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('servidor_matricula', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('cpf', preg_replace("/[^0-9]/", "", $searchTerm));
+                        ->orWhere('email', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('servidor_matricula', 'LIKE', '%' . $searchTerm . '%')
+                        ->orWhere('cpf', preg_replace("/[^0-9]/", "", $searchTerm));
 
                     // dd(preg_replace("/[^0-9]/", "", $searchTerm));
                 });
@@ -70,6 +70,7 @@ class AdminUsersController extends Controller
 
             return view('PRF.Admin.user_update', ['atleta' => $user]);
         } catch (Exception $e) {
+            dd($e);
             return back();
         }
     }
@@ -78,16 +79,27 @@ class AdminUsersController extends Controller
     {
         try {
             $user = PrfUser::find($id);
+            $registration = PrfRegistration::where('prf_user_id', $id)->first();
             $admin = PrfUser::find($request->session()->get('admin')->id);
 
-            $user->cpf = preg_replace( '/[^0-9]/is', '', $request->cpf);
+            $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
             $user->nome_completo = $request->nome;
-            $user->sexo = $request->sexo;
-            $user->data_nasc = $request->data_nasc;
-            // $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
+            $user->phone = $request->phone;
             $user->is_servidor = $request->is_servidor;
-            $user->servidor_matricula = $request->servidor_matricula;
+
             $user->save();
+
+            $free_package_id = 1;
+            $standart_package_id = 2;
+
+            $registration->prf_package_id = $request->is_servidor == 1 ? $free_package_id : $standart_package_id;
+
+            if ($registration->prf_package_id == 1) {
+                $registration->status_regitration_id = 2;
+            } else {
+                $registration->status_regitration_id = 3;
+            }
+            $registration->save();
 
             $admin_log = new PrfAdminLog;
             $admin_log->prf_admin_id = $admin->id;

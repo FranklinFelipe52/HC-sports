@@ -50,8 +50,6 @@ class PrfCheckoutController extends Controller
 
         } catch(Exception $e){
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
-
-            dd($e);
             return back();
         }
     }

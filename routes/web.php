@@ -12,6 +12,7 @@ use App\Http\Controllers\PrfHomeController;
 use App\Http\Controllers\PrfLoginController;
 use App\Http\Controllers\PrfPasswordResetController;
 use App\Http\Controllers\PrfRegistrationController;
+use App\Http\Controllers\PrfReportsController;
 use App\Http\Controllers\PrfVauchersController;
 use App\Models\PrfVauchers;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +41,8 @@ Route::get('/', [PrfHomeController::class, 'show']);
 Route::post('/registration/store', [PrfRegistrationController::class, 'store']);
 Route::get('/dashboard', [PrfDashboardController::class, 'show'])->middleware('AuthPrfUser');
 Route::get('/profile', [PrfUserController::class, 'profile'])->middleware('AuthPrfUser');
-Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');
-Route::post('/registration/update/{id}', [PrfRegistrationController::class, 'update_post'])->middleware('AuthPrfUser');
+// Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');
+// Route::post('/registration/update/{id}', [PrfRegistrationController::class, 'update_post'])->middleware('AuthPrfUser');
 Route::get('/registration/{id}', [PrfCheckoutController::class, 'checkout'])->middleware('AuthPrfUser');
 Route::post('/registration/{id_registration}/vouchers/store', [PrfVauchersController::class, 'store'])->middleware('AuthPrfUser');
 Route::get('/notification_payment', [PrfCheckoutController::class, 'notification']);
@@ -87,5 +88,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins');
     Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/all_users_get', [PrfReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_servidores_get', [PrfReportsController::class, 'all_servidores_get'])->middleware('PrfAuthAdmins');
 });
 

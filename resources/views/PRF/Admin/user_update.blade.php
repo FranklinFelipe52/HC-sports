@@ -108,7 +108,7 @@
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_cpf_field">
                         CPF
                       </label>
-                      <input required value="{{ $atleta->cpf }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="atualizar_cpf_field" name="cpf" placeholder="Digite o seu CPF" />
+                      <input required value="{{ $atleta->cpf }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_cpf_field" name="cpf" placeholder="Digite o seu CPF" />
                     </div>
                     <div class="grow">
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_email_field">
@@ -126,40 +126,15 @@
                   </div>
 
                   <div class="flex gap-4 mb-6">
-                    <div class="grow">
-                      <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="atualizar_data_nasc_field">
-                        Nascimento
+                    <div class="mb-6">
+                      <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_contato_field">
+                        Contato
                       </label>
-                      <div class="relative">
-                        <input value="{{ $atleta->data_nasc }}" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="atualizar_data_nasc_field" name="data_nasc" placeholder="DD/MM/AAAA" />
-                        <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                          <img src="/images/PRF/svg/calendar.svg" alt="" />
-                        </div>
-                      </div>
-                      @error('data_nasc')
-                        <p class="text-red-600">{{ $message }}</p>
-                      @enderror
+                      <input onkeyup="this.value = this.value.toUpperCase();" value="{{ $atleta->phone }}" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" name="phone" placeholder="Digite o número de contato" />
                     </div>
                     <div class="grow">
-                      <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_genero_field">
-                        Gênero
-                      </label>
-                      <div class="relative">
-                        <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="sexo" id="atualizar_genero_field">
-                          <option value="M" @if ($atleta->sexo == 'M') selected @endif>Masculino</option>
-                          <option value="F" @if ($atleta->sexo == 'F') selected @endif>Feminino</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          <img src="/images/PRF/svg/chevron-down.svg" alt="" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex gap-4">
-                    <div class="">
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="is_servidor">
-                        É servidor da PRF?
+                        Servidor da segurança pública?
                       </label>
 
                       <div class="relative">
@@ -171,13 +146,6 @@
                           <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                         </div>
                       </div>
-                    </div>
-
-                    <div id="matricula-inputbox" class="grow hidden">
-                      <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_matricula_field">
-                        Matrícula
-                      </label>
-                      <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" value="{{ $atleta->servidor_matricula }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_matricula_field" name="servidor_matricula" value="{{ old('servidor_matricula') }}" placeholder="Digite a sua matrícula" />
                     </div>
                   </div>
                 </div>
@@ -248,34 +216,16 @@
       }).showToast();
     }
 
-    new Cleave('#atualizar_cpf_field', {
+    new Cleave('#registration_cpf_field', {
       blocks: [3, 3, 3, 2],
       delimiters: ['.', '.', '-'],
       numericOnly: true,
     });
 
-    const isPrfSelect = document.querySelector('#is_servidor');
-    const matriculaInputBox = document.querySelector('#matricula-inputbox');
-    const matriculaInput = matriculaInputBox.querySelector('input');
-
-    isPrfSelect.addEventListener('change', handlePrfSelect);
-
-    function handlePrfSelect(e) {
-      if (e.target.value == '1') {
-        matriculaInputBox.classList.remove('hidden');
-        matriculaInput.setAttribute('required', 'required');
-      } else {
-        matriculaInputBox.classList.add('hidden');
-        matriculaInput.removeAttribute('required');
-      }
-    }
-
-    if (isPrfSelect.value == '1') {
-      matriculaInputBox.classList.remove('hidden');
-      matriculaInput.setAttribute('required', 'required');
-    } else {
-      matriculaInputBox.classList.add('hidden');
-      matriculaInput.removeAttribute('required');
-    }
+    new Cleave('#registration_phone_field', {
+      blocks: [2, 5, 4],
+      delimiters: [' ', '-'],
+      numericOnly: true,
+    });
   </script>
 @endsection

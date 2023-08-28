@@ -134,11 +134,12 @@
             @endif
           </div>
           <div style="align-items: top" class="flex flex-wrap justify-between">
-            <div class="mb-4">
+            {{-- <div class="mb-4">
               <a href="/registration/update/{{ $registration['id'] }}" class="text-brand-prfA1 font-bold border-b-2 border-b-brand-prfA1 max-w-[220px]">
                 Editar inscrição
               </a>
-            </div>
+            </div> --}}
+            <span></span>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
               <div id="wallet_container"></div>
             @endif

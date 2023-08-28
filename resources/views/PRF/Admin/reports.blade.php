@@ -27,7 +27,7 @@
         </header>
 
         <div class="flex gap-4">
-          <a href="/admin/all_vouchers_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+          {{-- <a href="/admin/all_vouchers_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
             <img src="/images/svg/download.svg" alt="">
             <p class="text-white text-sm font-bold font-poppins">
               Todos os vouchers
@@ -38,6 +38,20 @@
             <img src="/images/svg/download.svg" alt="">
             <p class="text-white text-sm font-bold font-poppins">
               Vouchers usados
+            </p>
+          </a> --}}
+
+          <a href="/admin/all_users_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+            <img src="/images/svg/download.svg" alt="">
+            <p class="text-white text-sm font-bold font-poppins">
+              Todos os usuários
+            </p>
+          </a>
+
+          <a href="/admin/all_servidores_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+            <img src="/images/svg/download.svg" alt="">
+            <p class="text-white text-sm font-bold font-poppins">
+              Servidores
             </p>
           </a>
         </div>

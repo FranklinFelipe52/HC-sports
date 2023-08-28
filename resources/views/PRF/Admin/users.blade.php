@@ -57,19 +57,9 @@
                     Nome
                   </p>
                 </div>
-                <div role="columnheader" class="text-center col-span-2">
-                  <p class="text-sm font-semibold text-gray-1 ">
-                    Inscrições
-                  </p>
-                </div>
-                <div role="columnheader" class="text-start col-span-2">
+                <div role="columnheader" class="text-start col-span-6">
                   <p class="text-sm font-semibold text-gray-1 ">
                     Tipo de usuário
-                  </p>
-                </div>
-                <div role="columnheader" class="text-start col-span-2">
-                  <p class="text-sm font-semibold text-gray-1 ">
-                    Matrícula PRF
                   </p>
                 </div>
                 <div role="columnheader" class="col-span-1 text-end">
@@ -100,26 +90,12 @@
                         @endif
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex items-center justify-center col-span-2">
-                      <p class="text-sm font-semibold text-gray-2 text-center">
-                        {{ Count(App\Models\PrfUser::find($atleta->id)->registrations) }}
-                      </p>
-                    </div>
-                    <div role="cell" class="py-3 flex items-center col-span-2">
+                    <div role="cell" class="py-3 flex items-center col-span-6">
                       <p class="text-sm font-semibold text-gray-2">
                         @if ($atleta->is_servidor == 1)
-                          <span class="font-bold text-prfA1">Servidor PRF</span>
+                          <span class="font-bold text-prfA1">Servidor da segurança pública</span>
                         @elseif ($atleta->is_servidor == 0)
                           <span class="font-normal text-prfA1">Comum</span>
-                        @endif
-                      </p>
-                    </div>
-                    <div role="cell" class="py-3 flex items-center col-span-2">
-                      <p class="text-sm font-semibold text-gray-2">
-                        @if ($atleta->is_servidor == 1)
-                          {{ $atleta->servidor_matricula }}
-                        @elseif ($atleta->is_servidor == 0)
-                          -
                         @endif
                       </p>
                     </div>
