@@ -47,11 +47,25 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    <div class="@if ($registration['status_registration']->id == 1) bg-feedback-green-1 @elseif ($registration['status_registration']->id == 3) bg-brand-prfA1 @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                      <p class="text-white text-[0.5rem] font-bold text-center">
-                        {{ $registration['status_registration']->status }}
-                      </p>
-                    </div>
+                    @if ($registration['status_registration']->id == 1)
+                      <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration['status_registration']->id == 2)
+                      <div class="bg-brand-prfA1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration['status_registration']->id == 3)
+                      <div class="bg-brand-prfA1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-[0.5rem] font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @endif
                   </div>
                   <div class="">
                     <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
@@ -62,85 +76,60 @@
                     </p>
                   </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <p class="text-xs text-gray-1">
-                      Equipe:
-                    </p>
-                    <p>
-                      {{ $registration['equipe'] }}
-                    </p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-1">
-                      Camiseta:
-                    </p>
-                    <p>
-                      {{ $registration['size_tshirt'] }}
-                    </p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-gray-1 mb-2">
-                      Itens inclusos:
-                    </p>
-                    <div class="list__options font-bold text-xs text-gray-1">
-                      {!! html_entity_decode($registration['descricao']) !!}
-                    </div>
-                  </div>
-                </div>
-                @if (Count($registration['tshirts']) > 0)
-                  <div class="mb-4">
-                    <p class="text-xs text-gray-1 mb-2">
-                      Campanha beneficiente:
-                    </p>
-                    @foreach ($registration['tshirts'] as $tshirt)
-                      <div class="flex flex-wrap border rounded-md p-4 border-gray-5">
-                        <div class="mb-2">
-                          <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                            <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
-                          </a>
-                        </div>
-                        <div class="text-sm">
-                          <p class="font-semibold">
-                            {{ $tshirt->nome }}
-                          </p>
-                          <p class="max-w-[250px]">
-                            {{ $tshirt->descricao }}
-                          </p>
-                        </div>
+                <div class="flex gap-4 mb-4">
+                  @if ($registration['prf_package_id'] == 1)
+                    <div>
+                      <p class="text-gray-1 mb-2 font-bold text-sm">
+                        Atenção: Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                      </p>
+                      <div class="list__options text-xs text-gray-1">
+                        <p class="text-sm mb-1">
+                          Local da entrega:
+                        </p>
+
+                        <p class="text-sm mb-1">
+                          Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
+                        </p>
+
+                        <p class="text-sm">
+                          De segunda a sexta feira: Das 8h às 13h
+                        </p>
                       </div>
-                    @endforeach
+                    </div>
+                  @endif
+                </div>
+                @if ($registration['prf_package_id'] != 1)
+                  <div class="mb-4">
+                    @if ($registration['vaucher'])
+                      <div>
+                        <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
+                        <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
+                        @if ($registration['vaucher']->descricao)
+                          {{-- <p>Descricao: {{ $registration['vaucher']->descricao }}</p> --}}
+                        @endif
+                      </div>
+                    @else
+                      @if ($registration['status_registration']->id != 1)
+                        <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
+                          @csrf
+                          <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
+                          <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
+                            Adicionar
+                          </button>
+                        </form>
+                      @endif
+                    @endif
+                  </div>
+
+                  <div class="flex justify-end flex-wrap gap-4">
+                    @if ($registration['status_registration']->id != 1)
+                      <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                        Realizar Pagamento
+                        <img src="/images/PRF/svg/credit-card.svg" alt="">
+                      </a>
+                    @endif
                   </div>
                 @endif
-                <div class="mb-4">
-                  @if ($registration['vaucher'])
-                    <div>
-                      <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
-                      <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
-                      @if($registration['vaucher']->descricao)
-                      {{-- <p>Descricao: {{ $registration['vaucher']->descricao }}</p> --}}
-                      @endif
-                    </div>
-                  @else
-                  @if($registration['status_registration']->id != 1)
-                    <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
-                      @csrf
-                      <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
-                      <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
-                        Adicionar
-                      </button>
-                    </form>
-                    @endif
-                  @endif
-                </div>
-                <div class="flex justify-end flex-wrap gap-4">
-                  @if ($registration['status_registration']->id != 1)
-                    <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
-                      Realizar Pagamento
-                      <img src="/images/PRF/svg/credit-card.svg" alt="">
-                    </a>
-                  @endif
-                </div>
               </div>
             @endforeach
           </div>
@@ -154,10 +143,10 @@
     const code = document.getElementById("name_cupom_field");
     new Cleave('#name_cupom_field', {
       uppercase: true,
-      blocks:['20'],
-      onValueChanged: function (e) {
+      blocks: ['20'],
+      onValueChanged: function(e) {
         code.value = e.target.value.replace(/\s/g, '');
-    }
+      }
     });
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');

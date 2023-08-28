@@ -21,7 +21,7 @@ class PrfAdminSeeder extends Seeder
             'nome_completo' => 'Alex Pereira',
             'cpf' => '00000000000',
             'email' => 'alex@hcsports.com.br',
-            'password' => Hash::make('PrfAdmin@2023'),
+            'password' => Hash::make('U2y0U13y*8*1'),
         ]);
     }
 }

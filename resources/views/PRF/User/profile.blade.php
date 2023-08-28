@@ -102,35 +102,7 @@
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
-                      Data de nascimento
-                    </p>
-                  </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      {{ date('d/m/Y', strtotime(Session('prf_user')->data_nasc)) }}
-                    </p>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      Gênero
-                    </p>
-                  </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      @if (Session('prf_user')->sexo == 'M')
-                        Masculino
-                      @elseif (Session('prf_user')->sexo == 'F')
-                        Feminino
-                      @endif
-                    </p>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      É servidor da PRF?
+                      É servidor da segurança pública?
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
@@ -143,20 +115,6 @@
                     </p>
                   </div>
                 </div>
-                @if (Session('prf_user')->is_servidor == 1)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Matrícula PRF
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        {{ Session('prf_user')->servidor_matricula }}
-                      </p>
-                    </div>
-                  </div>
-                @endif
               </div>
               <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
                 <p class="text-brand-prfA1">

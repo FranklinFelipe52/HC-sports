@@ -33,13 +33,11 @@ class PrfDashboardController extends Controller
 
                 array_push($registrations, [
                     'id' => $registration->id,
-                    'title' => $registration->prf_categorys->nome,
+                    'title' => $registration->prf_package->nome,
                     'descricao' => $registration->prf_package->descricao,
                     'price' => ValorTotal::ValorComDescontos($user, $registration),
                     'status_registration' => $registration->status_regitration,
-                    'size_tshirt' => $registration->prf_size_tshirts->nome,
-                    'equipe' => $registration->equipe,
-                    'tshirts' => $tshirts,
+                    'prf_package_id' => $registration->prf_package_id,
                     'vaucher' => $registration->prf_vauchers
                 ]);
             }

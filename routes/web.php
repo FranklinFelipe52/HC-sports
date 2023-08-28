@@ -37,8 +37,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [PrfHomeController::class, 'show']);
-Route::get('/inscricao/{category_id}/{package_id}', [PrfRegistrationController::class, 'create']);
-Route::post('/inscricao/{category_id}/{package_id}', [PrfRegistrationController::class, 'store']);
+Route::post('/registration/store', [PrfRegistrationController::class, 'store']);
 Route::get('/dashboard', [PrfDashboardController::class, 'show'])->middleware('AuthPrfUser');
 Route::get('/profile', [PrfUserController::class, 'profile'])->middleware('AuthPrfUser');
 Route::get('/registration/update/{id}', [PrfRegistrationController::class, 'update_get'])->middleware('AuthPrfUser');

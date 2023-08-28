@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Home')
+@section('title', 'Página Inicial')
 
 @section('content')
 
@@ -26,15 +26,8 @@
                   </span>
                 </a>
               </li>
-              <li>
-                <a href="https://www.meiamaratonaprf191.com.br/" target="_blank" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
-                  <span class="text-gray-1 font-medium ">
-                    Veja nosso site
-                  </span>
-                </a>
-              </li>
               {{-- <li>
-                <a class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
+                <a class="inline-flex items-center gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all" href="">
                   <span class="text-brand-v1 font-medium ">
                     Sair
                   </span>
@@ -90,99 +83,229 @@
           </div>
         </div>
         <div class="order-1 lg:order-2">
-          <h1 class="text-xl font-bold text-gray-1 mb-6">
-            Opções de inscrição
-          </h1>
-          <div class="space-y-4">
-            @foreach ($categorys as $category)
-              @foreach ($packages as $package)
-                <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
-                  <div class="flex flex-wrap justify-between">
-                    <div class="mb-3.5">
-                      <p class="font-semibold text-gray-1 text-base">
-                        {{ $category->nome }} {{ $package->nome }}
-                      </p>
+          <div class="border border-gray-5 rounded-md p-4">
+            <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
+            <form action="/registration/store" method="POST" class="">
+              @csrf
+
+              <div class="space-y-4">
+                <div>
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_cpf_field">
+                    CPF
+                  </label>
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{ old('cpf') }}" />
+                </div>
+                <div>
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_nome_field">
+                    Nome completo
+                  </label>
+                  <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_nome_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
+                </div>
+                <div>
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_phone_field">
+                    Contato
+                  </label>
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" placeholder="Digite o seu número de contato" name="phone" value="{{ old('phone') }}" />
+                </div>
+                <div>
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_email_field">
+                    E-mail
+                  </label>
+                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="registration_email_field" placeholder="Digite o seu E-mail" name="email" value="{{ old('email') }}" />
+                </div>
+                <div>
+                  <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="registration_password_field">
+                    Senha
+                  </label>
+                  <div class="group relative">
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="registration_password_field" name="password" placeholder="Digite a sua senha" />
+                    <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                      <button type="button" data-inputId="registration_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                        <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                        <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                      </button>
                     </div>
-                    <div class="">
-                      <p class="text-brand-v1 text-1.5xl w-full text-end">
-                        <span class="text-sm">
-                          R$
-                        </span>
-                        {{ number_format($category->price, 2, ',', '.') }}
+                    <div class="text-gray-1 text-sm mt-2">
+                      <p>
+                        A senha deve ter:
                       </p>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap justify-between items-end gap-4">
-                    <div class="">
-                      <p class="font-normal text-xs text-gray-1 mb-3.5">
-                        Itens inclusos
-                      </p>
-                      <div class="text-gray-1 text-xs font-bold list__options">
-                        {!! html_entity_decode($package->descricao) !!}
-                      </div>
-                    </div>
-                    <div>
-                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                        Realizar Inscrição
-                      </a>
+                      <ul>
+                        <li>- Minimo de 8 caracteres</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-              @endforeach
-            @endforeach
+                <div>
+                  <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirm_password_field">
+                    Confirmação de senha
+                  </label>
+                  <div class="group relative">
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password_field" name="confirm_password" placeholder="Digite novamente a sua senha" />
+                    <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                      <button type="button" data-inputId="confirm_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                        <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                        <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-6">
+                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_is_servidor_field">
+                    É servidor da segurança pública?
+                  </label>
+
+                  <div class="relative">
+                    <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="registration_is_servidor_field">
+                      <option @if (old('is_servidor') == 0) @selected(true) @endif value="0">Não</option>
+                      <option @if (old('is_servidor') == 1) @selected(true) @endif value="1">Sim</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+                <div id="servidor_info" class="hidden">
+                  <p class="font-semibold mb-2">
+                    Atenção: Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                  </p>
+
+                  <p class="text-sm mb-1">
+                    Local da entrega:
+                  </p>
+
+                  <p class="text-sm mb-1">
+                    Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
+                  </p>
+
+                  <p class="text-sm">
+                    De segunda a sexta feira: Das 8h às 13h
+                  </p>
+                </div>
+                <h2 class="text-gray-1 text-xl font-semibold font-poppins">
+                  Aceite obrigatório
+                </h2>
+                <hr class="my-4 border-gray-4" />
+                <p class="text-sm text-gray-1 mb-8">
+                  “Aceito as regras de participação da MEIA MARATONA PRF 191 -
+                  POLICIAIS CONTRA O CÂNCER INFANTIL 2023 presentes no REGULAMENTO GERAL da
+                  competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades
+                  institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento,
+                  observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados –
+                  LGPD).”
+                </p>
+                <div class="flex items-center gap-2">
+                  <input data-conditional="submit_button" type="checkbox" id="registration_terms_checkbox" name="registration_terms_checkbox" class="checkbox" required />
+                  <a href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
+                    Li e aceito os termos.
+                  </a>
+                </div>
+                <hr class="mt-20 mb-8 border-gray-4" />
+
+                <button disabled id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+                  <p class="text-white text-sm font-bold font-poppins">
+                    Cadastrar-se
+                  </p>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </main>
 
-
-    <!-- Seção de Patrocinadores, Realizadores e organizadores -->
-    <section class="py-24 bg-fill-1">
-      <div class="container px-24 px-sm-0 flex justify-center flex-wrap gap-8">
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
-            Ação social
-          </h2>
-
-          <div class="flex gap-8 flex-wrap justify-center">
-            <div class="marca">
-              <img src="/images/PRF/marcas/acao-social.png" alt="">
-            </div>
+    <footer class="bg-fill-1 pt-16 pb-8 bottom-0 w-full">
+      <div class="container border-t border-gray-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 pt-4 gap-4">
+          <div>
+            <p class="text-xs text-gray-1">
+              <?= date('Y') ?> HC Sports. Todos os direitos reservados.
+            </p>
           </div>
-        </div>
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
-            Organização
-          </h2>
-
-          <div class="flex gap-8 flex-wrap justify-center">
-            <a href="https://www.hcsports.com.br/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/hc.png" alt="">
+          <div class="flex justify-end gap-4">
+            <a href="https://www.youtube.com/@hcsports6389" target="_blank">
+              <img src="/images/svg/youtube.svg" alt="">
             </a>
-          </div>
-        </div>
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg fw-medium font-poppins text-center">
-            Realização
-          </h2>
-
-          <div class="flex gap-4 flex-wrap justify-center">
-            <a href="https://fenaprf.org.br/novo/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/FenaPRF.png" alt="">
+            <a href="https://twitter.com/HCSportsBR" target="_blank">
+              <img src="/images/svg/twitter.svg" alt="">
             </a>
-
-            <a href="https://www.gov.br/prf/pt-br" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/prf.png" alt="">
+            <a href="https://www.facebook.com/HCSportsBR" target="_blank">
+              <img src="/images/svg/facebook.svg" alt="">
             </a>
-
-            <a href="https://sinprfrn.org.br/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/SindPRF-RN.png" alt="">
+            <a href="https://www.instagram.com/hcsportsbr/" target="_blank">
+              <img src="/images/svg/instagram.svg" alt="">
             </a>
           </div>
         </div>
       </div>
-    </section>
-
-    @include('PRF.Components.footer')
+    </footer>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+    if ('{{ session('erro') }}') {
+      showErrorToastfy('{{ session('erro') }}');
+    }
+
+    if ('{{ session('success') }}') {
+      showSuccessToastfy('{{ session('success') }}');
+    }
+
+    function showSuccessToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
+        },
+        onClick: function() {}
+      }).showToast();
+    }
+
+    function showErrorToastfy(text) {
+      Toastify({
+        text: text,
+        duration: 3000,
+        gravity: "top",
+        close: true,
+        position: "right",
+        style: {
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
+        },
+        onClick: function() {}
+      }).showToast();
+    }
+
+    new Cleave('#registration_cpf_field', {
+      blocks: [3, 3, 3, 2],
+      delimiters: ['.', '.', '-'],
+      numericOnly: true,
+    });
+
+    new Cleave('#registration_phone_field', {
+      blocks: [2, 5, 4],
+      delimiters: [' ', '-'],
+      numericOnly: true,
+    });
+
+    const isServidor = document.querySelector('#registration_is_servidor_field');
+    const servidorInfo = document.querySelector('#servidor_info');
+
+    isServidor.addEventListener('change', handleIsServidorSelect);
+
+    function handleIsServidorSelect(e) {
+      if (e.target.value == '1') {
+        servidorInfo.classList.remove('hidden');
+      } else {
+        servidorInfo.classList.add('hidden');
+      }
+    }
+  </script>
 @endsection

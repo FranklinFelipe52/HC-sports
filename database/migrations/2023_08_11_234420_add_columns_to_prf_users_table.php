@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::table('prf_users', function (Blueprint $table) {
             $table->tinyInteger('is_servidor')->default(0);
-            $table->string('servidor_matricula')->nullable();
         });
     }
 
@@ -28,7 +27,6 @@ return new class extends Migration
     {
         Schema::table('prf_users', function (Blueprint $table) {
             $table->dropColumn('is_servidor');
-            $table->dropColumn('servidor_matricula');
         });
     }
 };

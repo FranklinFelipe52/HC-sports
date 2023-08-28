@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Helpers\ValorTotal;
 use App\Models\ActionsNotificatios;
 use App\Models\PrfLogPayments;
-use App\Models\PrfPace;
+use App\Models\PrfPackage;
 use App\Models\PrfRegistration;
-use App\Models\PrfTshirt;
 use App\Models\PrfUser;
 use Exception;
 use Illuminate\Http\Request;
@@ -21,6 +20,7 @@ class PrfCheckoutController extends Controller
         try{
         $user = PrfUser::find($request->session()->get('prf_user')->id);
         $registration = PrfRegistration::find($id);
+        $package = PrfPackage::find($registration->prf_package_id);
         if(!$user){
             return back();
         }
@@ -33,16 +33,16 @@ class PrfCheckoutController extends Controller
         if($registration->status_regitration_id == 1){
             return back();
         }
-                $registrationAUX = [
-                    'id' => $registration->id,
-                    'title' => $registration->prf_categorys->nome.' x '.preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $registration->prf_user->cpf),
-                    'descricao' => $registration->prf_package->descricao,
-                    'price' => ValorTotal::ValorComDescontos($user, $registration),
-                    'status_registration' => $registration->status_regitration,
-                    'user' => $registration->prf_user,
-                    'category' => $registration->prf_categorys->nome
-                ];
-            
+
+        $registrationAUX = [
+            'id' => $registration->id,
+            'title' => $package->nome.' x '.preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $registration->prf_user->cpf),
+            'descricao' => $registration->prf_package->descricao,
+            'price' => ValorTotal::ValorComDescontos($user, $registration),
+            'status_registration' => $registration->status_regitration,
+            'user' => $registration->prf_user,
+        ];
+
 
         return view('PRF.User.checkout', [
             'registration' => $registrationAUX
@@ -50,6 +50,8 @@ class PrfCheckoutController extends Controller
 
         } catch(Exception $e){
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+
+            dd($e);
             return back();
         }
     }
@@ -57,8 +59,8 @@ class PrfCheckoutController extends Controller
     public function notification(Request $request){
 
         try{
-            
-           
+
+
             $user = PrfUser::find($request->session()->get('prf_user')->id);
             if(!$user){
                 return redirect('/dashboard');
@@ -76,18 +78,18 @@ class PrfCheckoutController extends Controller
 
     public function notification_webhook(Request $request){
         try{
-            
+
             $payment_id = $request->all()['data']['id'];
-            
+
             $response = Http::withHeaders([
                  'Authorization' => "Bearer ".env('MP_ACCESS_TOKEN')
              ])->get("https://api.mercadopago.com/v1/payments/$payment_id");
 
-            
+
             if($response->status() == 403 || $response->status() == 400 || $response->status() == 404){
                     return response('erro', $response->status());
             }
-            
+
                 $registration = PrfRegistration::find($response['external_reference']);
              $log_payment = new PrfLogPayments;
 
@@ -97,7 +99,7 @@ class PrfCheckoutController extends Controller
              $log_payment->prf_registration_id = $response['external_reference'];
              $log_payment->amount = $response['transaction_amount'];
              $log_payment->save();
-             
+
 
         if($response['status'] == 'approved'){
              $registration->status_regitration_id = 1;

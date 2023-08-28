@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('prf_packages', function (Blueprint $table) {
-            $table->dropColumn('price');
             $table->string('descricao', 1000)->change();
         });
     }

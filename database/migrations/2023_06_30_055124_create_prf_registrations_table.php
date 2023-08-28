@@ -21,12 +21,8 @@ return new class extends Migration
         Schema::create('prf_registrations', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(PrfUser::class);
-            $table->foreignIdFor(PrfCategorys::class);
             $table->foreignIdFor(PrfPackage::class)->nullable();
-            $table->foreignIdFor(PrfPace::class);
             $table->foreignIdFor(status_regitration::class);
-            $table->string('size_tshirt');
-            $table->string('equipe');
             $table->timestamps();
         });
     }

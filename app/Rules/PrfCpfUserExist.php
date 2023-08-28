@@ -26,9 +26,9 @@ class PrfCpfUserExist implements Rule
      */
     public function passes($attribute, $value)
     {
-        $cpf = preg_replace( '/[^0-9]/is', '', $value);
-        if(PrfUser::where('cpf', $cpf)->first()){
-            session()->flash('erro', 'Já existe um atleta com esse CPF');
+        $cpf = preg_replace('/[^0-9]/is', '', $value);
+        if (PrfUser::where('cpf', $cpf)->first()) {
+            session()->flash('erro', 'Já existe um usuário com esse CPF');
             return false;
         }
         return true;

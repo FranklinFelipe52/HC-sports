@@ -17,19 +17,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            FederativeUnitSeeder::class,
-            ModalitiesTypeSeeder::class,
-            RuleSeeder::class,
-            AdminSeeder::class,
-            ModeModalitiesSeeder::class,
             StatusRegitrationSeeder::class,
             RangeSeeder::class,
             TypePaymentSeeder::class,
-            ModalitiesSeeder::class,
-            ModalitiesCategorySeeder::class,
-            RangeModalitySeeder::class,
             StatusPaymentSeeder::class,
-            TypeActionsAdminSeeder::class
+            TypeActionsAdminSeeder::class,
+            PrfAdminSeeder::class,
+            PackageSeeder::class,
         ]);
     }
 }
