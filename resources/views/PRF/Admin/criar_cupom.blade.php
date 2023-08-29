@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Criar cupom - Meia Maratona PRF')
+@section('title', 'Criar cupom - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -9,13 +9,13 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/admin/dashboard">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-prfA1 font-poppins">
-                Criar cupom
+              Criar cupom
             </h1>
             <div class="bg-brand-prfA1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
           </div>
@@ -93,9 +93,9 @@
       uppercase: true,
       blocks: [16],
       delimiters: [''],
-      onValueChanged: function (e) {
+      onValueChanged: function(e) {
         code.value = e.target.value.replace(/\s/g, '');
-    }
+      }
     });
     console.log('teste');
     if ('{{ session('erro') }}') {

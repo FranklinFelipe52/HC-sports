@@ -27,7 +27,6 @@ class AdminUsersController extends Controller
                 $users_query->where(function ($query) use ($searchTerm) {
                     $query->where('nome_completo', 'LIKE', '%' . $searchTerm . '%')
                         ->orWhere('email', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('servidor_matricula', 'LIKE', '%' . $searchTerm . '%')
                         ->orWhere('cpf', preg_replace("/[^0-9]/", "", $searchTerm));
 
                     // dd(preg_replace("/[^0-9]/", "", $searchTerm));
@@ -80,7 +79,7 @@ class AdminUsersController extends Controller
         try {
             $user = PrfUser::find($id);
             $registration = PrfRegistration::where('prf_user_id', $id)->first();
-            $admin = PrfUser::find($request->session()->get('admin')->id);
+            $admin = PrfAdmin::find($request->session()->get('admin')->id);
 
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
             $user->nome_completo = $request->nome;

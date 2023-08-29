@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Dashboard')
+@section('title', 'Inscrição - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('homeClass', 'active')
 
@@ -25,14 +25,14 @@
 
         <!-- Cabeçalho -->
         <header class="sm:pt-8 pb-6">
-          <div class="bg-brand-prfA1 sm:hidden">
+          <div class="sm:hidden border-b border-gray-5">
             <a href="/dashboard">
-              <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="">
+              <img src="/images/logo-hc.png" class="h-[100px]" alt="">
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
             <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-              Inscrições realizadas
+              Inscrição - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO
             </h1>
           </div>
         </header>
@@ -77,7 +77,7 @@
                   </div>
                 </div>
                 <div class="flex gap-4 mb-4">
-                  @if ($registration['prf_package_id'] == 1)
+                  @if ($registration['prf_package_id'] == 1 && $registration['status_registration_id'] != 1)
                     <div>
                       <p class="text-gray-1 mb-2 font-bold text-sm">
                         Atenção: Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
@@ -96,6 +96,12 @@
                         </p>
                       </div>
                     </div>
+                  @elseif($registration['status_registration_id'] != 1)
+                    <p class="text-gray-1 mb-2 font-bold text-sm">
+                      Aguardando pagamento da inscrição
+                    </p>
+                  @else
+                    <img src="/images/seminario-banner.jpg" alt="">
                   @endif
                 </div>
                 @if ($registration['prf_package_id'] != 1)

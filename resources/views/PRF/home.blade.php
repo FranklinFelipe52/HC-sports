@@ -41,32 +41,35 @@
     </header>
 
     <main class="container grow pt-6 pb-32">
-      <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt="">
-      <img src="/images/PRF/banner-desktop.png" class="hidden md:block w-full" alt="">
+      {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt="">
+      <img src="/images/PRF/banner-desktop.png" class="hidden md:block w-full" alt=""> --}}
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
-          <div class="mb-12">
+          {{-- <div class="mb-12">
             <h2 class="text-xl font-bold text-gray-1 mb-6">
               A Corrida
             </h2>
 
             <div class="space-y-4 text-gray-1 text-sm">
               <p>
-                Com provas de 21Km, 10Km e 5Km, a MEIA MARATONA PRF 191 é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
+                Com provas de 21Km, 10Km e 5Km, a SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO 191 é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
               </p>
 
               <p>
                 É a única prova no Rio Grande do Norte que possibilita o atleta a usar a BR para correr com total segurança, o que valoriza ainda mais a participação dos atletas, que buscam sempre provas com diferenciais importantes na realização.
               </p>
             </div>
-          </div>
+          </div> --}}
 
           <div>
-            <h3 class="text-base font-bold text-gray-1 mb-6">
-              Fotos
-            </h3>
+            {{-- <h1 class="text-base font-bold text-gray-1 mb-6">
+              Inscrições abertas
+            </h1> --}}
 
-            <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <img src="/images/seminario-banner.jpg" alt="">
+            </div>
+            {{-- <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
               <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
                 <img src="/images/PRF/foto-1.jpg" class="w-full h-full object-cover" alt="">
               </div>
@@ -79,7 +82,7 @@
               <div class="row-span-1 md:col-span-2 rounded-md overflow-hidden">
                 <img src="/images/PRF/foto-3.jpg" class="w-full h-full object-cover" alt="">
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
         <div class="order-1 lg:order-2">
@@ -186,12 +189,7 @@
                 </h2>
                 <hr class="my-4 border-gray-4" />
                 <p class="text-sm text-gray-1 mb-8">
-                  “Aceito as regras de participação da MEIA MARATONA PRF 191 -
-                  POLICIAIS CONTRA O CÂNCER INFANTIL 2023 presentes no REGULAMENTO GERAL da
-                  competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades
-                  institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento,
-                  observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados –
-                  LGPD).”
+                  “Aceito as regras de participação do SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das suas finalidades institucionais, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
                 </p>
                 <div class="flex items-center gap-2">
                   <input data-conditional="submit_button" type="checkbox" id="registration_terms_checkbox" name="registration_terms_checkbox" class="checkbox" required />

@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Edição de inscrição - Meia Maratona PRF')
+@section('title', 'Edição de inscrição - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('profileClass', 'active')
 

@@ -48,7 +48,7 @@
             <div class="flex gap-2 flex-wrap">
               <form class="relative grow">
 
-                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
+                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um usuário usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>

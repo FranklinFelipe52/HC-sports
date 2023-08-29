@@ -16,5 +16,8 @@
     },
     {
         "type" : "Cadastrar atleta"
+    },
+    {
+        "type" : "Confirmação de inscrição"
     }
 ]

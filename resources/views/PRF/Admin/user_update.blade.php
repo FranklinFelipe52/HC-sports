@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atualizar dados do atleta - Meia Maratona PRF')
+@section('title', 'Atualizar dados do atleta - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 
 @section('content')

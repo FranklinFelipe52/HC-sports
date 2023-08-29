@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Vouchers Relatorio - Meia Maratona PRF')
+@section('title', 'Vouchers Relatorio - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -9,13 +9,13 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-prfA1 font-poppins">
-                Vauchers relatorio
+              Vauchers relatorio
             </h1>
             <div class="bg-brand-prfA1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
           </div>
@@ -33,16 +33,16 @@
     </div>
     <div class="bg-white h-full lg:col-span-4 px-8 py-20  flex flex-col justify-center">
       <div class="mx-auto w-full flex flex-col gap-4 max-w-[327px]">
-          <a href="/admin/all_vouchers_get" target="_blank" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Todos os Vauchers
-            </p>
-          </a>
-          <a href="/admin/vouchers_with_user" target="_blank" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Vauchers usados
-            </p>
-          </a>
+        <a href="/admin/all_vouchers_get" target="_blank" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+          <p class="text-white text-sm font-bold font-poppins">
+            Todos os Vauchers
+          </p>
+        </a>
+        <a href="/admin/vouchers_with_user" target="_blank" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+          <p class="text-white text-sm font-bold font-poppins">
+            Vauchers usados
+          </p>
+        </a>
       </div>
     </div>
   </div>

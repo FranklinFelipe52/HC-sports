@@ -1,14 +1,14 @@
 [
     {
         "status": "Aprovado"
-        
     },
     {
         "status": "Rejeitado"
-    
     },
     {
         "status": "Pendente"
-        
+    },
+    {
+        "status": "Liberado"
     }
 ]

@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Complete sua inscrição - Meia Maratona PRF')
+@section('title', 'Complete sua inscrição - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
   <div class="lg:grid lg:grid-cols-7 xl:container">
@@ -8,7 +8,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -252,7 +252,7 @@
           </h2>
           <hr class="my-4 border-gray-4" />
           <p class="text-sm text-gray-1 mb-8">
-            “Aceito as regras de participação da MEIA MARATONA PRF 191 -
+            “Aceito as regras de participação da SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO 191 -
             POLICIAIS CONTRA O CÂNCER INFANTIL 2023 presentes no REGULAMENTO GERAL da
             competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades
             institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento,

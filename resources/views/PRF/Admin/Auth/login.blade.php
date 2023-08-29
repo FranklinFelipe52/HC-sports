@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Entrar no sistema - Meia Maratona PRF')
+@section('title', 'Entrar no sistema - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">

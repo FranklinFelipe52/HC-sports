@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Códigos e descontos - Meia Maratona PRF')
+@section('title', 'Códigos e descontos - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 

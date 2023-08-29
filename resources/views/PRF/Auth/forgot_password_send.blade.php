@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Link de alteração de senha enviado - Meia Maratona PRF')
+@section('title', 'Link de alteração de senha enviado - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/login">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -52,46 +52,45 @@
   <!-- js -->
   <script type="module" src="/frontend/dist/js/index.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script>
-
+  <script>
     if ('{{ session('erro') }}') {
-        showErrorToastfy('{{ session('erro') }}');
+      showErrorToastfy('{{ session('erro') }}');
     }
 
     if ('{{ session('success') }}') {
-        showSuccessToastfy('{{ session('success') }}');
+      showSuccessToastfy('{{ session('success') }}');
     }
 
     function showSuccessToastfy(text) {
-        Toastify({
+      Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-            background: "#EBFBEE",
-            color: "#279424",
-            boxShadow: "none",
+          background: "#EBFBEE",
+          color: "#279424",
+          boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-        }).showToast();
+      }).showToast();
     }
 
     function showErrorToastfy(text) {
-        Toastify({
+      Toastify({
         text: text,
         duration: 3000,
         gravity: "top",
         close: true,
         position: "right",
         style: {
-            background: "#FBDBDB",
-            color: "#8E1014",
-            boxShadow: "none",
+          background: "#FBDBDB",
+          color: "#8E1014",
+          boxShadow: "none",
         },
         onClick: function() {} // Callback after click
-        }).showToast();
+      }).showToast();
     }
-</script>
+  </script>
 @endsection

@@ -79,19 +79,19 @@
           </p>
         </a>
       </li>
-     
+
     @endif
       <li class="group sm:hidden @if ($type == 5 || $type == 6) active @endif">
         <button data-button="toggle-menu" data-menuId="menu-mobile" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <img src="/images/svg/menu.svg" alt="Ícone do menu">
         </button>
       </li>
-      
+
     </ul>
   </nav>
 
   <hr class="hidden sm:block border-gray-6 my-4">
- 
+
   {{-- <div class="group @if ($type == 7) active @endif">
     <a href="/admin/reports" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition mb-4">
       <div class="w-[24px] h-[24px]">

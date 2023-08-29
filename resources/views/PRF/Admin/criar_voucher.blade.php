@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Criar voucher - Meia Maratona PRF')
+@section('title', 'Criar voucher - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -9,13 +9,13 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/admin/dashboard">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/logo-hc.png" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
           <div class="w-fit">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-prfA1 font-poppins">
-                Criar voucher
+              Criar voucher
             </h1>
             <div class="bg-brand-prfA1 h-1 rounded-lg mt-3.5 mb-2 w-1/2"></div>
           </div>
@@ -49,7 +49,7 @@
                 <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="descricao_voucher_field">
                   Descrição
                 </label>
-                <input  class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_voucher_field" name="descricao" placeholder="Descrição do voucher" />
+                <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="descricao_voucher_field" name="descricao" placeholder="Descrição do voucher" />
               </div>
             </div>
             <div class="group @error('desconto') error @enderror">

@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas - Meia Maratona PRF')
+@section('title', 'Atletas - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 @section('content')
 
@@ -20,7 +20,7 @@
         <!-- Cabeçalho -->
         <header class="pt-8 pb-6">
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
-            Atletas Participantes
+            Usuários
           </h1>
         </header>
 
@@ -32,7 +32,7 @@
             <div class="flex gap-2 flex-wrap">
               <form class="relative grow">
 
-                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando nome, cpf ou matrícula" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
+                <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um usuário usando nome, cpf ou matrícula" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
                   <img src="/images/svg/search.svg" alt="">
                 </button>
@@ -57,9 +57,14 @@
                     Nome
                   </p>
                 </div>
-                <div role="columnheader" class="text-start col-span-6">
+                <div role="columnheader" class="text-start col-span-3">
                   <p class="text-sm font-semibold text-gray-1 ">
                     Tipo de usuário
+                  </p>
+                </div>
+                <div role="columnheader" class="text-start col-span-3">
+                  <p class="text-sm font-semibold text-gray-1 ">
+                    Contato
                   </p>
                 </div>
                 <div role="columnheader" class="col-span-1 text-end">
@@ -90,13 +95,18 @@
                         @endif
                       </p>
                     </div>
-                    <div role="cell" class="py-3 flex items-center col-span-6">
+                    <div role="cell" class="py-3 flex items-center col-span-3">
                       <p class="text-sm font-semibold text-gray-2">
                         @if ($atleta->is_servidor == 1)
                           <span class="font-bold text-prfA1">Servidor da segurança pública</span>
                         @elseif ($atleta->is_servidor == 0)
                           <span class="font-normal text-prfA1">Comum</span>
                         @endif
+                      </p>
+                    </div>
+                    <div role="cell" class="py-3 flex items-center col-span-3">
+                      <p class="text-sm font-semibold text-gray-2">
+                        {{ $atleta->phone }}
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-1">
@@ -136,7 +146,7 @@
 
           <div>
             <p class="text-gray-3 text-sm font-normal">
-              {{ Count($atletas) }} Atletas exibidos
+              {{ Count($atletas) }} Usuários exibidos
             </p>
           </div>
         </div>

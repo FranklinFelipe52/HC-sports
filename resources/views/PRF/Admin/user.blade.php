@@ -1,139 +1,40 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas - ' . $atleta->nome_completo . ' - Meia Maratona PRF')
+@section('title', 'Atletas - ' . $atleta->nome_completo . ' - SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO')
 
 
 @section('content')
 
-  {{-- @foreach ($atleta->registrations as $registration)
+  {{-- <div id="modal-validar-inscricao-{{ $atleta->registrations[0]->id }}" class="hidden">
+    <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+      <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+        <!-- modal header -->
+        <div class="text-gray-1 text-lg md:text-xl font-semibold">
+          <p>
+            Confirmar inscrição
+          </p>
+        </div>
+        <hr class="my-4">
 
-    <div id="modal{{ $registration->id }}" class="hidden">
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 overflow-hidden rounded-lg w-full max-w-[550px]">
-          <div class="bg-gray-6 p-3 md:pr-6 md:pl-5 md:py-4 flex">
-            <div class="grow">
-              <p class="text-gray-1 text-lg md:text-xl font-semibold">
-                Detalhes da Inscrição
-              </p>
-            </div>
-            <button data-modalId="modal{{ $registration->id }}" data-action="close" class="w-[24px] h-[24px] shrink-0">
-              <img src="/images/svg/close.svg" class="w-full h-full object-cover" alt="">
-            </button>
-          </div>
+        <!-- modal body -->
+        <div class="text-gray-1 text-base">
+          <p>
+            Confirmo que o inscrito fez a doação requerida para participar do evento de forma gratuita
+          </p>
+        </div>
 
-          <div class="text-gray-1 text-base">
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  CPF
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->user->cpf }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  E-mail
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal break-all">
-                  {{ $registration->user->email }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Modalidade
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->modalities->nome }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Pagamento
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->type_payment->type }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Status
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->status_regitration->status }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Valor
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  @if (!is_null($registration->Payment->mount))
-                    <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
-                  @else
-                    -
-                  @endif
-                </p>
-              </div>
-            </div>
-          </div>
+        <!-- modal footer - actions -->
+        <div class="flex justify-end gap-4 flex-wrap mt-10">
+          <button data-modalId="modal-validar-inscricao-{{ $$atleta->registrations[0]->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            Cancelar
+          </button>
+          <a href="/admin/registration/{{ $atleta->registrations[0]->id }}/confirm/" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            Confirmar
+          </a>
         </div>
       </div>
     </div>
-
-    <div id="modal-validar-inscricao-{{ $registration->id }}" class="hidden">
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
-          <!-- modal header -->
-          <div class="text-gray-1 text-lg md:text-xl font-semibold">
-            <p>
-              Confirmar validação de Inscrição
-            </p>
-          </div>
-          <hr class="my-4">
-
-          <!-- modal body -->
-          <div class="text-gray-1 text-base">
-            <p>
-              Confirme se realmente deseja validar essa inscrição
-            </p>
-          </div>
-
-          <!-- modal footer - actions -->
-          <div class="flex justify-end gap-4 flex-wrap mt-10">
-            <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Cancelar
-            </button>
-            <a href="/admin/pagamentos/confirm/{{ $registration->payment->id }}" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Validar
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  @endforeach --}}
+  </div> --}}
 
   {{-- @include('components.admin.menu_mobile', ['type' => 4]) --}}
 
@@ -196,13 +97,13 @@
                 </p>
               </a>
               <!--<a href="/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                          </svg>
-                                          <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                                          Resetar senha
-                                          </p>
-                                      </a>-->
+                                                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                              <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                              </svg>
+                                                              <p class="text-brand-prfA1 text-sm font-bold font-poppins">
+                                                              Resetar senha
+                                                              </p>
+                                                          </a>-->
               {{-- @if ($atleta->registered)
                 <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -325,12 +226,16 @@
                 </div>
               </div>
 
-              <button title="em breve" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Confirmar doação de alimentos
-                </p>
-              </button>
-
+              @if ($atleta->registrations[0]->prf_package_id == 1 && $atleta->registrations[0]->status_regitration_id != 1)
+                <form action="/admin/registrations/{{ $atleta->registrations[0]->id }}/confirm" method="post">
+                  @csrf
+                  <button type="submit" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Confirmar doação de alimentos
+                    </p>
+                  </button>
+                </form>
+              @endif
               {{-- <div class="flex gap-4 flex-wrap">
 
                 <a href="/profile/edit/{{ $atleta->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 bg-brand-prfA1 hover:ring-brand-prfA1 hover:ring-opacity-50 transition">

@@ -37,6 +37,7 @@ class PrfDashboardController extends Controller
                     'descricao' => $registration->prf_package->descricao,
                     'price' => ValorTotal::ValorComDescontos($user, $registration),
                     'status_registration' => $registration->status_regitration,
+                    'status_registration_id' => $registration->status_regitration_id,
                     'prf_package_id' => $registration->prf_package_id,
                     'vaucher' => $registration->prf_vauchers
                 ]);

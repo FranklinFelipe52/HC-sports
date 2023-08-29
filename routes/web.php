@@ -73,6 +73,7 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins');
     Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');

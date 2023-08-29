@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PrfStoreRegistrationRequest;
+use App\Models\PrfAdmin;
+use App\Models\PrfAdminLog;
 use App\Models\PrfCategorys;
 use App\Models\PrfDeficiency;
 use App\Models\PrfPace;
@@ -155,6 +157,39 @@ class PrfRegistrationController extends Controller
             return redirect('/dashboard');
         } catch (Exception $e) {
             return dd($e);
+        }
+    }
+
+    public function confirm(Request $request, $registration_id)
+    {
+        try {
+            $registration = PrfRegistration::find($registration_id);
+            $payment = PrfPayments::where('prf_registration_id', $registration_id)->first();
+            $user = PrfUser::find($registration->prf_user_id);
+            $admin = PrfAdmin::find($request->session()->get('admin')->id);
+
+            if ($registration->prf_package_id == 2) {
+                session()->flash('error', 'Não é possível confirmar a inscrição deste usuário.');
+                return back();
+            }
+
+            $registration->status_regitration_id = 1;
+            $registration->save();
+
+            $payment->status_payment_id = 4;
+            $payment->save();
+
+            $admin_log = new PrfAdminLog;
+            $admin_log->prf_admin_id = $admin->id;
+            $admin_log->type_actions_admin_id = 7;
+            $admin_log->description = 'Confirmou a inscrição do usuário de cpf ' . $user->cpf . ', e id #' . $user->id;
+            $admin_log->save();
+
+            session()->flash('success', 'Confirmou a inscrição do usuário com sucesso!');
+            return back();
+        } catch (Exception $e) {
+            session()->flash('error', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
+            return back();
         }
     }
 
