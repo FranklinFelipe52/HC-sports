@@ -80,7 +80,7 @@
                   @if ($registration['prf_package_id'] == 1 && $registration['status_registration_id'] != 1)
                     <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                       <p class="text-sm mb-2">
-                        <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                        <strong>Atenção:</strong> Até o dia <strong>15 de setembro</strong>, a inscrição do profissional de segurança pública será mediante a entrega de 02 quilos de alimentos no <strong>Quartel do Comando do Corpo de Bombeiros Militar do RN.</strong>
                       </p>
 
                       <p class="text-sm mb-1">
@@ -92,7 +92,7 @@
                       </p>
 
                       <p class="text-sm">
-                        <strong>De segunda a sexta feira: Das 8h às 13h</strong>
+                        <strong>De segunda a sexta feira:</strong> Das 8h às 13h
                       </p>
                       <p class="text-sm">
                         <strong>Maiores informações: </strong> (84) 98129-3618
