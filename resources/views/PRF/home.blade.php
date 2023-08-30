@@ -170,14 +170,18 @@
                 <div id="servidor_info" class="hidden">
                   <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                     <p class="text-sm mb-2">
-                      <strong>Atenção:</strong> Até o dia <strong>15 de setembro</strong>, a inscrição do profissional de segurança pública será mediante a entrega de 02 quilos de alimentos no <strong>Quartel do Comando do Corpo de Bombeiros Militar do RN.</strong>
+                      <strong>Atenção:</strong> Até o dia <strong>15 de setembro</strong>, a inscrição do Profissional da Segurança Pública será confirmada mediante a entrega de 02 quilos de alimentos no Quartel do Comando Geral do Corpo de Bombeiros Militar do RN.
+                    </p>
+
+                    <p class="text-sm mb-2">
+                      Caso prefira, pode fazer a inscrição com o pagamento de R$ 10,00 na modalidade de <strong>”NÃO Profissional da Segurança Pública”</strong>.
                     </p>
 
                     <p class="text-sm mb-1">
                       <strong>Local da entrega:</strong>
                     </p>
 
-                    <p class="text-sm mb-1">
+                    <p class="text-sm mb-2">
                       Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
                     </p>
 
@@ -198,9 +202,9 @@
                 </p>
                 <div class="flex items-center gap-2">
                   <input data-conditional="submit_button" type="checkbox" id="registration_terms_checkbox" name="registration_terms_checkbox" class="checkbox" required />
-                  <a href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
+                  <p class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
                     Li e aceito os termos.
-                  </a>
+                  </p>
                 </div>
                 <hr class="mt-20 mb-8 border-gray-4" />
 
