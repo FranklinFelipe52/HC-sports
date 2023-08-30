@@ -168,12 +168,12 @@
                   </div>
                 </div>
                 <div id="servidor_info" class="hidden">
-                  <p class="font-semibold mb-2">
-                    Atenção: Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                  <p class="text-sm mb-2">
+                    <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
                   </p>
 
                   <p class="text-sm mb-1">
-                    Local da entrega:
+                    <strong>Local da entrega:</strong>
                   </p>
 
                   <p class="text-sm mb-1">
@@ -181,7 +181,10 @@
                   </p>
 
                   <p class="text-sm">
-                    De segunda a sexta feira: Das 8h às 13h
+                    <strong>De segunda a sexta feira: Das 8h às 13h</strong>
+                  </p>
+                  <p class="text-sm">
+                    <strong>Maiores informações: </strong> (84) 98129-3618
                   </p>
                 </div>
                 <h2 class="text-gray-1 text-xl font-semibold font-poppins">

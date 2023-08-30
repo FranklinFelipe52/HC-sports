@@ -79,22 +79,24 @@
                 <div class="flex gap-4 mb-4">
                   @if ($registration['prf_package_id'] == 1 && $registration['status_registration_id'] != 1)
                     <div>
-                      <p class="text-gray-1 mb-2 font-bold text-sm">
-                        Atenção: Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                      <p class="text-sm mb-2">
+                        <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
                       </p>
-                      <div class="list__options text-xs text-gray-1">
-                        <p class="text-sm mb-1">
-                          Local da entrega:
-                        </p>
 
-                        <p class="text-sm mb-1">
-                          Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
-                        </p>
+                      <p class="text-sm mb-1">
+                        <strong>Local da entrega:</strong>
+                      </p>
 
-                        <p class="text-sm">
-                          De segunda a sexta feira: Das 8h às 13h
-                        </p>
-                      </div>
+                      <p class="text-sm mb-1">
+                        Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
+                      </p>
+
+                      <p class="text-sm">
+                        <strong>De segunda a sexta feira: Das 8h às 13h</strong>
+                      </p>
+                      <p class="text-sm">
+                        <strong>Maiores informações: </strong> (84) 98129-3618
+                      </p>
                     </div>
                   @elseif($registration['status_registration_id'] != 1)
                     <p class="text-gray-1 mb-2 font-bold text-sm">
