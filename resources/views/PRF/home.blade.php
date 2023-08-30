@@ -168,24 +168,26 @@
                   </div>
                 </div>
                 <div id="servidor_info" class="hidden">
-                  <p class="text-sm mb-2">
-                    <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
-                  </p>
+                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
+                    <p class="text-sm mb-2">
+                      <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
+                    </p>
 
-                  <p class="text-sm mb-1">
-                    <strong>Local da entrega:</strong>
-                  </p>
+                    <p class="text-sm mb-1">
+                      <strong>Local da entrega:</strong>
+                    </p>
 
-                  <p class="text-sm mb-1">
-                    Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
-                  </p>
+                    <p class="text-sm mb-1">
+                      Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
+                    </p>
 
-                  <p class="text-sm">
-                    <strong>De segunda a sexta feira: Das 8h às 13h</strong>
-                  </p>
-                  <p class="text-sm">
-                    <strong>Maiores informações: </strong> (84) 98129-3618
-                  </p>
+                    <p class="text-sm">
+                      <strong>De segunda a sexta feira: Das 8h às 13h</strong>
+                    </p>
+                    <p class="text-sm">
+                      <strong>Maiores informações: </strong> (84) 98129-3618
+                    </p>
+                  </div>
                 </div>
                 <h2 class="text-gray-1 text-xl font-semibold font-poppins">
                   Aceite obrigatório

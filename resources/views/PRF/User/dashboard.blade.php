@@ -78,7 +78,7 @@
                 </div>
                 <div class="flex gap-4 mb-4">
                   @if ($registration['prf_package_id'] == 1 && $registration['status_registration_id'] != 1)
-                    <div>
+                    <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                       <p class="text-sm mb-2">
                         <strong>Atenção:</strong> Sua inscrição será confirmada a mediante a entrega de 02 kilos de alimentos.
                       </p>
