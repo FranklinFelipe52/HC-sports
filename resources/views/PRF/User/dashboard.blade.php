@@ -134,17 +134,17 @@
                   </div>
 
                   <div class="flex justify-end flex-wrap gap-4">
-                    {{-- @if ($registration['status_registration']->id != 1)
+                    @if ($registration['status_registration']->id != 1)
                       <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                         Realizar Pagamento
                         <img src="/images/PRF/svg/credit-card.svg" alt="">
                       </a>
-                    @endif --}}
-                    <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
+                    @endif
+                    {{-- <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
                       <p class="text-brand-prfA1">
                         O sistema está passando por manutenção, em breve você poderá realizar o pagamento da inscrição.
                       </p>
-                    </div>
+                    </div> --}}
                   </div>
                 @endif
               </div>
