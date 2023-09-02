@@ -226,12 +226,12 @@
                 </div>
               </div>
 
-              @if ($atleta->registrations[0]->prf_package_id == 1 && $atleta->registrations[0]->status_regitration_id != 1)
+              @if ($atleta->registrations[0]->status_regitration_id != 1)
                 <form action="/admin/registrations/{{ $atleta->registrations[0]->id }}/confirm" method="post">
                   @csrf
                   <button type="submit" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
                     <p class="text-white text-sm font-bold font-poppins">
-                      Confirmar doação de alimentos
+                      Confirmar inscrição
                     </p>
                   </button>
                 </form>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\CodeVaucherGenerate;
+use App\Models\PrfAdmin;
+use App\Models\PrfAdminLog;
 use App\Models\PrfRegistration;
 use App\Models\PrfVauchers;
 use Exception;
@@ -82,7 +84,7 @@ class PrfVauchersController extends Controller
             $vauchers = PrfVauchers::all();
 
             header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
+            header('Content-Disposition: attachment; filename=vouchers_seminario.csv');
 
             $arquivo = fopen("php://output", "w");
 
@@ -117,13 +119,14 @@ class PrfVauchersController extends Controller
             $vauchers = PrfVauchers::all();
 
             header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=Relatório_Todos_Vauchers.csv');
+            header('Content-Disposition: attachment; filename=vouchers_utilizados_seminario.csv');
 
             $arquivo = fopen("php://output", "w");
 
             $cabecalho = [
+                mb_convert_encoding(mb_strtoupper('Usuário', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Código', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Atleta', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Descrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Desconto', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Validade', 'UTF-8'), 'ISO-8859-1', "UTF-8")
             ];
@@ -131,8 +134,9 @@ class PrfVauchersController extends Controller
             foreach ($vauchers as $value) {
                 foreach ($value->prf_registrations as $registration) {
                     $vaucher = [
+                        'usuario' => mb_convert_encoding(mb_strtoupper($registration->prf_user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                         'codigo' => mb_convert_encoding(mb_strtoupper($value->code, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                        'atleta' => mb_convert_encoding(mb_strtoupper($registration->prf_user->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                        'descricao' => mb_convert_encoding(mb_strtoupper($value->descricao, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                         'desconto' => mb_convert_encoding(mb_strtoupper(($value->desconto * 100) . '%', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                         'validade' => mb_convert_encoding($value->validade ? date('d/m/Y', strtotime($value->validade)) : '', 'ISO-8859-1', "UTF-8")
                     ];
@@ -199,8 +203,16 @@ class PrfVauchersController extends Controller
                     if (date("Y-m-d") <= $vaucher->validade) {
                         $registration->prf_vauchers_id = $vaucher->id;
                         $registration->save();
-                        session()->flash('success', 'Cupom adicionado com sucesso');
-                        return back();
+
+                        if ($vaucher->desconto == 1) {
+                            $registration->status_regitration_id = 1;
+                            $registration->save();
+                            session()->flash('success', 'Cupom de 100% adicionado com sucesso, inscrição confirmada!');
+                            return back();
+                        } else {
+                            session()->flash('success', 'Cupom adicionado com sucesso');
+                            return back();
+                        }
                     } else {
                         error_log(date("Y-m-d"));
                         session()->flash('erro', 'Validade do cupom expirou');
@@ -209,8 +221,16 @@ class PrfVauchersController extends Controller
                 } else {
                     $registration->prf_vauchers_id = $vaucher->id;
                     $registration->save();
-                    session()->flash('success', 'Cupom adicionado com sucesso');
-                    return back();
+
+                    if ($vaucher->desconto == 1) {
+                        $registration->status_regitration_id = 1;
+                        $registration->save();
+                        session()->flash('success', 'Cupom com desconto de 100% adicionado com sucesso, inscrição confirmada!');
+                        return back();
+                    } else {
+                        session()->flash('success', 'Cupom adicionado com sucesso');
+                        return back();
+                    }
                 }
 
             } else {
@@ -222,22 +242,71 @@ class PrfVauchersController extends Controller
                     if (date("Y-m-d") <= $vaucher->validade) {
                         $registration->prf_vauchers_id = $vaucher->id;
                         $registration->save();
-                        session()->flash('success', 'Vaucher adicionado com sucesso');
-                        return back();
+
+                        if ($vaucher->desconto == 1) {
+                            $registration->status_regitration_id = 1;
+                            $registration->save();
+                            session()->flash('success', 'Voucher com desconto de 100% adicionado com sucesso, inscrição confirmada!');
+                            return redirect('/dashboard');
+                        } else {
+                            session()->flash('success', 'Voucher adicionado com sucesso');
+                            return redirect('/dashboard');
+                        }
+
                     } else {
                         session()->flash('erro', 'Validade do vaucher expirou');
-                        return back();
+                        return redirect('/dashboard');
                     }
                 } else {
                     $registration->prf_vauchers_id = $vaucher->id;
                     $registration->save();
-                    session()->flash('success', 'Vaucher adicionado com sucesso');
-                    return back();
+
+                    if ($vaucher->desconto == 1) {
+                        $registration->status_regitration_id = 1;
+                        $registration->save();
+                        session()->flash('success', 'Voucher com desconto de 100% adicionado com sucesso, inscrição confirmada!');
+                        return redirect('/dashboard');
+                    } else {
+                        session()->flash('success', 'Voucher adicionado com sucesso');
+                        return redirect('/dashboard');
+                    }
                 }
             }
         } catch (Exception $e) {
-            session()->flash('erro', 'Erro no sistema, estamos resolvendo');
+            session()->flash('erro', 'Um erro aconteceu, não foi possível concluir sua ação.');
             return back();
         }
+    }
+
+    public function delete(Request $request, $voucher_id)
+    {
+        try {
+            $voucher = PrfVauchers::find($voucher_id);
+            $admin = PrfAdmin::find($request->session()->get('admin')->id);
+
+
+            if (count($voucher->prf_registrations) == 0) {
+                $voucher->delete();
+
+                $admin_log = new PrfAdminLog;
+                $admin_log->prf_admin_id = $admin->id;
+                $admin_log->type_actions_admin_id = 3;
+                $admin_log->description = 'Excluiu o voucher de id #'.$voucher_id ;
+                $admin_log->save();
+
+
+                session()->flash('success', 'Excluiu o código de desconto com sucesso.');
+                return redirect('/admin/discounts');
+            } else {
+
+                session()->flash('erro', 'Não é possível excluír um código que já foi utilizado.');
+                return redirect('/admin/discounts');
+            }
+
+        } catch (Exception $e) {
+            session()->flash('erro', 'Um erro aconteceu, não foi possível concluir sua ação.');
+            return redirect('/admin/discounts');
+        }
+
     }
 }

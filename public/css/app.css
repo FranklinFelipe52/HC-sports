@@ -3141,6 +3141,10 @@ input[name="vaucher"]:focus {
     display: grid;
   }
 
+  .lg\:hidden {
+    display: none;
+  }
+
   .lg\:h-screen {
     height: 100vh;
   }

@@ -168,12 +168,8 @@ class PrfRegistrationController extends Controller
             $user = PrfUser::find($registration->prf_user_id);
             $admin = PrfAdmin::find($request->session()->get('admin')->id);
 
-            if ($registration->prf_package_id == 2) {
-                session()->flash('error', 'Não é possível confirmar a inscrição deste usuário.');
-                return back();
-            }
-
             $registration->status_regitration_id = 1;
+            $registration->validated_by_admin = true;
             $registration->save();
 
             $payment->status_payment_id = 4;

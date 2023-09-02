@@ -86,6 +86,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher'])->middleware('PrfAuthAdmins');
     Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers'])->middleware('PrfAuthAdmins');
 
+    Route::get('/admin/voucher/delete/{voucher_id}', [PrfVauchersController::class, 'delete'])->middleware('PrfAuthAdmins');
+
     Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins');
     Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins');

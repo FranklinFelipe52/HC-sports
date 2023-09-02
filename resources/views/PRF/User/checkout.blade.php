@@ -93,12 +93,16 @@
               <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                 <div class="col-span-2 sm:col-span-1">
                   <p class="text-sm text-gray-1 font-semibold">
-                    Matrícula PRF
+                    É servidor
                   </p>
                 </div>
                 <div class="col-span-2 sm:col-span-1">
                   <p class="text-sm text-gray-2 font-normal">
-                    {{ $registration['user']->servidor_matricula }}
+                    @if ($registration['user']->is_servidor)
+                      Sim
+                    @else
+                      Não
+                    @endif
                   </p>
                 </div>
               </div>
@@ -116,22 +120,21 @@
               </div>
             </div>
 
-            @if ($registration['status_registration']->id != 2)
-              <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                <div class="col-span-2 sm:col-span-1">
-                  <p class="text-sm text-gray-1 font-semibold">
-                    Valor
+            <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+              <div class="col-span-2 sm:col-span-1">
+                <p class="text-sm text-gray-1 font-semibold">
+                  Valor
+                </p>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <div class="bg-gray-6 w-fit py-2 px-4 rounded-md">
+                  <p class="text-sm text-gray-1 font-bold">
+                    R${{ number_format($registration['price'], 2, ',', '.') }}
                   </p>
                 </div>
-                <div class="col-span-2 sm:col-span-1">
-                  <div class="bg-gray-6 w-fit py-2 px-4 rounded-md">
-                    <p class="text-sm text-gray-1 font-bold">
-                      R${{ number_format($registration['price'], 2, ',', '.') }}
-                    </p>
-                  </div>
-                </div>
               </div>
-            @endif
+            </div>
+
           </div>
           <div style="align-items: top" class="flex flex-wrap justify-between">
             {{-- <div class="mb-4">
@@ -140,9 +143,7 @@
               </a>
             </div> --}}
             <span></span>
-            @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
-              <div id="wallet_container"></div>
-            @endif
+            <div id="wallet_container"></div>
           </div>
         </div>
       </div>

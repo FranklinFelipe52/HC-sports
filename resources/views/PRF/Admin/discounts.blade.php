@@ -135,9 +135,9 @@
                         @endif
                       </div>
                       <div role="cell" class="col-span-1 flex justify-end">
-                        <button disabled class="grayscale" title="em breve">
+                        <a title="excluir código" href="/admin/voucher/delete/{{$voucher_or_cupom->id}}" title="em breve">
                           <img src="/images/svg/trash.svg" class="h-full w-full object-cover" alt="">
-                        </button>
+                        </a>
                       </div>
                     </div>
                     <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">

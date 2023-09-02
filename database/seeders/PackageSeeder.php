@@ -16,8 +16,8 @@ class PackageSeeder extends Seeder
     public function run()
     {
         PrfPackage::create([
-            'nome' => 'Gratuito',
-            'descricao' => 'Pacote gratuito para servidores da segurança pública',
+            'nome' => 'Servidor',
+            'descricao' => 'Pacote para servidores da segurança pública',
             'price' => 0,
         ]);
 

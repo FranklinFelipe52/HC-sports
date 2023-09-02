@@ -1,7 +1,10 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
-    <a href="/admin/dashboard" class="block overflow-hidden rounded-lg">
-      <img src="/images/logo-hc.png" class="h-[70px]" alt="">
+    <a href="/dashboard" class="overflow-hidden rounded-lg hidden lg:block">
+      <img src="/images/logo-hc.png" class="h-[100px]" alt="">
+    </a>
+    <a href="/dashboard" class="overflow-hidden rounded-lg block lg:hidden">
+      <img src="/favicon.png" class="h-[100px]" alt="">
     </a>
   </div>
 

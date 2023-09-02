@@ -129,6 +129,13 @@
                     </div>
                   </div>
                 </div>
+                <div id="user_info" class="">
+                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
+                    <p class="text-sm mb-2">
+                      <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 10,00 através do mercado pago.
+                    </p>
+                  </div>
+                </div>
                 <div id="servidor_info" class="hidden">
                   <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                     <p class="text-sm mb-2">
@@ -136,7 +143,7 @@
                     </p>
 
                     <p class="text-sm mb-2">
-                      Caso prefira, pode fazer a inscrição com o pagamento de R$ 10,00 na modalidade de <strong>”NÃO Profissional da Segurança Pública”</strong>.
+                      Caso prefira, pode confirmar a inscrição de imediato com o pagamento de R$ 10,00.
                     </p>
 
                     <p class="text-sm mb-1">
@@ -266,14 +273,17 @@
 
     const isServidor = document.querySelector('#registration_is_servidor_field');
     const servidorInfo = document.querySelector('#servidor_info');
+    const userInfo = document.querySelector('#user_info');
 
     isServidor.addEventListener('change', handleIsServidorSelect);
 
     function handleIsServidorSelect(e) {
       if (e.target.value == '1') {
         servidorInfo.classList.remove('hidden');
+        userInfo.classList.add('hidden');
       } else {
         servidorInfo.classList.add('hidden');
+        userInfo.classList.remove('hidden');
       }
     }
   </script>
