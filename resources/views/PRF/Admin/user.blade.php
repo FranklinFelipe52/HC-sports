@@ -5,37 +5,6 @@
 
 @section('content')
 
-  {{-- <div id="modal-validar-inscricao-{{ $atleta->registrations[0]->id }}" class="hidden">
-    <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-      <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
-        <!-- modal header -->
-        <div class="text-gray-1 text-lg md:text-xl font-semibold">
-          <p>
-            Confirmar inscrição
-          </p>
-        </div>
-        <hr class="my-4">
-
-        <!-- modal body -->
-        <div class="text-gray-1 text-base">
-          <p>
-            Confirmo que o inscrito fez a doação requerida para participar do evento de forma gratuita
-          </p>
-        </div>
-
-        <!-- modal footer - actions -->
-        <div class="flex justify-end gap-4 flex-wrap mt-10">
-          <button data-modalId="modal-validar-inscricao-{{ $$atleta->registrations[0]->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-            Cancelar
-          </button>
-          <a href="/admin/registration/{{ $atleta->registrations[0]->id }}/confirm/" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-            Confirmar
-          </a>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
   {{-- @include('components.admin.menu_mobile', ['type' => 4]) --}}
 
   <!-- grid principal -->

@@ -129,36 +129,10 @@
                     </div>
                   </div>
                 </div>
-                <div id="user_info" class="">
+                <div class="">
                   <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                     <p class="text-sm mb-2">
                       <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 10,00 através do mercado pago.
-                    </p>
-                  </div>
-                </div>
-                <div id="servidor_info" class="hidden">
-                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
-                    <p class="text-sm mb-2">
-                      <strong>Atenção:</strong> Até o dia <strong>15 de setembro</strong>, a inscrição do Profissional da Segurança Pública será confirmada mediante a entrega de 02 quilos de alimentos no Quartel do Comando Geral do Corpo de Bombeiros Militar do RN.
-                    </p>
-
-                    <p class="text-sm mb-2">
-                      Caso prefira, pode confirmar a inscrição de imediato com o pagamento de R$ 10,00.
-                    </p>
-
-                    <p class="text-sm mb-1">
-                      <strong>Local da entrega:</strong>
-                    </p>
-
-                    <p class="text-sm mb-2">
-                      Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
-                    </p>
-
-                    <p class="text-sm">
-                      <strong>De segunda a sexta feira:</strong> Das 8h às 13h
-                    </p>
-                    <p class="text-sm">
-                      <strong>Maiores informações: </strong> (84) 98129-3618
                     </p>
                   </div>
                 </div>
