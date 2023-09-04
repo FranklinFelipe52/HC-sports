@@ -200,6 +200,13 @@ class PrfVauchersController extends Controller
                         $registration->prf_vauchers_id = $vaucher->id;
                         $registration->save();
                         session()->flash('success', 'Cupom adicionado com sucesso');
+
+
+                        if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
+                            $registration->status_regitration_id = 1;
+                            $registration->save();
+                        }
+
                         return back();
                     } else {
                         error_log(date("Y-m-d"));
@@ -210,6 +217,12 @@ class PrfVauchersController extends Controller
                     $registration->prf_vauchers_id = $vaucher->id;
                     $registration->save();
                     session()->flash('success', 'Cupom adicionado com sucesso');
+
+                    if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
+                        $registration->status_regitration_id = 1;
+                        $registration->save();
+                    }
+
                     return back();
                 }
 
@@ -222,7 +235,13 @@ class PrfVauchersController extends Controller
                     if (date("Y-m-d") <= $vaucher->validade) {
                         $registration->prf_vauchers_id = $vaucher->id;
                         $registration->save();
-                        session()->flash('success', 'Vaucher adicionado com sucesso');
+                        session()->flash('success', 'Voucher adicionado com sucesso');
+
+                        if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
+                            $registration->status_regitration_id = 1;
+                            $registration->save();
+                        }
+
                         return back();
                     } else {
                         session()->flash('erro', 'Validade do vaucher expirou');
@@ -231,7 +250,13 @@ class PrfVauchersController extends Controller
                 } else {
                     $registration->prf_vauchers_id = $vaucher->id;
                     $registration->save();
-                    session()->flash('success', 'Vaucher adicionado com sucesso');
+                    session()->flash('success', 'Voucher adicionado com sucesso');
+
+                    if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
+                        $registration->status_regitration_id = 1;
+                        $registration->save();
+                    }
+
                     return back();
                 }
             }

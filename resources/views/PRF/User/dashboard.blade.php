@@ -55,10 +55,16 @@
                   </div>
                   <div class="">
                     <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
-                      <span class="text-sm">
-                        R$
-                      </span>
-                      <?= number_format($registration['price'], 2, ',', '.') ?>
+                      @if (!$registration['validated_by_admin'])
+                        <span class="text-sm">
+                          R$
+                        </span>
+                        <?= number_format($registration['price'], 2, ',', '.') ?>
+                      @else
+                        <span class="text-sm">
+                          Inscrição liberada pelo administrador
+                        </span>
+                      @endif
                     </p>
                   </div>
                 </div>
@@ -117,19 +123,16 @@
                     <div>
                       <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
                       <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
-                      @if($registration['vaucher']->descricao)
-                      {{-- <p>Descricao: {{ $registration['vaucher']->descricao }}</p> --}}
-                      @endif
                     </div>
                   @else
-                  @if($registration['status_registration']->id != 1)
-                    <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
-                      @csrf
-                      <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
-                      <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
-                        Adicionar
-                      </button>
-                    </form>
+                    @if ($registration['status_registration']->id != 1)
+                      <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
+                        @csrf
+                        <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
+                        <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
+                          Adicionar
+                        </button>
+                      </form>
                     @endif
                   @endif
                 </div>
@@ -141,6 +144,11 @@
                     </a>
                   @endif
                 </div>
+                @if ($registration['price'] > 0 && $registration['status_registration']->id == 1 && !$registration['validated_by_admin'])
+                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400 mb-4" role="alert">
+                    A confirmação da sua inscrição é o comprovante enviado pelo Mercado Pago informando que o seu pagamento foi aprovado! Confira no seu e-mail.
+                  </div>
+                @endif
               </div>
             @endforeach
           </div>
@@ -154,10 +162,10 @@
     const code = document.getElementById("name_cupom_field");
     new Cleave('#name_cupom_field', {
       uppercase: true,
-      blocks:['20'],
-      onValueChanged: function (e) {
+      blocks: ['20'],
+      onValueChanged: function(e) {
         code.value = e.target.value.replace(/\s/g, '');
-    }
+      }
     });
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');

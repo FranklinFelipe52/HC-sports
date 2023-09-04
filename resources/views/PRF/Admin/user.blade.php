@@ -198,24 +198,6 @@
                   Editar perfil
                 </p>
               </a>
-              <!--<a href="/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                  Resetar senha
-                  </p>
-              </a>-->
-              {{-- @if ($atleta->registered)
-                <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                    Alterar senha
-                  </p>
-                </a>
-              @endif --}}
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -327,66 +309,90 @@
               </div>
 
               <h1 class="text-lg text-gray-1 font-poppins font-semibold mb-4">
-                Inscrições realizadas
+                Inscrição realizada
               </h1>
-              <div class="pt-4 pb-8 pr-4 overflow-auto grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-
-                @if (count($atleta->registrations) !== 0)
-                  @foreach ($atleta->registrations as $registration)
-                    <!-- inscrição - item do grid -->
-                    <div class="space-y-8 p-4 border border-gray-5 rounded-lg">
-                      <div class="flex justify-between">
-                        <div class="flex flex-col gap-1">
-                          <p class="text-base font-semibold text-gray-1 mb-0">
-                            {{ App\Models\PrfCategorys::find($registration->prf_categorys_id)->nome }} - {{ App\Models\PrfPackage::find($registration->prf_package_id)->nome }}
-                          </p>
-                          <p class="text-gray-1 text-xs mt-[2px]">
-                            Maratona 191 PRF - 2023
-                          </p>
-                        </div>
-                        @if ($registration->status_regitration->id == 1)
-                          <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold text-center">
-                              {{ $registration->status_regitration->status }}
-                            </p>
-                          </div>
-                        @elseif ($registration->status_regitration->id == 3)
-                          <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                            <p class="text-white text-[0.5rem] font-bold text-center">
-                              {{ $registration->status_regitration->status }}
-                            </p>
-                          </div>
-                        @endif
-                      </div>
-                      <div class="flex flex-wrap gap-3">
-                        {{-- <a href="/admin/registration/proof/{{ $registration->id }}" class="block text-center text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                          Ver detalhes
-                        </a> --}}
-                        <button href="" disabled title="em breve" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                          <p class="text-white text-sm font-bold font-poppins">
-                            Detalhes
-                          </p>
-                        </button>
-                        {{-- <button data-modalId="modal{{ $registration->id }}" data-action="open" class="text-xs font-semibold text-gray-1 grow p-2 rounded border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
-                          Ver detalhes
-                        </button> --}}
-                        {{-- @if (!($registration->status_regitration->id == 1) && Session('admin')->rule->id == 1)
-                          <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="text-center text-xs font-semibold text-white grow p-2 rounded bg-brand-prfA1 border border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 transition">
-                            Validar inscrição
-                          </button>
-                        @endif --}}
-                      </div>
-                    </div>
-                  @endforeach
-                @else
-                  <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
-                    <p class="text-brand-prfA1">
-                      Nenhuma inscrição cadastrada.
+              <div class="border border-gray-5 rounded-lg mb-6">
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Pacote
                     </p>
                   </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal">
+                      {{ $registration->prf_package->nome }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Categoria
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal break-all">
+                      {{ App\Models\PrfCategorys::find($registration->prf_categorys_id)->nome }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Status
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="font-normal break-all">
+                      @if ($registration->status_regitration->id == 1)
+                        <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-xs font-bold text-center">
+                            {{ $registration->status_regitration->status }}
+                          </p>
+                        </div>
+                      @elseif ($registration->status_regitration->id == 3)
+                        <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-xs font-bold text-center">
+                            {{ $registration->status_regitration->status }}
+                          </p>
+                        </div>
+                      @endif
+                    </p>
+                  </div>
+                </div>
+                @if ($registration->status_regitration_id == 1)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Confirmação da inscrição
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        @if (!isset($registration->prf_vauchers) && !$registration->validated_by_admin)
+                          Paga com mercado pago
+                        @elseif (isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto < 1 && !$registration->validated_by_admin)
+                          Paga com mercado pago
+                        @elseif($registration->validated_by_admin)
+                          Inscrição liberada pelo administrador
+                        @elseif(isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto < 1 && count($registration->tshirts) == 0)
+                          Desconto de 100% aplicado
+                        @endif
+                      </p>
+                    </div>
+                  </div>
                 @endif
-
               </div>
+              @if ($registration->status_regitration_id != 1)
+                <form action="/admin/registrations/{{ $registration->id }}/confirm" method="post">
+                  @csrf
+                  <button type="submit" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Confirmar inscrição
+                    </p>
+                  </button>
+                </form>
+              @endif
 
               {{-- <div class="flex gap-4 flex-wrap">
 

@@ -40,7 +40,8 @@ class PrfDashboardController extends Controller
                     'size_tshirt' => $registration->prf_size_tshirts->nome,
                     'equipe' => $registration->equipe,
                     'tshirts' => $tshirts,
-                    'vaucher' => $registration->prf_vauchers
+                    'vaucher' => $registration->prf_vauchers,
+                    'validated_by_admin' => $registration->validated_by_admin,
                 ]);
             }
             return view('PRF.User.dashboard', [

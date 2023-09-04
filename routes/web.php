@@ -73,6 +73,7 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins');
     Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');
@@ -88,5 +89,10 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins');
     Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/all_users_get', [AdminReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_servidores_get', [AdminReportsController::class, 'all_servidores_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_confirm_registrations', [AdminReportsController::class, 'all_confirm_registrations'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_paid_registrations', [AdminReportsController::class, 'all_paid_registrations'])->middleware('PrfAuthAdmins');
 });
 

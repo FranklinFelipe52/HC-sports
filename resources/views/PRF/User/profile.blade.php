@@ -37,7 +37,7 @@
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
 
-                  <?php echo explode(' ', Session('prf_user')->nome_completo)[0] . ' ' . explode(' ', Session('prf_user')->nome_completo)[1]; ?>
+                  <?php echo explode(' ', $user->nome_completo)[0] . ' ' . explode(' ', $user->nome_completo)[1]; ?>
                 </p>
               </div>
             </div>
@@ -71,7 +71,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      {{ Session('prf_user')->nome_completo }}
+                      {{ $user->nome_completo }}
                     </p>
                   </div>
                 </div>
@@ -83,7 +83,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', Session('prf_user')->cpf); ?>
+                      <?php echo preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $user->cpf); ?>
                     </p>
                   </div>
                 </div>
@@ -95,7 +95,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      {{ Session('prf_user')->email }}
+                      {{ $user->email }}
                     </p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      {{ date('d/m/Y', strtotime(Session('prf_user')->data_nasc)) }}
+                      {{ date('d/m/Y', strtotime($user->data_nasc)) }}
                     </p>
                   </div>
                 </div>
@@ -119,9 +119,9 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      @if (Session('prf_user')->sexo == 'M')
+                      @if ($user->sexo == 'M')
                         Masculino
-                      @elseif (Session('prf_user')->sexo == 'F')
+                      @elseif ($user->sexo == 'F')
                         Feminino
                       @endif
                     </p>
@@ -135,15 +135,15 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-                      @if (Session('prf_user')->is_servidor == 0)
+                      @if ($user->is_servidor == 0)
                         Não
-                      @elseif (Session('prf_user')->is_servidor == 1)
+                      @elseif ($user->is_servidor == 1)
                         Sim
                       @endif
                     </p>
                   </div>
                 </div>
-                @if (Session('prf_user')->is_servidor == 1)
+                @if ($user->is_servidor == 1)
                   <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-1 font-semibold">
@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-2 font-normal">
-                        {{ Session('prf_user')->servidor_matricula }}
+                        {{ $user->servidor_matricula }}
                       </p>
                     </div>
                   </div>
@@ -164,13 +164,13 @@
                 </p>
               </div>
               {{-- <div class="flex gap-4 flex-wrap">
-                <a href="/profile/edit/{{ Session('prf_user')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                <a href="/profile/edit/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
                   <img src="/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
-                <a href="/profile/password_reset/{{ Session('prf_user')->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <a href="/profile/password_reset/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                   <img src="/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha

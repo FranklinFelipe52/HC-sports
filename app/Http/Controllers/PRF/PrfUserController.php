@@ -12,7 +12,8 @@ class PrfUserController extends Controller
     public function profile(Request $request)
     {
         try {
-            return view('PRF.User.profile');
+            $user = PrfUser::find(Session('prf_user')->id);
+            return view('PRF.User.profile', ['user' => $user]);
         } catch (Exception $e) {
             return back();
         }
