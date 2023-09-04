@@ -69,7 +69,7 @@
                   </div>
                   @if (!$registration['validated_by_admin'])
                     <div class="">
-                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
+                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id != 1) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
                         <span class="text-sm">
                           R$
                         </span>
@@ -79,32 +79,7 @@
                   @endif
                 </div>
                 <div class="flex flex-col gap-4">
-                  @if ($registration['prf_package_id'] == 1 && $registration['status_registration_id'] != 1)
-                    <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
-                      <p class="text-sm mb-2">
-                        <strong>Atenção:</strong> Até o dia <strong>15 de setembro</strong>, a inscrição do Profissional da Segurança Pública será confirmada mediante a entrega de 02 quilos de alimentos no Quartel do Comando Geral do Corpo de Bombeiros Militar do RN.
-                      </p>
-
-                      <p class="text-sm mb-2">
-                        Caso prefira, pode confirmar a inscrição de imediato com o pagamento de R$ 10,00.
-                      </p>
-
-                      <p class="text-sm mb-1">
-                        <strong>Local da entrega:</strong>
-                      </p>
-
-                      <p class="text-sm mb-2">
-                        Quartel do Comando Geral do Corpo de Bombeiros - Av. Prudente de Morais, 2410, Barro Vermelho - Natal.
-                      </p>
-
-                      <p class="text-sm">
-                        <strong>De segunda a sexta feira:</strong> Das 8h às 13h
-                      </p>
-                      <p class="text-sm">
-                        <strong>Maiores informações: </strong> (84) 98129-3618
-                      </p>
-                    </div>
-                  @elseif($registration['status_registration_id'] != 1)
+                  @if($registration['status_registration_id'] != 1)
                     <p class="text-gray-1 mb-2 font-bold text-sm">
                       Aguardando pagamento da inscrição
                     </p>

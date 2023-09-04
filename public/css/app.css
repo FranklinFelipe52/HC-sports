@@ -943,10 +943,6 @@ video {
   height: 38px;
 }
 
-.h-\[70px\] {
-  height: 70px;
-}
-
 .h-\[80px\] {
   height: 80px;
 }
@@ -2505,6 +2501,11 @@ input[name="vaucher"]:focus {
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-brand-prfA1:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 14 75 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-400:hover {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2513,6 +2514,11 @@ input[name="vaucher"]:focus {
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
