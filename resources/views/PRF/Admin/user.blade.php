@@ -375,7 +375,7 @@
                           Paga com mercado pago
                         @elseif($registration->validated_by_admin)
                           Inscrição liberada pelo administrador
-                        @elseif(isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto < 1 && count($registration->tshirts) == 0)
+                        @elseif(isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto == 1 && count($registration->tshirts) == 0)
                           Desconto de 100% aplicado
                         @endif
                       </p>
