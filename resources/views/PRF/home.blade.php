@@ -33,13 +33,28 @@
     </header>
 
     <main class="container grow pt-6 pb-32">
-      {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt="">
-      <img src="/images/PRF/banner-desktop.png" class="hidden md:block w-full" alt=""> --}}
+      {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt=""> --}}
+      <img src="/images/banner.png" class="hidden lg:block w-full" alt="">
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
-        <div class="col-span-2 lg:col-span-1">
+        <div class="col-span-2 lg:hidden">
           <img src="/images/seminario-banner.jpg" alt="">
         </div>
-        <div class="col-span-2 lg:col-span-1">
+        <div class="order-2 lg:order-1 col-span-2 lg:col-span-1">
+          <h2 class="text-xl font-bold text-gray-1 mb-6">Edições anteriores</h2>
+
+          <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
+              <img src="/images/foto-1.jpeg" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
+              <img src="/images/foto-2.jpeg" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="rounded-md overflow-hidden col-span-4">
+              <img src="/images/foto-3.jpeg" class="w-full h-full object-cover" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
           <div class="border border-gray-5 rounded-md p-4">
             <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
             <form action="/registration/store" method="POST" class="">

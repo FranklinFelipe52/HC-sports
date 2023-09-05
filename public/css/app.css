@@ -851,6 +851,10 @@ video {
   margin-top: 2px;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .block {
   display: block;
 }
@@ -1223,6 +1227,10 @@ video {
 
 .grid-rows-main-mobile {
   grid-template-rows: 1fr 70px;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -2486,6 +2494,11 @@ input[name="vaucher"]:focus {
   border-bottom-width: 0px;
 }
 
+.hover\:bg-brand-prfA1:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 14 75 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-fill-base:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
@@ -2499,11 +2512,6 @@ input[name="vaucher"]:focus {
 .hover\:bg-gray-6:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-brand-prfA1:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 14 75 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-400:hover {
@@ -2985,6 +2993,14 @@ input[name="vaucher"]:focus {
     grid-column: span 9 / span 9;
   }
 
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .md\:row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+
   .md\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3012,6 +3028,10 @@ input[name="vaucher"]:focus {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:flex-row {

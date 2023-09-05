@@ -23,5 +23,12 @@ class PrfAdminSeeder extends Seeder
             'email' => 'alex@hcsports.com.br',
             'password' => Hash::make('U2y0U13y*8*1'),
         ]);
+
+        PrfAdmin::create([
+            'nome_completo' => 'Couceiro',
+            'cpf' => '00000000001',
+            'email' => 'imprensacbmrn@gmail.com',
+            'password' => Hash::make('54]&Xua8$xu'),
+        ]);
     }
 }
