@@ -5,137 +5,39 @@
 
 @section('content')
 
-  {{-- @foreach ($atleta->registrations as $registration)
-
-    <div id="modal{{ $registration->id }}" class="hidden">
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 overflow-hidden rounded-lg w-full max-w-[550px]">
-          <div class="bg-gray-6 p-3 md:pr-6 md:pl-5 md:py-4 flex">
-            <div class="grow">
-              <p class="text-gray-1 text-lg md:text-xl font-semibold">
-                Detalhes da Inscrição
-              </p>
-            </div>
-            <button data-modalId="modal{{ $registration->id }}" data-action="close" class="w-[24px] h-[24px] shrink-0">
-              <img src="/images/svg/close.svg" class="w-full h-full object-cover" alt="">
-            </button>
-          </div>
-
-          <div class="text-gray-1 text-base">
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  CPF
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->user->cpf }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  E-mail
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal break-all">
-                  {{ $registration->user->email }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Modalidade
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->modalities->nome }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Pagamento
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->type_payment->type }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Status
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  {{ $registration->status_regitration->status }}
-                </p>
-              </div>
-            </div>
-            <div class="p-3 md:py-4 md:px-6 border-b border-gray-5 last:border-b-0 grid grid-cols-2">
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-1 text-sm font-semibold">
-                  Valor
-                </p>
-              </div>
-              <div class="col-span-2 sm:col-span-1">
-                <p class="text-gray-2 text-sm font-normal">
-                  @if (!is_null($registration->Payment->mount))
-                    <?php echo "R$ " . number_format($registration->Payment->mount, 2, ',', ''); ?>
-                  @else
-                    -
-                  @endif
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal-validar-inscricao-{{ $registration->id }}" class="hidden">
+  {{-- modal validar inscrição --}}
+  <div id="modal-validar-inscricao-{{ $registration->id }}" class="hidden">
+    <form action="/admin/registrations/{{ $registration->id }}/confirm" method="post">
+      @csrf
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
         <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
           <!-- modal header -->
           <div class="text-gray-1 text-lg md:text-xl font-semibold">
             <p>
-              Confirmar validação de Inscrição
+              Confirmação de Inscrição
             </p>
           </div>
           <hr class="my-4">
 
           <!-- modal body -->
-          <div class="text-gray-1 text-base">
-            <p>
-              Confirme se realmente deseja validar essa inscrição
-            </p>
+          <div class="">
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
+              Observação
+            </label>
+            <textarea id="observacao_field" name="observacao" placeholder="Adicione alguma observação (ex: motivo da liberação de inscrição)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
           </div>
 
           <!-- modal footer - actions -->
           <div class="flex justify-end gap-4 flex-wrap mt-10">
-            <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            <button type="button" data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
               Cancelar
             </button>
-            <a href="/admin/pagamentos/confirm/{{ $registration->payment->id }}" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Validar
-            </a>
+            <input type="submit" value="Confirmar" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-prfA1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0" />
           </div>
         </div>
       </div>
-    </div>
-  @endforeach --}}
-
-  {{-- @include('components.admin.menu_mobile', ['type' => 4]) --}}
+    </form>
+  </div>
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -227,6 +129,22 @@
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
                       {{ $atleta->email }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Contato
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal break-all">
+                      @if ($atleta->phone)
+                        {{ $atleta->phone }}
+                      @else
+                        -
+                      @endif
                     </p>
                   </div>
                 </div>
@@ -382,16 +300,27 @@
                     </div>
                   </div>
                 @endif
+                @if ($registration->validated_by_admin && $registration->observacao)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Confirmação da inscrição
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ $registration->observacao }}
+                      </p>
+                    </div>
+                  </div>
+                @endif
               </div>
               @if ($registration->status_regitration_id != 1)
-                <form action="/admin/registrations/{{ $registration->id }}/confirm" method="post">
-                  @csrf
-                  <button type="submit" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                    <p class="text-white text-sm font-bold font-poppins">
-                      Confirmar inscrição
-                    </p>
-                  </button>
-                </form>
+                <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                  <p class="text-white text-sm font-bold font-poppins">
+                    Confirmar inscrição
+                  </p>
+                </button>
               @endif
 
               {{-- <div class="flex gap-4 flex-wrap">

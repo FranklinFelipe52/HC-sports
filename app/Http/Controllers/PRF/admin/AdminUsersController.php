@@ -84,6 +84,7 @@ class AdminUsersController extends Controller
 
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
             $user->nome_completo = $request->nome;
+            $user->phone = $request->phone;
             $user->sexo = $request->sexo;
             $user->data_nasc = $request->data_nasc;
             // $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;

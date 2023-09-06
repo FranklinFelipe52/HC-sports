@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PRF\admin;
 use App\Http\Controllers\Controller;
 use App\Models\PrfPayments;
 use App\Models\PrfRegistration;
+use App\Models\PrfSizeTshirts;
 use App\Models\PrfUser;
 use Exception;
 use Illuminate\Http\Request;
@@ -36,7 +37,11 @@ class AdminReportsController extends Controller
                 mb_convert_encoding(mb_strtoupper('Email', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Cpf', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Servidor', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Possui deficiência?', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Status da inscrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Categoria', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Pacote', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Ação social', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
             ];
             fputcsv($arquivo, $cabecalho, ';');
             error_log($users);
@@ -46,7 +51,11 @@ class AdminReportsController extends Controller
                     'Email' => mb_convert_encoding(mb_strtoupper($value->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Cpf' => mb_convert_encoding(mb_strtoupper(preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $value->cpf), 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Servidor' => mb_convert_encoding(mb_strtoupper($value->is_servidor == 1 ? 'Sim' : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Possui deficiência?' => mb_convert_encoding(mb_strtoupper($value->prf_deficiency ? $value->prf_deficiency->nome : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Inscrição' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->status_regitration->status, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Categoria' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->prf_categorys->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Pacote' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->prf_package->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Ação social' => mb_convert_encoding(mb_strtoupper(count($value->registrations[0]->tshirts) > 0 ? 'Sim' : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 ];
                 fputcsv($arquivo, $user, ';');
             }
