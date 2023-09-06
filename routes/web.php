@@ -94,5 +94,6 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/admin/all_users_get', [PrfReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_servidores_get', [PrfReportsController::class, 'all_servidores_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_pending_registrations_get', [PrfReportsController::class, 'all_pending_registrations_get'])->middleware('PrfAuthAdmins');
 });
 
