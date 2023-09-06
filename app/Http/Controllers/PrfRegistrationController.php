@@ -170,6 +170,7 @@ class PrfRegistrationController extends Controller
 
             $registration->status_regitration_id = 1;
             $registration->validated_by_admin = true;
+            $registration->observacao = $request->observacao;
             $registration->save();
 
             $payment->status_payment_id = 4;
@@ -182,7 +183,7 @@ class PrfRegistrationController extends Controller
             $admin_log->save();
 
             session()->flash('success', 'Confirmou a inscrição do usuário com sucesso!');
-            return back();
+            return redirect('/admin/users/'.$user->id);
         } catch (Exception $e) {
             session()->flash('error', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
             return back();

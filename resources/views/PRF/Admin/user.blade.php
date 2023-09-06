@@ -5,6 +5,40 @@
 
 @section('content')
 
+  {{-- modal validar inscrição --}}
+  <div id="modal-validar-inscricao-{{ $atleta->registrations[0]->id }}" class="hidden">
+    <form action="/admin/registrations/{{ $atleta->registrations[0]->id }}/confirm" method="post">
+      @csrf
+      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+          <!-- modal header -->
+          <div class="text-gray-1 text-lg md:text-xl font-semibold">
+            <p>
+              Confirmação de Inscrição
+            </p>
+          </div>
+          <hr class="my-4">
+
+          <!-- modal body -->
+          <div class="">
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
+              Observação
+            </label>
+            <textarea id="observacao_field" name="observacao" placeholder="Adicione alguma observação (ex: motivo da liberação de inscrição)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
+          </div>
+
+          <!-- modal footer - actions -->
+          <div class="flex justify-end gap-4 flex-wrap mt-10">
+            <button type="button" data-modalId="modal-validar-inscricao-{{ $atleta->registrations[0]->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+              Cancelar
+            </button>
+            <input type="submit" value="Confirmar" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-prfA1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
   {{-- @include('components.admin.menu_mobile', ['type' => 4]) --}}
 
   <!-- grid principal -->
@@ -65,24 +99,6 @@
                   Editar perfil
                 </p>
               </a>
-              <!--<a href="/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                                                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                              <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                              </svg>
-                                                              <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                                                              Resetar senha
-                                                              </p>
-                                                          </a>-->
-              {{-- @if ($atleta->registered)
-                <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                    Alterar senha
-                  </p>
-                </a>
-              @endif --}}
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -159,24 +175,20 @@
                   </div>
                 </div>
 
-
-                {{-- <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      Celular
-                    </p>
+                @if ($atleta->registrations[0]->observacao)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Observação
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal break-all">
+                        {{ $atleta->registrations[0]->observacao }}
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      @if ($atleta->phone_number)
-                        {{ $atleta->phone_number }}
-                      @else
-                        -
-                      @endif
-
-                    </p>
-                  </div>
-                </div> --}}
+                @endif
 
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
@@ -196,14 +208,11 @@
               </div>
 
               @if ($atleta->registrations[0]->status_regitration_id != 1)
-                <form action="/admin/registrations/{{ $atleta->registrations[0]->id }}/confirm" method="post">
-                  @csrf
-                  <button type="submit" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                    <p class="text-white text-sm font-bold font-poppins">
-                      Confirmar inscrição
-                    </p>
-                  </button>
-                </form>
+                <button data-modalId="modal-validar-inscricao-{{ $atleta->registrations[0]->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                  <p class="text-white text-sm font-bold font-poppins">
+                    Confirmar inscrição
+                  </p>
+                </button>
               @endif
               {{-- <div class="flex gap-4 flex-wrap">
 

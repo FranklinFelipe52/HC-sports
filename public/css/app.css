@@ -851,10 +851,6 @@ video {
   margin-top: 2px;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .block {
   display: block;
 }
@@ -1221,16 +1217,16 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .grid-rows-main-mobile {
   grid-template-rows: 1fr 70px;
-}
-
-.grid-rows-1 {
-  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -2977,6 +2973,10 @@ input[name="vaucher"]:focus {
 }
 
 @media (min-width: 768px) {
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
   }
@@ -2991,14 +2991,6 @@ input[name="vaucher"]:focus {
 
   .md\:col-span-9 {
     grid-column: span 9 / span 9;
-  }
-
-  .md\:col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-
-  .md\:row-span-2 {
-    grid-row: span 2 / span 2;
   }
 
   .md\:mx-auto {
