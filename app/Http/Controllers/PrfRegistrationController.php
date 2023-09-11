@@ -14,6 +14,7 @@ use App\Models\PrfRegistration;
 use App\Models\PrfSizeTshirts;
 use App\Models\PrfTshirt;
 use App\Models\PrfUser;
+use App\Models\PrfVauchers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -134,6 +135,7 @@ class PrfRegistrationController extends Controller
         try {
             $user = PrfUser::find($request->session()->get('prf_user')->id);
             $registration = PrfRegistration::find($id);
+            $vaucher = PrfVauchers::find($registration->prf_vauchers_id);
             if (!$user) {
                 return back();
             }
@@ -164,14 +166,19 @@ class PrfRegistrationController extends Controller
                 }
             }
 
-            if (count($registration->tshirts) < 1) {
+            if ($vaucher && $vaucher->desconto == 1 && count($registration->tshirts) < 1) {
                 $registration->status_regitration_id = 1;
+                $registration->save();
+            }
+
+            if ($vaucher && $vaucher->desconto == 1 && count($registration->tshirts) > 0) {
+                $registration->status_regitration_id = 3;
                 $registration->save();
             }
 
             return redirect('/dashboard');
         } catch (Exception $e) {
-            return dd($e);
+            return back();
         }
     }
 
