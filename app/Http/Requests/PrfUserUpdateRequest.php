@@ -30,7 +30,6 @@ class PrfUserUpdateRequest extends FormRequest
     {
         return [
             'cpf' => ['required', new CpfValidate],
-            'data_nasc' => ['date'],
         ];
     }
 
@@ -38,7 +37,6 @@ class PrfUserUpdateRequest extends FormRequest
     {
         return [
             'cpf.required' => 'CPF é obrigatório',
-            'data_nasc.date' => 'Data invalida',
         ];
     }
 }

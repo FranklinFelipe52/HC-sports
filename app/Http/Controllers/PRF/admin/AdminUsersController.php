@@ -11,6 +11,7 @@ use App\Models\PrfAdmin;
 use App\Models\TypeActionsAdmin;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -86,7 +87,8 @@ class AdminUsersController extends Controller
             $user->nome_completo = $request->nome;
             $user->phone = $request->phone;
             $user->sexo = $request->sexo;
-            $user->data_nasc = $request->data_nasc;
+            $data_convertida = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
+            $user->data_nasc = $data_convertida->format('Y-m-d');
             // $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
             $user->is_servidor = $request->is_servidor;
             $user->servidor_matricula = $request->servidor_matricula;

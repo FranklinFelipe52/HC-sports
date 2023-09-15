@@ -138,7 +138,7 @@
                         Nascimento
                       </label>
                       <div class="relative">
-                        <input value="{{ $atleta->data_nasc }}" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="atualizar_data_nasc_field" name="data_nasc" placeholder="DD/MM/AAAA" />
+                        <input value="{{ date('d/m/Y', strtotime($atleta->data_nasc )) }}" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="atualizar_data_nasc_field" name="data_nasc" placeholder="DD/MM/AAAA" />
                         <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                           <img src="/images/PRF/svg/calendar.svg" alt="" />
                         </div>
@@ -264,6 +264,12 @@
     new Cleave('#registration_phone_field', {
       blocks: [2, 5, 4],
       delimiters: [' ', '-'],
+      numericOnly: true,
+    });
+
+    new Cleave('#atualizar_data_nasc_field', {
+      blocks: [2, 2, 4],
+      delimiters: ['/', '/'],
       numericOnly: true,
     });
 
