@@ -19,6 +19,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+
 
 class PrfRegistrationController extends Controller
 {
@@ -60,7 +62,8 @@ class PrfRegistrationController extends Controller
             $user = new PrfUser;
             $user->nome_completo = $request->nome;
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
-            $user->data_nasc = $request->data_nasc;
+            $data_convertida = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
+            $user->data_nasc = $data_convertida->format('Y-m-d');
             $user->phone = $request->phone;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);

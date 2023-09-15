@@ -74,7 +74,11 @@
                       Equipe:
                     </p>
                     <p>
-                      {{ $registration['equipe'] }}
+                      @if ($registration['equipe'])
+                        {{ $registration['equipe'] }}
+                      @else
+                        -
+                      @endif
                     </p>
                   </div>
                   <div>

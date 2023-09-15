@@ -56,7 +56,7 @@
                 Nascimento
               </label>
               <div class="relative">
-                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
+                <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
                   <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>
@@ -143,9 +143,9 @@
             </div>
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
-                Equipe
+                Equipe <span class="text-sm">(opcional)</span>
               </label>
-              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="equipe" value="{{ old('equipe') }}" placeholder="Digite o nome da sua equipe" />
+              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="equipe" value="{{ old('equipe') }}" placeholder="Digite o nome da sua equipe" />
               @error('equipe')
                 <p class="text-red-600">{{ $message }}</p>
               @enderror
@@ -338,6 +338,12 @@
     new Cleave('#registration_phone_field', {
       blocks: [2, 5, 4],
       delimiters: [' ', '-'],
+      numericOnly: true,
+    });
+
+    new Cleave('#cadastro_date_field', {
+      blocks: [2, 2, 4],
+      delimiters: ['/', '/'],
       numericOnly: true,
     });
 
