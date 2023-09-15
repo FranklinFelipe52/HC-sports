@@ -30,7 +30,6 @@ class PrfStoreRegistrationRequest extends FormRequest
         return [
             'email' => ['required', 'email', new PrfEmailUserExist],
             'cpf' => ['required', new CpfValidate, new PrfCpfUserExist],
-            'data_nasc' => ['date'],
             'password' => ['required', Password::min(8)],
         ];
     }
@@ -41,7 +40,6 @@ class PrfStoreRegistrationRequest extends FormRequest
             'email.required' => 'E-mail é obrigatório',
             'email.email' => 'Digite um E-mail válido',
             'cpf.required' => 'CPF é obrigatório',
-            'data_nasc.date' => 'Data invalida',
             'password' => 'Digite uma senha valida',
         ];
     }
