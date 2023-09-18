@@ -34,7 +34,7 @@
 
     <main class="container grow pt-6 pb-32">
       {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt=""> --}}
-      <img src="/images/banner.png" class="hidden lg:block w-full" alt="">
+      <img src="/images/banner.png?v=25626524624627" class="hidden lg:block w-full" alt="">
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="col-span-2 lg:hidden">
           <img src="/images/seminario-banner.jpg" alt="">
