@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AdminRegistrationController;
 use App\Http\Controllers\PRF\admin\AdminReportsController;
 use App\Http\Controllers\PRF\admin\AdminController;
 use App\Http\Controllers\PRF\admin\AdminDashboardController;
@@ -73,6 +74,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
     Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins');
     Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_get'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_post'])->middleware('PrfAuthAdmins');
     Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');

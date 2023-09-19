@@ -100,6 +100,14 @@
                   Editar perfil
                 </p>
               </a>
+              <a href="/admin/registrations/{{ $registration->id }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="text-gray-2 text-sm font-bold font-poppins">
+                  Editar inscrição
+                </p>
+              </a>
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -251,6 +259,35 @@
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
                       {{ App\Models\PrfCategorys::find($registration->prf_categorys_id)->nome }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Tamanho da camisa
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal break-all">
+                      {{ $size_tshirt->nome }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-1 font-semibold">
+                      Equipe
+                    </p>
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <p class="text-sm text-gray-2 font-normal break-all">
+                      @if ($registration->equipe)
+                        {{ $registration->equipe }}
+                      @else
+                        -
+                      @endif
                     </p>
                   </div>
                 </div>

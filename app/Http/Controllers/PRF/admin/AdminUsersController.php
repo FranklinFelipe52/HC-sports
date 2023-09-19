@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PrfUserUpdateRequest;
 use App\Models\PrfAdminLog;
 use App\Models\PrfRegistration;
+use App\Models\PrfSizeTshirts;
 use App\Models\PrfUser;
 use App\Models\PrfAdmin;
 use App\Models\TypeActionsAdmin;
@@ -52,12 +53,15 @@ class AdminUsersController extends Controller
         try {
             $user = PrfUser::find($id);
             $registration = PrfRegistration::find($user->registrations[0]->id);
+            $size_tshirt = PrfSizeTshirts::find($registration->prf_size_tshirts_id);
+
             if (!$user) {
                 return back();
             }
             return view('PRF.Admin.user', [
                 'atleta' => $user,
                 'registration' => $registration,
+                'size_tshirt' => $size_tshirt,
             ]);
 
         } catch (Exception $e) {
