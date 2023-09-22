@@ -143,6 +143,20 @@
                     </p>
                   </div>
                 </div>
+                @if ($user->prf_deficiency_id)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        PCD
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ $user->prf_deficiency->nome }}
+                      </p>
+                    </div>
+                  </div>
+                @endif
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">

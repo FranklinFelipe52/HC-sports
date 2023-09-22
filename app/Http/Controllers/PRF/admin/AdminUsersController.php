@@ -4,7 +4,9 @@ namespace App\Http\Controllers\PRF\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PrfUserUpdateRequest;
+use App\Mail\PrfEmailUpdate;
 use App\Models\PrfAdminLog;
+use App\Models\PrfDeficiency;
 use App\Models\PrfRegistration;
 use App\Models\PrfSizeTshirts;
 use App\Models\PrfUser;
@@ -14,6 +16,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Constraint\Count;
 
 class AdminUsersController extends Controller
@@ -32,7 +35,6 @@ class AdminUsersController extends Controller
                         ->orWhere('servidor_matricula', 'LIKE', '%' . $searchTerm . '%')
                         ->orWhere('cpf', preg_replace("/[^0-9]/", "", $searchTerm));
 
-                    // dd(preg_replace("/[^0-9]/", "", $searchTerm));
                 });
             }
 
@@ -74,8 +76,9 @@ class AdminUsersController extends Controller
     {
         try {
             $user = PrfUser::find($id);
+            $deficiencys = PrfDeficiency::all();
 
-            return view('PRF.Admin.user_update', ['atleta' => $user]);
+            return view('PRF.Admin.user_update', ['atleta' => $user, 'deficiencys' => $deficiencys]);
         } catch (Exception $e) {
             return back();
         }
@@ -88,12 +91,23 @@ class AdminUsersController extends Controller
             $admin = PrfUser::find($request->session()->get('admin')->id);
 
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
+
+            if ($user->email != $request->email) {
+                $old_email = $user->email;
+                $updated_email = $request->email;
+
+                $user->email = $request->email;
+
+                Mail::to($request->email)->send(new PrfEmailUpdate($old_email, $updated_email));
+
+            }
+
             $user->nome_completo = $request->nome;
             $user->phone = $request->phone;
             $user->sexo = $request->sexo;
             $data_convertida = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
             $user->data_nasc = $data_convertida->format('Y-m-d');
-            // $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
+            $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
             $user->is_servidor = $request->is_servidor;
             $user->servidor_matricula = $request->servidor_matricula;
             $user->save();
@@ -104,6 +118,7 @@ class AdminUsersController extends Controller
             $admin_log->description = 'Editou informações do usuário de cpf ' . $user->cpf . ', e id #' . $user->id;
             $admin_log->save();
 
+            session()->flash('success', 'Dados atualizados');
             return back();
 
         } catch (Exception $e) {

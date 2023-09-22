@@ -199,23 +199,20 @@
                     </p>
                   </div>
                 </div>
-                {{-- <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      Celular
-                    </p>
+                @if ($atleta->prf_deficiency_id)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        PCD
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ $atleta->prf_deficiency->nome }}
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      @if ($atleta->phone_number)
-                        {{ $atleta->phone_number }}
-                      @else
-                        -
-                      @endif
-
-                    </p>
-                  </div>
-                </div> --}}
+                @endif
 
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">

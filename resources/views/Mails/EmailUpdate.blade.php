@@ -7,7 +7,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
-  <title>Olimpadas da advocacia - Nova senha</title>
+  <title>Olimpadas da advocacia - Confirmao de cadastro do admin</title>
   <!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
@@ -497,13 +497,13 @@
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
                             <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png" role="presentation">
                               <tr>
-                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt="Logo das olimpíadas da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo das olimpíadas da advocacia"></td>
+                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/images/PRF/Logo-Meia-PRF.png" alt="Logo - Meia Maratona da PRF" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo da PRF"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
                                   <h1 style="text-transform: uppercase;Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:18px;font-style:normal;font-weight:normal;color:#333333;text-align:center">
                                     <strong>
-                                      OLÁ! SUA SENHA FOI ATUALIZADA
+                                      Email atualizado!
                                     </strong>
                                   </h1>
                                 </td>
@@ -532,61 +532,20 @@
                                 <td style="padding:0;Margin:0;padding-bottom:30px">
                                   <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
-                                      Uma nova senha foi criada para seu usuário.
+                                      O administrador do sistema atualizou o email utilizado na sua inscrição.
                                     </p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                      Abaixo seguem os novos dados de acesso.
+                                      O email é atualizado quando o usuário solicita ao administrador. Caso não tenha solicitado essa alteração, entre em contato conosco através do formulário no nosso site. <a href="https://www.meiamaratonaprf191.com.br/#Contato">https://www.meiamaratonaprf191.com.br/#Contato</a>
                                     </p>
                                   </div>
                                 </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:30px">
-                                  <!--[if mso]><a href="" target="_blank" hidden>
- <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
-                style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#0095d9">
-  <w:anchorlock></w:anchorlock>
-  <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
- </v:roundrect></a>
-<![endif]-->
-                                  <!--[if !mso]><!-- -->
-                                  <span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="{{ $_SERVER['HTTP_HOST'] }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">
-                                      Acessar painel
-                                    </a>
-                                  </span>
-                                  <!--<![endif]-->
-                                </td>
-                              </tr>
-                              <tr>
-                                <td style="padding:0;Margin:0;padding-bottom:30px">
-                                  <div style="font-size:14px;font-weight:400;color:#333333;font-family:'Open sans'">
-                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;margin-bottom:16px">
-                                      Caso o link não funcione, copie e cole este link no seu navegador:
-                                    </p>
-                                    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
-                                      {{ $_SERVER['HTTP_HOST'] }}
-                                    </p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="es-m-p0r es-m-p0l" align="left" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:20px;padding-right:20px">
-                      <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr>
-                          <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
-                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr>
-                                <td align="left" class="es-m-p25t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:10px;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
+                                    Email antigo:<br>
                                     <strong>
-                                      Dados de acesso
+                                      {{ $old_email }}
                                     </strong>
                                   </p>
                                 </td>
@@ -594,27 +553,9 @@
                               <tr>
                                 <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
-                                    Nome:<br>
-                                    <strong>{{ $user->nome_completo }}</strong>
-                                  </p>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td align="left" class="es-m-p10t es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
-                                    E-mail:<br>
+                                    Email atual:<br>
                                     <strong>
-                                      {{ $user->email }}
-                                    </strong>
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" class="es-m-p10t es-m-p20b es-m-p20r es-m-p20l" bgcolor="#FBFBFB" style="padding:0;Margin:0;padding-bottom:10px;padding-left:10px;padding-right:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:18px;color:#333333;font-size:12px">
-                                    Senha:<br>
-                                    <strong>{{ $password }}
+                                      {{ $updated_email }}
                                     </strong>
                                   </p>
                                 </td>
@@ -626,7 +567,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:40px;padding-bottom:40px">
+                    <td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:0px;padding-bottom:40px">
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:560px">

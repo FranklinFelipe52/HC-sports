@@ -122,7 +122,7 @@
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_email_field">
                         E-mail
                       </label>
-                      <input disabled required value="{{ $atleta->email }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="atualizar_email_field" placeholder="Digite o seu E-mail" name="email" />
+                      <input required value="{{ $atleta->email }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="atualizar_email_field" placeholder="Digite o seu E-mail" name="email" />
                     </div>
                   </div>
 
@@ -167,6 +167,28 @@
                         <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                           <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-6">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pcd_field">
+                      Possui deficiência física comprovada? (PCD)
+                    </label>
+
+                    <div class="relative">
+                      <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="pcd" id="inscricao_pcd_field">
+                        <option value="N" selected>Não</option>
+                        @foreach ($deficiencys as $deficiency)
+                          @if ($atleta->prf_deficiency)
+                            <option @if ($atleta->prf_deficiency->id == $deficiency->id) @selected(true) @endif value={{ $deficiency->id }}>{{ $deficiency->nome }}</option>
+                          @else
+                            <option value={{ $deficiency->id }}>{{ $deficiency->nome }}</option>
+                          @endif
+                        @endforeach
+                      </select>
+                      <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
