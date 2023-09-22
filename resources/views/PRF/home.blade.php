@@ -34,7 +34,7 @@
 
     <main class="container grow pt-6 pb-32">
       {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt=""> --}}
-      <img src="/images/banner.png?v=25626524624627" class="w-full" alt="">
+      <img src="/images/banner.png?v=937529385290" class="w-full" alt="">
       <div class="mt-4">
         <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
           <p class="text-brand-prfA1">
