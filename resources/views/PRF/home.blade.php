@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
-        <div class="order-2 lg:order-1 col-span-2 lg:col-span-2">
+        <div class="order-2 lg:order-1 col-span-2 lg:col-span-1">
           <h2 class="text-xl font-bold text-gray-1 mb-6">Edições anteriores</h2>
 
           <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
@@ -58,119 +58,120 @@
             </div>
           </div>
         </div>
-        {{-- <div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
-          <div class="border border-gray-5 rounded-md p-4">
-            <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
-            <form action="/registration/store" method="POST" class="">
-              @csrf
+        <div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
+          <img src="/images/banner-2.jpeg?v=937529385290" class="mt-4" alt="">
+          {{-- <div class="border border-gray-5 rounded-md p-4">
+              <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
+              <form action="/registration/store" method="POST" class="">
+                @csrf
 
-              <div class="space-y-4">
-                <div>
-                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_cpf_field">
-                    CPF
-                  </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{ old('cpf') }}" />
-                </div>
-                <div>
-                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_nome_field">
-                    Nome completo
-                  </label>
-                  <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_nome_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
-                </div>
-                <div>
-                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_phone_field">
-                    Contato
-                  </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" placeholder="Digite o seu número de contato" name="phone" value="{{ old('phone') }}" />
-                </div>
-                <div>
-                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_email_field">
-                    E-mail
-                  </label>
-                  <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="registration_email_field" placeholder="Digite o seu E-mail" name="email" value="{{ old('email') }}" />
-                </div>
-                <div>
-                  <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="registration_password_field">
-                    Senha
-                  </label>
-                  <div class="group relative">
-                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="registration_password_field" name="password" placeholder="Digite a sua senha" />
-                    <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                      <button type="button" data-inputId="registration_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                        <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                        <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
-                      </button>
+                <div class="space-y-4">
+                  <div>
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_cpf_field">
+                      CPF
+                    </label>
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_cpf_field" name="cpf" placeholder="Digite o seu CPF" value="{{ old('cpf') }}" />
+                  </div>
+                  <div>
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_nome_field">
+                      Nome completo
+                    </label>
+                    <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_nome_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
+                  </div>
+                  <div>
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_phone_field">
+                      Contato
+                    </label>
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" placeholder="Digite o seu número de contato" name="phone" value="{{ old('phone') }}" />
+                  </div>
+                  <div>
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_email_field">
+                      E-mail
+                    </label>
+                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="registration_email_field" placeholder="Digite o seu E-mail" name="email" value="{{ old('email') }}" />
+                  </div>
+                  <div>
+                    <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="registration_password_field">
+                      Senha
+                    </label>
+                    <div class="group relative">
+                      <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="registration_password_field" name="password" placeholder="Digite a sua senha" />
+                      <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                        <button type="button" data-inputId="registration_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                          <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                          <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                        </button>
+                      </div>
+                      <div class="text-gray-1 text-sm mt-2">
+                        <p>
+                          A senha deve ter:
+                        </p>
+                        <ul>
+                          <li>- Minimo de 8 caracteres</li>
+                        </ul>
+                      </div>
                     </div>
-                    <div class="text-gray-1 text-sm mt-2">
-                      <p>
-                        A senha deve ter:
+                  </div>
+                  <div>
+                    <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirm_password_field">
+                      Confirmação de senha
+                    </label>
+                    <div class="group relative">
+                      <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password_field" name="confirm_password" placeholder="Digite novamente a sua senha" />
+                      <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
+                        <button type="button" data-inputId="confirm_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
+                          <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                          <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-6">
+                    <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_is_servidor_field">
+                      É servidor da segurança pública?
+                    </label>
+
+                    <div class="relative">
+                      <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="registration_is_servidor_field">
+                        <option @if (old('is_servidor') == 0) @selected(true) @endif value="0">Não</option>
+                        <option @if (old('is_servidor') == 1) @selected(true) @endif value="1">Sim</option>
+                      </select>
+                      <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
+                      <p class="text-sm mb-2">
+                        <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 10,00 através do mercado pago.
                       </p>
-                      <ul>
-                        <li>- Minimo de 8 caracteres</li>
-                      </ul>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirm_password_field">
-                    Confirmação de senha
-                  </label>
-                  <div class="group relative">
-                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password_field" name="confirm_password" placeholder="Digite novamente a sua senha" />
-                    <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                      <button type="button" data-inputId="confirm_password_field" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                        <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                        <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-6">
-                  <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_is_servidor_field">
-                    É servidor da segurança pública?
-                  </label>
-
-                  <div class="relative">
-                    <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="registration_is_servidor_field">
-                      <option @if (old('is_servidor') == 0) @selected(true) @endif value="0">Não</option>
-                      <option @if (old('is_servidor') == 1) @selected(true) @endif value="1">Sim</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      <img src="/images/PRF/svg/chevron-down.svg" alt="" />
-                    </div>
-                  </div>
-                </div>
-                <div class="">
-                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
-                    <p class="text-sm mb-2">
-                      <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 10,00 através do mercado pago.
+                  <h2 class="text-gray-1 text-xl font-semibold font-poppins">
+                    Aceite obrigatório
+                  </h2>
+                  <hr class="my-4 border-gray-4" />
+                  <p class="text-sm text-gray-1 mb-8">
+                    “Aceito as regras de participação do SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das suas finalidades institucionais, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <input data-conditional="submit_button" type="checkbox" id="registration_terms_checkbox" name="registration_terms_checkbox" class="checkbox" required />
+                    <p class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
+                      Li e aceito os termos.
                     </p>
                   </div>
-                </div>
-                <h2 class="text-gray-1 text-xl font-semibold font-poppins">
-                  Aceite obrigatório
-                </h2>
-                <hr class="my-4 border-gray-4" />
-                <p class="text-sm text-gray-1 mb-8">
-                  “Aceito as regras de participação do SEMINÁRIO DE SAÚDE MENTAL E PREVENÇÃO DO SUICÍDIO e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das suas finalidades institucionais, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
-                </p>
-                <div class="flex items-center gap-2">
-                  <input data-conditional="submit_button" type="checkbox" id="registration_terms_checkbox" name="registration_terms_checkbox" class="checkbox" required />
-                  <p class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
-                    Li e aceito os termos.
-                  </p>
-                </div>
-                <hr class="mt-20 mb-8 border-gray-4" />
+                  <hr class="mt-20 mb-8 border-gray-4" />
 
-                <button disabled id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-                  <p class="text-white text-sm font-bold font-poppins">
-                    Cadastrar-se
-                  </p>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div> --}}
+                  <button disabled id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Cadastrar-se
+                    </p>
+                  </button>
+                </div>
+              </form>
+            </div> --}}
+        </div>
       </div>
     </main>
 
