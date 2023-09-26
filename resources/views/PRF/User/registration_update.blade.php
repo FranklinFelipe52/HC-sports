@@ -48,7 +48,7 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                       Equipe
                     </label>
-                    <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" value="{{ $registration->equipe }}" name="equipe" placeholder="Digite o nome da sua equipe" />
+                    <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" value="{{ $registration->equipe }}" name="equipe" placeholder="Digite o nome da sua equipe" />
                   </div>
                   <div class="mb-6">
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_size_tshirt_field">

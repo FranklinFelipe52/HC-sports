@@ -137,7 +137,7 @@
                     <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="atualizar_contato_field">
                       Contato
                     </label>
-                    <input onkeyup="this.value = this.value.toUpperCase();" value="{{ $atleta->phone }}" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" name="phone" placeholder="Digite o número de contato" />
+                    <input onkeyup="this.value = this.value.toUpperCase();" value="{{ $atleta->phone }}" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" name="phone" placeholder="Digite o número de contato" />
                   </div>
 
                   <div class="flex gap-4 mb-6">

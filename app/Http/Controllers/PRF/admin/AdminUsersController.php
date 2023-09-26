@@ -96,7 +96,15 @@ class AdminUsersController extends Controller
                 $old_email = $user->email;
                 $updated_email = $request->email;
 
-                $user->email = $request->email;
+                $email_has_user = PrfUser::where('email', $request->email)->first();
+
+                // verificar se o email já existe antes de salvar
+                if ($email_has_user) {
+                    session()->flash('erro', 'O email que você tentou adicionar já está sendo usado por outro usuário.');
+                    return back();
+                } else {
+                    $user->email = $request->email;
+                }
 
                 Mail::to($request->email)->send(new PrfEmailUpdate($old_email, $updated_email));
 
