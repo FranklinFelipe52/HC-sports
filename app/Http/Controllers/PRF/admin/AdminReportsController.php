@@ -98,7 +98,6 @@ class AdminReportsController extends Controller
             back();
 
         } catch (Exception $e) {
-            dd($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
