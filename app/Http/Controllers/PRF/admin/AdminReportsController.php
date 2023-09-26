@@ -35,9 +35,13 @@ class AdminReportsController extends Controller
             $cabecalho = [
                 mb_convert_encoding(mb_strtoupper('Nome', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Email', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Contato', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Cpf', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Nascimento', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Tamanho da camisa', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Equipe', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Servidor', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Possui deficiência?', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('PCD', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Status da inscrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Categoria', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 mb_convert_encoding(mb_strtoupper('Pacote', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
@@ -46,12 +50,32 @@ class AdminReportsController extends Controller
             fputcsv($arquivo, $cabecalho, ';');
             error_log($users);
             foreach ($users as $value) {
+                $size_tshirt = PrfSizeTshirts::find($value->registrations[0]->prf_size_tshirts_id);
+                $size_tshirt_nome = '-';
+                if ($size_tshirt) {
+                    $size_tshirt_nome = $size_tshirt->nome;
+                }
+
+                $equipe = '-';
+                if ($value->registrations[0]->equipe) {
+                    $equipe = $value->registrations[0]->equipe;
+                }
+
+                $contato = '-';
+                if ($value->phone) {
+                    $contato = $value->phone;
+                }
+
                 $user = [
                     'Nome' => mb_convert_encoding(mb_strtoupper($value->nome_completo, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Email' => mb_convert_encoding(mb_strtoupper($value->email, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Contato' => mb_convert_encoding(mb_strtoupper($contato, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Cpf' => mb_convert_encoding(mb_strtoupper(preg_replace('/^([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{2})$/', '$1.$2.$3-$4', $value->cpf), 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Nascimento' => mb_convert_encoding(mb_strtoupper(date('d/m/Y', strtotime($value->data_nasc)), 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'Camisa' => mb_convert_encoding($size_tshirt_nome, 'ISO-8859-1', "UTF-8"),
+                    'Equipe' => mb_convert_encoding(mb_strtoupper($equipe, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Servidor' => mb_convert_encoding(mb_strtoupper($value->is_servidor == 1 ? 'Sim' : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                    'Possui deficiência?' => mb_convert_encoding(mb_strtoupper($value->prf_deficiency ? $value->prf_deficiency->nome : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                    'PCD' => mb_convert_encoding(mb_strtoupper($value->prf_deficiency ? $value->prf_deficiency->nome : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Inscrição' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->status_regitration->status, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Categoria' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->prf_categorys->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Pacote' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->prf_package->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
