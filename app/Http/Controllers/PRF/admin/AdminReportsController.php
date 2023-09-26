@@ -27,28 +27,8 @@ class AdminReportsController extends Controller
         try {
             $users = PrfUser::all();
 
-            header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=Relatório_Todos_Usuarios.csv');
+            $dados = [];
 
-            $arquivo = fopen("php://output", "w");
-
-            $cabecalho = [
-                mb_convert_encoding(mb_strtoupper('Nome', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Email', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Contato', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Cpf', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Nascimento', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Tamanho da camisa', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Equipe', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Servidor', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('PCD', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Status da inscrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Categoria', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Pacote', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-                mb_convert_encoding(mb_strtoupper('Ação social', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
-            ];
-            fputcsv($arquivo, $cabecalho, ';');
-            error_log($users);
             foreach ($users as $value) {
                 $size_tshirt = PrfSizeTshirts::find($value->registrations[0]->prf_size_tshirts_id);
                 $size_tshirt_nome = '-';
@@ -81,10 +61,39 @@ class AdminReportsController extends Controller
                     'Pacote' => mb_convert_encoding(mb_strtoupper($value->registrations[0]->prf_package->nome, 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                     'Ação social' => mb_convert_encoding(mb_strtoupper(count($value->registrations[0]->tshirts) > 0 ? 'Sim' : 'Não', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
                 ];
+                array_push($dados, $user);
+            }
+
+            $cabecalho = [
+                mb_convert_encoding(mb_strtoupper('Nome', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Email', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Contato', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Cpf', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Nascimento', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Tamanho da camisa', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Equipe', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Servidor', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('PCD', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Status da inscrição', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Categoria', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Pacote', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+                mb_convert_encoding(mb_strtoupper('Ação social', 'UTF-8'), 'ISO-8859-1', "UTF-8"),
+            ];
+
+
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=Relatório_Todos_Usuarios.csv');
+
+            $arquivo = fopen("php://output", "w");
+            fputcsv($arquivo, $cabecalho, ';');
+
+            foreach ($dados as $user) {
                 fputcsv($arquivo, $user, ';');
             }
+
             fclose($arquivo);
             back();
+
         } catch (Exception $e) {
             dd($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
