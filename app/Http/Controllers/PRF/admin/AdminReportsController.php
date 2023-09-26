@@ -30,7 +30,7 @@ class AdminReportsController extends Controller
             $dados = [];
 
             foreach ($users as $value) {
-                if ($value->registrations[0]) {
+                if (count($value->registrations) > 0) {
                     $size_tshirt = PrfSizeTshirts::find($value->registrations[0]->prf_size_tshirts_id);
                     $size_tshirt_nome = '-';
                     if ($size_tshirt) {
