@@ -32,7 +32,90 @@
             <button type="button" data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
               Cancelar
             </button>
-            <input type="submit" value="Confirmar" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-prfA1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0" />
+            <input type="submit" value="Confirmar" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-prfA1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{-- modal estornar inscrição --}}
+  <div id="modal-estornar-inscricao-{{ $registration->id }}" class="hidden">
+    <form action="/admin/registrations/{{ $registration->id }}/estornar" method="post">
+      @csrf
+      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+          <!-- modal header -->
+          <div class="text-gray-1 text-lg md:text-xl font-semibold">
+            <p>
+              Estorno de Inscrição
+            </p>
+          </div>
+          <hr class="my-4">
+
+          <p class="mb-2 text-sm">
+            <strong>Atenção:</strong>
+            Atualmente o estorno no sistema é apenas de cunho informativo.
+            Então certifique-se de já ter estornado a inscrição devidamente antes de alterar o status da mesma.
+          </p>
+
+          <hr class="my-4">
+
+          <!-- modal body -->
+          <div class="">
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
+              Observação
+            </label>
+            <textarea id="observacao_field" name="observacao_estorno" placeholder="Adicione alguma observação (ex: motivo do estorno da inscrição...)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
+          </div>
+
+          <!-- modal footer - actions -->
+          <div class="flex justify-end gap-4 flex-wrap mt-10">
+            <button type="button" data-modalId="modal-estornar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+              Cancelar
+            </button>
+            <input type="submit" value="Confirmar estorno" class="text-white text-sm font-bold font-poppins flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {{-- modal cancelar inscrição --}}
+  <div id="modal-cancelar-inscricao-{{ $registration->id }}" class="hidden">
+    <form action="/admin/registrations/{{ $registration->id }}/cancelar" method="post">
+      @csrf
+      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
+        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
+          <!-- modal header -->
+          <div class="text-gray-1 text-lg md:text-xl font-semibold">
+            <p>
+              Estorno de Inscrição
+            </p>
+          </div>
+          <hr class="my-4">
+
+          <p class="mb-2 text-sm">
+            <strong>Atenção:</strong>
+            Realize essa ação com cuidado. Lembre-se que o sistema ainda não possui estorno automático de valores.
+          </p>
+
+          <hr class="my-4">
+
+          <!-- modal body -->
+          <div class="">
+            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
+              Observação
+            </label>
+            <textarea id="observacao_field" name="observacao_cancelamento" placeholder="Adicione alguma observação (ex: motivo do cancelamento da inscrição...)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
+          </div>
+
+          <!-- modal footer - actions -->
+          <div class="flex justify-end gap-4 flex-wrap mt-10">
+            <button type="button" data-modalId="modal-cancelar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+              Cancelar
+            </button>
+            <input type="submit" value="Confirmar cancelamento" class="text-white text-sm font-bold font-poppins flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0" />
           </div>
         </div>
       </div>
@@ -267,7 +350,11 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      {{ $size_tshirt->nome }}
+                      @if ($size_tshirt)
+                        {{ $size_tshirt->nome }}
+                      @else
+                        -
+                      @endif
                     </p>
                   </div>
                 </div>
@@ -304,6 +391,18 @@
                         </div>
                       @elseif ($registration->status_regitration->id == 3)
                         <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-xs font-bold text-center">
+                            {{ $registration->status_regitration->status }}
+                          </p>
+                        </div>
+                      @elseif ($registration->status_regitration->id == 4)
+                        <div class="bg-feedback-orange py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-xs font-bold text-center">
+                            {{ $registration->status_regitration->status }}
+                          </p>
+                        </div>
+                      @elseif ($registration->status_regitration->id == 5)
+                        <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                           <p class="text-white text-xs font-bold text-center">
                             {{ $registration->status_regitration->status }}
                           </p>
@@ -348,14 +447,57 @@
                     </div>
                   </div>
                 @endif
+                @if ($registration->status_regitration_id == 4 && $registration->observacao_estorno)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Observação de estorno
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ $registration->observacao_estorno }}
+                      </p>
+                    </div>
+                  </div>
+                @elseif ($registration->status_regitration_id == 5 && $registration->observacao_cancelamento)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Observação de cancelamento
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        {{ $registration->observacao_cancelamento }}
+                      </p>
+                    </div>
+                  </div>
+                @endif
               </div>
-              @if ($registration->status_regitration_id != 1)
-                <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                  <p class="text-white text-sm font-bold font-poppins">
-                    Confirmar inscrição
-                  </p>
-                </button>
-              @endif
+              <div class="flex gap-4 justify-end">
+                @if ($registration->status_regitration_id != 1)
+                  <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Confirmar inscrição
+                    </p>
+                  </button>
+                @endif
+                @if ($registration->status_regitration_id == 1 && $registration->validated_by_admin == 0)
+                  <button data-modalId="modal-estornar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-white transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-red-500 text-sm font-bold font-poppins">
+                      Estornar inscrição
+                    </p>
+                  </button>
+                @endif
+                @if ($registration->status_regitration_id == 1)
+                  <button data-modalId="modal-cancelar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      Cancelar inscrição
+                    </p>
+                  </button>
+                @endif
+              </div>
 
               {{-- <div class="flex gap-4 flex-wrap">
 

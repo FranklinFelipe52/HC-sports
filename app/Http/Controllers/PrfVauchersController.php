@@ -265,4 +265,26 @@ class PrfVauchersController extends Controller
             return back();
         }
     }
+
+    public function delete(Request $request, $voucher_id)
+    {
+        try {
+            $voucher = PrfVauchers::find($voucher_id);
+            $registrations = PrfRegistration::where('prf_vauchers_id', $voucher_id)->get();
+
+            if (count($registrations) > 0) {
+                session()->flash('erro', 'Não é possível excluir códigos de desconto que já foram usados.');
+                return back();
+            }
+
+            $voucher->delete();
+
+            session()->flash('success', 'Código de desconto excluído com sucesso.');
+            return back();
+
+        } catch (Exception $e) {
+            session()->flash('erro', 'Erro no sistema, estamos resolvendo');
+            return back();
+        }
+    }
 }

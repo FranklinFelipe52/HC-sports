@@ -157,7 +157,7 @@ class PrfRegistrationController extends Controller
             $registration->save();
             $registration_and_tshirts = DB::table('prf_tshirt_and_prf_registrations')->where('prf_registration_id', $registration->id)->get();
             foreach ($registration_and_tshirts as $value) {
-                error_log($value->id);
+                erro_log($value->id);
                 DB::table('prf_tshirt_and_prf_registrations')->delete($value->id);
             }
             if ($request->tshirts) {
@@ -196,6 +196,9 @@ class PrfRegistrationController extends Controller
             $registration->status_regitration_id = 1;
             $registration->validated_by_admin = true;
             $registration->observacao = $request->observacao;
+            $registration->observacao_estorno = null;
+            $registration->observacao_cancelamento = null;
+            $registration->prf_vauchers_id = null;
             $registration->save();
 
             $payment->status_payment_id = 4;
@@ -211,7 +214,60 @@ class PrfRegistrationController extends Controller
             return back();
         } catch (Exception $e) {
             dd($e);
-            session()->flash('error', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
+            session()->flash('erro', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
+            return back();
+        }
+    }
+
+    public function estorno(Request $request, $registration_id)
+    {
+        try {
+            $registration = PrfRegistration::find($registration_id);
+            $voucher = PrfVauchers::find($registration->prf_vauchers_id);
+
+            if ($registration->validated_by_admin == 1) {
+                session()->flash('erro', 'A inscrição desse usuário foi liberada pelo admin. Não é permitido estornar inscrição.');
+                return back();
+            }
+
+            if ($voucher && $registration->status_regitration_id == PrfRegistration::STATUS_CONFIRMADO && $voucher->desconto == 1) {
+                session()->flash('erro', 'A inscrição desse usuário foi liberada por cupom ou voucher com 100% de desconto. Não é permitido estornar inscrição.');
+                return back();
+            }
+
+            $registration->status_regitration_id = PrfRegistration::STATUS_ESTORNADA;
+            $registration->observacao_estorno = $request->input('observacao_estorno');
+            $registration->observacao = null;
+            $registration->observacao_cancelamento = null;
+            $registration->prf_vauchers_id = null;
+            $registration->save();
+
+            session()->flash('success', 'Status da inscrição alterado para "estornada".');
+            return back();
+        } catch (Exception $e) {
+            dd($e);
+            session()->flash('erro', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
+            return back();
+        }
+    }
+
+    public function cancelamento(Request $request, $registration_id)
+    {
+        try {
+            $registration = PrfRegistration::find($registration_id);
+
+            $registration->status_regitration_id = PrfRegistration::STATUS_CANCELADA;
+            $registration->validated_by_admin = 0;
+            $registration->observacao_cancelamento = $request->input('observacao_cancelamento');
+            $registration->observacao = null;
+            $registration->observacao_estorno = null;
+            $registration->prf_vauchers_id = null;
+            $registration->save();
+
+            session()->flash('success', 'Status da inscrição alterado para "cancelada".');
+            return back();
+        } catch (Exception $e) {
+            session()->flash('erro', 'Um erro interno aconteceu, não foi possível concluir sua ação.');
             return back();
         }
     }

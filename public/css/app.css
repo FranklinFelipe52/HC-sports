@@ -859,6 +859,10 @@ video {
   margin-top: 2px;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .block {
   display: block;
 }
@@ -893,6 +897,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.list-item {
+  display: list-item;
 }
 
 .hidden {
@@ -1559,6 +1567,11 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .border-b-brand-prfA1 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(0 14 75 / var(--tw-border-opacity));
@@ -1637,6 +1650,16 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-feedback-orange {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 145 70 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {
@@ -2186,6 +2209,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -2520,6 +2548,11 @@ input[name="vaucher"]:focus {
   border-bottom-width: 0px;
 }
 
+.hover\:bg-brand-prfA1:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 14 75 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-fill-base:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
@@ -2543,6 +2576,11 @@ input[name="vaucher"]:focus {
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -2609,6 +2647,11 @@ input[name="vaucher"]:focus {
 .hover\:ring-white:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+
+.hover\:ring-red-500:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
 }
 
 .hover\:ring-opacity-50:hover {

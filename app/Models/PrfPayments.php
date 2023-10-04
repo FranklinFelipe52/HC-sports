@@ -9,6 +9,10 @@ class PrfPayments extends Model
 {
     use HasFactory;
 
+    const STATUS_APROVADO = 1;
+    const STATUS_REJEITADO = 2;
+    const STATUS_PENDENTE = 3;
+
     public function registration(){
         return $this->belongsTo(PrfRegistration::class);
     }

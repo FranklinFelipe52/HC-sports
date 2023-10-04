@@ -77,9 +77,12 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_get'])->middleware('PrfAuthAdmins');
     Route::post('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_post'])->middleware('PrfAuthAdmins');
     Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/registrations/{registration_id}/estornar', [PrfRegistrationController::class, 'estorno'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/registrations/{registration_id}/cancelar', [PrfRegistrationController::class, 'cancelamento'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');
+    Route::post('/admin/discounts/{voucher_id}/delete', [PrfVauchersController::class, 'delete'])->middleware('PrfAuthAdmins');
 
     Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins');
 
@@ -98,5 +101,7 @@ Route::namespace('Admin')->group(function () {
     Route::get('/admin/all_confirm_registrations', [AdminReportsController::class, 'all_confirm_registrations'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_paid_registrations', [AdminReportsController::class, 'all_paid_registrations'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_pending_registrations_get', [AdminReportsController::class, 'all_pending_registrations_get'])->middleware('PrfAuthAdmins');
-});
 
+    Route::get('/admin/all_confirmed_registrations', [AdminReportsController::class, 'all_confirmed_registrations'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_not_confirmed_registrations', [AdminReportsController::class, 'all_not_confirmed_registrations'])->middleware('PrfAuthAdmins');
+});

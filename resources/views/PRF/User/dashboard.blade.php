@@ -47,26 +47,48 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    <div class="@if ($registration['status_registration']->id == 1) bg-feedback-green-1 @elseif ($registration['status_registration']->id == 3) bg-brand-prfA1 @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                      <p class="text-white text-[0.5rem] font-bold text-center">
-                        {{ $registration['status_registration']->status }}
+                    @if ($registration['status_registration']->id == 1)
+                      <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration['status_registration']->id == 3)
+                      <div class="bg-brand-prfA1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration['status_registration']->id == 4)
+                      <div class="bg-feedback-orange py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration['status_registration']->id == 5)
+                      <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration['status_registration']->status }}
+                        </p>
+                      </div>
+                    @endif
+                  </div>
+                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
+                    <div class="">
+                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
+                        @if (!$registration['validated_by_admin'])
+                          <span class="text-sm">
+                            R$
+                          </span>
+                          <?= number_format($registration['price'], 2, ',', '.') ?>
+                        @else
+                          <span class="text-sm">
+                            Inscrição liberada pelo administrador
+                          </span>
+                        @endif
                       </p>
                     </div>
-                  </div>
-                  <div class="">
-                    <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
-                      @if (!$registration['validated_by_admin'])
-                        <span class="text-sm">
-                          R$
-                        </span>
-                        <?= number_format($registration['price'], 2, ',', '.') ?>
-                      @else
-                        <span class="text-sm">
-                          Inscrição liberada pelo administrador
-                        </span>
-                      @endif
-                    </p>
-                  </div>
+                  @endif
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div>
@@ -122,36 +144,43 @@
                     @endforeach
                   </div>
                 @endif
-                <div class="mb-4">
-                  @if ($registration['vaucher'])
-                    <div>
-                      <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
-                      <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
-                    </div>
-                  @else
-                    @if ($registration['status_registration']->id != 1)
-                      <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
-                        @csrf
-                        <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
-                        <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
-                          Adicionar
-                        </button>
-                      </form>
+                @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
+                  <div class="mb-4">
+                    @if ($registration['vaucher'])
+                      <div>
+                        <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
+                        <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
+                      </div>
+                    @else
+                      @if ($registration['status_registration']->id != 1)
+                        <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
+                          @csrf
+                          <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
+                          <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
+                            Adicionar
+                          </button>
+                        </form>
+                      @endif
                     @endif
-                  @endif
-                </div>
-                <div class="flex justify-end flex-wrap gap-4">
-                  @if ($registration['status_registration']->id != 1)
-                    <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
-                      Realizar Pagamento
-                      <img src="/images/PRF/svg/credit-card.svg" alt="">
-                    </a>
-                  @endif
-                </div>
-                @if ($registration['price'] > 0 && $registration['status_registration']->id == 1 && !$registration['validated_by_admin'])
-                  <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400 mb-4" role="alert">
-                    A confirmação da sua inscrição é o comprovante enviado pelo Mercado Pago informando que o seu pagamento foi aprovado! Confira no seu e-mail.
                   </div>
+                  <div class="flex justify-end flex-wrap gap-4">
+                    @if ($registration['status_registration']->id != 1)
+                      <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                        Realizar Pagamento
+                        <img src="/images/PRF/svg/credit-card.svg" alt="">
+                      </a>
+                    @endif
+                  </div>
+                  @if ($registration['price'] > 0 && $registration['status_registration']->id == 1 && !$registration['validated_by_admin'])
+                    <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400 mb-4" role="alert">
+                      A confirmação da sua inscrição é o comprovante enviado pelo Mercado Pago informando que o seu pagamento foi aprovado! Confira no seu e-mail.
+                    </div>
+                  @endif
+                @else
+                  <hr class="mb-4">
+                  <p>
+                    <strong>Atenção:</strong> Caso haja algum engano com o status atual de sua inscrição, entre em contato com a administração.
+                  </p>
                 @endif
               </div>
             @endforeach

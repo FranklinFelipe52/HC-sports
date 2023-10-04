@@ -135,9 +135,12 @@
                         @endif
                       </div>
                       <div role="cell" class="col-span-1 flex justify-end">
-                        <button disabled class="grayscale" title="em breve">
-                          <img src="/images/svg/trash.svg" class="h-full w-full object-cover" alt="">
-                        </button>
+                        <form action="/admin/discounts/{{ $voucher_or_cupom->id }}/delete" method="POST">
+                          @csrf
+                          <button class="">
+                            <img src="/images/svg/trash.svg" class="h-full w-full object-cover" alt="">
+                          </button>
+                        </form>
                       </div>
                     </div>
                     <div class="grid grid-cols-12 px-6 pt-2 pb-2 bg-fill-base">
