@@ -55,8 +55,28 @@ class PrfRegistrationController extends Controller
             if (!$category || !$package) {
                 return back();
             }
+
             if ($request->password != $request->confirm_password) {
                 return back()->with('erro', 'Senhas diferentes');
+            }
+
+            $nascimento = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
+
+            if ($nascimento->year < 1943) {
+                session()->flash('erro', 'Corrija o erro na data de nascimento.');
+                return back()->withInput()->withErrors(['data_nasc' => 'O ano de nascimento não pode ser menor que 1943']);
+            }
+
+            if ($category->id == 1) {
+                if ($nascimento->year > 2009) {
+                    session()->flash('erro', 'Corrija o erro na data de nascimento.');
+                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 5km, o ano de nascimento não pode ser maior que 2009']);
+                }
+            } else {
+                if ($nascimento->year > 2005) {
+                    session()->flash('erro', 'Corrija o erro na data de nascimento.');
+                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 10km e 21km, o ano de nascimento não pode ser maior que 2005']);
+                }
             }
 
             $user = new PrfUser;
@@ -157,7 +177,6 @@ class PrfRegistrationController extends Controller
             $registration->save();
             $registration_and_tshirts = DB::table('prf_tshirt_and_prf_registrations')->where('prf_registration_id', $registration->id)->get();
             foreach ($registration_and_tshirts as $value) {
-                erro_log($value->id);
                 DB::table('prf_tshirt_and_prf_registrations')->delete($value->id);
             }
             if ($request->tshirts) {

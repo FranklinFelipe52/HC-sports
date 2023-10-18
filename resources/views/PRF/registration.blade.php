@@ -114,8 +114,8 @@
 
               <div class="relative">
                 <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="is_servidor">
-                  <option value="0" selected>Não</option>
-                  <option value="1">Sim</option>
+                  <option value="0" @if (old('is_servidor') == 0) @selected(true) @endif>Não</option>
+                  <option value="1" @if (old('is_servidor') == 1) @selected(true) @endif>Sim</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                   <img src="/images/PRF/svg/chevron-down.svg" alt="" />
