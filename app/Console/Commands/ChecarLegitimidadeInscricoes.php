@@ -34,36 +34,34 @@ class ChecarLegitimidadeInscricoes extends Command
     {
 
         try {
-            $registrations = PrfRegistration::where('status_regitration_id', 1)->get();
+            $registrations = PrfRegistration::where('status_regitration_id', 1)->where('validated_by_admin', 0)->get();
             $unusual_registrations_array = [];
 
             foreach ($registrations as $registration) {
 
-                // elimina inscrições que foram validadas pelo admin
-                if ($registration->validated_by_admin == 0) {
+                $voucher = PrfVauchers::find($registration->prf_vauchers_id);
 
-                    $voucher = PrfVauchers::find($registration->prf_vauchers_id);
+                // elimina inscrições que usaram código de desconto de 100%
+                if (!$voucher || $voucher->desconto < 1) {
 
-                    // elimina inscrições que usaram código de desconto de 100%
-                    if (!$voucher || $voucher->desconto < 1) {
+                    $payment = PrfPayments::find($registration->id);
+                    $log_payment = PrfLogPayments::where('prf_registration_id', $registration->id)->first();
 
-                        $payment = PrfPayments::find($registration->id);
-                        $log_payment = PrfLogPayments::where('prf_registration_id', $registration->id)->first();
-
-                        if ($payment->status_payment_id != 1 || !$log_payment) {
-                            array_push($unusual_registrations_array, $registration);
-                        }
+                    if ($payment->status_payment_id != 1 || !$log_payment) {
+                        array_push($unusual_registrations_array, $registration);
                     }
                 }
 
             }
 
-
             $unusual_registrations_ids_array = [];
 
             if (count($unusual_registrations_array) > 0) {
                 foreach ($unusual_registrations_array as $unusual_registration) {
-                    array_push($unusual_registrations_ids_array, $unusual_registration->id);
+                    array_push($unusual_registrations_ids_array, [
+                        'registration_id' => $unusual_registration->id,
+                        'user_id' => $unusual_registration->prf_user->id,
+                    ]);
                 }
                 dd($unusual_registrations_ids_array);
             }
