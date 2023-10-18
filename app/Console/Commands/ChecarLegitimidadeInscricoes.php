@@ -49,6 +49,8 @@ class ChecarLegitimidadeInscricoes extends Command
 
                     if ($payment->status_payment_id != 1 || !$log_payment) {
                         array_push($unusual_registrations_array, $registration);
+                        $registration->status_regitration_id = 3;
+                        $registration->save();
                     }
                 }
 
@@ -63,7 +65,6 @@ class ChecarLegitimidadeInscricoes extends Command
                         'user_id' => $unusual_registration->prf_user->id,
                     ]);
                 }
-                dd($unusual_registrations_ids_array);
             }
 
             return Command::SUCCESS;
