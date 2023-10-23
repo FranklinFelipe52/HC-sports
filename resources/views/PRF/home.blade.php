@@ -120,7 +120,7 @@
                     <div>
                       @if ($category->id == 1)
                         <button disabled class="bg-gray-400 cursor-not-allowed hover:ring-opacity-50 rounded-md text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                            Inscrições Esgotadas
+                            5KM Esgotado
                         </button>
                       @else
                         <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
