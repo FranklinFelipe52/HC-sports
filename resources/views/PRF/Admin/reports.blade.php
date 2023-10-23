@@ -55,24 +55,21 @@
                   Todos os usuários
                 </p>
               </a>
-{{--
-              <a href=" /admin/all_pending_registrations_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Usuários com inscrição pendente
-                </p>
-              </a> --}}
-
-              {{-- <a href="/admin/all_servidores_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Servidores
-                </p>
-              </a> --}}
             </div>
           </div>
 
 
+          <div>
+            <h2 class="text-lg text-gray-1 font-poppins font-semibold">Inscrições</h2>
+            <div class="flex flex-col gap-2">
+              <a href="/admin/all_confirmed_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/images/svg/download.svg" alt="">
+                <p class="text-white text-sm font-bold font-poppins">
+                  Inscrições confirmadas
+                </p>
+              </a>
+            </div>
+          </div>
 
           {{-- <a href="/admin/all_confirm_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
             <img src="/images/svg/download.svg" alt="">
