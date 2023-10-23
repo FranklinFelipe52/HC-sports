@@ -73,7 +73,7 @@
                     <div class="relative">
                       <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="category" id="inscricao_category_field">
                         @foreach ($categorys as $category)
-                          <option @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
+                            <option @if ($category->id == 1) disabled @endif @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">

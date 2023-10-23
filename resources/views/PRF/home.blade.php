@@ -13,8 +13,8 @@
           </a>
           <div class="flex gap-4">
             <div class="flex items-center justify-center">
-              <a href="/login" style="width: 120px; text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
-                Faça login
+              <a href="/login" style="text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
+                Acesse seu cadastro
               </a>
             </div>
             {{-- <div class="relative w-full max-w-[200px]">
@@ -118,9 +118,15 @@
                       </div>
                     </div>
                     <div>
-                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                        Realizar Inscrição
-                      </a>
+                      @if ($category->id == 1)
+                        <button disabled class="bg-gray-400 cursor-not-allowed hover:ring-opacity-50 rounded-md text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                            Inscrições Esgotadas
+                        </button>
+                      @else
+                        <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                            Realizar Inscrição
+                        </a>
+                      @endif
                     </div>
                   </div>
                 </div>
