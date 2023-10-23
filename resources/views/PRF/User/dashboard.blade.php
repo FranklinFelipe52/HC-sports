@@ -47,7 +47,7 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    @if ($registration['title'] == '5KM')
+                    @if ($registration['title'] == '5KM' || $registration['title'] == '10KM')
                       <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                         <p class="text-white text-xs font-bold text-center">
                           Esgotada
@@ -82,7 +82,7 @@
                     @endif
 
                   </div>
-                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5 && $registration['title'] != '5KM')
+                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
                     <div class="">
                       <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
                         @if (!$registration['validated_by_admin'])
@@ -172,7 +172,7 @@
                       @endif
                     @endif
                   </div>
-                  @if ($registration['title'] == '5KM')
+                  @if ($registration['title'] == '5KM' || $registration['title'] == '10KM')
                     <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg mb-4" role="alert">
                       <p class="text-brand-prfA1">
                         A categoria {{ $registration['title'] }} foi esgotada. Você pode editar a sua categoria e se inscrever nas provas de 10km ou 21km.
@@ -185,7 +185,7 @@
                     </div>
                   @endif
                   <div class="flex justify-end flex-wrap gap-4">
-                    @if ($registration['status_registration']->id != 1 && $registration['title'] != '5KM')
+                    @if ($registration['status_registration']->id != 1 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
                       <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                         Realizar Pagamento
                         <img src="/images/PRF/svg/credit-card.svg" alt="">
