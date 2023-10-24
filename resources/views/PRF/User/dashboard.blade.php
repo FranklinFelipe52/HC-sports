@@ -47,7 +47,7 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    @if ($registration['title'] == '5KM' || $registration['title'] == '10KM')
+                    @if (($registration['title'] == '5KM' || $registration['title'] == '10KM') && $registration['status_registration']->id == 3)
                       <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                         <p class="text-white text-xs font-bold text-center">
                           Esgotada
@@ -82,7 +82,7 @@
                     @endif
 
                   </div>
-                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
+                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
                     <div class="">
                       <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
                         @if (!$registration['validated_by_admin'])
@@ -154,25 +154,28 @@
                   </div>
                 @endif
                 @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
-                  <div class="mb-4">
-                    @if ($registration['vaucher'])
-                      <div>
-                        <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
-                        <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
-                      </div>
-                    @else
-                      @if ($registration['status_registration']->id != 1)
-                        <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
-                          @csrf
-                          <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
-                          <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
-                            Adicionar
-                          </button>
-                        </form>
+                  @if ($registration['status_registration']->id == 3 && ($registration['title'] == '5KM' || $registration['title'] == '10KM'))
+                  @else
+                    <div class="mb-4">
+                      @if ($registration['vaucher'])
+                        <div>
+                          <p>{{ $registration['vaucher']->isCupom ? 'Cupom' : 'Vaucher' }}: {{ $registration['vaucher']->code }}</p>
+                          <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
+                        </div>
+                      @else
+                        @if ($registration['status_registration']->id != 1)
+                          <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
+                            @csrf
+                            <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
+                            <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
+                              Adicionar
+                            </button>
+                          </form>
+                        @endif
                       @endif
-                    @endif
-                  </div>
-                  @if ($registration['title'] == '5KM' || $registration['title'] == '10KM')
+                    </div>
+                  @endif
+                  @if ($registration['status_registration']->id == 3 && ($registration['title'] == '5KM' || $registration['title'] == '10KM'))
                     <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg mb-4" role="alert">
                       <p class="text-brand-prfA1">
                         A categoria {{ $registration['title'] }} foi esgotada. Você pode editar a sua categoria e se inscrever nas provas de 10km ou 21km.
