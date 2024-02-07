@@ -1,7 +1,7 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
     <a href="/admin/dashboard" class="block overflow-hidden rounded-lg">
-      <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[70px]" alt="">
+      <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
     </a>
   </div>
 

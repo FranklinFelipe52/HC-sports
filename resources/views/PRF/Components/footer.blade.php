@@ -7,16 +7,16 @@
         </p>
       </div>
       <div class="flex justify-end gap-4">
-        <a href="https://www.youtube.com/@hcsports6389" target="_blank">
+        {{-- <a href="https://www.youtube.com/@hcsports6389" target="_blank">
           <img src="/images/svg/youtube.svg" alt="">
-        </a>
-        <a href="https://twitter.com/HCSportsBR" target="_blank">
+        </a> --}}
+        {{-- <a href="https://twitter.com/HCSportsBR" target="_blank">
           <img src="/images/svg/twitter.svg" alt="">
-        </a>
-        <a href="https://www.facebook.com/HCSportsBR" target="_blank">
+        </a> --}}
+        <a href="https://www.facebook.com/caern115" target="_blank">
           <img src="/images/svg/facebook.svg" alt="">
         </a>
-        <a href="https://www.instagram.com/hcsportsbr/" target="_blank">
+        <a href="https://www.instagram.com/caern115" target="_blank">
           <img src="/images/svg/instagram.svg" alt="">
         </a>
       </div>

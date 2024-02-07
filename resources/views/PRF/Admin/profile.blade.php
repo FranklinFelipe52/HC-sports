@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Perfil do administrador - Meia Maratona PRF')
+@section('title', 'Perfil do administrador - Corrida da Água')
 
 @section('content')
 

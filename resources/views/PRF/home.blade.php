@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Home')
+@section('title', 'Corrida da Água')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="container mx-auto">
         <div class="flex justify-between">
           <a href="/">
-            <img src="/images/logo-hc.png" alt="">
+            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="">
           </a>
           <div class="flex gap-4">
             <div class="flex items-center justify-center">
@@ -17,34 +17,12 @@
                 Acesse seu cadastro
               </a>
             </div>
-            {{-- <div class="relative w-full max-w-[200px]">
-              <button class="btn btn-secondary dropdown-toggle ms-auto flex gap-4 items-center hover:bg-gray-6 transition-all rounded-full p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/images/svg/user-circle.svg" alt="" class="rounded-full w-8 h-8 object-cover">
-              </button>
-              <ul class="dropdown-menu absolute right-0 shadow-sm w-full mt-2 bg-white rounded-lg border py-2">
-                <li>
-                  <a href="/login" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
-                    <span class="text-gray-1 font-medium ">
-                      Faça Login
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.meiamaratonaprf191.com.br/" target="_blank" class="inline-flex gap-2 py-2 px-3.5 w-full hover:bg-gray-6 transition-all">
-                    <span class="text-gray-1 font-medium ">
-                      Veja nosso site
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div> --}}
           </div>
         </div>
       </div>
     </header>
 
     <main class="container grow pt-6 pb-32">
-      {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt=""> --}}
       <img src="/images/CAERN/vitrine.png" class="block w-full" alt="">
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
@@ -55,7 +33,7 @@
 
             <div class="space-y-4 text-gray-1 text-sm">
               <p>
-                Com provas de 21Km, 10Km e 5Km, a MEIA MARATONA PRF 191 é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
+                Com provas de 21Km, 10Km e 5Km, a Corrida da Água é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
               </p>
 
               <p>
@@ -118,22 +96,9 @@
                       </div>
                     </div>
                     <div>
-                      <button disabled class="bg-gray-400 cursor-not-allowed hover:ring-opacity-50 rounded-md text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                        Inscrições esgotadas
-                      </button>
-                      {{-- @if ($category->id == 1)
-                        <button disabled class="bg-gray-400 cursor-not-allowed hover:ring-opacity-50 rounded-md text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                          5KM Esgotado
-                        </button>
-                      @elseif($category->id == 2)
-                        <button disabled class="bg-gray-400 cursor-not-allowed hover:ring-opacity-50 rounded-md text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                          10KM Esgotado
-                        </button>
-                      @else
-                        <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                          Realizar Inscrição
-                        </a>
-                      @endif --}}
+                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                        Realizar Inscrição
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -143,54 +108,6 @@
         </div>
       </div>
     </main>
-
-
-    <!-- Seção de Patrocinadores, Realizadores e organizadores -->
-    <section class="py-24 bg-fill-1">
-      <div class="container px-24 px-sm-0 flex justify-center flex-wrap gap-8">
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
-            Ação social
-          </h2>
-
-          <div class="flex gap-8 flex-wrap justify-center">
-            <div class="marca">
-              <img src="/images/PRF/marcas/acao-social.png" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg font-normal font-poppins text-center">
-            Organização
-          </h2>
-
-          <div class="flex gap-8 flex-wrap justify-center">
-            <a href="https://www.hcsports.com.br/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/hc.png" alt="">
-            </a>
-          </div>
-        </div>
-        <div class="">
-          <h2 class="text-dark-1 mb-4 text-lg fw-medium font-poppins text-center">
-            Realização
-          </h2>
-
-          <div class="flex gap-4 flex-wrap justify-center">
-            <a href="https://fenaprf.org.br/novo/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/FenaPRF.png" alt="">
-            </a>
-
-            <a href="https://www.gov.br/prf/pt-br" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/prf.png" alt="">
-            </a>
-
-            <a href="https://sinprfrn.org.br/" class="marca" target="_blank">
-              <img src="/images/PRF/marcas/SindPRF-RN.png" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     @include('PRF.Components.footer')
   </div>

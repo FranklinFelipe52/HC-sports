@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Perfil do usuário - Meia Maratona PRF')
+@section('title', 'Perfil do usuário - Corrida da Água')
 
 @section('content')
 
@@ -160,7 +160,7 @@
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
-                      É servidor da PRF?
+                      É servidor da CAERN?
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
