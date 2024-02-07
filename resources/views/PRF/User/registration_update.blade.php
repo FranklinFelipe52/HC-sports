@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Edição de inscrição - Meia Maratona PRF')
+@section('title', 'Edição de inscrição - Corrida da Água')
 
 @section('profileClass', 'active')
 

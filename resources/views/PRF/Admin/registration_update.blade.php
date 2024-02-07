@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atualizar dados da inscrição - Meia Maratona PRF')
+@section('title', 'Atualizar dados da inscrição - Corrida da Água')
 
 
 @section('content')

@@ -92,7 +92,7 @@ class AdminReportsController extends Controller
             ];
 
             header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=Todos Usuários - Meia Maratona PRF.csv');
+            header('Content-Disposition: attachment; filename=Todos Usuários - CorridaDaAgua.csv');
 
             $arquivo = fopen("php://output", "w");
             fputcsv($arquivo, $cabecalho, ';');
@@ -331,7 +331,7 @@ class AdminReportsController extends Controller
             ];
 
             header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=Inscrições confirmadas - Meia Maratona PRF.csv');
+            header('Content-Disposition: attachment; filename=Inscrições confirmadas - CorridaDaAgua.csv');
 
             $arquivo = fopen("php://output", "w");
             fputcsv($arquivo, $cabecalho, ';');

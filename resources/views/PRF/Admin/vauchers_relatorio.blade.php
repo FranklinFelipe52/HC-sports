@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Vouchers Relatorio - Meia Maratona PRF')
+@section('title', 'Vouchers Relatorio - Corrida da Água')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">

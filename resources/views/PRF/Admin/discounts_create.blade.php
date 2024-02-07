@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Descontos - Meia Maratona PRF')
+@section('title', 'Descontos - Corrida da Água')
 
 @section('content')
 

@@ -587,7 +587,7 @@
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:15px;color:#333333;font-size:10px">Meia Maratona PRF 2023.</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:15px;color:#333333;font-size:10px">Corrida da Água 2024.</p>
                                 </td>
                               </tr>
                             </table>

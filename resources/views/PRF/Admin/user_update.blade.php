@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atualizar dados do atleta - Meia Maratona PRF')
+@section('title', 'Atualizar dados do atleta - Corrida da Água')
 
 
 @section('content')
@@ -196,7 +196,7 @@
                   <div class="flex gap-4">
                     <div class="">
                       <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="is_servidor">
-                        É servidor da PRF?
+                        É servidor da CAERN?
                       </label>
 
                       <div class="relative">
