@@ -221,6 +221,7 @@
               </div>
             </div>
           </div>
+          @if(Count($tshirts) > 0)
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Ajude a campanha beneficente
           </h2>
@@ -256,6 +257,7 @@
               @endforeach
             </div>
           </div>
+          @endif
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de login
           </h2>
