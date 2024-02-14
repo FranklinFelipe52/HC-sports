@@ -124,7 +124,7 @@
             </div>
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
-            Dados pessoais
+            Dados de endereço
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
