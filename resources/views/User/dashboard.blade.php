@@ -149,7 +149,7 @@
                           <p class="text-base font-semibold text-gray-1">
                             {{ $registration->modalities->nome }}
                           </p>
-                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <div class="@if ($registration->status_regitration->id == 1) bg-feedback-green-1 @elseif ($registration->status_regitration->id == 3) bg-feedback-purple @elseif ($registration->status_regitration->id == 4) bg-feedback-orange @endif  py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                             <p class="text-white text-[0.5rem] font-bold text-center">
                               {{ $registration->status_regitration->status }}
                             </p>
@@ -180,15 +180,26 @@
                         <button disabled onclick="window.open('/registration/checkout/{{ $registration->id }}', '_self')" class="text-xs font-semibold text-white bg-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
                           Efetuar pagamento
                         </button>
+                      @elseif ($registration->status_regitration->id == 4)
+                        <button disabled class="text-xs font-semibold text-white bg-brand-a1 grow p-2 rounded border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:text-gray-1 disabled:hover:ring-0 disabled:border-gray-1 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                          Em análise...
+                        </button>
                       @endif
                     </div>
                   </div>
+                  @if($registration->status_regitration->id == 4)
+                    <div class=" space-y-8 bg-feedback-fill-blue p-4" role="alert">
+                      <p class="text-brand-a1">Seu cadastro está em análise pela CAERN. Aguarde retorno no e-mail cadastrado na sua inscrição.</p>
+                    </div>
+                  @endif
                 @endforeach
               @else
                 <div class="bg-feedback-fill-blue p-4" role="alert">
                   <p class="text-brand-a1">Nenhuma inscrição cadastrada.</p>
                 </div>
               @endif
+
+              
             </div>
           </div>
         </div>

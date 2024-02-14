@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AgeBetweenDates;
 use App\Http\Requests\PrfStoreRegistrationRequest;
+use App\Models\Caern_adresses;
+use App\Models\FederativeUnit;
 use App\Models\PrfAdmin;
 use App\Models\PrfAdminLog;
 use App\Models\PrfCategorys;
@@ -38,7 +41,8 @@ class PrfRegistrationController extends Controller
                 'category' => $category,
                 'tshirts' => PrfTshirt::all(),
                 'size_tshirts' => PrfSizeTshirts::all(),
-                'deficiencys' => PrfDeficiency::all()
+                'deficiencys' => PrfDeficiency::all(),
+                'federativeUnits' => FederativeUnit::all(),
             ]);
 
         } catch (Exception $e) {
@@ -78,8 +82,18 @@ class PrfRegistrationController extends Controller
                     return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 10km e 21km, o ano de nascimento não pode ser maior que 2005']);
                 }
             }
-
+            DB::beginTransaction();
             $user = new PrfUser;
+            $adress = new Caern_adresses;
+            
+            $adress->cep = $request->cep;
+            $adress->cidade = $request->cidade;
+            $adress->bairro = $request->bairro;
+            $adress->rua = $request->rua;
+            $adress->federative_unit_id = $request->estado;
+            $adress->number = $request->number;
+            $adress->complemento = $request->complemento;
+
             $user->nome_completo = $request->nome;
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
             $data_convertida = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
@@ -92,12 +106,14 @@ class PrfRegistrationController extends Controller
             $user->is_servidor = $request->is_servidor;
             $user->servidor_matricula = $request->servidor_matricula;
             $user->save();
+            $adress->prf_user_id = $user->id;
+            $adress->save();
 
             $registration = new PrfRegistration;
             $registration->prf_user_id = $user->id;
             $registration->prf_categorys_id = $category->id;
             $registration->prf_package_id = $package->id;
-            $registration->status_regitration_id = 3;
+            $registration->status_regitration_id = $user->is_servidor && !$user->prf_deficiency_id && !(AgeBetweenDates::calc_idade($user->data_nasc) >= 60) ? 4 : 3;
             $registration->prf_size_tshirts_id = $request->size_tshirt;
             $registration->equipe = $request->equipe;
             $registration->save();
@@ -115,9 +131,11 @@ class PrfRegistrationController extends Controller
             $payment->save();
 
             $request->session()->put('prf_user', $user);
+            DB::commit();
             return redirect('/dashboard');
 
         } catch (Exception $e) {
+            DB::rollBack();
             return back()->withInput();
         }
     }

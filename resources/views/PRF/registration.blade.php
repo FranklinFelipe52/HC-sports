@@ -122,12 +122,66 @@
                 </div>
               </div>
             </div>
-
-            <div id="matricula-inputbox" class="hidden">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_matricula_field">
-                Matrícula
+          </div>
+          <h2 class="text-gray-1 text-xl font-semibold font-poppins">
+            Dados pessoais
+          </h2>
+          <hr class="mt-4 mb-6 border-gray-4" />
+          <div class="space-y-4 mb-20">
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cep_field">
+                CEP
               </label>
-              <input oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_matricula_field" name="servidor_matricula" value="{{ old('servidor_matricula') }}" placeholder="Digite a sua matrícula" />
+              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cep_field" name="cep" placeholder="Digite o seu CEP" value="{{ old('cep') }}" />
+            </div>
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cidade_field">
+                Cidade
+              </label>
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cidade_field" name="cidade" value="{{ old('cidade') }}" placeholder="Digite a sua cidade" />
+            </div>
+            <div>
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="inscricao_uf_field">
+                UF
+              </label>
+              <div class="relative">
+                <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="estado" id="inscricao_uf_field">
+                  <option selected value class="uppercase">Selecione</option>
+                  @foreach ($federativeUnits as $value)
+                  <option @if (old('estado') == $value->id) @selected(true) @endif value={{ $value->id }}>{{ $value->initials }}</option>
+                  @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_rua_field">
+                Rua
+              </label>
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_rua_field" name="rua" value="{{ old('rua') }}" placeholder="Digite a sua rua" />
+            </div>
+
+            <div class="mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_number_field">
+                Número
+              </label>
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_number_field" name="number" value="{{ old('number') }}" placeholder="Digite o número da casa" />
+            </div>
+
+            <div class="mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_bairro_field">
+                Bairro
+              </label>
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_bairro_field" name="bairro" value="{{ old('bairro') }}" placeholder="Digite o seu bairro" />
+            </div>
+
+            <div class="mb-6">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_complemento_field">
+                Complemento <span class="text-sm">(opcional)</span>
+              </label>
+              <input onkeyup="this.value = this.value.toUpperCase();" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_complemento_field" name="complemento" value="{{ old('complemento') }}" placeholder="Digite o número da casa" />
             </div>
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
@@ -347,20 +401,42 @@
       numericOnly: true,
     });
 
-    const isPrfSelect = document.querySelector('#is_servidor');
-    const matriculaInputBox = document.querySelector('#matricula-inputbox');
-    const matriculaInput = matriculaInputBox.querySelector('input');
+    new Cleave('#cadastro_cep_field', {
+            blocks: [5, 3],
+            delimiters: ['-'],
+            numericOnly: true,
+        });
 
-    isPrfSelect.addEventListener('change', handlePrfSelect);
+     // preenchimento automático de endereço
+     const cepInput = document.querySelector('#cadastro_cep_field');
+        const EstadoInput = document.querySelector('#inscricao_uf_field');
+        const cidadeInput = document.querySelector('#cadastro_cidade_field');
+        const ruaInput = document.querySelector('#cadastro_rua_field');
+        const bairroInput = document.querySelector('#cadastro_bairro_field');
 
-    function handlePrfSelect(e) {
-      if (e.target.value == '1') {
-        matriculaInputBox.classList.remove('hidden');
-        matriculaInput.setAttribute('required', 'required');
-      } else {
-        matriculaInputBox.classList.add('hidden');
-        matriculaInput.removeAttribute('required');
-      }
-    }
+        cepInput.addEventListener('change', handleAdress);
+
+        function handleAdressInput(json) {
+            if (!('erro' in json)) {
+                for (let i = 0; i < EstadoInput.options.length; i++) {
+                    if (EstadoInput.options[i].text == json.uf) {
+                        EstadoInput.value = EstadoInput.options[i].value;
+                    }
+                }
+
+                cidadeInput.value = json.localidade;
+                ruaInput.value = json.logradouro;
+                bairroInput.value = json.bairro;
+            }
+        }
+
+        function handleAdress(e) {
+            if (e.target.value.length == 9) {
+                const valueClean = e.target.value.replace(/[^0-9]/g, "");
+                fetch(`https://viacep.com.br/ws/${valueClean}/json/`)
+                    .then(response => response.json())
+                    .then(json => handleAdressInput(json))
+            }
+        }
   </script>
 @endsection
