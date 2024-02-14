@@ -13,6 +13,10 @@ class PrfUser extends Model
     {
         return $this->hasMany(PrfRegistration::class);
     }
+    public function caern_address()
+    {
+        return $this->hasOne(Caern_adresses::class);
+    }
 
     public function actions_notifications(){
         return $this->hasMany(PrfActionsNotification::class);

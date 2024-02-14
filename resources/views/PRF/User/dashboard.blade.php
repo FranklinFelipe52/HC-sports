@@ -47,13 +47,7 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    @if (($registration['title'] == '5KM' || $registration['title'] == '10KM') && $registration['status_registration']->id == 3)
-                      <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                        <p class="text-white text-xs font-bold text-center">
-                          Esgotada
-                        </p>
-                      </div>
-                    @else
+                    
                       @if ($registration['status_registration']->id == 1)
                         <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                           <p class="text-white text-xs font-bold text-center">
@@ -79,12 +73,12 @@
                           </p>
                         </div>
                       @endif
-                    @endif
+                    
 
                   </div>
-                  @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
+                  @if ($registration['status_registration']->id != 5 )
                     <div class="">
-                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
+                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-prfA1 @elseif ($registration['status_registration']->id == 4) text-feedback-orange @endif font-bold text-1.5xl w-full text-end">
                         @if (!$registration['validated_by_admin'])
                           <span class="text-sm">
                             R$
@@ -120,6 +114,7 @@
                       {{ $registration['size_tshirt'] }}
                     </p>
                   </div>
+                  @if($registration['descricao'])
                   <div>
                     <p class="text-xs text-gray-1 mb-2">
                       Itens inclusos:
@@ -128,6 +123,7 @@
                       {!! html_entity_decode($registration['descricao']) !!}
                     </div>
                   </div>
+                  @endif
                 </div>
                 @if (Count($registration['tshirts']) > 0)
                   <div class="mb-4">
@@ -153,9 +149,7 @@
                     @endforeach
                   </div>
                 @endif
-                @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
-                  @if ($registration['status_registration']->id == 3 && ($registration['title'] == '5KM' || $registration['title'] == '10KM'))
-                  @else
+                @if ($registration['status_registration']->id != 4)
                     <div class="mb-4">
                       @if ($registration['vaucher'])
                         <div>
@@ -174,21 +168,8 @@
                         @endif
                       @endif
                     </div>
-                  @endif
-                  @if ($registration['status_registration']->id == 3 && ($registration['title'] == '5KM' || $registration['title'] == '10KM'))
-                    <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg mb-4" role="alert">
-                      <p class="text-brand-prfA1">
-                        A categoria {{ $registration['title'] }} foi esgotada. Você pode editar a sua categoria e se inscrever nas provas de 10km ou 21km.
-                      </p>
-                    </div>
-                    <div class="flex justify-end flex-wrap gap-4">
-                      <a href="/registration/update/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
-                        Edite sua categoria
-                      </a>
-                    </div>
-                  @endif
                   <div class="flex justify-end flex-wrap gap-4">
-                    @if ($registration['status_registration']->id != 1 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
+                    @if ($registration['status_registration']->id != 1)
                       <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                         Realizar Pagamento
                         <img src="/images/PRF/svg/credit-card.svg" alt="">
@@ -201,10 +182,10 @@
                     </div>
                   @endif
                 @else
-                  {{-- <hr class="mb-4">
+                  
                   <p>
-                    <strong>Atenção:</strong> Caso haja algum engano com o status atual de sua inscrição, entre em contato com a administração.
-                  </p> --}}
+                    <strong>Atenção:</strong> Seu cadastro está em análise pela CAERN. Aguarde retorno no e-mail cadastrado na sua inscrição.
+                  </p> 
                 @endif
                 {{-- @if ($registration['status_registration']->id == 3 || $registration['status_registration']->id == 4 || $registration['status_registration']->id == 5)
                   <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400 mb-4" role="alert">

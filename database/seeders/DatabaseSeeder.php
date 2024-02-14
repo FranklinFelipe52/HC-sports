@@ -29,7 +29,10 @@ class DatabaseSeeder extends Seeder
             ModalitiesCategorySeeder::class,
             RangeModalitySeeder::class,
             StatusPaymentSeeder::class,
-            TypeActionsAdminSeeder::class
+            TypeActionsAdminSeeder::class,
+            PrfDeficiencySeeder::class,
+            PrfSizeTshirtsSeeder::class,
+            StatusNotificatiosSeeder::class
         ]);
     }
 }
