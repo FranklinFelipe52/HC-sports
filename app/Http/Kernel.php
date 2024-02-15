@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
         'redirect_admin_login' => \App\Http\Middleware\RedirectAdminLogin::class,
         'AuthUsers' => \App\Http\Middleware\AuthUsers::class,
         'AuthAdmins' => \App\Http\Middleware\AuthAdmins::class,
+        'CaernAdminValidation' => \App\Http\Middleware\CaernAdminValidation::class,
         'AuthPrfUser' => \App\Http\Middleware\AuthPrfUser::class,
         'PrfAuthAdmins' => \App\Http\Middleware\PrfAuthAdmins::class,
         'PrfRedirectUserLogin' => \App\Http\Middleware\PrfRedirectUserLogin::class,
