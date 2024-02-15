@@ -37,16 +37,33 @@
 
             <div class="space-y-4 text-gray-1 text-sm">
               <p>
-                Com provas de 21Km, 10Km e 5Km, a Corrida da Água é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
+                A Corrida da Água – CAERN é uma iniciativa da HC Sports em parceria com a Federação Norteriograndense de Atletismo e o patrocínio Master da CAERN – Companhia de Águas e Esgotos do Rio Grande do Norte.
               </p>
 
               <p>
-                É a única prova no Rio Grande do Norte que possibilita o atleta a usar a BR para correr com total segurança, o que valoriza ainda mais a participação dos atletas, que buscam sempre provas com diferenciais importantes na realização.
+                A corrida faz parte das comemorações do Dia Mundial da Água. A prova tem o objetivo de alertar as pessoas sobre a importância de preservar o recurso da natureza.
+              </p>
+
+              <p>
+                A prova contará com distâncias de 12Km e 6Km e será realizada no dia 23 de março de 2024, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
+              </p>
+
+              <ul class="list-disc pl-4">
+                <li>
+                  Categorias PCD | GERAL: 12Km – 16h00;
+                </li>
+                <li>
+                  Categorias PCD | GERAL: 6Km – 16h10.
+                </li>
+              </ul>
+
+              <p>
+                Acesse <a href="https://corridadaagua.com.br/" class="text-blue-600 underline">corridadaagua.com.br</a> e leia atentamente o Regumanento da Prova.
               </p>
             </div>
           </div>
 
-          <div>
+          {{-- <div>
             <h3 class="text-base font-bold text-gray-1 mb-6">
               Fotos
             </h3>
@@ -65,7 +82,7 @@
                 <img src="/images/PRF/foto-3.jpg" class="w-full h-full object-cover" alt="">
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
         <div class="order-1 lg:order-2">
           <h1 class="text-xl font-bold text-gray-1 mb-6">
