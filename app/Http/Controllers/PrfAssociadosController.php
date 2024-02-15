@@ -53,8 +53,10 @@ class PrfAssociadosController extends Controller
             $user->save();
             
             foreach ($user->registrations as $registration) {
+                if($registration->status_regitration_id != PrfRegistration::STATUS_CONFIRMADO){
                     $registration->status_regitration_id = PrfRegistration::STATUS_AGUARDANDO_PAGAMENTO;
                     $registration->save();
+                }  
             }
             
             session()->flash('success', 'Servidor validado com sucesso!.');
@@ -83,8 +85,10 @@ class PrfAssociadosController extends Controller
             $user->save();
            
                 foreach ($user->registrations as $registration) {
+                    if($registration->status_regitration_id != PrfRegistration::STATUS_CONFIRMADO){
                     $registration->status_regitration_id = PrfRegistration::STATUS_AGUARDANDO_PAGAMENTO;
                     $registration->save();
+                    }
                 }
             session()->flash('success', 'Servidor invalidado com sucesso!.');
             DB::commit();
