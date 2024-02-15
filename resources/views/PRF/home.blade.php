@@ -95,7 +95,7 @@
                   <div class="flex flex-wrap justify-between">
                     <div class="mb-3.5">
                       <p class="font-semibold text-gray-1 text-base">
-                        {{ $category->nome }} {{ $package->nome }}
+                        {{ $package->nome }} {{ $category->nome }}
                       </p>
                     </div>
                     <div class="">
