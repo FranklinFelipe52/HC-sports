@@ -2060,6 +2060,11 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
 .text-brand-a1 {
   --tw-text-opacity: 1;
   color: rgb(0 149 217 / var(--tw-text-opacity));
@@ -2093,6 +2098,11 @@ video {
 .text-feedback-green-2 {
   --tw-text-opacity: 1;
   color: rgb(39 174 96 / var(--tw-text-opacity));
+}
+
+.text-feedback-orange {
+  --tw-text-opacity: 1;
+  color: rgb(229 145 70 / var(--tw-text-opacity));
 }
 
 .text-feedback-purple {
