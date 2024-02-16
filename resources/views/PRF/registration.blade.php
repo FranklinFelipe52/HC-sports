@@ -107,7 +107,7 @@
               </div>
             </div>
 
-            <div class="mb-6">
+            {{-- <div class="mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="is_servidor">
                 É servidor da CAERN?
               </label>
@@ -121,7 +121,7 @@
                   <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de endereço
