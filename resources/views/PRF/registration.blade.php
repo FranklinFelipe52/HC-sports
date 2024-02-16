@@ -315,12 +315,7 @@
           </h2>
           <hr class="my-4 border-gray-4" />
           <p class="text-sm text-gray-1 mb-8">
-            “Aceito as regras de participação da Corrida da Água -
-            POLICIAIS CONTRA O CÂNCER INFANTIL 2023 presentes no REGULAMENTO GERAL da
-            competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades
-            institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento,
-            observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados –
-            LGPD).”
+            “Aceito as regras de participação da CORRIDA ÁGUA - CAERN 2024 presentes no REGULAMENTO GERAL da competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
           </p>
           <div class="flex items-center gap-2">
             <input data-conditional="submit_button" type="checkbox" id="cadastro_termos_checkbox" name="cadastro_termos_checkbox" class="checkbox" required />
