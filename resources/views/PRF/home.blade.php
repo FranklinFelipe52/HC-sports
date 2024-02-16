@@ -58,7 +58,7 @@
               </ul>
 
               <p>
-                Acesse <a href="https://corridadaagua.com.br/" class="text-blue-600 underline">corridadaagua.com.br</a> e leia atentamente o Regumanento da Prova.
+                Acesse <a href="https://corridadaagua.com.br/" class="text-blue-600 underline">corridadaagua.com.br</a> e leia atentamente o Regulamento da Prova.
               </p>
             </div>
           </div>
