@@ -108,7 +108,7 @@
                     <div role="cell" class="py-3 flex items-center col-span-2">
                       <p class="text-sm font-semibold text-gray-2">
                         @if ($atleta->is_servidor == 1)
-                          <span class="font-bold text-prfA1">Servidor PRF</span>
+                          <span class="font-bold text-prfA1">Servidor CAERN</span>
                         @elseif ($atleta->is_servidor == 0)
                           <span class="font-normal text-prfA1">Comum</span>
                         @endif
