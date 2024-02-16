@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\AgeBetweenDates;
 use App\Http\Requests\PrfStoreRegistrationRequest;
+use App\Mail\CaernCadastroConfirmado;
+use App\Mail\CaernConfirmRegistration;
 use App\Models\Caern_adresses;
 use App\Models\FederativeUnit;
 use App\Models\PrfAdmin;
@@ -23,7 +25,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
 
 class PrfRegistrationController extends Controller
 {
@@ -103,8 +105,8 @@ class PrfRegistrationController extends Controller
             $user->password = Hash::make($request->password);
             $user->sexo = $request->sexo;
             $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
-            $user->is_servidor = $request->is_servidor;
-            $user->servidor_matricula = $request->servidor_matricula;
+            $user->is_servidor = $request->is_servidor ?? 0;
+            $user->servidor_matricula = $request->servidor_matricula ?? 0;
             $user->save();
             $adress->prf_user_id = $user->id;
             $adress->save();
@@ -132,6 +134,9 @@ class PrfRegistrationController extends Controller
 
             $request->session()->put('prf_user', $user);
             DB::commit();
+
+            Mail::to($user->email)->send(new CaernCadastroConfirmado($user, $category, $adress));
+
             return redirect('/dashboard');
 
         } catch (Exception $e) {
