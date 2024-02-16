@@ -6,6 +6,7 @@ use App\Http\Controllers\PRF\admin\AdminDashboardController;
 use App\Http\Controllers\PRF\admin\AdminUsersController;
 
 use App\Http\Controllers\PRF\PrfUserController;
+use App\Http\Controllers\PrfAssociadosController;
 use App\Http\Controllers\PrfCheckoutController;
 use App\Http\Controllers\PrfDashboardController;
 use App\Http\Controllers\PrfForgotPasswordController;
@@ -68,40 +69,44 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/admin/profile', [AdminController::class, 'profile'])->middleware('PrfAuthAdmins');
 
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_get'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_post'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/registrations/{registration_id}/estornar', [PrfRegistrationController::class, 'estorno'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/registrations/{registration_id}/cancelar', [PrfRegistrationController::class, 'cancelamento'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/users/{id}', [AdminUsersController::class, 'single'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/users/{id}/update', [AdminUsersController::class, 'update_form'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/users/{id}/update', [AdminUsersController::class, 'update'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_get'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/registrations/{id}/update', [AdminRegistrationController::class, 'update_post'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/registrations/{registration_id}/confirm', [PrfRegistrationController::class, 'confirm'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/registrations/{registration_id}/estornar', [PrfRegistrationController::class, 'estorno'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/registrations/{registration_id}/cancelar', [PrfRegistrationController::class, 'cancelamento'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins');
-    Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins');
-    Route::post('/admin/discounts/{voucher_id}/delete', [PrfVauchersController::class, 'delete'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/associados', [PrfAssociadosController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/associado/{id}/valid', [PrfAssociadosController::class, 'valid'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/associado/{id}/invalid', [PrfAssociadosController::class, 'invalid'])->middleware('PrfAuthAdmins');
 
-    Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/discounts/{voucher_id}/delete', [PrfVauchersController::class, 'delete'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher'])->middleware('PrfAuthAdmins');
-    Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/criar_cupom', [PrfVauchersController::class, 'create_cupom'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/criar_cupom', [PrfVauchersController::class, 'store_cupom'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/criar_voucher', [PrfVauchersController::class, 'create_voucher'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::post('/admin/criar_voucher', [PrfVauchersController::class, 'store_vouchers'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/all_users_get', [AdminReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_servidores_get', [AdminReportsController::class, 'all_servidores_get'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_confirm_registrations', [AdminReportsController::class, 'all_confirm_registrations'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_paid_registrations', [AdminReportsController::class, 'all_paid_registrations'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_pending_registrations_get', [AdminReportsController::class, 'all_pending_registrations_get'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/vouchers_relatorio', [PrfVauchersController::class, 'show_voucher_relatorios'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_vouchers_get', [PrfVauchersController::class, 'all_vouchers_get'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/vouchers_with_user', [PrfVauchersController::class, 'vouchers_with_user'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 
-    Route::get('/admin/all_confirmed_registrations', [AdminReportsController::class, 'all_confirmed_registrations'])->middleware('PrfAuthAdmins');
-    Route::get('/admin/all_not_confirmed_registrations', [AdminReportsController::class, 'all_not_confirmed_registrations'])->middleware('PrfAuthAdmins');
+    Route::get('/admin/all_users_get', [AdminReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_servidores_get', [AdminReportsController::class, 'all_servidores_get'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_confirm_registrations', [AdminReportsController::class, 'all_confirm_registrations'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_paid_registrations', [AdminReportsController::class, 'all_paid_registrations'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_pending_registrations_get', [AdminReportsController::class, 'all_pending_registrations_get'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+
+    Route::get('/admin/all_confirmed_registrations', [AdminReportsController::class, 'all_confirmed_registrations'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
+    Route::get('/admin/all_not_confirmed_registrations', [AdminReportsController::class, 'all_not_confirmed_registrations'])->middleware('PrfAuthAdmins')->middleware('CaernAdminValidation');
 });
