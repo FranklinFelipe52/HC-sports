@@ -72,11 +72,17 @@
                             {{ $registration['status_registration']->status }}
                           </p>
                         </div>
+                      @elseif ($registration['status_registration']->id == 6)
+                        <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                          <p class="text-white text-xs font-bold text-center">
+                            {{ $registration['status_registration']->status }}
+                          </p>
+                        </div>
                       @endif
                     
 
                   </div>
-                  @if ($registration['status_registration']->id != 5 )
+                  @if ($registration['status_registration']->id != 5 && $registration['status_registration']->id != 6 )
                     <div class="">
                       <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-prfA1 @elseif ($registration['status_registration']->id == 4) text-feedback-orange @endif font-bold text-1.5xl w-full text-end">
                         @if (!$registration['validated_by_admin'])

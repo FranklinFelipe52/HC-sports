@@ -12,8 +12,9 @@ class PrfRegistration extends Model
     const STATUS_CONFIRMADO = 1;
     const STATUS_AGUARDANDO_ACEITE = 2;
     const STATUS_AGUARDANDO_PAGAMENTO = 3;
-    const STATUS_ESTORNADA = 4;
+    const STATUS_AGUARDANDO_AVALIACAO = 4;
     const STATUS_CANCELADA = 5;
+    const STATUS_ESTORNADA = 6;
 
     public function prf_user()
     {
