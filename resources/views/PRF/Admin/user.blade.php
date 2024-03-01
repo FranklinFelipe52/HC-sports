@@ -447,7 +447,7 @@
                     </div>
                   </div>
                 @endif
-                @if ($registration->status_regitration_id == 4 && $registration->observacao_estorno)
+                @if ($registration->status_regitration_id == 6 && $registration->observacao_estorno)
                   <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-1 font-semibold">
@@ -476,7 +476,7 @@
                 @endif
               </div>
               <div class="flex gap-4 justify-end">
-                @if ($registration->status_regitration_id != 1)
+                @if ($registration->status_regitration_id != 1 && $registration->status_regitration_id != 5)
                   <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
                     <p class="text-white text-sm font-bold font-poppins">
                       Confirmar inscrição
