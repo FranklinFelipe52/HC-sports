@@ -79,7 +79,6 @@
                           </p>
                         </div>
                       @endif
-                    
 
                   </div>
                   @if ($registration['status_registration']->id != 5 && $registration['status_registration']->id != 6 )
