@@ -76,7 +76,6 @@
                         <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                           <p class="text-white text-xs font-bold text-center">
                             {{ $registration['status_registration']->status }}
-                            
                           </p>
                         </div>
                       @endif
