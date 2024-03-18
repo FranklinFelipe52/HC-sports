@@ -211,7 +211,7 @@
               <div class="relative">
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="size_tshirt" id="inscricao_size_tshirt_field">
                   <option selected value>Selecione</option>
-                  @foreach ($size_tshirts as $size_tshirt)
+                  @foreach ($category->prf_size_tshirts as $size_tshirt)
                     <option @if (old('size_tshirt') == $size_tshirt->id) @selected(true) @endif value={{ $size_tshirt->id }}>{{ $size_tshirt->nome }}</option>
                   @endforeach
                 </select>

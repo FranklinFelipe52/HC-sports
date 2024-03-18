@@ -36,6 +36,8 @@ class PrfRegistrationController extends Controller
             $category = PrfCategorys::find($category_id);
             $package = PrfPackage::find($package_id);
 
+            
+
             if (!$category || !$package) {
                 return back();
             }

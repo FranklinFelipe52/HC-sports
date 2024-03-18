@@ -13,4 +13,8 @@ class PrfCategorys extends Model
     {
         return $this->hasMany(PrfRegistration::class);
     }
+
+    public function prf_size_tshirts(){
+        return $this->belongsToMany(PrfSizeTshirts::class, 'prf_size_tshirts_category', 'prf_categorys_id', 'prf_size_tshirts_id');
+    }
 }
