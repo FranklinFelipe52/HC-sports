@@ -89,7 +89,7 @@
               <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" placeholder="Digite o seu número de contato" name="phone" value="{{ old('phone') }}" />
             </div>
 
-            <div class="mb-6">
+            {{--<div class="mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pcd_field">
                 Possui deficiência física comprovada?
               </label>
@@ -122,6 +122,7 @@
                 </div>
               </div>
             </div>
+          --}}
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de endereço

@@ -106,7 +106,7 @@ class PrfRegistrationController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->sexo = $request->sexo;
-            $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
+            //$user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
             $user->is_servidor = $request->is_servidor ?? 0;
             $user->servidor_matricula = $request->servidor_matricula ?? 0;
             $user->save();
@@ -117,7 +117,8 @@ class PrfRegistrationController extends Controller
             $registration->prf_user_id = $user->id;
             $registration->prf_categorys_id = $category->id;
             $registration->prf_package_id = $package->id;
-            $registration->status_regitration_id = $user->is_servidor && !$user->prf_deficiency_id && !(AgeBetweenDates::calc_idade($user->data_nasc) >= 60) ? 4 : 3;
+            //$registration->status_regitration_id = $user->is_servidor && !(AgeBetweenDates::calc_idade($user->data_nasc) >= 60) ? 4 : 3;
+            $registration->status_regitration_id = 3;
             $registration->prf_size_tshirts_id = $request->size_tshirt;
             $registration->equipe = $request->equipe;
             $registration->save();
