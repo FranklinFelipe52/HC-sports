@@ -36,7 +36,7 @@ class CaernCadastroConfirmado extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Caern Cadastro Confirmado',
+            subject: 'Caminhada da mãe potiguar - Cadastro Confirmado',
         );
     }
 

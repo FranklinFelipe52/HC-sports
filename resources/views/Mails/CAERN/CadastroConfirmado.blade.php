@@ -260,16 +260,16 @@
 															</td>
 														</tr>
 													</table> --}}
-													<table class="paragraph_block block-6" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
+													{{-- <table class="paragraph_block block-6" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
 																<div style="color:#333;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:12px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:14.399999999999999px;">
-																	<p style="margin: 0; margin-bottom: 2px;">Modalidade:</p>
-																	<p style="margin: 0;"><strong>{{ $category->nome }}</strong></p>
+																	<p style="margin: 0; margin-bottom: 2px;">Tamanho de camisa:</p>
+																	<p style="margin: 0;"><strong>{{ $tshirt_size }}</strong></p>
 																</div>
 															</td>
 														</tr>
-													</table>
+													</table> --}}
 												</td>
 											</tr>
 										</tbody>
