@@ -248,12 +248,14 @@ class PrfRegistrationController extends Controller
 
             $payment->status_payment_id = 4;
             $payment->save();
+            $category = $registration->prf_categorys;
 
             $admin_log = new PrfAdminLog;
             $admin_log->prf_admin_id = $admin->id;
             $admin_log->type_actions_admin_id = 7;
             $admin_log->description = 'Confirmou a inscrição do usuário de cpf ' . $user->cpf . ', e id #' . $user->id;
             $admin_log->save();
+            Mail::to($user->email)->send(new CaernConfirmRegistration($user, $category));
 
             session()->flash('success', 'Confirmou a inscrição do usuário com sucesso!');
             return back();
