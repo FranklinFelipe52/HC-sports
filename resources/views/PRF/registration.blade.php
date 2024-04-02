@@ -196,7 +196,7 @@
               </label>
               <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{ $category->nome }}" />
             </div> --}}
-            <div>
+            {{-- <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Equipe <span class="text-sm">(opcional)</span>
               </label>
@@ -204,7 +204,7 @@
               @error('equipe')
                 <p class="text-red-600">{{ $message }}</p>
               @enderror
-            </div>
+            </div> --}}
             <div class="mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_size_tshirt_field">
                 Camiseta
