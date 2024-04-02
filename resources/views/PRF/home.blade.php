@@ -31,17 +31,46 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
           <div class="mb-12">
-            <h2 class="text-xl font-bold text-gray-1 mb-6">
-              A Caminhada
+            <h2 class="text-xl font-bold text-gray-1 mb-3">
+                A CAMINHADA DA MÃE POTIGUAR É UM EVENTO QUE CELEBRA AS MÃES.
             </h2>
 
-            <div class="space-y-4 text-gray-1 text-sm">
+            <div class="space-y-4 text-gray-1 text-sm mb-6">
               <p>
-                A Caminha da Mãe Potiguar é um evento comemorativo ao Dia das Mães, e será realizada no dia 04 de maio do corrente ano, em Natal/RN. Promovida pelo Corpo de Bombeiros Militar do Rio Grande do Norte (CBMRN) e Secretaria de Saúde do Estado (Sesap), o evento contará com a participação de mais de cinco mil pessoas, na sua grande maioria composta por mulheres.
+                Participe da Caminhada da Mãe Potiguar e celebre com a gente o mês das mães. Contribua para um futuro mais saudável, apoie a amamentação e o bem-estar de toda a família. Seu engajamento é essencial para tornar esse lindo evento ainda mais alegre e solidário.
+              </p>
+            </div>
+
+            <h2 class="text-xl font-bold text-gray-1 mb-3">
+                BUSCAMOS PROMOVER A SAÚDE DA MULHER E DO BEBÊ.
+            </h2>
+
+            <div class="space-y-4 text-gray-1 text-sm mb-6">
+              <p>
+                A Caminhada da Mãe Potiguar celebra o mês das mães com uma bela manifestação de amor e união. Agendada para o dia 04 de maio, a concentração ocorrerá a partir das 15h, no Centro Administrativo do Estado. O roteiro da Caminhada terá 2km, iniciando no Centro Administrativo do Estado, dando uma volta no Estádio Arena das Dunas e retornando ao ponto inicial. Tudo isso, animado por uma banda potiguar sob um trio elétrico.
               </p>
 
               <p>
-                O evento traz como reflexão temas envolvendo a saúde da mulher e do bebê, estimulando a amamentação em local de trabalho e a doação do leite materno aos bancos de leite do Estado.
+                No palco do evento, a renomada Banda The Fevers comemora 49 anos de sucesso com músicas que embalaram gerações. Será um momento incrível!
+              </p>
+
+              <p>
+                Este evento inspirador é uma iniciativa do Corpo de Bombeiros Militar do Rio Grande do Norte (CBMRN) e da Secretaria de Saúde do Estado (Sesap) e acontece desde 2012 com o apoio de vários parceiros. Neste ano a expectativa é de reunir 10.000 participantes, arrecadando mais de 10 toneladas de alimentos, em uma demonstração de alegria e solidariedade.
+              </p>
+
+              <p>
+                Não é apenas uma caminhada, mas um movimento que carrega profundas reflexões sobre a saúde da mulher e do bebê, além de estimular a amamentação e reforçar a vital importância da doação de leite materno, nutrindo a cadeia de apoio que sustenta os bancos de leite do Estado e fortalecendo as bases para uma sociedade mais saudável.
+              </p>
+            </div>
+
+
+            <h2 class="text-xl font-bold text-gray-1 mb-3">
+                VENHA CELEBRAR O DIA DAS MÃES CONOSCO
+            </h2>
+
+            <div class="space-y-4 text-gray-1 text-sm mb-6">
+              <p>
+                Traga sua família e vamos juntos comemorar o mês das mães!
               </p>
             </div>
           </div>
