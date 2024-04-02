@@ -106,7 +106,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:26px;padding-left:16px;padding-right:16px;padding-top:40px;width:100%;">
 																<div class="alignment" align="center" style="line-height:10px">
-																	<div style="max-width: 204px;"><a href="https://inscricao.corridadaagua.com.br" target="_blank" style="outline:none" tabindex="-1"><img src="https://inscricao.corridadaagua.com.br/images/CAERN/Logo-CORRIDA-CAERN.png" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Corrida da água" title="Logo - Corrida da água"></a></div>
+																	<div style="max-width: 204px;"><a href="{{ $_SERVER['HTTP_HOST'] }}" target="_blank" style="outline:none" tabindex="-1"><img src="https://inscricao.caminhadadamaepotiguar.com.br/images/CMP/img/Logo-MaePotiguar.png" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Caminhada da Mãe Potiguar" title="Logo - Caminhada da Mãe Potiguar"></a></div>
 																</div>
 															</td>
 														</tr>
@@ -138,7 +138,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#fff;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:center;mso-line-height-alt:19.2px;">
-																	<p style="margin: 0;">Corrida da água - 2024</p>
+																	<p style="margin: 0;">Caminhada da Mãe Potiguar - 2024</p>
 																</div>
 															</td>
 														</tr>
@@ -164,7 +164,7 @@
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
 																	<p style="margin: 0; margin-bottom: 16px;">Olá Servidor, tudo bem?</p>
-																	<p style="margin: 0;">Agora você já pode concluir sua inscrição com 40% de desconto na Corrida da água - 2024.<br><br>Veja como é simples:</p>
+																	<p style="margin: 0;">Agora você já pode concluir sua inscrição com 40% de desconto na Caminhada da Mãe Potiguar - 2024.<br><br>Veja como é simples:</p>
 																</div>
 															</td>
 														</tr>
@@ -174,7 +174,7 @@
 															<td class="pad">
 																<div class="levelOne" style="margin-left: 0;">
 																	<ul class="leftList" start="1" style="margin-top: 0; margin-bottom: 0; padding: 0; padding-left: 20px; font-weight: 400; text-align: left; color: #101112; direction: ltr; font-family: Arial,'Helvetica Neue',Helvetica,sans-serif; font-size: 14px; letter-spacing: 0; line-height: 120%; mso-line-height-alt: 16.8px; list-style-type: disc;">
-																		<li style="margin-bottom: 0; text-align: left;">Acesse o <u></u><a href="https://inscricao.corridadaagua.com.br/login" target="_blank" title="Entrar no Painel do Atleta" style="text-decoration: underline; color: #101112;" rel="noopener"><u><strong>PAINEL DO ATLETA</strong></u></a> e informe o e-mail e senha cadastrado no ato da sua inscrição e realize seu pagamento com desconto.</li>
+																		<li style="margin-bottom: 0; text-align: left;">Acesse o <u></u><a href="https://inscricao.caminhadadamaepotiguar.com.br/login" target="_blank" title="Entrar no Painel do Atleta" style="text-decoration: underline; color: #101112;" rel="noopener"><u><strong>PAINEL DO ATLETA</strong></u></a> e informe o e-mail e senha cadastrado no ato da sua inscrição e realize seu pagamento com desconto.</li>
 																	</ul>
 																</div>
 															</td>
@@ -210,7 +210,7 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center">
-<![endif]--><a href="https://inscricao.corridadaagua.com.br/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#f60;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+<![endif]--><a href="https://inscricao.caminhadadamaepotiguar.com.br/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#f60;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 															</td>
 														</tr>
 													</table>
@@ -222,7 +222,7 @@
 							</tr>
 						</tbody>
 					</table>
-					
+
 					<table class="row row-6" align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 						<tbody>
 							<tr>
@@ -270,7 +270,7 @@
 															</td>
 														</tr>
 													</table>
-													
+
 												</td>
 											</tr>
 										</tbody>

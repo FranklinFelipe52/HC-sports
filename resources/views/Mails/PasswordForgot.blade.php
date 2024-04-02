@@ -593,7 +593,7 @@
 <![endif]-->
                                   <!--[if !mso]><!-- -->
                                   <span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="https://www.meiamaratonaprf191.com.br/wp-content/uploads/2023/09/REGULAMENTO_MEIA-MARATONA-PRF-191.2023.pdf" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
+                                    <a href="{{ $_SERVER['HTTP_HOST'] }}/wp-content/uploads/2023/09/REGULAMENTO_MEIA-MARATONA-PRF-191.2023.pdf" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
                                       Regulamento Geral da Competição
                                     </a>
                                   </span>

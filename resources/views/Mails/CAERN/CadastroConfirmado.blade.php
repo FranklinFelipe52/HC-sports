@@ -106,7 +106,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:26px;padding-left:16px;padding-right:16px;padding-top:40px;width:100%;">
 																<div class="alignment" align="center" style="line-height:10px">
-																	<div style="max-width: 210px;"><a href="https://corridadaagua.com.br" target="_blank" style="outline:none" tabindex="-1"><img src="https://11a660c8fb.imgdist.com/pub/bfra/c7knpef8/4eq/1cc/0wq/Logo-CORRIDA-CAERN%20%281%29.png" style="display: block; height: auto; border: 0; width: 100%;" width="210" alt="Logo - Corrida da água" title="Logo - Corrida da água"></a></div>
+																	<div style="max-width: 210px;"><a href="{{ $_SERVER['HTTP_HOST'] }}" target="_blank" style="outline:none" tabindex="-1"><img src="https://inscricao.caminhadadamaepotiguar.com.br/images/CMP/img/Logo-MaePotiguar.png" style="display: block; height: auto; border: 0; width: 100%;" width="210" alt="Logo - Caminhada da Mãe Potiguar" title="Logo - Caminhada da Mãe Potiguar"></a></div>
 																</div>
 															</td>
 														</tr>
@@ -138,7 +138,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#fff;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:center;mso-line-height-alt:19.2px;">
-																	<p style="margin: 0;">Corrida da Água - CAERN</p>
+																	<p style="margin: 0;">Caminhada da Mãe Potiguar</p>
 																</div>
 															</td>
 														</tr>
@@ -163,7 +163,7 @@
 														<tr>
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
-																	<p style="margin: 0; margin-bottom: 16px;">Estamos felizes em informar que o seu cadastro na Corrida da Água - CAERN foi <strong>concluído com sucesso.</strong></p>
+																	<p style="margin: 0; margin-bottom: 16px;">Estamos felizes em informar que o seu cadastro na Caminhada da Mãe Potiguar foi <strong>concluído com sucesso.</strong></p>
 																	<p style="margin: 0;">Para completar sua inscrição, acesse o <strong>PAINEL DO ATLETA</strong>&nbsp;através do botão abaixo:</p>
 																</div>
 															</td>
@@ -189,11 +189,11 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://inscricao.corridadaagua.com.br/login" style="height:48px;width:251px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#3f8aaf">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $_SERVER['HTTP_HOST'] }}/login" style="height:48px;width:251px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#3f8aaf">
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center style="color:#f0f2f3; font-family:Arial, sans-serif; font-size:14px">
-<![endif]--><a href="https://inscricao.corridadaagua.com.br/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#3f8aaf;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+<![endif]--><a href="{{ $_SERVER['HTTP_HOST'] }}/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#3f8aaf;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 															</td>
 														</tr>
 													</table>

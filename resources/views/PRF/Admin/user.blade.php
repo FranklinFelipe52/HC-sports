@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas - ' . $atleta->nome_completo . ' - Corrida da Água')
+@section('title', 'Atletas - ' . $atleta->nome_completo . ' - Caminhada da Mãe Potiguar')
 
 
 @section('content')

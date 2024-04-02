@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Relatórios - Corrida da Água')
+@section('title', 'Relatórios - Caminhada da Mãe Potiguar')
 
 @section('content')
 

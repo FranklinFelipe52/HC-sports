@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Criar voucher - Corrida da Água')
+@section('title', 'Criar voucher - Caminhada da Mãe Potiguar')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/admin/dashboard">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+            <img src="/images/CMP/svg/Logo-MaePotiguar.svg" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">

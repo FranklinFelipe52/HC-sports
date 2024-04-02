@@ -531,7 +531,7 @@
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
 	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{ $_SERVER['HTTP_HOST'] }}/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span><!--<![endif]--></td>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="https://inscricao.caminhadadamaepotiguar.com.br/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span><!--<![endif]--></td>
                               </tr>
                               <tr>
                                 <td style="padding:0;Margin:0;padding-bottom:30px">
@@ -540,7 +540,7 @@
                                       Caso o link não funcione, copie e cole este link no seu navegador:
                                     </p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
-                                      {{ $_SERVER['HTTP_HOST'] }}/dashboard
+                                        https://inscricao.caminhadadamaepotiguar.com.br/dashboard
                                     </p>
                                   </div>
                                 </td>

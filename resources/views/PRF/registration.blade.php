@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Complete sua inscrição - Corrida da Água')
+@section('title', 'Complete sua inscrição - Caminhada da Mãe Potiguar')
 
 @section('content')
   <div class="lg:grid lg:grid-cols-7 xl:container">
@@ -8,7 +8,7 @@
       <div class="flex flex-col h-full">
         <header class="p-5">
           <a href="/">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+            <img src="/images/CMP/svg/Logo-MaePotiguar.svg" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -186,16 +186,16 @@
             </div>
           </div>
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
-            Dados da Corrida
+            Dados da caminhada
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
-            <div>
+            {{-- <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Distância
               </label>
               <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{ $category->nome }}" />
-            </div>
+            </div> --}}
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
                 Equipe <span class="text-sm">(opcional)</span>
@@ -316,7 +316,7 @@
           </h2>
           <hr class="my-4 border-gray-4" />
           <p class="text-sm text-gray-1 mb-8">
-            “Aceito as regras de participação da CORRIDA ÁGUA - CAERN 2024 presentes no REGULAMENTO GERAL da competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
+            Aceito as regras de participação da CAMINHADA DA MÃE POTIGUAR 2024 presentes no REGULAMENTO GERAL e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades institucionais da CORPO DE BOMBEIROS MILITAR DO RN, organizador do evento, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).
           </p>
           <div class="flex items-center gap-2">
             <input data-conditional="submit_button" type="checkbox" id="cadastro_termos_checkbox" name="cadastro_termos_checkbox" class="checkbox" required />

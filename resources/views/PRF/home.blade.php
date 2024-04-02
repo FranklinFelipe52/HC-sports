@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Corrida da Água')
+@section('title', 'Caminhada da Mãe Potiguar')
 
 @section('content')
 
@@ -9,7 +9,7 @@
       <div class="container mx-auto">
         <div class="flex justify-between">
           <a href="/">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="">
+            <img src="/images/CMP/svg/Logo-MaePotiguar.svg" width="200" alt="">
           </a>
           <div class="flex gap-4">
             <div class="flex items-center justify-center">
@@ -23,42 +23,25 @@
     </header>
 
     <main class="container grow pt-6 pb-32">
-      
-      <img src="/images/CAERN/Testeira-566.png" class="md:hidden w-full" alt="">
-      <img src="/images/CAERN/Testeira-876.png" class="hidden md:block lg:hidden w-full" alt="">
-      <img src="/images/CAERN/Testeira-1130.png" class="hidden lg:block w-full" alt="">
+
+      <img src="/images/CMP/img/Testeira-566.png" class="md:hidden w-full" alt="">
+      <img src="/images/CMP/img/Testeira-876.png" class="hidden md:block lg:hidden w-full" alt="">
+      <img src="/images/CMP/img/Testeira-1130.png" class="hidden lg:block w-full" alt="">
 
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
           <div class="mb-12">
             <h2 class="text-xl font-bold text-gray-1 mb-6">
-              A Corrida
+              A Caminhada
             </h2>
 
             <div class="space-y-4 text-gray-1 text-sm">
               <p>
-                A Corrida da Água – CAERN é uma iniciativa da HC Sports em parceria com a Federação Norteriograndense de Atletismo e o patrocínio Master da CAERN – Companhia de Águas e Esgotos do Rio Grande do Norte.
+                A Caminha da Mãe Potiguar é um evento comemorativo ao Dia das Mães, e será realizada no dia 04 de maio do corrente ano, em Natal/RN. Promovida pelo Corpo de Bombeiros Militar do Rio Grande do Norte (CBMRN) e Secretaria de Saúde do Estado (Sesap), o evento contará com a participação de mais de cinco mil pessoas, na sua grande maioria composta por mulheres.
               </p>
 
               <p>
-                A corrida faz parte das comemorações do Dia Mundial da Água. A prova tem o objetivo de alertar as pessoas sobre a importância de preservar o recurso da natureza.
-              </p>
-
-              <p>
-                A prova contará com distâncias de 12Km e 6Km e será realizada no dia 23 de março de 2024, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
-              </p>
-
-              <ul class="list-disc pl-4">
-                <li>
-                  Categorias PCD | GERAL: 12Km – 16h00;
-                </li>
-                <li>
-                  Categorias PCD | GERAL: 6Km – 16h10.
-                </li>
-              </ul>
-
-              <p>
-                Acesse <a href="https://corridadaagua.com.br/" class="text-blue-600 underline">corridadaagua.com.br</a> e leia atentamente o Regulamento da Prova.
+                O evento traz como reflexão temas envolvendo a saúde da mulher e do bebê, estimulando a amamentação em local de trabalho e a doação do leite materno aos bancos de leite do Estado.
               </p>
             </div>
           </div>

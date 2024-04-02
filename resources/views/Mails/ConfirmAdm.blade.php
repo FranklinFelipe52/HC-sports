@@ -549,7 +549,7 @@
   <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
  </v:roundrect></a>
 <![endif]-->
-                                  <!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="{{ $_SERVER['HTTP_HOST'] }}/admin/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span>
+                                  <!--[if !mso]><!-- --><span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#0095d9;background:#0095d9;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all"><a href="https://inscricao.caminhadadamaepotiguar.com.br/admin/dashboard" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">Acessar painel</a></span>
                                   <!--<![endif]-->
                                 </td>
                               </tr>
@@ -560,7 +560,7 @@
                                       Caso o link não funcione, copie e cole este link no seu navegador:
                                     </p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
-                                      {{ $_SERVER['HTTP_HOST'] }}/admin/dashboard
+                                        https://inscricao.caminhadadamaepotiguar.com.br/admin/dashboard
                                     </p>
                                   </div>
                                 </td>
@@ -615,7 +615,7 @@
 <![endif]-->
                                   <!--[if !mso]><!-- -->
                                   <span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="https://www.meiamaratonaprf191.com.br/wp-content/uploads/2023/09/REGULAMENTO_MEIA-MARATONA-PRF-191.2023.pdf" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
+                                    <a href="#" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
                                       Regulamento Geral da Competição
                                     </a>
                                   </span>

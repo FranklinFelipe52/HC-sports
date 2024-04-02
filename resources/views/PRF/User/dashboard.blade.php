@@ -27,7 +27,7 @@
         <header class="sm:pt-8 pb-6">
           <div class="p-6 sm:hidden border-b border-gray-5">
             <a href="/dashboard">
-              <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+              <img src="/images/CMP/svg/Logo-MaePotiguar.svg" width="200" alt="" />
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
@@ -47,7 +47,7 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    
+
                       @if ($registration['status_registration']->id == 1)
                         <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                           <p class="text-white text-xs font-bold text-center">
@@ -187,10 +187,10 @@
                     </div>
                   @endif
                 @else
-                  
+
                   <p>
                     <strong>Atenção:</strong> Seu cadastro está em análise pela CAERN. Aguarde retorno no e-mail cadastrado na sua inscrição.
-                  </p> 
+                  </p>
                 @endif
                 {{-- @if ($registration['status_registration']->id == 3 || $registration['status_registration']->id == 4 || $registration['status_registration']->id == 5)
                   <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400 mb-4" role="alert">

@@ -495,9 +495,9 @@
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
-                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png" role="presentation">
+                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url(https://inscricao.caminhadadamaepotiguar.com.br/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="https://inscricao.caminhadadamaepotiguar.com.br/frontend/dist/email/images/background_1.png" role="presentation">
                               <tr>
-                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt="Logo dos jogos da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo dos jogos da advocacia"></td>
+                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="https://inscricao.caminhadadamaepotiguar.com.br/frontend/dist/email/images/logo_2.png" alt="Logo dos jogos da advocacia" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo dos jogos da advocacia"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
@@ -561,7 +561,7 @@
   <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Acessar painel</center>
  </v:roundrect></a>
 <![endif]-->
-                                 
+
                                   <!--<![endif]-->
                                 </td>
                               </tr>
@@ -596,7 +596,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="https://inscricao.caminhadadamaepotiguar.com.br/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
