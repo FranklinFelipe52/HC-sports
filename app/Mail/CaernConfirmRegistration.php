@@ -20,12 +20,12 @@ class CaernConfirmRegistration extends Mailable
      */
     public $user;
     public $category;
-    public $adress;
-    public function __construct($user, $category, $adress)
+ 
+    public function __construct($user, $category)
     {
         $this->user = $user;
         $this->category = $category;
-        $this->adress = $adress;
+        
     }
 
     /**
@@ -36,7 +36,7 @@ class CaernConfirmRegistration extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Caminhada da Mãe Potiguar - Confirm Registration',
+            subject: 'Caminhada da Mãe Potiguar - Confirmação',
         );
     }
 

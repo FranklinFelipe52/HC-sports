@@ -162,7 +162,7 @@
                           <p>Desconto: {{ $registration['vaucher']->desconto * 100 }}%</p>
                         </div>
                       @else
-                        @if ($registration['status_registration']->id != 1)
+                        @if ($registration['status_registration']->id != 1 && $registration['prf_category']->id == 1)
                           <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
                             @csrf
                             <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">

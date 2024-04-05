@@ -41,6 +41,7 @@ class PrfDashboardController extends Controller
                     'equipe' => $registration->equipe,
                     'tshirts' => $tshirts,
                     'vaucher' => $registration->prf_vauchers,
+                    'prf_category' => $registration->prf_categorys,
                     'validated_by_admin' => $registration->validated_by_admin,
                 ]);
             }
