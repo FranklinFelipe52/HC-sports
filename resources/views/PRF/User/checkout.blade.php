@@ -153,7 +153,7 @@
               </a>
             </div>
             @if ($registration['status_registration']->id != 2 && $registration['status_registration']->id != 1)
-              <div id="wallet_container"></div>
+              {{--<div id="wallet_container"></div>--}}
             @endif
           </div>
         </div>
