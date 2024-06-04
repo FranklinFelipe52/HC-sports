@@ -44,8 +44,10 @@
     </header>
 
     <main class="container grow pt-6 pb-32">
-      <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt="">
-      <img src="/images/PRF/banner-desktop.png" class="hidden md:block w-full" alt="">
+      <img src="/images/PRF/colabore-sm.png" class="md:hidden w-full" alt="">
+      <img src="/images/PRF/colabore-md.png" class="hidden md:block lg:hidden w-full" alt="">
+      <img src="/images/PRF/colabore-lg.png" class="hidden lg:block w-full" alt="">
+
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
           <div class="mb-12">
