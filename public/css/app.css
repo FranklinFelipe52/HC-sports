@@ -3261,6 +3261,9 @@ input[name="vaucher"]:focus {
   .lg\:block {
     display: block;
   }
+  .lg\:hidden {
+    display: none;
+  }
 
   .lg\:grid {
     display: grid;
