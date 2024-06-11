@@ -57,11 +57,14 @@
 
             <div class="space-y-4 text-gray-1 text-sm">
               <p>
-                Com provas de 21Km, 10Km e 5Km, a MEIA MARATONA PRF 191 é uma oportunidade única de colocar nas ruas um evento representativo e de grande repercussão na sociedade, aproximando o público da entidade e com a possibilidade de realização de diversas ações educativas e sociais.
+                A Meia Maratona PRF é parte da iniciativa POLICIAIS CONTRA O CÂNCER INFANTIL, uma campanha nacional que apoia entidades que cuidam de crianças com câncer.
               </p>
 
               <p>
-                É a única prova no Rio Grande do Norte que possibilita o atleta a usar a BR para correr com total segurança, o que valoriza ainda mais a participação dos atletas, que buscam sempre provas com diferenciais importantes na realização.
+                Em todas as edições anteriores, o lucro da prova foi destinado a instituições do Rio Grande do Norte. Em 2023, foram doados 27 mil reais ao GACC-RN (Grupo de Apoio à Criança com Câncer do Rio Grande do Norte). Para 2024, a meta é superar essa marca. O evento está agendado para o dia 10 de novembro de 2024, com largada às 5h30, na Arena das Dunas, em Natal. Os participantes podem escolher entre percursos de 21Km, 10Km e 5Km.
+              </p>
+              <p>
+                Além da oportunidade de correr ao longo da BR-101, na capital potiguar, os participantes contribuem para a campanha Policiais Contra o Câncer Infantil, onde parte do valor da inscrição é revertido para uma instituição filantrópica que atende crianças com câncer.
               </p>
             </div>
           </div>
