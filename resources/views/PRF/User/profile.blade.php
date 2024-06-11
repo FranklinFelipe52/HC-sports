@@ -190,7 +190,7 @@
               </div>
               <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
                 <p class="text-brand-prfA1">
-                  Por enquanto a edição de dados não está disponível, entre em contato com um administrador caso alguma informação esteja errada.
+                  Solicitações para alteração de distância ou tamanho de camiseta, podem ser realizadas até o dia 25 de outubro de 2024, somente através do e-mail <strong>contato@hcsports.com.br</strong>.
                 </p>
               </div>
               {{-- <div class="flex gap-4 flex-wrap">
