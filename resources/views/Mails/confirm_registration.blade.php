@@ -274,7 +274,7 @@
 															</td>
 														</tr>
 													</table>
-													@if($registration->tshirts->exists())
+													@if($registration->tshirts()->exists())
 													<table class="paragraph_block block-6" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;">
 														<tr>
 															<td class="pad">
