@@ -181,7 +181,7 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="/inscricao/login" style="height:48px;width:242px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#f60">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $_SERVER['HTTP_HOST'] }}/login" style="height:48px;width:242px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#0095d9">
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center style="color:#f0f2f3; font-family:Arial, sans-serif; font-size:14px">
