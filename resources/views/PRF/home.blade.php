@@ -79,7 +79,7 @@
                 <img src="/images/PRF/foto-4.jpg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="md:row-span-2 md:col-span-2 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-2.jpg" class="w-full h-full object-cover" alt="">
+                <img src="/images/PRF/foto-2.JPG" class="w-full h-full object-cover" alt="">
               </div>
               <div class="row-span-1 md:col-span-2 rounded-md overflow-hidden">
                 <img src="/images/PRF/foto-1.jpg" class="w-full h-full object-cover" alt="">
