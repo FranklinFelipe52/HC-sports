@@ -188,7 +188,7 @@
                       A confirmação da sua inscrição é o comprovante enviado pelo Mercado Pago informando que o seu pagamento foi aprovado! Confira no seu e-mail.
                     </div>
                   @endif
-                @endifyy
+                @endif
               </div>
             @endforeach
           </div>

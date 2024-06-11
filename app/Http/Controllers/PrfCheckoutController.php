@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\ValorTotal;
+use App\Mail\MeiaConfirmRegistrationMailble;
 use App\Models\ActionsNotificatios;
 use App\Models\PrfLogPayments;
 use App\Models\PrfPace;
@@ -13,6 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PrfCheckoutController extends Controller
 {
@@ -106,6 +108,7 @@ class PrfCheckoutController extends Controller
              $registration->prf_payments->amount  = $response['transaction_amount'];
              $registration->prf_payments->save();
              $registration->save();
+             Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
          }
 
          if($response['status'] == 'pending' || $response['status'] == 'rejected'){

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\CodeVaucherGenerate;
+use App\Mail\MeiaConfirmRegistrationMailble;
 use App\Models\PrfRegistration;
 use App\Models\PrfVauchers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class PrfVauchersController extends Controller
 {
@@ -205,6 +206,7 @@ class PrfVauchersController extends Controller
                         if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
                             $registration->status_regitration_id = 1;
                             $registration->save();
+                            Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
                         }
 
                         return back();
@@ -221,6 +223,7 @@ class PrfVauchersController extends Controller
                     if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
                         $registration->status_regitration_id = 1;
                         $registration->save();
+                        Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
                     }
 
                     return back();
@@ -240,6 +243,7 @@ class PrfVauchersController extends Controller
                         if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
                             $registration->status_regitration_id = 1;
                             $registration->save();
+                            Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
                         }
 
                         return back();
@@ -255,6 +259,7 @@ class PrfVauchersController extends Controller
                     if ($vaucher->desconto == 1 && count($registration->tshirts) < 1) {
                         $registration->status_regitration_id = 1;
                         $registration->save();
+                        Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
                     }
 
                     return back();

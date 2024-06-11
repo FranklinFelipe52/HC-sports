@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PrfStoreRegistrationRequest;
+use App\Mail\MeiaConfirmRegistrationMailble;
+use App\Mail\RegistrationSuccessMailble;
 use App\Models\PrfAdmin;
 use App\Models\PrfAdminLog;
 use App\Models\PrfCategorys;
@@ -20,7 +22,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
 
 class PrfRegistrationController extends Controller
 {
@@ -113,6 +115,7 @@ class PrfRegistrationController extends Controller
             $payment->prf_registration_id = $registration->id;
             $payment->status_payment_id = 3;
             $payment->save();
+            Mail::to($user->email)->send(new RegistrationSuccessMailble($registration));
 
             $request->session()->put('prf_user', $user);
             return redirect('/dashboard');
@@ -228,6 +231,7 @@ class PrfRegistrationController extends Controller
             $admin_log->type_actions_admin_id = 7;
             $admin_log->description = 'Confirmou a inscrição do usuário de cpf ' . $user->cpf . ', e id #' . $user->id;
             $admin_log->save();
+            Mail::to($registration->prf_user->email)->send(new MeiaConfirmRegistrationMailble($registration));
 
             session()->flash('success', 'Confirmou a inscrição do usuário com sucesso!');
             return back();
