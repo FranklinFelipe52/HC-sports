@@ -28,7 +28,7 @@
             <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
               Cancelar
             </button>
-            <a href="/admin/pagamentos/confirm/{{ $registration->payment->id }}" class="bg-brand-a1 border border-brand-a1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+            <a target="_self" href="/admin/pagamentos/confirm/{{ $registration->payment->id }}" class="bg-brand-a1 border border-brand-a1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
               Validar
             </a>
           </div>
@@ -59,7 +59,7 @@
 
         <!-- modal footer - actions -->
         <div class="flex justify-end gap-4 flex-wrap mt-10">
-          <a role="button" href="/admin/registration/delete/{{ $registration->id }}" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
+          <a target="_self" role="button" href="/admin/registration/delete/{{ $registration->id }}" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
             Excluir Inscrição
           </a>
           <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="close" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-black hover:ring-2 hover:ring-black hover:ring-opacity-50 bg-black transition">
@@ -93,13 +93,13 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('users_admin')}}" class="text-xs text-gray-1 block hover:underline">
                 Atletas
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div>
-              <a href="/admin/users/{{ $registration->user->id }}" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('user_admin', ['id' => $registration->user->id ])}}" class="text-xs text-gray-1 block hover:underline">
                 @if ($registration->user->nome_completo)
                   {{ $registration->user->nome_completo }}
                 @else
@@ -107,7 +107,7 @@
                 @endif
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Visualização da inscrição
             </div>
@@ -235,7 +235,7 @@
                 <div class="col-span-2 sm:col-span-1">
                   <button class="inline-flex items-center gap-3 bg-fill-base p-2 pr-8 rounded-lg hover:bg-gray-6 transition">
                     <div class="w-[30px] h-[30px]">
-                      <img src="/images/svg/link.svg" class="h-full w-full object-cover" alt="">
+                      <img src="{{asset('/images/svg/link.svg')}}" class="h-full w-full object-cover" alt="">
                     </div>
                     <p class="text-sm text-gray-1">
                       comprovante-inscrição.pdf
@@ -246,7 +246,7 @@
           </div>
           <div class="flex flex-wrap justify-between gap-6">
             <button data-modalId="modal-excluir-inscricao-{{ $registration->id }}" data-action="open" class="flex text-brand-v1 text-sm font-bold font-poppins items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                <img src="/images/svg/trash.svg" alt="">
+                <img src="{{asset('/images/svg/trash.svg')}}" alt="">
                 <p class="text-brand-v1 text-sm font-bold font-poppins">
                     Excluir Inscrição
                 </p>
@@ -255,12 +255,12 @@
             <div class="flex gap-4">
               @if (!($registration->type_payment_id == 2 && $registration->status_regitration_id == 1))
                 @if ($registration->modalities_id == 9 || $registration->modalities_id == 10)
-                  <a href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  <a target="_self" href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
 
                 @else
-                  <a href="/admin/registration/update/{{ $registration->id }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                  <a target="_self" href="/admin/registration/update/{{ $registration->id }}" class="flex items-center justify-center w-fit text-sm font-bold text-brand-a1 p-2 px-4 rounded-md border border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                     Editar
                   </a>
                 @endif
@@ -278,7 +278,7 @@
   </div>
 
 <!-- js -->
-<script type="module" src="/frontend/dist/js/index.js"></script>
+<script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
     if ('{{ session('erro') }}') {

@@ -114,7 +114,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:26px;padding-left:16px;padding-right:16px;padding-top:40px;width:100%;">
 																<div class="alignment" align="center" style="line-height:10px">
-																	<div style="max-width: 204px;"><a href="{{ $_SERVER['HTTP_HOST'] }}" target="_blank" style="outline:none" tabindex="-1"><img src="{{ $_SERVER['HTTP_HOST'] }}/images/PRF/Logo-Meia-PRF.png" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Meia Maratona PRF 2024" title="Logo - Meia Maratona PRF 2024"></a></div>
+																	<div style="max-width: 204px;"><a  href="{{ route('home') }}" target="_blank" style="outline:none" tabindex="-1"><img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Meia Maratona PRF 2024" title="Logo - Meia Maratona PRF 2024"></a></div>
 																</div>
 															</td>
 														</tr>
@@ -181,11 +181,11 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ $_SERVER['HTTP_HOST'] }}/login" style="height:48px;width:242px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#0095d9">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ route('login_get') }}" style="height:48px;width:242px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#0095d9">
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center style="color:#f0f2f3; font-family:Arial, sans-serif; font-size:14px">
-<![endif]--><a href="{{ $_SERVER['HTTP_HOST'] }}/login" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+<![endif]--><a  href="{{ route('login_get') }}" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#0095d9;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#0095d9">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 															</td>
 														</tr>
 													</table>
@@ -198,7 +198,7 @@
 															Caso o link não funcione, copie e cole este link no seu navegador:
 														</p>
 														<p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;word-break:break-all;">
-															{{ $_SERVER['HTTP_HOST'] }}/login
+															{{ route('login_get') }}
 														</p>
 													</div>
 												</td>

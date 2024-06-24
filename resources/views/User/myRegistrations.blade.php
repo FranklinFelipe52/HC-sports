@@ -53,9 +53,9 @@
                         </div>
                         <div>
                                     @if ($registration->status_regitration->id == 1)
-                                    <a class="btn btn-secondary" disable role="button">Pagar</a>
+                                    <a target="_self" class="btn btn-secondary" disable role="button">Pagar</a>
                                     @else
-                                    <a class="btn btn-success" href="/checkout/{{$registration->id}}" role="button">Pagar</a>
+                                    <a target="_self" class="btn btn-success" href="/checkout/{{$registration->id}}" role="button">Pagar</a>
                                     @endif
                                 </div>
                     </button>

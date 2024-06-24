@@ -10,7 +10,7 @@
 </head>
 <body>
     <section>
-        <a href="{{$link}}">Redefinir senha</a>
+        <a target="_self" href="{{$link}}">Redefinir senha</a>
     </section>
 </body>
 </html>

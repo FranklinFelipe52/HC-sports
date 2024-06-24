@@ -16,8 +16,8 @@
                         <div class="border rounded p-3">
                             <h5>{{$modalidade->nome}}</h5>
                             <div class="d-flex gap-3 pt-3">
-                            <a class="btn  btn-outline-secondary" href="/admin/modalidade/{{$modalidade->id}}" role="button">Ver modalidade</a>
-                            <a class="btn  btn-outline-secondary" href="/admin/registration/create/{{$modalidade->id}}" role="button">Adicionar atleta</a>
+                            <a target="_self" class="btn  btn-outline-secondary" href="/admin/modalidade/{{$modalidade->id}}" role="button">Ver modalidade</a>
+                            <a target="_self" class="btn  btn-outline-secondary" href="/admin/registration/create/{{$modalidade->id}}" role="button">Adicionar atleta</a>
                             </div>
                         </div>
                         </div>

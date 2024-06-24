@@ -26,8 +26,8 @@
         <!-- Cabeçalho -->
         <header class="sm:pt-8 pb-6">
           <div class="bg-brand-prfA1 sm:hidden">
-            <a href="/dashboard">
-              <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="">
+            <a target="_self" href="{{route('dashboard_user')}}">
+              <img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" class="h-[100px]" alt="">
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
@@ -137,8 +137,8 @@
                     @foreach ($registration['tshirts'] as $tshirt)
                       <div class="flex flex-wrap border rounded-md p-4 border-gray-5">
                         <div class="mb-2">
-                          <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                            <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                          <a href="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" target="_blank">
+                            <img src="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" class="h-[100px] w-[100px]" alt="">
                           </a>
                         </div>
                         <div class="text-sm">
@@ -164,7 +164,7 @@
                         </div>
                       @else
                         @if ($registration['status_registration']->id != 1)
-                          <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
+                          <form action=" {{route('vouchers_store', ['id_registration' => $registration['id']])}}" method="post" class="flex w-full gap-2">
                             @csrf
                             <input required class="border" type="text" id="name_cupom_field" name="vaucher" placeholder="Adicione um cupom ou voucher" class="grow px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1">
                             <button type="submit" class=" border border-brand-prfA1 rounded-md py-1 px-1.5 text-brand-prfA1 text-sm font-medium">
@@ -177,9 +177,9 @@
                   @endif
                   <div class="flex justify-end flex-wrap gap-4">
                     @if ($registration['status_registration']->id != 1 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
-                      <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                      <a target="_self" href="{{route('register_details', ['id'=> $registration['id']])}}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                         Realizar Pagamento
-                        <img src="/images/PRF/svg/credit-card.svg" alt="">
+                        <img src="{{asset('/images/PRF/svg/credit-card.svg')}}" alt="">
                       </a>
                     @endif
                   </div>

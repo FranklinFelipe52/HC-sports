@@ -25,11 +25,11 @@
         <header class="container pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/admin/dashboard" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('dashboard_admin')}}" class="text-xs text-gray-1 block hover:underline">
                 Dashboard
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Adicionar Atleta
             </div>
@@ -59,7 +59,7 @@
                     @endforeach
                   </select>
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                    <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -161,7 +161,7 @@
                       @endforeach
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      <img src="/images/svg/chevron-down.svg" alt="" />
+                      <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                     </div>
                   </div>
                 </div>
@@ -185,7 +185,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -207,7 +207,7 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="{{asset('/js/app.js')}}"></script>
   <script type="module">
    
 

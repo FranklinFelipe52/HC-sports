@@ -10,7 +10,7 @@
 </head>
 <body>
     <section>
-        <a href="{{$link}}">Acessar sistema/Completar cadastro</a>
+        <a target="_self" href="{{$link}}">Acessar sistema/Completar cadastro</a>
     </section>
 </body>
 </html>

@@ -5,11 +5,11 @@
 @section('content')
 
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1100px] lg:col-span-3 bg-white bg-prf bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="" />
+          <a target="_self" href="{{route('home')}}">
+            <img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" class="h-[100px]"  alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -25,8 +25,8 @@
         </div>
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6 hidden lg:block">
-          <a href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/images/svg/chevron-left-fill.svg" alt="" />
+          <a target="_self" href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
+            <img src="{{asset('/images/svg/chevron-left-fill.svg')}}" alt="" />
           </a>
         </div>
       </div>
@@ -45,7 +45,7 @@
 
                 @error('email')
                   <div class="absolute bg-white top-[50%] right-3">
-                    <img src="/images/svg/input-error.svg" alt="">
+                    <img src="{{asset('/images/svg/input-error.svg')}}" alt="">
                   </div>
                 @enderror
               </div>
@@ -65,19 +65,19 @@
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <div>
                     <button type="button" data-inputId="input_password_login" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 hidden group-[.error]:flex justify-center items-center rounded-full group">
-                      <img src="/images/svg/eye-error.svg" alt="" class="hidden group-[.show]:block" />
-                      <img src="/images/svg/eye-off-error.svg" alt="" class="block group-[.show]:hidden" />
+                      <img src="{{asset('/images/svg/eye-error.svg')}}" alt="" class="hidden group-[.show]:block" />
+                      <img src="{{asset('/images/svg/eye-off-error.svg')}}" alt="" class="block group-[.show]:hidden" />
                     </button>
                     <button type="button" data-inputId="input_password_login" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6 transition w-8 h-8 flex group-[.error]:hidden justify-center items-center rounded-full group">
-                      <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                      <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                      <img src="{{asset('/images/PRF/svg/eye.svg')}}" alt="" class="hidden group-[.show]:block" />
+                      <img src="{{asset('/images/PRF/svg/eye-off.svg')}}" alt="" class="block group-[.show]:hidden" />
                     </button>
                   </div>
                 </div>
               </div>
             </div>
             <div>
-              <a href="/forgot_password" class="block pb-1 text-sm font-normal text-brand-prfA1 underline">
+              <a target="_self" href="{{route('forgot_password_get')}}" class="block pb-1 text-sm font-normal text-brand-prfA1 underline">
                 Esqueci minha senha
               </a>
             </div>
@@ -93,7 +93,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="{{asset('/js/app.js')}}"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {

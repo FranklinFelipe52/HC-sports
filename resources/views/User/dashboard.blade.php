@@ -19,7 +19,7 @@
               </p>
             </div>
             <button data-modalId="modal{{ $registration->id }}" data-action="close" class="w-[24px] h-[24px] shrink-0">
-              <img src="/images/svg/close.svg" class="w-full h-full object-cover" alt="">
+              <img src="{{asset('/images/svg/close.svg')}}" class="w-full h-full object-cover" alt="">
             </button>
           </div>
 
@@ -161,7 +161,7 @@
                         </p>
                       </div>
                       <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                        <img src="/images/svg/modalidades/modalidade-{{ $registration->modalities->id }}.svg" class="w-full h-full object-cover" alt="">
+                        <img src="{{asset('/images/svg/modalidades/modalidade-{{ $registration->modalities->id }}.svg')}}" class="w-full h-full object-cover" alt="">
                       </div>
                     </div>
                     <div class="flex flex-wrap gap-3">

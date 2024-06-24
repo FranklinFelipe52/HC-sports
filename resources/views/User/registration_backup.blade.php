@@ -67,7 +67,7 @@
         <div class="row">
         <div class="col d-flex justify-content-end">
             @if ($registration->status_regitration->id == 3)
-            <a class="btn btn-primary" href="#" role="button">Relizar Pagamento</a>
+            <a target="_self" class="btn btn-primary" href="#" role="button">Relizar Pagamento</a>
             @endif
             </div>
         </div>

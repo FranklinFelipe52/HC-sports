@@ -8,16 +8,16 @@
       </div>
       <div class="flex justify-end gap-4">
         <a href="https://www.youtube.com/@hcsports6389" target="_blank">
-          <img src="/images/svg/youtube.svg" alt="">
+          <img src="{{asset('/images/svg/youtube.svg')}}" alt="">
         </a>
         <a href="https://twitter.com/HCSportsBR" target="_blank">
-          <img src="/images/svg/twitter.svg" alt="">
+          <img src="{{asset('/images/svg/twitter.svg')}}" alt="">
         </a>
         <a href="https://www.facebook.com/HCSportsBR" target="_blank">
-          <img src="/images/svg/facebook.svg" alt="">
+          <img src="{{asset('/images/svg/facebook.svg')}}" alt="">
         </a>
         <a href="https://www.instagram.com/hcsportsbr/" target="_blank">
-          <img src="/images/svg/instagram.svg" alt="">
+          <img src="{{asset('/images/svg/instagram.svg')}}" alt="">
         </a>
       </div>
     </div>

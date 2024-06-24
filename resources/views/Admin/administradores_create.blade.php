@@ -26,11 +26,11 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
                 Administradores
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Adicionar Administrador
             </div>
@@ -54,7 +54,7 @@
 
                     @error('cpf')
                       <div class="absolute bg-white top-[50%] right-3">
-                        <img src="/images/svg/input-error.svg" alt="">
+                        <img src="{{asset('/images/svg/input-error.svg')}}" alt="">
                       </div>
                     @enderror
                   </div>
@@ -72,7 +72,7 @@
                   <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:focus-input-error text-gray-1 placeholder:text-gray-3 transition" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" placeholder="joao.silva@oab.org.br" />
                   @error('email')
                     <div class="absolute bg-white top-[50%] right-3">
-                      <img src="/images/svg/input-error.svg" alt="">
+                      <img src="{{asset('/images/svg/input-error.svg')}}" alt="">
                     </div>
                   @enderror
                 </div>
@@ -106,7 +106,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
               @error('rule')
@@ -128,7 +128,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
               @error('uf')
@@ -154,7 +154,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

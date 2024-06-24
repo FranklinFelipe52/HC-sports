@@ -17,18 +17,18 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a target="_self" class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
+                            <a target="_self" class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a target="_self" class="nav-link" href="{{route('logout')}}">Logout</a>
                         </li>
                     </ul>
                 </div>

@@ -43,7 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+  <link rel="stylesheet" href="{{asset('/frontend/dist/css/style.css')}}">
 </head>
 
 <body class="h-screen">
@@ -69,11 +69,11 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/dashboard" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('dashboard_user')}}" class="text-xs text-gray-1 block hover:underline">
                 Dashboard
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Pagamento
             </div>
@@ -227,7 +227,7 @@
  },
   });
   </script>
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.3.1 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -32,9 +32,11 @@
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
 6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
 */
 
-html {
+html,
+:host {
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -44,12 +46,14 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
   font-variation-settings: normal;
   /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
 }
 
 /*
@@ -121,8 +125,10 @@ strong {
 }
 
 /*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
 */
 
 code,
@@ -131,8 +137,12 @@ samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
-  font-size: 1em;
+  font-feature-settings: normal;
   /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
 }
 
 /*
@@ -191,11 +201,17 @@ select,
 textarea {
   font-family: inherit;
   /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
   font-size: 100%;
   /* 1 */
   font-weight: inherit;
   /* 1 */
   line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
   /* 1 */
   color: inherit;
   /* 1 */
@@ -220,9 +236,9 @@ select {
 */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -342,6 +358,14 @@ menu {
 }
 
 /*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
 Prevent resizing textareas horizontally by default.
 */
 
@@ -436,6 +460,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -467,6 +494,10 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop {
@@ -483,6 +514,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -514,6 +548,10 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .container {
@@ -651,10 +689,6 @@ video {
 
 .col-span-1 {
   grid-column: span 1 / span 1;
-}
-
-.col-span-12 {
-  grid-column: span 12 / span 12;
 }
 
 .col-span-2 {
@@ -814,11 +848,6 @@ video {
   margin-right: 0.5rem;
 }
 
-.ms-auto {
-  -webkit-margin-start: auto;
-          margin-inline-start: auto;
-}
-
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -970,6 +999,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.max-h-\[1100px\] {
+  max-height: 1100px;
 }
 
 .max-h-\[1200px\] {
@@ -1203,10 +1236,6 @@ video {
   cursor: default;
 }
 
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
-
 .list-disc {
   list-style-type: disc;
 }
@@ -1323,10 +1352,6 @@ video {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-5 {
-  gap: 1.25rem;
 }
 
 .gap-6 {
@@ -1513,6 +1538,11 @@ video {
   border-color: rgb(255 22 31 / var(--tw-border-opacity));
 }
 
+.border-feedback-green-1 {
+  --tw-border-opacity: 1;
+  border-color: rgb(33 150 83 / var(--tw-border-opacity));
+}
+
 .border-gray-2 {
   --tw-border-opacity: 1;
   border-color: rgb(79 79 79 / var(--tw-border-opacity));
@@ -1563,6 +1593,11 @@ video {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
+.border-red-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
@@ -1581,6 +1616,11 @@ video {
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
 .bg-brand-a1 {
@@ -1643,16 +1683,6 @@ video {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-
-.bg-gray-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
-}
-
 .bg-gray-6 {
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity));
@@ -1668,30 +1698,12 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-gray-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
-}
-
-.bg-gray-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }
 
-.bg-\[url\(\'\/frontend\/dist\/images\/background\.png\'\)\] {
-  background-image: url('/frontend/dist/images/background.png');
-}
-
 .bg-\[url\(\'\/images\/PRF\/background\.png\'\)\] {
   background-image: url('/images/PRF/background.png');
-}
-
-.bg-\[url\(\'\/images\/background\.png\'\)\] {
-  background-image: url('/images/background.png');
 }
 
 .bg-cover {
@@ -1992,10 +2004,6 @@ video {
   text-align: end;
 }
 
-.font-open-sans {
-  font-family: 'Open Sans', 'sans-serif';
-}
-
 .font-poppins {
   font-family: Poppins;
 }
@@ -2113,6 +2121,11 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
 .text-brand-a1 {
@@ -2310,7 +2323,7 @@ video {
 
 .checkbox:checked {
   background-color: #000e4b;
-  background-image: url(/images/svg/checked.svg);
+  background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/svg/checked.svg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -2333,7 +2346,7 @@ video {
 
 .prf-checkbox:checked {
   background-color: transparent;
-  background-image: url(/images/PRF/svg/checked.svg);
+  background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/PRF/svg/checked.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -2497,6 +2510,10 @@ input[name="vaucher"]:focus {
   outline-color: #000E4B;
 }
 
+.bg-prf{
+  background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/PRF/background.png');
+}
+
 @media (min-width: 1280px) {
   .xl\:container {
     width: 100%;
@@ -2620,6 +2637,11 @@ input[name="vaucher"]:focus {
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
 
+.hover\:ring-blue-600:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(37 99 235 / var(--tw-ring-opacity));
+}
+
 .hover\:ring-brand-a1:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(0 149 217 / var(--tw-ring-opacity));
@@ -2660,9 +2682,19 @@ input[name="vaucher"]:focus {
   --tw-ring-color: rgb(224 224 224 / var(--tw-ring-opacity));
 }
 
+.hover\:ring-green-600:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(22 163 74 / var(--tw-ring-opacity));
+}
+
 .hover\:ring-red-500:hover {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
+}
+
+.hover\:ring-red-600:hover {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(220 38 38 / var(--tw-ring-opacity));
 }
 
 .hover\:ring-white:hover {
@@ -2681,6 +2713,11 @@ input[name="vaucher"]:focus {
 .focus\:border-blue-300:focus {
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
+}
+
+.focus\:border-blue-600:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity));
 }
 
 .focus\:border-brand-a1:focus {
@@ -2704,6 +2741,10 @@ input[name="vaucher"]:focus {
 
 .focus\:outline-offset-0:focus {
   outline-offset: 0px;
+}
+
+.focus\:outline-blue-600:focus {
+  outline-color: #2563eb;
 }
 
 .focus\:outline-brand-a1:focus {
@@ -2888,13 +2929,6 @@ input[name="vaucher"]:focus {
   outline-color: #CD191E;
 }
 
-@media (prefers-color-scheme: dark) {
-  .dark\:bg-gray-900 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-  }
-}
-
 @media (min-width: 640px) {
   .sm\:order-1 {
     order: 1;
@@ -2906,14 +2940,6 @@ input[name="vaucher"]:focus {
 
   .sm\:col-span-1 {
     grid-column: span 1 / span 1;
-  }
-
-  .sm\:col-span-3 {
-    grid-column: span 3 / span 3;
-  }
-
-  .sm\:col-span-9 {
-    grid-column: span 9 / span 9;
   }
 
   .sm\:mt-0 {
@@ -3060,18 +3086,6 @@ input[name="vaucher"]:focus {
 }
 
 @media (min-width: 768px) {
-  .md\:order-1 {
-    order: 1;
-  }
-
-  .md\:order-2 {
-    order: 2;
-  }
-
-  .md\:col-span-10 {
-    grid-column: span 10 / span 10;
-  }
-
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -3246,10 +3260,6 @@ input[name="vaucher"]:focus {
     grid-column: span 6 / span 6;
   }
 
-  .lg\:col-span-9 {
-    grid-column: span 9 / span 9;
-  }
-
   .lg\:row-span-2 {
     grid-row: span 2 / span 2;
   }
@@ -3261,12 +3271,13 @@ input[name="vaucher"]:focus {
   .lg\:block {
     display: block;
   }
-  .lg\:hidden {
-    display: none;
-  }
 
   .lg\:grid {
     display: grid;
+  }
+
+  .lg\:hidden {
+    display: none;
   }
 
   .lg\:h-screen {
@@ -3370,5 +3381,12 @@ input[name="vaucher"]:focus {
 
   .xl\:gap-4 {
     gap: 1rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
 }

@@ -4,11 +4,11 @@
 
 @section('content')
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-prf bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/">
-            <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]" alt="" />
+          <a target="_self" href="{{route('home')}}">
+            <img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" class="h-[100px]" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -24,8 +24,8 @@
         </div>
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6">
-          <a href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/images/svg/chevron-left-fill.svg" alt="" />
+          <a target="_self" href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
+            <img src="{{asset('/images/svg/chevron-left-fill.svg')}}" alt="" />
           </a>
         </div>
       </div>
@@ -58,7 +58,7 @@
               <div class="relative">
                 <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                  <img src="/images/PRF/svg/calendar.svg" alt="" />
+                  <img src="{{asset('/images/PRF/svg/calendar.svg')}}" alt="" />
                 </div>
               </div>
               @error('data_nasc')
@@ -77,7 +77,7 @@
                   </option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@
                   <option value="1" @if (old('is_servidor') == 1) @selected(true) @endif>Sim</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -176,8 +176,8 @@
               @foreach ($tshirts as $tshirt)
                 <div class="border rounded border-gray-5 p-2">
                   <div>
-                    <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                      <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                    <a  href="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" target="_blank">
+                      <img src="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" class="h-[100px] w-[100px]" alt="">
                     </a>
                   </div>
                   <div class="py-4 flex gap-4">
@@ -221,8 +221,8 @@
                 <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha" name="password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <button type="button" data-inputId="cadastro_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                    <img src="{{asset('/images/PRF/svg/eye.svg')}}" alt="" class="hidden group-[.show]:block" />
+                    <img src="{{asset('/images/PRF/svg/eye-off.svg')}}" alt="" class="block group-[.show]:hidden" />
                   </button>
                 </div>
                 @error('password')
@@ -246,8 +246,8 @@
                 <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password" name="confirm_password" placeholder="Digite a sua senha" />
                 <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                   <button type="button" data-inputId="confirm_password" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                    <img src="{{asset('/images/PRF/svg/eye.svg')}}" alt="" class="hidden group-[.show]:block" />
+                    <img src="{{asset('/images/PRF/svg/eye-off.svg')}}" alt="" class="block group-[.show]:hidden" />
                   </button>
                 </div>
               </div>
@@ -263,7 +263,7 @@
           </p>
           <div class="flex items-center gap-2">
             <input data-conditional="submit_button" type="checkbox" id="cadastro_termos_checkbox" name="cadastro_termos_checkbox" class="checkbox" required />
-            <a href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
+            <a target="_self" href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
               Li e aceito os termos.
             </a>
           </div>

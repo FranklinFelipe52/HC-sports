@@ -35,10 +35,10 @@
             @foreach ($atualizacoes as $atualizacao)
             <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
               <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                <img src="{{asset('/images/svg/user-circle.svg')}}" class="w-full h-full object-cover" alt="">
               </div>
               <div class="grow space-y-1">
-                <a href="/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
+                <a target="_self" href="{{route('user_admin', ['id' => $atualizacao->id ])}}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
                 <p class="text-xs text-gray-1 font-normal">{{ $atualizacao->status }}</p>
               </div>
               <div class="flex gap-2.5">
@@ -105,36 +105,36 @@
                   </p>
                 </div>
                 <div class="w-[38px] h-[38px] rounded-full shrink-0">
-                  <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" class="w-full h-full object-cover" alt="">
+                  <img src="{{asset('/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg')}}" class="w-full h-full object-cover" alt="">
                 </div>
               </div>
               @if ($modalidade->id == 9 || $modalidade->id == 10)
               <div class="flex flex-wrap gap-3">
-                <a href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                <a target="_self" href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                   Ver modalidade
                 </a>
 
                 <div class="flex flex-wrap gap-3 w-full">
                   @if (Session('admin')->rule->id == 1)
                   
-                   <a  href="/admin/registration/create/{{ $modalidade->id }}?gender=M"  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                   <a target="_self"  href="/admin/registration/create/{{ $modalidade->id }}?gender=M"  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                         <p class="text-white text-xs text-center font-bold font-poppins">
                             Adicionar atleta masculino
                         </p>
                     </a>
-                    <a href="/admin/registration/create/{{ $modalidade->id }}?gender=F" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                    <a target="_self" href="/admin/registration/create/{{ $modalidade->id }}?gender=F" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                         <p class="text-white text-xs text-center font-bold font-poppins">
                             Adicionar atleta feminina
                         </p>
                     </a>
                   
                   @else
-                  <a  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+                  <a target="_self"  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                     <p class="text-white text-xs text-center font-bold font-poppins">
                         Adicionar atleta masculino
                     </p>
                 </a>
-                <a  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+                <a target="_self"  class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                     <p class="text-white text-xs text-center font-bold font-poppins">
                         Adicionar atleta feminina
                     </p>
@@ -145,19 +145,19 @@
               </div>
               @else
               <div class="flex flex-wrap gap-3">
-                <a href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                <a target="_self" href="/admin/modalidade/{{ $modalidade->id }}" class="grow text-center text-xs font-semibold text-gray-1 p-2 rounded-lg border border-gray-5 hover:ring-2 hover:ring-gray-5 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                   Ver modalidade
                 </a>
                 @if (Session('admin')->rule->id == 1)
                 
-                <a href="/admin/registration/create/{{ $modalidade->id }}" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <a target="_self" href="/admin/registration/create/{{ $modalidade->id }}" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                     <p class="text-white text-xs text-center font-bold font-poppins">
                         Adicionar atleta
                     </p>
                 </a>
                 
                 @else
-                <a class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
+                <a target="_self" class="grow gap-4 px-4 py-2.5 rounded-lg border-[1.5px]  hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 bg-opacity-60 transition">
                   <p class="text-white text-xs text-center font-bold font-poppins">
                       Adicionar atleta
                   </p>

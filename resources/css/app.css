@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
     font-family: "Open Sans";
@@ -21,7 +21,7 @@
 
 .checkbox:checked {
     background-color: #000e4b;
-    background-image: url(/images/svg/checked.svg);
+    background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/svg/checked.svg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -44,7 +44,7 @@
 
 .prf-checkbox:checked {
     background-color: transparent;
-    background-image: url(/images/PRF/svg/checked.svg);
+    background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/PRF/svg/checked.svg');
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -180,4 +180,7 @@ body .toastify button.toast-close {
 
 input[name="vaucher"] {
     @apply grow px-2 py-1 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1;
+}
+.bg-prf{
+    background-image: url('https://meiamaratonaprf191.com.br/inscricao/images/PRF/background.png');
 }

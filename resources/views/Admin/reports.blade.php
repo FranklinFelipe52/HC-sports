@@ -26,11 +26,11 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
             <div>
-              <a href="/admin/reports" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('reports_admin_get')}}" class="text-xs text-gray-1 block hover:underline">
                 Relatórios
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Gerar Excel
             </div>
@@ -55,7 +55,7 @@
               <div class="relative">
                 <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" min='{{$date_start_min}}' max={{$date_start_max}} type="date" id="cadastro_nascimento_field" name="date_start" />
                 <div class="absolute top-4 right-4 bg-white pl-4">
-                  <img src="/images/svg/calendar.svg" alt="" />
+                  <img src="{{asset('/images/svg/calendar.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
               <div class="relative">
                 <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition"  min='{{$date_end_min}}' max={{$date_end_max}} type="date" id="cadastro_nascimento_field" name="date_end" />
                 <div class="absolute top-4 right-4 bg-white pl-4">
-                  <img src="/images/svg/calendar.svg" alt="" />
+                  <img src="{{asset('/images/svg/calendar.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </div>
@@ -226,7 +226,7 @@
           </div>
           <div class="flex flex-wrap justify-between gap-6">
             <button type="submit" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-              <img src="/images/svg/download.svg" alt="">
+              <img src="{{asset('/images/svg/download.svg')}}" alt="">
               <p class="text-white text-sm font-bold font-poppins">
                 Gerar Excel
               </p>
@@ -238,7 +238,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

@@ -63,9 +63,9 @@
         </div>
         <div class="row">
         <div class="col d-flex justify-content-between">
-            <a class="btn btn-danger" href="#" role="button">Excluir Inscrição</a>
+            <a target="_self" class="btn btn-danger" href="#" role="button">Excluir Inscrição</a>
             @if ($registration->status_regitration->id == 3)
-            <a class="btn btn-primary" href="#" role="button">Relizar Pagamento</a>
+            <a target="_self" class="btn btn-primary" href="#" role="button">Relizar Pagamento</a>
             @endif
             </div>
         </div>

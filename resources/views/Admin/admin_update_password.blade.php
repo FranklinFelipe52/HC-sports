@@ -24,11 +24,11 @@
         <div class="container">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
             <div>
-              <a href="/admin/profile" class="text-xs text-gray-1 block hover:underline">
+              <a target="_self" href="{{route('profile_admin')}}" class="text-xs text-gray-1 block hover:underline">
                 Perfil
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Alterar senha
             </div>
@@ -60,14 +60,14 @@
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                          <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                          <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                          <img src="{{asset('/images/svg/eye.svg')}}" alt="" class="hidden group-[.show]:block" />
+                          <img src="{{asset('/images/svg/eye-off.svg')}}" alt="" class="block group-[.show]:hidden" />
                         </button>
                       </div>
                       <div class="hidden group-[.error]:block">
                         <button type="button" data-inputId="input_nova_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                          <img src="/images/svg/eye-error.svg" alt="" class="hidden group-[.show]:block" />
-                          <img src="/images/svg/eye-off-error.svg" alt="" class=" block group-[.show]:hidden" />
+                          <img src="{{asset('/images/svg/eye-error.svg')}}" alt="" class="hidden group-[.show]:block" />
+                          <img src="{{asset('/images/svg/eye-off-error.svg')}}" alt="" class=" block group-[.show]:hidden" />
                         </button>
                       </div>
                     </div>
@@ -85,14 +85,14 @@
                     <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
                       <div class="group-[.error]:hidden">
                         <button type="button" data-inputId="input_nova_senha_confirm" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                          <img src="/images/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                          <img src="/images/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                          <img src="{{asset('/images/svg/eye.svg')}}" alt="" class="hidden group-[.show]:block" />
+                          <img src="{{asset('/images/svg/eye-off.svg')}}" alt="" class="block group-[.show]:hidden" />
                         </button>
                       </div>
                       <div class="hidden group-[.error]:block">
                         <button type="button" data-inputId="input_nova_senha_confirm" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                          <img src="/images/svg/eye-error.svg" alt="" class="hidden group-[.show]:block" />
-                          <img src="/images/svg/eye-off-error.svg" alt="" class=" block group-[.show]:hidden" />
+                          <img src="{{asset('/images/svg/eye-error.svg')}}" alt="" class="hidden group-[.show]:block" />
+                          <img src="{{asset('/images/svg/eye-off-error.svg')}}" alt="" class=" block group-[.show]:hidden" />
                         </button>
                       </div>
                     </div>

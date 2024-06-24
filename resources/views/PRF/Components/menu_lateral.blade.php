@@ -1,7 +1,7 @@
 <div class="absolute w-full bg-white h-full z-40 flex flex-col sm:px-4 sm:pt-6 sm:pb-8">
   <div class="hidden sm:block">
-    <a href="/dashboard" class="block overflow-hidden rounded-lg">
-      <img src="/images/PRF/Logo-Meia-PRF.png" class="h-[100px]"  alt="">
+    <a target="_self" href="{{route('dashboard_user')}}" class="block overflow-hidden rounded-lg">
+      <img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" class="h-[100px]"  alt="">
     </a>
   </div>
 
@@ -10,9 +10,9 @@
   <nav class="my-auto">
     <ul class="flex justify-around sm:flex-col sm:gap-5">
       <li class="group @if ($menuItemActive == 1) active @endif">
-        <a href="/dashboard" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+        <a target="_self" href="{{route('dashboard_user')}}" title="Dashboard" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
           <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/home-outline.svg" class="w-full h-full object-cover" alt="">
+            <img src="{{asset('/images/svg/home-outline.svg')}}" class="w-full h-full object-cover" alt="">
           </div>
           <p class="sm:hidden lg:block text-gray-1 group-[.active]:text-brand-prfA1 text-sm font-poppins">
             Dashboard
@@ -22,14 +22,14 @@
       <li class="group sm:hidden">
         <div title="Perfil" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+            <img src="{{asset('/images/svg/user-circle.svg')}}" class="w-full h-full object-cover" alt="">
           </div>
         </div>
       </li>
       <li class="group sm:hidden">
-        <a href="/logout" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
+        <a target="_self" href="{{route('logout')}}" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">
-            <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+            <img src="{{asset('/images/svg/logout.svg')}}" class="w-full h-full object-cover" alt="">
           </div>
           <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
             Sair
@@ -41,9 +41,9 @@
 
   <hr class="hidden sm:block border-gray-6 my-4">
 
-  <a href="/logout" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+  <a target="_self" href="{{route('logout')}}" title="Sair" class="hidden sm:flex items-center gap-2 px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
     <div class="w-[24px] h-[24px]">
-      <img src="/images/svg/logout.svg" class="w-full h-full object-cover" alt="">
+      <img src="{{asset('/images/svg/logout.svg')}}" class="w-full h-full object-cover" alt="">
     </div>
     <p class="hidden lg:block text-brand-v1 font-normal text-sm font-poppins">
       Sair
@@ -52,9 +52,9 @@
 
 
   <div class="group hidden sm:flex items-end justify-center lg:justify-start grow @if ($menuItemActive == 2) active @endif">
-    <a href="/profile" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
+    <a target="_self" href="{{route('profile_user')}}" class="w-full flex justify-center lg:justify-start items-center gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 hover:bg-gray-6 rounded-lg transition">
       <div class="w-[32px] h-[32px] shrink-0">
-        <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+        <img src="{{asset('/images/svg/user-circle.svg')}}" class="w-full h-full object-cover" alt="">
       </div>
       <div class="hidden lg:block">
         <p class="text-gray-1 font-bold font-poppins text-sm">

@@ -18,7 +18,7 @@
                         </div>
                         <button data-modalId="modal{{ $registration->id }}" data-action="close"
                             class="w-[24px] h-[24px] shrink-0">
-                            <img src="/images/svg/close.svg" class="w-full h-full object-cover" alt="">
+                            <img src="{{asset('/images/svg/close.svg')}}" class="w-full h-full object-cover" alt="">
                         </button>
                     </div>
 
@@ -126,9 +126,9 @@
 
                     <!-- modal footer - actions -->
                     <div class="flex justify-end gap-4 flex-wrap mt-10">
-                        <a href="/admin/registration/delete/{{ $registration->id }}"
+                        <a target="_self" href="/admin/registration/delete/{{ $registration->id }}"
                             class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                            <img src="/images/svg/trash.svg" alt="">
+                            <img src="{{asset('/images/svg/trash.svg')}}" alt="">
                             <p class="text-brand-v1 text-sm font-bold font-poppins">
                                 Excluir inscrição
                             </p>
@@ -176,11 +176,11 @@
                     <div class="container">
                         <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
                             <div>
-                                <a href="/admin/modalidades" class="text-xs text-gray-1 block hover:underline">
+                                <a target="_self" href="/admin/modalidades" class="text-xs text-gray-1 block hover:underline">
                                     Modalidades
                                 </a>
                             </div>
-                            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+                            <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
                             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                                 {{ $modalidade->nome }}
                             </div>
@@ -197,7 +197,7 @@
                         <div
                             class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex flex-wrap gap-4 sm:gap-8 md:block">
                             <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                                <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg"
+                                <img src="{{asset('/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg')}}"
                                     class="w-full h-full object-cover" alt="">
                             </div>
 
@@ -261,13 +261,13 @@
                             {{-- <hr class="hidden md:block border-gray-5 mb-5">
 
               <div class="flex md:flex-col gap-4 md:gap-0">
-                <a href="/src/pages/admin/modalidade-categorias.html" class="text-brand-a1 underline text-sm block">
+                <a target="_self" href="/src/pages/admin/modalidade-categorias.html" class="text-brand-a1 underline text-sm block">
                   Exibir categorias
                 </a>
 
                 <hr class="hidden md:block border-gray-5 my-5">
 
-                <a href="/src/pages/admin/modalidade-relatorio.html" class="text-brand-a1 underline text-sm block">
+                <a target="_self" href="/src/pages/admin/modalidade-relatorio.html" class="text-brand-a1 underline text-sm block">
                   Ver relatório
                 </a>
               </div> --}}
@@ -327,7 +327,7 @@
                                 </button>
                             @endif
                         @endif
-                        {{-- <a href="/src/pages/admin/modalidade-cadastrar-categoria.html" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                        {{-- <a target="_self" href="/src/pages/admin/modalidade-cadastrar-categoria.html" class="h-fit flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 transition">
               <p class="text-brand-a1 text-sm font-bold font-poppins">
                 Incluir categoria
               </p>
@@ -362,9 +362,9 @@
                                                         {{ $federative_unit->initials }}
                                                     </p>
                                                     <div class="group-[.active]:hidden">
-                                                        <img src="/images/svg/accordion-arrow.svg"
+                                                        <img src="{{asset('/images/svg/accordion-arrow.svg')}}"
                                                             class="group-hover:hidden" alt="">
-                                                        <img src="/images/svg/accordion-arrow-active.svg"
+                                                        <img src="{{asset('/images/svg/accordion-arrow-active.svg')}}"
                                                             class="hidden group-hover:block" alt="">
                                                     </div>
                                                 </button>
@@ -375,7 +375,7 @@
                                                                 class="flex items-end flex-wrap md:flex-nowrap justify-end gap-2 border-b border-gray-200 w-full px-4 py-3 bg-white hover:bg-fill-base transition cursor-default">
                                                                 <div class="flex gap-2 grow">
                                                                     <div class="grow space-y-1">
-                                                                        <a href="/admin/users/{{ $registration->user->id }}"
+                                                                        <a target="_self" href="{{route('user_admin', ['id' => $registration->user->id ])}}"
                                                                             class="text-sm sm:text-base text-gray-1 font-semibold break-all">
                                                                             @if ($registration->user->nome_completo)
                                                                                 {{ $registration->user->nome_completo }}
@@ -411,12 +411,12 @@
                                                                         </button>
                                                                         @if (!($registration->type_payment_id == 2 && $registration->status_regitration_id == 1))
                                                                             @if ($modalidade->id == 9 || $modalidade->id == 10)
-                                                                                <a href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}"
+                                                                                <a target="_self" href="/admin/registration/update/{{ $registration->id }}?gender={{ $registration->user->sexo }}"
                                                                                     class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                                                                                     Editar
                                                                                 </a>
                                                                             @else
-                                                                                <a href="/admin/registration/update/{{ $registration->id }}"
+                                                                                <a target="_self" href="/admin/registration/update/{{ $registration->id }}"
                                                                                     class="h-fit text-[10px] font-poppins font-normal text-gray-1 grow px-[8px] py-[2px] rounded-md border border-gray-2 hover:ring-1 hover:ring-gray-2 hover:ring-opacity-50 disabled:hover:ring-0 disabled:opacity-50 disabled:cursor-not-allowed transition">
                                                                                     Editar
                                                                                 </a>
@@ -431,7 +431,7 @@
                                                 <div class="px-2 flex justify-end w-full hidden" data-accordion="footer">
                                                     <button class="py-2 rotate-180 transition-all" data-accordion="button"
                                                         data-accordion-id="uf-{{ $federative_unit->code }}-registrations-accordion">
-                                                        <img src="/images/svg/accordion-arrow-active.svg" class=""
+                                                        <img src="{{asset('/images/svg/accordion-arrow-active.svg')}}" class=""
                                                             alt="">
                                                     </button>
                                                 </div>
@@ -456,11 +456,11 @@
                                                 <div class="flex gap-2 grow">
                                                     <div
                                                         class="flex-shrink-0 w-[37px] h-[37px] overflow-hidden min-[360px]:block">
-                                                        <img src="/images/svg/user-circle.svg"
+                                                        <img src="{{asset('/images/svg/user-circle.svg')}}"
                                                             class="w-full h-full object-cover" alt="">
                                                     </div>
                                                     <div class="grow space-y-1">
-                                                        <a href="/admin/users/{{ $registration->user->id }}"
+                                                        <a target="_self" href="{{route('user_admin', ['id' => $registration->user->id ])}}"
                                                             class="text-base text-gray-1 font-semibold">
                                                             @if ($registration->user->nome_completo)
                                                                 {{ $registration->user->nome_completo }}
@@ -525,7 +525,7 @@
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script type="module" src="/js/app.js"></script>
+    <script type="module" src="{{asset('/js/app.js')}}"></script>
     <script type="module">
 
     if('{{ session('erro') }}') {

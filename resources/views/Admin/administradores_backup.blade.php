@@ -59,7 +59,7 @@
             @endif
             @if (!(Session('admin')->rule->id == 3))
             <div class="col-3 d-flex justify-content-end align-items-center">
-                    <a role="button" href="/admin/administradores/create" class="btn btn-primary">Criar Administrador</a>
+                    <a target="_self" role="button" href="/admin/administradores/create" class="btn btn-primary">Criar Administrador</a>
             </div>
             @endif
         </div>

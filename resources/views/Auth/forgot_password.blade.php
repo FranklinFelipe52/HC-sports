@@ -13,16 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- css -->
-  <link rel="stylesheet" href="/frontend/dist/css/style.css">
+  <link rel="stylesheet" href="{{asset('/frontend/dist/css/style.css')}}">
 </head>
 
 <body class="h-screen">
   <div class="lg:grid lg:grid-cols-7 xl:container">
-    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/frontend/dist/images/background.png')] bg-cover bg-no-repeat">
+    <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-prf bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/src/index.html">
-            <img src="/images/Olimpiadas-Concad.png" alt="" />
+          <a target="_self" href="/src/index.html">
+            <img src="{{asset('/images/Olimpiadas-Concad.png')}}" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -38,8 +38,8 @@
         </div>
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6">
-          <a href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/images/svg/chevron-left-fill.svg" alt="" />
+          <a target="_self" href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
+            <img src="{{asset('/images/svg/chevron-left-fill.svg')}}" alt="" />
           </a>
         </div>
       </div>
@@ -79,7 +79,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
 

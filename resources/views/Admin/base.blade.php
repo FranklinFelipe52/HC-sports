@@ -8,8 +8,8 @@
   <title>@yield('title')</title>
 
   {{-- favicon --}}
-  <link rel="icon" href="/favicon.png" type="image/x-icon">
-  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+  <link rel="icon" href="{{asset('/favicon.png')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{asset('/favicon.png')}}" type="image/x-icon">
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="{{asset('/css/app.css')}}">
 </head>
 
 <body class="h-screen">
@@ -27,7 +27,7 @@
   
 
   <!-- js -->
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="{{asset('/js/app.js')}}"></script>
 </body>
 
 </html>

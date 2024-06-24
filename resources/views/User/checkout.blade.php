@@ -29,11 +29,11 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+                <a target="_self" href="/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
                   Dashboard
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 Método de pagamento
               </div>
@@ -57,7 +57,7 @@
                   <div class="flex items-center gap-2 mb-2">
                     <input type="radio" id="radio_input_1" name="example_radio_group" value="radio_input_1" checked>
                     <label for="radio_input_1" class="text-gray-2 flex items-center gap-2">
-                      <img src="/images/svg/credit-card.svg" alt="">
+                      <img src="{{asset('/images/svg/credit-card.svg')}}" alt="">
                       Cartão de Crédito
                     </label>
                   </div>
@@ -65,20 +65,20 @@
                   <div class="flex items-center gap-2 mb-2">
                     <input type="radio" id="radio_input_2" name="example_radio_group" value="radio_input_2">
                     <label for="radio_input_2" class="text-gray-2 flex items-center gap-2">
-                      <img src="/images/svg/pix.svg" alt="">
+                      <img src="{{asset('/images/svg/pix.svg')}}" alt="">
                       Pix
                     </label>
                   </div>
                 </div>
               </div>
               <div class="flex flex-wrap-reverse gap-y-6 justify-between">
-                <a href="/dashboard" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded-lg bg-white transition">
+                <a target="_self" href="{{route('dashboard_user')}}" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit rounded-lg bg-white transition">
                   <p class="text-gray-1 underline text-sm font-normal font-poppins">
                     Cancelar
                   </p>
                 </a>
 
-                <a href="/src/pages/atleta/pagamento-cartao.html" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+                <a target="_self" href="/src/pages/atleta/pagamento-cartao.html" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                   <p class="text-white text-sm font-bold font-poppins">
                     Avançar
                   </p>

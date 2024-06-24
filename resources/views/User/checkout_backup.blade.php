@@ -26,18 +26,18 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a target="_self" class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
+                            <a target="_self" class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a target="_self" class="nav-link" href="{{route('logout')}}">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -55,11 +55,11 @@
         <div class="row">
             <div class="col-3 d-flex flex-column align-items-center gap-3 card p-4">
                 <h3>Pagar com cartão de credito</h3>
-                <a class="btn btn-primary" href="/card/{{$registration->id}}" role="button">Pagar</a>
+                <a target="_self" class="btn btn-primary" href="/card/{{$registration->id}}" role="button">Pagar</a>
             </div>
             <div class="col-3 d-flex flex-column align-items-center gap-3 card p-4">
                 <h3>Pagar com pix</h3>
-                <a class="btn btn-primary" href="/pix/{{$registration->id}}" role="button">Pagar</a>
+                <a target="_self" class="btn btn-primary" href="/pix/{{$registration->id}}" role="button">Pagar</a>
             </div>
         </div>
         </div>

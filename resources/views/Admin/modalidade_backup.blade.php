@@ -49,7 +49,7 @@
 
                 </div>
                 <div class="d-flex gap-3">
-                    <a class="btn  btn-primary w-100 py-3  fw-bold" href="/admin/registration/create/{{$modalidade->id}}" role="button">Adicionar atleta</a>
+                    <a target="_self" class="btn  btn-primary w-100 py-3  fw-bold" href="/admin/registration/create/{{$modalidade->id}}" role="button">Adicionar atleta</a>
                 </div>
 
             </div>

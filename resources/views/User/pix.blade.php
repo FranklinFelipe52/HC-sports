@@ -28,17 +28,17 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+                <a target="_self" href="/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
                   Dashboard
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
               <div>
-                <a href="/src/pages/atleta/pagamento.html" class="text-xs text-gray-1 block hover:underline">
+                <a target="_self" href="/src/pages/atleta/pagamento.html" class="text-xs text-gray-1 block hover:underline">
                   Método de pagamento
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 Código Pix
               </div>

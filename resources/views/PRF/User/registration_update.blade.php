@@ -24,11 +24,11 @@
             <header class="pt-8 pb-6 space-y-6">
               <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
                 <div>
-                  <a href="{{ URL::previous() }}" class="text-xs text-gray-1 block hover:underline">
+                  <a target="_self" href="{{ URL::previous() }}" class="text-xs text-gray-1 block hover:underline">
                     Inscrição
                   </a>
                 </div>
-                <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+                <img src="{{asset('/images/svg/chevron-left-breadcrumb.svg')}}" alt="">
                 <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
                   Alterar inscrição
                 </div>
@@ -62,7 +62,7 @@
 
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                        <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -73,11 +73,11 @@
                     <div class="relative">
                       <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="category" id="inscricao_category_field">
                         @foreach ($categorys as $category)
-                            <option @if ($category->id == 1 || $category->id == 2) disabled @endif @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
+                            <option @if ($category->id == $registration->prf_categorys_id) @selected(true) @endif value={{ $category->id }} data-item-value="{{ $category->price }}">{{ $category->nome }} (R$ {{ number_format($category->price, 2, ',', '.') }})</option>
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                        <img src="{{asset('/images/PRF/svg/chevron-down.svg')}}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -95,8 +95,8 @@
                             </div>
                             <div class="flex flex-col gap-4 md:flex-row">
                               <div>
-                                <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                                  <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
+                                <a href="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" target="_blank">
+                                  <img src="{{asset('/images/PRF/Camiseta-PRF-2023.png')}}" class="h-[100px]" alt="">
                                 </a>
                               </div>
                               <div class="">

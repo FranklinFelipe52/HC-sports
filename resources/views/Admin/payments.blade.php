@@ -30,7 +30,7 @@
               <button data-modalId="modal-confirmar-pagamento-{{ $payment->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
                 Cancelar
               </button>
-              <a href="/admin/pagamentos/confirm/{{ $payment->id }}" class="bg-brand-a1 border border-brand-a1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
+              <a target="_self" href="/admin/pagamentos/confirm/{{ $payment->id }}" class="bg-brand-a1 border border-brand-a1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-v1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
                 Validar
               </a>
             </div>
@@ -107,7 +107,7 @@
 
                 <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um pagamento usando o nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="{{asset('/images/svg/search.svg')}}" alt="">
                 </button>
 
               </form>
@@ -119,7 +119,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
 
               </form>
@@ -214,7 +214,7 @@
                       <div role="cell" class="col-span-1 flex justify-end">
                       @if ( Session('admin')->rule->id == 1 && !Session('admin')->personification)
                           <button data-modalId="modal-confirmar-pagamento-{{ $payment->id }}" data-action="open" data-tooltip-payment class="block w-[24px] h-[24px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                          <img src="/images/svg/pagamentos.svg" class="h-full w-full object-cover" alt="">
+                          <img src="{{asset('/images/svg/pagamentos.svg')}}" class="h-full w-full object-cover" alt="">
                         </button>
                       @endif
 
@@ -268,13 +268,13 @@
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
+                <img src="{{asset('/images/svg/chevron-left.svg')}}" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
+                <img src="{{asset('/images/svg/chevron-right.svg')}}" alt="">
               </button>
             </div>
           </div>

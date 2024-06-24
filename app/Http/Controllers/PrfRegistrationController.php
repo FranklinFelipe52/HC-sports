@@ -121,6 +121,7 @@ class PrfRegistrationController extends Controller
             return redirect('/dashboard');
 
         } catch (Exception $e) {
+            dd($e);
             return back()->withInput();
         }
     }
@@ -151,6 +152,7 @@ class PrfRegistrationController extends Controller
             ]);
 
         } catch (Exception $e) {
+            
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }
@@ -203,6 +205,7 @@ class PrfRegistrationController extends Controller
 
             return redirect('/dashboard');
         } catch (Exception $e) {
+            dd($e);
             return back();
         }
     }

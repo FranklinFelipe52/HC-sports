@@ -37,7 +37,7 @@
               <div class="relative w-full grow max-w-[400px] md:w-auto">
                 <input type="text" placeholder="Pesquise por uma modalidade" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button class="absolute top-[14%] left-3 bg-white">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="{{asset('/images/svg/search.svg')}}" alt="">
                 </button>
               </div>
               <div class="relative">
@@ -49,7 +49,7 @@
                   <option value="">Coletiva</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="{{asset('/images/svg/chevron-down.svg')}}" alt="" />
                 </div>
               </div>
             </form> --}}
@@ -95,7 +95,7 @@
                 <div role="row" class="pr-12 grid grid-cols-12 border-b border-b-gray-5 last:border-b-0">
                   <div role="cell" class="col-span-2 lg:col-span-1 py-3 flex justify-center items-center ">
                     <div class="h-[24px] w-[24px]">
-                      <img src="/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg" alt="" class="h-full w-full object-cover">
+                      <img src="{{asset('/images/svg/modalidades/modalidade-{{ $modalidade->id }}.svg')}}" alt="" class="h-full w-full object-cover">
                     </div>
                   </div>
                   <div role="cell" class="col-span-4 lg:col-span-3 py-3 flex items-center">
@@ -147,8 +147,8 @@
                     </p>
                   </div>
                   <div role="cell" class="col-span-1 lg:col-span-3 py-3 flex gap-2 justify-end items-center">
-                    <a href="/admin/modalidade/{{ $modalidade->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                      <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                    <a target="_self" href="/admin/modalidade/{{ $modalidade->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                      <img src="{{asset('/images/svg/ficha.svg')}}" class="h-full w-full object-cover" alt="">
                     </a>
                   </div>
                 </div>

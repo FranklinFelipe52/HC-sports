@@ -495,9 +495,9 @@
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
-                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png" role="presentation">
+                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{asset('/frontend/dist/email/images/background_1.png')}});background-repeat:no-repeat;background-position:center top" background="{{asset('/frontend/dist/email/images/background_1.png')}}" role="presentation">
                               <tr>
-                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/images/PRF/Logo-Meia-PRF.png" alt="Logo - Meia Maratona da PRF" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo PRF"></td>
+                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" alt="Logo - Meia Maratona da PRF" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo PRF"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
@@ -542,7 +542,7 @@
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-bottom:30px">
-                                  <!--[if mso]><a href="" target="_blank" hidden>
+                                  <!--[if mso]><a  href="" target="_blank" hidden>
  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href=""
                 style="height:36px; v-text-anchor:middle; width:122px" arcsize="11%" stroke="f"  fillcolor="#000E4B">
   <w:anchorlock></w:anchorlock>
@@ -551,7 +551,7 @@
 <![endif]-->
                                   <!--[if !mso]><!-- -->
                                   <span class="msohide es-button-border-2 es-button-border" style="border-style:solid;border-color:#000E4B;background:#000E4B;border-width:0px;display:inline-block;border-radius:4px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="{{ $link }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#000E4B;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#000E4B">
+                                    <a  href="{{ $link }}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;display:inline-block;background:#000E4B;border-radius:4px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center;padding:10px 15px;border-color:#000E4B">
                                       Alterar senha
                                     </a>
                                   </span>
@@ -583,7 +583,7 @@
                           <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr>
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/images/PRF/Logo-Meia-PRF.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
+                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{asset('/images/PRF/Logo-Meia-PRF.png')}}" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
