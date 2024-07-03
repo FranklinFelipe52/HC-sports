@@ -27,7 +27,7 @@ class ForgotPasswordController extends Controller
         ];
         $jwt = JWT::encode($payload, env('JWT_KEY'), 'HS256');
         $host = request()->getSchemeAndHttpHost();
-        $link = "{$host}/password_reset/{$jwt}";
+        $link = "{$host}/inscricao/password_reset/{$jwt}";
         
         if($user && $user->registered){
             

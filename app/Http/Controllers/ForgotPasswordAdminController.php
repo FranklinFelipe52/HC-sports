@@ -26,7 +26,7 @@ class ForgotPasswordAdminController extends Controller
         ];
         $jwt = JWT::encode($payload, env('JWT_KEY'), 'HS256');
         $host = request()->getSchemeAndHttpHost();
-        $link = "{$host}/admin/password_reset/{$jwt}";
+        $link = "{$host}/inscricao/admin/password_reset/{$jwt}";
         
         if($Admin){
             Mail::to($request->email)->send(new PasswordForgot($link));
