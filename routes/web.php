@@ -35,7 +35,9 @@ use Illuminate\Support\Facades\Route;
 
 
 /* PRF Routes* */
-
+Route::get('/email_update', function(){
+ return view('Mails.EmailUpdate', ['old_email'=> 'teste', 'updated_email'=> 'teste2']);
+} );
 
 Route::get('/', [PrfHomeController::class, 'show'])->name('home');
 Route::get('/inscricao/{category_id}/{package_id}', [PrfRegistrationController::class, 'create'])->name('inscricao_register_get');
