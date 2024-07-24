@@ -108,7 +108,7 @@ class PrfCheckoutController extends Controller
              $registration->save();
          }
 
-         if($response['status'] == 'pending' || $response['status'] == 'rejected'){
+         if($response['status'] == 'pending' || $response['status'] == 'rejected' || $response['status'] == 'charged_back'){
             if($registration->status_regitration_id != 1){
                 $registration->status_regitration_id = 3;
                 $registration->prf_payments->id_payment  =  $payment_id;
