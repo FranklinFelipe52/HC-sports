@@ -41,7 +41,7 @@
         <div class="container">
           <div class="flex flex-col gap-4 w-full max-w-[600px]">
             @foreach ($registrations as $registration)
-              @if ($registration['status_registration_id'] == 1)
+            {{--  @if ($registration['status_registration_id'] == 1)--}}
                 <div class="border border-gray-5 px-3.5 pt-4 rounded-lg">
                   <div class="flex flex-wrap justify-between border-b border-gray-5 mb-4">
                     <div class="mb-3.5 flex items-center flex-wrap gap-2">
@@ -228,13 +228,13 @@
                     </div>
                   @endif
                 </div>
-              @else
+              {{--@else
                 <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
                   <p class="text-brand-prfA1">
                     <strong class="text-brand-prfA1">Inscrições encerradas!</strong> Sua inscrição não foi confirmada pois você não pagou ela a tempo.
                   </p>
                 </div>
-              @endif
+              @endif--}}
 
             @endforeach
           </div>
