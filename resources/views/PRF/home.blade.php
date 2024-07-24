@@ -33,37 +33,60 @@
     </header>
 
     <main class="container grow pt-6 pb-32">
-      {{-- <img src="/images/PRF/banner-mobile.png" class="md:hidden w-full" alt=""> --}}
-      <img src="/images/banner.png?v=937529385290" class="w-full" alt="">
-      <div class="mt-4">
-        <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
-          <p class="text-brand-prfA1">
-            <strong class="text-brand-prfA1">Inscrições encerradas!</strong>
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
-        <div class="order-2 lg:order-1 col-span-2 lg:col-span-1">
-          <h2 class="text-xl font-bold text-gray-1 mb-6">Edições anteriores</h2>
 
-          <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
-              <img src="/images/foto-1.jpeg" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
-              <img src="/images/foto-2.jpeg" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="rounded-md overflow-hidden col-span-4">
-              <img src="/images/foto-3.jpeg" class="w-full h-full object-cover" alt="">
+      <img src="/images/colabore-sm.png" class="md:hidden w-full" alt="">
+      <img src="/images/colabore-md.png" class="hidden md:block lg:hidden w-full" alt="">
+      <img src="/images/colabore-lg.png" class="hidden lg:block w-full" alt="">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
+        <div class="order-2 lg:order-1">
+          <div class="mb-12">
+              <h2 class="text-xl font-bold text-gray-1 mb-6">
+                O Seminário
+              </h2>
+
+              <div class="space-y-4 text-gray-1 text-sm">
+                  <p>
+                    O Seminário de Saúde Mental e Prevenção do Suicídio realizado pelo Governo do Estado do RN, por meio do Corpo de Bombeiros Militar e Secretaria de Saúde Pública, é considerando o maior evento do país na temática da Sociologia. Em 2024, o evento acontece no Teatro Riachuelo, das 8h às 17h, reunindo renomados especialistas, sendo aberto a toda sociedade.
+                  </p>
+
+                  <p>
+                    Este ano, já estão confirmadas as participações do médico psiquiatra, Dr. Neury Botega (SP), médico psiquiatra, Dr. Adriano Araújo (RN), psicóloga e fundadora do Instituto Vita Alere, Dra. Karen Scavacini (SP), psicóloga, Dra. Cristina Hahn (RN), jornalista e escritora, Izabella Camargo (PR), criador do protocolo de abordagem técnica a tentativa de suicídio, Tenente Coronel Diogenes Munhoz (SP) e do representante nordeste do Comitê Nacional de Abordagem a Tentativa de Suicídio, Tenente Coronel Christiano Couceiro (RN).
+                  </p>
+
+                  <p>
+                    O evento conta com o apoio da Opus Entretenimento, UNI-RN, FECOMÉRCIO, Hotel Escola Barreira Roxa, FIERN, SEBRAE, Unimed Natal, Hospital Rio Grande, Clínica Incor Natal, Complexo Severino Lopes, Zeh Cozinha e Restaurante Camarões. Todo o recurso arrecadado na realização deste evento será destinado aos projetos sociais do Corpo de Bombeiros Militar.
+                  </p>
+                  <p>
+                    Para mais informações: (84) 98129-3618.
+                  </p>
+              </div>
+          </div>
+          <div class="mt-12">
+            <h2 class="text-xl font-bold text-gray-1 mb-6">Edições anteriores</h2>
+  
+            <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
+                <img src="/images/foto-1.jpg" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="rounded-md overflow-hidden col-span-4 md:col-span-2">
+                <img src="/images/foto-2.jpg" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="rounded-md overflow-hidden col-span-2">
+                <img src="/images/foto-3.jpg" class="w-full h-full object-cover" alt="">
+              </div>
+              <div class="rounded-md overflow-hidden col-span-2">
+                <img src="/images/foto-4.jpg" class="w-full h-full object-cover" alt="">
+              </div>
             </div>
           </div>
         </div>
+        
         <div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
-          <img src="/images/banner-2.jpeg?v=937529385290" class="mt-4" alt="">
-          {{-- <div class="border border-gray-5 rounded-md p-4">
-              <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
-              <form action="/registration/store" method="POST" class="">
-                @csrf
+          <div class="border border-gray-5 rounded-md p-4">
+            <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
+            <form action="/registration/store" method="POST" class="">
+              @csrf
 
                 <div class="space-y-4">
                   <div>
@@ -144,7 +167,7 @@
                   <div class="">
                     <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
                       <p class="text-sm mb-2">
-                        <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 10,00 através do mercado pago.
+                        <strong>Atenção:</strong> Após o cadastro, você poderá realizar o pagamento da taxa de inscrição de R$ 20,00 através do mercado pago.
                       </p>
                     </div>
                   </div>
@@ -170,7 +193,7 @@
                   </button>
                 </div>
               </form>
-            </div> --}}
+            </div>
         </div>
       </div>
     </main>
