@@ -18,7 +18,7 @@
 
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/app.css?ts={{ time() }}">
 </head>
 
 <body class="h-screen">
