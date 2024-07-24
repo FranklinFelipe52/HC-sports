@@ -207,7 +207,7 @@
                     </div>
                   @endif
 
-                  @if (!$registration['validated_by_admin'] && !$registration['vaucher'] && $registration['status_registration']->id != 1)
+                 {{-- @if (!$registration['validated_by_admin'] && !$registration['vaucher'] && $registration['status_registration']->id != 1)
                     <div class="mt-4">
                       <form action="/registration/{{ $registration['id'] }}/vouchers/store" method="post" class="flex w-full gap-2">
                         @csrf
@@ -217,7 +217,7 @@
                         </button>
                       </form>
                     </div>
-                  @endif
+                  @endif--}}
 
                   @if ($registration['status_registration']->id != 1)
                     <div class="flex justify-end flex-wrap gap-4 py-4">
