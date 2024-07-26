@@ -47,7 +47,7 @@
 
               <div class="space-y-4 text-gray-1 text-sm">
                   <p>
-                    O Seminário de Saúde Mental e Prevenção do Suicídio realizado pelo Governo do Estado do RN, por meio do Corpo de Bombeiros Militar e Secretaria de Saúde Pública, é considerando o maior evento do país na temática da Sociologia. Em 2024, o evento acontece no Teatro Riachuelo, das 8h às 17h, reunindo renomados especialistas, sendo aberto a toda sociedade.
+                    O Seminário de Saúde Mental e Prevenção do Suicídio realizado pelo Governo do Estado do RN, por meio do Corpo de Bombeiros Militar e Secretaria de Saúde Pública, é considerando o maior evento do país na temática da Suicidologia. Em 2024, o evento acontece no Teatro Riachuelo, das 8h às 17h, reunindo renomados especialistas, sendo aberto a toda sociedade.
                   </p>
 
                   <p>
@@ -55,7 +55,7 @@
                   </p>
 
                   <p>
-                    O evento conta com o apoio da Opus Entretenimento, UNI-RN, FECOMÉRCIO, Hotel Escola Barreira Roxa, FIERN, SEBRAE, Unimed Natal, Hospital Rio Grande, Clínica Incor Natal, Complexo Severino Lopes, Zeh Cozinha e Restaurante Camarões. Todo o recurso arrecadado na realização deste evento será destinado aos projetos sociais do Corpo de Bombeiros Militar.
+                    O evento conta com o apoio da Opus Entretenimento, UNI-RN, FECOMÉRCIO, Hotel Escola Barreira Roxa, FIERN, SEBRAE, Sicredi Rio Grande do Norte, Unimed Natal, Hospital Rio Grande, Clínica Incor Natal, Complexo Severino Lopes, Zeh Cozinha e Restaurante Camarões. Todo o recurso arrecadado na realização deste evento será destinado aos projetos sociais do Corpo de Bombeiros Militar.
                   </p>
                   <p>
                     Para mais informações: (84) 98129-3618.
