@@ -39,7 +39,7 @@
       <img src="/images/colabore-lg.png" class="hidden lg:block w-full" alt="">
 
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
-        <div class="order-2 lg:order-1">
+        <div class="order-1">
           <div class="mb-12">
               <h2 class="text-xl font-bold text-gray-1 mb-6">
                 O Seminário
@@ -81,8 +81,14 @@
             </div>
           </div>
         </div>
-        
-        <div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
+        <div class="order-2">
+          <div class="bg-feedback-fill-blue p-4 rounded-lg border border-blue-400" role="alert">
+            <p class="text-sm mb-2">
+              <strong>Atenção:</strong> Inscrições encerradas.
+            </p>
+          </div>
+        </div>
+      {{--<div class="order-1 lg:order-2 col-span-2 lg:col-span-1">
           <div class="border border-gray-5 rounded-md p-4">
             <h1 class="text-xl font-bold text-gray-1 mb-6">Inscreva-se</h1>
             <form action="/registration/store" method="POST" class="">
@@ -195,6 +201,7 @@
               </form>
             </div>
         </div>
+        --}}
       </div>
     </main>
 
