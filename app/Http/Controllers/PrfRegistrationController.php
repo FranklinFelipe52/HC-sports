@@ -46,7 +46,7 @@ class PrfRegistrationController extends Controller
     public function store(PrfStoreRegistrationRequest $request)
     {
         try {
-            return back();
+            
             if ($request->password != $request->confirm_password) {
                 return back()->with('erro', 'Senhas diferentes');
             }
