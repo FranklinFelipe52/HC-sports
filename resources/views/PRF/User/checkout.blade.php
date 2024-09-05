@@ -143,7 +143,7 @@
               </a>
             </div> --}}
             <span></span>
-            <div id="wallet_container"></div>
+            {{--<div id="wallet_container"></div>--}}
           </div>
         </div>
       </div>
