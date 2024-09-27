@@ -24,6 +24,9 @@ class AdminUsersController extends Controller
     public function index(Request $request)
     {
         try {
+            $perPage = $request->input('per_page', 20);
+            $page = $request->input('page', 1);
+
             $admin = $request->session()->get('admin');
             $users_query = PrfUser::orderBy('nome_completo', 'asc');
 
@@ -38,11 +41,14 @@ class AdminUsersController extends Controller
                 });
             }
 
-            $users = $users_query->get();
+            $users = $users_query->paginate($perPage, ['*'], 'page', $page);
+            $total = $users->lastPage();
 
             return view('PRF.Admin.users', [
                 'admin' => $admin,
                 'atletas' => $users,
+                'page' => $page,
+                'total' => $total,
             ]);
         } catch (Exception $e) {
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');

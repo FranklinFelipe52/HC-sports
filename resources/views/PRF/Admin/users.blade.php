@@ -140,16 +140,17 @@
           </div>
         </div>
 
-        <!-- Paginação da tabela -->
-        <div class="flex justify-between pt-6 pb-4 sm:pb-16">
+          <!-- Paginação da tabela -->
+          <div class="flex justify-between pt-6 pb-4 sm:pb-16">
 
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
-              <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
+              <button data-button="prev-page-button"
+                <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 disabled:ring-0 transition">
                 <img src="{{asset('/images/svg/chevron-left.svg')}}" alt="">
               </button>
             </div>
-            <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
+            <p class="text-sm text-gray-1 pt-0.5" data-pagination-label>{{ $page }} de {{ $total }}</p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 disabled:ring-0 transition">
                 <img src="{{asset('/images/svg/chevron-right.svg')}}" alt="">
@@ -165,10 +166,49 @@
           </div>
         </div>
       </div>
+        </div>
     </div>
-  </div>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+
+      const paginationList = document.querySelector('[data-pagination]');
+      const paginationListItem = Array.from(document.querySelectorAll('[data-pagination-item]'));
+      const prevPageButton = document.querySelector('[data-button="prev-page-button"]');
+      const nextPageButton = document.querySelector('[data-button="next-page-button"]');
+      const paginationLabel = document.querySelector('[data-pagination-label]');
+      const paginationButtons = document.querySelector('[data-pagination-buttons]');
+
+      document.addEventListener('DOMContentLoaded', function () {
+          let page = {{ $page }};
+
+          if ({{ $page }} === {{ $total }}) {
+              nextPageButton.disabled = true;
+          }
+
+          if ({{ $page }} === 1) {
+              prevPageButton.disabled = true;
+          }
+
+          prevPageButton.addEventListener('click', function () {
+              page--;
+
+              const params = new URLSearchParams(window.location.search);
+              params.set('page', page);
+
+              window.location.search = params.toString();
+          });
+
+          nextPageButton.addEventListener('click', function () {
+              page++;
+
+              const params = new URLSearchParams(window.location.search);
+              params.set('page', page);
+
+              window.location.search = params.toString();
+          });
+      });
+  </script>
   <script>
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');
@@ -209,77 +249,6 @@
         onClick: function() {} // Callback after click
       }).showToast();
     }
-
-    const paginationList = document.querySelector('[data-pagination]');
-    const paginationListItem = Array.from(document.querySelectorAll('[data-pagination-item]'));
-    const prevPageButton = document.querySelector('[data-button="prev-page-button"]');
-    const nextPageButton = document.querySelector('[data-button="next-page-button"]');
-    const paginationLabel = document.querySelector('[data-pagination-label]');
-    const paginationButtons = document.querySelector('[data-pagination-buttons]');
-
-    let currentPage = 1;
-    let itemsPerPage = 8;
-    let totalItems = paginationListItem.length;
-    let totalPages = Math.ceil(paginationListItem.length / itemsPerPage);
-
-    paginationListItem.forEach(item => {
-      item.classList.add('hidden');
-    })
-
-    prevPageButton.addEventListener('click', prevPage);
-    nextPageButton.addEventListener('click', nextPage);
-
-    function prevPage() {
-
-      if (currentPage == 1) return;
-
-      currentPage--;
-      displayCurrentPage(currentPage, itemsPerPage, totalItems);
-    }
-
-    function nextPage() {
-
-      if (currentPage == totalPages) return;
-
-      currentPage++;
-      displayCurrentPage(currentPage, itemsPerPage, totalItems);
-    }
-
-    function displayCurrentPage(currentPage, itemsPerPage, totalItems) {
-
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-
-      // Exibe apenas os itens correspondentes à página atual
-      for (let i = 0; i < totalItems; i++) {
-        if (i >= startIndex && i < endIndex) {
-          paginationListItem[i].classList.remove('hidden');
-        } else {
-          paginationListItem[i].classList.add('hidden');
-        }
-      }
-
-      paginationLabel.innerHTML = `${currentPage} de ${totalPages}`;
-
-      if (currentPage == 1) {
-        prevPageButton.disabled = true;
-      } else {
-        prevPageButton.disabled = false;
-      }
-
-      if (currentPage == totalPages) {
-        nextPageButton.disabled = true;
-      } else {
-        nextPageButton.disabled = false;
-      }
-
-      if (totalItems === 0) {
-        paginationButtons.classList.add('hidden');
-      }
-
-    }
-
-    displayCurrentPage(currentPage, itemsPerPage, totalItems);
-  </script>
+    </script>
 
 @endsection
