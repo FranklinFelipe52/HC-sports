@@ -179,6 +179,14 @@
         },
       },
     });
+    function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        sleep(1000).then(() => {
+            var spanMP = document.querySelector('.text-3x3I0b');
+            spanMP.innerHTML = 'Efetuar Pagamento';
+            
+        });
   </script>
   <script type="module" src="{{asset('/frontend/dist/js/index.js')}}"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
