@@ -7,7 +7,7 @@
   {{-- @include('components.admin.menu_mobile', ['type' => 1]) --}}
 
   <!-- grid principal -->
-  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
+  <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-full w-full">
 
     <!-- Menu lateral -->
     <div class="border-t sm:border-t-0 order-2 sm:order-1 relative border-r border-gray-5">
@@ -19,9 +19,10 @@
       @if (Session('admin')->personification)
         @include('components.admin.personification_nav')
       @endif
-      <div class="px-6 h-full w-full grid lg:gap-8 grid-cols-1 lg:grid-cols-6 xl:grid-cols-5 grid-rows-2">
+      <div class="px-6 h-full w-full grid lg:gap-8 grid-cols-1 lg:grid-cols-6 xl:grid-cols-5 ">
        
-        <div class="row-span-1 col-span-4 flex flex-col overflow-hidden">
+        <div class="col-span-4 flex flex-col ">
+          <div class="h-screen">
           <header class="pt-8 pb-6">
             <h1 class="text-gray-1 text-lg font-bold font-poppins">
               Resumo
@@ -65,7 +66,49 @@
               </div>
             </div>
           </div>
+          <div class="pt-8 pb-6">
+            <h1 class="text-gray-1 text-lg font-bold font-poppins">
+              Distâncias
+          </h1>
+          </div>
+          <div style="height: 420px; max-width: 450px" class="snap-y w-full snap-mandatory overflow-y-scroll">
+            @foreach ($categorys as $category )
+            <div class="snap-start w-full border border-gray-5 rounded-lg mb-6">
+              <div class="flex flex-col gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                <div class="flex justify-between">
+                  <div class="">
+                    <p class="text-sm text-gray-1 font-semibold">
+                        {{$category->nome}}
+                    </p>
+                </div>
+                <div class="">
+                    <p class="font-normal break-all">
+                      <div
+                      class="{{$category->registrations_closed ? 'bg-red-500' : 'bg-feedback-green-1'}} py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                      <p class="text-white text-xs font-bold text-center">
+                        {{$category->registrations_closed ? 'Encerrado' : 'Liberado'}}
+                      </p>
+                  </div>
+                    </p>
+                </div>
+                </div>
+                
+                <div class="flex justify-center col-span-2 pt-4">
+                  <a href="{{route('toogle_closed_admin_get', ['category_id' => $category->id])}}"
+                    class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-blue-600 hover:ring-2 hover:ring-blue-600 hover:ring-opacity-50 bg-blue-600 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
+                    <p class="text-white text-sm font-bold font-poppins">
+                      {{$category->registrations_closed ? 'Liberar Inscrições' : 'Encerrar Inscrições'}}
+                    </p>
+                  </a>
+                </div>
+            </div>
+            </div>
+            @endforeach
+          </div>
         </div>
+
+        </div>
+
       </div>
     </div>
 

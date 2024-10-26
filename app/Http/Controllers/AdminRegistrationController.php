@@ -46,6 +46,23 @@ class AdminRegistrationController extends Controller
             return back();
         }
     }
+    public function  toogle_closed(Request $request, $category_id)
+    {
+        try{
+            $category = PrfCategorys::find($category_id);
+            if(!$category){
+                return back();
+            }
+            $category->registrations_closed = $category->registrations_closed ? 0 : 1;
+            $category->save();
+            session()->flash('success', 'Distância '.$category->nome.' alterada com sucesso!');
+            return back();
+            
+        } catch(Exception $e){
+            session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
+            return back();
+        }
+    }
 
     public function update_post(Request $request, $id)
     {

@@ -35,6 +35,9 @@ class PrfCheckoutController extends Controller
         if($registration->status_regitration_id == 1){
             return back();
         }
+        if($registration->prf_categorys->registrations_closed){
+            return back();
+        }
                 $registrationAUX = [
                     'id' => $registration->id,
                     'title' => $registration->prf_categorys->nome.' x '.preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $registration->prf_user->cpf),

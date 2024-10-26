@@ -82,6 +82,8 @@ Route::namespace('Admin')->group(function () {
     Route::post('/admin/registrations/{registration_id}/estornar', [PrfRegistrationController::class, 'estorno'])->middleware('PrfAuthAdmins')->name('register_estorno_admin_post');
     Route::post('/admin/registrations/{registration_id}/cancelar', [PrfRegistrationController::class, 'cancelamento'])->middleware('PrfAuthAdmins')->name('register_cancelar_admin_post');
 
+    Route::get('/admin/registrations/toogle_closed/{category_id}', [AdminRegistrationController::class, 'toogle_closed'])->middleware('PrfAuthAdmins')->name('toogle_closed_admin_get');
+
     Route::get('/admin/discounts', [PrfVauchersController::class, 'index'])->middleware('PrfAuthAdmins')->name('discounts_admin_get');
     Route::view('/admin/discounts/new', 'PRF.Admin.discounts_create')->middleware('PrfAuthAdmins')->name('discounts_new_admin_get');
     Route::post('/admin/discounts/{voucher_id}/delete', [PrfVauchersController::class, 'delete'])->middleware('PrfAuthAdmins')->name('discounts_delete_admin_get');

@@ -12,7 +12,7 @@ class PrfHomeController extends Controller
 {
     public function show(){
         try{
-            $categorys = PrfCategorys::all();
+            $categorys = PrfCategorys::orderBy('registrations_closed', 'asc')->get();
             $packages = PrfPackage::all();
           return  view('PRF.home', [
            'categorys' => $categorys,

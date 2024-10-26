@@ -104,9 +104,15 @@
                       </div>
                     </div>
                     <div>
+                      @if($category->registrations_closed)
+                                    <button disabled class="cursor-not-allowed bg-gray-400 rounded-md transition-all text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                                      Distância Esgotada
+                                    </button>
+                      @else
                         <a target="_self" target="_self" href="{{route('inscricao_register_get', ['category_id' => $category->id, 'package_id' => $package->id ])}}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                           Realizar Inscrição
                         </a>
+                      @endif
                     </div>
                   </div>
                 </div>

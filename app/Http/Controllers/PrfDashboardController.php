@@ -42,10 +42,12 @@ class PrfDashboardController extends Controller
                     'tshirts' => $tshirts,
                     'vaucher' => $registration->prf_vauchers,
                     'validated_by_admin' => $registration->validated_by_admin,
+                    'category' => $registration->prf_categorys,
                 ]);
             }
             return view('PRF.User.dashboard', [
                 'registrations' => $registrations,
+                
             ]);
         } catch (Exception $e){
             return dd($e);

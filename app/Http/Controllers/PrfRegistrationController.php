@@ -36,6 +36,9 @@ class PrfRegistrationController extends Controller
             if (!$category || !$package) {
                 return back();
             }
+            if($category->registrations_closed){
+                return back();
+            }
             return view('PRF.registration', [
                 'category' => $category,
                 'tshirts' => PrfTshirt::all(),
@@ -47,6 +50,7 @@ class PrfRegistrationController extends Controller
             return back();
         }
     }
+    
 
     public function store(PrfStoreRegistrationRequest $request, $category_id, $package_id)
     {

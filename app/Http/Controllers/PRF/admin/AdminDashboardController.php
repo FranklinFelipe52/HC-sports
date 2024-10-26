@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PrfPayments;
 use App\Models\PrfRegistration;
 use App\Models\PrfVauchers;
+use App\Models\PrfCategorys;
 
 class AdminDashboardController extends Controller
 {
@@ -16,6 +17,7 @@ class AdminDashboardController extends Controller
         $descontos = PrfVauchers::all();
         $vouchers = PrfVauchers::where('isCupom', 0)->get();
         $cupoms = PrfVauchers::where('isCupom', 1)->get();
+        $categorys = PrfCategorys::all();
 
         return view('PRF.Admin.dashboard',
             [
@@ -24,6 +26,7 @@ class AdminDashboardController extends Controller
                 'descontos' => $descontos,
                 'vouchers' => $vouchers,
                 'cupoms' => $cupoms,
+                'categorys' => $categorys
             ]
         );
     }

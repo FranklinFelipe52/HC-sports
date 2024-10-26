@@ -47,7 +47,7 @@
                     <p class="font-semibold text-gray-1 text-base">
                       {{ $registration['title'] }}
                     </p>
-                    @if (($registration['title'] == '5KM' || $registration['title'] == '10KM') && $registration['status_registration']->id == 3)
+                    @if (($registration['category']->registrations_closed) && $registration['status_registration']->id == 3)
                       <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
                         <p class="text-white text-xs font-bold text-center">
                           Esgotada
@@ -84,7 +84,7 @@
                   </div>
                   @if ($registration['status_registration']->id != 4 && $registration['status_registration']->id != 5)
                     <div class="">
-                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
+                      <p class="@if ($registration['status_registration']->id == 1) text-feedback-green-1 @elseif ($registration['status_registration']->id == 3 && $registration['category']->registrations_closed) text-brand-v1 @endif font-bold text-1.5xl w-full text-end">
                         @if (!$registration['validated_by_admin'])
                           <span class="text-sm">
                             R$
@@ -176,11 +176,22 @@
                     </div>
                   @endif
                   <div class="flex justify-end flex-wrap gap-4">
-                    @if ($registration['status_registration']->id != 1 && $registration['title'] != '5KM' && $registration['title'] != '10KM')
+                    @if ($registration['status_registration']->id != 1)
+                    @if($registration['category']->registrations_closed)
+                    <div class="">
+                      <a target="_self" href=" {{route('register_update_get', ['id'=>$registration['id'] ])}}" class="text-brand-prfA1 font-bold border-b-2 border-b-brand-prfA1 max-w-[220px]">
+                        Editar inscrição
+                      </a>
+                    </div>
+                    <div class="bg-gray-100 rounded-md text-sm font-poppins font-medium text-neutral-600 flex gap-4 items-center justify-center py-2.5 px-3.5 w-full sm:w-auto uppercase">
+                      Distância Esgotada
+                    </div>
+                    @else
                       <a target="_self" href="{{route('register_details', ['id'=> $registration['id']])}}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                         Realizar Pagamento
                         <img src="{{asset('/images/PRF/svg/credit-card.svg')}}" alt="">
                       </a>
+                      @endif
                     @endif
                   </div>
                   @if ($registration['price'] > 0 && $registration['status_registration']->id == 1 && !$registration['validated_by_admin'])
