@@ -34,7 +34,7 @@ class CaernValidAssociadoMailble extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Validação CAERN - Corrida da água 2024',
+            subject: 'Validação CAERN - Corrida da água 2025',
         );
     }
 

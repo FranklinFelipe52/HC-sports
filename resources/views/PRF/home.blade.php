@@ -45,7 +45,7 @@
               </p>
 
               <p>
-                A prova contará com distâncias de 12Km e 6Km e será realizada no dia 23 de março de 2024, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
+                A prova contará com distâncias de 12Km e 6Km e será realizada no dia 23 de março de 2025, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
               </p>
 
               <ul class="list-disc pl-4">
