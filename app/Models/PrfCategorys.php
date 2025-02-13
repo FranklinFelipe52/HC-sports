@@ -9,6 +9,8 @@ class PrfCategorys extends Model
 {
     use HasFactory;
 
+    protected $connection = 'mysql2';
+
     public function registrations()
     {
         return $this->hasMany(PrfRegistration::class);
@@ -16,5 +18,9 @@ class PrfCategorys extends Model
 
     public function prf_size_tshirts(){
         return $this->belongsToMany(PrfSizeTshirts::class, 'prf_size_tshirts_category', 'prf_categorys_id', 'prf_size_tshirts_id');
+    }
+    public function prf_package()
+    {
+        return $this->belongsTo(PrfPackage::class);
     }
 }

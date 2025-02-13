@@ -3,21 +3,45 @@
 @section('title', 'Corrida da Água')
 
 @section('content')
+{{-- modal itens inclusos --}}
+@foreach ($categorys_kids as $category)
+<div id="category-{{ $category->id }}" class="hidden">
+    <div class="fixed bottom-0 z-50 flex h-screen w-full items-center justify-center bg-blue-600 bg-opacity-50 overflow-hidden ">
+        <div class="mx-3 w-full max-w-[600px] rounded-lg bg-white p-6 relative">
+            <button data-modalId="category-{{ $category->id }}" data-action="close" class="rounded-full h-8 w-8 bg-white border border-gray-5 flex justify-center items-center absolute right-[-16px] top-[-16px] z-50">
+                <img src="/kids/inscricao/images/MDS/svg/close.svg" alt="">
+            </button>
 
+            <div class="mb-2 flex pb-4">
+                <div class="grow">
+                    <p class="font-bold text-neutral-900 mb-4">
+                        O Kit de Participação do Atleta será composto pelos seguintes itens e serviços:
+                    </p>
+
+                    {!! $category->descricao !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
   <div class="min-h-[100vh] flex flex-col justify-between">
     <header class="border-b border-gray-5 py-2">
       <div class="container mx-auto">
-        <div class="flex justify-between">
+        <div class="flex gap-3 flex-wrap justify-center md:justify-between">
           <a href="/">
             <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="">
           </a>
-          <div class="flex gap-4">
-            <div class="flex items-center justify-center">
+          
+            <div class="flex items-center flex-wrap justify-center w-full md:w-auto gap-3">
+              <a href="kids/inscricao/login" style="text-align: center;" class="font-semibold border border-blue-500 rounded-md px-3.5 py-2 text-blue-500 hover:text-white hover:bg-blue-500 transition-all">
+                Acesse seu cadastro KIDS
+              </a>
               <a href="/login" style="text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
-                Acesse seu cadastro
+                Acesse seu cadastro GERAL
               </a>
             </div>
-          </div>
+          
         </div>
       </div>
     </header>
@@ -88,8 +112,12 @@
           <h1 class="text-xl font-bold text-gray-1 mb-6">
             Opções de inscrição
           </h1>
-          <div class="space-y-4">
-            @foreach ($categorys->reverse() as $category)
+
+          <h2 class="text-lg font-bold text-brand-prfA1 mb-2">
+            Geral
+          </h2>
+          <div class="space-y-4 mb-3">
+            @foreach ($categorys_geral->reverse() as $category)
               @foreach ($packages as $package)
                 <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
                   <div class="flex flex-wrap justify-between">
@@ -129,6 +157,56 @@
               @endforeach
             @endforeach
           </div>
+          <h2 class="text-lg font-bold text-brand-prfA1 mb-2">
+            Kids
+          </h2>
+
+          <div class="space-y-4">
+            @foreach ($categorys_kids as $category)
+                <div
+                    class="border border-gray-5 px-3.5 py-4 rounded-lg hover:border-gray-3 transition-all">
+                    <div class="flex flex-col items-start sm:flex-row sm:justify-between">
+                        <div class="mb-3.5 sm:mb-2 order-2 sm:order-1">
+                            <p class="text-gray-1 font-bold text-lg">
+                                {{ $category->nome }} 
+                            </p>
+                        </div>
+                        <div class="order-1 sm:order-2">
+                            <p class="text-orange-600 text-1.5xl w-full text-end font-bold">
+                                <span class="text-sm">
+                                    R$
+                                </span>
+                                {{ number_format($category->price, 2, ',', '.') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3.5">
+                        <p class="font-normal text-sm text-neutral-600">
+                            Itens inclusos
+                        </p>
+                        <p class="text-gray-1 text-sm list__options">
+                            {!! substr($category->resumo_descricao, 0, 150) !!}...
+                            <button class="text-light-blue-600 lowercase underline" data-modalId="category-{{ $category->id }}" data-action="open">ver mais</button>
+                        </p>
+                    </div>
+                    <div class="flex justify-start">
+                        @if($category->registrations_closed)
+                        <button disabled class="cursor-not-allowed bg-gray-3 rounded-md transition-all text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                            Distância Esgotada
+                        </button>
+                        @else
+                         
+                            <a href="/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
+                                class="bg-orange-600 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-orange-600 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                                Realizar Inscrição
+                            </a>
+                        
+                        @endif
+                        
+                    </div>
+                </div>
+            @endforeach
+        </div>
         </div>
       </div>
     </main>
