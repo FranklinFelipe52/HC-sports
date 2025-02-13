@@ -19,7 +19,7 @@ class PrfHomeController extends Controller
             $categorys_kids =$categorys->setConnection('mysql2')->with('prf_package')->get();
 
             $packages = PrfPackage::all();
-            dd(URL::to('/'));
+            
           return  view('PRF.home', [
            'categorys_geral' => $categorys_geral,
            'categorys_kids' => $categorys_kids,
