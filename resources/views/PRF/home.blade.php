@@ -122,12 +122,12 @@
                 <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
                   <div class="flex flex-wrap justify-between">
                     <div class="mb-3.5">
-                      <p class="font-semibold text-gray-1 text-base">
-                        {{ $package->nome }} {{ $category->nome }}
+                      <p class="text-gray-1 font-bold text-lg">
+                        {{ $category->nome }}
                       </p>
                     </div>
                     <div class="">
-                      <p class="text-brand-v1 text-1.5xl w-full text-end">
+                      <p class="text-brand-prfA1 text-1.5xl w-full text-end font-bold">
                         <span class="text-sm">
                           R$
                         </span>
@@ -135,7 +135,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="flex flex-wrap justify-between items-end gap-4">
+                  <div class="flex flex-col gap-4">
                     <div class="">
                       <p class="font-normal text-xs text-gray-1 mb-3.5">
                         Itens inclusos
@@ -145,11 +145,12 @@
                       </div>
                     </div>
                     <div>
-                      {{--<a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                        Inscrições Encerradas
-                      </a>--}}
-                      <a  class="bg-gray-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                      {{--<a  class="bg-gray-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                         INSCRIÇÕES ENCERRADAS
+                      </a>--}}
+                     
+                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                        Realizar inscrição
                       </a>
                     </div>
                   </div>
@@ -172,7 +173,7 @@
                             </p>
                         </div>
                         <div class="order-1 sm:order-2">
-                            <p class="text-orange-600 text-1.5xl w-full text-end font-bold">
+                            <p class="text-blue-500 text-1.5xl w-full text-end font-bold">
                                 <span class="text-sm">
                                     R$
                                 </span>
@@ -197,7 +198,7 @@
                         @else
                          
                             <a href="/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
-                                class="bg-orange-600 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-orange-600 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                                class="bg-blue-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-blue-500 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                                 Realizar Inscrição
                             </a>
                         

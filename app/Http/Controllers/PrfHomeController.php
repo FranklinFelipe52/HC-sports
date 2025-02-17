@@ -14,10 +14,9 @@ class PrfHomeController extends Controller
     public function show(){
         try{
 
-            $categorys = new PrfCategorys;
-            $categorys_geral = $categorys->all();
-            $categorys_kids =$categorys->setConnection('mysql2')->with('prf_package')->get();
-
+            $categorys_geral = PrfCategorys::on('mysql')->get();
+            $categorys_kids = PrfCategorys::on('mysql2')->with('prf_package')->get();
+           
             $packages = PrfPackage::all();
             
           return  view('PRF.home', [

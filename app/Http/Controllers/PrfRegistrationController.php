@@ -33,7 +33,6 @@ class PrfRegistrationController extends Controller
     public function create(Request $request, $category_id, $package_id)
     {
         try {
-            return back();
             $category = PrfCategorys::find($category_id);
             $package = PrfPackage::find($package_id);
 
@@ -58,7 +57,6 @@ class PrfRegistrationController extends Controller
     public function store(PrfStoreRegistrationRequest $request, $category_id, $package_id)
     {
         try {
-            return back();
             $category = PrfCategorys::find($category_id);
             $package = PrfPackage::find($package_id);
 
