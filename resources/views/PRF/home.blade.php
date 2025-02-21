@@ -3,28 +3,6 @@
 @section('title', 'Corrida da Água')
 
 @section('content')
-{{-- modal itens inclusos --}}
-@foreach ($categorys_kids as $category)
-<div id="category-{{ $category->id }}" class="hidden">
-    <div class="fixed bottom-0 z-50 flex h-screen w-full items-center justify-center bg-blue-600 bg-opacity-50 overflow-hidden ">
-        <div class="mx-3 w-full max-w-[600px] rounded-lg bg-white p-6 relative">
-            <button data-modalId="category-{{ $category->id }}" data-action="close" class="rounded-full h-8 w-8 bg-white border border-gray-5 flex justify-center items-center absolute right-[-16px] top-[-16px] z-50">
-                <img src="/kids/inscricao/images/MDS/svg/close.svg" alt="">
-            </button>
-
-            <div class="mb-2 flex pb-4">
-                <div class="grow">
-                    <p class="font-bold text-neutral-900 mb-4">
-                        O Kit de Participação do Atleta será composto pelos seguintes itens e serviços:
-                    </p>
-
-                    {!! $category->descricao !!}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
   <div class="min-h-[100vh] flex flex-col justify-between">
     <header class="border-b border-gray-5 py-2">
       <div class="container mx-auto">
@@ -185,8 +163,7 @@
                             Itens inclusos
                         </p>
                         <p class="text-gray-1 text-xs font-bold list__options">
-                            {!! substr($category->resumo_descricao, 0, 150) !!}...
-                            <button class="text-light-blue-600 lowercase underline" data-modalId="category-{{ $category->id }}" data-action="open">ver mais</button>
+                          {!! $category->descricao !!}
                         </p>
                     </div>
                     <div class="flex justify-start">
