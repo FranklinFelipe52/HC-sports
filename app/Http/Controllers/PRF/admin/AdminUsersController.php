@@ -88,7 +88,7 @@ class AdminUsersController extends Controller
     {
         try {
             $user = PrfUser::find($id);
-            $admin = PrfUser::find($request->session()->get('admin')->id);
+            $admin = PrfAdmin::find($request->session()->get('admin')->id);
 
             $user->cpf = preg_replace('/[^0-9]/is', '', $request->cpf);
 
