@@ -35,7 +35,7 @@ class PrfCheckoutController extends Controller
         }
                 $registrationAUX = [
                     'id' => $registration->id,
-                    'title' => $registration->prf_categorys->nome.' x '.preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $registration->prf_user->cpf),
+                    'title' => "CA x ".$registration->prf_categorys->nome.' x '.preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $registration->prf_user->cpf),
                     'descricao' => $registration->prf_package->descricao,
                     'price' => ValorTotal::ValorComDescontos($user, $registration),
                     'status_registration' => $registration->status_regitration,
