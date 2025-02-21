@@ -159,12 +159,14 @@
                         </div>
                     </div>
                     <div class="mb-3.5">
-                        <p class="font-normal text-sm text-neutral-600">
-                            Itens inclusos
+                      <div class="">
+                        <p class="font-normal text-xs text-gray-1 mb-3.5">
+                          Itens inclusos
                         </p>
-                        <p class="text-gray-1 text-xs font-bold list__options">
+                        <div class="text-gray-1 text-xs font-bold list__options">
                           {!! $category->descricao !!}
-                        </p>
+                        </div>
+                      </div>
                     </div>
                     <div class="flex justify-start">
                         @if($category->registrations_closed)
