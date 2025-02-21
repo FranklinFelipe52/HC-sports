@@ -161,10 +161,6 @@
               @endforeach
             @endforeach
           </div>
-          <h2 class="text-lg font-bold text-brand-prfA1 mb-2">
-            Kids
-          </h2>
-
           <div class="space-y-4">
             @foreach ($categorys_kids as $category)
                 <div
