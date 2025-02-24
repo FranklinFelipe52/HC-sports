@@ -12,7 +12,7 @@
           </a>
           
             <div class="flex items-center flex-wrap justify-center w-full md:w-auto gap-3">
-              <a href="kids/inscricao/login" style="text-align: center;" class="font-semibold border border-blue-500 rounded-md px-3.5 py-2 text-blue-500 hover:text-white hover:bg-blue-500 transition-all">
+              <a href="/kids/inscricao/login" style="text-align: center;" class="font-semibold border border-blue-500 rounded-md px-3.5 py-2 text-blue-500 hover:text-white hover:bg-blue-500 transition-all">
                 Acesse seu cadastro KIDS
               </a>
               <a href="/inscricao/login" style="text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
