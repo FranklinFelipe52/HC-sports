@@ -175,7 +175,7 @@
                         </button>
                         @else
                          
-                            <a href="/inscricao/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
+                            <a href="/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
                                 class="bg-blue-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-blue-500 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                                 Realizar Inscrição
                             </a>
