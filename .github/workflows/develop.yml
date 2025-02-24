@@ -17,5 +17,5 @@ jobs:
         server: ${{ secrets.ftp_host_caern }}
         username: ${{ secrets.ftp_username_caern }}
         password: ${{ secrets.ftp_password_caern }}
-        server-dir: /
+        server-dir: /sistema/
         
