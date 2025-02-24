@@ -28,17 +28,17 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/" class="text-xs text-gray-1 block hover:underline">
                   Dashboard
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div>
-                <a href="/checkout/{{$registration->id}}" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/checkout/{{$registration->id}}" class="text-xs text-gray-1 block hover:underline">
                   Método de pagamento
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 Dados do cartão
               </div>
@@ -68,8 +68,8 @@
                   
                   <input id="numberCard" name="numberCard" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" placeholder="0000 0000 0000 0000" />
                   <div class="absolute right-4 top-4 bg-white pl-2">
-                    <img src="/images/svg/credit-card-gray.svg" class="group-[.error]:hidden" alt="">
-                    <img src="/images/svg/credit-card-error.svg" class="hidden group-[.error]:block" alt="">
+                    <img src="/inscricao/images/svg/credit-card-gray.svg" class="group-[.error]:hidden" alt="">
+                    <img src="/inscricao/images/svg/credit-card-error.svg" class="hidden group-[.error]:block" alt="">
                   </div>
                 </div>
                 <p class="text-input-error mt-2 text-sm hidden group-[.error]:block">
@@ -83,7 +83,7 @@
                 <div class="relative max-w-[330px]">
                   <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" id="nome" name="nome" placeholder="Digite o nome que está no cartão" />
                   <div class="absolute right-2 top-2 bg-white pl-2">
-                    <img src="/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
+                    <img src="/inscricao/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
                   </div>
                 </div>
                 <p class="text-input-error mt-2 text-sm hidden group-[.error]:block">
@@ -97,7 +97,7 @@
                 <div class="relative max-w-[160px]">
                   <input id="expMonth" name="expMonth" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" placeholder="00" />
                   <div class="absolute right-2 top-2 bg-white pl-2">
-                    <img src="/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
+                    <img src="/inscricao/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
                   </div>
                 </div>
                 <p class="text-input-error mt-2 text-sm hidden group-[.error]:block">
@@ -112,7 +112,7 @@
                 <div class="relative max-w-[160px]">
                   <input id="expYear" name="expYear" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" placeholder="0000" />
                   <div class="absolute right-2 top-2 bg-white pl-2">
-                    <img src="/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
+                    <img src="/inscricao/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
                   </div>
                 </div>
                 <p class="text-input-error mt-2 text-sm hidden group-[.error]:block">
@@ -128,7 +128,7 @@
                 <div class="relative max-w-[160px]">
                   <input id="cvv" name="cvv" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 group-[.error]:border-input-error group-[.error]:outline-input-error text-gray-1 placeholder:text-gray-3 transition" type="text" placeholder="000" />
                   <div class="absolute right-2 top-2 bg-white pl-2">
-                    <img src="/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
+                    <img src="/inscricao/images/svg/input-error.svg" class="hidden group-[.error]:block" alt="">
                   </div>
                 </div>
                 <p class="text-input-error mt-2 text-sm hidden group-[.error]:block">
@@ -147,7 +147,7 @@
                     <option value="2">2x de R$ 80,00</option>
                   </select>
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                    <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@
             </div>
             <div class="flex flex-wrap-reverse gap-y-6 justify-between">
               <button id="submitCheckout" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
-                <img src="/images/svg/credit-card-outline.svg" alt="">
+                <img src="/inscricao/images/svg/credit-card-outline.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Efetuar pagamento
                 </p>

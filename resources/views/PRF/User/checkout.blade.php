@@ -47,11 +47,11 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/dashboard" class="text-xs text-gray-1 block hover:underline">
+              <a href="/inscricao/dashboard" class="text-xs text-gray-1 block hover:underline">
                 Dashboard
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
               Pagamento
             </div>
@@ -148,7 +148,7 @@
           </div>
           <div style="align-items: top" class="flex flex-wrap justify-between">
             <div class="mb-4">
-              <a href="/registration/update/{{ $registration['id'] }}" class="text-brand-prfA1 font-bold border-b-2 border-b-brand-prfA1 max-w-[220px]">
+              <a href="/inscricao/registration/update/{{ $registration['id'] }}" class="text-brand-prfA1 font-bold border-b-2 border-b-brand-prfA1 max-w-[220px]">
                 Editar inscrição
               </a>
             </div>
@@ -180,7 +180,7 @@
       },
     });
   </script>
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="/inscricao/frontend/dist/js/index.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {

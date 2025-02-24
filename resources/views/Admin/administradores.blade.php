@@ -28,10 +28,10 @@
           </h1>
           @if (Session('admin')->rule->id == 1)
             <div class="flex items-center justify-center sm:justify-start gap-4 ">
-              <a role="button" href="/admin/logs" class="ml-auto px-4 py-2 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                <img src="/images/svg/logs.svg" alt="">
+              <a role="button" href="/inscricao/admin/logs" class="ml-auto px-4 py-2 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <img src="/inscricao/images/svg/logs.svg" alt="">
               </a>
-              <a role="button" href="/admin/administradores/create" class="ml-auto px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
+              <a role="button" href="/inscricao/admin/administradores/create" class="ml-auto px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-brand-a1 transition">
                 <p class="text-white text-sm font-bold font-poppins">
                   Cadastrar Administrador
                 </p>
@@ -50,7 +50,7 @@
 
                 <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando cpf ou nome" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="/inscricao/images/svg/search.svg" alt="">
                 </button>
 
               </form>
@@ -64,7 +64,7 @@
                     @endforeach
                   </select>
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                    <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                   </div>
 
                 </form>
@@ -129,11 +129,11 @@
                     <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-2">
                       {{--
                         <a href="#" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                          <img src="/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
+                          <img src="/inscricao/images/svg/pencil-outline-disabled.svg" class="h-full w-full object-cover" alt="">
                         </a>
                     --}}
-                      <a href="/admin/administradores/{{ $administrador->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                        <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                      <a href="/inscricao/admin/administradores/{{ $administrador->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                        <img src="/inscricao/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
                       </a>
                     </div>
                   </div>
@@ -153,13 +153,13 @@
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
           </div>

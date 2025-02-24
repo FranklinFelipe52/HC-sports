@@ -28,7 +28,7 @@
                     Inscrição
                   </a>
                 </div>
-                <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
                 <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
                   Alterar inscrição
                 </div>
@@ -62,7 +62,7 @@
 
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -77,7 +77,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -95,8 +95,8 @@
                             </div>
                             <div class="flex flex-col gap-4 md:flex-row">
                               <div>
-                                <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                                  <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
+                                <a href="/inscricao/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                                  <img src="/inscricao/images/PRF/Camiseta-PRF-2023.png" class="h-[100px]" alt="">
                                 </a>
                               </div>
                               <div class="">

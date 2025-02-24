@@ -28,7 +28,7 @@
                                 <p>{{Count($modalidade['users'])}} participantes</p>
                             </div>
                             <div class="pb-3">
-                            <a class="btn  btn-success" href="/admin/modalidade/{{$modalidade['modalidade']->id}}" role="button">Edit</a>
+                            <a class="btn  btn-success" href="/inscricao/admin/modalidade/{{$modalidade['modalidade']->id}}" role="button">Edit</a>
                             </div>
                         </div>
                     </div>

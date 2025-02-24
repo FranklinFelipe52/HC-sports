@@ -24,13 +24,13 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/admin/users" class="text-xs text-gray-1 block hover:underline">
                   Atletas
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div>
-                <a href="/admin/users/{{ $atleta->id }}" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/admin/users/{{ $atleta->id }}" class="text-xs text-gray-1 block hover:underline">
                   @if ($atleta->nome_completo)
                     {{ $atleta->nome_completo }}
                   @else
@@ -38,7 +38,7 @@
                   @endif
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
                 Atualização de dados
               </div>
@@ -54,7 +54,7 @@
           <div class="md:col-span-4 lg:col-span-3 mb-6">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
@@ -74,7 +74,7 @@
                   Editar perfil
                 </p>
               </div>
-              <a href="/admin/registrations/{{ $atleta->registrations[0]['id'] }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
+              <a href="/inscricao/admin/registrations/{{ $atleta->registrations[0]['id'] }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -82,7 +82,7 @@
                   Editar inscrição
                 </p>
               </a>
-              {{-- <a href="/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
+              {{-- <a href="/inscricao/admin/users/password_reset/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -91,7 +91,7 @@
                 </p>
               </a> --}}
               {{-- @if ($atleta->registered)
-                <a href="/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
+                <a href="/inscricao/admin/users/password_update/{{ $atleta->id }}" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 15V17M6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V13C20 12.4696 19.7893 11.9609 19.4142 11.5858C19.0391 11.2107 18.5304 11 18 11H6C5.46957 11 4.96086 11.2107 4.58579 11.5858C4.21071 11.9609 4 12.4696 4 13V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21ZM16 11V7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7V11H16Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
@@ -148,7 +148,7 @@
                       <div class="relative">
                         <input value="{{ date('d/m/Y', strtotime($atleta->data_nasc)) }}" required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="atualizar_data_nasc_field" name="data_nasc" placeholder="DD/MM/AAAA" />
                         <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                          <img src="/images/PRF/svg/calendar.svg" alt="" />
+                          <img src="/inscricao/images/PRF/svg/calendar.svg" alt="" />
                         </div>
                       </div>
                       @error('data_nasc')
@@ -165,7 +165,7 @@
                           <option value="F" @if ($atleta->sexo == 'F') selected @endif>Feminino</option>
                         </select>
                         <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                          <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
                         </div>
                       </div>
                     </div>
@@ -188,7 +188,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -205,7 +205,7 @@
                           <option value="1" @if ($atleta->is_servidor == 1) selected @endif>Sim</option>
                         </select>
                         <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                          <img src="/images/PRF/svg/chevron-down.svg" alt="" />
+                          <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
                         </div>
                       </div>
                     </div>

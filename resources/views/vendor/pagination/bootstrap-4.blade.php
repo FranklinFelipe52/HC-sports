@@ -5,13 +5,13 @@
       @if ($paginator->onFirstPage())
         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
           <span class="page-link" aria-hidden="true">
-            <img src="/images/svg/chevron-left.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left.svg" alt="">
           </span>
         </li>
       @else
         <li class="page-item">
           <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
-            <img src="/images/svg/chevron-left.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left.svg" alt="">
           </a>
         </li>
       @endif
@@ -39,13 +39,13 @@
       @if ($paginator->hasMorePages())
         <li class="page-item">
           <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
-            <img src="/images/svg/chevron-right.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-right.svg" alt="">
           </a>
         </li>
       @else
         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
           <span class="page-link" aria-hidden="true">
-            <img src="/images/svg/chevron-right.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-right.svg" alt="">
           </span>
         </li>
       @endif

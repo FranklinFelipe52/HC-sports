@@ -27,11 +27,11 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/profile" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/profile" class="text-xs text-gray-1 block hover:underline">
                   Perfil
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 Alterar Perfil
               </div>
@@ -47,7 +47,7 @@
           <div class="md:col-span-3 lg:col-span-2">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
 
             </div>
@@ -84,7 +84,7 @@
                   <div class="relative w-full max-w-[200px]">
                     <input disabled class="w-full max-w-[200px] px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field"  value="{{Session('user')->data_nasc}}" />
                     <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                      <img src="/images/svg/calendar.svg" alt="" />
+                      <img src="/inscricao/images/svg/calendar.svg" alt="" />
                     </div>
                   </div>
                 </div>

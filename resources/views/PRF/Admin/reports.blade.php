@@ -30,15 +30,15 @@
           <div>
             <h2 class="text-lg text-gray-1 font-poppins font-semibold">Vouchers</h2>
             <div class="flex flex-col gap-2">
-              <a href="/admin/all_vouchers_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
+              <a href="/inscricao/admin/all_vouchers_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/inscricao/images/svg/download.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Todos os vouchers
                 </p>
               </a>
 
-              <a href="/admin/vouchers_with_user" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
+              <a href="/inscricao/admin/vouchers_with_user" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/inscricao/images/svg/download.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Vouchers usados
                 </p>
@@ -49,8 +49,8 @@
           <div>
             <h2 class="text-lg text-gray-1 font-poppins font-semibold">Usuários</h2>
             <div class="flex flex-col gap-2">
-              <a href="/admin/all_users_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
+              <a href="/inscricao/admin/all_users_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/inscricao/images/svg/download.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Todos os usuários
                 </p>
@@ -62,8 +62,8 @@
           <div>
             <h2 class="text-lg text-gray-1 font-poppins font-semibold">Inscrições</h2>
             <div class="flex flex-col gap-2">
-              <a href="/admin/all_confirmed_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/images/svg/download.svg" alt="">
+              <a href="/inscricao/admin/all_confirmed_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/inscricao/images/svg/download.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
                   Inscrições confirmadas
                 </p>
@@ -71,15 +71,15 @@
             </div>
           </div>
 
-          {{-- <a href="/admin/all_confirm_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <img src="/images/svg/download.svg" alt="">
+          {{-- <a href="/inscricao/admin/all_confirm_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+            <img src="/inscricao/images/svg/download.svg" alt="">
             <p class="text-white text-sm font-bold font-poppins">
               Inscrições confirmadas
             </p>
           </a>
 
-          <a href="/admin/all_paid_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <img src="/images/svg/download.svg" alt="">
+          <a href="/inscricao/admin/all_paid_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+            <img src="/inscricao/images/svg/download.svg" alt="">
             <p class="text-white text-sm font-bold font-poppins">
               Inscrições pagas
             </p>
@@ -90,7 +90,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="/inscricao/frontend/dist/js/index.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

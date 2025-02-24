@@ -37,10 +37,10 @@
               @foreach ($atualizacoes as $atualizacao)
                 <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
                   <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                    <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                    <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                   </div>
                   <div class="grow space-y-1">
-                    <a href="/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
+                    <a href="/inscricao/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
                     <p class="text-xs text-gray-1 font-normal">{{ $atualizacao->status }}</p>
                   </div>
                   <div class="flex gap-2.5">

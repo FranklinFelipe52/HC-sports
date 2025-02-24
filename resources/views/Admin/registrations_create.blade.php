@@ -25,11 +25,11 @@
         <header class="container pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/admin/dashboard" class="text-xs text-gray-1 block hover:underline">
+              <a href="/inscricao/admin/dashboard" class="text-xs text-gray-1 block hover:underline">
                 Dashboard
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Adicionar Atleta
             </div>
@@ -54,7 +54,7 @@
 
                       @error('cpf')
                         <div class="absolute bg-white top-[50%] right-3">
-                          <img src="/images/svg/input-error.svg" alt="">
+                          <img src="/inscricao/images/svg/input-error.svg" alt="">
                         </div>
                       @enderror
                     </div>
@@ -72,7 +72,7 @@
                     {{-- <input data-preload="email" class="hidden" type="email" id="email_adicionar_atleta_form" name="email" value="{{ old('email') }}" /> --}}
                     @error('email')
                       <div class="absolute bg-white top-[50%] right-3">
-                        <img src="/images/svg/input-error.svg" alt="">
+                        <img src="/inscricao/images/svg/input-error.svg" alt="">
                       </div>
                     @enderror
                   </div>
@@ -94,7 +94,7 @@
                     @endforeach
                   </select>
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                    <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@
                   <input data-preload="data_nasc-visible" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-a1 focus:outline-brand-a1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" />
                   {{-- <input data-preload="data_nasc" class="hidden" type="date" id="cadastro_nascimento_field" value="{{ old('date_nasc') }}" name="date_nasc" /> --}}
                   <div class="pointer-events-none absolute top-4 right-4 bg-white">
-                    <img src="/images/svg/calendar.svg" alt="" />
+                    <img src="/inscricao/images/svg/calendar.svg" alt="" />
                   </div>
                 </div>
                 @error('date_nasc')
@@ -150,7 +150,7 @@
                   @endif
 
                   <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <img src="/images/svg/chevron-down.svg" alt="" />
+                    <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@
                       @endforeach
                     </select> --}}
                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      <img src="/images/svg/chevron-down.svg" alt="" />
+                      <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                     </div>
                   </div>
                   @error('uf')
@@ -215,7 +215,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -232,7 +232,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -261,7 +261,7 @@
                       @endforeach
                     </select>
                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      <img src="/images/svg/chevron-down.svg" alt="" />
+                      <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                     </div>
                   </div>
                 </div>
@@ -288,7 +288,7 @@
                         @endforeach
                       </select>
                       <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                        <img src="/images/svg/chevron-down.svg" alt="" />
+                        <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -310,7 +310,7 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="/inscricao/js/app.js"></script>
   <script type="module">
     new Cleave('#cpf_adicionar_atleta_form', {
       blocks: [3, 3, 3, 2],

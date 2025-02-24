@@ -23,7 +23,7 @@
             Códigos e descontos
           </h1>
           <div class="flex items-center justify-center sm:justify-start gap-4 ">
-            <a role="button" href="/admin/discounts/new" class="ml-auto px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+            <a role="button" href="/inscricao/admin/discounts/new" class="ml-auto px-4 py-2.5 w-fit rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
               <p class="text-white text-sm font-bold font-poppins">
                 Novo
               </p>
@@ -41,7 +41,7 @@
 
                 <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um código ou descrição" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="/inscricao/images/svg/search.svg" alt="">
                 </button>
 
               </form>
@@ -138,7 +138,7 @@
                         <form action="/admin/discounts/{{ $voucher_or_cupom->id }}/delete" method="POST">
                           @csrf
                           <button class="">
-                            <img src="/images/svg/trash.svg" class="h-full w-full object-cover" alt="">
+                            <img src="/inscricao/images/svg/trash.svg" class="h-full w-full object-cover" alt="">
                           </button>
                         </form>
                       </div>
@@ -191,13 +191,13 @@
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
           </div>

@@ -22,11 +22,11 @@
         <header class="pt-8 pb-6 space-y-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2">
             <div>
-              <a href="/admin/discounts" class="text-xs text-gray-1 block hover:underline">
+              <a href="/inscricao/admin/discounts" class="text-xs text-gray-1 block hover:underline">
                 Códigos e descontodos
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
               Cadastro de código
             </div>
@@ -49,8 +49,8 @@
                   <option value="criar_voucher">Voucher</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/PRF/svg/chevron-down.svg" class="group-[.disabled]:hidden" alt="" />
-                  <img src="/images/svg/chevron-down-gray.svg" class="hidden group-[.disabled]:block" alt="" />
+                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" class="group-[.disabled]:hidden" alt="" />
+                  <img src="/inscricao/images/svg/chevron-down-gray.svg" class="hidden group-[.disabled]:block" alt="" />
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@
                   <div class="relative">
                     <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 text-sm placeholder:text-gray-3 transition" type="date" id="validade_cupom_field" name="validade_cupom" placeholder="DD/MM/AAAA" />
                     <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                      <img src="/images/PRF/svg/calendar.svg" alt="" />
+                      <img src="/inscricao/images/PRF/svg/calendar.svg" alt="" />
                     </div>
                   </div>
                 </div>
@@ -120,7 +120,7 @@
                   <div class="relative">
                     <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_voucher_field" name="validade_voucher" placeholder="DD/MM/AAAA" />
                     <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                      <img src="/images/PRF/svg/calendar.svg" alt="" />
+                      <img src="/inscricao/images/PRF/svg/calendar.svg" alt="" />
                     </div>
                   </div>
                 </div>

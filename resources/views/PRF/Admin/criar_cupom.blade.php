@@ -8,8 +8,8 @@
     <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/admin/dashboard">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+          <a href="/inscricao/admin/dashboard">
+            <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -26,7 +26,7 @@
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6 hidden lg:block">
           <a href="#gerar_cupom_form" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/images/svg/chevron-left-fill.svg" alt="" />
+            <img src="/inscricao/images/svg/chevron-left-fill.svg" alt="" />
           </a>
         </div>
       </div>
@@ -67,7 +67,7 @@
               <div class="relative">
                 <input class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="date" id="validade_cupom_field" name="validade" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                  <img src="/images/PRF/svg/calendar.svg" alt="" />
+                  <img src="/inscricao/images/PRF/svg/calendar.svg" alt="" />
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="/inscricao/js/app.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>

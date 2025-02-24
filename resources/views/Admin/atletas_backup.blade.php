@@ -87,7 +87,7 @@
                                {{$atleta->nome_completo}} 
                             @endif</td>
                             <td>{{$atleta->federative_unit_name}}</td>
-                            <td><a class="btn btn-primary" href="/admin/users/{{$atleta->id}}" role="button">Abrir</a></td>
+                            <td><a class="btn btn-primary" href="/inscricao/admin/users/{{$atleta->id}}" role="button">Abrir</a></td>
                         </tr>
                         @endforeach
 

@@ -35,9 +35,9 @@
                             <div class="d-flex gap-3 pt-3">
                                 <a class="btn  btn-outline-secondary" href="#" role="button">Detalhes</a>
                                 @if ($registration->status_regitration->id == 1)
-                                <a class="btn  btn-outline-secondary" href="/registration/proof/{{$registration->id}}" role="button">Ver comprovante</a>
+                                <a class="btn  btn-outline-secondary" href="/inscricao/registration/proof/{{$registration->id}}" role="button">Ver comprovante</a>
                                 @elseif ($registration->status_regitration->id == 3)
-                                <a class="btn  btn-outline-secondary" href="/registration/proof/{{$registration->id}}" role="button">Efetuar pagamento</a>
+                                <a class="btn  btn-outline-secondary" href="/inscricao/registration/proof/{{$registration->id}}" role="button">Efetuar pagamento</a>
                                 @endif
 
                             </div>

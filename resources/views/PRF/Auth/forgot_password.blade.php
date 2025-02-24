@@ -8,8 +8,8 @@
     <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/PRF/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/login">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+          <a href="/inscricao/login">
+            <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -26,7 +26,7 @@
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6">
           <div class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/images/svg/chevron-left-fill.svg" alt="" />
+            <img src="/inscricao/images/svg/chevron-left-fill.svg" alt="" />
           </div>
         </div>
       </div>
@@ -66,7 +66,7 @@
   </div>
 
   <!-- js -->
-  <script type="module" src="/frontend/dist/js/index.js"></script>
+  <script type="module" src="/inscricao/frontend/dist/js/index.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {

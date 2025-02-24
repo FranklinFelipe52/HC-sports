@@ -33,11 +33,11 @@
                 <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
+                            <a class="nav-link" href="/inscricao/user/dashboard/my-registrations">Minhas incrições</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
+                            <a class="nav-link" href="/inscricao/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -55,11 +55,11 @@
         <div class="row">
             <div class="col-3 d-flex flex-column align-items-center gap-3 card p-4">
                 <h3>Pagar com cartão de credito</h3>
-                <a class="btn btn-primary" href="/card/{{$registration->id}}" role="button">Pagar</a>
+                <a class="btn btn-primary" href="/inscricao/card/{{$registration->id}}" role="button">Pagar</a>
             </div>
             <div class="col-3 d-flex flex-column align-items-center gap-3 card p-4">
                 <h3>Pagar com pix</h3>
-                <a class="btn btn-primary" href="/pix/{{$registration->id}}" role="button">Pagar</a>
+                <a class="btn btn-primary" href="/inscricao/pix/{{$registration->id}}" role="button">Pagar</a>
             </div>
         </div>
         </div>

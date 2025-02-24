@@ -114,7 +114,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:26px;padding-left:16px;padding-right:16px;padding-top:40px;width:100%;">
 																<div class="alignment" align="center" style="line-height:10px">
-																	<div style="max-width: 180px;"><a href="https://meiadosol.com.br/" target="_blank" style="outline:none" tabindex="-1"><img src="https://inscricao.corridadaagua.com.br/frontend/dist/email/images/logo.png" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="Logo - Meia Maratona do Sol" title="Logo - Meia Maratona do Sol"></a></div>
+																	<div style="max-width: 180px;"><a href="https://meiadosol.com.br/" target="_blank" style="outline:none" tabindex="-1"><img src="https://corridadaagua.com.br/inscricao/frontend/dist/email/images/logo.png" style="display: block; height: auto; border: 0; width: 100%;" width="180" alt="Logo - Meia Maratona do Sol" title="Logo - Meia Maratona do Sol"></a></div>
 																</div>
 															</td>
 														</tr>
@@ -180,7 +180,7 @@
 														<tr>
 															<td class="pad" style="text-align:center;">
 																<div class="alignment" align="center"><!--[if mso]>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://inscricao.corridadaagua.com.br/" style="height:48px;width:188px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#3f8aaf">
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://corridadaagua.com.br/inscricao/" style="height:48px;width:188px;v-text-anchor:middle;" arcsize="9%" stroke="false" fillcolor="#3f8aaf">
 <w:anchorlock/>
 <v:textbox inset="0px,0px,0px,0px">
 <center style="color:#f0f2f3; font-family:Arial, sans-serif; font-size:14px">

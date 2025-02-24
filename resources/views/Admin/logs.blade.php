@@ -25,25 +25,25 @@
         <header class="pt-8 pb-6">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
             <div>
-              <a href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
+              <a href="/inscricao/admin/administradores" class="text-xs text-gray-1 block hover:underline">
                 Administradores
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
             @if (Request::path() === 'admin/logs')
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 LOGs
               </div>
             @else
               <div>
-                <a href="/admin/logs" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/admin/logs" class="text-xs text-gray-1 block hover:underline">
                   LOGs
                 </a>
               </div>
             @endif
 
             @isset($administrador)
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div>
                 <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                   @if ($administrador->nome_completo)
@@ -74,7 +74,7 @@
 
                 <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um log específico" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-a1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-a1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="/inscricao/images/svg/search.svg" alt="">
                 </button>
 
               </form>
@@ -87,7 +87,7 @@
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/images/svg/chevron-down.svg" alt="" />
+                  <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                 </div>
 
               </form>
@@ -152,7 +152,7 @@
                       </p>
                     </div>
                     <div role="cell" class="py-3 flex items-center col-span-2 xl:col-span-3">
-                      <a class="hover:underline" href="/admin/logs/{{ $log->admin->id }}">
+                      <a class="hover:underline" href="/inscricao/admin/logs/{{ $log->admin->id }}">
                         <p class="text-sm font-semibold text-gray-2">
                           {{ $log->admin->nome_completo }}
                         </p>
@@ -180,13 +180,13 @@
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-a1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
           </div>

@@ -26,8 +26,8 @@
         <!-- Cabeçalho -->
         <header class="sm:pt-8 pb-6">
           <div class="p-6 sm:hidden border-b border-gray-5">
-            <a href="/dashboard">
-              <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+            <a href="/inscricao/dashboard">
+              <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
             </a>
           </div>
           <div class="container mt-6 sm:mt-0">
@@ -138,8 +138,8 @@
                     @foreach ($registration['tshirts'] as $tshirt)
                       <div class="flex flex-wrap border rounded-md p-4 border-gray-5">
                         <div class="mb-2">
-                          <a href="/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                            <img src="/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
+                          <a href="/inscricao/images/PRF/Camiseta-PRF-2023.png" target="_blank">
+                            <img src="/inscricao/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
                           </a>
                         </div>
                         <div class="text-sm">
@@ -175,13 +175,13 @@
                     </div>
                   <div class="flex justify-end flex-wrap gap-4">
                     @if ($registration['status_registration']->id != 1)
-                    <a href="/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                    <a href="/inscricao/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                       Realizar Pagamento
-                      <img src="/images/PRF/svg/credit-card.svg" alt="">
+                      <img src="/inscricao/images/PRF/svg/credit-card.svg" alt="">
                     </a>
                       {{--<a class="bg-gray-6 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-gray-3 flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                       Inscrições encerradas
-                      <img src="/images/PRF/svg/credit-card.svg" alt="">
+                      <img src="/inscricao/images/PRF/svg/credit-card.svg" alt="">
                     </a>--}}
                     @endif
                   </div>

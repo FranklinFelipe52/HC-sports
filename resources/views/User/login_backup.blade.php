@@ -24,7 +24,7 @@
                         @error('password')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
                     <div class="d-flex justify-content-end mb-4">
-                        <a class="text-decoration-none text-primary" href="/forgot_password">
+                        <a class="text-decoration-none text-primary" href="/inscricao/forgot_password">
                             esqueceu sua senha?
                         </a>
                     </div>

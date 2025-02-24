@@ -24,11 +24,11 @@
         <div class="container">
           <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
             <div>
-              <a href="/admin/administradores" class="text-xs text-gray-1 block hover:underline">
+              <a href="/inscricao/admin/administradores" class="text-xs text-gray-1 block hover:underline">
                 Administradores
               </a>
             </div>
-            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
               Alterar Perfil
             </div>
@@ -44,7 +44,7 @@
         <div class="md:col-span-3 lg:col-span-2">
           <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
             <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-              <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+              <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
             </div>
           </div>
         </div>

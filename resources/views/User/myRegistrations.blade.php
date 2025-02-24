@@ -27,7 +27,7 @@
                 <form>
                     <div class="input-group">
                         <input type="search" class="form-control rounded" name="s" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="submit" class="btn btn-outline-primary" href="/?s">search</button>
+                        <button type="submit" class="btn btn-outline-primary" href="/inscricao/?s">search</button>
                     </div>
                 </form>
             </div>
@@ -55,7 +55,7 @@
                                     @if ($registration->status_regitration->id == 1)
                                     <a class="btn btn-secondary" disable role="button">Pagar</a>
                                     @else
-                                    <a class="btn btn-success" href="/checkout/{{$registration->id}}" role="button">Pagar</a>
+                                    <a class="btn btn-success" href="/inscricao/checkout/{{$registration->id}}" role="button">Pagar</a>
                                     @endif
                                 </div>
                     </button>

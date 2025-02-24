@@ -28,17 +28,17 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/src/pages/atleta/dashboard.html" class="text-xs text-gray-1 block hover:underline">
                   Dashboard
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div>
-                <a href="/src/pages/atleta/pagamento.html" class="text-xs text-gray-1 block hover:underline">
+                <a href="/inscricao/src/pages/atleta/pagamento.html" class="text-xs text-gray-1 block hover:underline">
                   Método de pagamento
                 </a>
               </div>
-              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                 Código Pix
               </div>

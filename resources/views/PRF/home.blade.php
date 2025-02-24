@@ -7,15 +7,15 @@
     <header class="border-b border-gray-5 py-2">
       <div class="container mx-auto">
         <div class="flex gap-3 flex-wrap justify-center md:justify-between">
-          <a href="/">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="">
+          <a href="/inscricao/">
+            <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="">
           </a>
           
             <div class="flex items-center flex-wrap justify-center w-full md:w-auto gap-3">
               <a href="kids/inscricao/login" style="text-align: center;" class="font-semibold border border-blue-500 rounded-md px-3.5 py-2 text-blue-500 hover:text-white hover:bg-blue-500 transition-all">
                 Acesse seu cadastro KIDS
               </a>
-              <a href="/login" style="text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
+              <a href="/inscricao/login" style="text-align: center;" class="font-semibold border border-brand-prfA1 rounded-md px-3.5 py-2 text-brand-prfA1 hover:text-white hover:bg-brand-prfA1 transition-all">
                 Acesse seu cadastro GERAL
               </a>
             </div>
@@ -26,9 +26,9 @@
 
     <main class="container grow pt-6 pb-32">
       
-      <img src="/images/CAERN/Testeira-566.png" class="md:hidden w-full" alt="">
-      <img src="/images/CAERN/Testeira-876.png" class="hidden md:block lg:hidden w-full" alt="">
-      <img src="/images/CAERN/Testeira-1130.png" class="hidden lg:block w-full" alt="">
+      <img src="/inscricao/images/CAERN/Testeira-566.png" class="md:hidden w-full" alt="">
+      <img src="/inscricao/images/CAERN/Testeira-876.png" class="hidden md:block lg:hidden w-full" alt="">
+      <img src="/inscricao/images/CAERN/Testeira-1130.png" class="hidden lg:block w-full" alt="">
 
       <div class="grid grid-cols-1 lg:grid-cols-2 pt-8 gap-6">
         <div class="order-2 lg:order-1">
@@ -75,16 +75,16 @@
 
             <div class="grid grid-rows-1 grid-cols-2 md:grid-cols-4 gap-4">
               <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-1.jpg" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/PRF/foto-1.jpg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="row-span-1 col-span-1 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-2.png" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/PRF/foto-2.png" class="w-full h-full object-cover" alt="">
               </div>
               <div class="md:row-span-2 md:col-span-2 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-4.jpg" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/PRF/foto-4.jpg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="row-span-1 md:col-span-2 rounded-md overflow-hidden">
-                <img src="/images/PRF/foto-3.jpg" class="w-full h-full object-cover" alt="">
+                <img src="/inscricao/images/PRF/foto-3.jpg" class="w-full h-full object-cover" alt="">
               </div>
             </div>
           </div> --}}
@@ -130,7 +130,7 @@
                         INSCRIÇÕES ENCERRADAS
                       </a>--}}
                      
-                      <a href="/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                      <a href="/inscricao/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                         Realizar inscrição
                       </a>
                     </div>
@@ -175,7 +175,7 @@
                         </button>
                         @else
                          
-                            <a href="/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
+                            <a href="/inscricao/kids/inscricao/inscricao/{{ $category->id }}/{{ $category->prf_package->id }}"
                                 class="bg-blue-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-blue-500 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                                 Realizar Inscrição
                             </a>

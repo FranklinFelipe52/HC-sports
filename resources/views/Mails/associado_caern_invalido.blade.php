@@ -106,7 +106,7 @@
 														<tr>
 															<td class="pad" style="padding-bottom:26px;padding-left:16px;padding-right:16px;padding-top:40px;width:100%;">
 																<div class="alignment" align="center" style="line-height:10px">
-																	<div style="max-width: 204px;"><a href="https://inscricao.corridadaagua.com.br" target="_blank" style="outline:none" tabindex="-1"><img src="https://inscricao.corridadaagua.com.br/images/CAERN/Logo-CORRIDA-CAERN.png" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Corrida da água" title="Logo - Corrida da água"></a></div>
+																	<div style="max-width: 204px;"><a href="https://inscricao.corridadaagua.com.br" target="_blank" style="outline:none" tabindex="-1"><img src="https://corridadaagua.com.br/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" style="display: block; height: auto; border: 0; width: 100%;" width="204" alt="Logo - Corrida da água" title="Logo - Corrida da água"></a></div>
 																</div>
 															</td>
 														</tr>
@@ -157,7 +157,7 @@
 													<table class="button_block block-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
 														<tr>
 															<td class="pad" style="text-align:center;">
-																<div class="alignment" align="center"><a href="https://inscricao.corridadaagua.com.br/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#f60;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
+																<div class="alignment" align="center"><a href="https://corridadaagua.com.br/inscricao/login" target="_blank" style="text-decoration:none;display:inline-block;color:#f0f2f3;background-color:#f60;border-radius:4px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:10px;padding-bottom:10px;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;"><span style="padding-left:24px;padding-right:24px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word; line-height: 28px;">ACESSAR PAINEL DO ATLETA</span></span></a><!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div>
 															</td>
 														</tr>
 													</table>

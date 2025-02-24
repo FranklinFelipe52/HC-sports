@@ -34,7 +34,7 @@
 
                 <input type="text" value="{{ request('s') }}" placeholder="Pesquise por um atleta usando nome, cpf ou matrícula" name="s" class="text-sm text-gray-1 placeholder:text-gray-3 p-2 rounded-lg pl-12 w-full border border-gray-5 focus:border-brand-prfA1 focus:outline-1 focus:outline-offset-0 focus:outline-brand-prfA1 transition">
                 <button type="submit" class="absolute top-[10%] left-3">
-                  <img src="/images/svg/search.svg" alt="">
+                  <img src="/inscricao/images/svg/search.svg" alt="">
                 </button>
 
               </form>
@@ -125,8 +125,8 @@
                     </div>
                     <div role="cell" class="py-3 flex gap-2 justify-end items-center col-span-1">
 
-                      <a href="/admin/users/{{ $atleta->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
-                        <img src="/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
+                      <a href="/inscricao/admin/users/{{ $atleta->id }}" class="w-[34px] h-[34px] hover:bg-fill-base hover:ring-2 hover:ring-fill-base rounded-full transition">
+                        <img src="/inscricao/images/svg/ficha.svg" class="h-full w-full object-cover" alt="">
                       </a>
                     </div>
                   </div>
@@ -146,13 +146,13 @@
           <div class="flex gap-2" aria-label="Paginação da tabela" data-pagination-buttons>
             <div class="group">
               <button data-button="prev-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 bg-a1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-a1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-left.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-left.svg" alt="">
               </button>
             </div>
             <p class="text-sm text-gray-1 pt-0.5" data-pagination-label></p>
             <div class="group">
               <button data-button="next-page-button" class="disabled:bg-gray-300 bg-brand-prfA1 px-[5px] py-[2px] rounded hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 disabled:ring-0 transition">
-                <img src="/images/svg/chevron-right.svg" alt="">
+                <img src="/inscricao/images/svg/chevron-right.svg" alt="">
               </button>
             </div>
           </div>

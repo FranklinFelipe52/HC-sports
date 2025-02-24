@@ -24,11 +24,11 @@
                     <div class="container">
                         <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
                             <div>
-                                <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
+                                <a href="/inscricao/admin/users" class="text-xs text-gray-1 block hover:underline">
                                     Atletas
                                 </a>
                             </div>
-                            <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
+                            <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
                             <div aria-current="page" class="text-xs text-brand-a1 font-semibold">
                                 @if ($atleta->nome_completo)
                                     {{ $atleta->nome_completo }}
@@ -48,7 +48,7 @@
                     <div class="md:col-span-3 lg:col-span-2">
                         <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
                             <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                                <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                             </div>
 
                         </div>
@@ -101,7 +101,7 @@
                                                 type="date" id="cadastro_nascimento_field"
                                                 value="{{ $atleta->data_nasc }}" />
                                             <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                                                <img src="/images/svg/calendar.svg" alt="" />
+                                                <img src="/inscricao/images/svg/calendar.svg" alt="" />
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                               <option value="F" @if ($atleta->sexo == 'F') selected @endif>Feminino</option>
                                             </select>
                                           <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                            <img src="/images/svg/chevron-down.svg" alt="" />
+                                            <img src="/inscricao/images/svg/chevron-down.svg" alt="" />
                                           </div>
                                         </div>
                                       </div>

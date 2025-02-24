@@ -7,8 +7,8 @@
   <div class="min-h-[100vh] flex flex-col justify-between">
     <header class="border-b border-gray-5 py-2">
       <div class="container mx-auto">
-        <a href="/">
-          <img src="/images/logo-hc.png" alt="">
+        <a href="/inscricao/">
+          <img src="/inscricao/images/logo-hc.png" alt="">
         </a>
       </div>
     </header>
@@ -17,7 +17,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="border border-gray-7 rounded-xl overflow-hidden">
           <div class="bg-brand-prfA1 border-b border-gray-7 flex justify-center items-center p-4 h-[153px]">
-            <img src="/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+            <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
           </div>
           <div class="p-3.5 border-b border-gray-5">
             <p class="font-bold text-sm font-poppins mb-1 text-dark-1">
@@ -33,14 +33,14 @@
             </p>
           </div>
           <div class="px-3.5 pt-3 pb-4 flex justify-center">
-            <a href="/PRF" class="bg-brand-prfA1 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+            <a href="/inscricao/PRF" class="bg-brand-prfA1 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
               Inscreva-se
             </a>
           </div>
         </div>
         <div class="border border-gray-7 rounded-xl overflow-hidden">
           <div class="bg-white border-b border-gray-7 flex justify-center items-center p-4 h-[153px]">
-            <img src="/images/logo-oab.png" alt="">
+            <img src="/inscricao/images/logo-oab.png" alt="">
           </div>
           <div class="p-3.5 border-b border-gray-5">
             <p class="font-bold text-sm font-poppins mb-1 text-dark-1">
@@ -56,7 +56,7 @@
             </p>
           </div>
           <div class="px-3.5 pt-3 pb-4 flex justify-center">
-            <a href="/OAB/login" class="bg-brand-v2 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-v2 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+            <a href="/inscricao/OAB/login" class="bg-brand-v2 hover:ring-opacity-50 hover:ring-2 transition-all hover:ring-brand-v2 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
               Acesse o Painel
             </a>
           </div>
