@@ -7,7 +7,7 @@
 
   {{-- modal validar inscrição --}}
   <div id="modal-validar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/admin/registrations/{{ $registration->id }}/confirm" method="post">
+    <form action="/inscricao/admin/registrations/{{ $registration->id }}/confirm" method="post">
       @csrf
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
         <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
@@ -41,7 +41,7 @@
 
   {{-- modal estornar inscrição --}}
   <div id="modal-estornar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/admin/registrations/{{ $registration->id }}/estornar" method="post">
+    <form action="/inscricao/admin/registrations/{{ $registration->id }}/estornar" method="post">
       @csrf
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
         <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
@@ -83,7 +83,7 @@
 
   {{-- modal cancelar inscrição --}}
   <div id="modal-cancelar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/admin/registrations/{{ $registration->id }}/cancelar" method="post">
+    <form action="/inscricao/admin/registrations/{{ $registration->id }}/cancelar" method="post">
       @csrf
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
         <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">

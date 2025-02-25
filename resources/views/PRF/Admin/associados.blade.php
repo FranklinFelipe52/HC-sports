@@ -42,7 +42,7 @@
 
     <div id="modal-invalidar-associado-{{$atleta->id}}" class="hidden">
             <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-                <form action="/admin/associado/{{$atleta->id}}/invalid" method="POST">
+                <form action="/inscricao/admin/associado/{{$atleta->id}}/invalid" method="POST">
                 @csrf
                 <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
                     <!-- modal header -->

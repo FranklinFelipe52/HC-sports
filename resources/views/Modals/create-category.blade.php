@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
             <div class="modal-content">
-            <form method="post" action="/admin/categoria">
+            <form method="post" action="/inscricao/admin/categoria">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Criar categoria</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

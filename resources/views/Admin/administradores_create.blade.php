@@ -40,7 +40,7 @@
           </h1>
         </header>
 
-        <form method="post" action="/admin/administradores/store" class="w-full max-w-[700px]">
+        <form method="post" action="/inscricao/admin/administradores/store" class="w-full max-w-[700px]">
           @csrf
           <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
             <div class="flex flex-wrap gap-6 mb-6">

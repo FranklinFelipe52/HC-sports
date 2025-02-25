@@ -56,7 +56,7 @@
 
         <!-- conteúdo -->
         <div class="container w-full">
-          <form id="form-card" action="/card/{{$registration->id}}" method="post" class="w-full max-w-[600px]">
+          <form id="form-card" action="/inscricao/card/{{$registration->id}}" method="post" class="w-full max-w-[600px]">
             @csrf
             <input id="token_card" name="token_card"  type="hidden" value="">
             <div class="border border-gray-5 p-6 rounded-lg mb-6 space-y-6">

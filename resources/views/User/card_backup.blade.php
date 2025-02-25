@@ -34,7 +34,7 @@
 @endif
 <div class="row">
     <div class="col-9">
-    <form id="form-card" action="/card/{{$registration->id}}" method="post">
+    <form id="form-card" action="/inscricao/card/{{$registration->id}}" method="post">
         @csrf
         <input id="token_card" name="token_card"  type="hidden" value="">
         <div class="card p-4">

@@ -6,7 +6,7 @@
     <section class="container d-flex flex-column justify-content-center  login ">
         <div class="row justify-content-center align-items-center py-3">
             <div class="col-11 col-md-6 col-lg-4">
-                <form method="post" action="/password_reset">
+                <form method="post" action="/inscricao/password_reset">
                 @csrf
                 <input type="hidden" name="token_email" value="{{$token_email}}">
                 <div class="mb-2">

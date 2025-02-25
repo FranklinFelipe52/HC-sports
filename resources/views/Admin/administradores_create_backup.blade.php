@@ -41,7 +41,7 @@
         </div>
         <div class="row flex-column gap-3">
             <div class="col-6">
-                <form method="post" action="/admin/administradores/store">
+                <form method="post" action="/inscricao/admin/administradores/store">
                     @csrf
                     <div class="mb-3">
                         <label  class="form-label">Nome completo</label>

@@ -23,7 +23,7 @@
         <!-- modal body -->
         <div class="text-gray-1 text-base p-3 md:pr-6 md:pl-5 pt-0">
           <hr class="border-gray-5 mb-4">
-          <form action="/admin/personification/update" method="post">
+          <form action="/inscricao/admin/personification/update" method="post">
             @csrf
             <p class="text-gray-2 text-sm mb-6">
               Selecione um estado para personificar o administrador da caixa de assistência.

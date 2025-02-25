@@ -108,7 +108,7 @@
                 Dados do atleta
               </h1>
 
-              <form id="form_discounts" method="post" action="/admin/users/{{ $atleta->id }}/update" class="w-full max-w-[700px]">
+              <form id="form_discounts" method="post" action="/inscricao/admin/users/{{ $atleta->id }}/update" class="w-full max-w-[700px]">
                 @csrf
                 <div class="border border-gray-5 p-4 sm:px-6 rounded-lg mb-6">
                   <div class="flex gap-4 mb-6">

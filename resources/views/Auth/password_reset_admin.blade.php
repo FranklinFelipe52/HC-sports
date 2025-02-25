@@ -46,7 +46,7 @@
     </div>
     <div class="bg-white h-full lg:col-span-4 px-8 py-20  flex flex-col justify-center">
       <div class="mx-auto w-full max-w-[327px]">
-        <form method="post" action="/admin/password_reset" id="cadastro_formulario">
+        <form method="post" action="/inscricao/admin/password_reset" id="cadastro_formulario">
           @csrf
           <input type="hidden" name="token_email" value="{{ $token_email }}">
           <div class="space-y-4 mb-8">

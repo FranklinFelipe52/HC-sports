@@ -33,7 +33,7 @@
             <h3>Ajude a campanha beneficente</h3>
             <div class="col-12 border border-1">
                 <div class="d-flex flex-column gap-2">
-                    <form id="TshirtsForm" action="/PRF/cart/store" method="post">
+                    <form id="TshirtsForm" action="/inscricao/PRF/cart/store" method="post">
                     @csrf
                     @foreach ($tshirts as  $tshirt)
                     <div class="card m-4 flex-row p-3 " style="width: 25rem;">

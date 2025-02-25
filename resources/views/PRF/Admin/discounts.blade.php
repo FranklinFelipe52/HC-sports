@@ -135,7 +135,7 @@
                         @endif
                       </div>
                       <div role="cell" class="col-span-1 flex justify-end">
-                        <form action="/admin/discounts/{{ $voucher_or_cupom->id }}/delete" method="POST">
+                        <form action="/inscricao/admin/discounts/{{ $voucher_or_cupom->id }}/delete" method="POST">
                           @csrf
                           <button class="">
                             <img src="/inscricao/images/svg/trash.svg" class="h-full w-full object-cover" alt="">

@@ -41,7 +41,7 @@
         </div>
         <div class="row flex-column gap-3">
             <div class="col-6">
-                <form method="post" action="/admin/registration/create/{{$modalidade->id}}">
+                <form method="post" action="/inscricao/admin/registration/create/{{$modalidade->id}}">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">CPF</label>
