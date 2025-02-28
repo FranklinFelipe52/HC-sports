@@ -535,7 +535,7 @@
                                       O administrador do sistema atualizou o email utilizado na sua inscrição.
                                     </p>
                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                      O email é atualizado quando o usuário solicita ao administrador. Caso não tenha solicitado essa alteração, entre em contato conosco através do formulário no nosso site. <a href="https://www.meiamaratonaprf191.com.br/#Contato">https://www.meiamaratonaprf191.com.br/#Contato</a>
+                                      O email é atualizado quando o usuário solicita ao administrador. Caso não tenha solicitado essa alteração, entre em contato conosco. 
                                     </p>
                                   </div>
                                 </td>
