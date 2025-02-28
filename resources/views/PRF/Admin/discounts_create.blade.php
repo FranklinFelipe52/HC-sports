@@ -229,7 +229,7 @@
     function handleFormSubmit(e) {
       e.preventDefault();
 
-      form_discounts.action = `/admin/${selectedModalidade.value}`;
+      form_discounts.action = `/inscricao/admin/${selectedModalidade.value}`;
 
       form_discounts.submit();
     }
