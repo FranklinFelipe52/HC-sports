@@ -495,7 +495,7 @@
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
-                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url({{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/background_1.png" role="presentation">
+                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url(https://corridadaagua.com.br/inscricao/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="https://corridadaagua.com.br/inscricao/frontend/dist/email/images/background_1.png" role="presentation">
                               <tr>
                                 <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="https://corridadaagua.com.br/inscricao/frontend/dist/email/images/logo.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo da CAERN"></td>
                               </tr>
@@ -582,20 +582,14 @@
  </v:roundrect></a>
 <![endif]-->
                                   <!--[if !mso]><!-- -->
-                                  <span class="msohide es-button-border-4 es-button-border" style="border-style:solid;border-color:#2cb543;background:#ffffff;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-border-alt:10px;mso-hide:all">
-                                    <a href="https://www.meiamaratonaprf191.com.br/wp-content/uploads/2023/09/REGULAMENTO_MEIA-MARATONA-PRF-191.2023.pdf" class="es-button es-button-3" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#333333;font-size:10px;display:inline-block;background:#ffffff;border-radius:30px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:12px;width:auto;text-align:center;padding:5px">
-                                      Regulamento Geral da Competição
-                                    </a>
-                                  </span>
+                                  
                                   <!--<![endif]-->
                                 </td>
                               </tr>
-                              <tr>
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:30px;font-size:0px"><img src="{{ $_SERVER['HTTP_HOST'] }}/frontend/dist/email/images/logo_2.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="32"></td>
-                              </tr>
+                              
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:15px;color:#333333;font-size:10px">Olimpíadas da Advocacia 2023.</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:15px;color:#333333;font-size:10px">COrrida da água 2025.</p>
                                 </td>
                               </tr>
                             </table>
