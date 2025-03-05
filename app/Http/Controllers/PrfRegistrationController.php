@@ -76,14 +76,14 @@ class PrfRegistrationController extends Controller
             }
 
             if ($category->id == 1) {
-                if ($nascimento->year > 2009) {
+                if ($nascimento->year > 2011) {
                     session()->flash('erro', 'Corrija o erro na data de nascimento.');
-                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 5km, o ano de nascimento não pode ser maior que 2010']);
+                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 6km, o ano de nascimento não pode ser maior que 2011']);
                 }
             } else {
-                if ($nascimento->year > 2005) {
+                if ($nascimento->year > 2007) {
                     session()->flash('erro', 'Corrija o erro na data de nascimento.');
-                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 10km e 21km, o ano de nascimento não pode ser maior que 2006']);
+                    return back()->withInput()->withErrors(['data_nasc' => 'Na categoria 12km, o ano de nascimento não pode ser maior que 2007']);
                 }
             }
             DB::beginTransaction();
