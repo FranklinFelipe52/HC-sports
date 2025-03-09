@@ -164,7 +164,7 @@
 															<td class="pad">
 																<div style="color:#101112;direction:ltr;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size:14px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:16.8px;">
 																	<p style="margin: 0; margin-bottom: 16px;">Olá Servidor, tudo bem?</p>
-																	<p style="margin: 0;">Agora você já pode concluir sua inscrição com 30% de desconto na Corrida da água - 2025.<br><br>Veja como é simples:</p>
+																	<p style="margin: 0;">Agora você já pode concluir sua inscrição com 20% de desconto na Corrida da água - 2025.<br><br>Veja como é simples:</p>
 																</div>
 															</td>
 														</tr>

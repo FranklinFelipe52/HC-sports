@@ -21,7 +21,7 @@ class ValorTotal
                 if(AgeBetweenDates::calc_idade($user->data_nasc) >= 60 || $user->prf_deficiency_id){
                     $descontos = 0.5;
                 }elseif($user->desconto_CAERN){
-                    $descontos = 0.3;
+                    $descontos = 0.2;
                 }
                 if($registration->prf_vauchers){
                     $descontos = $registration->prf_vauchers->desconto > $descontos ? $registration->prf_vauchers->desconto : $descontos;
@@ -39,7 +39,7 @@ class ValorTotal
         if(AgeBetweenDates::calc_idade($user->data_nasc) >= 60 || $user->prf_deficiency_id){
             $descontos = 0.5;
         }elseif($user->desconto_CAERN){
-            $descontos = 0.3;
+            $descontos = 0.2;
         }
         if($registration->prf_vauchers){
             $descontos = $registration->prf_vauchers->desconto > $descontos ? $registration->prf_vauchers->desconto : $descontos;
