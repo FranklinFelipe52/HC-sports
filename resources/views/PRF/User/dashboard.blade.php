@@ -175,14 +175,16 @@
                     </div>
                   <div class="flex justify-end flex-wrap gap-4">
                     @if ($registration['status_registration']->id != 1)
+                    {{--
                     <a href="/inscricao/registration/{{ $registration['id'] }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                       Realizar Pagamento
                       <img src="/inscricao/images/PRF/svg/credit-card.svg" alt="">
                     </a>
-                      {{--<a class="bg-gray-6 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-gray-3 flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
+                    --}}
+                      <a class="bg-gray-6 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-gray-3 flex items-center justify-center gap-2 py-2.5 px-3.5 w-full max-w-[220px]">
                       Inscrições encerradas
                       <img src="/inscricao/images/PRF/svg/credit-card.svg" alt="">
-                    </a>--}}
+                    </a>
                     @endif
                   </div>
                   @if ($registration['price'] > 0 && $registration['status_registration']->id == 1 && !$registration['validated_by_admin'])
