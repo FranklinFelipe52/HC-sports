@@ -47,18 +47,18 @@
               </p>
 
               <p>
-                A prova contará com distâncias de 12Km e 6Km, além do Kids, e será realizada no dia 22 de março de 2025, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
+                A prova contará com distâncias de 12Km e 6Km, além do Kids, e será realizada no dia 13 de abril de 2025, com largada e chegada na Assec – Associação dos Servidores da CAERN. O horário de largada será distribuído da seguinte forma:
               </p>
 
               <ul class="list-disc pl-4">
                 <li>
-                  Categorias PCD | GERAL: 12Km – 16h00;
+                  Categorias PCD | GERAL 12Km: 5h30;
                 </li>
                 <li>
-                  Categorias PCD | GERAL: 6Km – 16h10.
+                  Categorias PCD | GERAL 6Km: 6h00.
                 </li>
                 <li>
-                  Categoria Kids | 16h30.
+                  Categoria Kids: 7h30.
                 </li>
               </ul>
 
