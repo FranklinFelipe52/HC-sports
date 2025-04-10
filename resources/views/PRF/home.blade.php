@@ -126,13 +126,14 @@
                       </div>
                     </div>
                     <div>
-                      {{--<a  class="bg-gray-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
+                      <a  class="bg-gray-500 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-poppins font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                         INSCRIÇÕES ENCERRADAS
-                      </a>--}}
-                     
+                      </a>
+                     {{--
                       <a href="/inscricao/inscricao/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                         Realizar inscrição
                       </a>
+                      --}}
                     </div>
                   </div>
                 </div>
