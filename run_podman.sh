@@ -8,7 +8,7 @@ podman run -d \
 podman run -d \
   --name caern-nginx \
   --network caern-network \
-  -p 8002:80 \
+  -p 8004:80 \
   -v .:/var/www \
   --security-opt label=disable \
   caern-nginx:master
