@@ -1,14 +1,16 @@
 podman run -d \
   --name caern-laravel \
   --network caern-network \
-  -v .:/var/www:Z \
+  -v .:/var/www \
+  --security-opt label=disable \
   caern:master
 
 podman run -d \
   --name caern-nginx \
   --network caern-network \
   -p 8002:80 \
-  -v .:/var/www:Z \
+  -v .:/var/www \
+  --security-opt label=disable \
   caern-nginx:master
 
 podman exec -u root caern-nginx chmod 755 /var/www
