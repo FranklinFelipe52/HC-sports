@@ -9,7 +9,7 @@ podman run -d \
   --network caern-network \
   -p 8002:80 \
   -v .:/var/www:Z \
-  nginx:master
+  caern-nginx:master
 
 podman exec -u root caern-nginx chmod 755 /var/www
 
