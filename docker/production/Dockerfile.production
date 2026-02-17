@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # Base build stage
-FROM php:8.3-fpm AS builder
+FROM php:8.2-fpm AS builder
 
 LABEL maintainer="Stefan Yohansson <stefan.yohansson@agnesit.tech>"
 
@@ -58,7 +58,7 @@ RUN composer dump-autoload --optimize --no-dev --no-scripts \
     && npm cache clean --force
 
 # Final runtime stage
-FROM php:8.3-fpm AS runtime
+FROM php:8.2-fpm AS runtime
 
 # Install minimal runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
