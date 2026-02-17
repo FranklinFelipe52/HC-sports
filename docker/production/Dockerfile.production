@@ -1,0 +1,137 @@
+# syntax=docker/dockerfile:1
+# Base build stage
+FROM php:8.3-fpm AS builder
+
+LABEL maintainer="Stefan Yohansson <stefan.yohansson@agnesit.tech>"
+
+# Install system dependencies and PHP extensions in a single layer
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    unzip \
+    git \
+    libpq-dev \
+    libonig-dev \
+    libssl-dev \
+    libxml2-dev \
+    libcurl4-openssl-dev \
+    libicu-dev \
+    libzip-dev \
+    nodejs \
+    npm \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install -j$(nproc) \
+        pdo_mysql \
+        pdo_pgsql \
+        pgsql \
+        opcache \
+        intl \
+        zip \
+        bcmath \
+        soap \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /var/www
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy dependency files first for better caching
+COPY composer.json composer.lock package.json package-lock.json ./
+
+# Install PHP dependencies with cache mount
+RUN --mount=type=cache,target=/root/.composer \
+    composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist --no-scripts
+
+# Install and cache npm dependencies (including dev dependencies for build)
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci
+
+# Copy source code
+COPY . .
+
+# Optimize autoloader and build assets
+RUN composer dump-autoload --optimize --no-dev --no-scripts \
+    && npm run build \
+    && rm -rf node_modules \
+    && npm cache clean --force
+
+# Final runtime stage
+FROM php:8.3-fpm AS runtime
+
+# Install minimal runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpq-dev \
+        libicu-dev \
+        libzip-dev \
+        libfcgi-bin \
+        procps \
+        curl \
+    && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Copy PHP extensions and config from builder
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+
+# Use production PHP config and optimize for performance
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && echo "opcache.enable=1" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.enable_cli=0" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.memory_consumption=256" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.interned_strings_buffer=8" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.max_accelerated_files=20000" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.revalidate_freq=2" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "opcache.fast_shutdown=1" >> "$PHP_INI_DIR/conf.d/opcache.ini" \
+    && echo "realpath_cache_size=4096K" >> "$PHP_INI_DIR/conf.d/performance.ini" \
+    && echo "realpath_cache_ttl=600" >> "$PHP_INI_DIR/conf.d/performance.ini"
+
+# Download healthcheck script
+RUN curl -o /usr/local/bin/php-fpm-healthcheck \
+    https://raw.githubusercontent.com/renatomefi/php-fpm-healthcheck/master/php-fpm-healthcheck \
+    && chmod +x /usr/local/bin/php-fpm-healthcheck
+
+# Copy entrypoint script
+COPY ./docker/production/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Enable FPM status page for monitoring
+RUN sed -i '/\[www\]/a pm.status_path = /status' /usr/local/etc/php-fpm.d/zz-docker.conf
+
+# Copy application from builder stage
+COPY --from=builder --chown=www-data:www-data /var/www /var/www
+
+# Copy storage template for initialization
+COPY --chown=www-data:www-data ./storage /var/www/storage-init
+
+WORKDIR /var/www
+
+# Create necessary directories and set permissions
+RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
+USER www-data
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD php-fpm-healthcheck || exit 1
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+EXPOSE 9000
+CMD ["php-fpm"]
+
+# Testing stage - extends builder for running tests
+FROM builder AS testing
+
+# Install dev dependencies for testing
+RUN --mount=type=cache,target=/root/.composer \
+    composer install --dev --no-interaction --prefer-dist
+
+# Copy test configuration
+COPY .env.example .env
+
+# Set up testing environment
+RUN php artisan key:generate \
+    && php artisan package:discover
