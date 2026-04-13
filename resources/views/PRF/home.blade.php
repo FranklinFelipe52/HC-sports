@@ -102,14 +102,6 @@
                     </div>
                   </div>
                   <div class="flex flex-col gap-4">
-                    <div class="">
-                      <p class="font-normal text-xs text-gray-1 mb-3.5">
-                        Itens inclusos
-                      </p>
-                      <div class="text-gray-1 text-xs font-bold list__options">
-                        {!! html_entity_decode($package->descricao) !!}
-                      </div>
-                    </div>
                     <div>
                       <a href="/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
                         Realizar inscrição
