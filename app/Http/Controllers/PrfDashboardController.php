@@ -2,53 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ValorTotal;
-use App\Models\PrfTshirt;
-use App\Models\PrfTshirtAndPrfRegistration;
 use App\Models\PrfUser;
 use Exception;
 use Illuminate\Http\Request;
 
 class PrfDashboardController extends Controller
 {
-    public function show(Request $request){
-        try{
+    public function show(Request $request)
+    {
+        try {
             $user = PrfUser::find($request->session()->get('prf_user')->id);
-            if(!$user){
-              return back();
+            if (!$user) {
+                return back();
             }
 
-            $registrations = [];
-            foreach ($user->registrations as $registration) {
-
-                $prfTshirtsRegistration = PrfTshirtAndPrfRegistration::where('prf_registration_id', $registration->id)->get();
-                $tshirts = [];
-
-                foreach ($prfTshirtsRegistration as $prfTshirtRegistration) {
-
-                    $tshirt = PrfTshirt::find($prfTshirtRegistration->prf_tshirt_id);
-
-                    array_push($tshirts, $tshirt);
-                }
-
-                array_push($registrations, [
-                    'id' => $registration->id,
-                    'title' => $registration->prf_categorys->nome,
-                    'descricao' => $registration->prf_package->descricao,
-                    'price' => ValorTotal::ValorComDescontos($user, $registration),
+            $registrations = $user->registrations->map(function ($registration) use ($user) {
+                $address = $user->caern_address;
+                return [
+                    'id'                  => $registration->id,
+                    'created_at'          => $registration->created_at,
+                    // Dados da corrida
+                    'categoria'           => $registration->prf_categorys->nome,
                     'status_registration' => $registration->status_regitration,
-                    'size_tshirt' => $registration->prf_size_tshirts->nome,
-                    'equipe' => $registration->equipe,
-                    'tshirts' => $tshirts,
-                    'vaucher' => $registration->prf_vauchers,
-                    'validated_by_admin' => $registration->validated_by_admin,
-                ]);
-            }
+                    'size_tshirt'         => $registration->prf_size_tshirts->nome,
+                    'equipe'              => $registration->equipe,
+                    // Dados pessoais
+                    'nome'                => $user->nome_completo,
+                    'cpf'                 => $user->cpf,
+                    'data_nasc'           => $user->data_nasc,
+                    'sexo'                => $user->sexo,
+                    'phone'               => $user->phone,
+                    'email'               => $user->email,
+                    // Endereço
+                    'cep'                 => $address?->cep,
+                    'rua'                 => $address?->rua,
+                    'numero'              => $address?->number,
+                    'bairro'              => $address?->bairro,
+                    'complemento'         => $address?->complemento,
+                    'cidade'              => $address?->cidade,
+                    'uf'                  => $address?->federativeUnit?->initials,
+                ];
+            });
+
             return view('PRF.User.dashboard', [
+                'user'          => $user,
                 'registrations' => $registrations,
             ]);
-        } catch (Exception $e){
-            return dd($e);
+        } catch (Exception $e) {
+            return back();
         }
     }
 }

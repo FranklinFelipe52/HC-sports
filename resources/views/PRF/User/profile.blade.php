@@ -1,6 +1,6 @@
 @extends('PRF.base')
 
-@section('title', 'Perfil do usuário - Corrida da Água')
+@section('title', 'Perfil do usuário - Circuito Dunas 2026')
 
 @section('content')
 
@@ -32,18 +32,18 @@
           <div class="md:col-span-4 lg:col-span-3 mb-6">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
 
-                  <?php echo explode(' ', $user->nome_completo)[0] . ' ' . explode(' ', $user->nome_completo)[1]; ?>
+                  {{ $user->nome_completo }}
                 </p>
               </div>
             </div>
 
             <div class="flex gap-4 flex-wrap">
-              {{-- <a href="/inscricao/admin/profile/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+              {{-- <a href="/admin/profile/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#0095D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -51,8 +51,8 @@
                   Editar perfil
                 </p>
               </a> --}}
-              {{-- <a href="/inscricao/admin/profile/password_reset" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                <img src="/inscricao/images/svg/padlock.svg" alt="">
+              {{-- <a href="/admin/profile/password_reset" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                <img src="/images/svg/padlock.svg" alt="">
                 <p class="text-brand-a1 text-sm font-bold font-poppins">
                   Alterar senha
                 </p>
@@ -143,71 +143,43 @@
                     </p>
                   </div>
                 </div>
-                @if ($user->prf_deficiency_id)
+                @if ($whitelist_document)
                   <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-1 font-semibold">
-                        PCD
+                        {{ strlen($whitelist_document) === 11 ? 'CPF de acesso' : 'CNPJ de acesso' }}
                       </p>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-2 font-normal">
-                        {{ $user->prf_deficiency->nome }}
-                      </p>
-                    </div>
-                  </div>
-                @endif
-                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      É servidor da CAERN?
-                    </p>
-                  </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      @if ($user->is_servidor == 0)
-                        Não
-                      @elseif ($user->is_servidor == 1)
-                        Sim
-                      @endif
-                    </p>
-                  </div>
-                </div>
-                @if ($user->is_servidor == 1)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Matrícula PRF
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        {{ $user->servidor_matricula }}
+                        @if (strlen($whitelist_document) === 11)
+                          {{ preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $whitelist_document) }}
+                        @else
+                          {{ preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $whitelist_document) }}
+                        @endif
                       </p>
                     </div>
                   </div>
                 @endif
               </div>
-              <div class="bg-feedback-fill-blue py-4 px-6 rounded-lg" role="alert">
-                <p class="text-brand-prfA1">
-                  Por enquanto a edição de dados não está disponível, entre em contato com um administrador caso alguma informação esteja errada.
-                </p>
-              </div>
+              <a href="/profile/edit" class="flex items-center justify-center gap-2 w-full sm:w-fit px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <p class="text-white text-sm font-bold font-poppins">Editar dados</p>
+              </a>
               {{-- <div class="flex gap-4 flex-wrap">
-                <a href="/inscricao/profile/edit/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
-                  <img src="/inscricao/images/svg/pencil.svg" alt="">
+                <a href="/profile/edit/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 bg-brand-a1 hover:ring-brand-a1 hover:ring-opacity-50 transition">
+                  <img src="/images/svg/pencil.svg" alt="">
                   <p class="text-white text-sm font-bold font-poppins">
                     Editar perfil
                   </p>
                 </a>
-                <a href="/inscricao/profile/password_reset/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/inscricao/images/svg/padlock.svg" alt="">
+                <a href="/profile/password_reset/{{ $user->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-a1 hover:ring-2 hover:ring-brand-a1 hover:ring-opacity-50 bg-white transition">
+                  <img src="/images/svg/padlock.svg" alt="">
                   <p class="text-brand-a1 text-sm font-bold font-poppins">
                     Alterar senha
                   </p>
                 </a>
                 <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/inscricao/images/svg/trash.svg" alt="">
+                  <img src="/images/svg/trash.svg" alt="">
                   <p class="text-brand-v1 text-sm font-bold font-poppins">
                     Excluir Conta
                   </p>

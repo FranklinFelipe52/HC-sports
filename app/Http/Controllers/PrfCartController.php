@@ -65,7 +65,7 @@ class PrfCartController extends Controller
             $cart['tshirts'] = $tshirts;
             $request->session()->put('cart', $cart);
            
-            return redirect('/PRF/inscricao');
+            return redirect('/');
         } catch(Exception $e){
             error_log($e);
         }

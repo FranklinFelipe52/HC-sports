@@ -1,6 +1,6 @@
 @extends('Admin.base')
 
-@section('title', 'Dashboard - Corrida da Água')
+@section('title', 'Dashboard - Circuito Dunas 2026')
 
 @section('content')
 
@@ -37,10 +37,10 @@
               @foreach ($atualizacoes as $atualizacao)
                 <li class="flex flex-wrap gap-4 sm:gap-2 xl:gap-4 items-start pb-6 border-b border-gray-200 hover:bg-fill-base transition w-full">
                   <div class="flex-shrink-0 w-[37px] h-[37px] my-auto overflow-hidden hidden min-[360px]:block">
-                    <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                    <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
                   </div>
                   <div class="grow space-y-1">
-                    <a href="/inscricao/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
+                    <a href="/admin/users/{{ $atualizacao->id }}" class="text-base text-gray-1 font-semibold">{{ $atualizacao->nome_completo }}</a>
                     <p class="text-xs text-gray-1 font-normal">{{ $atualizacao->status }}</p>
                   </div>
                   <div class="flex gap-2.5">
@@ -61,38 +61,15 @@
           <div class="grid grid-cols-3 gap-4 w-full mb-8">
             <div class="col-span-1 bg-brand-prfA1 rounded-lg p-4 border border-brand-prfA1">
               <p class="text-white text-sm mb-2">Inscrições realizadas</p>
-              <p class="text-white text-5xl font-semibold">{{ Count($registrations) }}</p>
+              <p class="text-white text-5xl font-semibold">{{ $total_registrations }}</p>
             </div>
             <div class="col-span-1 bg-white rounded-lg p-4 border border-gray-5">
-              <p class="text-sm mb-2">Pagamentos confirmados</p>
-              <p class="text-5xl font-semibold text-feedback-green-1">{{ Count($pagamentos) }}</p>
+              <p class="text-sm mb-2">Confirmadas</p>
+              <p class="text-5xl font-semibold text-feedback-green-1">{{ $confirmed }}</p>
             </div>
             <div class="col-span-1 bg-white rounded-lg p-4 border border-gray-5">
-              <p class="text-sm mb-2">Descontos gerados</p>
-              <div class="flex items-end justify-between">
-                <p class="text-5xl font-semibold">{{ Count($descontos) }}</p>
-                <div>
-                  <p class="text-xs">
-                    {{ Count($vouchers) }}
-
-                    @if (Count($vouchers) > 1)
-                      Vouchers
-                    @else
-                      Voucher
-                    @endif
-                  </p>
-
-                  <p class="text-xs">
-                    {{ Count($cupoms) }}
-
-                    @if (Count($cupoms) > 1)
-                      Cupoms
-                    @else
-                      Cupom
-                    @endif
-                  </p>
-                </div>
-              </div>
+              <p class="text-sm mb-2">Canceladas</p>
+              <p class="text-5xl font-semibold text-red-500">{{ $cancelled }}</p>
             </div>
           </div>
         </div>

@@ -31,17 +31,15 @@ class AdminRegistrationController extends Controller
             }
 
             return view('PRF.Admin.registration_update', [
-                'categorys' => PrfCategorys::all(),
-                'category' => $category,
+                'categorys'    => PrfCategorys::all(),
+                'category'     => $category,
                 'size_tshirts' => PrfSizeTshirts::all(),
-                'size_tshirt' => $size_tshirt,
-                'atleta' => $user,
+                'size_tshirt'  => $size_tshirt,
+                'atleta'       => $user,
                 'registration' => $registration,
-                'tshirts' => PrfTshirt::all()
             ]);
 
         } catch (Exception $e) {
-            dd($e);
             session()->flash('erro', 'Devido a algum problema no sistema, não foi possível efetuar sua ação.');
             return back();
         }

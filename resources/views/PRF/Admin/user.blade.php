@@ -1,103 +1,28 @@
 @extends('Admin.base')
 
-@section('title', 'Atletas - ' . $atleta->nome_completo . ' - Corrida da Água')
+@section('title', 'Atletas - ' . $atleta->nome_completo . ' - Circuito Dunas 2026')
 
 
 @section('content')
 
-  {{-- modal validar inscrição --}}
-  <div id="modal-validar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/inscricao/admin/registrations/{{ $registration->id }}/confirm" method="post">
-      @csrf
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
-          <!-- modal header -->
-          <div class="text-gray-1 text-lg md:text-xl font-semibold">
-            <p>
-              Confirmação de Inscrição
-            </p>
-          </div>
-          <hr class="my-4">
-
-          <!-- modal body -->
-          <div class="">
-            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
-              Observação
-            </label>
-            <textarea id="observacao_field" name="observacao" placeholder="Adicione alguma observação (ex: motivo da liberação de inscrição)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
-          </div>
-
-          <!-- modal footer - actions -->
-          <div class="flex justify-end gap-4 flex-wrap mt-10">
-            <button type="button" data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Cancelar
-            </button>
-            <input type="submit" value="Confirmar" class="bg-brand-prfA1 border border-brand-prfA1 text-white text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-prfA1 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0" />
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  {{-- modal estornar inscrição --}}
-  <div id="modal-estornar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/inscricao/admin/registrations/{{ $registration->id }}/estornar" method="post">
-      @csrf
-      <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
-        <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
-          <!-- modal header -->
-          <div class="text-gray-1 text-lg md:text-xl font-semibold">
-            <p>
-              Estorno de Inscrição
-            </p>
-          </div>
-          <hr class="my-4">
-
-          <p class="mb-2 text-sm">
-            <strong>Atenção:</strong>
-            Atualmente o estorno no sistema é apenas de cunho informativo.
-            Então certifique-se de já ter estornado a inscrição devidamente antes de alterar o status da mesma.
-          </p>
-
-          <hr class="my-4">
-
-          <!-- modal body -->
-          <div class="">
-            <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="observacao_field">
-              Observação
-            </label>
-            <textarea id="observacao_field" name="observacao_estorno" placeholder="Adicione alguma observação (ex: motivo do estorno da inscrição...)" rows="2" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"></textarea>
-          </div>
-
-          <!-- modal footer - actions -->
-          <div class="flex justify-end gap-4 flex-wrap mt-10">
-            <button type="button" data-modalId="modal-estornar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Cancelar
-            </button>
-            <input type="submit" value="Confirmar estorno" class="text-white text-sm font-bold font-poppins flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0" />
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-
   {{-- modal cancelar inscrição --}}
+  @if ($registration && $registration->status_regitration_id == 1)
   <div id="modal-cancelar-inscricao-{{ $registration->id }}" class="hidden">
-    <form action="/inscricao/admin/registrations/{{ $registration->id }}/cancelar" method="post">
+    <form action="/admin/registrations/{{ $registration->id }}/cancelar" method="post">
       @csrf
       <div class="flex h-screen w-full fixed bottom-0 bg-black bg-opacity-60 z-50 justify-center items-center">
         <div class="bg-white mx-3 p-3 md:p-6 rounded-lg w-full max-w-[500px]">
           <!-- modal header -->
           <div class="text-gray-1 text-lg md:text-xl font-semibold">
             <p>
-              Estorno de Inscrição
+              Cancelar Inscrição
             </p>
           </div>
           <hr class="my-4">
 
-          <p class="mb-2 text-sm">
+          <p class="mb-4 text-sm">
             <strong>Atenção:</strong>
-            Realize essa ação com cuidado. Lembre-se que o sistema ainda não possui estorno automático de valores.
+            Realize essa ação com cuidado. O cancelamento não pode ser desfeito pelo sistema.
           </p>
 
           <hr class="my-4">
@@ -113,7 +38,7 @@
           <!-- modal footer - actions -->
           <div class="flex justify-end gap-4 flex-wrap mt-10">
             <button type="button" data-modalId="modal-cancelar-inscricao-{{ $registration->id }}" data-action="close" class="bg-white border border-black text-v1 text-sm font-poppins font-bold w-full sm:w-fit py-2.5 px-4 rounded-lg flex justify-center items-center gap-2.5 hover:ring-2 hover:ring-gray-4 hover:ring-opacity-50 transition disabled:opacity-50 disabled:hover:ring-0">
-              Cancelar
+              Fechar
             </button>
             <input type="submit" value="Confirmar cancelamento" class="text-white text-sm font-bold font-poppins flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0" />
           </div>
@@ -121,6 +46,7 @@
       </div>
     </form>
   </div>
+  @endif
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -139,11 +65,11 @@
           <div class="container">
             <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-2 mb-6">
               <div>
-                <a href="/inscricao/admin/users" class="text-xs text-gray-1 block hover:underline">
+                <a href="/admin/users" class="text-xs text-gray-1 block hover:underline">
                   Atletas
                 </a>
               </div>
-              <img src="/inscricao/images/svg/chevron-left-breadcrumb.svg" alt="">
+              <img src="/images/svg/chevron-left-breadcrumb.svg" alt="">
               <div aria-current="page" class="text-xs text-brand-prfA1 font-semibold">
                 @if ($atleta->nome_completo)
                   {{ $atleta->nome_completo }}
@@ -163,19 +89,16 @@
           <div class="md:col-span-4 lg:col-span-3 mb-6">
             <div class="border border-gray-5 p-4 rounded-lg mb-6 sm:space-y-6 flex gap-4 sm:gap-8 md:block">
               <div class="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full md:mx-auto shrink-0">
-                <img src="/inscricao/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
+                <img src="/images/svg/user-circle.svg" class="w-full h-full object-cover" alt="">
               </div>
               <div class="flex flex-col sm:flex-row gap-2 sm:gap-8 flex-wrap md:block md:space-y-6">
                 <p class="text-sm text-center text-gray-1 font-semibold mb-1">
-                  {{ $atleta->nome_completo }} <br>
-                  @if ($atleta->is_servidor)
-                    <span class="font-bold">(Servidor)</span>
-                  @endif
+                  {{ $atleta->nome_completo }}
                 </p>
               </div>
             </div>
             <div class="flex flex-col gap-4">
-              <a href="/inscricao/admin/users/{{ $atleta->id }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
+              <a href="/admin/users/{{ $atleta->id }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -183,7 +106,8 @@
                   Editar perfil
                 </p>
               </a>
-              <a href="/inscricao/admin/registrations/{{ $registration->id }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
+              @if ($registration)
+              <a href="/admin/registrations/{{ $registration->id }}/update" class="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-md border-[1.5px] border-gray-2 hover:ring-2 hover:ring-gray-2 hover:ring-opacity-50 bg-white transition">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.2318 5.23229L18.7677 8.76822M16.7317 3.73232C17.2006 3.26342 17.8366 3 18.4997 3C19.1628 3 19.7988 3.26342 20.2677 3.73232C20.7366 4.20121 21 4.83717 21 5.50028C21 6.1634 20.7366 6.79936 20.2677 7.26825L6.49994 21.036H3V17.4641L16.7317 3.73232Z" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -191,6 +115,7 @@
                   Editar inscrição
                 </p>
               </a>
+              @endif
             </div>
           </div>
           <div class="md:col-span-8 flex flex-col overflow-hidden md:pl-8 p-1 pt-0">
@@ -219,40 +144,22 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      {{ $atleta->email }}
+                      {{ $atleta->email ?? '-' }}
                     </p>
                   </div>
                 </div>
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
-                      Contato
+                      Telefone
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      @if ($atleta->phone)
-                        {{ $atleta->phone }}
-                      @else
-                        -
-                      @endif
+                      {{ $atleta->phone ?? '-' }}
                     </p>
                   </div>
                 </div>
-                @if ($atleta->is_servidor)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Matrícula
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal break-all">
-                        {{ $atleta->servidor_matricula }}
-                      </p>
-                    </div>
-                  </div>
-                @endif
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -261,8 +168,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-
-                      <?php echo date('d/m/Y', strtotime($atleta->data_nasc)); ?>
+                      <?php echo $atleta->data_nasc ? date('d/m/Y', strtotime($atleta->data_nasc)) : '-'; ?>
                     </p>
                   </div>
                 </div>
@@ -276,60 +182,56 @@
                     <p class="text-sm text-gray-2 font-normal">
                       @if ($atleta->sexo == 'M')
                         Masculino
-                      @else
+                      @elseif ($atleta->sexo == 'F')
                         Feminino
+                      @else
+                        -
                       @endif
                     </p>
                   </div>
                 </div>
-                @if ($atleta->prf_deficiency_id)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        PCD
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        {{ $atleta->prf_deficiency->nome }}
-                      </p>
-                    </div>
-                  </div>
-                @endif
-
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
-                      Dados de criação
+                      Cadastrado em
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal">
-
-                      Criado em: <strong><?php echo date('d/m/Y h:i:s', strtotime($atleta->created_at)); ?></strong>
-
+                      <?php echo date('d/m/Y H:i', strtotime($atleta->created_at)); ?>
                     </p>
-
                   </div>
                 </div>
               </div>
 
+              @if ($registration)
               <h1 class="text-lg text-gray-1 font-poppins font-semibold mb-4">
                 Inscrição realizada
               </h1>
               <div class="border border-gray-5 rounded-lg mb-6">
-                <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-1 font-semibold">
-                      Pacote
-                    </p>
+                @if ($registration->whitelist_document)
+                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-1 font-semibold">
+                        Documento de acesso
+                      </p>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <p class="text-sm text-gray-2 font-normal">
+                        <?php
+                          $doc = $registration->whitelist_document;
+                          if (strlen($doc) === 11) {
+                            echo preg_replace('/^(\d{3})(\d{3})(\d{3})(\d{2})$/', '$1.$2.$3-$4', $doc);
+                          } elseif (strlen($doc) === 14) {
+                            echo preg_replace('/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/', '$1.$2.$3/$4-$5', $doc);
+                          } else {
+                            echo $doc;
+                          }
+                        ?>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-span-2 sm:col-span-1">
-                    <p class="text-sm text-gray-2 font-normal">
-                      {{ $registration->prf_package->nome }}
-                    </p>
-                  </div>
-                </div>
+                @endif
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -338,7 +240,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      {{ App\Models\PrfCategorys::find($registration->prf_categorys_id)->nome }}
+                      {{ $registration->prf_categorys?->nome ?? '-' }}
                     </p>
                   </div>
                 </div>
@@ -350,15 +252,10 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      @if ($size_tshirt)
-                        {{ $size_tshirt->nome }}
-                      @else
-                        -
-                      @endif
+                      {{ $size_tshirt?->nome ?? '-' }}
                     </p>
                   </div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-1 font-semibold">
@@ -367,11 +264,7 @@
                   </div>
                   <div class="col-span-2 sm:col-span-1">
                     <p class="text-sm text-gray-2 font-normal break-all">
-                      @if ($registration->equipe)
-                        {{ $registration->equipe }}
-                      @else
-                        -
-                      @endif
+                      {{ $registration->equipe ?? '-' }}
                     </p>
                   </div>
                 </div>
@@ -382,89 +275,32 @@
                     </p>
                   </div>
                   <div class="col-span-2 sm:col-span-1">
-                    <p class="font-normal break-all">
-                      @if ($registration->status_regitration->id == 1)
-                        <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-xs font-bold text-center">
-                            {{ $registration->status_regitration->status }}
-                          </p>
-                        </div>
-                      @elseif ($registration->status_regitration->id == 3)
-                        <div class="bg-feedback-purple py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-xs font-bold text-center">
-                            {{ $registration->status_regitration->status }}
-                          </p>
-                        </div>
-                      @elseif ($registration->status_regitration->id == 4)
-                        <div class="bg-feedback-orange py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-xs font-bold text-center">
-                            {{ $registration->status_regitration->status }}
-                          </p>
-                        </div>
-                      @elseif ($registration->status_regitration->id == 5)
-                        <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
-                          <p class="text-white text-xs font-bold text-center">
-                            {{ $registration->status_regitration->status }}
-                          </p>
-                        </div>
-                      @endif
-                    </p>
+                    @if ($registration->status_regitration_id == 1)
+                      <div class="bg-feedback-green-1 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration->status_regitration->status }}
+                        </p>
+                      </div>
+                    @elseif ($registration->status_regitration_id == 5)
+                      <div class="bg-red-500 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration->status_regitration->status }}
+                        </p>
+                      </div>
+                    @else
+                      <div class="bg-gray-400 py-0.5 px-2 rounded-full inline-block w-fit h-fit">
+                        <p class="text-white text-xs font-bold text-center">
+                          {{ $registration->status_regitration?->status ?? '-' }}
+                        </p>
+                      </div>
+                    @endif
                   </div>
                 </div>
-                @if ($registration->status_regitration_id == 1)
+                @if ($registration->status_regitration_id == 5 && $registration->observacao_cancelamento)
                   <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
                     <div class="col-span-2 sm:col-span-1">
                       <p class="text-sm text-gray-1 font-semibold">
-                        Confirmação da inscrição
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        @if (!isset($registration->prf_vauchers) && !$registration->validated_by_admin)
-                          Paga com mercado pago
-                        @elseif (isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto < 1 && !$registration->validated_by_admin)
-                          Paga com mercado pago
-                        @elseif($registration->validated_by_admin)
-                          Inscrição liberada pelo administrador
-                        @elseif(isset($registration->prf_vauchers) && $registration->prf_vauchers->desconto == 1 && count($registration->tshirts) == 0)
-                          Desconto de 100% aplicado
-                        @endif
-                      </p>
-                    </div>
-                  </div>
-                @endif
-                @if ($registration->validated_by_admin && $registration->observacao)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Observação
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        {{ $registration->observacao }}
-                      </p>
-                    </div>
-                  </div>
-                @endif
-                @if ($registration->status_regitration_id == 6 && $registration->observacao_estorno)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Observação de estorno
-                      </p>
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-2 font-normal">
-                        {{ $registration->observacao_estorno }}
-                      </p>
-                    </div>
-                  </div>
-                @elseif ($registration->status_regitration_id == 5 && $registration->observacao_cancelamento)
-                  <div class="grid grid-cols-2 gap-1 p-4 sm:px-6 border-b border-gray-5 last:border-b-0">
-                    <div class="col-span-2 sm:col-span-1">
-                      <p class="text-sm text-gray-1 font-semibold">
-                        Observação de cancelamento
+                        Motivo do cancelamento
                       </p>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
@@ -476,20 +312,6 @@
                 @endif
               </div>
               <div class="flex gap-4 justify-end">
-                @if ($registration->status_regitration_id != 1 || $registration->status_regitration_id != 5)
-                  <button data-modalId="modal-validar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                    <p class="text-white text-sm font-bold font-poppins">
-                      Confirmar inscrição
-                    </p>
-                  </button>
-                @endif
-                @if ($registration->status_regitration_id == 1 && $registration->validated_by_admin == 0)
-                  <button data-modalId="modal-estornar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-white transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
-                    <p class="text-red-500 text-sm font-bold font-poppins">
-                      Estornar inscrição
-                    </p>
-                  </button>
-                @endif
                 @if ($registration->status_regitration_id == 1)
                   <button data-modalId="modal-cancelar-inscricao-{{ $registration->id }}" data-action="open" class="flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-red-500 hover:ring-2 hover:ring-red-500 hover:ring-opacity-50 bg-red-500 transition disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0">
                     <p class="text-white text-sm font-bold font-poppins">
@@ -498,28 +320,12 @@
                   </button>
                 @endif
               </div>
+              @else
+              <div class="bg-feedback-fill-blue p-4 rounded-lg" role="alert">
+                <p class="text-brand-prfA1">Este atleta ainda não realizou inscrição.</p>
+              </div>
+              @endif
 
-              {{-- <div class="flex gap-4 flex-wrap">
-
-                <a href="/inscricao/profile/edit/{{ $atleta->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 bg-brand-prfA1 hover:ring-brand-prfA1 hover:ring-opacity-50 transition">
-                  <img src="/inscricao/images/svg/pencil.svg" alt="">
-                  <p class="text-white text-sm font-bold font-poppins">
-                    Editar perfil
-                  </p>
-                </a>
-                <a href="/inscricao/profile/password_reset/{{ $atleta->id }}" class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded-md border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/inscricao/images/svg/padlock.svg" alt="">
-                  <p class="text-brand-prfA1 text-sm font-bold font-poppins">
-                    Alterar senha
-                  </p>
-                </a>
-                <button data-modalId="modal" data-action="open" class="lg:ml-auto flex items-center justify-center sm:justify-start gap-2 w-full sm:w-fit px-3 py-2 rounded border-[1.5px] border-brand-v1 hover:ring-2 hover:ring-brand-v1 hover:ring-opacity-50 bg-white transition">
-                  <img src="/inscricao/images/svg/trash.svg" alt="">
-                  <p class="text-brand-v1 text-sm font-bold font-poppins">
-                    Excluir Conta
-                  </p>
-                </button>
-              </div> --}}
             </div>
           </div>
         </div>

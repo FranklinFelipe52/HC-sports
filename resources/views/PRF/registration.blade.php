@@ -1,14 +1,14 @@
 @extends('PRF.base')
 
-@section('title', 'Complete sua inscrição - Corrida da Água')
+@section('title', 'Inscrição - Circuito Dunas 2026')
 
 @section('content')
   <div class="lg:grid lg:grid-cols-7 xl:container">
     <div class="lg:sticky lg:top-0 lg:h-screen max-h-[1200px] lg:col-span-3 bg-white bg-[url('/images/background.png')] bg-cover bg-no-repeat">
       <div class="flex flex-col h-full">
         <header class="p-5">
-          <a href="/inscricao/">
-            <img src="/inscricao/images/CAERN/Logo-CORRIDA-CAERN.png" width="200" alt="" />
+          <a href="/">
+            <img src="/images/CAERN/logo.png" width="200" alt="" />
           </a>
         </header>
         <div class="p-8 pb-12 lg:p-8 my-auto">
@@ -25,15 +25,41 @@
         <div class="hidden lg:block p-8"></div>
         <div class="mx-auto pb-8 lg:p-0 lg:absolute lg:top-1/2 lg:-right-6">
           <a href="#cadastro_formulario" class="bg-dark-400 w-12 h-12 flex justify-center items-center rounded-full rotate-90 lg:rotate-0">
-            <img src="/inscricao/images/svg/chevron-left-fill.svg" alt="" />
+            <img src="/images/svg/chevron-left-fill.svg" alt="" />
           </a>
         </div>
       </div>
     </div>
+
     <div class="bg-white h-full lg:col-span-4 px-8 py-20">
       <div class="mx-auto w-full max-w-[327px]">
         <form method="post" id="cadastro_formulario">
           @csrf
+
+          {{-- Validação whitelist --}}
+          <h2 class="text-gray-1 text-xl font-semibold font-poppins">
+            Validação de acesso
+          </h2>
+          <hr class="mt-4 mb-6 border-gray-4" />
+          <div class="space-y-4 mb-20">
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="field_document">
+                CPF ou CNPJ
+              </label>
+              <input
+                required
+                class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition"
+                type="text"
+                id="field_document"
+                name="document"
+                placeholder="Digite seu CPF ou CNPJ"
+                value="{{ old('document') }}"
+              />
+              <p class="text-gray-3 text-xs mt-1">Apenas os números registrados na Arena das Dunas são aceitos.</p>
+            </div>
+          </div>
+
+          {{-- Dados pessoais --}}
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados pessoais
           </h2>
@@ -52,13 +78,13 @@
               <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_nome_completo_field" name="nome" value="{{ old('nome') }}" placeholder="Digite o seu nome completo" />
             </div>
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_nascimento_field">
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_date_field">
                 Nascimento
               </label>
               <div class="relative">
                 <input required class="w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_date_field" name="data_nasc" value="{{ old('data_nasc') }}" placeholder="DD/MM/AAAA" />
                 <div class="pointer-events-none absolute top-4 right-4 bg-white pl-4">
-                  <img src="/inscricao/images/PRF/svg/calendar.svg" alt="" />
+                  <img src="/images/PRF/svg/calendar.svg" alt="" />
                 </div>
               </div>
               @error('data_nasc')
@@ -71,138 +97,85 @@
               </label>
               <div class="relative">
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="sexo" id="cadastro_genero_field">
-                  <option @if (old('sexo') == 'M') @selected(true) @endif value="M">
-                    Masculino</option>
-                  <option @if (old('sexo') == 'F') @selected(true) @endif value="F">Feminino
-                  </option>
+                  <option @if (old('sexo') == 'M') @selected(true) @endif value="M">Masculino</option>
+                  <option @if (old('sexo') == 'F') @selected(true) @endif value="F">Feminino</option>
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
             </div>
-
             <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="registration_phone_field">
                 Contato
               </label>
               <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="registration_phone_field" placeholder="Digite o seu número de contato" name="phone" value="{{ old('phone') }}" />
             </div>
-
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_pcd_field">
-                Possui deficiência física comprovada?
-              </label>
-
-              <div class="relative">
-                <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="pcd" id="inscricao_pcd_field">
-                  <option value="N" selected>Não</option>
-                  @foreach ($deficiencys as $deficiency)
-                    <option @if (old('pcd') == $deficiency->id) @selected(true) @endif value={{ $deficiency->id }}>{{ $deficiency->nome }}</option>
-                  @endforeach
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="is_servidor">
-                É servidor da CAERN?
-              </label>
-
-              <div class="relative">
-                <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="is_servidor" id="is_servidor">
-                  <option value="0" @if (old('is_servidor') == 0) @selected(true) @endif>Não</option>
-                  <option value="1" @if (old('is_servidor') == 1) @selected(true) @endif>Sim</option>
-                </select>
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
-                </div>
-              </div>
-            </div>
           </div>
+
+          {{-- Endereço --}}
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de endereço
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
             <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cep_field">
-                CEP
-              </label>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cep_field">CEP</label>
               <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cep_field" name="cep" placeholder="Digite o seu CEP" value="{{ old('cep') }}" />
             </div>
             <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cidade_field">
-                Cidade
-              </label>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_cidade_field">Cidade</label>
               <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_cidade_field" name="cidade" value="{{ old('cidade') }}" placeholder="Digite a sua cidade" />
             </div>
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="inscricao_uf_field">
-                UF
-              </label>
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="inscricao_uf_field">UF</label>
               <div class="relative">
                 <select data-item="select" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="estado" id="inscricao_uf_field">
-                  <option selected value class="uppercase">Selecione</option>
+                  <option selected value>Selecione</option>
                   @foreach ($federativeUnits as $value)
-                  <option @if (old('estado') == $value->id) @selected(true) @endif value={{ $value->id }}>{{ $value->initials }}</option>
+                    <option @if (old('estado') == $value->id) @selected(true) @endif value="{{ $value->id }}">{{ $value->initials }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
             </div>
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_rua_field">
-                Rua
-              </label>
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_rua_field">Rua</label>
               <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_rua_field" name="rua" value="{{ old('rua') }}" placeholder="Digite a sua rua" />
             </div>
-
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_number_field">
-                Número
-              </label>
-              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_number_field" name="number" value="{{ old('number') }}" placeholder="Digite o número da casa" />
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_number_field">Número</label>
+              <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_number_field" name="number" value="{{ old('number') }}" placeholder="Número da casa" />
             </div>
-
-            <div class="mb-6">
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_bairro_field">
-                Bairro
-              </label>
+            <div>
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_bairro_field">Bairro</label>
               <input onkeyup="this.value = this.value.toUpperCase();" required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_bairro_field" name="bairro" value="{{ old('bairro') }}" placeholder="Digite o seu bairro" />
             </div>
-
-            <div class="mb-6">
+            <div>
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_complemento_field">
                 Complemento <span class="text-sm">(opcional)</span>
               </label>
-              <input onkeyup="this.value = this.value.toUpperCase();" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_complemento_field" name="complemento" value="{{ old('complemento') }}" placeholder="Digite o número da casa" />
+              <input onkeyup="this.value = this.value.toUpperCase();" class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="cadastro_complemento_field" name="complemento" value="{{ old('complemento') }}" placeholder="Complemento (opcional)" />
             </div>
           </div>
+
+          {{-- Dados da corrida --}}
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados da Corrida
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
             <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
-                Distância
-              </label>
-              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" value="{{ $category->nome }}" />
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2">Distância</label>
+              <input disabled class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 text-gray-1 transition" type="text" value="{{ $category->nome }}" />
             </div>
             <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="input_text_exemplo">
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2">
                 Equipe <span class="text-sm">(opcional)</span>
               </label>
-              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" id="input_text_exemplo" name="equipe" value="{{ old('equipe') }}" placeholder="Digite o nome da sua equipe" />
-              @error('equipe')
-                <p class="text-red-600">{{ $message }}</p>
-              @enderror
+              <input class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="text" name="equipe" value="{{ old('equipe') }}" placeholder="Nome da equipe" />
             </div>
             <div class="mb-6">
               <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="inscricao_size_tshirt_field">
@@ -212,228 +185,136 @@
                 <select required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg bg-white border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 appearance-none transition" name="size_tshirt" id="inscricao_size_tshirt_field">
                   <option selected value>Selecione</option>
                   @foreach ($category->prf_size_tshirts as $size_tshirt)
-                    <option @if (old('size_tshirt') == $size_tshirt->id) @selected(true) @endif value={{ $size_tshirt->id }}>{{ $size_tshirt->nome }}</option>
+                    <option @if (old('size_tshirt') == $size_tshirt->id) @selected(true) @endif value="{{ $size_tshirt->id }}">{{ $size_tshirt->nome }}</option>
                   @endforeach
                 </select>
                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                  <img src="/inscricao/images/PRF/svg/chevron-down.svg" alt="" />
+                  <img src="/images/PRF/svg/chevron-down.svg" alt="" />
                 </div>
               </div>
             </div>
           </div>
-          @if(Count($tshirts) > 0)
-          <h2 class="text-gray-1 text-xl font-semibold font-poppins">
-            Ajude a campanha beneficente
-          </h2>
-          <hr class="mt-4 mb-6 border-gray-4" />
-          <div class="space-y-4 mb-20">
-            <div class="space-y-4">
-              @foreach ($tshirts as $tshirt)
-                <div class="border rounded border-gray-5 p-2">
-                  <div>
-                    <a href="/inscricao/images/PRF/Camiseta-PRF-2023.png" target="_blank">
-                      <img src="/inscricao/images/PRF/Camiseta-PRF-2023.png" class="h-[100px] w-[100px]" alt="">
-                    </a>
-                  </div>
-                  <div class="py-4 flex gap-4">
-                    <div class="flex items-center">
-                      <input class="prf-checkbox" type="checkbox" name="tshirts[]" value="{{ $tshirt->id }}" id="campanhaCheckbox{{ $tshirt->id }}" />
-                    </div>
-                    <div class="flex flex-col gap-4">
-                      <div class="">
-                        <p class="text-gray-1 text-sm">
-                          {{ $tshirt->nome }}
-                        </p>
-                        <p class="text-dark-1 text-sm font-bold mb-2">
-                          R$ {{ number_format($tshirt->price, 2, ',', '.') }}
-                        </p>
-                        <p class="text-gray-1 text-xs">
-                          <span class="text-gray-8">Itens inclusos:</span> {{ $tshirt->descricao }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-            </div>
-          </div>
-          @endif
+
+          {{-- Dados de login --}}
           <h2 class="text-gray-1 text-xl font-semibold font-poppins">
             Dados de login
           </h2>
           <hr class="mt-4 mb-6 border-gray-4" />
           <div class="space-y-4 mb-20">
             <div>
-              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">
-                E-mail
-              </label>
-              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="cadastro_email_field" placeholder="Digite o seu E-mail" name="email" value="{{ old('email') }}" />
+              <label class="text-gray-1 font-semibold text-base inline-block mb-2" for="cadastro_email_field">E-mail</label>
+              <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3 transition" type="email" id="cadastro_email_field" placeholder="Digite o seu e-mail" name="email" value="{{ old('email') }}" />
             </div>
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha">
-                Senha
-              </label>
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="cadastro_senha">Senha</label>
               <div class="group relative">
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha" name="password" placeholder="Digite a sua senha" />
-                <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="cadastro_senha" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/inscricao/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/inscricao/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="cadastro_senha" name="password" placeholder="Mínimo 8 caracteres" />
+                <div class="absolute top-2.5 right-4 bg-white transition-all">
+                  <button type="button" data-inputId="cadastro_senha" class="hover:bg-gray-200 transition w-8 h-8 flex justify-center items-center rounded-full group">
+                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
                 </div>
                 @error('password')
                   <p class="text-red-600">{{ $message }}</p>
                 @enderror
-                <div class="text-gray-1 text-sm mt-2">
-                  <p>
-                    a senha deve ter:
-                  </p>
-                  <ul>
-                    <li>- Minimo de 8 caracteres</li>
-                  </ul>
-                </div>
+                <p class="text-gray-1 text-xs mt-2">Mínimo de 8 caracteres</p>
               </div>
             </div>
             <div>
-              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirm_password">
-                Confirmação de senha
-              </label>
+              <label class="text-dark-900 font-semibold text-base inline-block mb-2" for="confirm_password">Confirmação de senha</label>
               <div class="group relative">
-                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password" name="confirm_password" placeholder="Digite a sua senha" />
-                <div class="absolute top-2.5 right-4 bg-white transition-all group-[.disabled]:bg-gray-6">
-                  <button type="button" data-inputId="confirm_password" class="hover:bg-gray-200 group-[.disabled]:bg-gray-6  transition w-8 h-8 flex justify-center items-center rounded-full group">
-                    <img src="/inscricao/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
-                    <img src="/inscricao/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
+                <input required class="disabled:bg-gray-6 disabled:cursor-not-allowed w-full px-4 py-3 rounded-lg border border-gray-4 focus:border-brand-prfA1 focus:outline-brand-prfA1 text-gray-1 placeholder:text-gray-3" type="password" id="confirm_password" name="confirm_password" placeholder="Repita a senha" />
+                <div class="absolute top-2.5 right-4 bg-white transition-all">
+                  <button type="button" data-inputId="confirm_password" class="hover:bg-gray-200 transition w-8 h-8 flex justify-center items-center rounded-full group">
+                    <img src="/images/PRF/svg/eye.svg" alt="" class="hidden group-[.show]:block" />
+                    <img src="/images/PRF/svg/eye-off.svg" alt="" class="block group-[.show]:hidden" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <h2 class="text-gray-1 text-xl font-semibold font-poppins">
-            Aceite obrigatório
-          </h2>
+          {{-- Aceite --}}
+          <h2 class="text-gray-1 text-xl font-semibold font-poppins">Aceite obrigatório</h2>
           <hr class="my-4 border-gray-4" />
           <p class="text-sm text-gray-1 mb-8">
-            “Aceito as regras de participação da CORRIDA ÁGUA - CAERN 2025 presentes no REGULAMENTO GERAL da competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD).”
+            "Aceito as regras de participação da CIRCUITO DUNAS 2026 presentes no REGULAMENTO GERAL da competição e a POLÍTICA DE TRATAMENTO DE DADOS, nos limites das finalidades institucionais da H C PRODUÇÕES E EVENTOS LTDA - HC SPORTS, organizadora do evento, observando o norteamento jurídico da Lei 13.709/2018 (Lei Geral de Proteção de Dados – LGPD)."
           </p>
           <div class="flex items-center gap-2">
             <input data-conditional="submit_button" type="checkbox" id="cadastro_termos_checkbox" name="cadastro_termos_checkbox" class="checkbox" required />
-            <a href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">
-              Li e aceito os termos.
-            </a>
+            <a href="#" class="block pb-1 text-sm font-semibold text-brand-prfA1 underline">Li e aceito os termos.</a>
           </div>
 
           <hr class="mt-20 mb-8 border-gray-4" />
 
           <button disabled id="submit_button" data-conditional-button type="submit" class="flex items-center justify-center gap-4 w-full px-4 py-2.5 rounded border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 disabled:bg-gray-4 disabled:border-gray-4 disabled:hover:ring-0 disabled:cursor-not-allowed transition">
-            <p class="text-white text-sm font-bold font-poppins">
-              Cadastrar-se
-            </p>
+            <p class="text-white text-sm font-bold font-poppins">Realizar inscrição</p>
           </button>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {
       showErrorToastfy('{{ session('erro') }}');
     }
-
     if ('{{ session('success') }}') {
       showSuccessToastfy('{{ session('success') }}');
     }
 
     function showSuccessToastfy(text) {
-      Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#EBFBEE",
-          color: "#279424",
-          boxShadow: "none",
-        },
-        onClick: function() {}
-      }).showToast();
+      Toastify({ text, duration: 3000, gravity: "top", close: true, position: "right", style: { background: "#EBFBEE", color: "#279424", boxShadow: "none" } }).showToast();
     }
-
     function showErrorToastfy(text) {
-      Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#FBDBDB",
-          color: "#8E1014",
-          boxShadow: "none",
-        },
-        onClick: function() {}
-      }).showToast();
+      Toastify({ text, duration: 3000, gravity: "top", close: true, position: "right", style: { background: "#FBDBDB", color: "#8E1014", boxShadow: "none" } }).showToast();
     }
 
-    new Cleave('#cadastro_cpf_field', {
-      blocks: [3, 3, 3, 2],
-      delimiters: ['.', '.', '-'],
-      numericOnly: true,
+    new Cleave('#cadastro_cpf_field', { blocks: [3, 3, 3, 2], delimiters: ['.', '.', '-'], numericOnly: true });
+    new Cleave('#registration_phone_field', { blocks: [2, 5, 4], delimiters: [' ', '-'], numericOnly: true });
+    new Cleave('#cadastro_date_field', { blocks: [2, 2, 4], delimiters: ['/', '/'], numericOnly: true });
+    new Cleave('#cadastro_cep_field', { blocks: [5, 3], delimiters: ['-'], numericOnly: true });
+
+    // Formatação automática CPF/CNPJ no campo de acesso
+    const docInput = document.querySelector('#field_document');
+    docInput.addEventListener('input', function () {
+      let v = this.value.replace(/\D/g, '');
+      if (v.length <= 11) {
+        v = v.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      } else {
+        v = v.replace(/^(\d{2})(\d)/, '$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d)/, '.$1/$2').replace(/(\d{4})(\d)/, '$1-$2');
+      }
+      this.value = v;
     });
 
-    new Cleave('#registration_phone_field', {
-      blocks: [2, 5, 4],
-      delimiters: [' ', '-'],
-      numericOnly: true,
-    });
+    // Preenchimento automático de endereço via CEP
+    const cepInput = document.querySelector('#cadastro_cep_field');
+    const estadoInput = document.querySelector('#inscricao_uf_field');
+    const cidadeInput = document.querySelector('#cadastro_cidade_field');
+    const ruaInput = document.querySelector('#cadastro_rua_field');
+    const bairroInput = document.querySelector('#cadastro_bairro_field');
 
-    new Cleave('#cadastro_date_field', {
-      blocks: [2, 2, 4],
-      delimiters: ['/', '/'],
-      numericOnly: true,
-    });
-
-    new Cleave('#cadastro_cep_field', {
-            blocks: [5, 3],
-            delimiters: ['-'],
-            numericOnly: true,
-        });
-
-     // preenchimento automático de endereço
-     const cepInput = document.querySelector('#cadastro_cep_field');
-        const EstadoInput = document.querySelector('#inscricao_uf_field');
-        const cidadeInput = document.querySelector('#cadastro_cidade_field');
-        const ruaInput = document.querySelector('#cadastro_rua_field');
-        const bairroInput = document.querySelector('#cadastro_bairro_field');
-
-        cepInput.addEventListener('change', handleAdress);
-
-        function handleAdressInput(json) {
-            if (!('erro' in json)) {
-                for (let i = 0; i < EstadoInput.options.length; i++) {
-                    if (EstadoInput.options[i].text == json.uf) {
-                        EstadoInput.value = EstadoInput.options[i].value;
-                    }
+    cepInput.addEventListener('change', function (e) {
+      if (e.target.value.length === 9) {
+        const clean = e.target.value.replace(/\D/g, '');
+        fetch(`https://viacep.com.br/ws/${clean}/json/`)
+          .then(r => r.json())
+          .then(json => {
+            if (!json.erro) {
+              for (let i = 0; i < estadoInput.options.length; i++) {
+                if (estadoInput.options[i].text === json.uf) {
+                  estadoInput.value = estadoInput.options[i].value;
                 }
-
-                cidadeInput.value = json.localidade;
-                ruaInput.value = json.logradouro;
-                bairroInput.value = json.bairro;
+              }
+              cidadeInput.value = json.localidade;
+              ruaInput.value = json.logradouro;
+              bairroInput.value = json.bairro;
             }
-        }
-
-        function handleAdress(e) {
-            if (e.target.value.length == 9) {
-                const valueClean = e.target.value.replace(/[^0-9]/g, "");
-                fetch(`https://viacep.com.br/ws/${valueClean}/json/`)
-                    .then(response => response.json())
-                    .then(json => handleAdressInput(json))
-            }
-        }
+          });
+      }
+    });
   </script>
 @endsection

@@ -13,11 +13,11 @@
         <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/inscricao/user/dashboard/my-registrations">Minhas incrições</a>
+                    <a class="nav-link" href="/user/dashboard/my-registrations">Minhas incrições</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/inscricao/logout">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
 @endif
 <div class="row">
     <div class="col-9">
-    <form id="form-card" action="/inscricao/card/{{$registration->id}}" method="post">
+    <form id="form-card" action="/card/{{$registration->id}}" method="post">
         @csrf
         <input id="token_card" name="token_card"  type="hidden" value="">
         <div class="card p-4">

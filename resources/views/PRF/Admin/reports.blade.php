@@ -1,11 +1,8 @@
 @extends('Admin.base')
 
-@section('title', 'Relatórios - Corrida da Água')
+@section('title', 'Relatórios - Circuito Dunas 2026')
 
 @section('content')
-
-  {{-- @include('components.admin.menu_mobile', ['type' => 7]) --}}
-
 
   <!-- grid principal -->
   <div class="grid grid-cols-1 sm:grid-cols-main-colapsed lg:grid-cols-main-expanded grid-rows-main-mobile sm:grid-rows-1 h-screen w-full">
@@ -20,118 +17,46 @@
       <div class="container h-full w-full flex flex-col overflow-auto pb-8">
 
         <!-- Cabeçalho -->
-        <header class="pt-8 pb-6 space-y-6">
+        <header class="pt-8 pb-6">
           <h1 class="text-lg text-gray-1 font-poppins font-semibold">
             Relatórios
           </h1>
         </header>
 
-        <div class="flex flex-wrap gap-4">
-          <div>
-            <h2 class="text-lg text-gray-1 font-poppins font-semibold">Vouchers</h2>
-            <div class="flex flex-col gap-2">
-              <a href="/inscricao/admin/all_vouchers_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/inscricao/images/svg/download.svg" alt="">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Todos os vouchers
-                </p>
-              </a>
-
-              <a href="/inscricao/admin/vouchers_with_user" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/inscricao/images/svg/download.svg" alt="">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Vouchers usados
-                </p>
-              </a>
-            </div>
-          </div>
+        <div class="flex flex-wrap gap-8">
 
           <div>
-            <h2 class="text-lg text-gray-1 font-poppins font-semibold">Usuários</h2>
+            <h2 class="text-base text-gray-1 font-poppins font-semibold mb-3">Atletas</h2>
             <div class="flex flex-col gap-2">
-              <a href="/inscricao/admin/all_users_get" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/inscricao/images/svg/download.svg" alt="">
+              <a href="/admin/all_users_get" class="flex items-center justify-start gap-3 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
+                <img src="/images/svg/download.svg" alt="">
                 <p class="text-white text-sm font-bold font-poppins">
-                  Todos os usuários
+                  Todos os atletas
                 </p>
               </a>
             </div>
           </div>
 
 
-          <div>
-            <h2 class="text-lg text-gray-1 font-poppins font-semibold">Inscrições</h2>
-            <div class="flex flex-col gap-2">
-              <a href="/inscricao/admin/all_confirmed_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-                <img src="/inscricao/images/svg/download.svg" alt="">
-                <p class="text-white text-sm font-bold font-poppins">
-                  Inscrições confirmadas
-                </p>
-              </a>
-            </div>
-          </div>
-
-          {{-- <a href="/inscricao/admin/all_confirm_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <img src="/inscricao/images/svg/download.svg" alt="">
-            <p class="text-white text-sm font-bold font-poppins">
-              Inscrições confirmadas
-            </p>
-          </a>
-
-          <a href="/inscricao/admin/all_paid_registrations" class="order-1 sm:order-2 flex items-center justify-center sm:justify-start gap-4 w-full sm:w-fit px-4 py-2.5 rounded-lg border-[1.5px] border-brand-prfA1 hover:ring-2 hover:ring-brand-prfA1 hover:ring-opacity-50 bg-brand-prfA1 transition">
-            <img src="/inscricao/images/svg/download.svg" alt="">
-            <p class="text-white text-sm font-bold font-poppins">
-              Inscrições pagas
-            </p>
-          </a> --}}
-        </div>
+</div>
       </div>
     </div>
   </div>
 
-  <!-- js -->
-  <script type="module" src="/inscricao/frontend/dist/js/index.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js" integrity="sha512-KaIyHb30iXTXfGyI9cyKFUIRSSuekJt6/vqXtyQKhQP6ozZEGY8nOtRS6fExqE4+RbYHus2yGyYg1BrqxzV6YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     if ('{{ session('erro') }}') {
-      showErrorToastfy('{{ session('erro') }}');
-    }
-
-    if ('{{ session('success') }}') {
-      showSuccessToastfy('{{ session('success') }}');
-    }
-
-    function showSuccessToastfy(text) {
       Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#EBFBEE",
-          color: "#279424",
-          boxShadow: "none",
-        },
-        onClick: function() {} // Callback after click
+        text: '{{ session('erro') }}',
+        duration: 3000, gravity: 'top', close: true, position: 'right',
+        style: { background: '#FBDBDB', color: '#8E1014', boxShadow: 'none' },
       }).showToast();
     }
-
-    function showErrorToastfy(text) {
+    if ('{{ session('success') }}') {
       Toastify({
-        text: text,
-        duration: 3000,
-        gravity: "top",
-        close: true,
-        position: "right",
-        style: {
-          background: "#FBDBDB",
-          color: "#8E1014",
-          boxShadow: "none",
-        },
-        onClick: function() {} // Callback after click
+        text: '{{ session('success') }}',
+        duration: 3000, gravity: 'top', close: true, position: 'right',
+        style: { background: '#EBFBEE', color: '#279424', boxShadow: 'none' },
       }).showToast();
     }
   </script>

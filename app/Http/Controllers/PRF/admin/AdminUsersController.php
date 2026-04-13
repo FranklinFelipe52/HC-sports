@@ -5,19 +5,17 @@ namespace App\Http\Controllers\PRF\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PrfUserUpdateRequest;
 use App\Mail\PrfEmailUpdate;
+use App\Models\Caern_adresses;
+use App\Models\FederativeUnit;
 use App\Models\PrfAdminLog;
-use App\Models\PrfDeficiency;
 use App\Models\PrfRegistration;
 use App\Models\PrfSizeTshirts;
 use App\Models\PrfUser;
 use App\Models\PrfAdmin;
-use App\Models\TypeActionsAdmin;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use PHPUnit\Framework\Constraint\Count;
 
 class AdminUsersController extends Controller
 {
@@ -54,16 +52,18 @@ class AdminUsersController extends Controller
     {
         try {
             $user = PrfUser::find($id);
-            $registration = PrfRegistration::find($user->registrations[0]->id);
-            $size_tshirt = PrfSizeTshirts::find($registration->prf_size_tshirts_id);
 
             if (!$user) {
                 return back();
             }
+
+            $registration = $user->registrations->first();
+            $size_tshirt = $registration ? PrfSizeTshirts::find($registration->prf_size_tshirts_id) : null;
+
             return view('PRF.Admin.user', [
-                'atleta' => $user,
+                'atleta'       => $user,
                 'registration' => $registration,
-                'size_tshirt' => $size_tshirt,
+                'size_tshirt'  => $size_tshirt,
             ]);
 
         } catch (Exception $e) {
@@ -76,9 +76,15 @@ class AdminUsersController extends Controller
     {
         try {
             $user = PrfUser::find($id);
-            $deficiencys = PrfDeficiency::all();
 
-            return view('PRF.Admin.user_update', ['atleta' => $user, 'deficiencys' => $deficiencys]);
+            if (!$user) {
+                return back();
+            }
+
+            return view('PRF.Admin.user_update', [
+                'atleta'          => $user,
+                'federativeUnits' => FederativeUnit::all(),
+            ]);
         } catch (Exception $e) {
             return back();
         }
@@ -111,14 +117,24 @@ class AdminUsersController extends Controller
             }
 
             $user->nome_completo = $request->nome;
-            $user->phone = $request->phone;
-            $user->sexo = $request->sexo;
-            $data_convertida = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
-            $user->data_nasc = $data_convertida->format('Y-m-d');
-            $user->prf_deficiency_id = $request->pcd === 'N' ? null : $request->pcd;
-            $user->is_servidor = $request->is_servidor;
-            $user->servidor_matricula = $request->servidor_matricula;
+            $user->phone         = $request->phone;
+            $user->sexo          = $request->sexo;
+            $data_convertida     = Carbon::createFromFormat('d/m/Y', $request->data_nasc);
+            $user->data_nasc     = $data_convertida->format('Y-m-d');
             $user->save();
+
+            if ($request->filled('cep')) {
+                $address = $user->caern_address ?? new Caern_adresses(['prf_user_id' => $user->id]);
+                $address->cep                = $request->cep;
+                $address->cidade             = strtoupper($request->cidade);
+                $address->bairro             = strtoupper($request->bairro);
+                $address->rua                = strtoupper($request->rua);
+                $address->number             = $request->number;
+                $address->complemento        = $request->complemento ? strtoupper($request->complemento) : null;
+                $address->federative_unit_id = $request->estado;
+                $address->prf_user_id        = $user->id;
+                $address->save();
+            }
 
             $admin_log = new PrfAdminLog;
             $admin_log->prf_admin_id = $admin->id;

@@ -3,28 +3,16 @@
 namespace App\Http\Controllers\PRF\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PrfPayments;
 use App\Models\PrfRegistration;
-use App\Models\PrfVauchers;
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-        $registrations = PrfRegistration::all();
-        $pagamentos = PrfPayments::where('status_payment_id', 1)->orderBy('created_at', 'desc')->get();
-        $descontos = PrfVauchers::all();
-        $vouchers = PrfVauchers::where('isCupom', 0)->get();
-        $cupoms = PrfVauchers::where('isCupom', 1)->get();
-
-        return view('PRF.Admin.dashboard',
-            [
-                'registrations' => $registrations,
-                'pagamentos' => $pagamentos,
-                'descontos' => $descontos,
-                'vouchers' => $vouchers,
-                'cupoms' => $cupoms,
-            ]
-        );
+        return view('PRF.Admin.dashboard', [
+            'total_registrations' => PrfRegistration::count(),
+            'confirmed'           => PrfRegistration::where('status_regitration_id', PrfRegistration::STATUS_CONFIRMADO)->count(),
+            'cancelled'           => PrfRegistration::where('status_regitration_id', PrfRegistration::STATUS_CANCELADA)->count(),
+        ]);
     }
 }

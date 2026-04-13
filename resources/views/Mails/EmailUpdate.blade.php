@@ -495,9 +495,9 @@
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                         <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:600px">
-                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url(https://corridadaagua.com.br/inscricao/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="https://corridadaagua.com.br/inscricao/frontend/dist/email/images/background_1.png" role="presentation">
+                            <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;background-image:url(https://corridadaagua.com.br/frontend/dist/email/images/background_1.png);background-repeat:no-repeat;background-position:center top" background="https://corridadaagua.com.br/frontend/dist/email/images/background_1.png" role="presentation">
                               <tr>
-                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="https://corridadaagua.com.br/inscricao/frontend/dist/email/images/logo.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo da CAERN"></td>
+                                <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px;font-size:0px"><img src="https://corridadaagua.com.br/frontend/dist/email/images/logo.png" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" height="60" title="Logo da CAERN"></td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:35px">
