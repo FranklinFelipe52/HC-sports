@@ -13,11 +13,6 @@
         {{-- <a href="https://twitter.com/HCSportsBR" target="_blank">
           <img src="/images/svg/twitter.svg" alt="">
         </a> --}}
-        <a href="https://www.facebook.com/caern115" target="_blank">
-          <img src="/images/svg/facebook.svg" alt="">
-        </a>
-        <a href="https://www.instagram.com/caern115" target="_blank">
-          <img src="/images/svg/instagram.svg" alt="">
         </a>
       </div>
     </div>
