@@ -97,10 +97,7 @@
                     </div>
                     <div class="">
                       <p class="text-brand-prfA1 text-1.5xl w-full text-end font-bold">
-                        <span class="text-sm">
-                          R$
-                        </span>
-                        {{ number_format($category->price, 2, ',', '.') }}
+                        Gratuito
                       </p>
                     </div>
                   </div>
