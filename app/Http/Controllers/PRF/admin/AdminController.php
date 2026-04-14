@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
 
+    public function showLogin(Request $request)
+    {
+        if ($request->session()->has('admin')) {
+            return redirect('/admin/dashboard');
+        }
+
+        return view('PRF.Admin.Auth.login');
+    }
+
     public function login(LoginRequest $request)
     {
 

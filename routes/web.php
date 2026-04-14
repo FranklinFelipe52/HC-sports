@@ -40,7 +40,7 @@ Route::namespace('Admin')->group(function () {
     Route::redirect('/admin', '/admin/dashboard');
     Route::get('/admin/gen_password/{password}', [AdminController::class, 'gen_password']);
 
-    Route::view('/admin/login', 'PRF.Admin.Auth.login');
+    Route::get('/admin/login', [AdminController::class, 'showLogin']);
     Route::post('/admin/login', [AdminController::class, 'login']);
     Route::get('/admin/logout', [AdminController::class, 'logout']);
 

@@ -139,13 +139,14 @@ class PrfRegistrationController extends Controller
             $registration->whitelist_document   = $rawDocument;
             $registration->save();
 
-            $request->session()->put('prf_user', $user);
-
             DB::commit();
+
+            $request->session()->put('prf_user', $user);
+            $request->session()->save();
 
             try {
                 Mail::to($user->email)->send(new PrfConfirmRegistration($user, $registration));
-            } catch (Exception) {
+            } catch (\Throwable $mailError) {
                 // falha no e-mail não deve impedir a inscrição
             }
 
