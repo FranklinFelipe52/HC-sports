@@ -13,13 +13,13 @@ use App\Models\PrfUser;
 use App\Rules\CpfValidate;
 use App\Rules\PrfCpfUserExist;
 use App\Rules\PrfEmailUserExist;
-use App\Mail\PrfConfirmRegistration;
+// use App\Mail\PrfConfirmRegistration;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
+// use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 
 class PrfRegistrationController extends Controller
@@ -144,11 +144,11 @@ class PrfRegistrationController extends Controller
             $request->session()->put('prf_user', $user);
             $request->session()->save();
 
-            try {
-                Mail::to($user->email)->send(new PrfConfirmRegistration($user, $registration));
-            } catch (\Throwable $mailError) {
-                // falha no e-mail não deve impedir a inscrição
-            }
+            // try {
+            //     Mail::to($user->email)->send(new PrfConfirmRegistration($user, $registration));
+            // } catch (\Throwable $mailError) {
+            //     // falha no e-mail não deve impedir a inscrição
+            // }
 
             session()->flash('success', 'Inscrição realizada com sucesso!');
             return redirect('/dashboard');
