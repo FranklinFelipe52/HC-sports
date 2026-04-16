@@ -56,6 +56,17 @@
         </a>
       </li>
 
+      <li class="group @if ($menuItemActive == 6) active @endif">
+        <a href="/admin/whitelist" title="Whitelist" class="flex items-center justify-center lg:justify-normal gap-2 px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition">
+          <div class="w-[24px] h-[24px]">
+            <img src="/images/svg/padlock.svg" class="w-full h-full object-cover" alt="">
+          </div>
+          <p class="sm:hidden lg:block text-gray-1 group-[.active]:text-brand-prfA1 text-sm font-poppins">
+            Whitelist
+          </p>
+        </a>
+      </li>
+
       <li class="group sm:hidden">
         <a href="/admin/logout" title="Sair" class="flex items-center justify-center lg:justify-normal gap-2 lg:px-3 py-2 group-[.active]:bg-gray-6 group-hover:bg-gray-6 rounded-lg transition px-2">
           <div class="w-[24px] h-[24px]">

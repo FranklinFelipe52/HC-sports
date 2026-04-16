@@ -5,6 +5,7 @@ use App\Http\Controllers\PRF\admin\AdminReportsController;
 use App\Http\Controllers\PRF\admin\AdminController;
 use App\Http\Controllers\PRF\admin\AdminDashboardController;
 use App\Http\Controllers\PRF\admin\AdminUsersController;
+use App\Http\Controllers\PRF\admin\AdminWhitelistController;
 use App\Http\Controllers\PRF\PrfUserController;
 use App\Http\Controllers\PrfDashboardController;
 use App\Http\Controllers\PrfForgotPasswordController;
@@ -59,6 +60,10 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/admin/reports', [AdminReportsController::class, 'index'])->middleware('PrfAuthAdmins');
     Route::get('/admin/all_users_get', [AdminReportsController::class, 'all_users_get'])->middleware('PrfAuthAdmins');
+
+    Route::get('/admin/whitelist', [AdminWhitelistController::class, 'index'])->middleware('PrfAuthAdmins');
+    Route::post('/admin/whitelist', [AdminWhitelistController::class, 'store'])->middleware('PrfAuthAdmins');
+    Route::delete('/admin/whitelist/{id}', [AdminWhitelistController::class, 'destroy'])->middleware('PrfAuthAdmins');
 });
 
 /* Inscrição — deve ficar por último para não interceptar outras rotas */
