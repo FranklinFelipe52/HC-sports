@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AthleteWhitelist;
 use App\Models\Caern_adresses;
-use App\Models\FederativeUnit;
 use App\Models\PrfCategorys;
 use App\Models\PrfPackage;
 use App\Models\PrfRegistration;
-use App\Models\PrfSizeTshirts;
 use App\Models\PrfUser;
 use App\Rules\CpfValidate;
 use App\Rules\PrfCpfUserExist;
@@ -24,28 +22,15 @@ use Illuminate\Validation\Rules\Password;
 
 class PrfRegistrationController extends Controller
 {
-    public function create(Request $request, $category_id, $package_id)
+    public function create()
     {
-        try {
-            $category = PrfCategorys::find($category_id);
-            $package  = PrfPackage::find($package_id);
-
-            if (!$category || !$package) {
-                return back();
-            }
-
-            return view('PRF.registration', [
-                'category'       => $category,
-                'size_tshirts'   => PrfSizeTshirts::all(),
-                'federativeUnits' => FederativeUnit::all(),
-            ]);
-        } catch (Exception $e) {
-            return back();
-        }
+        return redirect('/')->with('erro', 'Inscrições encerradas.');
     }
 
     public function store(Request $request, $category_id, $package_id)
     {
+        return redirect('/')->with('erro', 'Inscrições encerradas.');
+
         try {
             $category = PrfCategorys::find($category_id);
             $package  = PrfPackage::find($package_id);
@@ -159,53 +144,14 @@ class PrfRegistrationController extends Controller
         }
     }
 
-    public function update_get(Request $request, $id)
+    public function update_get()
     {
-        try {
-            $user         = PrfUser::find($request->session()->get('prf_user')->id);
-            $registration = PrfRegistration::find($id);
-
-            if (!$user || !$registration) {
-                return back();
-            }
-            if ($registration->prf_user->id != $user->id) {
-                return back();
-            }
-
-            return view('PRF.User.registration_update', [
-                'categorys'   => PrfCategorys::all(),
-                'user'        => $user,
-                'registration' => $registration,
-                'shirts_sizes' => PrfSizeTshirts::all(),
-            ]);
-        } catch (Exception $e) {
-            session()->flash('erro', 'Não foi possível efetuar sua ação.');
-            return back();
-        }
+        return redirect('/dashboard')->with('erro', 'Edição de inscrições encerrada.');
     }
 
-    public function update_post(Request $request, $id)
+    public function update_post()
     {
-        try {
-            $user         = PrfUser::find($request->session()->get('prf_user')->id);
-            $registration = PrfRegistration::find($id);
-
-            if (!$user || !$registration) {
-                return back();
-            }
-            if ($registration->prf_user->id != $user->id) {
-                return back();
-            }
-
-            $registration->prf_categorys_id    = $request->category;
-            $registration->prf_size_tshirts_id = $request->size_tshirt;
-            $registration->equipe              = $request->equipe;
-            $registration->save();
-
-            return redirect('/dashboard');
-        } catch (Exception $e) {
-            return back();
-        }
+        return redirect('/dashboard')->with('erro', 'Edição de inscrições encerrada.');
     }
 
     public function cancelamento(Request $request, $registration_id)

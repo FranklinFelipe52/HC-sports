@@ -103,9 +103,9 @@
                   </div>
                   <div class="flex flex-col gap-4">
                     <div>
-                      <a href="/{{ $category->id }}/{{ $package->id }}" class="bg-brand-prfA1 hover:ring-opacity-50 rounded-md hover:ring-2 transition-all hover:ring-brand-prfA1 text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px]">
-                        Realizar inscrição
-                      </a>
+                      <span class="bg-gray-400 rounded-md text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px] cursor-not-allowed">
+                        Inscrições encerradas
+                      </span>
                     </div>
                   </div>
                 </div>
