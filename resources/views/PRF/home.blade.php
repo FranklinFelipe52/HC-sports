@@ -80,38 +80,10 @@
             </div>
           </div> --}}
         </div>
-        <div class="order-1 lg:order-2">
-          <h1 class="text-xl font-bold text-gray-1 mb-6">
-            Opções de inscrição
-          </h1>
-
-          <div class="space-y-4 mb-3">
-            @foreach ($categorys_geral->reverse() as $category)
-              @foreach ($packages as $package)
-                <div class="border border-gray-5 px-3.5 py-4 rounded-lg">
-                  <div class="flex flex-wrap justify-between">
-                    <div class="mb-3.5">
-                      <p class="text-gray-1 font-bold text-lg">
-                        {{ $category->nome }}
-                      </p>
-                    </div>
-                    <div class="">
-                      <p class="text-brand-prfA1 text-1.5xl w-full text-end font-bold">
-                        Gratuito
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex flex-col gap-4">
-                    <div>
-                      <span class="bg-gray-400 rounded-md text-sm font-medium text-white flex items-center justify-center py-2.5 px-3.5 w-full max-w-[180px] cursor-not-allowed">
-                        Inscrições encerradas
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-            @endforeach
-          </div>
+        <div class="order-1 lg:order-2 flex items-center justify-center">
+          <p class="text-gray-1 font-bold text-xl">
+            Inscrições encerradas
+          </p>
         </div>
       </div>
     </main>
